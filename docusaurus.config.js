@@ -18,6 +18,9 @@ module.exports = {
         href: 'https://help.smatechnologies.com',
       },
     },
+    prism: {
+      additionalLanguages: ['powershell', 'csharp'],
+        },
     footer: {
       style: 'dark',
       copyright: `Copyright © ${new Date().getFullYear()} SMA Technologies.`,
