@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Advanced Message Queuing Protocol (AMQP) is an open standard application layer protocol for message-oriented middleware. The defining features of AMQP are message orientation, queuing, routing (including point-to-point and publish-and-subscribe), reliability and security. AMQP defines a self-describing encoding scheme allowing interoperable representation of a wide range of commonly used types. It also allows typed data to be annotated with additional meaning,[17] for example a particular string value might be annotated so that it could be understood as a URL. Likewise a map value containing key-value pairs for 'name', 'address' etc., might be annotated as being a representation of a 'customer' type.
  
-The AMQP Trigger is using the [AMQP Connection](amqpconnection).
+The AMQP Trigger is using the [AMQP Connection](../server/connection-amqp).
 
 ![](../../../static/img/ampqptrigger.png)
 

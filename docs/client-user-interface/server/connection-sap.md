@@ -8,7 +8,7 @@ hide_title: 'true'
 The SAP Connection stores connect and logon properties for SAP R/3 instances.
  
 The SAP Connection is used in the SAP Task:
-* [SAP - R/3 Job execute](sapr3jobexecute)
+* [SAP - R/3 Job execute](../../client-user-interface/server/job-tasks/sap-tasks/r3-job-execute)
  
 **Manage Connections > Add > SAP > Main settings** tab
 

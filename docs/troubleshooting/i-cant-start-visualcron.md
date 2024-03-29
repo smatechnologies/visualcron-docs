@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## I Cannot Start VisualCron
 
-Please use the [contact web page](contactwebpage) to describe the problem in more detail.
+Please use the [contact web page](https://www.visualcron.com/contact.aspx) to describe the problem in more detail.
  
 Include the following information:
 * Operating system

@@ -10,18 +10,18 @@ The Amazon Connection stores connect and logon properties for the Amazon cloud s
 The Amazon Connection is currently used in the Cloud (S3) and Amazon EC2 Tasks that are accessing the Amazon Cloud services.
  
 The Amazon Connection is used in the following Tasks:
-* [Cloud - Upload file(s)](clouduploadfiles)
-* [Cloud - List item(s)](cloudlistitems)
-* [Cloud - Download file(s)](clouddownloadfiles)
-* [Cloud - Create folder](cloudcreatefolder)
-* [Cloud - Delete item(s)](clouddeleteitems)
-* [Messaging - SNS - Publish message](messagingsnspublishmessage)
+* [Cloud - Upload file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/upload-file)
+* [Cloud - List item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/list-item)
+* [Cloud - Download file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/download-file)
+* [Cloud - Create folder](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/create-folder)
+* [Cloud - Delete item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/delete-item)
+* [Messaging - SNS - Publish message](../../client-user-interface/server/job-tasks/messaging-tasks/sns-publish-message)
 * All Amazon EC Tasks
 * All Amazon DynamoDB Tasks
  
  
 And the following Triggers
-* [Amazon SQS Trigger](amazonsqstrigger)
+* [Amazon SQS Trigger](event-trigger-sqs)
  
 **Manage Connections > Add > Amazon > Main settings** tab
 

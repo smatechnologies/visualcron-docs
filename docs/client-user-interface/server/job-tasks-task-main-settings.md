@@ -29,7 +29,7 @@ The encoding property sets which encoding to use. This feature is not implemente
  
 **Execution context**
 
-Click the Change button to set [Execution context](executioncontext).
+Click the Change button to set [Execution context](../server/task-main-settings-execution-context).
  
 **Processor affinity settings**
 
@@ -53,5 +53,5 @@ The task order can be changed by either clicking on the up/down arrows next to e
 
 **Loop**
 
-Loops can be added to one or more Tasks, read more about [loops](loops) here.
+Loops can be added to one or more Tasks, read more about [loops](../server/job-tasks-loop-functionality) here.
 

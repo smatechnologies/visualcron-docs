@@ -28,4 +28,4 @@ Clicking on any of these buttons opens an interactive report:
 **Usage in Load Balancer**
  
 Server metrics like Uptime and Latency are also available as Load balancing Conditions: "Daily Server uptime (%)" and "Maximum response time (ms)".
-See the [Load balancing Flows](loadbalancingflows) topic for information on how to use Load balancing Flows and how to set up various Conditions for them.
+See the [Load balancing Flows](../servers/load-balancing-flows) topic for information on how to use Load balancing Flows and how to set up various Conditions for them.

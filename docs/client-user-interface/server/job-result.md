@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Job - Result
 
-The Job result window is similar to [Task output and result](taskoutputandresult) window but collects statistics and results for the whole Job.
+The Job result window is similar to [Task output and result](task-output-and-result) window but collects statistics and results for the whole Job.
  
 ### Accessing Job Result
  
@@ -18,7 +18,7 @@ You can access the Job result window the following ways;
 
 **Date of execution**
 
-In the date picker you select which day you would like to view result from. The amount of data stored is determined by the database log settings in [server settings](serversettings). In the date picker you can see available dates where you have at least one execution. Whenever you select a date the available times the Task has been executed is listed in the Time selection box under.
+In the date picker you select which day you would like to view result from. The amount of data stored is determined by the database log settings in [server settings](settings-log-settings). In the date picker you can see available dates where you have at least one execution. Whenever you select a date the available times the Task has been executed is listed in the Time selection box under.
  
 **Execution time**
 
@@ -38,7 +38,7 @@ Job results panel has at least one tab, "Job". This tab contains general informa
  
 Depending on how it was started it might contain a Trigger tab. This will contain specific information about the Trigger, and what caused it to Trigger, at the moment of execution. Above you can see the File Trigger results tab. In that tab you can see, for example, which exact file caused the Trigger to trigger and in which folder it was created it. The information available depends on the Trigger type.
  
-By right clicking on any row in Job results you can copy the underlying [Variable](variable) which might be interesting if you want to use it in a Notification or similar.
+By right clicking on any row in Job results you can copy the underlying [Variable](global-variables) which might be interesting if you want to use it in a Notification or similar.
 
 ![](../../../static/img/jobresultjob.png)
 

@@ -61,7 +61,7 @@ Default: "16444". You can only change the port number (which the server is liste
  
 **Use Active Directory logon/Use internal logon**
 
-VisualCron has two different authentication systems; one internal and one that is extended by Active Directory. If you want to allow Active directory logon you need to do that in u[ser logon settings](userlogonsettings).
+VisualCron has two different authentication systems; one internal and one that is extended by Active Directory. If you want to allow Active directory logon you need to do that in [user logon settings](../server/settings-users-logon).
  
 We have updated security settings for AD authentication, so now negotiation is handled by native WCF service API.
 Update involves providing some explicit WCF endpoint settings like Identity type and Principal name. Those applies when VisualCron Server starts on AD environment only.
@@ -92,7 +92,7 @@ Principal Name should look like username@FQDN
 **SPN identity type:** 
 Principal Name might look like HOST/serverDNSname.FQDN or serverDNSname.FQDN. In order to check for possible SPN values please run the following command setspn -l serverDNSname in Windows CommandLine utility.
  
-Sample values used to start VisualCron service could be found at [user logon settings](userlogonsettings).
+Sample values used to start VisualCron service could be found at [user logon settings](../server/settings-users-logon).
  
 **Username**
 

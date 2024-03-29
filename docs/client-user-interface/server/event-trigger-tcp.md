@@ -13,7 +13,7 @@ The TCP Trigger creates a TCP Listener which then listens persistently for conne
 
 **Connection**
 
-Before configuring any interaction rules you must create a Connection. Click on Manage Connections to add a new Connection. Select [TCP connection](tcpconnection) and alter connection settings.
+Before configuring any interaction rules you must create a Connection. Click on Manage Connections to add a new Connection. Select [TCP connection](../server/connection-tcp) and alter connection settings.
  
 **Interaction rules** tab
 
@@ -25,14 +25,14 @@ Available commands:
 **Delete**: delete a rule with all child rules.
 **Demo**: automatically create a set of rules with an example of a simple communication algorithm between a client and a server.
  
-See "[TCP messaging rules](tcpmessagingrules)" section in the TCP Task topic.
+See "[TCP messaging rules](../server/job-tasks/net-tasks/tcp#tcp-messaging-rules)" section in the TCP Task topic.
  
 **TCP > Test console** inner tab
 
 ![](../../../static/img/triggereventtcptestconsole.png)
 
 You are able to test the configured messaging rules without saving the settings.
-As a remote TCP client, a similar test scenario can be launched in the [TCP Task](tcptask) UI form, or a test application can be compiled and launched (see sample TCP Client application code below).
+As a remote TCP client, a similar test scenario can be launched in the [TCP Task](../server/job-tasks/net-tasks/tcp) UI form, or a test application can be compiled and launched (see sample TCP Client application code below).
  
 **Setup maximum number of iterations**
 

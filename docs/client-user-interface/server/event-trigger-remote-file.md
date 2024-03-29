@@ -37,19 +37,19 @@ Let say the remote server you watch gets disconnected for some reason, perhaps t
 
 **Triggers > Add > Event Trigger > Remote file > Location** tab
 
-This Task is using the standard VisualCron [Folder filter](folderfilter) to find one or more folders.
+This Task is using the standard VisualCron [Folder filter](../server/job-tasks-folder-filter) to find one or more folders.
  
 **Triggers > Add > Event Trigger > Remote file > Date** tab
 
-This Task is using the standard VisualCron [Folder filter](folderfilter) to filter for created/modified date.
+This Task is using the standard VisualCron [Folder filter](../server/job-tasks-folder-filter) to filter for created/modified date.
  
 **Triggers > Add > Event Trigger > Remote file > Size** tab
 
-This Task is using the standard VisualCron [Folder filter](folderfilter) to filter out files based on size.
+This Task is using the standard VisualCron [Folder filter](../server/job-tasks-folder-filter) to filter out files based on size.
  
 **Triggers > Add > Event Trigger > Remote file > Test** tab
 
-This Task is using the standard VisualCron [Folder filter](folderfiler) to test your current file filter - if it matches any existing files.
+This Task is using the standard VisualCron [Folder filter](../server/job-tasks-folder-filter) to test your current file filter - if it matches any existing files.
  
 **Triggers > Add > Event Trigger > Remote file > Download** tab
 
@@ -61,7 +61,7 @@ Optionally, you can set the Remote file Trigger to download the file that was ju
  
 **Credential**
 
-Select a [Credential](credential) if you are going to save to a network drive. Click the Settings icon to populate the drop-down list with available credentials.
+Select a [Credential](../server/global-credentials) if you are going to save to a network drive. Click the Settings icon to populate the drop-down list with available credentials.
  
 **Destination folder**
 

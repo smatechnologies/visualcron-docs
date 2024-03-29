@@ -6,14 +6,14 @@ hide_title: 'true'
 ## Event Trigger- Cloud File
 
 The Cloud file event trigger is able to monitor file events in various online cloud services:
-* [Amazon S3](amazon)
-* [Box](box)
-* [DropBox](dropbox)
-* [Google Drive](googledrive)
-* [Microsoft Azure](microsoftazure)
-* [OneDrive](onedrive)
+* [Amazon S3](../server/connection-amazon)
+* [Box](../server/connection-box)
+* [DropBox](../server/connection-dropbox)
+* [Google Drive](../server/connection-google-drive)
+* [Microsoft Azure](../server/connection-microsoft-azure)
+* [OneDrive](../server/connection-onedrive)
  
-Different [Connections](connections) are used depending on the wanted cloud service provider.
+Different [Connections](../server/global-connections) are used depending on the wanted cloud service provider.
  
 **Triggers > Add > Event Trigger > Cloud file > Cloud file > Main settings** tab
 
@@ -37,7 +37,7 @@ Let say the remote server you watch gets disconnected for some reason, perhaps t
  
 **Triggers > Add > Event Trigger > Cloud file > Cloud file > Remote file filter** tab
 
-This Trigger uses the [Cloud Remote file filter](cloudremotefilefilter) for filtering out files to check for.
+This Trigger uses the [Cloud Remote file filter](../server/job-tasks-cloud-remote-file-filter) for filtering out files to check for.
  
 **Triggers > Add > Event Trigger > Cloud file > Cloud file > Download** tab
 
@@ -49,7 +49,7 @@ Optionally, you can set the Remote file Trigger to download the file that was ju
  
 **Credential**
 
-Select a [Credential](credential) if you are going to save to a network drive. Click the Settings icon to populate the drop-down list with available credentials.
+Select a [Credential](../server/global-credentials) if you are going to save to a network drive. Click the Settings icon to populate the drop-down list with available credentials.
  
 **Destination folder**
 

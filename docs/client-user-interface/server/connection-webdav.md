@@ -8,11 +8,11 @@ hide_title: 'true'
 The WebDAV Connection stores connect and logon properties for HTTP servers supporting the WebDAV protocol.
  
 The WebDAV Connection is used by the following WebDAV Tasks:
-* [Net - WebDAV - Download](netwebdavdownload)
-* [Net - WebDAV - Upload](netwebdavupload)
-* [Net - WebDAV - Copy files](netwebdavcopyfiles)
-* [Net - WebDAV - Delete](netwebdavdelete)
-* [Net - WebDAV - Create folder](netwebdavcreatefolder)
+* [Net - WebDAV - Download](../../client-user-interface/server/job-tasks/net-tasks/webdav-download)
+* [Net - WebDAV - Upload](../../client-user-interface/server/job-tasks/net-tasks/webdav-upload)
+* [Net - WebDAV - Copy files](../../client-user-interface/server/job-tasks/net-tasks/webdav-copy-files)
+* [Net - WebDAV - Delete](../../client-user-interface/server/job-tasks/net-tasks/webdav-delete)
+* [Net - WebDAV - Create folder](../../client-user-interface/server/job-tasks/net-tasks/webdav-create-folder)
  
 Web Distributed Authoring and Versioning (WebDAV) is an extension of the Hypertext Transfer Protocol (HTTP) that allows clients to perform remote Web content authoring operations. A working group of the Internet Engineering Task Force (IETF) defined WebDAV in RFC 4918.
  

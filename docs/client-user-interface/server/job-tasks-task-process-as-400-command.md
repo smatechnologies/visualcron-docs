@@ -11,7 +11,7 @@ The Process - AS/400 Command Task lets you execute a command on a AS/400 server.
 
 **Connection**
 
-Select a AS/400 Connection. You can set up the Connection here: [AS/400 Connection](as400connection).
+Select a AS/400 Connection. You can set up the Connection here: [AS/400 Connection](../server/connection-as400).
  
 **Full command**
 

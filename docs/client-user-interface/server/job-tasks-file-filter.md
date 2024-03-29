@@ -22,7 +22,7 @@ Contains the basic properties of finding one or more files.
 
 **Credentials**
 
-To access a remote computer you may need to use a [Credential](credential). Normally that Credential is a remote or AD user with "Local logon" unchecked. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
+To access a remote computer you may need to use a [Credential](../server/global-credentials). Normally that Credential is a remote or AD user with "Local logon" unchecked. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
  
 **Folder**
 

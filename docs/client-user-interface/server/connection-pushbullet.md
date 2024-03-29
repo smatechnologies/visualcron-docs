@@ -9,11 +9,11 @@ The Pushbullet Connection is used with the free service from [Pushbullet](https:
  
 The Pushbullet Connection is used in the following Tasks:
 
-* [Pushbullet - Send message](pushbulletsendmessage)
-* [Pushbullet - Send SMS](pushbulletsendsms)
-* [Pushbullet - Send link](pushbulletsendlink)
-* [Pushbullet - Send file](pushbulletsendfile)
-* [Pushbullet - Upload file](pushbulletuploadfile)
+* [Pushbullet - Send message](../../client-user-interface/server/job-tasks/messaging-tasks/pushbullet-send-message)
+* [Pushbullet - Send SMS](../../client-user-interface/server/job-tasks/messaging-tasks/pushbullet-send-sms)
+* [Pushbullet - Send link](../../client-user-interface/server/job-tasks/messaging-tasks/pushbullet-send-link)
+* [Pushbullet - Send file](../../client-user-interface/server/job-tasks/messaging-tasks/pushbullet-send-file)
+* [Pushbullet - Upload file](../../client-user-interface/server/job-tasks/messaging-tasks/pushbullet-upload-file)
  
 **Manage Connections > Add > Pushbullet > Main settings** tab
 

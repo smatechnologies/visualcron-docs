@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The VisualCron Connection stores connect and logon properties for connecting internally between Clients and Servers. This is used to control Jobs/Tasks on other servers.
  
-The VisualCron Connection is used in the [Internal - Job/Task control](internaljobtaskcontrol) Task and the [Event trigger - VisualCron](eventtriggervisualcron) Trigger. The Connection is used to connect to a local or remote VisualCron Server instance.
+The VisualCron Connection is used in the [Internal - Job/Task control](../../client-user-interface/server/job-tasks/internal-tasks/control) Task and the [Event trigger - VisualCron](event-trigger-visualcron) Trigger. The Connection is used to connect to a local or remote VisualCron Server instance.
  
 **Manage Connections > Add > VisualCron > Main settings** tab
 

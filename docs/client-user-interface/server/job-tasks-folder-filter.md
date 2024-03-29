@@ -3,7 +3,7 @@ sidebar_label: 'Folder Filter'
 hide_title: 'true'
 ---
 
-## Remote Folder Filter
+## Folder Filter
 
 The folder filter is similar to the file filter but filters out folders only. It is used in various Tasks.
  

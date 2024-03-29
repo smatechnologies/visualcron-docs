@@ -11,11 +11,11 @@ Google Drive is a cloud service from Google. You can use VisualCron to sync file
  
 The Google Drive Connection is used in the following Cloud Tasks:
 
-* [Cloud - Upload file(s)](clouduploadfiles)
-* [Cloud - List item(s)](cloudlistitems)
-* [Cloud - Download file(s)](clouddownloadfiles)
-* [Cloud - Create folder](cloudcreatefolder)
-* [Cloud - Delete item(s)](clouddeleteitems)
+* [Cloud - Upload file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/upload-file)
+* [Cloud - List item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/list-item)
+* [Cloud - Download file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/download-file)
+* [Cloud - Create folder](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/create-folder)
+* [Cloud - Delete item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/delete-item)
  
 **Manage Connections > Add > Google Drive > Main settings** tab
 

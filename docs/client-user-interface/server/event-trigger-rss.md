@@ -55,7 +55,7 @@ Text ...
  
 **Credential**
 
-Select a [Credential](credential) suitable for the selected authentication type. Click the Settings icon to populate the drop-down list with available credentials.
+Select a [Credential](../server/global-credentials) suitable for the selected authentication type. Click the Settings icon to populate the drop-down list with available credentials.
  
 **RSS Event Trigger Variables**
 

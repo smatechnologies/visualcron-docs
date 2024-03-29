@@ -19,7 +19,7 @@ If your Job does not run then check this list, in the following order:
 
 5. Is your command and argument correct? You need to separate the argument from the command in the two fields. You can not write ```"C:\php\php.exe -q myscript.php"``` in the command line, in this case the command line must be ```"C:\php\php.exe"``` and the argument ```"-q myscript.php".```
  
-You can turn on debug for the server, see [show log](showlog) and [log to file](logtofile) for more information. 
+You can turn on debug for the server, see [show log](../client-user-interface/server/information-log) and [log to file](../client-user-interface/server/main-settings) for more information. 
 
 Run the Job manually again and the open the log file. 
 

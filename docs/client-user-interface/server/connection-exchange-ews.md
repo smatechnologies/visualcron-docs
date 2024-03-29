@@ -27,11 +27,11 @@ The url to the Exchange EWS service. Here is how you can obtain it:
 
 * Access your journaling mailbox account using Outlook Web App (OWA)
 * Click Options > See All Options > Account > My Account > Settings for POP, IMAP, and SMTP access
-* In the list of entries, locate the server name. The URL of exchange web service for the mailbox is the URL: https://<ONLINE_URL>/EWS/Exchange.asmx
+* In the list of entries, locate the server name. The URL of exchange web service for the mailbox is the URL: `https://<ONLINE_URL>/EWS/Exchange.asmx`
  
 **For Microsoft Exchange (on premise)**
 
-The URL can be composed using the following syntax: https://<EXCHANGE_SERVER_HOSTNAME>/EWS/Exchange.asmx
+The URL can be composed using the following syntax: `https://<EXCHANGE_SERVER_HOSTNAME>/EWS/Exchange.asmx`
  
 **Using Microsoft Exchange Management Shell**
 
@@ -39,9 +39,9 @@ The URL can be composed using the following syntax: https://<EXCHANGE_SERVER_HOS
 * Get-WebServicesVirtualDirectory |Select name, *url* | fl
 * The output will be similar to the following:
 * Name                 : EWS (Default Web Site)
-* InternalNLBBypassUrl : https://server name/ews/exchange.asmx
-* InternalUrl          : https://server name/EWS/Exchange.asmx
-* ExternalUrl          : https://mail.domain.com/ews/exchange.asmx
+* InternalNLBBypassUrl : `https://server name/ews/exchange.asmx`
+* InternalUrl          : `https://server name/EWS/Exchange.asmx`
+* ExternalUrl          : `https://mail.domain.com/ews/exchange.asmx`
  
 **Timeout**
 

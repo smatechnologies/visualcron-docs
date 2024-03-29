@@ -9,7 +9,7 @@ VisualCron in itself is quite clean in functionality. VisualCron just executes p
  
 There are different ways to accomplish what you want to do. Most things can be done with any scripting language for example Perl, PHP or VBScript. You can also accomplish a lot with the built in commands in the operating system. Find the way that feels comfortable for you. Look in the examples section for some solutions.
  
-Please submit your favorite command, program, tool or utility via the [contact web page](contactwebpage). Also, make a suggestion if you have an idea of a useful utility that can't be found elsewhere.
+Please submit your favorite command, program, tool or utility via the [contact web page](https://www.visualcron.com/contact.aspx). Also, make a suggestion if you have an idea of a useful utility that can't be found elsewhere.
  
 The solutions are divided into the followings parts:
  

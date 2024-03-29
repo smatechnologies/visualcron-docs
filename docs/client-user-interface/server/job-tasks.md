@@ -13,4 +13,4 @@ The above is an example of the Task > Main settings window.
  
 For each Job, one or more Tasks must be defined.
  
-By default, a defined Job or Task is set to the "Active" state, but it is possible to inactivate each Job or Task individually, see [Activate/Inactivate Job](activateinactivatejob) for more information.
+By default, a defined Job or Task is set to the "Active" state, but it is possible to inactivate each Job or Task individually, see [Activate/Inactivate Job](../server-group-job-task-area/job-list/activate-deactivate-job) for more information.

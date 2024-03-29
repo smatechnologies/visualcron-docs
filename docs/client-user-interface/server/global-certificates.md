@@ -7,7 +7,7 @@ hide_title: 'true'
 
 A certificate is a digitally signed statement from one entity (person, company, etc.) that states that the public key of another entity has a particular value. Trusting the certificate's signature implies that you trust that the association in the certificate between the specified public key and the other entity are authentic.
  
-VisualCron can handle standard X509 certificates. These can be stored at the server location and be available for reuse in Tasks like the [Email Task](emailtask). The Manage certificates dialog is available in the main menu **Server > Global objects > Certificates**.
+VisualCron can handle standard X509 certificates. These can be stored at the server location and be available for reuse in Tasks like the [Email Task](../server/job-tasks/messaging-tasks/email). The Manage certificates dialog is available in the main menu **Server > Global objects > Certificates**.
  
 **Global > Certificates**
 

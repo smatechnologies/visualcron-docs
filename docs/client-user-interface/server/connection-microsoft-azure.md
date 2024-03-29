@@ -11,24 +11,24 @@ The Microsoft Azure Connection is used in the following Tasks:
 
 **Cloud Tasks**
  
-* [Cloud - Upload file(s)](clouduploadfiles)
-* [Cloud - List item(s)](cloudlistitems)
-* [Cloud - Download file(s)](clouddownloadfiles)
-* [Cloud - Create folder](cloudcreatefolder)
-* [Cloud - Delete item(s)](clouddeleteitems)
+* [Cloud - Upload file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/upload-file)
+* [Cloud - List item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/list-item)
+* [Cloud - Download file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/download-file)
+* [Cloud - Create folder](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/create-folder)
+* [Cloud - Delete item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/delete-item)
  
 **Azure Tasks**
 
-* [Azure - Start VM](azurestartvm)
-* [Azure - Stop VM](azurestopvm)
-* [Azure - Restart VM](azurerestartvm)
-* [Azure - Update VM](azureupdatevm)
-* [Azure - Create VM](azurecreatevm)
-* [Azure - Start web site](azurestartwebsite)
-* [Azure - Stop web site](azurestopwebsite)
-* [Azure - Restart web site](azurerestartwebsite)
-* [Azure - Remove web site](azureremovewebsite)
-* [Azure - Create web site](azurecreatewebsite)
+* [Azure - Start VM](../../client-user-interface/server/job-tasks/azure-tasks/start-vm)
+* [Azure - Stop VM](../../client-user-interface/server/job-tasks/azure-tasks/stop-vm)
+* [Azure - Restart VM](../../client-user-interface/server/job-tasks/azure-tasks/restart-vm)
+* [Azure - Update VM](../../client-user-interface/server/job-tasks/azure-tasks/update-vm)
+* [Azure - Create VM](../../client-user-interface/server/job-tasks/azure-tasks/create-vm)
+* [Azure - Start web site](../../client-user-interface/server/job-tasks/azure-tasks/start-web-site)
+* [Azure - Stop web site](../../client-user-interface/server/job-tasks/azure-tasks/stop-web-site)
+* [Azure - Restart web site](../../client-user-interface/server/job-tasks/azure-tasks/restart-web-site)
+* [Azure - Remove web site](../../client-user-interface/server/job-tasks/azure-tasks/remove-web-site)
+* [Azure - Create web site](../../client-user-interface/server/job-tasks/azure-tasks/create-web-site)
  
 **Manage Connections > Add > Windows Azure > Main settings** tab
 

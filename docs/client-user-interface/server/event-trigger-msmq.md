@@ -13,7 +13,7 @@ The MSMQ event trigger is able to monitor a private or public queue for new mess
 
 **Credential**
 
-Select a [Credential](credential) if you are going to monitor a remote MSMQ queue. Click the Settings icon to populate the drop-down list with available credentials.
+Select a [Credential](../server/global-credentials) if you are going to monitor a remote MSMQ queue. Click the Settings icon to populate the drop-down list with available credentials.
  
 **Local/Remote MSMQ**
 

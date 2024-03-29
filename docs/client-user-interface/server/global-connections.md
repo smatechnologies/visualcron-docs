@@ -13,50 +13,50 @@ Connections are viewed and updated in the **Server > Global objects > Connection
 
 **Explorer**
 
-Many connections use some kind of explorer to test and navigate with the selected Connection, for example; [SQL Explorer](sqlexplorer), [Connection Explorer](connectionexplorer). Select a Connection and click on Explorer button.
+Many connections use some kind of explorer to test and navigate with the selected Connection, for example; [SQL Explorer](../tools/explore-sql-explorer), [Connection Explorer](../tools/explore-connection-explorer). Select a Connection and click on Explorer button.
  
 **Audit log**
 
-Click this button to view the [Audit log](auditlog) for Connections.
+Click this button to view the [Audit log](../tools/objects-audit-log) for Connections.
  
 **Clear filter**
 
 When you open Manage Connections from a Task only the related protocols are visible. Click Clear filter to view all.
 
 Currently the following Connection protocols exist:
-* [FTP](ftp)
-* [FTP SSL Implicit](ftpsslimplicit)
-* [FTP TLS Implicit](ftptlsimplicit)
-* [FTP SSL Explicit](ftpsslexplicit)
-* [FTP TLS Explicit](ftptlsexplicit)
-* [SFTP](sftp)
-* [SCP](scp)
-* [SSH](ssh)
-* [TCP](tcp)
-* [SMTP](smtp)
-* [POP3](pop3)
-* [IMAP](imap)
-* [Exchange EWS](exchangeews)
-* [Exchange WebDAV](exchangewebdav)
-* [WebDAV](webdav)
-* [SQL](sql)
-* [SSRS](ssrs)
-* [Amazon](amazon)
-* [Microsoft Azure](microsoftazure)
-* [Dropbox](dropbox)
-* [Google Drive](googledrive)
-* [OneDrive](onedrive)
-* [Box](box)
-* [VisualCron](visualcron)
-* [SharePoint](sharepoint)
-* [XendApp](xendapp)
-* [Pushbullet](pushbullet)
-* [Telegram](telegram)
-* [Twitter](twitter)
-* [Crystal reports](crystalreports)
-* [VMWare](vmware)
-* [Dynamics CRM](dynamicscrm)
-* [AS/400](as400)
-* [SAP](sap)
+* [FTP](connection-ftp)
+* [FTP SSL Implicit](connection-ftp)
+* [FTP TLS Implicit](connection-ftp)
+* [FTP SSL Explicit](connection-ftp)
+* [FTP TLS Explicit](connection-ftp)
+* [SFTP](connection-sftp)
+* [SCP](connection-scp)
+* [SSH](connection-ssh)
+* [TCP](connection-tcp)
+* [SMTP](connection-smtp)
+* [POP3](connection-pop3)
+* [IMAP](connection-imap4)
+* [Exchange EWS](connection-exchange-ews)
+* [Exchange WebDAV](exchange-webdav)
+* [WebDAV](connection-webdav)
+* [SQL](connection-sql)
+* [SSRS](connection-ssrs)
+* [Amazon](connection-amazon)
+* [Microsoft Azure](connection-microsoft-azure)
+* [Dropbox](connection-dropbox)
+* [Google Drive](connection-google-drive)
+* [OneDrive](connection-onedrive)
+* [Box](connection-box)
+* [VisualCron](connection-visualcron)
+* [SharePoint](connection-sharepoint)
+* [XendApp](connection-xendapp)
+* [Pushbullet](connection-pushbullet)
+* [Telegram](connection-telegram)
+* [Twitter](connection-twitter)
+* [Crystal reports](connection-crystalreports)
+* [VMWare](connection-vmware)
+* [Dynamics CRM](connection-dynamics-crm)
+* [AS/400](connection-as400)
+* [SAP](connection-sap)
  
 Click on protocol link above to read more information and connection setting specifics of that protocol.

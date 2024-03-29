@@ -22,7 +22,7 @@ After installing and configuring PHP in your way, it is easy to call your script
  
 Watch out if you use relative links in your script, if you do that you may want to specify a Working directory so that script knows where to find the relative paths.
 
-![PHP-Script in VisualCron](../../static/img/clip333444102.gif))
+![PHP-Script in VisualCron](../../static/img/clip333444102.gif)
 
 ### Using VBScript for Scripting
 
@@ -48,7 +48,7 @@ To execute VBScript from VisualCron you specify "wscript.exe" in the Command fie
 
 You can use VisualCron to run and control any other program. For example can you start a backup program at a certain time. Another example is to use VisualCron to record radio shows at certain times.
  
-If you have any good program/utility that you use with VisualCron then please use the [contact web page](contactwebpage) and tell us about it!
+If you have any good program/utility that you use with VisualCron then please use the [contact web page](https://www.visualcron.com/contact.aspx) and tell us about it!
 
 #### NirCmd
 

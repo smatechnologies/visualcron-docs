@@ -5,9 +5,9 @@ hide_title: 'true'
 
 ## Global - Notifications
 
-Notifications are since version 7.0.0 a way to create global, independent Tasks. The Notifications are stored centrally and are called from [Job Flow](jobflow) or [Task Flow](taskflow). Any Task can be used as a Notification. The purpose of Notifications was originally to create, e.g. an Email Task once and then be able to re-use it in Job and Task Flow whenever you wanted to receive a Job or Task email with output or similar.
+Notifications are since version 7.0.0 a way to create global, independent Tasks. The Notifications are stored centrally and are called from [Job Flow](../../client-user-interface/server/job-flow) or [Task Flow](../../client-user-interface/server/task-flow). Any Task can be used as a Notification. The purpose of Notifications was originally to create, e.g. an Email Task once and then be able to re-use it in Job and Task Flow whenever you wanted to receive a Job or Task email with output or similar.
  
-A notification is defined either from the main menu **Server > Global objects > Notification**s dialog or from the [Job Flow](jobflow) or [Task Flow](taskflow).
+A notification is defined either from the main menu **Server > Global objects > Notification**s dialog or from the [Job Flow](../../client-user-interface/server/job-flow) or [Task Flow](../../client-user-interface/server/task-flow).
 
 ![](../../../static/img/clipasdffd0049.png)
 
@@ -23,7 +23,7 @@ Below is a screenshot from Task Flow of a Task which, On error, also sends a Not
 
 As usual you can use any Variable in any field within VisualCron.
  
-View additional [variable](variable) information.
+View additional [variable](../../client-user-interface/server/global-variables) information.
  
 :::info Note
 

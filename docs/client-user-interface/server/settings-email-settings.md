@@ -7,7 +7,7 @@ hide_title: 'true'
 
 In the main menu **Server > Main settings > Settings** dialog, there are a set of important setting groups/tabs. In this tab, the email settings are managed.
  
-These are the default settings that will be used for the Email Tasks. The SMTP connection details are managed in the [Connections - SMTP Connection](connectionssmtpconnection).
+These are the default settings that will be used for the Email Tasks. The SMTP connection details are managed in the [Connections - SMTP Connection](../server/connection-smtp).
  
 **Main > Settings > Email settings** tab
 

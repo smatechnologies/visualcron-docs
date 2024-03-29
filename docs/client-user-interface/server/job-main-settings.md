@@ -90,7 +90,7 @@ When checked it will only log ROI when the Job has succeeded.
  
 **Job variables**
 
-See [Job variables](jobvariables) for more information.
+See [Job variables](../server/job-variables) for more information.
  
 **Permissions..**
 

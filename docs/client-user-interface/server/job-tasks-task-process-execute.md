@@ -152,7 +152,7 @@ Turn of UAC in the Server settings in VisualCron window and reboot
 Go to Server settings->Log and uncheck "Extended debug logging". Edit the Credential you use and change to option "CreateProcessWithLogonW".
  
 Please try any of the following:
-1. turn off UAC and reboot from [Server settings](serversettings)
+1. turn off UAC and reboot from [Server settings](../server/main-settings)
 2. Open Services->Find VisualCron and right click and select Properties. Uncheck "Allow service to interact with desktop". Restart the service.
 3. Run the VisualCron service as SYSTEM account.
  

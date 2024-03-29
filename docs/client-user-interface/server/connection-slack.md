@@ -7,8 +7,8 @@ hide_title: 'true'
 
 **Slack** is a cloud-based set of proprietary team collaboration tools and services. The Slack Connection is used in:
  
-* Slack - Trigger
-* Slack - Send message Task
+* [Slack - Trigger](../../client-user-interface/server/event-trigger-slack)
+* [Slack - Send message Task](../../client-user-interface/server/job-tasks/messaging-tasks/slack-send-message)
  
 **Teams**
 

@@ -9,7 +9,7 @@ The Telegram Connection uses the free, cloud-based instant messaging service Tel
  
 The Telegram Connection is used in the following Task:
 
-* [Telegram - User Send message](telegramusersendmessage)
+* [Telegram - User Send message](../../client-user-interface/server/job-tasks/messaging-tasks/telegram-user-send-message)
  
 ### Setting up a Telegram application
 

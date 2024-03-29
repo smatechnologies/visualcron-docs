@@ -21,13 +21,13 @@ VisualCron has two different authentication systems; one internal and one that i
  
 **AD Server**
 
-When using Active Directory logon you need to specify server name or IP address. This will be used as default when working with [user permissions](userpermissions).
+When using Active Directory logon you need to specify server name or IP address. This will be used as default when working with [user permissions](../server/main-user-permissions).
 Please add :636 to make secure LDAP connections, i.e. **adhostname:636**. Otherwise non-secure connection will be used.
 The name of the AD server can also be specified in the extended format: HostName:PortNumber/DistinguishedName. For example: **contoso.com:636/DC=contoso,DC=com**
  
 **Credential**
 
-The AD Server Credential that will be used as default when working with [user permissions](userpermissions).
+The AD Server Credential that will be used as default when working with [user permissions](../server/main-user-permissions).
  
 
 ## Test button
@@ -38,7 +38,7 @@ Access is required for further authorization of connecting AD users, in particul
 **Additional testing**
 
 If the Test button produces an unsuccessful result, and SSL is used (port 636 is specified), it is possible to activate an additional verification mechanism.
-To do this, it is first advisable to enable [extended debug logging](extendeddebuglogging), apply the settings, then open the Users/Logon tab again and specify the AD Server in the extended format: HostName:PortNumber/DistinguishedName (for example: contoso.com:636/DC=contoso,DC=com).
+To do this, it is first advisable to enable [extended debug logging](../server/settings-log-settings), apply the settings, then open the Users/Logon tab again and specify the AD Server in the extended format: HostName:PortNumber/DistinguishedName (for example: contoso.com:636/DC=contoso,DC=com).
 After testing, server log messages (starting with "GotADTest") will help determine the source of the problem.
  
  

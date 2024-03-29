@@ -58,7 +58,7 @@ These are the most powerful variables which let you access a large part of your 
  
 **User defined variables**
 
-You are able to create your own static or dynamic Variables - with different value types. To Add/Edit/Remove a Variable you ca either click at the *Add/Edit/Delete* buttons or create Tasks ([Set Variable](setvariable), [Remove Variable](removevariable), [Calculate Variable](calculatevariable)) that does this.
+You are able to create your own static or dynamic Variables - with different value types. To Add/Edit/Remove a Variable you ca either click at the *Add/Edit/Delete* buttons or create Tasks ([Set Variable](../../client-user-interface/server/job-tasks/internal-tasks/set-job-variable), [Remove Variable](../../client-user-interface/server/job-tasks/internal-tasks/remove-variable), [Calculate Variable](../../client-user-interface/server/job-tasks/internal-tasks/calculate-variable)) that does this.
 
 ![](../../../static/img/clip333444099.gif)
 

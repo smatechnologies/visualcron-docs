@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Informatica Connection is used in the following place(s):
  
-[Informatica Task](informaticatask)
+[Informatica Task](../../client-user-interface/server/job-tasks/informatica-tasks/run-job)
 
 ![](../../../static/img/connection-informatica-main.png)
  

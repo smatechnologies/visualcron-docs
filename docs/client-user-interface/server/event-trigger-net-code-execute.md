@@ -7,7 +7,7 @@ hide_title: 'true'
 
 ![](../../../static/img/triggereventnetexecutecode.png)
 
-The composition and purpose of all the parameters that are available inside the Trigger sub tab fully corresponds to the description of the parameters from the topic, which describes the [.NET code execute Task](netcodeexecutetask).
+The composition and purpose of all the parameters that are available inside the Trigger sub tab fully corresponds to the description of the parameters from the topic, which describes the [.NET code execute Task](../server/job-tasks-task-process-dot-net-code-execute).
  
 .**NET code execute** tab > **Condition** sub tab
 

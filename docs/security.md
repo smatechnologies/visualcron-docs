@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Security
 
-Many actions has been taken to ensure security. Look at the following chapters to learn more.
+Many actions have been taken to ensure security. Look at the following chapters to learn more.
 
 ### TLS Communication Between Client and Server
 

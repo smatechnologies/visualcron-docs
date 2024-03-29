@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Event Trigger - Mail
 
-The Email event trigger is able to monitor a mailbox through the POP3 or the IMAP4 protocol. The actual connection properties are defined in the [Connections](connections) window. Based on subject, sender and content different actions can be performed with the email.
+The Email event trigger is able to monitor a mailbox through the POP3 or the IMAP4 protocol. The actual connection properties are defined in the [Connections](../server/global-connections) window. Based on subject, sender and content different actions can be performed with the email.
  
 **Triggers > Add > Event Trigger > Email > Main settings** tab
 
@@ -25,7 +25,7 @@ How often the mailbox is to be checked.
  
 **Credential**
 
-To control a remote computer you may need to use a [Credential](credential). The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
+To control a remote computer you may need to use a [Credential](../server/global-credentials). The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
  
 **Ignore Server Off (always run)**
 
@@ -37,7 +37,7 @@ The Trigger will run even though Server is set to off.
 
 **Connection**
 
-Select an existing [POP3](pop3)/[IMAP4](imap4) connection, if not existing you need to create one first. Click the Settings icon to open the Manage Connections dialog. Once a connection is added you can select it in the combo box.
+Select an existing [POP3](../server/connection-pop3)/[IMAP4](../server/connection-imap4) connection, if not existing you need to create one first. Click the Settings icon to open the Manage Connections dialog. Once a connection is added you can select it in the combo box.
  
 **Mail folder**
 
@@ -59,7 +59,7 @@ If the email is encrypted you need a Certificate to decrypt it. A certificate is
  
 **Manage Certificates**
 
-You can create/import your certificates defined in the [Manage Certificates](managecertificates) window.
+You can create/import your certificates defined in the [Manage Certificates](../server/global-certificates) window.
  
 **Triggers > Add > Event Trigger > Email > Email > Conditions** tab
 

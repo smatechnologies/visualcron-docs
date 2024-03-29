@@ -27,11 +27,11 @@ The timeout setting in the SSH Connection refers to the max time the full connec
 
 **Transfer type**
 
-[FTP](ftp)/[SFTP](sftp) only.
+[FTP](connection-ftp)/[SFTP](connection-sftp) only.
  
 **Data connection type**
 
-[FTP](ftp) only option.
+[FTP](connection-ftp) only option.
  
 **Max packet size**
 
@@ -51,7 +51,7 @@ Use this property to control the size of the single download request. The server
  
 **SFTP version support**
 
-[SFTP](sftp) only.
+[SFTP](connection-sftp) only.
  
 ### Troubleshooting
 

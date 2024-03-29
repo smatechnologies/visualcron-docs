@@ -9,7 +9,7 @@ A condition set is defined from the main menu **Global > Conditions** dialog.
  
 **Global > Conditions > Add/Update Condition set > Main settings** tab
 
-See [Conditions Main settings](conditionsmainsettings) for details.
+See [Conditions Main settings](global-main-settings) for details.
  
 **Global > Conditions > Add/Update Condition set > Conditions** tab
 
@@ -19,7 +19,7 @@ Use _Conditions > Add_ to include conditions in the current condition set.
  
 **Global > Conditions > Add/Update Condition set > Actions** tab
 
-See [Conditions Actions](conditionsactions) for details.
+See [Conditions Actions](conditions-actions) for details.
  
 **Global > Conditions**  
 
@@ -39,9 +39,9 @@ A condition uses the following settings:
 * Condition type parameters (dependent of the selected condition type)
  
 Each condition type uses specific associated parameters. The following condition types exist:
-* [VisualCron](visualcron)
-* [File](file)
-* [Folder](folder)
-* [Process](process)
-* [Variable](variable)
-* [.NET](.net)
+* [VisualCron](condition-visualcron)
+* [File](condition-file)
+* [Folder](condition-folder)
+* [Process](condition-process)
+* [Variable](condition-variable)
+* [.NET](condition-dot-net)

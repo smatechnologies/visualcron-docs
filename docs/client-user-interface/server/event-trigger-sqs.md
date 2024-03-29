@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Amazon Simple Queue Service (SQS) is a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications. SQS eliminates the complexity and overhead associated with managing and operating message oriented middleware, and empowers developers to focus on differentiating work. Using SQS, you can send, store, and receive messages between software components at any volume, without losing messages or requiring other services to be available. Get started with SQS in minutes using the AWS console, Command Line Interface or SDK of your choice, and three simple commands.
  
-The Amazon SQS Trigger in VisualCron is using the [Amazon Connection](amazonconnection).
+The Amazon SQS Trigger in VisualCron is using the [Amazon Connection](../server/connection-amazon).
  
 **Amazon SQS Trigger settings**
 

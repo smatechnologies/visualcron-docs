@@ -9,10 +9,10 @@ The POP3 Connection stores connect and logon properties for the email server pro
  
 **Connection > POP3 > Main settings** tab
 
-See [Connection > SMTP > Main settings](connectionsmtpmainsettings) for more details.
+See [Connection > SMTP > Main settings](connection-smtp) for more details.
  
 **Connection > POP3 > Authentication** tab
-See [Connection > SMTP > Authentication](connectionsmtpauthentication) for more details.
+See [Connection > SMTP > Authentication](connection-smtp) for more details.
  
 ### Default settings for some servers:
 

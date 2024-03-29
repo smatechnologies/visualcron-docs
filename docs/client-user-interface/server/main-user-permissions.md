@@ -115,7 +115,7 @@ Not all permissions has, for obvious reasons, all attributes available. For exam
  
 For each permission, use the select boxes to update the valid attribute types. Your changes to a user will be saved when clicking OK.
  
-See the list of all permissions with a description in the [Supported permissions](supportedpermissions) topic.
+See the list of all permissions with a description in the [Supported permissions](../server/supported-permissions) topic.
  
 **Permissions**
 

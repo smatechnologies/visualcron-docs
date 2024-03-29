@@ -5,9 +5,9 @@ hide_title: 'true'
 
 ## Job Variables
 
-Job Variables are values/parameters that is connected to a specific Job. When comparing Job Variables with [User Variables](uservariables) there are a couple of differences:
+Job Variables are values/parameters that is connected to a specific Job. When comparing Job Variables with [User Variables](../server/global-variables) there are a couple of differences:
 * Job Variables are stored in the Job and not global like User Variables - still it is possible to refer to a Job Variable from another place in VisualCron
-* It is possible to override existing Job Variables with the [Job/Task Control Task](jobtaskcontroltask)
+* It is possible to override existing Job Variables with the [Job/Task Control Task](../server/job-tasks/internal-tasks/control)
 * The Job Variables are edited from the main settings of the Job while the User Variables are edited in the Variables browser
 * In the Variables browser you can see the Job Variables beneath each Job node while the User Variables are located under the User Variables node
  

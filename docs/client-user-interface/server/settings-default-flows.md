@@ -18,7 +18,7 @@ Click the **Default flows** icons to update the list of default flows for Jobs a
 
 ![](../../../static/img/serversettingsdefaultflowsadd.png)
 
-A created default flow will add this flow to all new Jobs or Tasks and will show up in one of the lists in the [Edit Job > Flows](editjobflows) tab or the [Edit Task > Flows](edittaskflows) tab. Note that Tasks always have two flows included by default; On success - Continue with next Task and On error - Stop Job.
+A created default flow will add this flow to all new Jobs or Tasks and will show up in one of the lists in the [Edit Job > Flows](../server/job-flow) tab or the [Edit Task > Flows](../server/task-flow) tab. Note that Tasks always have two flows included by default; On success - Continue with next Task and On error - Stop Job.
  
 If the new default flow is also desired for previously defined Jobs/Tasks, you need to click the Get default flows icon for each **Job/Task flow** you want the default flow for.
  

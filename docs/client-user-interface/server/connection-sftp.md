@@ -70,11 +70,11 @@ Select if you want to transfer through binary (default) or ASCII mode.
  
 **Sync data channel**
 
-[FTP](ftp) only option. This option specifies whether to synchronize data channel. Switch it on if component hangs when trying to establish data connection, i.e., on using commands list, upload, download.
+[FTP](connection-ftp) only option. This option specifies whether to synchronize data channel. Switch it on if component hangs when trying to establish data connection, i.e., on using commands list, upload, download.
  
 **Data connection type**
 
-[FTP](ftp) only option.
+[FTP](connection-ftp) only option.
  
 **Max packet size**
 

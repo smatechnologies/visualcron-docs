@@ -7,8 +7,8 @@ hide_title: 'true'
 
 The AMQP Connection is used in:
  
-* [AMQP - Send message Task](amqpsendmessagetask)
-* [AMQP - Trigger](amqptrigger)
+* [AMQP - Send message Task](../../client-user-interface/server/job-tasks/messaging-tasks/amqp-send-message)
+* [AMQP - Trigger](../../client-user-interface/server/event-trigger-amqp)
  
  
  

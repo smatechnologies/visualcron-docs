@@ -11,11 +11,11 @@ You can use VisualCron to sync files between the OneDrive service and a local fo
  
 The OneDrive Connection is used in the Cloud Tasks:
 
-* [Cloud - Upload file(s)](clouduploadfiles)
-* [Cloud - List item(s)](cloudlistitems)
-* [Cloud - Download file(s)](clouddownloadfiles)
-* [Cloud - Create folder](cloudcreatefolder)
-* [Cloud - Delete item(s)](clouddeleteitems)
+* [Cloud - Upload file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/upload-file)
+* [Cloud - List item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/list-item)
+* [Cloud - Download file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/download-file)
+* [Cloud - Create folder](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/create-folder)
+* [Cloud - Delete item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/delete-item)
  
 **Manage Connections > Add > OneDrive > Main settings** tab
 

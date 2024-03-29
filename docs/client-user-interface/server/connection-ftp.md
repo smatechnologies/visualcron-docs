@@ -123,7 +123,7 @@ For the FTP SSL/TLS connection types, an extra **Certificates** tab is provided.
 
 Client certificates can be sent to the FTP server when connecting (implicit SSL) or when authenticating (explicit SSL). If the client certificate should be rejected by the server, an exception will be issued and the Task can not continue.
  
-To add a client certificate, you need to click on [Global Certificates](globalcertificates). VisualCron is able to store certificates within itself. These certificates can be created by VisualCron or imported from other source. When you have create a Certificate you need to select it in the list of Certificates in the Certificates tab of the Connection properties.
+To add a client certificate, you need to click on [Global Certificates](../server/global-certificates). VisualCron is able to store certificates within itself. These certificates can be created by VisualCron or imported from other source. When you have create a Certificate you need to select it in the list of Certificates in the Certificates tab of the Connection properties.
  
 **Server certificates**
 

@@ -9,19 +9,19 @@ The SharePoint Connection stores connect and logon properties for local SharePoi
  
 The SharePoint Connection is used for the SharePoint Tasks:
 
-* [SharePoint - Create list](sharepointcreatelist)
-* [SharePoint - Delete list(s)](sharepointdeletelists)
-* [SharePoint - Describe list](sharepointdescribelist)
-* [SharePoint - Get list(s)](sharepointgetlists)
-* [SharePoint - Update list](sharepointupdatelist)
-* [SharePoint - Add list item](sharepointaddlistitem)
-* [SharePoint - Update list item](sharepointupdatelistitem)
-* [SharePoint - Delete list item(s)](sharepointdeletelistitems)
-* [SharePoint - Get list item(s)](sharepointgetlistitems)
-* [SharePoint - Upload file(s)](sharepointuploadfiles)
-* [SharePoint - Download file(s)](sharepointdownloadfiles)
-* [SharePoint - List file(s)](sharepointlistfiles)
-* [SharePoint - Delete file(s)](sharepointdeltefiles)
+* [SharePoint - Create list](../../client-user-interface/server/job-tasks/sharepoint-tasks/create-list)
+* [SharePoint - Delete list(s)](../../client-user-interface/server/job-tasks/sharepoint-tasks/delete-list)
+* [SharePoint - Describe list](../../client-user-interface/server/job-tasks/sharepoint-tasks/describe-list)
+* [SharePoint - Get list(s)](../../client-user-interface/server/job-tasks/sharepoint-tasks/get-list)
+* [SharePoint - Update list](../../client-user-interface/server/job-tasks/sharepoint-tasks/update-list)
+* [SharePoint - Add list item](../../client-user-interface/server/job-tasks/sharepoint-tasks/add-list-item)
+* [SharePoint - Update list item](../../client-user-interface/server/job-tasks/sharepoint-tasks/update-list-item)
+* [SharePoint - Delete list item(s)](../../client-user-interface/server/job-tasks/sharepoint-tasks/delete-list-item)
+* [SharePoint - Get list item(s)](../../client-user-interface/server/job-tasks/sharepoint-tasks/get-list-item)
+* [SharePoint - Upload file(s)](../../client-user-interface/server/job-tasks/sharepoint-tasks/upload-file)
+* [SharePoint - Download file(s)](../../client-user-interface/server/job-tasks/sharepoint-tasks/download-file)
+* [SharePoint - List file(s)](../../client-user-interface/server/job-tasks/sharepoint-tasks/list-file)
+* [SharePoint - Delete file(s)](../../client-user-interface/server/job-tasks/sharepoint-tasks/delete-file)
  
 **Manage Connections > Add > SharePoint > Common settings** tab
 

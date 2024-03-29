@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The SSRS Connection stores connect and logon properties for the Reporting Services (SSRS).
  
-The SSRS Connection is used in the [Database - SSRS](databasessrs) Task. The Task is used to execute reports through SQL Server Reporting Services (SSRS).
+The SSRS Connection is used in the [Database - SSRS](../../client-user-interface/server/job-tasks/database-tasks/ssrs) Task. The Task is used to execute reports through SQL Server Reporting Services (SSRS).
  
 Manage Connections > Add > SSRS > Main settings tab
 

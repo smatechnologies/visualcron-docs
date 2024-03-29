@@ -12,7 +12,7 @@ The TCP Connection stores IP address, port and encoding to create TCP listeners 
 The Transmission Control Protocol (TCP) is one of the main protocols of the Internet protocol suite. TCP provides reliable, ordered, and error-checked delivery of a stream of octets (bytes) between applications running on hosts communicating via an IP network.
 TCP is connection-oriented, and a connection between client and server is established before data can be sent. The server must be listening (passive open) for connection requests from clients before a connection is established..
  
-The TCP Connection is used in the [Net - TCP](nettcp) Task (which acts as a TCP client) and the [Event trigger - TCP](eventtriggertcp) Trigger (which acts as a TCP server, or listener).
+The TCP Connection is used in the [Net - TCP](../server/job-tasks/net-tasks/tcp) Task (which acts as a TCP client) and the [Event trigger - TCP](event-trigger-tcp) Trigger (which acts as a TCP server, or listener).
  
 **Manage Connections > Add > TCP > Common settings** tab
 
@@ -24,7 +24,7 @@ This is a descriptive name of the connection to distinguish from other connectio
  
 **Timeout**
 
-The amount of time, in seconds, a TCP client (both in the [Net - TCP](nettcp) Task and the [Event trigger - TCP](eventtriggertcp) Trigger) will wait to receive data once a read operation is initiated.
+The amount of time, in seconds, a TCP client (both in the [Net - TCP](../server/job-tasks/net-tasks/tcp) Task and the [Event trigger - TCP](event-trigger-tcp) Trigger) will wait to receive data once a read operation is initiated.
  
 **Code page**
 

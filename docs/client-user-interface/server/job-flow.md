@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Job - Flow
 
-The Flow can be set both at Job and Task level, for Task level see [Task - Flow](taskflow) for more information.
+The Flow can be set both at Job and Task level, for Task level see [Task - Flow](task-flow) for more information.
  
 ### History
 
@@ -28,7 +28,7 @@ For example, upon failure you can choose to wait a couple of seconds and the ret
 
 The list of "flows" are shown in the **Flow** tab. You can see the event, in this case "On error" and the action "Wait and retry Job". You can Add, Edit, Clone and Delete Flows in this tab.
  
-If a new default flow is also desired for a previously defined Job, you need to click the _Get default flows_ icon for each Job flow you want the default flow for. For more information about Default flows, see [Server > Settings > Default flows](serversettingsdefaultflows).
+If a new default flow is also desired for a previously defined Job, you need to click the _Get default flows_ icon for each Job flow you want the default flow for. For more information about Default flows, see [Server > Settings > Default flows](settings-default-flows).
  
 **Add/Edit Job > Flow > Add/Edit** window
 

@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Connection - SQL
 
-The SQL Connection is used in the [Database - SQL](databasesql) Task and the [Event trigger - SQL](eventriggersql) Trigger.
+The SQL Connection is used in the [Database - SQL](../../client-user-interface/server/job-tasks/database-tasks/sql) Task and the [Event trigger - SQL](event-trigger-sql) Trigger.
  
 **Use Connection guide** wizard
  

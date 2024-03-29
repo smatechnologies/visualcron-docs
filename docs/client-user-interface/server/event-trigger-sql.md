@@ -13,11 +13,11 @@ The SQL event trigger is able to monitor and Trigger upon a result value from a 
 
 **Database Connection**
 
-Select an existing database [Connection](connection), if not existing you need to create one first. Click the Settings icon to open the Manage Connections dialog. Once a connection is added you can select it in the combo box.
+Select an existing database [Connection](../server/global-connections), if not existing you need to create one first. Click the Settings icon to open the Manage Connections dialog. Once a connection is added you can select it in the combo box.
  
 **Credential for integrated security**
 
-If your [Credential](credential) requires integrated security you should select a Windows user that has access to database. Click the Settings icon to populate the drop-down list with available Credentials.
+If your [Credential](../server/global-credentials) requires integrated security you should select a Windows user that has access to database. Click the Settings icon to populate the drop-down list with available Credentials.
  
 **Command timeout**
 

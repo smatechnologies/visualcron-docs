@@ -8,5 +8,5 @@ hide_title: 'true'
 In the main menu **Server > Main settings > Settings** dialog, there are a set of important setting groups/tabs. In this tab, the web client settings are managed.
  
 **Main > Settings > Web Client** tab
-See the [Web Client](webclient) section.
+See the [Web Client](../../using-visualcron/visualcron-web-client) section.
 

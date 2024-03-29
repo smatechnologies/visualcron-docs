@@ -5,11 +5,11 @@ hide_title: 'true'
 
 ## Connection - SCP
 
-The SCP Connection stores connect and logon properties for the Secure Copy (SCP) protocol. The SCP protocol is a [network protocol](networkprotocol), based on the [BSD](bsd) [RCP](rcp) protocol, which supports [file transfers](filetransfers) between hosts on a network.
+The SCP Connection stores connect and logon properties for the Secure Copy (SCP) protocol. The SCP protocol is a [network protocol](https://en.wikipedia.org/wiki/Communication_protocol), based on the [BSD](https://en.wikipedia.org/wiki/Berkeley_Software_Distribution) [RCP](https://en.wikipedia.org/wiki/Berkeley_r-commands) protocol, which supports [file transfers](https://en.wikipedia.org/wiki/File_transfer) between hosts on a network.
  
-SCP uses [Secure Shell](secureshell) (SSH) for data transfer and uses the same mechanisms for authentication, thereby ensuring the [authenticity](authenticity) and [confidentiality](confidentiality) of the [data in transit](dataintransit). A client can send (upload) files to a server, optionally including their basic attributes (permissions, timestamps). Clients can also request files or directories from a server (download). SCP runs over [TCP port](tcpport) 22 by default. Like RCP, there is no [RFC](rfc) that defines the specifics of the protocol.
+SCP uses [Secure Shell](https://en.wikipedia.org/wiki/Secure_Shell) (SSH) for data transfer and uses the same mechanisms for authentication, thereby ensuring the [authenticity](https://en.wikipedia.org/wiki/Information_security#Authenticity) and [confidentiality](https://en.wikipedia.org/wiki/Confidentiality) of the [data in transit](https://en.wikipedia.org/wiki/Data_in_transit). A client can send (upload) files to a server, optionally including their basic attributes (permissions, timestamps). Clients can also request files or directories from a server (download). SCP runs over [TCP port](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#TCP_ports) 22 by default. Like RCP, there is no [RFC](https://en.wikipedia.org/wiki/Request_for_Comments) that defines the specifics of the protocol.
  
-In VisualCron, the SCP Connection is used in the [Net - FTP/FTPS/SFTP/SCP](netftpftpssftpscp) Task.
+In VisualCron, the SCP Connection is used in the [Net - FTP/FTPS/SFTP/SCP](../server/job-tasks/net-tasks/ftp) Task.
  
 **Manage Connections > Add > SCP > Main settings** tab
 

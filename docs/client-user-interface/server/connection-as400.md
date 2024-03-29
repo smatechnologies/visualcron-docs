@@ -9,7 +9,7 @@ The AS/400 Connection stores connect and logon properties for the AS/400 operati
  
 The AS/400 Connection is used in the AS/400 Task:
 
-* [Process - AS/400 Command](processas400command).
+* [Process - AS/400 Command](../../client-user-interface/server/job-tasks-task-process-as-400-command).
  
 **Manage Connections > Add > AS/400 > Main settings** tab
 
