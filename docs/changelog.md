@@ -4,7 +4,213 @@ hide_title: 'true'
 ---
 
 ## Change Log
- 
+
+## 11.1.1 [2024-03-12]  
+
+### Features
+
+:eight_spoked_asterisk: **Client/Server:** Connections management is now available in WebClient (VCPCM-471)
+
+:eight_spoked_asterisk: **Client/Server:** Add the capability to save the email body to an RPA variable within the Outlook "Get Message" activity (VCPCM-833)
+
+:eight_spoked_asterisk: **Client/Server:** Add the ability to handle errors in Web Macro activities using the TryCatch activity (VCPCM-763)
+
+### Bug Fixes
+
+:white_check_mark: **Client/Server:** Running job in asyncronous mode behavior improved (VCPCM-858)
+
+:white_check_mark: **Client/Server:** HTTP triggers now present full certificate chain for HTTPS connections (VCPCM-812)
+
+:white_check_mark: **Client/Server:** NRE fixed when flows are being processed (VCPCM-731)
+
+:white_check_mark: **Client/Server:** "JSON Encode" Task was failing generating a valid array out of the text file (VCPCM-715)
+
+:white_check_mark: **Client/Server:** Blank file with just the header line results an empty SQL query (VCPCM-689)
+
+:white_check_mark: **Client/Server:** Archive task instances are now isolated by using different temporary folders (VCPCM-679)
+
+:white_check_mark: **Client/Server:** WebClient refreshes whenever a Job gets updated on server (VCPCM-637)
+
+:white_check_mark: **Client/Server:** Slack event trigger fixed when listening to a channel (VCPCM-589)
+
+:white_check_mark: **Client/Server:** Fixed automatic addition of a user certificate with a private key to the Trusted Root Certificates store (VCPCM-837)
+
+
+## 11.0.0 [2024-01-29]  
+
+### Features 
+
+:eight_spoked_asterisk: **Client/Server:** Cookies data stored in Robot Task (VCPCM-660)
+
+:eight_spoked_asterisk: **Client/Server:** Key press events added for web activities (VCPCM-655)
+
+:eight_spoked_asterisk: **Client/Server:** OCR Improvements and fixes regarding text recognition area, UI element behavior, noise processing and OCR activity designer (VCPCM-680)
+
+### Bug Fixes
+
+:white_check_mark: **Client/Server:** PGKKeyrings operations improved when manipulating private keys (VCPCM-712)
+
+:white_check_mark: **Client:** "Loop Variables" menu improved when working with the Loop activity designer (VCPCM-698)
+
+:white_check_mark: **Client/Server:** Iteraction between ContinueLoop and Loop activities improved (VCPCM-691)
+
+:white_check_mark: **Client/Server:** WebAPI now disregards certificates without private key (VCPCM-686)
+
+:white_check_mark: **Client/Server:** "Job - List" Report does not check Theme when outputting to CSV format (VCPCM-656)
+
+:white_check_mark: **Client/Server:** "Continue with next Task" is added back into flow (VCPCM-650)
+
+:white_check_mark: **Client/Server:** Job variable evaluation fixed in Robot Task (VCPCM-648)
+
+:white_check_mark: **Client/Server:** NullReferenceException fixed in SharePoint Download task (VCPCM-642)
+
+:white_check_mark: **Client/Server:** WebMacro Task behavior fix, ensuring stable performance during the concurrent execution of multiple instances (VCPCM-641)
+
+:white_check_mark: **Server:** WebAPI UTF8 support fixed for JSON endpoints (VCPCM-636)
+
+:white_check_mark: **Client/Server:** Web Macro designer fixed when a task is disabled (VCPCM-618)
+
+:white_check_mark: **Client/Server:** WebAPI Authentication improved on token management (VCPCM-588)
+
+:white_check_mark: **Client/Server:** SyncFiles Task fixed when operating between two remote file shares (VCPCM-565)
+
+:white_check_mark: **Client/Server:** Azure Connection empty file upload fixed behavior (VCPCM-402)
+
+:white_check_mark: **Client/Server:** WebMacro Show Debugger crash fixed (VCPCM-335)
+
+:white_check_mark: **Client/Server:** Transport security protocols updated for Azure Cloud connections (VCPCM-334)
+
+
+## 10.0.3 [2023-12-14]  
+
+### Features
+
+:::info Notes
+
+**Client/Server:** Eliminated licensing restrictions for the MFT feature (VCPCM-599)
+
+**Client/Server:** Eliminated licensing restrictions for the RemoteExecute Task (VCPCM-583)
+
+:::
+
+:eight_spoked_asterisk: **Client/Server:** Added a new category "User input" for Robot Task (VCPCM-83)
+
+:eight_spoked_asterisk: **Client/Server:** Introduced new features for the "PDF - add header/footer" task, including angle of rotation (in degrees) and opacity settings, along with updated documentation (VCPCM-544)
+
+:eight_spoked_asterisk: **WebClient:** Implemented the Tools->Gantt chart feature (VCPCM-194)
+
+### Bug Fixes
+
+:white_check_mark: **Client/Server:** Removed Debugger detection when using VisualCron .NET API in custom .NET projects (VCPCM-619)
+
+:white_check_mark: **Client/Server:** Resolved the issue causing service crashes in certain cases when completing the last Task (VCPCM-95)
+
+:white_check_mark: **Client/Server:** Implemented permission checks for Read and Add (or Edit for ServerSettings) permissions in the Export and Import forms. If certain settings are not available for export or import, a warning message is displayed to the user (VCPCM-79)
+
+:white_check_mark: **Client/Server:** Updated the vulnerable "Apache log4net" file (log4net.dll) version 1.2.10.0 to address "CVE-2018-1285" security vulnerability, ensuring enhanced security on Windows Server 2019 (VCPCM-77)
+
+:white_check_mark: **Client/Server:** Implemented error handling for the "No file(s) found" scenario in the following tasks: Cloud List items, WebDAV List items, and Sharepoint List files (VCPCM-71)
+
+:white_check_mark: **Client/Server:** Resolved the issue of system crashes occurring when attempting to stop a job in the middle of executing a stored procedure in SQL Task (VCPCM-61)
+
+:white_check_mark: **Client/Server:** Refined limitations for RobotTask operations during Trial period (VCPCM-586)
+
+[BUGFIX] **Client/Server:** Enhanced ParseVariable() error reporting. Fixed FTP/SFTP/SCP reconnection process. Fixed event skipping in the File Trigger when the "Consolidate changes" timeout is specified (VCPCM-585)
+
+:white_check_mark: **Client/Server:** Excessive locks removed when processing Task Started/Completed events (VCPCM-584)
+
+:white_check_mark: **Client/Server:** Corrected handling of "List Variable" activities to ensure proper function when encountering empty items (VCPCM-576)
+
+:white_check_mark: **Client/Server:** Updated job termination logic to ensure the status is set to "Failure" when a job is forcibly stopped, correcting the previous behavior where it could erroneously report "Success" (VCPCM-573)
+
+:white_check_mark: **Client/Server:** Introduced functionality to regenerate a list variable in the "List Variable Load" activity (VCPCM-570)
+
+:white_check_mark: **Client/Server:** Refined impersonation handling and enhanced logging details for Sync/Copy file(s) Tasks (VCPCM-565)
+
+:white_check_mark: **Client/Server:** Updated SCP transfer tasks with an enhanced component for more reliable SCP connections (VCPCM-561)
+
+:white_check_mark: **Client/Server:** End-User License Agreement (EULA) revised (VCPCM-560)
+
+:white_check_mark: **Client/Server:** Resolved issue with auto-generation of default Task Flows in Import/Export function (VCPCM-559)
+
+:white_check_mark: **Client/Server:** Added a column selection feature to the "Historic - transfers" tab in the Log section (VCPCM-558)
+
+:white_check_mark: **Client/Server:** Implemented logging for user impersonation errors prior to task execution (VCPCM-553)
+
+:white_check_mark: **Client/Server:** Corrected the output formatting in the function for retrieving values from a "List variable" result (VCPCM-548)
+
+:white_check_mark: **Client/Server:** Resolved the issue where executing Robot Tasks outside of test mode used insufficient "VisualCron system group" permissions, hindering the creation of new variables (VCPCM-546)
+
+:white_check_mark: **Client/Server:** Enhanced the deactivation process for Triggers with expiration settings to function correctly (VCPCM-545)
+
+:white_check_mark: **Client/Server:** Resolved the issue where the VisualCron server was unable to apply a self-signed certificate for securing a WebAPI endpoint (VCPCM-542)
+
+:white_check_mark: **Client/Server:** Enhanced server log precision, secured XML file saving with locks, and improved thread-safe authorization for Box Connections (VCPCM-541)
+
+:white_check_mark: **Client/Server:** Corrected the functionality for accurately reporting the amount of available RAM in Server Monitor (VCPCM-524)
+
+:white_check_mark: **Client/Server:** Introduced features for customizing text recognition area and added notifications with guidance on selecting an OCR area (VCPCM-520)
+
+:white_check_mark: **Client/Server:** Resolved an issue where headless browser became unresponsive after completing a sequence of activities, by replacing asynchronous calls with synchronous ones based on investigation findings (VCPCM-517)
+
+:white_check_mark: **WebClient:** Corrected the functionality of the `Install` and `Enable` buttons for IIS and IIS Express in the Server Settings form (VCPCM-504)
+
+:white_check_mark: **Client/Server:** Improved documentation for RobotTask (VCPCM-501)
+
+:white_check_mark: **Client/Server:** Robot Task: Implemented error handling settings, including the addition of a form and a dialog box for configuring these activity parameters (VCPCM-5)
+
+:white_check_mark: **Client/Server:** Resolved an error encountered when interacting with a screenshot that was previously utilized by the Scan Document (local) task (VCPCM-498)
+
+:white_check_mark: **Client/Server:** Addressed and eliminated memory leaks in WebMacro Tasks during extensive usage scenarios (VCPCM-487)
+
+:white_check_mark: **Client/Server:** Enhanced SFTP client configuration by implementing automatic selection of all supported KEX, PK, EA, MAC algorithms instead of just the one last reported by server (VCPCM-477)
+
+:white_check_mark: **Client/Server:** Restored synchronization block for SAP to manage connection opening and job creation more effectively, along with other miscellaneous fixes (VCPCM-476)
+
+:white_check_mark: **Client/Server:** Corrected log messages related to the user login process for clarity and accuracy (VCPCM-469)
+
+:white_check_mark: **Client/Server:** Added support for LDAP over SSL (LDAPS) in AD authentication, accommodating ports 636 and 3269 (VCPCM-451)
+
+:white_check_mark: **Client/Server:** Implemented functionality in the login form to reset an invalid Active Directory (AD) token if required, ensuring proper authentication (VCPCM-41)
+
+:white_check_mark: **Client/Server:** Enhanced locking mechanisms and exception handling for Job processes to prevent instances of hanging at 99% completion (VCPCM-385)
+
+:white_check_mark: **Client:** Introduced the ability to reveal job folders not only via the settings form but also through manual adjustment of the splitter (VCPCM-378)
+
+:white_check_mark: **Client/Server:** Reduced the occurrence of application crashes attributed to resource errors when operating through Citrix (VCPCM-372)
+
+:white_check_mark: **Client/Server:** Resolved the issue of reading empty stored procedure results in the SQL Task (VCPCM-371)
+
+:white_check_mark: **Client/Server:** Enhanced the SQL Task by adding additional debug logging when retrieving a list of stored procedures for improved debugging and error tracking (VCPCM-37)
+
+:white_check_mark: **Client/Server:** Implemented processor affinity in the task to optimize the configuration of thread count for the 7-zip compressor, ensuring more accurate performance (VCPCM-368)
+
+:white_check_mark: **Client/Server:** Enhanced the EventLog Trigger to make three attempts to initiate the watcher and generate a Client event in the event of a failure (VCPCM-350)
+
+:white_check_mark: **Client/Server:** In the Sharepoint Upload file(s) Task, when uploading files with recursive subfolders, the corresponding subfolders are now automatically generated on the site (VCPCM-347)
+
+:white_check_mark: **Client/Server:** Enhanced the XML validation process by improving the method for obtaining the targetNamespace from XSD files (VCPCM-341)
+
+:white_check_mark: **Client/Server:** Fixed the calculation of the relative destination path in Cloud Upload files when the Source folder in the File filter ends with a path separator, ensuring proper functionality (VCPCM-34)
+
+:white_check_mark: **Client/Server:** Resolved the Task form crash issue that occurred when selecting the Cloud Copy/move Task type on the Main settings tab (VCPCM-333)
+
+:white_check_mark: **Client/Server:** Implemented auto-replacement of incorrect characters in the message ID when generating the save path in the Email function (VCPCM-284)
+
+:white_check_mark: **Client/Server:** Corrected the behavior where "User name not found" was being written to the internal cache when a user was not found (VCPCM-182)
+
+:white_check_mark: **Client/Server:** Implemented changes that involve checking the IsMSA flag when connecting to the remote ManagementScope and logging unhandled exceptions in Task`s Debugging mode for improved debugging and error handling (VCPCM-162)
+
+:white_check_mark: **Client/Server:** Enhanced the configuration of Popups by adding the capability to save previous input data to the cache (VCPCM-155)
+
+:white_check_mark: **Client/Server:** Removed duplicate and outdated topics from the CHM help documentation (VCPCM-145)
+
+:white_check_mark: **Client/Server:** Implemented automatic decoding of TNEF (winmail.dat) attachments in the Email functions (VCPCM-123)
+
+:white_check_mark: **Client/Server:** Added missing locks when accessing the collection of Jobs (VCPCM-602)
+
+:white_check_mark: **Client/Server:** Correct DbConnection disposal after testing connection settings or retrieving SP list and params (VCPCM-526)
+
 ## 10.0.2 [2023-09-27]  
 
 :::info Notes
