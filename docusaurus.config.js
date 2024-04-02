@@ -2,8 +2,8 @@
 module.exports = {
   title: 'VisualCron Documentation',
   tagline: 'VisualCron Documentation',
-  url: '/',
-  baseUrl: '/',
+  url: 'https://help.smatechnologies.com',
+  baseUrl: '/visualcron/visualcron-docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
