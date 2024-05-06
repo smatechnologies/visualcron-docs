@@ -2,7 +2,7 @@
 module.exports = {
   title: 'VisualCron Documentation',
   tagline: 'VisualCron Documentation',
-  url: 'https://help.smatechnologies.com',
+  url: 'https://help.visualcron.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -15,7 +15,7 @@ module.exports = {
       logo: {
         alt: 'SMA Technologies Help Logo',
         src: 'img/logo.svg',
-        href: 'https://help.smatechnologies.com',
+        href: 'https://help.visualcron.com',
       },
     },
     prism: {

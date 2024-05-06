@@ -4,7 +4,7 @@ module.exports = {
     'license',
     'requirements',
     'changelog',
-    'videotutorials',
+    //'videotutorials',
     {
       type: 'category',
       label: 'Get VisualCron',
