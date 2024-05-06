@@ -9,7 +9,7 @@ The WebDAV - Download Task lets you upload documents based on a file filter. Web
 
 ![](../../../../../static/img/tasknetwebdavupload.png)
 
-The WebDAV - Upload Task lets you upload based on the [standard file filter](job-tasks-file-filter).
+The WebDAV - Upload Task lets you upload based on the [standard file filter](client-user-interface/server/job-tasks-file-filter.md).
  
 **WebDAV Upload > Upload settings** tab
 

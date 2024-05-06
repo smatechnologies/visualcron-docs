@@ -60,7 +60,7 @@ Use this property to control the strength of the public key in bits.
 
 ![](../../../static/img/globalcertificatescreate3.png)
 
-Enter subject info for the certificate. Remember to set the Email property if you are going to use the Certificate in the [Email Task](emailtask).
+Enter subject info for the certificate. Remember to set the Email property if you are going to use the Certificate in the [Email Task](../server/job-tasks/messaging-tasks/email).
  
 **Global > Certificates > Create 4**
 

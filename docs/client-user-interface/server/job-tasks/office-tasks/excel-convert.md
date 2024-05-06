@@ -9,7 +9,7 @@ The Excel - Convert Task is able to convert an Excel file into various Excel for
  
 **Excel - Convert > File filter > Location** sub tab
 
-The Excel convert Task uses the standard VisualCron [File filter](../../../serverjob-tasks-file-filter) to define the source file to be converted.
+The Excel convert Task uses the standard VisualCron [File filter](../../../server/job-tasks-file-filter) to define the source file to be converted.
  
 **Excel - Convert > Convert settings** sub tab
 

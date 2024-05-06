@@ -114,7 +114,7 @@ You can view registered applications using URL [https://xxx-admin.sharepoint.com
 
 ![](../../../static/img/clip333444093.gif)
 
-You can use existing or new Azure AD application to access your SharePoint Online sites. Please note that certificate only credentials are accepted. Create application on Azure AD and import [certificate](certificate) to both Azure AD application credentials and VisualCron. Only Certificate applications will be granted to access SharePoint site, otherwise you will be getting HTTP 401 error. More information about AppOnly and Certificates could be found [here](https://docs.microsoft.com/en-us/sharepoint/dev/solution-guidance/security-apponly-azuread) (*with Powershell script sample generating a certificate*).
+You can use existing or new Azure AD application to access your SharePoint Online sites. Please note that certificate only credentials are accepted. Create application on Azure AD and import [certificate](../server/global-certificates) to both Azure AD application credentials and VisualCron. Only Certificate applications will be granted to access SharePoint site, otherwise you will be getting HTTP 401 error. More information about AppOnly and Certificates could be found [here](https://docs.microsoft.com/en-us/sharepoint/dev/solution-guidance/security-apponly-azuread) (*with Powershell script sample generating a certificate*).
 
 Application should be given proper API permissions as well. An example of full permissions provided below:
 

@@ -19,7 +19,7 @@ Position of the image to overlay.
  
 **Image overlay > File filter > Location** sub tab
 
-In the File filter tab you define which file to be overlayed. Read more about file filter [here](job-tasks-file-filter).
+In the File filter tab you define which file to be overlayed. Read more about file filter [here](client-user-interface/server/job-tasks-file-filter.md).
  
 **Image overlay > Image** sub tab
 

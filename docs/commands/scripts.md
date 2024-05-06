@@ -12,7 +12,7 @@ By using scripts you can perform almost anything in Windows. There are several s
  
 All these scripting languages are free to use. Look at the section for each scripting language about how to install and use it with VisualCron.
  
-To execute external scripts on another web server, use the Job type "HTTP" to POST or GET to a script on a server. Read more about it [here](here).
+To execute external scripts on another web server, use the Job type "HTTP" to POST or GET to a script on a server. Read more about it [here](https://en.wikipedia.org/wiki/API).
 
 ### Using PHP for Scripting
 

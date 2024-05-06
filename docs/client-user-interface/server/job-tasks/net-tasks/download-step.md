@@ -15,7 +15,7 @@ This field is filled later and contains the source file.
  
 **Credential**
 
-If you need to save the file on a network resource you probably need a Credential to elevate the rights. Use an existing or add [one](global-credentials).
+If you need to save the file on a network resource you probably need a Credential to elevate the rights. Use an existing or add [one](client-user-interface/server/global-credentials.md).
  
 **Folder**
 

@@ -37,7 +37,7 @@ Currently the following Connection protocols exist:
 * [POP3](connection-pop3)
 * [IMAP](connection-imap4)
 * [Exchange EWS](connection-exchange-ews)
-* [Exchange WebDAV](exchange-webdav)
+* [Exchange WebDAV](connection-webdav)
 * [WebDAV](connection-webdav)
 * [SQL](connection-sql)
 * [SSRS](connection-ssrs)

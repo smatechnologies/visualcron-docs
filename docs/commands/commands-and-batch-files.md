@@ -9,12 +9,12 @@ With "commands", Windows commands are addressed. Windows has a lot of commands w
  
 Windows commands from Microsoft
 All Windows commands are described here:
-[Windows 2000](Windows2000)
-[Windows XP Pro](WindowsXPPro)
+[Windows 2000](https://www.microsoft.com)
+[Windows XP Pro](https://www.microsoft.com)
  
 Windows 2000 Resource Kit
-Microsoft has written some commands that not are included in the operating system but can be downloaded for free [here](here).
+Microsoft has written some commands that not are included in the operating system but can be downloaded for free [here](https://www.microsoft.com.
  
 Writing your own batch file
-What is a batch file? Read more about it [here](here).
-A list of useful batch files can be found [here](here).
+What is a batch file? Read more about it [here](https://www.microsoft.com).
+A list of useful batch files can be found [here](https://www.microsoft.com).

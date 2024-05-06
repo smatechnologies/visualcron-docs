@@ -25,6 +25,6 @@ Run the Job manually again and the open the log file.
 
 Open the log file with the corresponding date. This log file may say something about the error. 
 
-If you believe that the error is in VisualCron itself then send the log file to [support@visualcron.com](support@visualcron.com). 
+If you believe that the error is in VisualCron itself then send the log file to [support@visualcron.com](mailto:support@visualcron.com). 
 
 Remember to turn debug off after turning it on because an activated debug option slows down VisualCron.
