@@ -9,13 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: docker/login-action@v2
         with:
-          node-version: '14'
-      - uses: kheiakiyama/install-azcopy-action@v1
+          registry: ${{ secrets.DOCKER_REGISTRY }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - uses: docker/setup-buildx-action@v2
+      - uses: docker/build-push-action@v4
         with:
-          version: 'v10'
-      # copy content to new app 
-      - run: azcopy_v10 copy './docs' '${{ secrets.HELP_CONTENT_URL }}/content/${{ github.repository }}?${{ secrets.HELP_CONTENT_TOKEN }}' --recursive
-      - run: azcopy_v10 copy './static' '${{ secrets.HELP_CONTENT_URL }}/content/${{ github.repository }}?${{ secrets.HELP_CONTENT_TOKEN }}' --recursive
-      - run: azcopy_v10 copy './sidebars.js' '${{ secrets.HELP_CONTENT_URL }}/content/${{ github.repository }}?${{ secrets.HELP_CONTENT_TOKEN }}'
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_TAG }}
