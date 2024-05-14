@@ -7,7 +7,11 @@ hide_title: 'true'
 
 ## 11.1.4 [2024-05-02]
 
-:eight_spoked_asterisk: Client: Server SLA and Server Health moved to Subscription tier (VCPCM-850)
+### Features 
+
+:eight_spoked_asterisk: **Client:** Server SLA and Server Health moved to Subscription tier (VCPCM-850)
+
+### Bug Fixes
 
 :white_check_mark: **Client:** Main screen Grid filter improved (VCPCM-1055)
 
