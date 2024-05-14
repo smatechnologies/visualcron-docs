@@ -5,6 +5,22 @@ hide_title: 'true'
 
 ## Change Log
 
+## 11.1.4 [2024-05-02]
+
+:eight_spoked_asterisk: Client: Server SLA and Server Health moved to Subscription tier (VCPCM-850)
+
+:white_check_mark: **Client:** Main screen Grid filter improved (VCPCM-1055)
+
+:white_check_mark: **Client/Server:** Excel Convert Task adjusted on processing date(time) values (VCPCM-1054)
+
+:white_check_mark: **Client/Server:** File Sync Task Extend Debug logging added (VCPCM-1053)
+
+:white_check_mark: **Client:** Job and Task Log screens UX improved (VCPCM-1031)
+
+:white_check_mark: **Client/Server:** Object Replaces for User Variables processing has been improved (VCPCM-713)
+
+:white_check_mark: **Client/Server:** Detailed error messages fully under control of extended debugging flag (VCPCM-1055)
+
 ## 11.1.1 [2024-03-12]  
 
 ### Features
