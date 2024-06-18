@@ -53,7 +53,7 @@ Updates of the online Documentation are generally done with a new software relea
  
 ### Trial period
 
-Each VisualCron product has a trial period of forty-five (45) days. The trial period gives you a chance to fully test the software free of charge. After the trial period has ended, you will no longer be able to control the VisualCron Server through the VisualCron Client.
+Each VisualCron product has a trial period of thirty (30) days. The trial period gives you a chance to fully test the software free of charge. After the trial period has ended, you will no longer be able to control the VisualCron Server through the VisualCron Client.
  
 If the trial period has ended, there is no way of using future upgrades without ordering the full license. See Upgrade/Updates below.
  
