@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Move a License
 
-1. Download and install VisualCron on your new server (if this is the first time you install VisualCron you will have 45 days of trial with full functionality)
+1. Download and install VisualCron on your new server (if this is the first time you install VisualCron you will have 30 days of trial with full functionality)
 2. Validate on the My licenses page that you have a Maintenance contract that supports the installed new version for the latest version so you do not run into license problems when trying to activate it later
 3. Go to the old server and backup your settings using Export from the menu **File > Export settings**
 4. Transfer the file to the new server and import it clearing existing settings (unless you already created new Jobs on Server)
