@@ -20,6 +20,8 @@ This is the VisualCron documentation, build date 6/6/2024.
  
 This document describes VisualCron 8.
  
+Download a PDF of this documentation: [PDF](../static/pdf/visualcrondocs-june-2024.pdf)
+
 See changes from VisualCron 4.x to 5.x [here](../get-visualcron/upgrade-4to5) and 5.x to 6.x [here](../get-visualcron/upgrade-5to6) and 6.x to 7.x [here](../get-visualcron/upgrade-6to7) and 7.x to 8x [here](../get-visualcron/upgrade-7to8).
  
 This documentation is provided as is, please check [visualcron.com](https://www.visualcron.com) for latest documentation and support information. For a quick introduction in VisualCron, click on the top right flash Tutorial area in the [VisualCron Web Site](http://www.visualcron.com/tutorials.aspx). The goal is to have a tool tip to every enter field, label and combo box in the VisualCron Client application. Hovering the mouse over a field is an easy way to get quick information and what to enter.
