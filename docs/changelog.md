@@ -5,6 +5,22 @@ hide_title: 'true'
 
 ## Change Log
 
+## 11.2.1 [2024-06-24]
+
+### Features
+
+:eight_spoked_asterisk: **Client/Server:** Load Balancer for VisualCron is available for Preview
+
+:eight_spoked_asterisk: **Client/Server:** Fully Server-side Sql Server Explorer (VCPCM-569)
+
+### Bug Fixes
+
+:white_check_mark: **Client/Server:** Web Macro Task Test Run behavior improved (VCPCM-1219,VCPCM-1215)
+
+:white_check_mark: **Client/Server:** Robot Task Excel RowCount action behavior switched over to UsedRange functinonality (VCPCM-1124)
+
+:white_check_mark: **Client/Server:** SMTP Outlook connectivity fixed handling org policies(VCPCM-596)
+
 ## 11.1.4 [2024-05-02]
 
 ### Features 
