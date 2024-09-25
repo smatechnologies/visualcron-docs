@@ -14,7 +14,7 @@ module.exports = {
       title: 'Help',
       logo: {
         alt: 'SMA Technologies Help Logo',
-        src: 'img/logo.svg',
+        src: 'img/VisualCronBlue.png',
         href: 'https://help.visualcron.com',
       },
     },
