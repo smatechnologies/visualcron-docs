@@ -29,8 +29,8 @@ module.exports = {
   presets: [
     [
       '@docusaurus/preset-classic',
-      {
-        docs: {
+      {  
+      docs: {
           breadcrumbs: false,
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
@@ -41,7 +41,8 @@ module.exports = {
           customCss: require.resolve('./src/css/custom.css'),
         },
         gtag: {
-          trackingID: "G-7XYMFXX81Y",
+          trackingID: 'G-7XYMFXX81Y',
+          anonymizeIP: false,
         },
       },
     ],
