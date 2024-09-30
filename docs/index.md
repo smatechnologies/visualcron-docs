@@ -3,6 +3,9 @@ slug: '/'
 sidebar_label: 'About VisualCron'
 hide_title: 'true'
 ---
+<head>
+<meta name="google-site-verification" content="CQMwPLZQ8jT_dyx6LIn-S1lKCzJZAoHWhCOJEa825qc" />
+</head>
 
 ## VisualCron - Automation Tool For Windows
 
