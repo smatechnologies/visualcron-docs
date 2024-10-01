@@ -19,6 +19,6 @@ Text ...
  
 :::info Note 
 
-For Windows Server 2008 you must [enable a setting in Local Security Policy](security#interactive-logon).
+For Windows Server 2008 you must enable a setting in Local Security Policy.
 
 :::

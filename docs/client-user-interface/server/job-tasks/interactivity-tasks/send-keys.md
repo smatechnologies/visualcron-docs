@@ -54,52 +54,52 @@ Brackets "`[ ]`" have no special meaning when used with SendKeys, but you must e
  
 Some keystrokes do not generate characters (such as `ENTER` and `TAB`). Some keystrokes represent actions (such as `BACKSPACE` and `BREAK`). To send these kinds of keystrokes, send the arguments shown in the following table:
 
-| Key | {Argument} |
+| Key | `{Argument}` |
 | --- | ---------- |
-| BACKSPACE | {BACKSPACE}, {BS}, or {BKSP} | 
-| BREAK | {BREAK} | 
-| CAPS LOCK | {CAPSLOCK} | 
-| DEL or DELETE | {DELETE} or {DEL} | 
-| DOWN ARROW | {DOWN} | 
-| END | {END} | 
-| ENTER | {ENTER} or ~ |
-| ESC | {ESC} | 
-| HELP | {HELP} | 
-| HOME | {HOME} | 
-| INS or INSERT | {INSERT} or {INS} |
-| LEFT ARROW | {LEFT} | 
-| NUM LOCK | {NUMLOCK} | 
-| PAGE DOWN | {PGDN} |
-| PAGE UP | {PGUP} | 
-| PRINT SCREEN | {PRTSC} |
-| RIGHT ARROW | {RIGHT} | 
-| SCROLL LOCK | {SCROLLLOCK} |
-| TAB | {TAB} |
-| UP ARROW | {UP} |
-| F1 | {F1} |
-| F2 | {F2} | 
-| F3 | {F3} |
-| F4 | {F4} | 
-| F5 | {F5} | 
-| F6 | {F6} | 
-| F7 | {F7} | 
-| F8 | {F8} | 
-| F9 | {F9} | 
-| F10 | {F10} |
-| F11 | {F11} | 
-| F12 | {F12} | 
-| F13 | {F13} | 
-| F14 | {F14} | 
-| F15 | {F15} | 
-| F16 | {F16} |
+| BACKSPACE | `{BACKSPACE}`, `{BS}`, or `{BKSP}` | 
+| BREAK | `{BREAK}` | 
+| CAPS LOCK | `{CAPSLOCK}` | 
+| DEL or DELETE | `{DELETE}` or `{DEL}` | 
+| DOWN ARROW | `{DOWN}` | 
+| END | `{END}` | 
+| ENTER | `{ENTER}` or `~` |
+| ESC | `{ESC}` | 
+| HELP | `{HELP}` | 
+| HOME | `{HOME}` | 
+| INS or INSERT | `{INSERT}` or `{INS}` |
+| LEFT ARROW | `{LEFT}` | 
+| NUM LOCK | `{NUMLOCK}` | 
+| PAGE DOWN | `{PGDN}` |
+| PAGE UP | `{PGUP}` | 
+| PRINT SCREEN | `{PRTSC}` |
+| RIGHT ARROW | `{RIGHT}` | 
+| SCROLL LOCK | `{SCROLLLOCK}` |
+| TAB | `{TAB}` |
+| UP ARROW | `{UP}` |
+| F1 | `{F1}` |
+| F2 | `{F2}` | 
+| F3 | `{F3}` |
+| F4 | `{F4}` | 
+| F5 | `{F5}` | 
+| F6 | `{F6}` | 
+| F7 | `{F7}` | 
+| F8 | `{F8}` | 
+| F9 | `{F9}` | 
+| F10 | `{F10}` |
+| F11 | `{F11}` | 
+| F12 | `{F12}` | 
+| F13 | `{F13}` | 
+| F14 | `{F14}` | 
+| F15 | `{F15}` | 
+| F16 | `{F16}` |
  
 To send keyboard characters that are comprised of a regular keystroke in combination with a SHIFT, CTRL, or ALT, create a compound string argument that represents the keystroke combination. You do this by preceding the regular keystroke with one or more of the following special characters:
 
 | Key | Special Character |
 | --- | ----------------- |
-| SHIFT | + | 
-| CTRL | ^ |
-| ALT | % |
+| SHIFT | `+` | 
+| CTRL | `^` |
+| ALT | `%` |
  
 :::tip Note 2 
 
@@ -113,7 +113,7 @@ For example, to send the keystroke combination that specifies that the SHIFT key
 * e and c are pressed, send the string argument "+(ec)"
 * e is pressed, followed by a lone c (with no SHIFT), send the string argument "+ec"
  
-You can use the *SendKeys* method to send a pattern of keystrokes that consists of a single keystroke pressed several times in a row. To do this, create a compound string argument that specifies the keystroke you want to repeat, followed by the number of times you want it repeated. You do this using a compound string argument of the form {keystroke number}. For example, to send the letter "x" ten times, you would send the string argument "{x 10}". Be sure to include a space between keystroke and number.
+You can use the *SendKeys* method to send a pattern of keystrokes that consists of a single keystroke pressed several times in a row. To do this, create a compound string argument that specifies the keystroke you want to repeat, followed by the number of times you want it repeated. You do this using a compound string argument of the form `{keystroke number}`. For example, to send the letter "x" ten times, you would send the string argument "`{x 10}`". Be sure to include a space between keystroke and number.
  
 :::tip Note 3 
 
@@ -123,6 +123,6 @@ The only keystroke pattern you can send is the kind that is comprised of a singl
 
 :::tip Note 4 
 
-You cannot send the PRINT SCREEN key {PRTSC} to an application.
+You cannot send the PRINT SCREEN key `{PRTSC}` to an application.
 
 :::

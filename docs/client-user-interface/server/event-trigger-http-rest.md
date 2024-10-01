@@ -24,7 +24,7 @@ Use this property to set the authentication realm. All pages in the same realm s
 
 ![](../../../static/img/restrequestmethods.png)
 
-In this tab you specify the paths and methods supported. Above you can access [http://localhost:9991/go2](http://localhost:9991/go2) with POST and [http://localhost:9991/go3?name=John(http://localhost:9991/go3?name=John) with GET. To get the parameter value you can use this Variable in follow up Tasks: {TRIGGER(Active|LastTrigger|HTTPREST.Result.QueryParameters.Value|name)}
+In this tab you specify the paths and methods supported. Above you can access [http://localhost:9991/go2](http://localhost:9991/go2) with POST and [http://localhost:9991/go3?name=John(http://localhost:9991/go3?name=John) with GET. To get the parameter value you can use this Variable in follow up Tasks: `{TRIGGER(Active|LastTrigger|HTTPREST.Result.QueryParameters.Value|name)}`
  
 **Save content tab**
 

@@ -37,7 +37,7 @@ The page number the actual split should occur on. This property is only used if 
  
 **Page name format**
 
-How the output files should be named. Variable {#} contains the page number.
+How the output files should be named. Variable `{#}` contains the page number.
  
 **Password for file(s)**
 

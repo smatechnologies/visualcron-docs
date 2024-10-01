@@ -54,7 +54,7 @@ The triggered message sender address in the form "host:port".
  
 **Messages**
 
-A list of processed messages in the form { Key, TextBody }, so that the text of a particular message is available by specifying Key in a variable template.
+A list of processed messages in the form `{ Key, TextBody }`, so that the text of a particular message is available by specifying Key in a variable template.
  
 **_Attention_:** when using variables with the result of TCP trigger in tasks, for example ```{TRIGGER(...|TCP.Result.TCP.TextBody)}```, it should be mentioned that in case of simultaneous connection of several TCP clients, the content of a variable may change unexpectedly. In practice, a trigger may fire twice when receiving messages from two different clients, but the value of ```{TRIGGER(...|TCP.Result.TCP.TextBody)}``` will contain the message that came last.
  

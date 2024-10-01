@@ -13,7 +13,7 @@ A User Variable is only global, which enables use anywhere in the application.
 
 **Name/Unique key**
 
-The name you set on the Variable is also the unique key for the Variable. Wherever you want to use your defined Variable you use this Variable key: {USERVAR(variablename)}
+The name you set on the Variable is also the unique key for the Variable. Wherever you want to use your defined Variable you use this Variable key: `{USERVAR(variablename)}`
  
 **Translate value to constant in Variable when running**
 

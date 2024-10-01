@@ -19,11 +19,11 @@ This is the directory you want to monitor.
  
 **File mask**
 
-The filter can be a complete file name or your can use *.* to monitor all files (default) or e.g. \*.txt to monitors all text files. If you want to check for multiple file masks you can separate them with semicolon (;). For example: *.txt; *.xml
+The filter can be a complete file name or your can use `*.*` to monitor all files (default) or e.g. `\*.txt` to monitors all text files. If you want to check for multiple file masks you can separate them with semicolon `(;)`. For example: `*.txt`; `*.xml`
  
 **Exclude folder mask**
 
-Use this field, with our without wild cards, to exclude triggering files from (sub)folder matching the mask. The comparison will be done against the sub folder name. If you do want to check against the whole part of the path then check _Compare with full path_.
+Use this field, with our without wild cards, to exclude triggering files from (sub)folder matching the mask. The comparison will be done against the sub folder name. If you do want to check against the whole part of the path then check *Compare with full path*.
  
 **Compare with full path**
 
@@ -31,8 +31,8 @@ See above.
  
 **Exclude file mask**
 
-This field is used the same as File mask but is used to exclude one or more file masks. If you want to check for multiple file masks you can separate them with semicolon (;). For example: *.txt;*.xml. To exclude special characters like # you need to wrap them like this:
-[#]. For example: [#]*.txt
+This field is used the same as File mask but is used to exclude one or more file masks. If you want to check for multiple file masks you can separate them with semicolon (;). For example: *.txt;*.xml. To exclude special characters like `#` you need to wrap them like this:
+`[#]`. For example: `[#]*`.txt
  
 **File/Folder watch type**
 
@@ -46,7 +46,7 @@ There are a set of watch types which monitors changes that might occur to a file
 
 This setting enables monitoring of all sub folders of the Path.
  
-**Use polling (_Samba compatible_)**
+**Use polling (*Samba compatible*)**
 
 Only use this option if you are monitoring a Samba file share. Samba does not support the normal file events so we are using our own polling technique instead.
  
@@ -56,7 +56,7 @@ If you are planning on using the file that was triggered directly you could use 
  
 **Trailing Trigger**
 
-When checked VisualCron will watch for changes within a file and through Variables deliver the change (of text) between write to the file. Use this Variable to track changes: {TRIGGER(Active|LastTrigger|File.Result.NewText)}
+When checked VisualCron will watch for changes within a file and through Variables deliver the change (of text) between write to the file. Use this Variable to track changes: `{TRIGGER(Active|LastTrigger|File.Result.NewText)}`
  
 **Notify filters**
 
@@ -76,15 +76,15 @@ You can combine the notify filters to watch for more than one kind of change. Fo
 
 Let say the remote folder you watch gets disconnected for some reason, perhaps the network or computer is down. The reconnect attempts value controls how many times VisualCron tries to reconnect. Default value is 3 times.
  
-**On error reconnect interval (_seconds_)**
+**On error reconnect interval (*seconds*)**
 
 Let say the remote folder you watch gets disconnected for some reason, perhaps the network or computer is down. The reconnect interval which you can specify is the number of seconds it will wait between each reconnect attempt, in seconds. Value 1 to 500 is available. Default is 5 seconds which may be a long time when the network is down and a short time if the remote computer is down. VisualCron attempts to reconnect 3 times by default.
  
-**Duplicate file delay (_milliseconds_)**
+**Duplicate file delay (*milliseconds*)**
 
 Some systems create duplicate Created/Changed events. The duplicate file delay is a time period where no new events are accepted from the same file name. This setting sends the first event and prevent later events ompared to Consolidate changes which waits and sends the last event.
  
-**Consolidate changes (_milliseconds_)**
+**Consolidate changes (*milliseconds*)**
 
 Some systems create duplicate Created/Changed events. The consolidate changes delay is a time period when events are queued into one single last event. For example, if you are watching for Created and Changed events this could potentially generate 1 Created and 2 (or more) Changed events. By increasing this value we wait for file to be updated during this time. If file is updated it will wait another round. Finally, this will generate one single event. Compared to Duplicate file delay which just send the first event - then wait the Consolidate changes will wait and send the last event.
  

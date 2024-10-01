@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Task type TCP creates a TCP client which then connects to a remote TCP listener. If the connection is successfully established, the client communicates with the server based on the logic configured using some messaging rules.
  
-**TCP > Connection** group and I**nteraction rules** inner tab
+**TCP > Connection** group and **Interaction rules** inner tab
 
 ![](../../../../../static/img/tasknettcpinteractionrules.png)
 
@@ -127,7 +127,7 @@ All rules with a large or infinite number of repetitions automatically terminate
  
 **Messages**
 
-A list of processed messages in the form { Key, TextBody }, so that the text of a particular message is available by specifying Key in a variable template.
+A list of processed messages in the form `{ Key, TextBody }`, so that the text of a particular message is available by specifying Key in a variable template.
  
 **Sample TCP Listener application code (C#)**
 

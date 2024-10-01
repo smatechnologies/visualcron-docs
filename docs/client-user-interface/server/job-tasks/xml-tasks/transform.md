@@ -31,7 +31,7 @@ If checked, support for embedded script blocks is enabled.
  
 **Parse DTD**
 
-If checked, the DTD will be parsed. Within an XML document's <!DOCTYPE>, there can be an internal subset of the DTD, or an external DTD can be referenced. In order to fully comply with the XML 1.0 or 1.1 specification, DTD must be parsed.
+If checked, the DTD will be parsed. Within an XML document's `<!DOCTYPE>`, there can be an internal subset of the DTD, or an external DTD can be referenced. In order to fully comply with the XML 1.0 or 1.1 specification, DTD must be parsed.
  
 **XLST parameters**
 

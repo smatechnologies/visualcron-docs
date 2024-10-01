@@ -25,7 +25,7 @@ Select the queue to be received. Click the Refresh icon to populate the drop-dow
  
 ## Troubleshooting:
 
-_Error: Retrieving the COM class factory for component with CLSID {1D9F85C0-9666-11D2-8927-0008C70C0622} failed due to the following error: 80040154 Class not registered (Exception from HRESULT: 0x80040154 (REGDB_E_CLASSNOTREG))._
+*Error: Retrieving the COM class factory for component with CLSID `{1D9F85C0-9666-11D2-8927-0008C70C0622}` failed due to the following error: 80040154 Class not registered (Exception from HRESULT: 0x80040154 (REGDB_E_CLASSNOTREG)).*
 
 Make sure you have installed MSMQ Triggers in Programs and Features dialog:
 

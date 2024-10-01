@@ -22,8 +22,8 @@ Abbreviations:
 
 | Level | Name | Conditions |
 |:-----:| ---- | ---------- |
-| ![](../../../static/img/bar_516.png) | Excellent | OSCPU <= 25% and VCCPU <= 10% |
-| ![](../../../static/img/bar_416.png) | Good | OSCPU > 25% or VCCPU > 10% |
-| ![](../../../static/img/bar_316.png) | OK | OSCPU > 50% or VCCPU > 20% or OSRAM > 80% |
-| ![](../../../static/img/bar_216.png) | Bad | OSCPU > 80% or VCCPU > 60% or OSRAM > 90% |
-| ![](../../../static/img/bar_116.png) | Very Bad | OSCPU > 90% or VCCPU > 80% or OSRAM > 95% |
+| ![](../../../static/img/bar_516.png) | Excellent | `OSCPU <= 25% and VCCPU <= 10%` |
+| ![](../../../static/img/bar_416.png) | Good | `OSCPU > 25% or VCCPU > 10%` |
+| ![](../../../static/img/bar_316.png) | OK | `OSCPU > 50% or VCCPU > 20% or OSRAM > 80%` |
+| ![](../../../static/img/bar_216.png) | Bad | `OSCPU > 80% or VCCPU > 60% or OSRAM > 90%` |
+| ![](../../../static/img/bar_116.png) | Very Bad | `OSCPU > 90% or VCCPU > 80% or OSRAM > 95%` |

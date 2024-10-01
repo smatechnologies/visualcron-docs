@@ -28,7 +28,7 @@ For example, a user wants to always download the latest version. At the moment i
  
 There are several options for achieving this:
 1.Forced download with a static link [http://neteject.com/download/VisualCron/VisualCron9.6.5.exe](http://neteject.com/download/VisualCron/VisualCron9.6.5.exe)
-2.Forced download with a "static" link using VC variables [http://neteject.com/download/VisualCron/VisualCron{USERVAR(VCVersion)}.exe](http://neteject.com/download/VisualCron/VisualCron{USERVAR(VCVersion)}.exe)
+2.Forced download with a "static" link using VC variables [http://neteject.com/download/VisualCron/VisualCron*\{USERVAR(VCVersion)*\}.exe](http://neteject.com/download/VisualCron/VisualCron*\{USERVAR(VCVersion)*\}.exe)
 3.Downloading by clicking on the element by relative path.
 4.Downloading by searching and clicking to the founded element.
  
@@ -47,7 +47,7 @@ But in this case, it may turn out that the version will not be released 9.6.6, b
 In such cases, the third or fourth options are suitable for us. Downloading by clicking on the element.
  
 By relative: We need to find an element using one of the CSS selector or XPath formats.
-We will use the simple selector: “table> tbody> tr: nth-child (2) a”
+We will use the simple selector: “`table> tbody> tr: nth-child (2) a`”
 First, we find the “table” element, inside it we find the “tbody” element, then since the first “tr” element is the head of the table, we take the second row of the “tr: nth-child (2)” table (second row), further inside the row we find the element “a”.
 On this element “a” the “click” action will be performed for further download.
 This way we can always download the latest version of the file.

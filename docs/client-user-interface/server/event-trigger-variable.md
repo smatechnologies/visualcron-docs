@@ -109,7 +109,7 @@ The event will remain in the signaled state until it is checked directly during 
  
 **EvaluatedExpression**
 
-The general evaluated expression of all configured conditions, for example: "VariableValue({USERVAR(CustomVariable)}):42 = 42 OR VariableValue({USERVAR(CustomVariable)}) = 2319".
+The general evaluated expression of all configured conditions, for example: "VariableValue(`{USERVAR(CustomVariable)}`):42 = 42 OR VariableValue(`{USERVAR(CustomVariable)}`) = 2319".
  
 **ConditionId|Success**
 
@@ -135,9 +135,9 @@ Every 10 minutes, check the value of the Variable "VarX". If the value is "X", r
 * activate "Interval polling" mode on the Variable/Trigger tab; 
 * add a new "Variable value" condition on the Variable/Conditions tab; 
 * set up the condition parameters on the Configure tab: 
-    * _Variable = {USERVAR(VarX)}_
-    * _Condition = Equal_
-    * _Value to compare with = X_ 
+    * *Variable = `{USERVAR(VarX)}`*
+    * *Condition = Equal*
+    * *Value to compare with = X* 
 
 **Example 1.2**
 
@@ -149,12 +149,12 @@ If the average is above [```N```], run the Job.
 * activate "Interval polling" mode on the Variable/Trigger tab;
 * add a new "Variable value" condition on the Variable/Conditions tab;
 * set up the condition parameters on the Configure tab:
-    * _Variable = {USERVAR(VarN)}_
-    * _Condition = Larger_
-    * _Type = Int32_
-    * _Value to compare with = [```N```]_
-    * _Duration = 00:10:00_
-    * _Average value = Checked_
+    * *Variable = `{USERVAR(VarN)}`*
+    * *Condition = Larger*
+    * *Type = Int32*
+    * *Value to compare with = [```N```]*
+    * *Duration = 00:10:00*
+    * *Average value = Checked*
 
 ### Type 2 - Variable Value Changed Event
 
@@ -165,7 +165,7 @@ Run the Job every time the value of the Variable "VarX" changes.
 * activate "Automatic variable change tracking" mode on the Variable/Trigger tab;
 * add a new "Variable value changed" condition on the Variable/Conditions tab;
 * set up the condition parameters on the Configure tab:
-    * _Variable = {USERVAR(VarX)}_
+    * *Variable = `{USERVAR(VarX)}`*
 
 **Example 2.2**
 
@@ -176,32 +176,32 @@ If the value has changed before 1 minute has elapsed since the previous change, 
 * activate "Automatic variable change tracking" mode on the Variable/Trigger tab;
 * add a new "Variable value changed" condition on the Variable/Conditions tab;
 * set up the condition parameters on the Configure tab:
-    * _Variable = {USERVAR(VarX)}_
-    * _Pause after triggering = 00:01:00_
+    * *Variable = `{USERVAR(VarX)}`*
+    * *Pause after triggering = 00:01:00*
 
 **Example 2.3**
 
 Run the Job every time the value of the numeric Variable "VarN" changes,
-provided that the new value is less than [MinN] or greater than [MaxN] (i.e. is outside the tolerance interval).
+provided that the new value is less than [MinN] or greater than `[MaxN]` (i.e. is outside the tolerance interval).
 
 * activate "Automatic variable change tracking" mode on the Variable/Trigger tab;
 * add a new "Variable value changed" condition on the Variable/Conditions tab;
 * set up the condition parameters on the Configure tab:
-    * _Variable = {USERVAR(VarN)}_
+    * *Variable = `{USERVAR(VarN)}`*
  
 * add another "Variable value" condition by pressing "Add group";
 * set up the condition parameters on the Configure tab:
-    * _Variable = {USERVAR(VarN)}_
-    * _Condition = Smaller_
-    * _Type = Int32_
-    * _Value to compare with = [```MinN```]_
+    * *Variable = `{USERVAR(VarN)}`*
+    * *Condition = Smaller*
+    * *Type = Int32*
+    * *Value to compare with = [```MinN```]*
  
 * add another "Variable value" condition by pressing "Add nested group";
 * set up the condition parameters on the Configure tab:
-   * _Variable = {USERVAR(VarN)}_
-   * _Condition = Larger_
-   * _Type = Int32_
-   * _Value to compare with = [```MaxN```]_
+   * *Variable = `{USERVAR(VarN)}`*
+   * *Condition = Larger*
+   * *Type = Int32*
+   * *Value to compare with = [```MaxN```]*
  
 * set AND operator between the first two conditions
 * set OR operator between the last two conditions
@@ -215,9 +215,9 @@ Run the Job every time the value of the Variable "VarX" becomes "X".
 * activate "Automatic variable change tracking" mode on the Variable/Trigger tab;
 * add a new "Variable value" condition on the Variable/Conditions tab;
 * set up the condition parameters on the Configure tab:
-    * _Variable = {USERVAR(VarX)}_
-    * _Condition = Equal_
-    * _Value to compare with = X_
+    * *Variable = `{USERVAR(VarX)}`*
+    * *Condition = Equal*
+    * *Value to compare with = X*
 
 **Example 3.2**
 
@@ -228,12 +228,12 @@ with the limitation of starting the Job no more than once per minute, so that if
 * activate "Automatic variable change tracking" mode on the Variable/Trigger tab;
 * add a new "Variable value" condition on the Variable/Conditions tab;
 * set up the condition parameters on the Configure tab:
-    * _Variable = {USERVAR(VarX)}_
-    * _Condition = Equal_
-    * _Value to compare with = X_
-    * _Act as an event = Checked_
-    * _Auto reset timeout = 00:10:00_
-    * _Pause after triggering = 00:01:00_
+    * *Variable = `{USERVAR(VarX)}`*
+    * *Condition = Equal*
+    * *Value to compare with = X*
+    * *Act as an event = Checked*
+    * *Auto reset timeout = 00:10:00*
+    * *Pause after triggering = 00:01:00*
 
 **Example 3.3**
 
@@ -243,16 +243,16 @@ provided that the value of the Variable "VarN" is equal to "N" at that moment.
 * activate "Automatic variable change tracking" mode on the Variable/Trigger tab;
 * add a new "Variable value" condition on the Variable/Conditions tab;
 * set up the condition parameters on the Configure tab:
-    * _Variable = {USERVAR(VarX)}_
-    * _Condition = Equal_
-    * _Value to compare with = X_
-    * _Act as an event = Checked_
+    * *Variable = `{USERVAR(VarX)}`*
+    * *Condition = Equal*
+    * *Value to compare with = X*
+    * *Act as an event = Checked*
  
 * add another "Variable value" condition by pressing "Add condition";
 * set up the condition parameters on the Configure tab:
-    * _Variable = {USERVAR(VarN)}_
-    * _Condition = Equal_
-    * _Value to compare with = N_
+    * *Variable = `{USERVAR(VarN)}`*
+    * *Condition = Equal*
+    * *Value to compare with = N*
 
 **Example 3.4**
 
@@ -261,13 +261,13 @@ Run the Job every time the value of the Variable "VarX" becomes "X", provided th
 *  activate "Automatic variable change tracking" mode on the Variable/Trigger tab;
 * add a new "Variable value" condition on the Variable/Conditions tab;
 * set up the condition parameters on the Configure tab:
-    * _Variable = {USERVAR(VarX)}_
-    * _Condition = Equal_
-    * _Value to compare with = X_
-    * _Act as an event = Checked_
+    * *Variable = `{USERVAR(VarX)}`*
+    * *Condition = Equal*
+    * *Value to compare with = X*
+    * *Act as an event = Checked*
  
 * add another "Variable value changed" condition by pressing "Add condition";
 * set up the condition parameters on the Configure tab:
-    * _Variable = {USERVAR(VarN)}_
-    * _Keep signaled state until event is checked directly = Checked_
+    * *Variable = `{USERVAR(VarN)}`*
+    * *Keep signaled state until event is checked directly = Checked*
 

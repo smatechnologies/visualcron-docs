@@ -30,7 +30,7 @@ For each Job that shall use the Notification email feature, the Notification opt
 | C:\WINDOWS\system 32\ | See [Remote and Customized Installation](../get-visualcron/remote-silent-customized-installation) |
 | C:\Program Files\VisualCron\ | VisualCron Default Installation Folder |
 | C:\Program Files\VisualCron\backup\VC-Settings.zip | Default File Name For Exported Settings |
-| C:\Program Files\Program Files\VisualCron\data\triggers\mail\\{MailId}\\{MailID}.eml | Default File Name For a Saved Email |
+| C:\Program Files\Program Files\VisualCron\data\triggers\mail\\`{MailId}`\\`{MailID}`.eml | Default File Name For a Saved Email |
 | C:\Program Files\VisualCron\log\ | Default Log File Folder, See [Settings](../client-user-interface/server/main-settings) For More Information |
 | C:\Program Files\VisualCron\settings\jobs.xml | Default Job Settings File |
 | C:\Program Files\VisualCron\settings\timeexceptions.xml | Default File Name For Time Exceptions|
