@@ -9,7 +9,7 @@ hide_title: 'true'
 
 ## VisualCron - Automation Tool For Windows
 
-VisualCron is an advanced Job/Task scheduler for Windows.
+VisualCron is an advanced Job and Task scheduler for Windows.
 
 ### About VisualCron
 
