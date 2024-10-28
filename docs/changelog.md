@@ -5,6 +5,59 @@ hide_title: 'true'
 
 ## Change Log
 
+
+ 
+11.2.3 [2024-09-23]
+
+### Features
+
+:eight_spoked_asterisk: Client/Server: Trial experience: Link to watch tutorial video redirect fix and update to content instructions (VCPCM-1609)
+
+:eight_spoked_asterisk: Client/Server: Trial experience: Expiration path (VCPCM-1616)
+
+:eight_spoked_asterisk: Client/Server: Trial experience: Path to purchase popups and trial expired window (VCPCM-950)
+
+:eight_spoked_asterisk: Client/Server: Trial experience: Tutorial Window (VCPCM-945)
+
+### Bug Fixes 
+
+:white_check_mark: Client/Server: Reload button is not working for reloading the triggers during Task Creation for Inactivating/ Activating Triggers (VCPCM-1629)
+
+:white_check_mark: Client/Server: Incorrect Triggers selected after clicking Reload button of the Inactivate Trigger Section (VCPCM-1628)
+
+:white_check_mark: Client/Server: Robot Task: Interaction between the VisualCron client and third-party web browsers via web extensions (VCPCM-1608)
+
+:white_check_mark: Client/Server: Activate/deactivate all triggers result not persisted (VCPCM-1562)
+
+:white_check_mark: Client/Server: PGP Encryption reports error if file exists (VCPCM-1403)
+
+:white_check_mark: Client/Server: DEV: Introducing new client settings to remember where user left off (which videos they`ve had the chance to watch) (VCPCM-1344)
+
+:white_check_mark: Client/Server: Deleting a server throws error (VCPCM-1163)
+
+:white_check_mark: Client/Server: (g)MSA account behavior fixed for Execute and Execute Powershell tasks (VCPCM-1162)
+
+:white_check_mark: Client/Server: Sharepoint server-side explorer (VCPCM-509)
+
+
+## 11.2.2 [2024-07-29]
+
+[NOTE] Client/Server: Load Balancing is available in preview mode for subscription-based Pro licenses (VCPCM-1417)
+
+### Bug Fixes
+
+:white_check_mark: Client/Server: WebMacro improved when doing Test Runs (VCPCM-1392)
+
+:white_check_mark: Client/Server: WebMacro Click to overwriting previous populate step in Test Run (VCPCM-1391)
+
+:white_check_mark: Client/Server: Credentials in the Output tab for Web Macro is not saved (VCPCM-1245)
+
+:white_check_mark: Client/Server: "Email - Send task" logging improved (VCPCM-1120)
+
+:white_check_mark: Client/Server: The Output section of a SQL task would include headers, regardless of if any records were pulled (VCPCM-1057)
+
+:white_check_mark: Client/Server: Trial Experience Current registration window improved (VCPCM-944)
+
 ## 11.2.1 [2024-06-24]
 
 ### Features
