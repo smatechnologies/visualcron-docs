@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Connection - Google Cloud
 
-The Google Cloud Connection is used in the following Tasks;
+The Google Cloud Connection is used in the following Tasks:
 
 * BigQuery - Run query
 * BigQuery - Fill table
