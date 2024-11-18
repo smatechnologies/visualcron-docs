@@ -3,7 +3,7 @@ sidebar_label: 'Connection - SSH'
 hide_title: 'true'
 ---
 
-## Connection - SCP
+## Connection - SSH
 
 The SSH Connection stores connect and logon properties for the Secure Shell (SSH) protocol. SSH provides a secure channel over an unsecured network in a client-server architecture, connecting a SSH client application with a SSH server. This connection allows you to connect and execute commands against Linux servers.
  
