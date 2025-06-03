@@ -19,7 +19,7 @@ VisualCron is provided by the NetCart AB, an SMA Technologies company, a company
 
 ### VisualCron Documentation
 
-This is the VisualCron documentation, build date 10/24/2024.
+This is the VisualCron documentation, build date 6/2/2025.
  
 This document describes VisualCron 8.
  
