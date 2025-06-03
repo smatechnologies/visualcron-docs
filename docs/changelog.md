@@ -6,7 +6,114 @@ hide_title: 'true'
 ## Change Log
 
 
- 
+12.1.4 [2025-04-14]
+
+### Bug Fixes
+
+:white_check_mark: Client/Server: ROI feature availability fixed (VCPCM-1958)
+
+:white_check_mark: Client/Server: Discrepancy between Connection Explorer and MFT server times adjusted (VCPCM-1951)
+
+:white_check_mark: Client/Server: AWS S3 bucket upload failing error fixed (VCPCM-1950)
+
+:white_check_mark: Client/Server: NRE when Accessing WebClient (VCPCM-1934)
+
+:white_check_mark: Client/Server: NRE when doing Scan server(s) (VCPCM-1920)
+
+:white_check_mark: Client/Server: Permission exceptions on startup (VCPCM-1918)
+
+:white_check_mark: Client/Server: Add License expiration badge for connected server (VCPCM-1906)
+
+:white_check_mark: Client/Server: Robot Task reduced perceived recording lag (VCPCM-1867)
+
+:white_check_mark: Client/Server: AWS S3 not respecting default bucket configuration (VCPCM-1764)
+
+:white_check_mark: Client/Server: Sharepoint Online Connection Explorer improved doing ASC based authentication (VCPCM-1741)
+
+:white_check_mark: Client/Server: FTP(S) - Unable to view folders within remote folder browser (VCPCM-1723)
+
+:white_check_mark: Client/Server: Trial Registratiuon routine improved (VCPCM-1706)
+
+
+12.1.3 [2025-02-18]
+
+### Bug Fixes
+
+:white_check_mark: Client/Server: Encryption init failure fix for new installations. (VCPCM-1892)
+
+
+12.1.2 [2025-02-13]
+
+### Features
+
+:eight_spoked_asterisk: Client/Server: CommandTimeout option for External Database logging implemented. (VCPCM-1869)
+
+:eight_spoked_asterisk: Client/Server: Binary protection failure resolved. (VCPCM-1878)
+
+
+### Bug Fixes
+
+:white_check_mark: Client/Server: Error in external SQL logging. (VCPCM-1876)
+
+:white_check_mark: Client/Server: Job Variables evaluation fixed. (VCPCM-1866)
+
+
+12.1.1 [2025-01-30]
+
+[NOTE] Client/Server: Before upgrading to this version, please ensure you back up your data. Built-in users may experience compatibility issues due to the VCPCM-677 improvement.
+
+### Bug Fixes
+
+:white_check_mark: Client/Server: Configuration files clean-up (VCPCM-1766)
+
+:white_check_mark: Client/Server: Communication between Server and Tray Client fixed for sensitive data. (VCPCM-1756)
+
+:white_check_mark: Client/Server: Hashing algorithm improved when securely storing built-in users passwords. (VCPCM-677)
+
+:white_check_mark: Client/Server: Permissions discrepancies fixed (VCPCM-1739)
+
+12.0.2 [2024-12-02]
+
+### Bug Fixes
+
+:white_check_mark: Client/Server: Log Database cleanup improved (VCPCM-1563)
+
+:white_check_mark: Client/Server: List permission has been discontinued. Please use Read permission to access object lists or individual objects. (VCPCM-1738)
+
+:white_check_mark: Client/Server: Group Permission editing fixed for admin users. (VCPCM-1755)
+
+
+12.0.1 [2024-10-31]
+
+### Bug Fixes
+
+:white_check_mark: Client: User synchronization with the server was blocked due to permissions validation. (VCPCM-1714)
+
+12.0.0 [2024-10-28]
+
+### Features
+
+:eight_spoked_asterisk: Client/Server: Security Enhancement: Sensitive data is now obfuscated during transmission from server to client to prevent unauthorized access to server, user, or database credentials stored on the server. Note: This server version is not compatible with previous client versions. (VCPCM-672)
+
+:eight_spoked_asterisk: Client/Server: Security Enhancement: Permissions are now evaluated server-side to prevent unauthorized access to sensitive functionality and data. Note: VisualCron clients from previous versions are not compatible with the current server version. (VCPCM-675)
+
+:eight_spoked_asterisk: Client/Server: Connection Explorer now operates exclusively server-side. (VCPCM-468)
+
+### Bug Fixes
+
+:white_check_mark: Client: SecurityException fix when starting the VisualCron Client (VCPCM-1673)
+
+:white_check_mark: Client/Server: VisualCron Client is now responsive when Connection is being tested in Connection Editor (VCPCM-1669)
+
+:white_check_mark: Client/Server: PGP Encryption reports process error if target file exists (VCPCM-1403)
+
+:white_check_mark: Client/Server: Azure Datalake Gen 2 functionality fixed (VCPCM-668)
+
+:white_check_mark: Client/Server: PGP Encryption reports error if file exists (VCPCM-1403)
+
+:white_check_mark: Client/Server: NRE fix when there is version mismatch between the Client and the Server (VCPCM-1672)
+
+
 11.2.3 [2024-09-23]
 
 ### Features
