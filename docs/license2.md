@@ -181,5 +181,3 @@ Downloading and installing the VC Software Package indicates your acceptance of 
 
 This Agreement is governed by the laws of the State of Texas, United States of America (without regard to conflicts of law principles) for any dispute between the parties or relating in any way to the subject matter of this Agreement. The UN Convention on Contracts for the International Sale of Goods does not apply.  Unless otherwise required by prevailing laws, any dispute relating to this Agreement will be settled exclusively by arbitration in Houston, Texas, in accordance with the rules of the American Arbitration Association then prevailing. In the event that any legal action, which by law cannot be compelled by arbitration - must be stayed. Furthermore, in any action at law or in equity to enforce or interpret the provisions of this Agreement or otherwise arising out of this Agreement, the Order Documents, or any SOW, the prevailing party will be entitled to recover expenses, including reasonable attorneys’ fees and costs, in addition to any other relief to which that party may be entitled.
 
-
-Download the EULA in a [PDF format](../static/pdf/eula_vc.pdf)

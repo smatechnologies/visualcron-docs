@@ -57,7 +57,7 @@ otherwise benefit from the VC Software Package.
 This is a license to use, not a sales agreement. You are considered the
 end-user. \"You\" and \"your\" refer to any person or entity acquiring
 or using the VC Software Package or any other item from
-<www.visualcron.com> under the terms of this Agreement, including any
+www.visualcron.com under the terms of this Agreement, including any
 Affiliate, where \"Affiliate\" means any corporation or other legal
 entity that controls, is controlled by or is under common control with
 you.
@@ -244,7 +244,7 @@ Reporting of Technical Issues
 While it is not our intent that you should find any technical issues, if
 you do find issues with the VC Software Package please report them to us
 on the[contact web
-page](http://www.visualcron.com/contact.aspx)[](http://www.visualcron.com/contact.aspx).
+page](http://www.visualcron.com/contact.aspx).
 
 Lifetime of VisualCron
 
@@ -392,4 +392,4 @@ SOW, the prevailing party will be entitled to recover expenses,
 including reasonable attorneys' fees and costs, in addition to any other
 relief to which that party may be entitled.
 
-Download the EULA in a [PDF format](https://www.visualcron.com/doc/eula.pdf)
+Download the EULA in pdf format here: https://www.visualcron.com/doc/eula.pdf
