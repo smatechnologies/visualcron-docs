@@ -5,32 +5,42 @@ hide_title: 'true'
 
 ## Requirements
 
-### Operating systems
+## Software Requirements
 
-- VisualCron is designed for Windows based computers
-- VisualCron works on the following operating systems: Windows Server 2008 R2/2012/2016/2019/2022 and Windows 8/10/11
-- VisualCron works on both 32-bit and 64-bit processors
-- VisualCron requires .NET 4.8
+| **Component**            | **Requirement**                                                                 |
+|--------------------------|----------------------------------------------------------------------------------|
+| Operating system         | Microsoft-supported Windows Server and Desktop versions                          |
+| Processor Architecture   | 32-bit and 64-bit supported                                                      |
+| .NET Framework Runtime   | .NET Framework 4.8  
 
-### Computer requirements (Server only)
 
-- Operating system - recommended Windows operating system is Windows Server 2008 R2/2012/2016/2019/2019/2022
-- Disk space - please reserve 1GB to 4GB depending on how much logging you need to store
-- CPU - 2GHz or more, quad core or more
-- Memory - 4GB or more
+## Hardware Requirements
 
-### Computer requirements (Client only)
+### Server
 
-- Operating system - recommended Windows operating system is Windows 8/10/11
-- Disk space - please reserve 1GB
-- CPU - 2GHz or more, quad core or more
-- Memory - 4GB or more
-- Minimum screen resolution 1920*1080
-- Computer requirements (Client and Server)
+| **Component**            | **Requirement**                                                                 |
+|--------------------------|----------------------------------------------------------------------------------|
+| Operating system         | Microsoft-supported Windows Server versions                                     |
+| Disk space               | 1 GB to 4 GB (depending on logging volume)                                      |
+| CPU                      | 2 GHz or more, quad core or better                                              |
+| Memory                   | 4 GB or more                                                                    |
 
-### Operating system - recommended Windows operating system is Windows Server 2008 R2/2012/2016/2019/2022
+### Client
 
-- Disk space - please reserve 1GB to 4GB depending on how much logging you need to store
-- CPU - 2GHz or more, quad core or more
-- Memory - 4GB or more
-- Minimum screen resolution 1920*1080
+| **Component**            | **Requirement**                                                                 |
+|--------------------------|----------------------------------------------------------------------------------|
+| Operating system         | Microsoft-supported Windows Desktop versions                                    |
+| Disk space               | 1 GB                                                                             |
+| CPU                      | 2 GHz or more, quad core or better                                              |
+| Memory                   | 4 GB or more                                                                    |
+| Screen resolution        | Minimum 1920×1080                                                               |
+
+### Client and Server (combined requirements)
+
+| **Component**            | **Requirement**                                                                 |
+|--------------------------|----------------------------------------------------------------------------------|
+| Operating system         | Microsoft-supported Windows Server and Desktop versions                        |
+| Disk space               | 1 GB to 4 GB (depending on logging volume)                                      |
+| CPU                      | 2 GHz or more, quad core or better                                              |
+| Memory                   | 4 GB or more                                                                    |
+| Screen resolution        | Minimum 1920×1080                                                               |
