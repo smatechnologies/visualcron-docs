@@ -13,7 +13,6 @@ hide_title: 'true'
 | Processor Architecture   | 32-bit and 64-bit supported                                                      |
 | .NET Framework Runtime   | .NET Framework 4.8  
 
-
 ## Hardware Requirements
 
 ### Server
