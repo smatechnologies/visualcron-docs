@@ -22,7 +22,7 @@ hide_title: 'true'
 | Operating system         | Microsoft-supported Windows Server versions                                     |
 | Disk space               | 1 GB to 4 GB (depending on logging volume)                                      |
 | CPU                      | 2 GHz or more, quad core or better                                              |
-| Memory                   | 4 GB or more                                                                    |
+| Memory                   | 6 GB or more                                                                    |
 
 ### Client
 
@@ -31,7 +31,7 @@ hide_title: 'true'
 | Operating system         | Microsoft-supported Windows Desktop versions                                    |
 | Disk space               | 1 GB                                                                             |
 | CPU                      | 2 GHz or more, quad core or better                                              |
-| Memory                   | 4 GB or more                                                                    |
+| Memory                   | 6 GB or more                                                                    |
 | Screen resolution        | Minimum 1920×1080                                                               |
 
 ### Client and Server (combined requirements)
@@ -41,5 +41,5 @@ hide_title: 'true'
 | Operating system         | Microsoft-supported Windows Server and Desktop versions                        |
 | Disk space               | 1 GB to 4 GB (depending on logging volume)                                      |
 | CPU                      | 2 GHz or more, quad core or better                                              |
-| Memory                   | 4 GB or more                                                                    |
+| Memory                   | 12 GB or more                                                                    |
 | Screen resolution        | Minimum 1920×1080                                                               |
