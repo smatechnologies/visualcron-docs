@@ -6,20 +6,20 @@ hide_title: 'true'
 ## VisualCron End-User License Agreement
  
  
-**Last updated: January 15, 2025**
+**Last updated: August 20, 2025**
  
- THE FOLLOWING VISUALCRON END-USER LICENSE AGREEMENT IS A LEGALLY BINDING AGREEMENT BETWEEN UNISOFT INTERNATIONAL, INC. DBA SMA TECHNOLOGIES (“COMPANY”) AND THE PERSON OR ENTITY ACCESSING OR USING THE SITE OR SOFTWARE AS DEFINED HEREIN.
+ THE FOLLOWING VISUALCRON END-USER LICENSE AGREEMENT IS A LEGALLY BINDING AGREEMENT BETWEEN UNISOFT INTERNATIONAL, INC. DBA CONTINUOUS (“COMPANY”) AND THE PERSON OR ENTITY ACCESSING OR USING THE SITE OR SOFTWARE AS DEFINED HEREIN.
 
 Your access to the VisualCron websites (the “Site”) and the VisualCron server, client application, web application, auxiliary applications, software, software components, and the documentation found on the website [here](https://www.visualcron.com/) (hereinafter referred to as the “VC Software Package”) is conditioned on your acceptance of these Terms. BY CLICKING ON THE “I AGREE” OR SIMILAR BUTTON OR BY USING THE SITE IN ANY WAY, INCLUDING USING OR ACCESSING THE SITE AND/OR THE VC SOFTWARE PACKAGE, YOU ACCEPT AND AGREE TO BE BOUND BY AND TO COMPLY WITH, THIS LICENSE AGREEMENT WITHOUT QUALIFICATION.
 
 You may not use the VC Software Package or accept this Agreement if (a) you are not of legal age to form a binding contract with Company; or (b) you are prohibited by law from receiving or using the VC Software Package. If you are entering into this Agreement on behalf of a company or other legal entity, you represent that you have the authority to bind such entity to this Agreement, in which case “you” or “your” shall refer to such entity. WE MAY AMEND THESE TERMS FROM TIME TO TIME IN ITS SOLE DISCRETION. SHOULD WE MATERIALLY MODIFY THESE TERMS, THE NEW TERMS WILL BE POSTED TO THE SITE, AS EVIDENCED BY A NEW VERSION DATE SHOWN ABOVE. WE MAY REQUIRE YOU TO PROVIDE CONSENT TO THE UPDATED TERMS BEFORE FURTHER USE OF THE SITE AND/OR SERVICES IS PERMITTED. BY USING THE SITE AFTER THE EFFECTIVE DATE OF THE MODIFIED TERMS AND/OR YOUR CONSENT (AS APPLICABLE), YOU EXPRESSLY CONSENT TO THE MODIFIED TERMS, WITHOUT QUALIFICATION.
 
- This VisualCron End-User License Agreement (this "Agreement") is effective as of the date you are issued a “Key” which enables access to the VC Software Package (the "Effective Date") by and between You ("Licensee") and Unisoft International, Inc., dba SMA Technologies ("Licensor").
+ This VisualCron End-User License Agreement (this "Agreement") is effective as of the date you are issued a “Key” which enables access to the VC Software Package (the "Effective Date") by and between You ("Licensee") and Unisoft International, Inc., dba Continuous ("Licensor").
 
 
 ### Scope of License
 
-"We", "us" and "our" refers to Unisoft International, Inc., dba SMA Technologies company (with its initial development team and web site, [http://www.visualcron.com](http://www.visualcron.com)). We reserve all rights in and to the VC Software Package not expressly granted to you under this Agreement.
+"We", "us" and "our" refers to Unisoft International, Inc., dba Continuous company (with its initial development team and web site, [http://www.visualcron.com](http://www.visualcron.com)). We reserve all rights in and to the VC Software Package not expressly granted to you under this Agreement.
 
 We hereby grant you a nonexclusive license to use one (1) copy of the VC Software Package on any single computer, provided the software included in the VC Software Package is in use only on one (1) computer at any time. "Use" means to download, install, access, use, execute, or otherwise benefit from the VC Software Package.
 

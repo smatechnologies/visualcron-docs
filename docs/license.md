@@ -2,10 +2,10 @@
 
 VisualCron End-User License Agreement
 
-Last updated: January 15, 2025
+Last updated: August 20, 2025
 
 THE FOLLOWING VISUALCRON END-USER LICENSE AGREEMENT IS A LEGALLY BINDING
-AGREEMENT BETWEEN UNISOFT INTERNATIONAL, INC. DBA SMA TECHNOLOGIES
+AGREEMENT BETWEEN UNISOFT INTERNATIONAL, INC. DBA CONTINUOUS 
 ("COMPANY") AND THE PERSON OR ENTITY ACCESSING OR USING THE SITE OR
 SOFTWARE AS DEFINED HEREIN.
 
@@ -37,13 +37,13 @@ QUALIFICATION.
 This VisualCron End-User License Agreement (this \"Agreement\") is
 effective as of the date you are issued a "Key" which enables access to
 the VC Software Package (the \"Effective Date\") by and between You
-(\"Licensee\") and Unisoft International, Inc., dba SMA Technologies
+(\"Licensee\") and Unisoft International, Inc., dba Continuous
 (\"Licensor\").
 
 Scope of License
 
 \"We\", \"us\" and \"our\" refers to Unisoft International, Inc., dba
-SMA Technologies company (with its initial development team and web
+Continuous company (with its initial development team and web
 site,[http://www.visualcron.com](http://www.visualcron.com/)). We
 reserve all rights in and to the VC Software Package not expressly
 granted to you under this Agreement.
