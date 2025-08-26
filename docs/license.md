@@ -34,31 +34,31 @@ AFTER THE EFFECTIVE DATE OF THE MODIFIED TERMS AND/OR YOUR CONSENT (AS
 APPLICABLE), YOU EXPRESSLY CONSENT TO THE MODIFIED TERMS, WITHOUT
 QUALIFICATION.
 
-This VisualCron End-User License Agreement (this \"Agreement\") is
+This VisualCron End-User License Agreement (this "Agreement") is
 effective as of the date you are issued a "Key" which enables access to
-the VC Software Package (the \"Effective Date\") by and between You
-(\"Licensee\") and Unisoft International, Inc., dba Continuous
-(\"Licensor\").
+the VC Software Package (the "Effective Date") by and between You
+("Licensee") and Unisoft International, Inc., dba Continuous
+("Licensor").
 
 Scope of License
 
-\"We\", \"us\" and \"our\" refers to Unisoft International, Inc., dba
+"We", "us" and "our" refers to Unisoft International, Inc., dba
 Continuous company (with its initial development team and web
-site,[http://www.visualcron.com](http://www.visualcron.com/)). We
+site, [http://www.visualcron.com](http://www.visualcron.com/)). We
 reserve all rights in and to the VC Software Package not expressly
 granted to you under this Agreement.
 
 We hereby grant you a nonexclusive license to use one (1) copy of the VC
 Software Package on any single computer, provided the software included
 in the VC Software Package is in use only on one (1) computer at any
-time. \"Use\" means to download, install, access, use, execute, or
+time. "Use" means to download, install, access, use, execute, or
 otherwise benefit from the VC Software Package.
 
 This is a license to use, not a sales agreement. You are considered the
-end-user. \"You\" and \"your\" refer to any person or entity acquiring
+end-user. "You" and "your" refer to any person or entity acquiring
 or using the VC Software Package or any other item from
 www.visualcron.com under the terms of this Agreement, including any
-Affiliate, where \"Affiliate\" means any corporation or other legal
+Affiliate, where "Affiliate" means any corporation or other legal
 entity that controls, is controlled by or is under common control with
 you.
 
@@ -104,7 +104,7 @@ Distribution
 
 This VC Software Package may be freely distributed by special agreements
 between Licensor and other parties. Links to
-the[http://www.visualcron.com](http://www.visualcron.com/)website may
+the [http://www.visualcron.com](http://www.visualcron.com/) website may
 be used and are encouraged.
 
 Things You May Not Do
@@ -127,7 +127,7 @@ Software Package, or any part therein, to any third party; or
 Documentation
 
 Documentation for the VC Software Package can be found
-[here](https://www.visualcron.com/documentation.aspx) (hereinafter
+[here](https://help.visualcron.com) (hereinafter
 referred to as "Order Documents") and is provided online and by
 installation in PDF format. Use Adobe Acrobat Reader to open the
 document. The Order Documents included in this Section can be changed
@@ -164,7 +164,7 @@ support or developers must have at least one (1) active Subscription.
 Perpetual vs Subscription license
 
 Licenses purchased before February 14, 2022, will remain Maintenance
-Licenses with the exception of theSupport Limitations(as described
+Licenses with the exception of the Support Limitations(as described
 above). With the VC Software Package, the renewal of a Subscription is
 mandatory for the functionality of features in the VC Software Package,
 including but not limited to actions to add tasks and trigger conditions
@@ -176,7 +176,7 @@ Each version of the software in the VC Software Package is supported for
 one (1) year after the release date. After that, an upgrade is
 recommended to enable all the technical changes that occur throughout
 the year. Release dates can be
-found[here](https://www.visualcron.com/changelog.aspx).
+found [here](https://www.visualcron.com/changelog.aspx).
 
 License Key
 
@@ -227,7 +227,7 @@ World license
 - allows unlimited server installations worldwide. New site licenses
 were discontinued in July of 2024.
 
-For \"unlimited\" cloud installations, it is up to discussion depending
+For "unlimited" cloud installations, it is up to discussion depending
 on usage, expected quantity, and locations. The suggested solution may
 result in a specific agreement that results in two (2) or more Site
 licenses, a Country license, or a World license.
@@ -243,7 +243,7 @@ Reporting of Technical Issues
 
 While it is not our intent that you should find any technical issues, if
 you do find issues with the VC Software Package please report them to us
-on the[contact web
+on the [contact web
 page](http://www.visualcron.com/contact.aspx).
 
 Lifetime of VisualCron
