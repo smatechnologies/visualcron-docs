@@ -2095,7 +2095,7 @@ hide_title: 'true'
 
 :white_check_mark: Client/Server: Azure->Fixed dll mismatch (Microsoft.IdentityModel.Tokens) (VC-1705)
 
-:white_check_mark: Server: Sync->Fixed an issue with syncing Variables (<string> addition) (VC-1700)
+:white_check_mark: Server: Sync->Fixed an issue with syncing Variables (`<string>` addition) (VC-1700)
 
 :white_check_mark: WebClient: Handled crash in w3wp.exe on disconnect (VC-1710)
 
