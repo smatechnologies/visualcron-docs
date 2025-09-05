@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Change Log
 
-###12.2.1 [2025-07-30]
+### 12.2.1 [2025-07-30]
 
 #### Features
 
@@ -62,7 +62,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: WebAPI: AD-authentication support (VCPCM-666)
 
 
-###12.1.4 [2025-04-14]
+### 12.1.4 [2025-04-14]
 
 #### Bug Fixes
 
@@ -92,7 +92,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Trial Registratiuon routine improved (VCPCM-1706)
 
 
-###12.1.3 [2025-02-18]
+### 12.1.3 [2025-02-18]
 
 #### Bug Fixes
 
@@ -100,7 +100,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Encryption init failure fix for new installations. (VCPCM-1892)
 
 
-###12.1.2 [2025-02-13]
+### 12.1.2 [2025-02-13]
 
 #### Features
 
@@ -117,7 +117,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Job Variables evaluation fixed. (VCPCM-1866)
 
 
-###12.1.1 [2025-01-30]
+### 12.1.1 [2025-01-30]
 
 #### Notes
 
@@ -136,7 +136,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Permissions discrepancies fixed (VCPCM-1739)
 
 
-###12.0.2 [2024-12-02]
+### 12.0.2 [2024-12-02]
 
 #### Bug Fixes
 
@@ -148,7 +148,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Group Permission editing fixed for admin users. (VCPCM-1755)
 
 
-###12.0.1 [2024-10-31]
+### 12.0.1 [2024-10-31]
 
 #### Bug Fixes
 
@@ -156,7 +156,7 @@ hide_title: 'true'
 :white_check_mark: Client: User synchronization with the server was blocked due to permissions validation. (VCPCM-1714)
 
 
-###12.0.0 [2024-10-28]
+### 12.0.0 [2024-10-28]
 
 #### Features
 
@@ -183,7 +183,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: NRE fix when there is version mismatch between the Client and the Server (VCPCM-1672)
 
 
-###11.2.3 [2024-09-23]
+### 11.2.3 [2024-09-23]
 
 #### Features
 
@@ -218,7 +218,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Sharepoint server-side explorer (VCPCM-509)
 
 
-###11.2.2 [2024-07-29]
+### 11.2.2 [2024-07-29]
 
 #### Notes
 
@@ -241,7 +241,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Trial Experience  Current registration window improved (VCPCM-944)
 
 
-###11.2.1 [2024-06-24]
+### 11.2.1 [2024-06-24]
 
 #### Features
 
@@ -260,7 +260,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server:  SMTP Outlook connectivity fixed handling org policies(VCPCM-596)
 
 
-###11.1.4 [2024-05-02]
+### 11.1.4 [2024-05-02]
 
 #### Features
 
@@ -283,7 +283,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Detailed error messages fully under control of extended debugging flag (VCPCM-1055)
 
 
-###11.1.3 [2024-04-11]
+### 11.1.3 [2024-04-11]
 
 #### Bug Fixes
 
@@ -293,7 +293,7 @@ hide_title: 'true'
 :white_check_mark: Client: Populate Field activity revised for WebMacro Task (VCPCM-981)
 
 
-###11.1.2 [2024-04-05]
+### 11.1.2 [2024-04-05]
 
 #### Bug Fixes
 
@@ -321,7 +321,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: File triggers now attempt to reconnect properly without disabling a trigger (VCPCM-639)
 
 
-###11.1.1 [2024-03-12]
+### 11.1.1 [2024-03-12]
 
 #### Features
 
@@ -354,7 +354,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Fixed automatic addition of a user certificate with a private key to the Trusted Root Certificates store (VCPCM-837)
 
 
-###11.0.0 [2024-01-29]
+### 11.0.0 [2024-01-29]
 
 #### Features
 
@@ -401,7 +401,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Transport security protocols updated for Azure Cloud connections (VCPCM-334)
 
 
-###10.0.3 [2023-12-14]
+### 10.0.3 [2023-12-14]
 
 #### Notes
 
@@ -533,7 +533,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Correct DbConnection disposal after testing connection settings or retrieving SP list and params (VCPCM-526)
 
 
-###10.0.2 [2023-09-27]
+### 10.0.2 [2023-09-27]
 
 #### Notes
 
@@ -655,7 +655,7 @@ hide_title: 'true'
 :white_check_mark: Client: Main grid->Fixed an issue with Job folder rows filtering outside of GUI thread (VCPCM-354)
 
 
-###10.0.1 [2023-05-08]
+### 10.0.1 [2023-05-08]
 
 #### Features
 
@@ -726,7 +726,7 @@ hide_title: 'true'
 :white_check_mark: Server: Database copy->SqlCeCommand timeout error (VCP-287)
 
 
-###10.0.0 [2023-02-20]
+### 10.0.0 [2023-02-20]
 
 #### Features
 
@@ -817,7 +817,7 @@ hide_title: 'true'
 :white_check_mark: Client: Local documentation updated (VCP-36,VCP-42)
 
 
-###9.9.12 [2022-11-07]
+### 9.9.12 [2022-11-07]
 
 #### Bug Fixes
 
@@ -845,7 +845,7 @@ hide_title: 'true'
 :white_check_mark: Server: Trial->Fixed offline trial registration issue (VCP-60)
 
 
-###9.9.10 [2022-09-21]
+### 9.9.10 [2022-09-21]
 
 #### Features
 
@@ -882,7 +882,7 @@ hide_title: 'true'
 :white_check_mark: Server: Remote file Trigger->SessionId and Trigger object not set correctly (VC-3115)
 
 
-###9.9.9 [2022-09-05]
+### 9.9.9 [2022-09-05]
 
 #### Features
 
@@ -1007,7 +1007,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Scan document->Issue seeing scanned values in output fixed (VC-2964)
 
 
-###9.9.8 [2022-05-18]
+### 9.9.8 [2022-05-18]
 
 #### Features
 
@@ -1064,7 +1064,7 @@ hide_title: 'true'
 :white_check_mark: Server: Amazon S3->Added delete source option on download (VC-2891)
 
 
-###9.9.7 [2022-04-12]
+### 9.9.7 [2022-04-12]
 
 #### Notes
 
@@ -1204,7 +1204,7 @@ hide_title: 'true'
 :white_check_mark: Server: Log->Fixed various error handling issues with db logging (VC-2792)
 
 
-###9.9.6 [2022-01-17]
+### 9.9.6 [2022-01-17]
 
 #### Features
 
@@ -1265,7 +1265,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Web AOPI->Fixed refresh of Client Job Variables after update (VC-2430)
 
 
-###9.9.5 [2021-12-02]
+### 9.9.5 [2021-12-02]
 
 #### Features
 
@@ -1322,7 +1322,7 @@ hide_title: 'true'
 :white_check_mark: WebClient: Connection->Fixed issue requiring administration permissions (VC-2435)
 
 
-###9.9.0 [2021-10-22]
+### 9.9.0 [2021-10-22]
 
 #### Features
 
@@ -1417,7 +1417,7 @@ hide_title: 'true'
 :white_check_mark: Web client: Popup Task->Fixed issue (VC-2392)
 
 
-###9.8.5 [2021-08-05]
+### 9.8.5 [2021-08-05]
 
 #### Features
 
@@ -1530,7 +1530,7 @@ hide_title: 'true'
 :white_check_mark: Server: Excel - Search/List worksheets->Fixed issue saving Task values (VC-2359)
 
 
-###9.8.0 [2021-05-21]
+### 9.8.0 [2021-05-21]
 
 #### Features
 
@@ -1617,7 +1617,7 @@ hide_title: 'true'
 :white_check_mark: Server: Excel Convert->Fixed incorrect settings change on upgrade (VC-2291)
 
 
-###9.7.5 [2021-04-15]
+### 9.7.5 [2021-04-15]
 
 #### Features
 
@@ -1732,7 +1732,7 @@ hide_title: 'true'
 :white_check_mark: Server: SFTP->Fixed issue download all files when folder does not exist (VSPS-268)
 
 
-###9.6.5 [2021-03-11]
+### 9.6.5 [2021-03-11]
 
 #### Features
 
@@ -1803,7 +1803,7 @@ hide_title: 'true'
 :white_check_mark: Server: VisualCron service->Fixed error message when stopping VC service (hanging MFT thread) (VC-2040)
 
 
-###9.6.0 [2021-01-27]
+### 9.6.0 [2021-01-27]
 
 #### Features
 
@@ -1910,7 +1910,7 @@ hide_title: 'true'
 :white_check_mark: Server: Global objects->Deleted old (deleted) references at startup (Time exceptions, Conditions) (VC-2004)
 
 
-###9.4.5 [2020-11-24]
+### 9.4.5 [2020-11-24]
 
 #### Features
 
@@ -1997,7 +1997,7 @@ hide_title: 'true'
 :white_check_mark: Client: Folder/file selection/Connection Explorer->Optimized retrieving information (VSPS-233)
 
 
-###9.4.0 [2020-10-07]
+### 9.4.0 [2020-10-07]
 
 #### Features
 
@@ -2095,12 +2095,12 @@ hide_title: 'true'
 
 :white_check_mark: Client/Server: Azure->Fixed dll mismatch (Microsoft.IdentityModel.Tokens) (VC-1705)
 
-:white_check_mark: Server: Sync->Fixed an issue with syncing Variables (`<string>` addition) (VC-1700)
+:white_check_mark: Server: Sync->Fixed an issue with syncing Variables (<string> addition) (VC-1700)
 
 :white_check_mark: WebClient: Handled crash in w3wp.exe on disconnect (VC-1710)
 
 
-###9.3.5 [2020-08-31]
+### 9.3.5 [2020-08-31]
 
 #### Features
 
@@ -2193,7 +2193,7 @@ hide_title: 'true'
 :white_check_mark: Server: Logging->Fixed issue reading Notification logs from external DB (VC-1615)
 
 
-###9.3.0 [2020-06-24]
+### 9.3.0 [2020-06-24]
 
 #### Features
 
@@ -2248,7 +2248,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: SCP - List file(s) - fixed null reference issue (VSPS-191)
 
 
-###9.2.5 [2020-06-01]
+### 9.2.5 [2020-06-01]
 
 #### Features
 
@@ -2295,7 +2295,7 @@ hide_title: 'true'
 :white_check_mark: Client: Log->Fixed issue with showing Task log from loop (VC-1452)
 
 
-###9.2.0 [2020-05-20]
+### 9.2.0 [2020-05-20]
 
 #### Notes
 
@@ -2489,7 +2489,7 @@ hide_title: 'true'
 :white_check_mark: Client: PGP key rings->Fixed right click menu issue with Delete key (VC-1413)
 
 
-###9.1.5 [2020-02-17]
+### 9.1.5 [2020-02-17]
 
 #### Features
 
@@ -2566,7 +2566,7 @@ hide_title: 'true'
 :white_check_mark: Server: Assembly Execute Task->Fixed issue refreshing assembly (VC-1224)
 
 
-###9.1.0 [2020-01-21]
+### 9.1.0 [2020-01-21]
 
 #### Features
 
@@ -2723,7 +2723,7 @@ hide_title: 'true'
 :white_check_mark: Client: Permissions->Fixed permissions for SQL Connection and Task manager (VC-1172)
 
 
-###9.0.0 [2019-11-26]
+### 9.0.0 [2019-11-26]
 
 #### Features
 
@@ -2936,7 +2936,7 @@ hide_title: 'true'
 :white_check_mark: Client: Output window->Fixed some issues related to resolving links (VC-1038)
 
 
-###8.5.5 [2019-08-28]
+### 8.5.5 [2019-08-28]
 
 #### Features
 
@@ -3005,7 +3005,7 @@ hide_title: 'true'
 :white_check_mark: API/Server: Fixed some trial/pro license issues
 
 
-###8.5.4 [2019-07-31]
+### 8.5.4 [2019-07-31]
 
 #### Features
 
@@ -3054,7 +3054,7 @@ hide_title: 'true'
 :white_check_mark: Client: Copy files Task->Fixed scanning servers crash
 
 
-###8.5.3 [2019-07-15]
+### 8.5.3 [2019-07-15]
 
 #### Features
 
@@ -3149,7 +3149,7 @@ hide_title: 'true'
 :white_check_mark: Server: Archive extract->Fixed issue with inheriting original permissions
 
 
-###8.5.1 [2019-05-15]
+### 8.5.1 [2019-05-15]
 
 #### Features
 
@@ -3192,7 +3192,7 @@ hide_title: 'true'
 :white_check_mark: Server: .NET Code Task->Fixed parameter issue when not Executing in server process
 
 
-###8.5.0 [2019-04-21]
+### 8.5.0 [2019-04-21]
 
 #### Features
 
@@ -3243,7 +3243,7 @@ hide_title: 'true'
 :white_check_mark: Server: Task flow->Fixed issue Notification not being sent if Retry was used in other flow
 
 
-###8.4.2 [2019-03-22]
+### 8.4.2 [2019-03-22]
 
 #### Features
 
@@ -3320,7 +3320,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Web macro Task->Fixed multiple frames issue
 
 
-###8.4.1 [2019-01-23]
+### 8.4.1 [2019-01-23]
 
 #### Features
 
@@ -3393,7 +3393,7 @@ hide_title: 'true'
 :white_check_mark: Server: Variables->Fixed issue with JQ filter issue
 
 
-###8.4.0 [2018-11-07]
+### 8.4.0 [2018-11-07]
 
 #### Features
 
@@ -3476,7 +3476,7 @@ hide_title: 'true'
 :white_check_mark: Server: REST API->Fixed issue with text output in REST API in some scenarios
 
 
-###8.3.6 [2018-08-13]
+### 8.3.6 [2018-08-13]
 
 #### Features
 
@@ -3533,7 +3533,7 @@ hide_title: 'true'
 :white_check_mark: Server: SCP->Fixed delete file(s) issue
 
 
-###8.3.5 [2018-06-05]
+### 8.3.5 [2018-06-05]
 
 #### Features
 
@@ -3610,7 +3610,7 @@ hide_title: 'true'
 :white_check_mark: Server: AD - Create group->Fixed error with creating right group type
 
 
-###8.3.4 [2018-03-09]
+### 8.3.4 [2018-03-09]
 
 #### Features
 
@@ -3703,7 +3703,7 @@ hide_title: 'true'
 :white_check_mark: Server: Loop->Added ability to abort loops faster
 
 
-###8.3.3 [2018-02-04]
+### 8.3.3 [2018-02-04]
 
 #### Features
 
@@ -3778,7 +3778,7 @@ hide_title: 'true'
 :white_check_mark: Client: Main window->Fixed a problem with black flickering grid
 
 
-###8.3.2 [2018-01-05]
+### 8.3.2 [2018-01-05]
 
 #### Features
 
@@ -3857,7 +3857,7 @@ hide_title: 'true'
 :white_check_mark: Server: Excel->Convert->Fixed an issue converting month format in a special scenario
 
 
-###8.3.1 [2017-11-30]
+### 8.3.1 [2017-11-30]
 
 #### Notes
 
@@ -3893,7 +3893,7 @@ hide_title: 'true'
 :white_check_mark: Server: MFT->Various fixes
 
 
-###8.3.0 [2017-11-23]
+### 8.3.0 [2017-11-23]
 
 #### Notes
 
@@ -4009,7 +4009,7 @@ hide_title: 'true'
 :white_check_mark: Server: Web macro Task->Fixed problem with saving option "Save to Variable"
 
 
-###8.2.9 [2017-09-21]
+### 8.2.9 [2017-09-21]
 
 #### Features
 
@@ -4126,7 +4126,7 @@ hide_title: 'true'
 :white_check_mark: Client: Permissions->Fixed a problem with overridden Job permissions and right click "Run Job with options"
 
 
-###8.2.8 [2017-07-31]
+### 8.2.8 [2017-07-31]
 
 #### Features
 
@@ -4179,7 +4179,7 @@ hide_title: 'true'
 :white_check_mark: Server: Credentials->Fixed issue with default setting CreateProcessAsUserW + LOGON_BATCH
 
 
-###8.2.7 [2017-05-25]
+### 8.2.7 [2017-05-25]
 
 #### Features
 
@@ -4222,7 +4222,7 @@ hide_title: 'true'
 :white_check_mark: Server->Fixed flow order/skip problems that occured in some scenarios
 
 
-###8.2.6 [2017-04-18]
+### 8.2.6 [2017-04-18]
 
 #### Features
 
@@ -4261,7 +4261,7 @@ hide_title: 'true'
 :white_check_mark: Server: Remote file Trigger->Fixed issue with impersonation when downloading
 
 
-###8.2.5 [2017-03-14]
+### 8.2.5 [2017-03-14]
 
 #### Features
 
@@ -4298,7 +4298,7 @@ hide_title: 'true'
 :white_check_mark: Server: Concatenate file Task->Fixed issue with overwrite option
 
 
-###8.2.4 [2017-02-08]
+### 8.2.4 [2017-02-08]
 
 #### Features
 
@@ -4371,7 +4371,7 @@ hide_title: 'true'
 :white_check_mark: Server: SharePoint - Upload Task->Fixed problem uploading from network share
 
 
-###8.2.3 [2016-12-16]
+### 8.2.3 [2016-12-16]
 
 #### Bug Fixes
 
@@ -4381,7 +4381,7 @@ hide_title: 'true'
 :white_check_mark: Server: Variables->Fixed issue with PrevTask (8.2.2 issue)
 
 
-###8.2.2 [2016-12-12]
+### 8.2.2 [2016-12-12]
 
 #### Features
 
@@ -4440,7 +4440,7 @@ hide_title: 'true'
 :white_check_mark: Client: Conditions->Fixed cloning issue which could cause edit rather than clone
 
 
-###8.2.1 [2016-11-01]
+### 8.2.1 [2016-11-01]
 
 #### Features
 
@@ -4491,7 +4491,7 @@ hide_title: 'true'
 :white_check_mark: Client: Wait Task->Fixed 100ms limit
 
 
-###8.2.0 [2016-09-16]
+### 8.2.0 [2016-09-16]
 
 #### Features
 
@@ -4574,7 +4574,7 @@ hide_title: 'true'
 :white_check_mark: Server: Assembly Execute Task->Fixed recursive loop making reflection hanging
 
 
-###8.1.2 [2016-07-05]
+### 8.1.2 [2016-07-05]
 
 #### Features
 
@@ -4633,7 +4633,7 @@ hide_title: 'true'
 :white_check_mark: Server: Email Trigger->Fixed issue with TO/CC Variables (only got the last email if multiple)
 
 
-###8.1.1 [2016-05-24]
+### 8.1.1 [2016-05-24]
 
 #### Features
 
@@ -4682,7 +4682,7 @@ hide_title: 'true'
 :white_check_mark: Server: SCP Task->Fixed a problem causing multiple SCP instances running in memory
 
 
-###8.1.0 [2016-05-03]
+### 8.1.0 [2016-05-03]
 
 #### Features
 
@@ -4773,7 +4773,7 @@ hide_title: 'true'
 :white_check_mark: Server: Remote File Trigger->Fixed a potential stack overflow crash
 
 
-###8.0.4 [2016-03-22]
+### 8.0.4 [2016-03-22]
 
 #### Features
 
@@ -4814,7 +4814,7 @@ hide_title: 'true'
 :white_check_mark: Server: Job->Timeout->Consider timeout as error did not raise error properly
 
 
-###8.0.2 [2016-02-22]
+### 8.0.2 [2016-02-22]
 
 #### Features
 
@@ -4869,7 +4869,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed issue with Variables in Crystal reports Task
 
 
-###8.0.1 [2016-01-11]
+### 8.0.1 [2016-01-11]
 
 #### Features
 
@@ -4928,7 +4928,7 @@ hide_title: 'true'
 :white_check_mark: Server: Variable->Fixed support for Job Variables in Date filter
 
 
-###8.0.0 [2015-11-24]
+### 8.0.0 [2015-11-24]
 
 #### Features
 
@@ -4971,7 +4971,7 @@ hide_title: 'true'
 :white_check_mark: Server: Login->Fixed a login problem related to using AD and a Credential
 
 
-###7.7.8 [2015-11-02]
+### 7.7.8 [2015-11-02]
 
 #### Features
 
@@ -5016,7 +5016,7 @@ hide_title: 'true'
 :white_check_mark: Server: File Trigger->Fixed problem with not retrying properly after error
 
 
-###7.7.7 [2015-10-08]
+### 7.7.7 [2015-10-08]
 
 #### Features
 
@@ -5039,7 +5039,7 @@ hide_title: 'true'
 :white_check_mark: Server: Web service API->Fixed issue with serialization
 
 
-###7.7.6 [2015-09-29]
+### 7.7.6 [2015-09-29]
 
 #### Features
 
@@ -5084,7 +5084,7 @@ hide_title: 'true'
 :white_check_mark: Server: File filter->Fixed issue using OR operator on file size
 
 
-###7.7.5 [2015-09-01]
+### 7.7.5 [2015-09-01]
 
 #### Features
 
@@ -5115,7 +5115,7 @@ hide_title: 'true'
 :white_check_mark: Client: Time exceptions->Fixed issue with Time exceptions selection
 
 
-###7.7.4 [2015-08-14]
+### 7.7.4 [2015-08-14]
 
 #### Features
 
@@ -5158,7 +5158,7 @@ hide_title: 'true'
 :white_check_mark: Client: XML->Read node Task->Fixed issue with displaying manually added namespaces
 
 
-###7.7.3 [2015-07-22]
+### 7.7.3 [2015-07-22]
 
 #### Bug Fixes
 
@@ -5176,7 +5176,7 @@ hide_title: 'true'
 :white_check_mark: Server: Time exceptions->Fixed a problem selecting Time exceptions in Job add/edit window
 
 
-###7.7.2 [2015-07-10]
+### 7.7.2 [2015-07-10]
 
 #### Features
 
@@ -5205,7 +5205,7 @@ hide_title: 'true'
 :white_check_mark: Server: SFTP Rename->Fixed a problem with source folder property
 
 
-###7.7.1 [2015-07-02]
+### 7.7.1 [2015-07-02]
 
 #### Features
 
@@ -5226,7 +5226,7 @@ hide_title: 'true'
 :white_check_mark: Server: FTP Task->SFTP->Fixed a problem moving a file if the file was already there (and should be overwritten)
 
 
-###7.7.0 [2015-06-24]
+### 7.7.0 [2015-06-24]
 
 #### Features
 
@@ -5275,7 +5275,7 @@ hide_title: 'true'
 :white_check_mark: Server: SQL Task->Changed how parameters are converted to the correct type (required for some databases) when using ODBC/OLEDB
 
 
-###7.6.6 [2015-05-28]
+### 7.6.6 [2015-05-28]
 
 #### Features
 
@@ -5340,7 +5340,7 @@ hide_title: 'true'
 :white_check_mark: Server: Popup Task->Fixed dialog result handling
 
 
-###7.6.5 [2015-05-01]
+### 7.6.5 [2015-05-01]
 
 #### Notes
 
@@ -5396,7 +5396,7 @@ hide_title: 'true'
 :white_check_mark: Server: XML Read node->Fixed an issue related to creating duplicate namespaces when editing namespace
 
 
-###7.6.4 [2015-04-08]
+### 7.6.4 [2015-04-08]
 
 #### Features
 
@@ -5437,7 +5437,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Job/Task control Task->Fixed various issues concerning setting Job Variables
 
 
-###7.6.3 [2015-03-19]
+### 7.6.3 [2015-03-19]
 
 #### Features
 
@@ -5456,7 +5456,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a bug concerning Job running status when not using "Run Tasks in order"
 
 
-###7.6.2 [2015-03-17]
+### 7.6.2 [2015-03-17]
 
 #### Notes
 
@@ -5498,7 +5498,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Fixed a hang when trying to open the log window while having extended debugging on
 
 
-###7.6.1 [2015-03-02]
+### 7.6.1 [2015-03-02]
 
 #### Features
 
@@ -5543,7 +5543,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Fixed a communication problem leading to Client crash
 
 
-###7.6.0 [2015-02-13]
+### 7.6.0 [2015-02-13]
 
 #### Notes
 
@@ -5601,7 +5601,7 @@ hide_title: 'true'
 :white_check_mark: Server: SSISDB Task->Now translating Connection string Variables properly
 
 
-###7.5.1 [2014-11-17]
+### 7.5.1 [2014-11-17]
 
 #### Features
 
@@ -5628,7 +5628,7 @@ hide_title: 'true'
 :white_check_mark: Server: PowerShell Task->Handling error "Mixed mode assembly is built against version 'v2.0.50727' of the runtime and cannot be loaded in the 4.0 runtime without additional configuration information."
 
 
-###7.5.0 [2014-11-05]
+### 7.5.0 [2014-11-05]
 
 #### Notes
 
@@ -5722,7 +5722,7 @@ hide_title: 'true'
 :white_check_mark: Server: SQL Task->Handled an error in SQL Job execution related to null messages in result at completion
 
 
-###7.2.1 [2014-09-19]
+### 7.2.1 [2014-09-19]
 
 #### Features
 
@@ -5775,7 +5775,7 @@ hide_title: 'true'
 :white_check_mark: Server: FTP Task->Fixed Copy/Move files sub folders issue
 
 
-###7.2.0 [2014-08-29]
+### 7.2.0 [2014-08-29]
 
 #### Features
 
@@ -5832,7 +5832,7 @@ hide_title: 'true'
 :white_check_mark: Server->Running processes->Fixed a rounding issue when calculating number of hours
 
 
-###7.1.9 [2014-07-15]
+### 7.1.9 [2014-07-15]
 
 #### Features
 
@@ -5867,7 +5867,7 @@ hide_title: 'true'
 :white_check_mark: Server->Hyper-V List Task->Fixed an issue where a property name could be different in some systems resulting in SID instead of Name is returned
 
 
-###7.1.8 [2014-06-27]
+### 7.1.8 [2014-06-27]
 
 #### Features
 
@@ -5914,7 +5914,7 @@ hide_title: 'true'
 :white_check_mark: Server->Fixed a general renaming issue when working with string (for example calculating destination name with file masks) that in some cases could cause problems
 
 
-###7.1.7 [2014-05-21]
+### 7.1.7 [2014-05-21]
 
 #### Features
 
@@ -5961,7 +5961,7 @@ hide_title: 'true'
 :white_check_mark: Server: Loop->Fix waiting time of last loop iteration
 
 
-###7.1.6 [2014-04-16]
+### 7.1.6 [2014-04-16]
 
 #### Bug Fixes
 
@@ -5987,7 +5987,7 @@ hide_title: 'true'
 :white_check_mark: API: Popup Task->Fixed an issue not being able to return result/output from other Tasks within the Popup Task
 
 
-###7.1.5 [2014-04-09]
+### 7.1.5 [2014-04-09]
 
 #### Features
 
@@ -6040,7 +6040,7 @@ hide_title: 'true'
 :white_check_mark: Client: Connections->Fixed a problem editing address of VisualCron Connection type
 
 
-###7.1.4 [2014-03-17]
+### 7.1.4 [2014-03-17]
 
 #### Notes
 
@@ -6086,7 +6086,7 @@ hide_title: 'true'
 :white_check_mark: API: Variables->Fixed parsing issue of Variables with no parameters
 
 
-###7.1.3 [2014-03-03]
+### 7.1.3 [2014-03-03]
 
 #### Features
 
@@ -6135,7 +6135,7 @@ hide_title: 'true'
 :white_check_mark: Client: Calendar->Fixed a bug where the calendar, in some scenarios, could hang on "Refreshing data"
 
 
-###7.1.2 [2014-02-11]
+### 7.1.2 [2014-02-11]
 
 #### Features
 
@@ -6180,7 +6180,7 @@ hide_title: 'true'
 :white_check_mark: Client: SSIS DB Task->Fixed a problem re-saving the Task with parameters
 
 
-###7.1.1 [2014-01-29]
+### 7.1.1 [2014-01-29]
 
 #### Features
 
@@ -6205,7 +6205,7 @@ hide_title: 'true'
 :white_check_mark: Server: Now setting correct codepage (from Task) on FTPS Tasks
 
 
-###7.1.0 [2014-01-17]
+### 7.1.0 [2014-01-17]
 
 #### Notes
 
@@ -6253,7 +6253,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem with Task Flows not continuing "On complete" event
 
 
-###7.0.9 [2014-01-07]
+### 7.0.9 [2014-01-07]
 
 #### Features
 
@@ -6304,7 +6304,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed an issue with output parameters in SQL Task
 
 
-###7.0.8 [2013-12-06]
+### 7.0.8 [2013-12-06]
 
 #### Features
 
@@ -6357,7 +6357,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Fixed issue with a new, unknown, restore point type for System restore Tasks
 
 
-###7.0.7 [2013-11-08]
+### 7.0.7 [2013-11-08]
 
 #### Features
 
@@ -6404,7 +6404,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem with uploading files via Sharepoint - Upload Task
 
 
-###7.0.6 [2013-10-07]
+### 7.0.6 [2013-10-07]
 
 #### Features
 
@@ -6427,7 +6427,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a wrong message when exporting all settings
 
 
-###7.0.5 [2013-09-13]
+### 7.0.5 [2013-09-13]
 
 #### Features
 
@@ -6456,7 +6456,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem with updating status for Jobs that were started throught he Job/Task control Task.
 
 
-###7.0.4 [2013-08-15]
+### 7.0.4 [2013-08-15]
 
 #### Bug Fixes
 
@@ -6474,7 +6474,7 @@ hide_title: 'true'
 :white_check_mark: Install: FIxed an issue with VixCOM.dll which could cause installation problems on some x86 servers
 
 
-###7.0.3 [2013-08-12]
+### 7.0.3 [2013-08-12]
 
 #### Bug Fixes
 
@@ -6490,7 +6490,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem with sending emails with Email Task when special recipient type was empty
 
 
-###7.0.2 [2013-08-07]
+### 7.0.2 [2013-08-07]
 
 #### Bug Fixes
 
@@ -6504,7 +6504,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed an issue that ending semicolon was deleted in SQL queries (appeared first in 7.0.1)
 
 
-###7.0.1 [2013-08-02]
+### 7.0.1 [2013-08-02]
 
 #### Notes
 
@@ -6600,7 +6600,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a problem showing the right Variable key in Job Variables window
 
 
-###6.2.2 [2013-04-08]
+### 6.2.2 [2013-04-08]
 
 #### Bug Fixes
 
@@ -6614,7 +6614,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a statistics logging error (InternalWorkerThread->OutputStatistics)
 
 
-###6.2.1 [2013-04-03]
+### 6.2.1 [2013-04-03]
 
 #### Features
 
@@ -6637,7 +6637,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem with importing settings
 
 
-###6.2.0 [2013-03-19]
+### 6.2.0 [2013-03-19]
 
 #### Features
 
@@ -6690,7 +6690,7 @@ hide_title: 'true'
 :white_check_mark: Server: Additional fix for 'retry times' in Email Trigger corrected in 6.1.9
 
 
-###6.1.9 [2013-02-26]
+### 6.1.9 [2013-02-26]
 
 #### Features
 
@@ -6741,7 +6741,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed issues moving a mail to other folder (Email Trigger)
 
 
-###6.1.8 [2013-01-12]
+### 6.1.8 [2013-01-12]
 
 #### Features
 
@@ -6780,7 +6780,7 @@ hide_title: 'true'
 :white_check_mark: Client: Added missing SQL Explorer permission
 
 
-###6.1.7 [2012-12-27]
+### 6.1.7 [2012-12-27]
 
 #### Notes
 
@@ -6826,7 +6826,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed Variable handling in the Registry Task
 
 
-###6.1.5 [2012-11-08]
+### 6.1.5 [2012-11-08]
 
 #### Features
 
@@ -6863,7 +6863,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a time zone bug (when scheduling against a server in another time zone)
 
 
-###6.1.4 [2012-10-10]
+### 6.1.4 [2012-10-10]
 
 #### Features
 
@@ -6912,7 +6912,7 @@ hide_title: 'true'
 :white_check_mark: API: Handled a reconnection problem when wrong password was specified
 
 
-###6.1.3 [2012-09-04]
+### 6.1.3 [2012-09-04]
 
 #### Features
 
@@ -6957,7 +6957,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed Job Test button issue that could cause reference problems in Client (foreign key errors)
 
 
-###6.1.2 [2012-06-26]
+### 6.1.2 [2012-06-26]
 
 #### Notes
 
@@ -6999,7 +6999,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a temporary folder location issue for Office Macro Tasks
 
 
-###6.1.1 [2012-05-17]
+### 6.1.1 [2012-05-17]
 
 #### Features
 
@@ -7024,7 +7024,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed an issue with loading referenced libraries in Unmanaged dll call Task
 
 
-###6.1.0 [2012-04-27]
+### 6.1.0 [2012-04-27]
 
 #### Notes
 
@@ -7088,7 +7088,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a problem with changing Task order in Task listing
 
 
-###6.0.9 [2012-03-29]
+### 6.0.9 [2012-03-29]
 
 #### Features
 
@@ -7115,7 +7115,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed an issue with a reference to System.Data in Web service Task
 
 
-###6.0.8 [2012-03-02]
+### 6.0.8 [2012-03-02]
 
 #### Notes
 
@@ -7139,7 +7139,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed an output problem in the Execute script Task
 
 
-###6.0.7 [2012-02-28]
+### 6.0.7 [2012-02-28]
 
 #### Notes
 
@@ -7237,7 +7237,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed an issue with reading some files in Excel Tasks
 
 
-###6.0.6 [2012-01-13]
+### 6.0.6 [2012-01-13]
 
 #### Notes
 
@@ -7287,7 +7287,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed temp folder issue with SSIS Task
 
 
-###6.0.5 [2011-12-20]
+### 6.0.5 [2011-12-20]
 
 #### Notes
 
@@ -7331,7 +7331,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed an issue with password when signing an email with PGP key
 
 
-###6.0.4 [2011-11-16]
+### 6.0.4 [2011-11-16]
 
 #### Features
 
@@ -7376,7 +7376,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Fixed a FTP parsing issue which could result in items not displaying the correct type (file/dir)
 
 
-###6.0.3 [2011-10-20]
+### 6.0.3 [2011-10-20]
 
 #### Features
 
@@ -7393,7 +7393,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem with report back Task completion which occured on some machines - if you are using 6.0.x we strongly suggest that you upgrade
 
 
-###6.0.2 [2011-10-18]
+### 6.0.2 [2011-10-18]
 
 #### Bug Fixes
 
@@ -7411,7 +7411,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Convert remote FTP time to local in FTP browser and download comparison
 
 
-###6.0.0 [2011-10-17]
+### 6.0.0 [2011-10-17]
 
 #### Features
 
@@ -7462,7 +7462,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a problem in the “Remote save files dialog”. The dialog could crash in some situations.
 
 
-###6.0.1 [2011-10-17]
+### 6.0.1 [2011-10-17]
 
 #### Bug Fixes
 
@@ -7470,7 +7470,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem with "Run Tasks in order". If you are using 6.0.0 we strongly suggest that you upgrade.
 
 
-###5.8.1 [2011-08-30]
+### 5.8.1 [2011-08-30]
 
 #### Notes
 
@@ -7504,7 +7504,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a timezone bug - could potentially affect Interval triggers scheduled a longer time ahead
 
 
-###5.8.0 [2011-08-22]
+### 5.8.0 [2011-08-22]
 
 #### Notes
 
@@ -7536,7 +7536,7 @@ hide_title: 'true'
 :white_check_mark: Server: write-error command for writing to std error output in Powershell Task did not properly transfer output to the standard error value of the Task
 
 
-###5.7.9 [2011-08-12]
+### 5.7.9 [2011-08-12]
 
 #### Features
 
@@ -7557,7 +7557,7 @@ hide_title: 'true'
 :white_check_mark: Server: Handled a .NET bug causing file filter to fail in special occasions
 
 
-###5.7.8 [2011-07-29]
+### 5.7.8 [2011-07-29]
 
 #### Bug Fixes
 
@@ -7573,7 +7573,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a copy file issue with the Remote file explorer tool
 
 
-###5.7.7 [2011-06-23]
+### 5.7.7 [2011-06-23]
 
 #### Features
 
@@ -7590,7 +7590,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a potential server crash problem with the Kill Task
 
 
-###5.7.6 [2011-06-14]
+### 5.7.6 [2011-06-14]
 
 #### Features
 
@@ -7605,7 +7605,7 @@ hide_title: 'true'
 :white_check_mark: Client/API: Fixed an issue with listing remote services in Service Trigger
 
 
-###5.7.5 [2011-05-27]
+### 5.7.5 [2011-05-27]
 
 #### Notes
 
@@ -7640,7 +7640,7 @@ hide_title: 'true'
 :white_check_mark: Client/API: Fixed an issue with showing output Variables for the first time in the Variables browser
 
 
-###5.7.4 [2011-04-07]
+### 5.7.4 [2011-04-07]
 
 #### Features
 
@@ -7663,7 +7663,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed crash in Set Variable Task when wrong type was used
 
 
-###5.7.3 [2011-04-01]
+### 5.7.3 [2011-04-01]
 
 #### Bug Fixes
 
@@ -7685,7 +7685,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a Credential problem in the Archive->Extract method
 
 
-###5.7.2 [2011-03-28]
+### 5.7.2 [2011-03-28]
 
 #### Features
 
@@ -7726,7 +7726,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed PDF printing issue
 
 
-###5.7.0 [2010-11-23]
+### 5.7.0 [2010-11-23]
 
 #### Features
 
@@ -7763,7 +7763,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a bug in SQL parameter values when using Variables (length problem)
 
 
-###5.6.9 [2010-09-21]
+### 5.6.9 [2010-09-21]
 
 #### Bug Fixes
 
@@ -7773,7 +7773,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Fixed a security issue with Active Directory logon method
 
 
-###5.6.8 [2010-09-15]
+### 5.6.8 [2010-09-15]
 
 #### Bug Fixes
 
@@ -7791,7 +7791,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem with SSIS Task when executing package in database
 
 
-###5.6.7 [2010-09-02]
+### 5.6.7 [2010-09-02]
 
 #### Features
 
@@ -7812,7 +7812,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Fixed some bugs in Excel - Read cell Task
 
 
-###5.6.6 [2010-08-20]
+### 5.6.6 [2010-08-20]
 
 #### Features
 
@@ -7833,7 +7833,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem with the Event log Trigger where Event type was not matching correctly
 
 
-###5.6.5 [2010-08-03]
+### 5.6.5 [2010-08-03]
 
 #### Features
 
@@ -7850,7 +7850,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed some issues in Permissions (Add) created in 5.6.4.
 
 
-###5.6.4 [2010-07-23]
+### 5.6.4 [2010-07-23]
 
 #### Features
 
@@ -7871,7 +7871,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed problem with overwriting files in WebDAV Upload Task
 
 
-###5.6.3 [2010-07-14]
+### 5.6.3 [2010-07-14]
 
 #### Features
 
@@ -7892,7 +7892,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem when using Variables in the destination file mask of PGP Decrypt Task
 
 
-###5.6.2 [2010-06-29]
+### 5.6.2 [2010-06-29]
 
 #### Bug Fixes
 
@@ -7902,7 +7902,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem which could cause a crash if a Connection was not found at start
 
 
-###5.6.1 [2010-05-31]
+### 5.6.1 [2010-05-31]
 
 #### Features
 
@@ -7939,7 +7939,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem with auto detection of document in Print Task.
 
 
-###5.6.0 [2010-05-23]
+### 5.6.0 [2010-05-23]
 
 #### Bug Fixes
 
@@ -7959,7 +7959,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a startup problem connected to running missed Jobs
 
 
-###5.5.9 [2010-05-10]
+### 5.5.9 [2010-05-10]
 
 #### Features
 
@@ -7984,7 +7984,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a Variable problem with SFTP change folder Task
 
 
-###5.5.8 [2010-04-23]
+### 5.5.8 [2010-04-23]
 
 #### Features
 
@@ -7997,7 +7997,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a timeout problem when starting the VisualCron service
 
 
-###5.5.7 [2010-04-22]
+### 5.5.7 [2010-04-22]
 
 #### Features
 
@@ -8018,7 +8018,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem with HELO/EHLO message in SMTP where remote address was sent instead of local
 
 
-###5.5.6 [2010-04-07]
+### 5.5.6 [2010-04-07]
 
 #### Features
 
@@ -8039,7 +8039,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a COM problem with the SSIS Execute Task
 
 
-###5.5.5 [2010-03-04]
+### 5.5.5 [2010-03-04]
 
 #### Bug Fixes
 
@@ -8055,7 +8055,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem with Task output on Set Variable Task (which was one change behind when updating)
 
 
-###5.5.4 [2010-02-25]
+### 5.5.4 [2010-02-25]
 
 #### Features
 
@@ -8086,7 +8086,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem reading some XML files with namespaces in XML Read Node Task
 
 
-###5.5.3 [2010-02-08]
+### 5.5.3 [2010-02-08]
 
 #### Bug Fixes
 
@@ -8106,7 +8106,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a timeout problem in SSH Task (timeout property was not set and it was using default 30 seconds)
 
 
-###5.5.2 [2010-01-29]
+### 5.5.2 [2010-01-29]
 
 #### Features
 
@@ -8133,7 +8133,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a bug in Desktop Macro Task when recording twice
 
 
-###5.5.1 [2010-01-22]
+### 5.5.1 [2010-01-22]
 
 #### Notes
 
@@ -8165,7 +8165,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed some issues with the File Trigger and "Trigger when released" when working against a drive on the network
 
 
-###5.5.0 [2010-01-16]
+### 5.5.0 [2010-01-16]
 
 #### Features
 
@@ -8190,7 +8190,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a problem which could prevent the button "Get full output" in output window being enabled
 
 
-###5.4.9 [2009-12-22]
+### 5.4.9 [2009-12-22]
 
 #### Features
 
@@ -8209,7 +8209,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Fixed support for MAX in SQL Task
 
 
-###5.4.8 [2009-12-17]
+### 5.4.8 [2009-12-17]
 
 #### Features
 
@@ -8256,7 +8256,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a problem in Guide (StyleAPI)
 
 
-###5.4.7 [2009-11-28]
+### 5.4.7 [2009-11-28]
 
 #### Features
 
@@ -8277,7 +8277,7 @@ hide_title: 'true'
 :white_check_mark: Server: Now ignoring FTP reply 257
 
 
-###5.4.6 [2009-11-25]
+### 5.4.6 [2009-11-25]
 
 #### Features
 
@@ -8296,7 +8296,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed an unhandled error in FTP
 
 
-###5.4.5 [2009-11-18]
+### 5.4.5 [2009-11-18]
 
 #### Features
 
@@ -8323,7 +8323,7 @@ hide_title: 'true'
 :white_check_mark: Server: Now ignoring FTP reply 553
 
 
-###5.4.4 [2009-11-15]
+### 5.4.4 [2009-11-15]
 
 #### Bug Fixes
 
@@ -8343,7 +8343,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem with Execute task "Handle is invalid"
 
 
-###5.4.3 [2009-11-11]
+### 5.4.3 [2009-11-11]
 
 #### Bug Fixes
 
@@ -8353,7 +8353,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a memory problem in output
 
 
-###5.4.2 [2009-11-10]
+### 5.4.2 [2009-11-10]
 
 #### Features
 
@@ -8372,7 +8372,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a memory problem in output
 
 
-###5.4.0 [2009-11-09]
+### 5.4.0 [2009-11-09]
 
 #### Features
 
@@ -8385,7 +8385,7 @@ hide_title: 'true'
 :star: Client/Server: Added timeout and retry function for Mail Trigger
 
 
-###5.4.1 [2009-11-09]
+### 5.4.1 [2009-11-09]
 
 #### Features
 
@@ -8402,7 +8402,7 @@ hide_title: 'true'
 :star: Client: Grouping->Added multiple selection activate/inactivate Jobs/Tasks
 
 
-###5.3.9 [2009-11-06]
+### 5.3.9 [2009-11-06]
 
 #### Features
 
@@ -8415,7 +8415,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a Job deadlock in the API
 
 
-###5.3.8 [2009-11-04]
+### 5.3.8 [2009-11-04]
 
 #### Features
 
@@ -8428,7 +8428,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a Job deadlock in the API
 
 
-###5.3.7 [2009-10-28]
+### 5.3.7 [2009-10-28]
 
 #### Bug Fixes
 
@@ -8444,7 +8444,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed sort order in Job/Task control to Order instead of Name
 
 
-###5.3.6 [2009-10-23]
+### 5.3.6 [2009-10-23]
 
 #### Bug Fixes
 
@@ -8452,7 +8452,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a in file filter regarding regexp
 
 
-###5.3.5 [2009-10-22]
+### 5.3.5 [2009-10-22]
 
 #### Bug Fixes
 
@@ -8462,7 +8462,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed and unhandled FTP reply (425 and 150)
 
 
-###5.3.4 [2009-10-09]
+### 5.3.4 [2009-10-09]
 
 #### Features
 
@@ -8479,7 +8479,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed date Variable parsing
 
 
-###5.3.3 [2009-10-03]
+### 5.3.3 [2009-10-03]
 
 #### Features
 
@@ -8504,7 +8504,7 @@ hide_title: 'true'
 :white_check_mark: Server: Handled an unhandled error in Event log Trigger
 
 
-###5.3.2 [2009-08-23]
+### 5.3.2 [2009-08-23]
 
 #### Features
 
@@ -8521,7 +8521,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed some minor bugs in the flow chart
 
 
-###5.3.1 [2009-08-03]
+### 5.3.1 [2009-08-03]
 
 #### Bug Fixes
 
@@ -8529,7 +8529,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a GUI bug that appeared when selecting Tasks
 
 
-###5.3.0 [2009-07-31]
+### 5.3.0 [2009-07-31]
 
 #### Features
 
@@ -8560,7 +8560,7 @@ hide_title: 'true'
 :white_check_mark: Client: Handled a bug in Remote file browser
 
 
-###5.2.2 [2009-07-19]
+### 5.2.2 [2009-07-19]
 
 #### Features
 
@@ -8601,7 +8601,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed support for MVS servers (FTP Task)
 
 
-###5.2.1 [2009-07-09]
+### 5.2.1 [2009-07-09]
 
 #### Features
 
@@ -8618,7 +8618,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed from with email time encoding in Email Task
 
 
-###5.2.0 [2009-06-30]
+### 5.2.0 [2009-06-30]
 
 #### Features
 
@@ -8635,7 +8635,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem where exit code on Copy Files Task was not reported correctly on error
 
 
-###5.1.9 [2009-06-25]
+### 5.1.9 [2009-06-25]
 
 #### Bug Fixes
 
@@ -8653,7 +8653,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a problem with downloading latest version and max version (according to license)
 
 
-###5.1.8 [2009-06-24]
+### 5.1.8 [2009-06-24]
 
 #### Bug Fixes
 
@@ -8663,7 +8663,7 @@ hide_title: 'true'
 :white_check_mark: Server: FileNotFound error is now raised in Execute script (if file is not found)
 
 
-###5.1.7 [2009-06-03]
+### 5.1.7 [2009-06-03]
 
 #### Bug Fixes
 
@@ -8675,7 +8675,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed double incremental of Variable NoExecutes in Archive and Copy files Task
 
 
-###5.1.6 [2009-06-02]
+### 5.1.6 [2009-06-02]
 
 #### Features
 
@@ -8688,7 +8688,7 @@ hide_title: 'true'
 :star: Client/API: Added optional Condition Check when running manually. From now on Conditions are not checked when Jobs or Tasks are being run manually.
 
 
-###5.1.5 [2009-05-25]
+### 5.1.5 [2009-05-25]
 
 #### Features
 
@@ -8705,7 +8705,7 @@ hide_title: 'true'
 :white_check_mark: Client/API/Server: Fixed last trigger Variable for Time triggers
 
 
-###5.1.4 [2009-05-24]
+### 5.1.4 [2009-05-24]
 
 #### Features
 
@@ -8732,7 +8732,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server/API: Fixed an error in DATEFORMAT in FileFilter
 
 
-###5.1.3 [2009-05-10]
+### 5.1.3 [2009-05-10]
 
 #### Features
 
@@ -8745,7 +8745,7 @@ hide_title: 'true'
 :star: Client: Added computers listing at different places
 
 
-###5.1.2 [2009-05-03]
+### 5.1.2 [2009-05-03]
 
 #### Features
 
@@ -8768,7 +8768,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed problem with relative paths within zip file in Archive Task
 
 
-###5.1.1 [2009-04-19]
+### 5.1.1 [2009-04-19]
 
 #### Features
 
@@ -8801,7 +8801,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Reverted back to original handling of public key authentication in SFTP
 
 
-###5.1.0 [2009-04-01]
+### 5.1.0 [2009-04-01]
 
 #### Bug Fixes
 
@@ -8811,7 +8811,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem with sourcefolder being creating in SFTP (upload) destination folder (instead of content of source folder)
 
 
-###5.0.8 [2009-03-31]
+### 5.0.8 [2009-03-31]
 
 #### Bug Fixes
 
@@ -8823,7 +8823,7 @@ hide_title: 'true'
 :white_check_mark: Server: Added support for custom parsing of FTP: Windows_NT version 5.0
 
 
-###5.0.9 [2009-03-31]
+### 5.0.9 [2009-03-31]
 
 #### Bug Fixes
 
@@ -8833,7 +8833,7 @@ hide_title: 'true'
 :white_check_mark: Server: Removed trailing slash in Copy files Task which could cause compatibility issues between version 4 and 5
 
 
-###5.0.7 [2009-03-26]
+### 5.0.7 [2009-03-26]
 
 #### Bug Fixes
 
@@ -8843,7 +8843,7 @@ hide_title: 'true'
 :white_check_mark: Client: Changed to SaveFileDialog from OpenFileDialog in Export settings Task
 
 
-###5.0.6 [2009-03-24]
+### 5.0.6 [2009-03-24]
 
 #### Bug Fixes
 
@@ -8851,7 +8851,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed parsing issues in FTP
 
 
-###5.0.5 [2009-03-21]
+### 5.0.5 [2009-03-21]
 
 #### Features
 
@@ -8872,7 +8872,7 @@ hide_title: 'true'
 :white_check_mark: Server/API: Better connection handling
 
 
-###5.0.4 [2009-03-10]
+### 5.0.4 [2009-03-10]
 
 #### Bug Fixes
 
@@ -8884,7 +8884,7 @@ hide_title: 'true'
 :white_check_mark: Installation: Fixed a problem of a missing file that could cause installation errors
 
 
-###5.0.3 [2009-03-07]
+### 5.0.3 [2009-03-07]
 
 #### Features
 
@@ -8901,7 +8901,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed some issues with deleting SQL connections from the SQL Explorer window
 
 
-###5.0.2 [2009-02-23]
+### 5.0.2 [2009-02-23]
 
 #### Bug Fixes
 
@@ -8911,7 +8911,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a problem with rename/new folder in remote folder browser dialog
 
 
-###5.0.1 [2009-02-19]
+### 5.0.1 [2009-02-19]
 
 #### Bug Fixes
 
@@ -8919,7 +8919,7 @@ hide_title: 'true'
 :white_check_mark: Install: Fixed some minor installation problems
 
 
-###5.0.0 [2009-02-17]
+### 5.0.0 [2009-02-17]
 
 #### Bug Fixes
 
@@ -8935,7 +8935,7 @@ hide_title: 'true'
 :white_check_mark: Server: Handled an error when stopping (already stopped service) or when starting (already started service)
 
 
-###4.9.58 [2009-02-11]
+### 4.9.58 [2009-02-11]
 
 #### Bug Fixes
 
@@ -8947,7 +8947,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: TimeTrigger->Last day in month had an update problem
 
 
-###4.9.57 [2009-02-01]
+### 4.9.57 [2009-02-01]
 
 #### Features
 
@@ -8964,7 +8964,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a problem adding a new Server
 
 
-###4.9.55 [2009-01-29]
+### 4.9.55 [2009-01-29]
 
 #### Bug Fixes
 
@@ -8974,7 +8974,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a bug in FTP upload concerning upload path
 
 
-###4.9.56 [2009-01-29]
+### 4.9.56 [2009-01-29]
 
 #### Bug Fixes
 
@@ -8984,7 +8984,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a bug with Variables in Notification
 
 
-###4.9.54 [2009-01-27]
+### 4.9.54 [2009-01-27]
 
 #### Bug Fixes
 
@@ -8992,7 +8992,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed Job Variables bug in File Filter
 
 
-###4.9.53 [2009-01-26]
+### 4.9.53 [2009-01-26]
 
 #### Features
 
@@ -9015,7 +9015,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed an UI bug in export settings
 
 
-###4.9.52 [2009-01-22]
+### 4.9.52 [2009-01-22]
 
 #### Features
 
@@ -9046,7 +9046,7 @@ hide_title: 'true'
 :white_check_mark: API: Handled problem: "Port busy. All pipes are busy."
 
 
-###4.9.47 [2009-01-02]
+### 4.9.47 [2009-01-02]
 
 #### Bug Fixes
 
@@ -9058,7 +9058,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem where the "Trial period is over" could popup at startup
 
 
-###4.9.45 [2008-12-31]
+### 4.9.45 [2008-12-31]
 
 #### Features
 
@@ -9077,7 +9077,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed problem with LastTrigger Variable in Conditions
 
 
-###4.9.44 [2008-12-23]
+### 4.9.44 [2008-12-23]
 
 #### Bug Fixes
 
@@ -9091,7 +9091,7 @@ hide_title: 'true'
 :white_check_mark: Server: Handled error in SSH Task
 
 
-###4.9.43 [2008-12-17]
+### 4.9.43 [2008-12-17]
 
 #### Bug Fixes
 
@@ -9103,7 +9103,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed issue Windows XP and mail decryption
 
 
-###4.9.42 [2008-12-08]
+### 4.9.42 [2008-12-08]
 
 #### Bug Fixes
 
@@ -9111,7 +9111,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed Variable resolving for Condition.Contains
 
 
-###4.9.41 [2008-12-05]
+### 4.9.41 [2008-12-05]
 
 #### Features
 
@@ -9134,7 +9134,7 @@ hide_title: 'true'
 :white_check_mark: Server/Client/API: Fixed a problem with Stop/Start Server from API
 
 
-###4.9.40 [2008-11-23]
+### 4.9.40 [2008-11-23]
 
 #### Bug Fixes
 
@@ -9142,7 +9142,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a problem with the Connections window
 
 
-###4.9.38 [2008-11-13]
+### 4.9.38 [2008-11-13]
 
 #### Bug Fixes
 
@@ -9152,7 +9152,7 @@ hide_title: 'true'
 :white_check_mark: Server: Did some optimizations in the Server regarding the File Trigger
 
 
-###4.9.36 [2008-11-11]
+### 4.9.36 [2008-11-11]
 
 #### Bug Fixes
 
@@ -9160,7 +9160,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a dialog problem (showing OpenFileDialog and FolderDialog in some windows)
 
 
-###4.9.37 [2008-11-11]
+### 4.9.37 [2008-11-11]
 
 #### Bug Fixes
 
@@ -9172,14 +9172,14 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed login check in some Tasks using Credential
 
 
-###4.9.35 [2008-11-09]
+### 4.9.35 [2008-11-09]
 
 #### Features
 
 :star: Client: Enabled empty Condition and File content
 
 
-###4.9.34 [2008-11-04]
+### 4.9.34 [2008-11-04]
 
 #### Features
 
@@ -9192,7 +9192,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Fixed calculation of Julian Day
 
 
-###4.9.33 [2008-10-31]
+### 4.9.33 [2008-10-31]
 
 #### Features
 
@@ -9207,7 +9207,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a problem with right click for cut/copy
 
 
-###4.9.31 [2008-10-30]
+### 4.9.31 [2008-10-30]
 
 #### Bug Fixes
 
@@ -9223,7 +9223,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed attachment folder Variable
 
 
-###4.9.32 [2008-10-30]
+### 4.9.32 [2008-10-30]
 
 #### Bug Fixes
 
@@ -9235,7 +9235,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a Retry problem in the On Error functionality
 
 
-###4.9.30 [2008-10-22]
+### 4.9.30 [2008-10-22]
 
 #### Features
 
@@ -9248,7 +9248,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a validation problem which could lead to a crash in the Calculate Variable Task
 
 
-###4.9.29 [2008-10-21]
+### 4.9.29 [2008-10-21]
 
 #### Features
 
@@ -9269,7 +9269,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem with created and modified date being reset at import and restart
 
 
-###4.9.28 [2008-10-17]
+### 4.9.28 [2008-10-17]
 
 #### Features
 
@@ -9284,7 +9284,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a saving problem of Jobs which could disturb NewLine characters
 
 
-###4.9.27 [2008-10-15]
+### 4.9.27 [2008-10-15]
 
 #### Features
 
@@ -9303,7 +9303,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a null reference problem in HTTP Task
 
 
-###4.9.26 [2008-09-28]
+### 4.9.26 [2008-09-28]
 
 #### Features
 
@@ -9320,7 +9320,7 @@ hide_title: 'true'
 :white_check_mark: Client/API: Fixed some Time exception bugs
 
 
-###4.9.25 [2008-09-27]
+### 4.9.25 [2008-09-27]
 
 #### Features
 
@@ -9343,7 +9343,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed proper show of extended debug logging setting
 
 
-###4.9.24 [2008-09-23]
+### 4.9.24 [2008-09-23]
 
 #### Features
 
@@ -9364,7 +9364,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a bug with missing Tasks in Active Job
 
 
-###4.9.23 [2008-09-18]
+### 4.9.23 [2008-09-18]
 
 #### Bug Fixes
 
@@ -9376,7 +9376,7 @@ hide_title: 'true'
 :white_check_mark: API: Fixed internal sort problem
 
 
-###4.9.22 [2008-09-17]
+### 4.9.22 [2008-09-17]
 
 #### Features
 
@@ -9389,7 +9389,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a refresh issue with network drives
 
 
-###4.9.21 [2008-09-14]
+### 4.9.21 [2008-09-14]
 
 #### Features
 
@@ -9412,7 +9412,7 @@ hide_title: 'true'
 :white_check_mark: Client/API/Server: Fixed some issues with Network drives
 
 
-###4.9.20 [2008-09-09]
+### 4.9.20 [2008-09-09]
 
 #### Bug Fixes
 
@@ -9422,7 +9422,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a Task stepping problem
 
 
-###4.9.18 [2008-09-04]
+### 4.9.18 [2008-09-04]
 
 #### Features
 
@@ -9441,7 +9441,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a bug concerning GUI updates of Connections
 
 
-###4.9.19 [2008-09-04]
+### 4.9.19 [2008-09-04]
 
 #### Features
 
@@ -9458,7 +9458,7 @@ hide_title: 'true'
 :white_check_mark: API: Fixed a problem with trigger update
 
 
-###4.9.17 [2008-09-03]
+### 4.9.17 [2008-09-03]
 
 #### Features
 
@@ -9475,7 +9475,7 @@ hide_title: 'true'
 :white_check_mark: Client/API: Fixed a bug in the SFTP Task when using / folder
 
 
-###4.9.14 [2008-09-01]
+### 4.9.14 [2008-09-01]
 
 #### Features
 
@@ -9490,7 +9490,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a problem with closing the Execution context window
 
 
-###4.9.15 [2008-09-01]
+### 4.9.15 [2008-09-01]
 
 #### Bug Fixes
 
@@ -9500,7 +9500,7 @@ hide_title: 'true'
 :white_check_mark: Client/API/Server: Fixed a problem with deleting PGP key rings
 
 
-###4.9.12 [2008-08-23]
+### 4.9.12 [2008-08-23]
 
 #### Features
 
@@ -9533,7 +9533,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a Job timeout bug concerning threating it as error
 
 
-###4.9.11 [2008-07-25]
+### 4.9.11 [2008-07-25]
 
 #### Bug Fixes
 
@@ -9543,7 +9543,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed SQL Trigger timeout bug
 
 
-###4.9.10 [2008-07-24]
+### 4.9.10 [2008-07-24]
 
 #### Bug Fixes
 
@@ -9553,7 +9553,7 @@ hide_title: 'true'
 :white_check_mark: API: Fixed various problems with Remove methods
 
 
-###4.9.9 [2008-07-10]
+### 4.9.9 [2008-07-10]
 
 #### Features
 
@@ -9568,7 +9568,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Fixed a with linefeed/carriage return in File write task and File Notification
 
 
-###4.9.8 [2008-07-09]
+### 4.9.8 [2008-07-09]
 
 #### Bug Fixes
 
@@ -9580,7 +9580,7 @@ hide_title: 'true'
 :white_check_mark: Client: Corrected some minor issues concerning Variables GUI
 
 
-###4.9.7 [2008-07-08]
+### 4.9.7 [2008-07-08]
 
 #### Features
 
@@ -9597,14 +9597,14 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem with WatcherChangeType "Delete" and TriggerWhenReleased setting
 
 
-###4.9.6 [2008-06-25]
+### 4.9.6 [2008-06-25]
 
 #### Features
 
 :star: Client/Server/API: Added Variables support
 
 
-###4.9.5 [2008-06-11]
+### 4.9.5 [2008-06-11]
 
 #### Bug Fixes
 
@@ -9612,7 +9612,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed correct form validation of Conditions->VisualCron
 
 
-###4.9.4 [2008-06-04]
+### 4.9.4 [2008-06-04]
 
 #### Features
 
@@ -9625,14 +9625,14 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed an gui issue concerning non-army time in Time Exceptions
 
 
-###4.9.3 [2008-05-20]
+### 4.9.3 [2008-05-20]
 
 #### Features
 
 :star: Client/Server: File trigger values are now updated dynamically
 
 
-###4.9.2 [2008-05-14]
+### 4.9.2 [2008-05-14]
 
 #### Features
 
@@ -9649,7 +9649,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed an FTP download issue
 
 
-###4.9.1 [2008-05-09]
+### 4.9.1 [2008-05-09]
 
 #### Bug Fixes
 
@@ -9657,7 +9657,7 @@ hide_title: 'true'
 :white_check_mark: API: Fixed a synchronization problem
 
 
-###4.9.0 [2008-05-01]
+### 4.9.0 [2008-05-01]
 
 #### Features
 
@@ -9672,7 +9672,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed SFTP transfer 2 gb limit
 
 
-###4.8.9 [2008-04-15]
+### 4.8.9 [2008-04-15]
 
 #### Features
 
@@ -9681,7 +9681,7 @@ hide_title: 'true'
 :star: Client/Server: Added wildcard support for attachments in Email Task
 
 
-###4.8.8 [2008-04-05]
+### 4.8.8 [2008-04-05]
 
 #### Features
 
@@ -9694,7 +9694,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a printing bug
 
 
-###4.8.7 [2008-03-30]
+### 4.8.7 [2008-03-30]
 
 #### Bug Fixes
 
@@ -9702,7 +9702,7 @@ hide_title: 'true'
 :white_check_mark: Tray: Fixed an issue when the tray window was visible when switching between windows
 
 
-###4.8.6 [2008-03-25]
+### 4.8.6 [2008-03-25]
 
 #### Bug Fixes
 
@@ -9710,7 +9710,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a path problem in FTP task
 
 
-###4.8.5 [2008-03-20]
+### 4.8.5 [2008-03-20]
 
 #### Bug Fixes
 
@@ -9724,7 +9724,7 @@ hide_title: 'true'
 :white_check_mark: Server/API: Added optimization flag and debug info
 
 
-###4.8.4 [2008-02-24]
+### 4.8.4 [2008-02-24]
 
 #### Bug Fixes
 
@@ -9736,7 +9736,7 @@ hide_title: 'true'
 :white_check_mark: Server: Added PROT P commmand to secure FTP connections
 
 
-###4.8.3 [2008-02-19]
+### 4.8.3 [2008-02-19]
 
 #### Features
 
@@ -9753,7 +9753,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Fixed a problem with the RunOnce property
 
 
-###4.8.2 [2008-02-07]
+### 4.8.2 [2008-02-07]
 
 #### Features
 
@@ -9772,7 +9772,7 @@ hide_title: 'true'
 :white_check_mark: API: Fixed a problem with adding Time exception collections
 
 
-###4.8.1 [2008-01-26]
+### 4.8.1 [2008-01-26]
 
 #### Bug Fixes
 
@@ -9780,7 +9780,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Fixed a logon problem on Windows XP
 
 
-###4.8.0 [2008-01-24]
+### 4.8.0 [2008-01-24]
 
 #### Features
 
@@ -9809,7 +9809,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a loading bug of proxy settings
 
 
-###4.9.39 [2008-01-21]
+### 4.9.39 [2008-01-21]
 
 #### Bug Fixes
 
@@ -9821,7 +9821,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a problem with Time exceptions
 
 
-###4.7.8 [2008-01-05]
+### 4.7.8 [2008-01-05]
 
 #### Features
 
@@ -9840,7 +9840,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed an unhandled exception in Execute task
 
 
-###4.7.7 [2007-12-03]
+### 4.7.7 [2007-12-03]
 
 #### Bug Fixes
 
@@ -9850,7 +9850,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed an import problem in PGP (delete old keys)
 
 
-###4.7.5 [2007-11-26]
+### 4.7.5 [2007-11-26]
 
 #### Features
 
@@ -9867,7 +9867,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed connection time in Client connections
 
 
-###4.7.4 [2007-11-22]
+### 4.7.4 [2007-11-22]
 
 #### Features
 
@@ -9882,7 +9882,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a loading bug in the Execution context window
 
 
-###4.7.3 [2007-11-17]
+### 4.7.3 [2007-11-17]
 
 #### Bug Fixes
 
@@ -9890,7 +9890,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed Job status change issue
 
 
-###4.7.2 [2007-11-16]
+### 4.7.2 [2007-11-16]
 
 #### Features
 
@@ -9909,7 +9909,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a bug in FTP download
 
 
-###4.7.1 [2007-11-15]
+### 4.7.1 [2007-11-15]
 
 #### Features
 
@@ -9934,7 +9934,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a bug in key generation (PGP)
 
 
-###4.6.29 [2007-10-15]
+### 4.6.29 [2007-10-15]
 
 #### Features
 
@@ -9951,7 +9951,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a SQL job (OLEDB/ODBC)
 
 
-###4.6.27 [2007-09-05]
+### 4.6.27 [2007-09-05]
 
 #### Features
 
@@ -9972,7 +9972,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a potential lock in File Trigger
 
 
-###4.6.17 [2007-09-01]
+### 4.6.17 [2007-09-01]
 
 #### Bug Fixes
 
@@ -9980,7 +9980,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a case when users was not correctly saved
 
 
-###4.6.16 [2007-08-27]
+### 4.6.16 [2007-08-27]
 
 #### Features
 
@@ -10015,7 +10015,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed some problems with SQL job execution
 
 
-###4.6.9 [2007-06-20]
+### 4.6.9 [2007-06-20]
 
 #### Features
 
@@ -10034,7 +10034,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a bug in the file trigger gui
 
 
-###4.6.8 [2007-06-16]
+### 4.6.8 [2007-06-16]
 
 #### Features
 
@@ -10043,7 +10043,7 @@ hide_title: 'true'
 :star: Client/Server: Added new task: Remote Kill
 
 
-###4.6.7 [2007-06-14]
+### 4.6.7 [2007-06-14]
 
 #### Bug Fixes
 
@@ -10053,7 +10053,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed gui bug in event log event trigger
 
 
-###4.6.6 [2007-06-10]
+### 4.6.6 [2007-06-10]
 
 #### Bug Fixes
 
@@ -10061,7 +10061,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a bug in the Email task with attachments
 
 
-###4.6.4 [2007-06-06]
+### 4.6.4 [2007-06-06]
 
 #### Features
 
@@ -10078,7 +10078,7 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Fixed a calculation bug in SpecificDaysOfTheWeek
 
 
-###4.6.3 [2007-04-28]
+### 4.6.3 [2007-04-28]
 
 #### Features
 
@@ -10103,7 +10103,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed obfuscation problem with API
 
 
-###4.6.1 [2007-04-27]
+### 4.6.1 [2007-04-27]
 
 #### Features
 
@@ -10122,7 +10122,7 @@ hide_title: 'true'
 :white_check_mark: Server: Corrected a DST bug
 
 
-###4.6.0 [2007-04-27]
+### 4.6.0 [2007-04-27]
 
 #### Features
 
@@ -10153,7 +10153,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed unhandled error when saving Jobs
 
 
-###4.5.8 [2007-03-25]
+### 4.5.8 [2007-03-25]
 
 #### Bug Fixes
 
@@ -10163,7 +10163,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed the variable replacement in of attachment file name in Email task
 
 
-###4.5.6 [2007-03-19]
+### 4.5.6 [2007-03-19]
 
 #### Features
 
@@ -10176,7 +10176,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed bug in Connection dialog concerning SFTP/SSH task
 
 
-###4.5.4 [2007-03-13]
+### 4.5.4 [2007-03-13]
 
 #### Features
 
@@ -10191,7 +10191,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed some GUI errors in the File Trigger
 
 
-###4.5.1 [2007-03-03]
+### 4.5.1 [2007-03-03]
 
 #### Features
 
@@ -10230,7 +10230,7 @@ hide_title: 'true'
 :white_check_mark: 	Fixed as sort bug in the main window
 
 
-###4.4.18 [2007-02-23]
+### 4.4.18 [2007-02-23]
 
 #### Bug Fixes
 
@@ -10240,7 +10240,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a cloning bug
 
 
-###4.4.16 [2007-02-21]
+### 4.4.16 [2007-02-21]
 
 #### Bug Fixes
 
@@ -10248,7 +10248,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed a credential interface bug at File Read task
 
 
-###4.4.15 [2007-02-19]
+### 4.4.15 [2007-02-19]
 
 #### Features
 
@@ -10271,7 +10271,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed encoding problem at the FTP task
 
 
-###4.4.6 [2007-02-10]
+### 4.4.6 [2007-02-10]
 
 #### Features
 
@@ -10284,7 +10284,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed problems with the Conditions permissions
 
 
-###4.4.4 [2007-01-17]
+### 4.4.4 [2007-01-17]
 
 #### Features
 
@@ -10301,7 +10301,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed Cancel behavior in the select working directory dialog
 
 
-###4.4.0 [2007-01-14]
+### 4.4.0 [2007-01-14]
 
 #### Features
 
@@ -10350,14 +10350,14 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed bug in "Run missed jobs"
 
 
-###4.3.23 [2006-12-09]
+### 4.3.23 [2006-12-09]
 
 #### Features
 
 :star: Server/Client: Automatic, quiet network install support
 
 
-###4.3.22 [2006-12-03]
+### 4.3.22 [2006-12-03]
 
 #### Bug Fixes
 
@@ -10367,7 +10367,7 @@ hide_title: 'true'
 :white_check_mark: Client: Fixed Network Credentials bug (when adding NC)
 
 
-###4.3.20 [2006-11-27]
+### 4.3.20 [2006-11-27]
 
 #### Features
 
@@ -10398,7 +10398,7 @@ hide_title: 'true'
 :white_check_mark: Server: Last day in month fix, part 2
 
 
-###4.3.8 [2006-11-13]
+### 4.3.8 [2006-11-13]
 
 #### Bug Fixes
 
@@ -10418,7 +10418,7 @@ hide_title: 'true'
 :white_check_mark: Server: Fixed a time exception bug
 
 
-###4.3.0 [2006-11-02]
+### 4.3.0 [2006-11-02]
 
 #### Bug Fixes
 
@@ -10442,7 +10442,7 @@ hide_title: 'true'
 :white_check_mark: Fixed an error in the Manage variables window
 
 
-###4.2.2 [2006-10-13]
+### 4.2.2 [2006-10-13]
 
 #### Features
 
@@ -10451,7 +10451,7 @@ hide_title: 'true'
 :star: Added credentials support for file notification
 
 
-###4.2.0 [2006-10-12]
+### 4.2.0 [2006-10-12]
 
 #### Bug Fixes
 
@@ -10465,7 +10465,7 @@ hide_title: 'true'
 :white_check_mark: Fixed a in copy files task which could cause error when copying
 
 
-###4.1.6 [2006-10-09]
+### 4.1.6 [2006-10-09]
 
 #### Features
 
