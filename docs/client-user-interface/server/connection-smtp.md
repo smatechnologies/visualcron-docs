@@ -55,7 +55,7 @@ Encryption
 * Cryptographic protocol: TLS
 * Security Mode: Implicit
  
-**Office 365**
+**Office 365 (Deprecated after April 2026 by [Microsoft](https://techcommunity.microsoft.com/blog/exchange/exchange-online-to-retire-basic-auth-for-client-submission-smtp-auth/4114750))**
 
 Main settings
 * Address: smtp.office365.com
