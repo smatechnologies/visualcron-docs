@@ -5,6 +5,24 @@ hide_title: 'true'
 
 ## Change Log
 
+### 12.2.2 [2025-09-16]
+
+#### Bug Fixes
+
+
+:white_check_mark: Client/Server: Sharepoint Online Could not load file or assembly  (VCPCM-2599)
+
+:white_check_mark: Client/Server: Remote File Triggers: Object Reference Not set to an Instance of an object (VCPCM-2595)
+
+:white_check_mark: Client: Grid Filter not working (VCPCM-2472)
+
+:white_check_mark: Client: Visual Cron crashes when the interval days selected is Max integer Value (VCPCM-2220)
+
+:white_check_mark: Client/Server: PDF-Convert Task not Converting (VCPCM-2117)
+
+:white_check_mark: Client/Server: Job  was not executed because of multiple Trigger dependency (VCPCM-665)
+
+
 ### 12.2.1 [2025-07-30]
 
 #### Features
@@ -2095,7 +2113,7 @@ hide_title: 'true'
 
 :white_check_mark: Client/Server: Azure->Fixed dll mismatch (Microsoft.IdentityModel.Tokens) (VC-1705)
 
-:white_check_mark: Server: Sync->Fixed an issue with syncing Variables (`<string>` addition) (VC-1700)
+:white_check_mark: Server: Sync->Fixed an issue with syncing Variables (<string> addition) (VC-1700)
 
 :white_check_mark: WebClient: Handled crash in w3wp.exe on disconnect (VC-1710)
 
