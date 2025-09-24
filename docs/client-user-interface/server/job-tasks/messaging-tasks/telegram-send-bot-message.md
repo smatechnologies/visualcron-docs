@@ -21,4 +21,4 @@ The message you want to send.
  
 **Recipient is not visible**
 
-Please note that you need to send first message manually to user in order to see recipient in Recipients tab.
+Please note that the account must have an existing conversation with the bot for the account to appear in the Recipients tab.
