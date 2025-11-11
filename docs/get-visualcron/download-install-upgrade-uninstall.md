@@ -7,13 +7,13 @@ hide_title: 'true'
 
 **Download**
 
-VisualCron 9 utilizes functions and features in the .NET Framework 4.8. The .NET runtime, typically Version 4.8 Redistributable Package, can be downloaded from [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48).
+VisualCron utilizes functions and features in the .NET Framework 4.8. The .NET runtime, typically Version 4.8 Redistributable Package, can be downloaded from [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48).
  
-Download the latest VisualCron version from [VisualCron](https://www.visualcron.com/download.aspx). Download older versions [here](https://www.visualcron.com/Login.aspx?DestinationPageUrl=~/OldVersions.aspx).
+Download the latest VisualCron version from [VisualCron](https://www.visualcron.com/download.aspx). Download older versions [here](https://www.visualcron.com/download-latest.aspx).
  
 To create "silent package" (non exe package) follow these steps:
  
-1. download old version [here](https://www.visualcron.com/Login.aspx?DestinationPageUrl=~/OldVersions.aspx)
+1. download old version [here](https://www.visualcron.com/download-latest.aspx)
 2. install 7-Zip File Manager
 3. right click on exe and choose extract to folder
  
