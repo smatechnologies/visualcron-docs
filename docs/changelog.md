@@ -5,6 +5,41 @@ hide_title: 'true'
 
 ## Change Log
 
+### 12.3.1 [2025-12-08]
+
+#### Features
+
+:star: Client/Server: SQL Task optimized for perfomance (VCPCM-587)
+
+
+#### Bug Fixes
+
+
+:white_check_mark: Client/Server: Task result crashes with The given path`s format is not supported. (VCPCM-2713)
+
+:white_check_mark: Client/Server: SharePoint Add List Item Task – Only One Column Updated (VCPCM-2673)
+
+:white_check_mark: Client/Server: Sync file(s) throws NullReferenceException (VCPCM-2631)
+
+:white_check_mark: Client/Server: Remote File Trigger throws NullReferenceException (VCPCM-2629)
+
+:white_check_mark: Client/Server: Assembly binding error (VCPCM-2626)
+
+:white_check_mark: Client/Server: ECDSA 3334 (Internal Error) (VCPCM-2614)
+
+:white_check_mark: Client/Server: 0byte files being downloaded from SFTP Download Task (VCPCM-2487)
+
+:white_check_mark: Client/Server: Automated Tests for License Management (VCPCM-2483)
+
+:white_check_mark: Client/Server: SFTP Download not respecting timeout value (VCPCM-2475)
+
+:white_check_mark: Client/Server: Active Directory throws NullReferenceException (VCPCM-2325)
+
+:white_check_mark: Client/Server: Server vs Client time difference (VCPCM-2154)
+
+:white_check_mark: Client/Server: PowerShell Common Language Runtime detected an invalid program. (VCPCM-1988)
+
+
 ### 12.2.2 [2025-09-16]
 
 #### Bug Fixes
