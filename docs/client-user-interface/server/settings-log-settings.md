@@ -93,6 +93,8 @@ This option controls how many rows to store. If unchecked then unlimited rows wi
 **General/Audit/Job/Task Delete rows older than x days**
 
 This option controls how many days to store. If unchecked then unlimited days will be stored (or limited by number of rows in setting above).
+
+**Please note:** If the row limit is hit first, this will limit the available date range.
  
 **General/Audit/Job/Task Clear all**
 
