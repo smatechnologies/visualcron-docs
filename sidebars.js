@@ -11,7 +11,6 @@ module.exports = {
       collapsed: true,
       items: [
         'get-visualcron/get-visualcron',
-        'get-visualcron/system-requirements',
         'get-visualcron/download-install-upgrade-uninstall',
         'get-visualcron/assembly-resolver',
         'get-visualcron/remote-silent-customized-installation',
