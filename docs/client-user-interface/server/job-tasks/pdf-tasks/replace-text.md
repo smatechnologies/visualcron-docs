@@ -9,7 +9,7 @@ The PDF - Replace text Task finds and replaces a text string with another text s
  
 **Replace text > Main settings** sub tab
 
-![](../../../../../static/img/taskpdfreplacetextmain.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Replace%20text%20settings.png)
 
 **Find**
 
@@ -37,7 +37,7 @@ This tab uses the common [file filter](../../job-tasks-file-filter.md) to filter
  
 **Replace text > Destination** sub tab
 
-![](../../../../../static/img/taskpdfreplacetextdestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Replace%20text%20destination.png)
 
 **Save to**
 

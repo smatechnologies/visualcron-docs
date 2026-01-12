@@ -9,7 +9,7 @@ The Office365 - Add Calendar Event Task lets you add a Calendar event in the Off
  
 **Office365 - Add calendar event** tab
 
-![](../../../../../static/img/addcalendarevent.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office365%20Tasks/O365%20Add%20Calendar%20events.png)
 
 **Connection**
 

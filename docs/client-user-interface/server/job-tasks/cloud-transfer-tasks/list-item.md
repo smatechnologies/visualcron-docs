@@ -7,6 +7,6 @@ hide_title: 'true'
 
 The Cloud - List item(s) Task is able to list files or folders in Cloud services like Amazon S3, Box, Dropbox, Google Drive, Microsoft Azure and OneDrive.
 
-![](../../../../../static/img/taskcloudlistitems.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Cloud%20Transfer%20Tasks/List%20Items.png)
 
 This Task uses the [Cloud Remote file filter](../../job-tasks-cloud-remote-file-filter) for settings.

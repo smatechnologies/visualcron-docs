@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Dynamics CRM - Download attachment Task downloads one or more attachments a from Dynamics CRM instance.
 
-![](../../../../../static/img/taskdynamicscrmdownloadattachments.png)
+[](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Dynamics%20CRM%20Tasks/Download%20attachment(s).png)
 
 **Connection**
 

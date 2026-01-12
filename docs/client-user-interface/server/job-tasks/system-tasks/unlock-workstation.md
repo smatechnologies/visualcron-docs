@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The System Unlock workstation Task can auto-login or unlock a desktop. If a screen saver is running it will break free from that one too.
 
-![](../../../../../static/img/tasksystemunlockworkstation.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Unlock%20workstation.png)
 
 **Credentials**
 

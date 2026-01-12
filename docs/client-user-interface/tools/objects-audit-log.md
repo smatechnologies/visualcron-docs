@@ -9,7 +9,7 @@ The main menu **Tools > Objects > Audit log** option is used to track changes am
  
 **Tools > Objects > Audit log**
 
-![](../../../static/img/toolsobjectsauditlog.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Objects/Audit%20Log.png)
 
 The audit log is displaying the following information:
 

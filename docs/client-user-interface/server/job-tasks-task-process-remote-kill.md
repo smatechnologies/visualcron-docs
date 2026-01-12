@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Process - Remote Kill Task can terminate a process on another server in the network. If you want to terminate local process then you should use the Kill Task instead.
 
-![](../../../static/img/taskprocessremotekill.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Remote%20Kill.png)
 
 **Credentials**
 

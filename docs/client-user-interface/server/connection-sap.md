@@ -10,21 +10,37 @@ The SAP Connection stores connect and logon properties for SAP R/3 instances.
 The SAP Connection is used in the SAP Task:
 * [SAP - R/3 Job execute](../../client-user-interface/server/job-tasks/sap-tasks/r3-job-execute)
  
-**Manage Connections > Add > SAP > Main settings** tab
+**Manage Connections > Add > SAP > Common settings** tab
 
-![](../../../static/img/connectionsapmain.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SAP/SAP.png)
+
+**Protocol type**
+
+Text
 
 **Name**
 
 The unique name for the Connection
  
+**Group**
+
+The group that the connection is a part of.
+
+**Timeout**
+
+The connection timeout in seconds. Connection will fail after this time period.
+ 
+**Code page**
+
+Code page being used.
+ 
+**Manage Connections > Add > SAP > Connection settings** tab
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SAP/Settings.png)
+
 **Address**
 
 The IP or DNS name to SAP server.
- 
-**Manage Connections > Add > SAP > Authentication** tab
-
-![](../../../static/img/connectionsapauthentication.png)
 
 **Username**
 
@@ -33,10 +49,6 @@ User name for the SAP instance.
 **Password**
 
 Password for the SAP instance.
- 
-**Manage Connections > Add > SAP > Extra settings** tab
-
-![](../../../static/img/connectionsapextra.png)
 
 **System ID**
 

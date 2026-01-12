@@ -9,7 +9,7 @@ The PDF - Sign Task signs existing PDF files with a Certificate and optionally a
  
 **Sign > Main settings** sub tab
 
-![](../../../../../static/img/pdfsignmainsettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Sign%20Settings.png)
 
 **Certificate**
 
@@ -49,7 +49,7 @@ This tab uses the common [file filter](../../job-tasks-file-filter.md) to filter
  
 **Sign > Destination** sub tab
 
-![](../../../../../static/img/pdfsigndestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Sign%20Destination.png)
 
 **Save to**
 
@@ -62,12 +62,6 @@ If *Different folder and use file mask* is selected, use manual folder specifica
 **File mask**
 
 Save file with different name.
- 
-**Sign > Signature widget** sub tab
-
-![](../../../../../static/img/pdfsignsignaturewidget.png)
-
-This option is only available if you have checked *Show signature widget*.
  
 **Properties->No rotate**
 

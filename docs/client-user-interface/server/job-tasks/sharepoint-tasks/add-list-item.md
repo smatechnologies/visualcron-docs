@@ -15,7 +15,7 @@ The SharePoint Tasks supports the following versions:
 * SharePoint 2013
 * SharePoint Online
 
-![](../../../../../static/img/tasksharepointaddlistitem.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Add%20List%20item.png)
 
 **Connection**
 

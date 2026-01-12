@@ -7,3 +7,4 @@ hide_title: 'true'
 
 The main menu **Help > External > Forum** option opens a new web browser window to the VisualCron users/tutorials/support/development [discussion forum](https://www.visualcron.com/forum/) web page. We encourage you to use this forum e.g. for testimonials, problem solving or feature requests.
 
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Help/Forum.png)

@@ -11,5 +11,5 @@ This window uses the same structure as the main menu **Tools > Objects > Audit l
  
 **Job > Audit log**
 
-![](../../../../static/img/jobauditlog.png)
+![](../../../../static/img/Client%20User%20Interface/Toolbar/Audit%20Log.png)
 

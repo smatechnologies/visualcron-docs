@@ -9,7 +9,7 @@ The File - Set attributes Task lets you set attributes for one or more folders o
  
 **Set attributes > Main settings** sub tab
 
-![](../../../../../static/img/taskfilesetattributes.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Set%20Attributes.png)
 
 **Target**
 

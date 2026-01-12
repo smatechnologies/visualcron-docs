@@ -23,7 +23,7 @@ The general process of waking a computer up remotely in a LAN is: The target com
 
 The Magic Packet is a broadcast frame, transmitted over port 0 (historically the most common port used), 7 or 9 (becoming the most common ports used). It can be sent over a variety of connectionless protocols (UDP, IPX) but UDP is most commonly used. The data that is contained in a Magic Packet is the a constant represented in hexadecimal: FF FF FF FF FF FF, followed by sixteen repetitions of the target computer's MAC address, possibly followed by a four or six byte password.
 
-![](../../../../../static/img/tasksystemwakeuponlan.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Wake%20up%20on%20LAN.png)
 
 **MAC Address**
 

@@ -9,9 +9,9 @@ The Exchange WebDAV Connection uses the Exchange WebDAV protocol which is simila
  
 For MS Exchange interoperability, WebDAV can be used for reading/updating/deleting items in a mailbox or public folder. WebDAV for Exchange has been extended by Microsoft to accommodate working with messaging data. Exchange Server version 2000, 2003, and 2007 support WebDAV. However, WebDAV support has been discontinued in Exchange 2010 in favor of Exchange Web Services (EWS), a SOAP/XML based API.
  
-**Manage Connections > Add > Exchange WebDAV > Main settings** tab
+**Manage Connections > Add > Exchange WebDAV > Common settings** tab
 
-![](../../../static/img/connectionexchangewebdavmainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Exchange%20WebDAV/Main%20Settings.png)
 
 **Test**
 
@@ -20,10 +20,10 @@ It is possible to test the connection once you have set all settings. Click the 
 **Name**
 
 The unique name for the Connection.
- 
-**Address**
 
-The DNS name or IP address of the email server.
+**Group**
+
+The group that the connection is a part of
  
 **Timeout**
 
@@ -33,9 +33,13 @@ The connection timeout in seconds. Connection will fail after this time is passe
 
 The table of values that describes the desired character set. Currently this is overridden by the code page in the Task.
  
-**Manage Connections > Add > Exchange WebDAV > Authentication** tab
+**Manage Connections > Add > Exchange WebDAV > Connection settings** tab
 
-![](../../../static/img/connectionexchangewebdavauthentication.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Exchange%20WebDAV/Connection%20Settings.png)
+
+**Address**
+
+The DNS name or IP address of the email server.
 
 **Username**
 
@@ -45,13 +49,9 @@ The user name for the email account.
 
 The password for the email account.
  
-**Alias**
-
-Text ...
- 
 **Manage Connections > Add > Exchange WebDAV > Encryption** tab
 
-![](../../../static/img/connectionexchangewebdavencryption.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Exchange%20WebDAV/Encryption.png)
 
 **Cryptographic protocol**
 
@@ -63,7 +63,7 @@ Some Exchange WebDAV servers require certain versions of SSL/TLS. Check the vers
  
 **Manage Connections > Add > Exchange WebDAV > Proxy** tab
 
-![](../../../static/img/connectionexchangedavproxy.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Exchange%20WebDAV/Proxy.png)
 
 **Proxy type**
 
@@ -79,7 +79,7 @@ The port of the proxy server.
  
 **Use credentials**
 
-Text ...
+The credentials that are associated with the account.
  
 **Domain**
 

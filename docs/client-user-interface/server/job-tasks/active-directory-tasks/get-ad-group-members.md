@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Retrieves a list of group members in the Active directory to the output.
 
-![](../../../../../static/img/taskactivedirectorygetadgroupmembers.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Get%20AD%20Group%20Members.png)
 
 **Credentials**
 

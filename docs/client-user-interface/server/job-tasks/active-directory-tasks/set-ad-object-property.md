@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Sets the specified property of the selected Active Directory object to the specified name.
 
-![](../../../../../static/img/taskactivedirectorysetadobjectproperty.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Set%20AD%20Object%20Property.png)
 
 **Credentials**
 

@@ -13,7 +13,7 @@ In the File filter tab you define which image that should be rotated. Read more 
  
 **Image rotate > Destination** sub tab
 
-![](../../../../../static/img/taskimagerotatedestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20Rotate.png)
 
 **Rotate to**
 

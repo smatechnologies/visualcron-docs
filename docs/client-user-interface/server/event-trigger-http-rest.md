@@ -10,7 +10,7 @@ The HTTP REST Trigger is able to host a local HTTP server, on a certain path and
  
 **Main settings**
 
-![](../../../static/img/httprest-mainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20HTTP%20REST.png)
 
 **Address**
 
@@ -22,13 +22,13 @@ Use this property to set the authentication realm. All pages in the same realm s
  
 **Request methods tab**
 
-![](../../../static/img/restrequestmethods.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20HTTP%20REST%20Request.png)
 
 In this tab you specify the paths and methods supported. Above you can access [http://localhost:9991/go2](http://localhost:9991/go2) with POST and [http://localhost:9991/go3?name=John(http://localhost:9991/go3?name=John) with GET. To get the parameter value you can use this Variable in follow up Tasks: `{TRIGGER(Active|LastTrigger|HTTPREST.Result.QueryParameters.Value|name)}`
  
 **Save content tab**
 
-![](../../../static/img/httprestsavecontent.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20HTTP%20Save.png)
 
 In this tab you can control File uploads and choose how to name the files.
  
@@ -36,5 +36,5 @@ In this tab you can control File uploads and choose how to name the files.
 
 As other Triggers, this Trigger produces Variables that contain various information about the request.
 
-![](../../../static/img/httprestvariables.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20HTTP%20REST%20Variables.png)
 

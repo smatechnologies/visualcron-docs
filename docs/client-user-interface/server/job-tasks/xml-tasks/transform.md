@@ -11,6 +11,8 @@ The original document is not changed; rather, a new document is created based on
  
 **XML Transform > File filter > Location** sub tab
 
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Transform.png)
+
 The XML Transform Task uses the standard VisualCron [File filter](../../../server/job-tasks-file-filter) to define the properties of the listed files.
  
 **XML Transform > Destination** sub tab

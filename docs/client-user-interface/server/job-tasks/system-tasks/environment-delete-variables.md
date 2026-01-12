@@ -7,7 +7,7 @@ hide_title: 'true'
 
 System - Environment - Delete variable removes an environment variable for a process, user or local machine.
 
-![](../../../../../static/img/tasksystemenvironmentdeletevariable.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Delete%20Variable.png)
 
 **Variable name**
 

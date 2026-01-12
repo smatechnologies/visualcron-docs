@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The System restore - List system restore points Task returns a list of existing restore points.
 
-![](../../../../../static/img/tasksystemrestorelistrestorepoints.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Restore%20Tasks/List%20Restore%20Point.png)
 
 **Credentials**
 

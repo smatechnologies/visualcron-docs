@@ -9,7 +9,7 @@ The PDF - Get information Task retrieves PDF information in a specified format.
  
 **Get information > Main settings** sub tab
 
-![](../../../../../static/img/taskpdfgetinformationmainsettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Get%20Information.png)
 
 **Password for file(s)**
 
@@ -21,7 +21,7 @@ This tab uses the common [file filter](../../job-tasks-file-filter) to filter ou
  
 **Output** tab
 
-![](../../../../../static/img/taskpdfgetinformationoutput.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Get%20Information%20Output.png)
 
 **Include field names**
 

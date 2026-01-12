@@ -13,7 +13,7 @@ The SharePoint Tasks supports the following versions:
 * SharePoint 2013
 * SharePoint Online
 
-![](../../../../../static/img/tasksharepointupdatelist.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Update%20List.png)
 
 **Connection**
 

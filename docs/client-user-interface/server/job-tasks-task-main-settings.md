@@ -9,13 +9,13 @@ A set of different Task types can be defined using the **Add/Edit Job > Tasks** 
  
 **Add Job > Tasks > Add** tab
 
-![](../../../static/img/tasks.png)
+![](../../../static/img/Client%20User%20Interface/Toolbar/Add%20Job.png)
 
 After selecting a Task, in this case the **Internal > Set Job Variable**, the **Set Job Variable > Main Settings** tab is displayed. Also, the selected Task is preset as *Task type* but this may be changed.
  
 **Set Job Variable > Main Settings** tab
 
-![](../../../static/img/taskmainsettings1.png)
+![](../../../static/img/Client%20User%20Interface/Toolbar/Task%20Main%20Settings.png)
 
 :::tip Note 
 
@@ -49,9 +49,8 @@ The task order can be changed by either clicking on the up/down arrows next to e
  
 **Edit Job > Tasks** tab
 
-![](../../../static/img/jobtasksorder.png)
+![](../../../static/img//Client%20User%20Interface/Toolbar/List%20of%20Tasks.png)
 
 **Loop**
 
 Loops can be added to one or more Tasks, read more about [loops](../server/job-tasks-loop-functionality) here.
-

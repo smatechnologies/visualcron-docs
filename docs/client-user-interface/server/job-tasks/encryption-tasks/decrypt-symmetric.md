@@ -19,9 +19,9 @@ If you have a choice, we recommend using AES encryption.
  
 The Decrypt (symmetric) Task is able to decrypt one or more files from a specific folder.
  
-**Decrypt > Decryption setting**s tab
+**Decrypt > Decryption setting** tab
 
-![](../../../../../static/img/taskdecryptsettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Encryption%20Tasks/Decrypt%20Symmetric.png)
 
 **Encryption algorithm**
 
@@ -45,7 +45,7 @@ In the File filter tab you define which files should be decrypted. Read more abo
  
 **Decrypt > Destination** tab
 
-![](../../../../../static/img/taskdecryptdestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Encryption%20Tasks/Decypt%20Symmetric%20Destination.png)
 
 **Destination**
 

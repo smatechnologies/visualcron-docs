@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Executes a method with parameters on an unmanaged dll.
 
-![](../../../static/img/taskprocessunmanageddllcall.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Unmanaged%20dll%20Call.png)
 
 **Credentials**
 

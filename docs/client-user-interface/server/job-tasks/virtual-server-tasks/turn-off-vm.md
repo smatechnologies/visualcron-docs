@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Virtual Server - Turn off VM Task turns off a specific virtual machine.
 
-![](../../../../../static/img/taskvirtualserverturnoffvm.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/Turn%20Off%20VM.png)
 
 **Local or Remote**
 

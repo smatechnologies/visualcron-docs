@@ -7,4 +7,4 @@ hide_title: 'true'
 
 The **File** tab is a part of the main menu.
 
-![](../../../static/img/mainmenufile.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/File/File.png)

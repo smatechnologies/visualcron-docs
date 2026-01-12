@@ -21,7 +21,7 @@ The output will be placed in 2,2 to 3,3:
  
 **Excel - Set cell > Source** sub tab
 
-![](../../../../../static/img/taskofficeexcelsetcell.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Set%20Cell.png)
 
 **Input value**
 
@@ -33,13 +33,13 @@ You need to adjust format controls so they fit the format of the incoming value.
  
 **Excel - Set cell > File filter > Location** sub tab
 
-![](../../../../../static/img/taskofficeexcelsetcellfilefilter.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Set%20Cell%20File.png)
 
 If you have selected File as source you are able to set the standard VisualCron [File filter](../../../server/job-tasks-file-filter) values.
  
 **Excel - Set cell > Column format** sub tab
 
-![](../../../../../static/img/taskofficeexcelsetcellcolumnformat.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Set%20Cell%20Column.png)
 
 In the columns tab you can override column format. Default format is `@` which is a string. You can see different format options when editing or adding a column.
  
@@ -49,7 +49,7 @@ In the columns tab you can override column format. Default format is `@` which i
  
 **Excel - Set cell > Target** sub tab
 
-![](../../../../../static/img/taskofficeexcelsetcelltarget.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Set%20Cell%20Target.png)
 
 **Worksheet**
 
@@ -61,7 +61,7 @@ The relative position the update should start at.
  
 **Excel - Set cell > Output** sub tab
 
-![](../../../../../static/img/taskofficeexcelsetcelloutput.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Set%20Cell%20Output.png)
 
 **Save to..**
 

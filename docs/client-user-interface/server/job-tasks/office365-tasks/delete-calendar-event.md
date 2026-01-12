@@ -9,7 +9,7 @@ The Office365 - Delete Calendar event Task lets you delete a Calendar event in t
  
 **Office365 - Delete calendar event** tab
 
-![](../../../../../static/img/office365deletecalendar.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office365%20Tasks/O365%20Delete%20calendar%20events.png)
 
 **Connection**
 

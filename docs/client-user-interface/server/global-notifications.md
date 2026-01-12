@@ -9,7 +9,7 @@ Notifications are since version 7.0.0 a way to create global, independent Tasks.
  
 A notification is defined either from the main menu **Server > Global objects > Notification**s dialog or from the [Job Flow](../../client-user-interface/server/job-flow) or [Task Flow](../../client-user-interface/server/task-flow).
 
-![](../../../static/img/clipasdffd0049.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Notifications/Notifications.png)
 
 You can Add, Edit, Clone and Delete Notifications.
  
@@ -17,7 +17,7 @@ To get specific instructions for each Task Notification please visit the help pa
  
 Below is a screenshot from Task Flow of a Task which, On error, also sends a Notification 'test'.
 
-![](../../../static/img/clipasdfdsfdf0049.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Notifications/Job%20Notification%20Flow.png)
 
 **Variables**
 

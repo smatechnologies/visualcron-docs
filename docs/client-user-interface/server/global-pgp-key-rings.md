@@ -23,7 +23,7 @@ In VisualCron you are able to encrypt/decrypt PGP files using the OpenPGP standa
 
 The PGP key rings are managed in the main menu **Server > Global objects > PGP Key Rings** dialog. Instead of pointing to public or private key files, VisualCron lets you generate or import this data and then centrally store it in VisualCron. A key ring is a set of keys, public or private. VisualCron wraps key rings in the manager. At a later stage, when you want to encrypt a file, you first select a VisualCron key ring and then the recipients or signers key from the same key ring.
 
-![](../../../static/img/clip333444096.gif)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20PGP%20Key%20Rings/PGP%20Key%20Rings.png)
 
 **Name/Description of VisualCron key ring**
 

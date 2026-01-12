@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Interface tab is a part of the main menu.
 
-![](../../../static/img/mainmenuinterface.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Interface/Interface.png)
 
 The current servers, Jobs and Tasks are listed in the Server/Job/Task grid.
  

@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Process - Kill Task lets you stop a process on the same computer.
 
-![](../../../static/img/taskprocesskill.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Kill.png)
 
 **Process name**
 

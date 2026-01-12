@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Process - AS/400 Command Task lets you execute a command on a AS/400 server. The AS/400 Control Language (CL) is a scripting language for the AS/400 midrange platform bearing a resemble to the IBM Job Control Language and consisting of an ever expanding set of command objects (*CMD) used to invoke traditional AS/400 programs and/or get help on what these programs do.
 
-![](../../../static/img/taskprocessas400command.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/AS%20400.png)
 
 **Connection**
 

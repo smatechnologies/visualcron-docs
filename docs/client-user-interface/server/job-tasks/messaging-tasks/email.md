@@ -3,11 +3,11 @@ sidebar_label: 'Task Messaging - Email'
 hide_title: 'true'
 ---
 
-## Task Messaging - Email
+## Task Messaging - Email - Send
 
 The Messaging Email Task lets you send text and/or HTML emails that can be encrypted/signed through SMIME or PGP to one or more recipients. You may add attachments to the email. You can set priority and get notifications if file has been read or received.
 
-![](../../../../../static/img/taskmessagingemail.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send.png)
 
 **Connection**
 
@@ -43,7 +43,7 @@ The message can be sent in text and/or html format. Check the boxes here and tab
  
 **Email -> Recipients** sub tab
 
-![](../../../../../static/img/taskmessagingemailrecipients.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Recipients.png)
 
 **Recipients separator**
 
@@ -63,25 +63,25 @@ By default, for privacy, VisualCron sends one email per recipient and does not s
  
 **Email -> Text** sub tab
 
-![](../../../../../static/img/taskmessagingemailtext.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Text.png)
 
 Enter the text message here. Will only be enabled if you have selected Text as message type.
  
 **Email -> HTML** sub tab
 
-![](../../../../../static/img/taskmessagingemailhtml.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20HTML.png)
 
 Enter the HTML message here. Will only be enabled if you have selected HTML as message type.
  
-**Email -> IE Preview** sub tab
+**Email -> Chrome Preview** sub tab
 
-![](../../../../../static/img/taskmessagingemailiepreview.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Chrome.png)
 
-In the IE Preview tab you can see how your HTML text would look in the Internet Explorer web browser.
+In the Chrome Preview tab you can see how your HTML text would look in the Internet Explorer web browser.
  
 **Email -> Attachments** sub tab
 
-![](../../../../../static/img/taskmessagingemailattachments.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Attachments.png)
 
 You can send any kind of attachment with the Email Messaging Task. If the attachments are located on a restricted area/network drive you must use a Credential to access it. You select the Credential when editing the attachment. The attachment tab shows a list. Click on Add, Edit or Delete to alter which attachments to use.
  
@@ -89,7 +89,7 @@ If Add is selected, the standard [file filter](../../../server/job-tasks-file-fi
  
 **Email > Sign (PGP/MIME)** sub tab
 
-![](../../../../../static/img/clip0071.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Sign.png)
 
 In order to be able to activate the Sign settings, the *Use PGP/MIME security features* must be selected in the Email > Main settings window.
  
@@ -115,7 +115,7 @@ If your key requires a password you should enter it here.
  
 **Email > Sign (S/MIME)** sub tab
 
-![](../../../../../static/img/clip0073.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Sign.png)
 
 In order to be able to activate the Sign settings, the *Use S/MIME security features* must be selected in the Email > Main settings window.
  
@@ -142,7 +142,7 @@ You must select one certificate that matches your from address in order to be ab
  
 **Email > Encrypt (PGP/MIME)** sub tab
 
-![](../../../../../static/img/clip0072.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Encrypt.png)
 
 In order to be able to activate the Encrypt settings, the *Use PGP/MIME security features* must be selected in the Email > Main settings window.
  
@@ -160,7 +160,7 @@ Click on this button to create/import new key rings
  
 **Email > Encrypt (S/MIME)** sub tab
 
-![](../../../../../static/img/taskemailsmimeencrypt.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Encrypt%20with%20Key.png)
 
 In order to be able to activate the Encrypt settings, the *Use S/MIME security features* must be selected in the Email > Main settings window.
  

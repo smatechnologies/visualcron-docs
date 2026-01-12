@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Amazon EC2 - List snapshots Task lists one or more of the Amazon EBS snapshots available to you. Snapshots available to you include public snapshots available for any AWS account to launch, private snapshots you own and private snapshots owned by another AWS account for which you've been given explicit create volume permissions.
 
-![alt text](../../../../../static/img/taskamazonec2listsnapshots.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Amazon%20EC2%20Tasks/List%20Snapshot(s).png)
 
 **Connection**
 

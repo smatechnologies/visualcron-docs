@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Deletes a single Exchange object. This activity uses the Exchange object ID of a specific object in order to delete it.
 
-![](../../../../../static/img/taskexchangedeleteobject.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Exchange%20Tasks/Delete%20Exchange%20Object.png)
 
 **Mailbox URL**
 

@@ -9,7 +9,7 @@ The Messaging - Email - Getheaders Task retrieves all message headers (i.e. Subj
  
 **Email - Get headers > Main settings** sub tab
 
-![](../../../../../static/img/taskemailgetheaders.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20get%20headers.png)
 
 **Connection**
 

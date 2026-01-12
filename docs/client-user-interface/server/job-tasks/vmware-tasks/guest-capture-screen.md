@@ -9,11 +9,13 @@ The VMWare - Capture screen Task lets you take a screenshot in the guest operati
  
 **[Guest] Capture screen > Connection** sub tab
 
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Guest%20Section/Guest%20Capture%20Screen.png)
+
 The Connection settings window is the same for all VMWare Task types. See [Start VM](start-vm) for details.
  
 **[Guest] Capture screen > VM Task settings** sub tab
 
-![](../../../../../static/img/taskvmwareguestcapturescreensettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Guest%20Section/Guest%20Capture%20Screen%20Settings.png)
 
 **Image path**
 

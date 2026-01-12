@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Amazon EC2 - Create snapshot Task creates a snapshot of an Amazon EBS volume and stores it in Amazon S3. You can use snapshots for backups, to make copies of instance store volumes and to save data before shutting down an instance.
 
-![](../../../../../static/img/taskamazonec2createsnapshot.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Amazon%20EC2%20Tasks/Create%20Snapshot.png)
 
 **Connection**
 

@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Logoff user(s) Task logs off one or more users - locally or remotely.
 
-![](../../../../../static/img/tasksystemlogoff.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Logoff.png)
 
 **Credentials**
 

@@ -9,7 +9,7 @@ This Task lets you execute local SSIS packages. VisualCron must reside on the se
  
 **Execute SSIS package** tab
 
-![](../../../../../static/img/taskdatabaseexecutessis.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/Execute%20SSIS%20Package.png)
 
 **MSSQL server version**
 

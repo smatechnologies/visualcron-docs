@@ -74,7 +74,7 @@ For setting up a (g)MSA account please refer screenshot below for valid settings
  
 When you open the window, your current user name is written along with the name of your current computer/domain. Click on Add to create a centrally stored Credential. After adding the Credential it is available in all places where you can use Credentials. In those places you need to select the Credential you want to use like this:
 
-![](../../../static/img/executetask2016.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Credentials/Using%20Credential.png)
 
 ### Troubleshooting
  

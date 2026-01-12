@@ -7,3 +7,4 @@ hide_title: 'true'
 
 When a Job or a Task is defined, right-click on the Job or Task in the Server/Group/Job/Task grid and select Add to add a new Job. A new Job can also be added by the toolbar *Add Job* button.
 
+![](../../../../static/img/Client%20User%20Interface/Toolbar/Add%20Job.png)

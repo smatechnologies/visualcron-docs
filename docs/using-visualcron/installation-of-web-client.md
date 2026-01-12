@@ -15,7 +15,7 @@ The web client runs inside Microsoft IIS - a web server. It is possible to insta
  
 **Server > Settings > Web Client** tab
 
-![](../../static/img/serversettingswebclient.png)
+![](../../static/img/Using%20VisualCron/Interacting%20with%20VisualCron/WebClient%20Install.png)
 
 The two group boxes display installation status of either IIS or IIS Express. You can see:
 

@@ -9,7 +9,7 @@ The folder filter is similar to the file filter but filters out folders only. It
  
 **Folder filter > Location** sub tab
 
-![](../../../static/img/folderfilterlocation.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Folder%20Filter.png)
 
 **Credentials**
 
@@ -41,7 +41,7 @@ If case sensitive search should be done on the include folder mask.
  
 **Folder filter > Date** sub tab
 
-![](../../../static/img/folderfilterdate.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Folder%20Date.png)
 
 There are two types of checks *Older than* and *Newer than*. These can be combined with AND/OR or used separately. Only date variables can be used here. Once you have selected a Variable it can be previewed when hovering over text box (tool tip) or in the group caption.
  
@@ -49,7 +49,7 @@ Click on the *Variables* icons to view and select available Date Variables.
  
 **Folder filter > Size** sub tab
 
-![](../../../static/img/folderfiltersize.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Folder%20Size.png)
 
 **Check if folder is smaller than x size**
 
@@ -61,7 +61,7 @@ Select this to enable size checking. Enter a value in the numeric text box and s
  
 **Folder filter > Test** sub tab
 
-![](../../../static/img/folderfiltertest.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Folder%20Test.png)
 
 **Show filtered folders**
 

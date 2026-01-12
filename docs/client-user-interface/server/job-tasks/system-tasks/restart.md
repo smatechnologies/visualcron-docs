@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The System restart Task can restart a local or remote computer.
 
-![](../../../../../static/img/tasksystemrestart.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Restart.png)
 
 **Credentials**
 

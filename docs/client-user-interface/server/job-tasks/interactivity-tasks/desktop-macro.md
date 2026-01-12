@@ -18,7 +18,7 @@ There are many uses for the Desktop macro Task, for example:
  
 The Desktop macro Task is dependent on access to the desktop. Mouse moves and keystrokes must have a desktop to playback onto. To accomplish this, as the [VisualCron Server](../../../../using-visualcron/visualcron-server) is running as a service the [VisualCron Tray Client](../../../../using-visualcron/visualcron-tray-client) is used for playback. This means also that the Task can only be run as a [foreground Task](../../../server/task-main-settings-execution-context).
 
-![](../../../../../static/img/taskinteractivitydesktopmacro.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Desktop%20Macro.png)
 
 **Edit**
 

@@ -9,7 +9,7 @@ The main menu **Tools > Objects > Object relations** option helps you to find re
  
 **Tools > Objects > Object relations** tab
 
-![](../../../static/img/toolsobjectsobjectrelations.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Objects/Object%20Relations.png)
 
 **Object type**
 

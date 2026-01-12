@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The MSMQ - Delete message Task deletes messages from a specified queue.
 
-![](../../../../../static/img/taskmsmqdeletemessages.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/MSMQ%20Tasks/MSMQ%20-%20delete%20message.png)
 
 **Credential**
 

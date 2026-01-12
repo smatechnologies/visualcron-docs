@@ -9,7 +9,7 @@ The Task Database - Execute SSISDB package executes an existing package in from 
  
 **Execute SSISDB package** tab
 
-![](../../../../../static/img/taskdatabaseexecutessisdb.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/Execute%20SSISDB%20Package.png)
 
 **Connection**
 

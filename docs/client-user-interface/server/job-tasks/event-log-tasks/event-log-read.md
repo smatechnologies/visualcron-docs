@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Event log Read Task retrieves event log records based on a filter.
 
-![](../../../../../static/img/taskeventlogread.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Event%20Log%20Tasks/Event%20Log%20-%20read.png)
 
 
 **Credentials**

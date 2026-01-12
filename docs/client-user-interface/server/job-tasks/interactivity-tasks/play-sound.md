@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Play sound Task can play any sound file that the Media player can play. If you can't play a certain codec you need to install it so Media player can run it first.
 
-![](../../../../../static/img/taskinteractivityplaysound.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Play%20Sound.png)
 
 **Credentials**
 

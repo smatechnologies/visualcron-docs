@@ -9,7 +9,7 @@ Creates a new user at the specified Active Directory location.
  
 **Create AD User > General** sub tab
 
-![](../../../../../static/img/taskactivedirectorycreateaduser.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Create%20AD%20User.png)
 
 **Credentials**
 

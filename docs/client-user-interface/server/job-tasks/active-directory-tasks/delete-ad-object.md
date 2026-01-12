@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Deletes an explicit Active Directory object (i.e. user, computer, printer, etc.) at the specified path.
 
-![](../../../../../static/img/taskactivedirectorydeleteadobject.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Delete%20AD%20Object.png)
 
 **Credentials**
 

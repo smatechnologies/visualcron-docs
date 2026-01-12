@@ -32,15 +32,15 @@ The Microsoft Azure Connection is used in the following Tasks:
  
 **Manage Connections > Add > Windows Azure > Main settings** tab
 
-![](../../../static/img/connectionazuremain.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Microsoft%20Azure/Microsoft%20Azure.png)
 
 **Name**
 
 The unique name for the Connection
- 
-**Address**
 
-This field is not used.
+**Group**
+
+The group that the connection is a part of
  
 **Timeout**
 
@@ -50,15 +50,15 @@ The connection timeout in seconds. Connection will fail after this time period.
 
 Code page being used.
  
-**Manage Connections > Add > Windows Azure > Authentication** tab
+**Manage Connections > Add > Windows Azure > Connection settings** tab
 
-![](../../../static/img/connectionazureauthentication.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Microsoft%20Azure/Settings.png)
 
 **Authentication type**
 
 For Cloud files use Password and for Azure Tasks use Public key (publish settings file) for Classic - for newer RM handling please use Application. See later down how to download.
  
-**Account name**
+**Storage Account**
 
 The Account name for the account. Please note that when using Azure Tasks (not Cloud) you need to use publish settings file for authentication.
  

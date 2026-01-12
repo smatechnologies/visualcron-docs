@@ -17,17 +17,29 @@ The Dropbox Connection is used in the following Cloud Tasks:
 * [Cloud - Create folder](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/create-folder)
 * [Cloud - Delete item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/delete-item)
  
-**Manage Connections > Add > Dropbox > Main settings** tab
+**Manage Connections > Add > Dropbox > Common settings** tab
 
-![](../../../static/img/connectiondropboxmainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dropbox/Dropbox.png)
 
 **Name**
 
 The name of the Connection to uniquely identifying it.
 
-**Manage Connections > Add > Dropbox > Authentication** tab
+**Group**
 
-![](../../../static/img/dropboxauthentication2.png)
+The group that the connection is a part of
+
+**Timeout**
+
+The connection timeout in seconds. Connection will fail after this time period.
+ 
+**Code page**
+
+Code page being used.
+
+**Manage Connections > Add > Dropbox > Connection Settings** tab
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dropbox/Settings.png)
 
 **Use VisualCron registered app**
 
@@ -66,7 +78,7 @@ If you e.g. want your own logo and/or use your own permissions, you may choose t
  
 **Manage Connections > Add > Dropbox > Proxy** tab
 
-![](../../../static/img/connectiondropboxproxy.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dropbox/Proxy.png)
 
 **Proxy type**
 
@@ -82,7 +94,7 @@ The port of the proxy server.
  
 **Use credentials**
 
-Text ...
+The credentials that are associated with the account.
  
 **Domain**
 
@@ -95,10 +107,6 @@ The user name to access the proxy server.
 **Password**
 
 The password to access the proxy server.
- 
-**Manage Connections > Add > Dropbox > Extra settings** tab
-
-![](../../../static/img/dropboxextrasettings.png)
 
 ### Troubleshooting
 

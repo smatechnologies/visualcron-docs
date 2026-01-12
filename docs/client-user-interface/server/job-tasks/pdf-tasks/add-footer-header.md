@@ -9,7 +9,7 @@ The PDF - Add footer/header Task lets you add an object like image or text in fo
  
 **Add footer/header > Main settings** sub tab
 
-![](../../../../../static/img/taskpdfaddfooterheader.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Add%20footer-header%20main.png)
 
 **Existing/New file**
 
@@ -53,7 +53,7 @@ This tab uses the common [file filter](../../job-tasks-file-filter) to filter ou
 
 This tab appears after choosing an Image content type in the Main settings tab.
 
-![](../../../../../static/img/taskpdfaddfooterheader_image.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Add%20footer-header%20image.png)
 
 **Image location**
 
@@ -91,7 +91,7 @@ Customize the value to indicate the image opacity. The value is from 0 to 100. B
 
 This tab appears after choosing a Text content type in the Main settings tab.
 
-![](../../../../../static/img/taskpdfaddfooterheader_text.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Add%20footer-header%20text.png)
 
 **Text content**
 

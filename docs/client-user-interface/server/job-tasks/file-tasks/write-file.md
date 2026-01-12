@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Write file Task lets you write any string to a file. The string could be a Variable, for example a result from another Task.
 
-![](../../../../../static/img/taskfilewritefile.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Write%20File.png)
 
 **Credential**
 

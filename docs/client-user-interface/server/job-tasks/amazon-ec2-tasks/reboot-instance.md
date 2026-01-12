@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Amazon EC2 - Reboot instance requests a boot of one or more instances. This operation is asynchronous; it only queues a request to reboot the specified instances. The operation succeeds if the instances are valid and belong to you. Requests to reboot terminated instances are ignored.
 
-![](../../../../../static/img/taskamazonec2rebootinstance.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Amazon%20EC2%20Tasks/Reboot%20Instance.png)
 
 **Connection**
 

@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Read file Task reads a specified file for use in standard output. This output can later be used in other Tasks. For example, you can use this Task to read a file that contains a message, this message can later be used in the text field of the Email Task. The content/output can be reached from the Variables.
 
-![](../../../../../static/img/taskfilereadfile.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Read%20file.png)
 
 **Credentials**
 

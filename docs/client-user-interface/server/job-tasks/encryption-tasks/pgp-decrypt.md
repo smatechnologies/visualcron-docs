@@ -14,7 +14,7 @@ In the File filter tab you define which files should be decrypted. Read more abo
  
 **PGP decrypt > Decrypt** sub tab
 
-![](../../../../../static/img/taskpgpdecryptdecrypt.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Encryption%20Tasks/PGP%20-%20Decrypt.png)
 
 **Select key ring**
 

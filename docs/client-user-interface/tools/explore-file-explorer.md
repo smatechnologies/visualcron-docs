@@ -17,7 +17,7 @@ When you are remotely connected a different dialog will show that allows you to:
  
 **Tools > Explore > File Explorer**
 
-![](../../../static/img/toolsexplorefileexplorer.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/File%20Explorer.png)
 
 **Upload files and folders**
 

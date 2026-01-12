@@ -13,7 +13,7 @@ It is recommended to perform regular backups/exports to this file. If a setting 
  
 VisualCron is automatically adding a Job with the *Export settings* Task and it is a recommendation to keep this Task in your Job list.
 
-![](../../../../../static/img/taskinternalexportsettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Internal%20Tasks/Export%20Settings.png)
 
 **Credential**
 

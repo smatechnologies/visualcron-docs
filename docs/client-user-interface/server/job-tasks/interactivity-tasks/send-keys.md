@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Task type Send keys is a way to control another application that is already running. Most applications have shortcuts to perform different Tasks in that program. With "Send keys", VisualCron can put the focus on a running application and "send" a range of specified keystrokes to that program. It is possible to combine keystrokes, for example CTRL + SHIFT + A.
 
-![](../../../../../static/img/taskinteractivitysendkeys.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Send%20Keys.png)
 
 **Application title**
 

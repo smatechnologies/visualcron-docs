@@ -40,17 +40,17 @@ The VMWare Connection is used for connecting to remote VMWare instances in the f
 * [VMWare - Kill processes (guest)](../../client-user-interface/server/job-tasks/vmware-tasks/guest-kill-process)
 * [VMWare - List processes (guest)](../../client-user-interface/server/job-tasks/vmware-tasks/guest-list-process)
  
-**Manage Connections > Add > VMWare > Main settings** tab
+**Manage Connections > Add > VMWare > Common settings** tab
 
-![](../../../static/img/connectionvmwaremain.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/VMWare/VMWare.png)
 
 **Name**
 
 The unique name for the Connection
  
-**Address**
+**Group**
 
-The address to the VMWare server.
+The group that the connection is a part of.
  
 **Timeout**
 
@@ -60,9 +60,13 @@ The connection timeout in seconds. Connection will fail after this time period.
 
 Code page being used.
  
-**Manage Connections > Add > VMWare > Authentication** tab
+**Manage Connections > Add > VMWare > Connection settings** tab
 
-![](../../../static/img/vmwareauth.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/VMWare/Settings.png)
+
+**Address**
+
+The address to the VMWare server.
 
 **Authentication type**
 

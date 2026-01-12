@@ -11,7 +11,7 @@ The Process - Assembly execute Task lets you specify a .NET .exe or .dll file an
 
 The Assembly execute will return a string representation of the result and will try to separate value by a comma if it is an array.
 
-![](../../../static/img/assemblyexecute.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Assembly%20Execute.png)
 
 **Credentials**
 

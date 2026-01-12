@@ -9,7 +9,7 @@ The _Process_ condition lets you check information about a certain process befor
  
 **Global > Conditions > Condition set Add > Conditions Add > Process select > Process** tab
 
-![](../../../static/img/globalconditionsprocess.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Conditions/Condition%20-%20Process.png)
 
 **Process name**
 

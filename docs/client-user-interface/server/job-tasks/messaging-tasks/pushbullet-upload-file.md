@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Pushbullet - Upload file Task allows you to upload one or more files to the Pushbullet cloud repository. This Task will return the URL to the uploaded file.
 
-![](../../../../../static/img/pushbulletuploadfilemainsettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Pushbullet%20-%20upload%20file.png)
 
 **Connection**
 

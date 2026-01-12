@@ -11,6 +11,6 @@ This window uses the same structure as the main menu **Tools > Objects > Audit l
  
 Job > Versions
 
-![](../../../../static/img/jobversions.png)
+![](../../../../static/img/Client%20User%20Interface/Toolbar/Versions.png)
 
 

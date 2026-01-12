@@ -13,11 +13,11 @@ To add a FTP Task, you select Task type "FTP/FTPS/SFTP/SCP" from the combo box i
  
 In the *FTP/FTPS/SFTP/SCP* tab, all the defined FTP commands that are associated with this Task are listed. These FTP commands are run in the list order. You can change the order by marking a row and click on the numeric up/down button. When different commands use different Connections, it is recommended that you run the commands with the same connection in order. Thus, VisualCron does not have to disconnect between commands which else will slow down the Task.
 
-![](../../../../../static/img/tasknetftpftpssftpscp.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/FTP%20SFTP%20Command%20Types.png)
 
 Click on *FTP/FTPS/SFTP -> Add* button to add a new FTP command in the *Add/Edit FTP command* window.
 
-![](../../../../../static/img/ftp_add_edit_command.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/FTP%20Settings.png)
 
 **Command type**
 

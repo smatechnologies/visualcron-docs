@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Hyper-V - Apply snapshot Task allows you to apply an existing snapshot to a specific virtual machine hosted on a local or remote, Hyper-V Management Server.
 
-![](../../../../../static/img/taskhypervapplysnapshot.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Hyper-V%20Tasks/Apply%20snapshot.png)
 
 **Local/Remote server**
 

@@ -9,7 +9,7 @@ The Azure - Restart VM Task restarts an existing virtual machine in the Azure cl
  
 **Azure - Restart VM** tab
 
-![](../../../../../static/img/taskazurerestartvm.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Azure%20Tasks/Restart%20VM.png)
 
 **Connection**
 

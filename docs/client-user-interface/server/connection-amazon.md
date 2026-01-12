@@ -23,17 +23,17 @@ The Amazon Connection is used in the following Tasks:
 And the following Triggers
 * [Amazon SQS Trigger](event-trigger-sqs)
  
-**Manage Connections > Add > Amazon > Main settings** tab
+**Manage Connections > Add > Amazon > Common settings** tab
 
-![](../../../static/img/connectionamazonmain.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Amazon/Amazon.png)
 
 **Name**
 
 The unique name for the Connection
- 
-**Address**
 
-This field is not used.
+**Group**
+
+The group that the connection is a part of
  
 **Timeout**
 
@@ -43,9 +43,13 @@ The connection timeout in seconds. Connection will fail after this time period.
 
 Code page being used.
  
-**Manage Connections > Add > Amazon > Authentication** tab
+**Manage Connections > Add > Amazon > Connection Settings** tab
 
-![](../../../static/img/connectionamazonauthentication.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Amazon/Settings.png)
+
+**Address**
+
+This field is not used.
 
 **Authentication type**
 
@@ -62,10 +66,6 @@ The Secret Access key for the account.
 **Private key**
 
 If public key authentication has been selected the select the path to the private key file and any password if used.
- 
-**Manage Connections > Add > Amazon > Amazon** tab
-
-![](../../../static/img/connectionamazonamazon.png)
 
 **Region**
 

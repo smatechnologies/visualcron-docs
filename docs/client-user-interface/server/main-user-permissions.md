@@ -17,13 +17,13 @@ By default the internal system is used. To enable Active Directory support you n
  
 **Server > Main settings > Settings > Users/Logon** tab
 
-![](../../../static/img/servermainsettingsuserpermission.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/User%20Settings.png)
 
 When creating the Server Connection you also need to check "Use Active Directory logon". This way you tell the Client to use AD user login method.
 
 **File > Servers > Manage Servers > Add > AD**
 
-![](../../../static/img/fileserversmanageaddad.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20User%20Permissions/Manage%20Servers.png)
 
 The main dialog of the_ User permissions_ window lists all users and AD groups that are allowed to connect to this server. A user can be active (green check icon) or inactive (red cross icon). When active, the user is granted login with the predefined permissions.
  
@@ -31,13 +31,13 @@ The _Add, Edit, Clone_ or _Delete_ buttons are context sensitive to the tab you 
  
 **Server > Main settings > User permissions**
 
-![](../../../static/img/newpermissions.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20User%20Permissions/User%20Permissions.png)
 
 When you add, edit or clone a user you are presented with the Add/Edit user window.
  
 **Server > Main settings > User permissions > Users > Add > Credentials** tab
 
-![](../../../static/img/servermainsettingsuserpermissionadd.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20User%20Permissions/Add%20Edit%20User.png)
 
 **Is AD user**
 
@@ -69,7 +69,7 @@ If the current user is active or not (login enabled).
 
 **Server > Main settings > User permissions > AD groups > Add** tab
 
-![](../../../static/img/servermainsettingsuserpermissionadadd.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20User%20Permissions/AD%20Add%20User.png)
 
 **Group name**
 
@@ -88,11 +88,11 @@ A user can belong to one or more groups. The groups contains the actual permissi
  
 **Server > Main settings > User permissions > Add > Groups tab**
 
-![](../../../static/img/servermainsettingsuserpermissionadgroupsadd.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20User%20Permissions/Groups%20Tab.png)
 
 **Server > Main settings > User permissions > Add > Groups > Edit** tab
 
-![](../../../static/img/servermainsettingsuserpermissionaddgroupsaddedit.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20User%20Permissions/Group%20Permissions.png)
 
 **Name**
 

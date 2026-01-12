@@ -9,7 +9,7 @@ The condition set actions controls what will happen depending on the results of 
  
 **Global > Conditions > Add/Update Condition set > Actions** tab
 
-![](../../../static/img/globalconditionsconditionsetactions.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Conditions/Condition%20-%20Actions.png)
 
 The condition set criteria determine how the results of all included conditions in a condition set are evaluated. The following condition set criteria are valid:
 * **On Match All** - all conditions returned a "match"

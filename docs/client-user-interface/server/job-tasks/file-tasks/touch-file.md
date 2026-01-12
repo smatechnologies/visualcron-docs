@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Touch file Task set the last write time of one or more file(s). The Touch file Task uses the standard [file filter](../../../server/job-tasks-file-filter) to find files that you want to touch.
 
-![](../../../../../static/img/taskfiletouchfile.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Touch%20File.png)
 
 **Credentials**
 

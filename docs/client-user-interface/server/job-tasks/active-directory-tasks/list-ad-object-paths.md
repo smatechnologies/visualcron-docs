@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Retrieves a list of the paths for all the Active Directory objects (i.e.computers, users, groups, etc.) at and below the specified path and populates a data set with resulting values. Results can be filtered by object type and/or a filter string.
 
-![](../../../../../static/img/taskactivedirectorylistadobjectpaths.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/List%20AD%20Object%20paths.png)
 
 **Credentials**
 

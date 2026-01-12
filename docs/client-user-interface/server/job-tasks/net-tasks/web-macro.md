@@ -27,7 +27,7 @@ Below are some features of the Web Macro Task in VisualCron:
  
 **Web macro > Main settings** tab
 
-![](../../../../../static/img/webmacromain.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Web%20Macro%20settings.png)
 
 **Load images**
 
@@ -105,9 +105,9 @@ Click on the Record button to start recording. This open the Web macro recorder 
 
 A web macro can be played back in both Client and Server. If you press Play it starts playing back in Client. You can also press Pause to stop playback.
  
-**Web macro > Steps** tab
+**Web macro > Actions** tab
 
-![](../../../../../static/img/webmacrostepstab.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Web%20Macro%20actions.png)
 
 The Steps tab contains all recorded steps. Some of them can be edited/deleted by double clicking on Step or select and click Edit. Adding a step manually is currently not possible.
  
@@ -121,13 +121,13 @@ Steps are auto-created during recording but it also possible to manually add som
  
 **Web macro > Proxy** tab
 
-![](../../../../../static/img/webmacroproxytab.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Web%20Macro%20proxy.png)
 
 The proxy tab lets you set the default proxy to use in all tabs. You can override this by adding the Set proxy step.
  
 **Web macro > Certificates** tab
 
-![](../../../../../static/img/webmacrocertificates.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Web%20Macro%20certificate.png)
 
 **Certificates**
 
@@ -135,7 +135,7 @@ The web macro Task supports handling of both Client and Server Certificates. The
  
 **Web macro > Plugins** tab
 
-![](../../../../../static/img/webmacroplugins.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Web%20Macro%20plugins.png)
 
 There are two different type of plug-in standard: NPAPI and PPAPI. NPAPI originates from Netscape and were supported by all major browsers until Google developed PPAPI. The Chromium project (upon which both Google Chrome browser is built) has been supporting both for a while until finally it dropped NPAPI support. a result, VisualCron does not support NPAPI either.
  
@@ -165,7 +165,7 @@ If you have plugins located elsewhere please add the folder(s) here. If more tha
 
 When pressing Record or Play button the Web macro recorder window is opened.
 
-![](../../../../../static/img/webmacrorecorder.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/web%20macro%20recorder.png)
 
 **Auto-creation and adding steps manually**
 

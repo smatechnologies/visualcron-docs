@@ -13,7 +13,7 @@ See [Conditions Main settings](global-main-settings) for details.
  
 **Global > Conditions > Add/Update Condition set > Conditions** tab
 
-![](../../../static/img/globalconditionsconditionsetconditions.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Conditions/Global%20-%20Conditions.png)
 
 Use _Conditions > Add_ to include conditions in the current condition set.
  

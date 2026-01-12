@@ -9,7 +9,7 @@ The PDF - Convert Task can convert between different file formats and the PDF fo
  
 **Convert > Main settings** sub tab
 
-![](../../../../../static/img/pdfconvertmainsettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Convert.png)
 
 **To PDF->From**
 
@@ -58,7 +58,7 @@ This tab uses the common [file filter](../../job-tasks-file-filter) to filter ou
  
 **Convert > Destination** sub tab
 
-![](../../../../../static/img/pdfconvertdestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Convert%20Destination.png)
 
 **Save to**
 

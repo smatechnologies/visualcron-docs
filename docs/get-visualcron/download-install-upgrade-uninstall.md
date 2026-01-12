@@ -27,49 +27,39 @@ The below steps cover how to install VisualCron. Please note that the installer 
  
 1.Double click on the VisualCron.exe install executable and the below window will appear. This is the pre-installer that is preparing installation files for the msi package - for example, stopping existing applications and uninstalling VisualCron.
 
-![](../../static/img/clip333444055.png)
+![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/1.png)
 
 2. When the pre-installer is complete it starts the msi-package
 
-![](../../static/img/clip333444056.png)
+![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/2.png)
 
 3. Select I Agree in the License Agreement page and click Next
 
-![](../../static/img/clip333444057.png)
+![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/3.png)
 
 4. The VisualCron installation executable contains installation files both for the VisualCron Client and the Server. You may choose to install both by selecting the first item or just the Client by selecting the second item. When installing just the client the service for the Server will still be installed but "Disabled". If you later need to run the Server on this computer, you can change the service to "Automatic" in Control Panel > Administrative tools > Services > VisualCron and then mark and "Start" the service. Click Next to continue.
 
-![](../../static/img/clip333444058.png)
+![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/4.png)
 
 5. Now it is time to choose the installation folder. If you have no objections of the suggested choice just leave it as it is. Click Next to continue.
 
-![](../../static/img/clip333444059.png)
+![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/5.png)
 
 6. This window shows that VisualCron is ready to copy the files and perform the installation. Click *Next* to continue.
 
-![](../../static/img/clip333444060.png)
+![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/6.png)
 
 7. The installation has been started and the progress bar shows the current status. Please be patient. The installation may take some minutes depending on the speed of your computer.
 
-![](../../static/img/clip333444061.png)
+![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/7.png)
 
-8. The below window will only appear if you have a previous VisualCron installation. VisualCron 5 will be installed in the new %PROGRAMFILES%\VisualCron\ folder and  the VisualCron service will be started with the "VisualCron" name. Click Start to proceed with the listed upgrade steps.
+8. The install is now finished. If you have a previous VisualCron installation, it will be uninstalled in the background. Click *Close* to continue. When you have closed the msi-installtion the pre-installer asks you if you want to start the VisualCron Client. Click Yes to start it.
 
-![](../../static/img/clip333444062.png)
+![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/8.png)
 
-![](../../static/img/clip333444063.png)
+9. The Client is starting. If you get a connection error at startup then wait 60 seconds and click Yes to reconnect. There is a lot of configuration and loading during startup which might affect first time startup time for the Server.
 
-9. The install is now finished. If you have a previous VisualCron installation, it will be uninstalled in the background. Click *Close* to continue.
-
-![](../../static/img/clip333444064.png)
-
-10. When you have closed the msi-installtion the pre-installer asks you if you want to start the VisualCron Client. Click Yes to start it.
-
-![](../../static/img/clip333444065.png)
-
-11. The Client is starting. If you get a connection error at startup then wait 60 seconds and click Yes to reconnect. There is a lot of configuration and loading during startup which might affect first time startup time for the Server.
-
-![](../../static/img/clip333444066.png)
+![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/9.png)
 
 **Firewall**
 

@@ -13,19 +13,15 @@ In VisualCron, the SCP Connection is used in the [Net - FTP/FTPS/SFTP/SCP](../se
  
 **Manage Connections > Add > SCP > Main settings** tab
 
-![](../../../static/img/connectionscpmainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SCP/SCP.png)
 
 **Name**
 
 This is a descriptive name of the connection to distinguish from other connections.
  
-**Address**
+**Group**
 
-This is the host address to the server. It could be a DNS name or IP number.
- 
-**Port**
-
-This is the remote connection port.
+The group that the connection is a part of.
  
 **Timeout**
 
@@ -35,9 +31,22 @@ The connection timeout in seconds. Connection will fail after this time is passe
 
 The table of values that describes the desired character set. Currently this is overridden by the code page in the Task.
  
-**Manage Connections > Add > SCP > Authentication** tab
+**Manage Connections > Add > SCP > Connection settings** tab
 
-![](../../../static/img/connectionscp.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SCP/SCP%20Setting.png)
+
+**Address**
+
+This is the host address to the server. It could be a DNS name or IP number.
+
+**Port**
+
+This is the remote connection port.
+
+**Authentication type**
+
+Password
+Public Key
 
 **Username**
 
@@ -46,3 +55,7 @@ The user name for the connection.
 **Password**
 
 The password for the connection.
+
+**Log Traffic**
+
+Text

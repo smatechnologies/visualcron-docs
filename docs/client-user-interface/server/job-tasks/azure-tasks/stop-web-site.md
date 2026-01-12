@@ -9,7 +9,7 @@ The Azure - Stop Web Site Task stops an existing web instance in the Azure cloud
  
 **Azure - Stop web site** tab
 
-![](../../../../../static/img/taskazurestopwebsite.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Azure%20Tasks/Stop%20Web%20Site.png)
 
 **Connection**
 

@@ -9,7 +9,7 @@ Some general settings are available for the Client. These are located in the mai
  
 **File > Settings > Client settings > Main settings** tab
 
-![](../../../static/img/filesettingsclient.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/File/Client%20Settings.png)
 
 **Show tooltips**
 

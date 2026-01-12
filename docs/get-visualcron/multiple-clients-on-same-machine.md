@@ -15,5 +15,5 @@ If you want to install multiple versions of Client on one machine (to be able to
 2. extract the exe file with tool like 7zip into a folder
 3. copy that folder to a location where you would like it to be installed
 4. right click on the VisualCronClient.exe file and create a shortcut
-5. copy that shortcut to desktop and then we recommend that you rename it with the version number like "VisualCron - Client (8.5.2)" or similar
+5. copy that shortcut to desktop and then we recommend that you rename it with the version number like "VisualCron - Client (12.3.1)" or similar
 

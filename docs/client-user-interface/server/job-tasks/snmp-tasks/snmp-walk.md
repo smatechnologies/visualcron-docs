@@ -9,7 +9,7 @@ Issues a Walk message to an SNMP agent in order to inspect a group of variables.
  
 **SNMP Walk > General** tab
 
-![](../../../../../static/img/tasksnmpwalkgeneral.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Walk.png)
 
 **Agent IP Address**
 
@@ -25,7 +25,7 @@ Text ...
  
 **SNMP Walk > Advanced** tab
 
-![](../../../../../static/img/tasksnmpwalkadvanced.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Walk%20Advanced.png)
 
 **Remote Port**
 
@@ -45,7 +45,7 @@ Text ...
  
 **SNMP Walk > Data** tab
 
-![](../../../../../static/img/tasksnmpwalkdata.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Walk%20Data.png)
 
 **Use string notation for OIDs**
 

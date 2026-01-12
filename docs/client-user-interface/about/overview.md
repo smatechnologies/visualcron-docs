@@ -7,5 +7,5 @@ hide_title: 'true'
 
 The **About** tab is a part of the main menu.
 
-![](../../../static/img/mainmenuabout.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/About/About.png)
 

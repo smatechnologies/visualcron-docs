@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Hyper-V - Reset VM Task allows you to reset a specific virtual machine hosted on a local or remote, Hyper-V Management Server.
 
-![](../../../../../static/img/taskhypervresetvm.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Hyper-V%20Tasks/Reset%20VM.png)
 
 **Local/Remote server**
 

@@ -9,7 +9,7 @@ The main menu **Tools > Schedule > Calendar** option presents an overview of sch
  
 **Tools > Schedule > Calendar**
 
-![](../../../static/img/toolsschedulecalendar.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Calendar.png)
 
 **Permission**
 

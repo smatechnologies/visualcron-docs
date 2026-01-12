@@ -9,7 +9,7 @@ The _File_ condition lets you check information about a certain file before runn
  
 **Global > Conditions > Condition set Add > Conditions Add > File select > File** tab
 
-![](../../../static/img/globalconditionsfile.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Conditions/Condition%20-%20File.png)
 
 **File path**
 

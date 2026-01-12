@@ -13,7 +13,7 @@ AMQP - Send message Task sends a message to any of the supported message queue p
  
 The AMQP Task uses the [AMQP Connection](../../../server/connection-amqp).
 
-![](../../../../../static/img/amqpsendmessage.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/AMQP%20-%20send%20message.png)
 
 **Name**
 

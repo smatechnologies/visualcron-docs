@@ -9,7 +9,7 @@ The Dynamics CRM - Set audit data Task changes auditing status on a specific Ent
  
 The audit data it will return a string containing list of changes made from the moment you have enabled audit.
 
-![](../../../../../static/img/taskdynamicscrmsetauditstatus.png)
+[](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Dynamics%20CRM%20Tasks/Set%20audit%20status.png)
 
 **Connection**
 

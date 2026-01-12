@@ -9,7 +9,7 @@ The Dynamics CRM - Get audit data Task retrieves auditing information from Dynam
  
 The audit data it will return a string containing list of changes made from the moment you have enabled audit.
 
-![](../../../../../static/img/taskdynamicscrmgetauditdata.png)
+[](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Dynamics%20CRM%20Tasks/Get%20audit%20data.png)
 
 **Connection**
 

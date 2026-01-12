@@ -12,11 +12,15 @@ as child tracks under each of these Jobs.
 
 ### Server Info
 
-Server info window lets you view various information about the machine hosting VisualCron. You access Server info from the **Server -> Server info** tab or mouse right-click on a server heading in the Server/Job/Task grid.
+Server info window lets you view various information about the machine hosting VisualCron. You access Server info from the **Server -> Information -> Server Info** tab.
 
-![](../../../static/img/clip333444100.gif)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Information%20-%20Server%20Info/Machine.png)
 
-![](../../../static/img/clip333444101.gif)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Information%20-%20Server%20Info/License.png)
 
-![](../../../static/img/clip0047.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Information%20-%20Server%20Info/Service.png)
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Information%20-%20Server%20Info/Environment.png)
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Information%20-%20Server%20Info/Connection.png)
 

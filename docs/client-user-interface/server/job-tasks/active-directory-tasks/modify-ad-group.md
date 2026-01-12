@@ -9,7 +9,7 @@ Allows an administrator to rename or delete an existing Active Directory group, 
  
 **Modify AD Group > General** tab
 
-![](../../../../../static/img/taskactivedirectorymodifyadgroupgeneral.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Modify%20AD%20Group.png)
 
 **Credentials**
 

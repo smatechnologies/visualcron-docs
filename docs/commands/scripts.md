@@ -22,7 +22,7 @@ After installing and configuring PHP in your way, it is easy to call your script
  
 Watch out if you use relative links in your script, if you do that you may want to specify a Working directory so that script knows where to find the relative paths.
 
-![PHP-Script in VisualCron](../../static/img/clip333444102.gif)
+![PHP-Script in VisualCron](../../static/img/Commands%20Scripts%20and%20Third%20Party%20Tools/Scripts.png)
 
 ### Using VBScript for Scripting
 

@@ -9,7 +9,7 @@ The PDF - Remove pages(s) Task deletes one or more specified pages from a PDF do
  
 **Remove page(s) > Main settings** sub tab
 
-![](../../../../../static/img/taskpdfremovepages-main.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Remove%20pages.png)
 
 **Password for file(s)**
 
@@ -25,7 +25,7 @@ This tab uses the common [file filter](../../job-tasks-file-filter) to filter ou
  
 **Remove page(s) > Destination** sub tab
 
-![](../../../../../static/img/taskpdfremovepagesdestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Remove%20pages%20destination.png)
 
 **Save to**
 

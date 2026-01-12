@@ -5,6 +5,8 @@ hide_title: 'true'
 
 ## Task PDF - Add Attachment
 
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Add%20attachment%20settings.png)
+
 The PDF - Add attachment(s) Task attaches one or more files to a pdf file.
  
 **Add  attachment(s) > File filter > Location** sub tab
@@ -13,13 +15,13 @@ This tab uses the common [file filter](../../job-tasks-file-filter.md) to filter
  
 **Add  attachment(s) > Attachment files** sub tab
 
-![](../../../../../static/img/taskpdfaddattachmentfiles.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Add%20attachment%20attachment.png)
 
 In the Attachment files dialog you add, edit, clone or delete files and change order of the items. Changes can be done either by the toolbar buttons or mouse double click on an item.
  
 **Add attachment(s) > PDF Destination** sub tab
 
-![](../../../../../static/img/taskpdfaddattachmentfdestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Add%20attachment%20output.png)
 
 **Save to**
 

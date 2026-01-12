@@ -15,7 +15,9 @@ The Job log is always updated in real time, i.e. scheduled Tasks within the Job 
  
 **Job right-click > Job log**
 
-![](../../../../static/img/joblog.png)
+![](../../../../static/img/Client%20User%20Interface//Toolbar/Job%20Log%20History.png)
+
+![](../../../../static/img/Client%20User%20Interface//Toolbar/Job%20Log%20History%202.png)
 
 **Filter**
 

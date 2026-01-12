@@ -5,7 +5,13 @@ hide_title: 'true'
 
 ## Time  Trigger - Expiration
 
-![](../../../static/img/triggertimeexpire.png)
+**Time Trigger Expiration**
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Time%20Triggers/Time%20Trigger%20Expire.png)
+
+**Event Trigger Expiration**
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Expires.png)
 
 Set date and time when the time/event trigger should be removed.
  

@@ -9,7 +9,7 @@ The Standby Task can start Standby/Sleep on a local or remote computer. When doi
  
 In Standby mode, your computer might appear to be turned off but it could automatically restart. So shut down your computer completely when it's not in use e.g. on an airplane. Standby is not appropriate for long term use, on many laptops, overnight is probably pushing it on standby. And it has one important limitation, everything is in memory not saved to the hard drive.
 
-![]../../../../../static/img/tasksystemstandby.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Standby.png)
 
 **Credentials**
 

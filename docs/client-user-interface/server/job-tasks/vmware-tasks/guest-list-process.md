@@ -9,6 +9,8 @@ The VMWare - List process(es) Task lets you list processes in the guest operatin
  
 **[Guest] List process(es) > Connection** sub tab
 
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Guest%20Section/Guest%20List%20Process.png)
+
 The Connection settings window is the same for all VMWare Task types. See [Start VM](start-vm) for details.
  
 **[Guest] List process(es) > VM Task settings** sub tab

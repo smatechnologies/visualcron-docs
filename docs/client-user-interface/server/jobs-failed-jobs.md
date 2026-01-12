@@ -9,5 +9,4 @@ In the main menu **Server > Jobs > Failed Jobs** dialog, the Failed Jobs list di
  
 **Jobs > Failed Jobs**
 
-![](../../../static/img/jobsfailedjobs.png)
-
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Jobs%20-%20Failed%20Jobs.png)

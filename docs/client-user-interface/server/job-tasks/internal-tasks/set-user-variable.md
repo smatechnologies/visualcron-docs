@@ -9,7 +9,7 @@ The Set Variable Task allows you to create or update a Variable. Variables can b
  
 A User Variable is only global, which enables use anywhere in the application.
 
-![](../../../../../static/img/tasksetuservariable.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Internal%20Tasks/set%20user%20variable.png)
 
 **Name/Unique key**
 
@@ -39,11 +39,7 @@ If checked, VisualCron will validate the value with the value type. Leave not ch
 
 1. Click on the Variables key in the Set Job Variable window.
 
-![](../../../../../static/img/taskinternalsetjobvariableadduserdefinedvariable.png)
-
 2. Select User defined variables and click on Add.
-
-![](../../../../../static/img/taskinternalsetjobvariableaddvariable.png)
 
 3. After entering data, press the Add key
  

@@ -5,6 +5,8 @@ hide_title: 'true'
 
 ## Task Office - Excel - Convert
 
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Convert.png)
+
 The Excel - Convert Task is able to convert an Excel file into various Excel formats and text files
  
 **Excel - Convert > File filter > Location** sub tab
@@ -13,7 +15,7 @@ The Excel convert Task uses the standard VisualCron [File filter](../../../serve
  
 **Excel - Convert > Convert settings** sub tab
 
-![](../../../../../static/img/taskofficeexcelconvertconvertsettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Convert%20Settings.png)
 
 **Convert to ..**
 

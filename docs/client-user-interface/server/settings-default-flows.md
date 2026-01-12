@@ -8,7 +8,7 @@ In the main menu **Server > Main settings > Settings** dialog, you can choose to
 **Main > Settings > Default flows** tab
 
 
-![](../../../static/img/serversettingsdefaultflows.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Default%20Flows.png)
 
 ### Add/Edit/Clone/Delete
 
@@ -16,7 +16,7 @@ Click the **Default flows** icons to update the list of default flows for Jobs a
  
 **Main > Settings > Default flows > Add > Job flow** window
 
-![](../../../static/img/serversettingsdefaultflowsadd.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Edit%20Job%20Flow.png)
 
 A created default flow will add this flow to all new Jobs or Tasks and will show up in one of the lists in the [Edit Job > Flows](../server/job-flow) tab or the [Edit Task > Flows](../server/task-flow) tab. Note that Tasks always have two flows included by default; On success - Continue with next Task and On error - Stop Job.
  
@@ -26,4 +26,4 @@ Independently if you right click in the **Default flows** window or in a **Job F
  
 Each single flow in the **Job/Task flow** lists can be deleted and the list is immediately updated, in case the **Job Flow** or Task Flow windows are closed by the _OK_ button.
 
-![](../../../static/img/serversettingsdefaultflowsedit.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Add%20Job%20Flow%20to%20All%20Existing.png)

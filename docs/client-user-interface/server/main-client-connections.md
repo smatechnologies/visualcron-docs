@@ -9,7 +9,7 @@ In the main menu **Server > Main settings > Client connections** dialog, VisualC
  
 **Main > Client connections**
 
-![](../../../static/img/serverclientpermissions.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Client%20Connections/Client%20Connections.png)
 
 The VisualCron client can also switch its server connection in the Server/Username "track" in the top of the Server/Job/Task grid.
 

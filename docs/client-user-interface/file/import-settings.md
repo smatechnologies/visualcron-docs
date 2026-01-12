@@ -11,7 +11,7 @@ VisualCron settings consists of many files. By using Export settings you can reg
  
 **File > Import/Export > Import settings**
 
-![](../../../static/img/file_import_settings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/File/Import.png)
 
 **File to import**
 

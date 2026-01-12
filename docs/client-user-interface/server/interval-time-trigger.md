@@ -7,7 +7,7 @@ hide_title: 'true'
 
 **Set Time Trigger > Interval** tab
 
-![](../../../static/img/triggertimeinterval.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Time%20Triggers/Interval%20Time%20Trigger.png)
 
 **Interval**
 

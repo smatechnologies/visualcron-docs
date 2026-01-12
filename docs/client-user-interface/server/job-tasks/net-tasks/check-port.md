@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Net - Check port Task lets you check if a certain port on a host is up.
 
-![](../../../../../static/img/tasknetcheckport.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Check%20Port.png)
 
 **Hostname**
 

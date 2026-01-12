@@ -9,7 +9,7 @@ The Azure - Restart Web Site Task restarts an existing web instance in the Azure
  
 **Azure - Restart web site** tab
 
-![](../../../../../static/img/taskazurerestartwebsite.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Azure%20Tasks/Restart%20Web%20Site.png)
 
 **Connection**
 

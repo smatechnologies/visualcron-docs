@@ -9,7 +9,7 @@ The VisualCron Tray Client is an application that is part of the VisualCron syst
  
 The Tray Client is located to the right in the below image. Right click to interact.
 
-![](../../static/img/trayclient.png)
+![](../../static/img/Using%20VisualCron/Interacting%20with%20VisualCron/Tray%20Client.png)
 
 **Tray Client Startup**
 
@@ -19,7 +19,7 @@ If the Tray Client icon includes a red cross, it is not connected to a server se
  
 **Tray Client Features**
 
-![](../../static/img/clip333444075.png)
+![](../../static/img/Using%20VisualCron/Interacting%20with%20VisualCron/Tray%20Client%20Features.png)
 
 When the VisualCron Tray Client is connected to the VisualCron Server your are able to control the Client and the Server.
  

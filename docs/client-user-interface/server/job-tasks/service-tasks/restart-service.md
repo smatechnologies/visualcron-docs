@@ -7,7 +7,7 @@ hide_title: 'true'
 
 With VisualCron you can control local or remote Windows services. The Restart service Task tries to stop a service (for 3 minutes) then, when service has stopped, it starts the service again.
 
-![](../../../../../static/img/taskservicerestartservice.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Service%20Tasks/Restart%20Service.png)
 
 **Credentials**
 

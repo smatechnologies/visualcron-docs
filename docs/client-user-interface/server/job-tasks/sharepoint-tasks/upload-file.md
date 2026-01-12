@@ -19,12 +19,14 @@ The List file(s) Task uses the standard VisualCron [File filter](../../job-tasks
  
 **Upload file(s) > Destination** sub tab
 
-![](../../../../../static/img/tasksharepointuploadfiles.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Upload%20files%20settings.png)
 
 **Connection**
 
 To use SharePoint Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
- 
+
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Upload%20files%20destination.png)
+
 **Destination folder**
 
 The destination folder for the files. Click the *Folder* icon to browse a SharePoint site in order to view or select a specific folder.

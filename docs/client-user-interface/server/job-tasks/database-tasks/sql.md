@@ -11,7 +11,7 @@ Select type of query; T*ext* or *Stored Procedur*e, only the active tab is saved
  
 **SQL** tab
 
-![](../../../../../static/img/taskdatabasesqltext.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/SQL.png)
 
 **Connection**
 To use the SQL Task you need to create a Connection first. You do that in the [Connections](../../../server/global-connections) dialog.
@@ -34,7 +34,7 @@ Text ...
  
 **SQL > Stored Procedure** sub tab
 
-![](../../../../../static/img/sqlparameters.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/SQL%20Parameters.png)
 
 **Name of stored procedure**
 
@@ -60,7 +60,7 @@ Test your SQL Task before closing the VisualCron client. Errors will be reported
  
 **SQL > Job** sub tab
 
-![](../../../../../static/img/clip333444079.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/SQL%20Job.png)
 
 The Job definitions are only valid for MSSQL.
  
@@ -76,7 +76,7 @@ Define a flow of steps with decision points depending on correct or failed resul
  
 **Output** tab
 
-![](../../../../../static/img/taskdatabasesqloutput.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/SQL%20output.png)
 
 The output tab controls the format of the date output from the SQL Task.
  
@@ -112,7 +112,7 @@ Internal SQL database engine debug and warning output will be added to Task outp
 
 :::
 
-![](../../../../../static/img/sqloutputparameter.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/SQL%20Variables.png)
 
 ### Troubleshooting
 

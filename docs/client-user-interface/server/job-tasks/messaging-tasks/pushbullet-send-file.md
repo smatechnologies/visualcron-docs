@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Pushbullet - Send file Task allows you to send a file to any contact and/or your own device and/or channel.
 
-![](../../../../../static/img/pushbulletsendfilemessage.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Pushbullet%20-%20send%20file.png)
 
 **Connection**
 

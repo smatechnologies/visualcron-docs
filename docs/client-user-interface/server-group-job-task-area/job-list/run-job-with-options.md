@@ -16,7 +16,7 @@ In the window that opens you can control the following:
  
 **Run Job with options**
 
-![](../../../../static/img/jobrunoptions.png)
+![](../../../../static/img/Client%20User%20Interface/Toolbar/Run%20Job%20with%20Options.png)
 
 **With Conditions**
 

@@ -9,7 +9,7 @@ The Azure - Create Web Site Task creates a web instance in the Azure cloud. This
  
 **Azure - Cleate web site** tab
 
-![](../../../../../static/img/taskazurecreatewebsite.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Azure%20Tasks/Create%20Web%20site.png)
 
 **Connection**
 

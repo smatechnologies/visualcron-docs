@@ -9,7 +9,7 @@ In the main menu **Server > Information > Log** you can list events from the cli
  
 **Server > Information > Log**
 
-![](../../../static/img/serverinformationlog.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Information%20-%20Log/Log%20Information.png)
 
 **Menu File > Export**
 

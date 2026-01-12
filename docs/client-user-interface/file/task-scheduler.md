@@ -27,7 +27,7 @@ This is the password - used for authenticating against the remote server.
 
 This is the domain name - used for authenticating against the remote server.
 
-![](../../../static/img/importtaskscheduler.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/File/Task%20Schedular.png)
 
 **Grid information**
 

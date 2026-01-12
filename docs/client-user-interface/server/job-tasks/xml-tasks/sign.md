@@ -7,13 +7,15 @@ hide_title: 'true'
 
 The XML - Sign Task signs an XML file with a specified key.
  
-**XML Sign > File filter > Location **sub tab
+**XML Sign > File filter > Location** sub tab
+
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Sign.png)
 
 The XML Transform Task uses the standard VisualCron [File filter](../../../server/job-tasks-file-filter) to define the properties of the listed files.
  
 **XML Sign > Destination** sub tab
 
-![](../../../../../static/img/taskxmlsigndestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Sign%20Destination.png)
 
 **Signature type**
 

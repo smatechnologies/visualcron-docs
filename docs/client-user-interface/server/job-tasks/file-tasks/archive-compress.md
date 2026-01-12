@@ -47,7 +47,7 @@ When the *Archive - compress* Task is selected in the Task window you are presen
  
 **Archive - compress > Archive settings** sub tab
 
-![](../../../../../static/img/taskfilearchivescompressettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Archive%20-%20Compress.png)
 
 The archive settings windows controls the main settings including what archiving format you would like to use and the archiving action; if you want to compress to an archive or extract an archive.
  
@@ -92,7 +92,7 @@ If the archive exists it will be appended with new items.
  
 **Archive - compress > Content** sub tab
 
-![]../../(../../../static/img/taskfilearchivescompresscontent.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Archive%20-%20Compress%20Content.png)
 
 This sub tab contains a list of items/objects to be compressed. Click on Add to add a new item.
  

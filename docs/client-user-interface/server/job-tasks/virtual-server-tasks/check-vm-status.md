@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Virtual Server - Check VM status Task retrieves the status of a specific virtual machine.
 
-![](../../../../../static/img/taskvirtualservercheckvmstatus.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/Check%20VM%20Status.png)
 
 **Local or Remote**
 

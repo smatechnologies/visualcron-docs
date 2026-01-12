@@ -9,7 +9,7 @@ The VMWare - Start VM Task starts (power on) a virtual machine.
  
 **Start VM > Connection** sub tab
 
-![](../../../../../static/img/taskvmwarestartvm.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Start%20VMWare.png)
 
 **Remote VMWare server**
 
@@ -41,7 +41,7 @@ The number of seconds this Task will use to perform the Task. If you have a valu
  
 **Start VM > VM Task setting**s sub tab
 
-![](../../../../../static/img/taskvmwarestartvmsettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Start%20VMWare%20Settings.png)
 
 **Launch GUI**
 

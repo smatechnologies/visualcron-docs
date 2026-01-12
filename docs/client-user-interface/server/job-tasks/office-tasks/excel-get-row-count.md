@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Excel - Get row count Task returns the number of rows for a specific worksheet in an Excel file
 
-![](../../../../../static/img/taskofficeexcelgetrowcount.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Get%20Row%20Count.png)
 
 **Credentials**
 

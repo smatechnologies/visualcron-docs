@@ -21,6 +21,10 @@ The TCP Connection is used in the [Net - TCP](../server/job-tasks/net-tasks/tcp)
 **Name**
 
 This is a descriptive name of the connection to distinguish from other connections.
+
+**Group**
+
+The group that the connection is a part of.
  
 **Timeout**
 
@@ -30,7 +34,7 @@ The amount of time, in seconds, a TCP client (both in the [Net - TCP](../server/
 
 Encoding of text messages sent by the TCP client to the TCP server and vice versa.
  
-**Manage Connections > Add > TCP > Connection settings > Main settings** tab
+**Manage Connections > Add > TCP > Connection settings > Connection settings** tab
 
 ![](../../../static/img/connectiontcpmainsettings.png)
 

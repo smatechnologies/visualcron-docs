@@ -13,7 +13,7 @@ In order to simplify and unify common parameters, the standard VisualCron Cloud 
  
 **Location** sub tab
 
-![](../../../static/img/cloudremotefilefilterlocation.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Cloud%20Remote%20File%20Filter.png)
 
 **Connection**
 
@@ -27,13 +27,11 @@ This property is used for Amazon Cloud services to specify the Bucket.
 
 This is the remote source folder. Click the *Folder* icon to select the folder.
 
-![](../../../static/img/remotefilefilterbrowse.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Cloud%20Remote%20File%20Look%20Up.png)
 
 **Item mask**
 
 The file/folder mask. Use wild cards like * and ?. Click the *File* icon to select the file.
-
-![](../../../static/img/remotefilebrowser-file.png)
 
 **Filter**
 
@@ -49,7 +47,7 @@ Check if you want to include sub folders and not just the base *Source folder*.
  
 **Date** sub tab
 
-![](../../../static/img/cloudfilefilterdate.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Date%20Sub%20Tab.png)
 
 **Modified date**
 
@@ -61,7 +59,7 @@ Use a Variable to, for example, download files older than a specific modified da
  
 **Size** sub tab
 
-![](../../../static/img/cloudfilefiltersize.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Size%20sub%20tab.png)
 
 **Check if file is smaller than x size**
 
@@ -73,7 +71,7 @@ Filter files that are larger than a value/Variable.
  
 **Result** sub tab
 
-![](../../../static/img/cloudremotefilefilterresult.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Result%20sub%20tab.png)
 
 **Sort**
 
@@ -85,6 +83,6 @@ How many files you want to return.
  
 **Test** sub tab
 
-![](../../../static/img/cloudremotefilefiltertest.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/File%20Test%20sub%20tab.png)
 
 The Test tab lets you test the result of your set filters to see what is really returned.

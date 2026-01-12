@@ -9,7 +9,7 @@ The PDF - Search text Task searches for the occurrence of one or more text strin
  
 **Search text > Main settings** sub tab
 
-![](../../../../../static/img/taskpdfsearchtextmain.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Search%20text.png)
 
 **Find**
 
@@ -33,7 +33,7 @@ This tab uses the common [file filter](../../job-tasks-file-filter.md) to filter
  
 **Output** tab
 
-![](../../../../../static/img/taskpdfsearchtextoutput.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Search%20text%20output.png)
 
 **Include text info names**
 

@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Deletes one or more Exchange objects, such as appointment, contact, email or task.
 
-![](../../../../../static/img/taskexchangedeleteobjects.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Exchange%20Tasks/Delete%20Exchange%20Objects.png)
 
 **Mailbox URL**
 

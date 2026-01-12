@@ -9,7 +9,7 @@ The Delete folder(s) command deletes one or more folders on the remote server.
  
 **Delete folder** sub tab
 
-![](../../../../../static/img/commanddeletefolders.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Delete%20Folder.png)
 
 **Folder**
 

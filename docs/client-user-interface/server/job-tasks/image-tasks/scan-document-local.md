@@ -17,7 +17,6 @@ The following document and image formats are supported:
 * GIF
 * PNG
  
- 
 **File filter tab**
 
 The Scan document Task is built to process one file at a time. It is using the [File filter](../../../server/job-tasks-file-filter) for finding the file to process. It will only use the first found file in the [File filter](../../../server/job-tasks-file-filter). The reason for this is that output and Variables is tied to the file that is processed. If you have several documents of same kind to process you should put the Task in a [loop](../../../server/job-tasks-loop-functionality) or base it on a [File Trigger](../../../server/event-trigger-file) for example that will run the Task once for each file.
@@ -131,7 +130,7 @@ Taken into account if "by another variable" option selected. If on, the variable
 
 The output settings tab controls what we do with the scanned result and how we save the result.
 
-![](../../../../../static/img/outputsettingscan.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Scan%20document%20(local).png)
 
 **Text result**
 

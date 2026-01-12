@@ -24,7 +24,7 @@ For example, upon failure you can choose to wait a couple of seconds and the ret
  
 **Add/Edit Job > Flow** tab
 
-![](../../../static/img/jobflow.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Job%20Flow.png)
 
 The list of "flows" are shown in the **Flow** tab. You can see the event, in this case "On error" and the action "Wait and retry Job". You can Add, Edit, Clone and Delete Flows in this tab.
  
@@ -32,7 +32,7 @@ If a new default flow is also desired for a previously defined Job, you need to 
  
 **Add/Edit Job > Flow > Add/Edit** window
 
-![](../../../static/img/jobflowaddedit.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Edit%20Job%20Flow.png)
 
 The Job Flow window are divided in two parts:
 * Job Condition

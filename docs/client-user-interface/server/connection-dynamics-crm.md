@@ -22,15 +22,15 @@ The Dynamics CRM Connection is used in the Dynamics CRM Tasks:
  
 **Manage Connections > Add > Dynamics CRM > Main settings** tab
 
-![](../../../static/img/connectiondynamicscrmmain.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dynamics%20CRM/Dynamics%20CRM.png)
 
 **Name**
 
 The unique name for the Connection
- 
-**Address**
 
-The address to the Dynamics CRM server.
+**Group**
+
+The group that the connection is a part of
  
 **Timeout**
 
@@ -40,9 +40,13 @@ The connection timeout in seconds. Connection will fail after this time period.
 
 Code page being used.
  
-**Manage Connections > Add > Dynamics CRM > Authentication** tab
+**Manage Connections > Add > Dynamics CRM > Connection Settings** tab
 
-![](../../../static/img/connectiondynamicscrmmauthentication.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dynamics%20CRM/Settings.png)
+
+**Address**
+
+The address to the Dynamics CRM server.
 
 **Username**
 

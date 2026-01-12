@@ -9,7 +9,7 @@ The Hibernate Task can start Hibernation on a local or remote computer. When doi
  
 Hibernate mode writes an image of what you're currently working on to a special file on your hard drive, and then shuts your computer almost completely off. It takes a bit longer than Standby, since the writing process. Hibernate also takes a bit longer to resume, since you must go through essentially the normal boot process, although in Windows XP your computer wakes faster from Hibernate than in previous versions of Windows. The advantage is that you can leave your laptop in Hibernate mode for days without any negative effect. When you restart, you'll see everything exactly as you left it. Hibernate is the perfect mode for shutting down for the night or even the weekend.
 
-![](../../../../../static/img/tasksystemhibernate.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Hibernate.png)
 
 **Credentials**
 

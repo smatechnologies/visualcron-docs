@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Amazon EC2 - List key pair(s) Task lists one or more of your key pairs.
 
-![](../../../../../static/img/taskamazonec2listkeypair.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Amazon%20EC2%20Tasks/List%20Key%20Pair.png)
 
 **Connection**
 

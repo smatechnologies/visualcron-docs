@@ -20,7 +20,7 @@ The advantages of using VisualCron for this are:
  
 **Main > Servers > MFT Server**
 
-![](../../../static/img/mftmainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/MFT.png)
 
 **Allow MFT**
 
@@ -38,7 +38,7 @@ Upon pressing the Add Servers icon, the Server settings dialog is opened.
  
 **Main > Servers > MFT Server > Servers > Server settings** sub tab
 
-![](../../../static/img/serversettingsmftserversadd.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/MFT%20Settings.png)
 
 **Server name**
 
@@ -52,19 +52,15 @@ Select MFT server type.
 
 The permissions grid controls who can access the specific MFT server. Click add to add new permission or double click/Edit to edit a permission.
 
-![](../../../static/img/mftpermission.png)
-
 **Main > Servers > MFT Server > Servers > SFTP Endpoints** sub tab
 
-![](../../../static/img/serversettingsmftsftpendpoints.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/MFT%20Endpoint.png)
 
 **SFTP Endpoints list**
 
 An endpoint is a combination of IP and port the specific MFT server listens to. Click add to add a new MFT server.
  
 **SFTP Endpoint**
-
-![](../../../static/img/sftpendpoint.png)
 
 **Name**
 
@@ -118,7 +114,7 @@ Any of the allowed must be used for authentication.
 
 All allowed must be used for authentication.
 
-![](../../../static/img/ftp_endpoint_mainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/FTP%20Settings.png)
 
 **Name**
 
@@ -162,7 +158,7 @@ Speed in bytes per second for incoming traffic. Default 0 is unlimited speed.
  
 **FTP Endpoint->Additional settings**
 
-![](../../../static/img/mft_mft_additionalsettigns.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/FTP%20Settings.png)
 
 **X509 certificates**
 
@@ -186,7 +182,7 @@ Enter any port range for incoming Passive connections. If not checked - random p
  
 **Main > Settings > MFT Server > Users** sub tab
 
-![](../../../static/img/serversettingsmftusers.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/Users.png)
 
 **Users list**
 
@@ -195,8 +191,6 @@ This is the list of MFT users. A MFT user can be linked to an existing VC user o
 Upon pressing the Add Users icon, the User settings dialog is opened.
  
 **Main > Settings > MFT Server > Users > Main settings** sub tab
-
-![](../../../static/img/serversettingsmftusersaddmain.png)
 
 **Link to VC User**
 
@@ -224,7 +218,7 @@ Unless linked to VC user you enter the email here.
  
 **Main > Settings > MFT Server > Users > Options** sub tab
 
-![](../../../static/img/serversettingsmftusersaddoptions.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/User%20Options.png)
 
 **Base folder**
 

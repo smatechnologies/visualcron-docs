@@ -9,8 +9,7 @@ The Email Get Single Message Task retrieves one message by its ID or message ind
  
 **Email - Get single message > Main setting**s sub tab
 
-
-![](../../../../../static/img/taskemailgetsinglemess.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/email%20-%20get%20single%20messages.png)
 
 **Connection**
 

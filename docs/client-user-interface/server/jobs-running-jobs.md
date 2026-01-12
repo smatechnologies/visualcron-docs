@@ -11,7 +11,7 @@ All processes that are started by VisualCron can be handled by the VisualCron cl
  
 **Jobs > Running Jobs**
 
-![](../../../static/img/jobsrunningjobs.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Jobs%20-%20Running%20Jobs.png)
 
 ### Job process
 
@@ -42,4 +42,3 @@ When you click on _Stop_ on a:
 * Task row - all Task Processes that are spawned from the Task will be stopped
 * Job Process - the Job Process and its Task Processes will be stopped
 * Task Process - a single Task Process will be stopped
-

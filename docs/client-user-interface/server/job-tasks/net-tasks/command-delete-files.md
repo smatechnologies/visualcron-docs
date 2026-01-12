@@ -9,7 +9,7 @@ For delete files, VisualCron uses the [remote file filter](../../../server/job-t
  
 **Delete file** sub tab
 
-![](../../../../../static/img/commanddeletefiles.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Delete%20File.png)
 
 **Delete File**
 
