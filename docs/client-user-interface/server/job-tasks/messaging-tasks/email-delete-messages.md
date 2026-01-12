@@ -9,7 +9,7 @@ The Email Delete Messages Task removes one or more messages.
  
 **Email - Delete messages > Main settings** sub tab
 
-![](../../../../../static/img/taskemaildelmess.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20delete%20messages.png)
 
 **Connection**
 

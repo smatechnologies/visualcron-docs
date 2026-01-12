@@ -10,3 +10,9 @@ By default an added (new) Job is set to active. The "active" status for a Job is
 If you look at the Job list for status indication, please note that any Job list column, including the status column, can be set to invisible.
  
 It is also possible to *Activate/Deactivate* a Task status by right-click on a Task and select the *Activate/Deactivate Task '`<Task name>`'* option.
+
+![](../../../../static/img/Client%20User%20Interface/Toolbar/Active%20jobs.png)
+
+![](../../../../static/img/Client%20User%20Interface/Toolbar/Deactivating.png)
+
+![](../../../../static/img/Client%20User%20Interface/Toolbar/Deactivated.png)

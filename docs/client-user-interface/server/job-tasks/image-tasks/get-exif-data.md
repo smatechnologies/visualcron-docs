@@ -12,7 +12,7 @@ In the File filter tab you define the image file to be checked for EXIF data. Re
  
 **Image get EXIF data > Destination** sub tab
 
-![](../../../../../static/img/taskimagegetexifdata.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20get%20EXIF%20data.png)
 
 Click on the "star" icon to add a new parameter row. Then use the drop-down list to select a group and finally the right-most drop-down list to select a tag. A defined parameter line is deleted by marking the line and the press the PC *Del* button.
  

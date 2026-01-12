@@ -12,7 +12,7 @@ In the File filter tab you define which image that should be resized. Read more 
  
 **Image resize > Destination** sub tab
 
-![](../../../../../static/img/taskimageresizedestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20Resize.png)
 
 **Resize to**
 

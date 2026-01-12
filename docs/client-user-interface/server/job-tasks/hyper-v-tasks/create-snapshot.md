@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Hyper-V - Create snapshot Task allows you to create a system snapshot of a specific virtual machine hosted on a local or remote, Hyper-V Management Server.
 
-![](../../../../../static/img/taskhypervcreatesnapshot.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Hyper-V%20Tasks/Create%20Snapshot.png)
 
 **Local/Remote server**
 

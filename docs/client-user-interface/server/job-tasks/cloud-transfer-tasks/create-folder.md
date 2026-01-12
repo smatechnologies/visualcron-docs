@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Cloud - Create folder Task is able to create a folder with Cloud services like Amazon S3, Box, Dropbox, Google Drive, Microsoft Azure and OneDrive.
 
-![](../../../../../static/img/taskcloudcreatefolder.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Cloud%20Transfer%20Tasks/Create%20Folder.png)
 
 **Connection**
 

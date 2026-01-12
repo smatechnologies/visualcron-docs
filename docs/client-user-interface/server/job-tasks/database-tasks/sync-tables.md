@@ -9,7 +9,7 @@ The Database Sync tables Task synchronizes a database table from one database to
  
 **Sync tables** tab
 
-![](../../../../../static/img/synctablestask.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/Sync%20table(s).png)
 
 **Credential**
 

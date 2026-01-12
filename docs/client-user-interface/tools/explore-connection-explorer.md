@@ -7,21 +7,13 @@ hide_title: 'true'
 
 With the main menu **Tools > Explore > Connection Explorer** option, there is one way to view your remote files, delete and transfer files - on your existing Connections. It is also a way of testing existing Connections and retrieve correct path for download or upload folders.
  
-**Tools > Explore > Connection Explorer, FTP Connection**
+**Tools > Explore > Connection Explorer**
 
-![](../../../static/img/toolsexploreconnectionexplorer.png)
-
-Tools > Explore > Connection Explorer, SSH Connection
-
-![](../../../static/img/clip1008.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Connection%20Explorer.png)
 
 **The Connections list**
 
 The Connection list shows all Connection types that are viewable by this Explorer. You can view FTP, SFTP, Terminal and SSH. You can right click on any connection and choose to set Properties or Connect.
- 
-**Tools > Explore > Connection Explorer, Connection list**
-
-![](../../../static/img/toolsexploreconnectionexplorerconnections.png)
 
 **Drag and drop support**
 

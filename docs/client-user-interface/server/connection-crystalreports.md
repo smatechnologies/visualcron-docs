@@ -22,17 +22,17 @@ For 9.9.7 and later you need version 30:
 [https://origin.softwaredownloads.sap.com/public/file/0020000000195592021](https://origin.softwaredownloads.sap.com/public/file/0020000000195592021) (x32)
 [https://origin.softwaredownloads.sap.com/public/file/0020000000195602021](https://origin.softwaredownloads.sap.com/public/file/0020000000195602021) (x64)
  
-**Manage Connections > Add > Crystal reports > Main settings** tab
+**Manage Connections > Add > Crystal reports > Common settings** tab
 
-![](../../../static/img/connectioncrystalreportsmain.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Crystal%20Reports/Crystal%20Reports.png)
 
 **Name**
 
 Use any name you like to identify this Connection among other Connections
- 
-**Address**
 
-This must match the exact name of the ODBC/OLEDB connection name in ODBC administration window. Please note that this ODBC/OLEDB DSN name must exist in the System DSN tab as these are the only DSNs available across users. If your report uses connections from the User DSN you need to copy those to the System DSN. The database that you use is specified in the ODBC/OLEDB DSN.
+**Group**
+
+The group that the connection is a part of
  
 **Timeout**
 
@@ -42,9 +42,13 @@ The connection timeout in seconds. Connection will fail after this time period.
 
 Code page being used.
  
-**Manage Connections > Add > Crystal reports > Authentication** tab
+**Manage Connections > Add > Crystal reports > Connection Settings** tab
 
-![](../../../static/img/connectioncrystalreportsauthentication.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Crystal%20Reports/Settings.png)
+
+**Address**
+
+This must match the exact name of the ODBC/OLEDB connection name in ODBC administration window. Please note that this ODBC/OLEDB DSN name must exist in the System DSN tab as these are the only DSNs available across users. If your report uses connections from the User DSN you need to copy those to the System DSN. The database that you use is specified in the ODBC/OLEDB DSN.
 
 **Username**
 

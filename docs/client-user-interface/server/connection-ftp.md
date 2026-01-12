@@ -33,9 +33,9 @@ Servers that require an implicit SSL connection usually listen on port 990 rathe
  
 The FTP Connection stores connect and logon properties for normal and secure FTP server connections.
  
-**Manage Connections > Add > FTP > Main settings** tab
+**Manage Connections > Add > FTP > Common settings** tab
 
-![](../../../static/img/connectionftpmainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/FTP/FTP%20Settings.png)
 
 **Protocol type**
 
@@ -48,14 +48,10 @@ When using FTP and you are unsure of connection properties you can use the Brute
 **Name**
 
 This is a descriptive name of the connection to distinguish from other connections.
- 
-**Address**
 
-This is the host address to the server. It could be a DNS name or IP number.
- 
-**Port**
+**Group**
 
-This is the remote connection port. Default port for regular FTP is 21. Default port for Implicit FTPS is 990.
+The group that the connection is a part of
  
 **Timeout**
 
@@ -65,9 +61,17 @@ The connection timeout in seconds. Connection will fail after this time is passe
 
 The table of values that describes the desired character set.
  
-**Manage Connections > Add > FTP > Authentication** tab
+**Manage Connections > Add > FTP > Connection Settings** tab
 
-![](../../../static/img/connectionftpauthentication.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/FTP/Connection%20Settings.png)
+
+**Address**
+
+This is the host address to the server. It could be a DNS name or IP number.
+ 
+**Port**
+
+This is the remote connection port. Default port for regular FTP is 21. Default port for Implicit FTPS is 990.
 
 **Authentication type**
 
@@ -91,7 +95,7 @@ This property is only for some proxies that require ACCT value. FTP protocol onl
  
 **Manage Connections > Add > FTP > Encryption** tab
 
-![](../../../static/img/ftpencryption.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/FTP/Encryption.png)
 
 **Cryptographic protocol**
 
@@ -131,7 +135,7 @@ The certificate that is received from the FTP server is verified against the Ver
  
 **Manage Connections > Add > FTP > Extra settings** tab
 
-![](../../../static/img/connectionftpextrasettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/FTP/Extra.png)
 
 **Transfer type**
 
@@ -169,7 +173,7 @@ VisualCron is trying to interpret the dateformat of files when listing files. In
 
 Proxy servers allow a client to make indirect network connections. The client connects to the proxy, makes a request for a connection, file, etc. The proxy server then provides this resource by getting it from the requested address or by retrieving it from its cache. The advantages of using a proxy server can include filtering, connection sharing, increased speed and decreased bandwidth use. HTTP proxy servers are web servers that relay requests from a client to an external FTP server.
 
-![](../../../static/img/connectionftpproxy.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/FTP/Proxy.png)
 
 **Proxy type**
 
@@ -185,7 +189,7 @@ The port of the proxy server.
  
 **Use credentials**
 
-Text ...
+The credentials that are associated with the account.
  
 **Domain**
 

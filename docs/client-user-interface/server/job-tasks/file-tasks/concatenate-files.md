@@ -12,7 +12,7 @@ This Task uses the file filter to find one or more files to merge. Optionally, a
  
 **Concatenate files > Concatenate settings** sub tab
 
-![](../../../../../static/img/taskfileconcatenatefiles.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Concatenate%20File.png)
 
 **Optional File B**
 

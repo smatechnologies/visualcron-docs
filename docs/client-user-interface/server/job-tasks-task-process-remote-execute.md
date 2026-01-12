@@ -16,7 +16,7 @@ The Remote execute Task some limitations (limited by Windows API). In some scena
 * Remote Execute Task cannot capture standard or error output.
 * Remote Execute Task will always run hidden which means that UI interactions will not work.
 
-![](../../../static/img/taskprocessremoteexecute.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Remote%20Execute.png)
 
 **Credentials**
 

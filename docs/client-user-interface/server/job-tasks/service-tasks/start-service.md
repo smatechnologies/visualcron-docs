@@ -7,7 +7,7 @@ hide_title: 'true'
 
 With the Task - Start service you can start a local or remote Windows service.
 
-![](../../../../../static/img/taskservicestartservice.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Service%20Tasks/Start%20Service.png)
 
 **Credentials**
 

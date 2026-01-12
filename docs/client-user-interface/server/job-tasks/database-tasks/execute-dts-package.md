@@ -9,7 +9,7 @@ This Task lets you execute local DTS packages. VisualCron must reside on the ser
  
 **Execute DTS package** tab
 
-![](../../../../../static/img/sqltask2015.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/Execute%20DTS%20Package.png)
 
 **Package located in file**
 

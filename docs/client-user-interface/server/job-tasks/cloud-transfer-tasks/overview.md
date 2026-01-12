@@ -22,7 +22,11 @@ The same interface is shared for the different cloud services.
  
 In order to simplify and unify common parameters, the standard VisualCron Cloud remote file filter is used in the below list of Cloud Tasks:
 
+* [Upload file(s)](upload-file)
 * [List item(s)](list-item)
+* [List folders(s)](list-folder)
 * [Download file(s)](download-file)
+* [Create folder](create-folder)
 * [Delete item(s)](delete-item)
- 
+* [Sync file(s)](sync-file)
+* [Copy/move item(s)](copy/move-item)

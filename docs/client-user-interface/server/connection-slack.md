@@ -18,13 +18,31 @@ Slack teams allow communities, groups, or teams to join through a specific URL o
 
 Public channels allow team members to communicate without the use of email or group SMS (texting). They are open to everyone in the chat, provided they have first been invited to join the client. Private channels allow for private conversation between smaller sects of the overall group. These can be used to break up large teams into their own respective projects. Direct messages allow users to send private messages to a specific user rather than a group of people.[26] Direct messages can include up to nine people (the originator plus eight people). Once started this direct message group can be converted to a private channel.
  
-**Manage Connections > Add > Slack > Main settings** tab
+**Manage Connections > Add > Slack > Common settings** tab
 
-![](../../../static/img/slack_mainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Slack/Slack.png)
 
-**Manage Connections > Add > Slack > Authentication** tab
+**Protocol Type**
 
-![](../../../static/img/slack_authentication.png)
+**Name**
+
+The name of the Connection to uniquely identifying it.
+
+**Group**
+
+The group that the connection is a part of.
+
+**Timeout**
+
+The connection timeout in seconds. Connection will fail after this time period.
+ 
+**Code page**
+
+Code page being used.
+
+**Manage Connections > Add > Slack > Connection settings** tab
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Slack/Settings.png)
 
 **Client Id**
 

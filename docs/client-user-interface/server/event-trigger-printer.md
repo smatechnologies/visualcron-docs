@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Event Trigger - Printer Trigger lets you monitor a printer for events within the spooler.
 
-![](../../../static/img/triggereventprinter.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Printer.png)
 
 **Printer name**
 

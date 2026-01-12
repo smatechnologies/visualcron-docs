@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Office macro Task is able to execute macros located in Excel, PowerPoint, Access or Word. You are also able to specify parameters for the functions and their value types.
 
-![](../../../../../static/img/taskofficemacro.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Office%20Macro.png)
 
 **Credentials**
 
@@ -37,7 +37,7 @@ This saves the document after execution. Useful if you have performed a calculat
 
 If a macro function needs parameters you can specify them here by clicking Add.
 
-![](../../../../../static/img/clip333444083.gif)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Office%20Macro%20Parameters.png)
 
 Choose appropriate *value type* and set the actual *value*. Normally VisualCron validates the value against the data type. If you use a Variable that validation can fail if the value is not set in the Variable. To prevent failure you can uncheck the *Validate value* checkbox.
  
@@ -57,7 +57,7 @@ To rule out some issues please test the following:
 1. We have created a test macro that just writes a file "vba.txt" in c:\ root. You can download this file from here: [https://www.visualcron.com/files/support/WriteFile.zip](https://www.visualcron.com/files/support/WriteFile.zip). Unzip it to a local folder.
 2. Create a new Job with new Office macro Task using these settings:
 
-![](../../../../../static/img/officemacrodebug.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Test%20Macro.png)
 
 3. Save and try to run the Job. Check if file vbs.txt has been created in c:\ root
  

@@ -17,5 +17,5 @@ All changes have immediate effect on what is shown in the Server/Group/Job/Task 
  
 **Interface > Filter > Grid filter**
 
-![](../../../static/img/interfacefiltergridfilter.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Interface/Grid%20Filter.png)
 

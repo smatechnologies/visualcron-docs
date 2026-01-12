@@ -9,7 +9,7 @@ The Azure - Start VM Task starts an existing virtual machine in the Azure cloud.
  
 **Azure - Start VM** tab
 
-![](../../../../../static/img/taskazurestartvm.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Azure%20Tasks/Start%20VM.png)
 
 **Connection**
 

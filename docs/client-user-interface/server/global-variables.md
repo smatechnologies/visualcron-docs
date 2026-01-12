@@ -15,7 +15,7 @@ The variables are accessed from the main menu **Server > Global objects >Variabl
  
 Almost all fields in the windows that have the *Variables* button can use variables. You can check if a field is able to receive variables if you try to drag and drop a variable to that field. If yes, the text field will go light blue while hovering over the field and a drop will be possible. If no, no drop will be possible.
 
-![](../../../static/img/clip333444098.gif)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Variables/Variables.png)
 
 The tree view is a hierarchy of variables. When opening at the (bottom) **VisualCron variables -> Jobs** item, you will see that your current Job is noted with a green arrow and its Tasks are reflected in the tree. Each Job can be browsed to show the Triggers, Tasks and variables connected to it.
  
@@ -60,7 +60,7 @@ These are the most powerful variables which let you access a large part of your 
 
 You are able to create your own static or dynamic Variables - with different value types. To Add/Edit/Remove a Variable you ca either click at the *Add/Edit/Delete* buttons or create Tasks ([Set Variable](../../client-user-interface/server/job-tasks/internal-tasks/set-job-variable), [Remove Variable](../../client-user-interface/server/job-tasks/internal-tasks/remove-variable), [Calculate Variable](../../client-user-interface/server/job-tasks/internal-tasks/calculate-variable)) that does this.
 
-![](../../../static/img/clip333444099.gif)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Variables/Edit%20variables.png)
 
 **The format of a variable**
 

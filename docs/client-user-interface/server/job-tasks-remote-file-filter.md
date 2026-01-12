@@ -19,7 +19,7 @@ The file filter is evaluated the following way:
 
 This tab contains the basic properties of finding one or more files.
 
-![](../../../static/img/remotefilefilterlocation.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/remote%20file%20location.png)
 
 **Folder**
 
@@ -59,30 +59,16 @@ If the exclude file mask is a regular expression. For more information about reg
 
 It is possible to check the created/modified date against a Variable value.
 
-![](../../../static/img/remotefilefilterdate.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/remote%20file%20date.png)
 
 **Remote file filter > Size** sub tab
 
 It is possible to filter out files based on size. Like the Date filter it can be combined with AND/OR and check can be done on *Larger than* or *Smaller than*.
 
-![](../../../static/img/remotefilefiltersize.png)
-
-**Remote file filter > Result** sub tab
-
-The filtered files can be presented (in output) in different ways. It is possible to sort the result on various values like name, modified date, created date and size. You can also limit the number of rows returned to, for example, only list the top 3 files according to the current sorting.
-
-![](../../../static/img/remotefilefilterresult.png)
-
-**Sort**
-
-It is possible to sort the result on various values like name, modified date, created date and size. If sort is unchecked the files will just be presented in the order they are discovered.
- 
-**Limit**
-
-Check this if you want to limit the number of rows returned. It will be limited according to the number (which could be a Variable) and the current sorting.
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/remote%20file%20size.png)
  
 **Remote file filter > Test** sub tab
 
 In the Test tab you can test your current file filter - if it matches any existing files. The test will use the selected Credential. Click on *Show filtered files* to test filter.
 
-![](../../../static/img/remotefilefiltertest.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/remote%20file%20test.png)

@@ -5,6 +5,8 @@ hide_title: 'true'
 
 ## Task Messaging - XendApp
 
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/XendApp.png)
+
 The Messaging - XendApp Task send messages of multiple content types directly to your phone or other device. Combining the best features of SMS and email. See [http://xendapp.com](http://xendapp.com) for more information.
  
 XendApp is a platform for delivering instant messages to any device (phone/tablet). It is a free service which uses notification services to deliver a message. Registration can be done [here](https://xendapp.com).The XendApp Task uses the [XendApp Connection](../../../server/connection-xendapp).

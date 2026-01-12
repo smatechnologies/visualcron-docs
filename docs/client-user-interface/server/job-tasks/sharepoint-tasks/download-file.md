@@ -13,7 +13,7 @@ The SharePoint Tasks supports the following versions:
 * SharePoint 2013
 * SharePoint Online
 
-![](../../../../../static/img/tasksharepointdownloadfiles.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/download%20files%20settings.png)
 
 **Connection**
 
@@ -30,6 +30,8 @@ Use wild cards to find and delete one or more files.
 **Credentials**
 
 To control a remote computer you may need to use a Credential. The Credential must match the user name and pass word of the user that you want to login. Click on *Manage credentials* to add or edit Credentials. Select a Credential in the combo box.
+
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Download%20files%20destination.png)
  
 **Destination folder**
 

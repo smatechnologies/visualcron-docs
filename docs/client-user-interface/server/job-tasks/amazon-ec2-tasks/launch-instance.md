@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Amazon EC2 - Launch instance Task launches the specified number of instances using an AMI for which you have permissions.
 
-![](../../../../../static/img/taskamazonec2launchinstance.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Amazon%20EC2%20Tasks/Launch%20Instance.png)
 
 **Connection**
 

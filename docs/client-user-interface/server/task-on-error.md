@@ -9,7 +9,7 @@ The **On error** tab in the Task window controls what is causing an error in Vis
  
 **Add/Edit Task > On error** tab
 
-![](../../../static/img/taskonerror.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/On%20Error%20Settings.png)
 
 **Error causes**
 

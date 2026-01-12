@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Virtual Server - Pause VM Task puts a specific virtual machine in pause mode.
 
-![](../../../../../static/img/taskvirtualserverpausevm.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/Pause%20VM.png)
 
 **Local or Remote**
 

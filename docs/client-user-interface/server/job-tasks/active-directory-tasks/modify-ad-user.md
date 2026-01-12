@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Enables, disables, deletes or renames an existing Active directory user. The action can also be used to change or reset the password of an Active Directory user.
 
-![](../../../../../static/img/taskactivedirectorymodifyaduser.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Modify%20AD%20User.png)
 
 **Credentials**
 

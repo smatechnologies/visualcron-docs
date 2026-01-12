@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Serial send Task lets you communicate with a wide range of devices that uses COM port interface.
 
-![](../../../../../static/img/tasknetserialsend.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Serial%20-%20Send.png)
 
 **Connection**
 

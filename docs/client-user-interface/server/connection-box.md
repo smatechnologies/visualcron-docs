@@ -17,13 +17,17 @@ The GoogleDrive Connection is used in the Cloud Tasks:
 * [Cloud - Create folder](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/create-folder)
 * [Cloud - Delete item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/delete-item)
  
-**Manage Connections > Add > Box > Main settings** tab
+**Manage Connections > Add > Box > Common settings** tab
 
-![](../../../static/img/connectionboxmain.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Box/Box.png)
 
 **Name**
 
 The name of the Connection to uniquely identifying it.
+
+**Group**
+
+The group that the connection is a part of
  
 **Timeout**
 
@@ -33,9 +37,9 @@ The connection timeout in seconds. Connection will fail after this time period.
 
 Code page being used.
  
-**Manage Connections > Add > Box > Authentication** tab
+**Manage Connections > Add > Box > Connection Settings** tab
 
-![](../../../static/img/boxauth.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Box/Settings.png)
 
 **Client Id**
 
@@ -46,18 +50,6 @@ Client Id which you gets when registering application at [Box](https://www.box.c
 **Client secret**
 
 Client secret which you gets when registering application at [Box](https://www.box.com/platform).
- 
-**Authenticate**
-
-Click on the Authenticate link to start authentication.
- 
-**Authenticate in internal browser**
-
-You can choose to authenticate in your own browser or externally by checking the *Authenticate in internal browser* box (default). Click the *Authenticate* link.
- 
-**Manage Connections > Add > Box > Extra settings** tab
-
-![](../../../static/img/boxextrasettings.png)
 
 **Redirect Url**
 
@@ -65,3 +57,10 @@ Please note that this url need to match url on Box web site like this:
 
 ![](../../../static/img/boxredirecturi.png)
 
+**Authenticate**
+
+Click on the Authenticate link to start authentication.
+ 
+**Authenticate in internal browser**
+
+You can choose to authenticate in your own browser or externally by checking the *Authenticate in internal browser* box (default). Click the *Authenticate* link.

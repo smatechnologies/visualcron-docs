@@ -9,7 +9,7 @@ The Azure - Start Web Site Task starts an existing web instance in the Azure clo
  
 **Azure - Start web site** tab
 
-![](../../../../../static/img/taskazurestartwebsite.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Azure%20Tasks/Start%20Web%20Site.png)
 
 **Connection**
 

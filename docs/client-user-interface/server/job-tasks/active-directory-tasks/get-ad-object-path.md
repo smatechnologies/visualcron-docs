@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Populates the output with the LDAP (Lightweight Directory Access Protocol) path of the specified Active Directory object (i.e. user, computer, OU, etc.).
 
-![](../../../../../static/img/taskactivedirectorygetadobjectpath.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Get%20AD%20Object%20Path.png)
 
 **Credentials**
 

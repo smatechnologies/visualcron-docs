@@ -9,7 +9,7 @@ Based on the nature of some Jobs, Tasks or Notifications, a Connection is an ess
  
 Connections are viewed and updated in the **Server > Global objects > Connection**s window. The connections may also be managed by _Add/Edit Job -> Tasks -> Add/Edit -> Task type._ Connections are global, thus if you change a connection definition, this will affect all entities using this connection.
 
-![](../../../static/img/globalconnections.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Global%20-%20Connections.png)
 
 **Explorer**
 

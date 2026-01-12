@@ -9,7 +9,7 @@ The SAP - RFC Task lets you execute ABAP, external programs and external command
  
 **SAP - R/3 Job Execute > Main settings** sub tab
 
-![](../../../../../static/img/tasksapr3jobexecutemain.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SAP%20Tasks/R-3%20Job%20Execute.png)
 
 **Connection**
 

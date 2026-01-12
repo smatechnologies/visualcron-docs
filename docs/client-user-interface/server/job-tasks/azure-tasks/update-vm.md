@@ -6,3 +6,5 @@ hide_title: 'true'
 ## Task Azure - Update VM
 
 Feature not implemented yet.  This Task is using the [Microsoft Azure Connection](../../connection-microsoft-azure).
+
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Azure%20Tasks/Update%20VM.png)

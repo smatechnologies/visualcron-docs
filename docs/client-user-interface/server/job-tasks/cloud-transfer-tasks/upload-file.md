@@ -9,7 +9,7 @@ The Cloud - Upload file(s) Task let's you upload files to a cloud service like A
  
 **Upload file(s) > Main settings** sub tab
 
-![](../../../../../static/img/taskclouduploadfiles.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Cloud%20Transfer%20Tasks/Upload%20Main%20Settings.png)
 
 **Connection**
 

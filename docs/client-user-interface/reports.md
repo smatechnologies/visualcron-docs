@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The **Reports** tab is a part of the main menu.
 
-![](../../static/img/mainmenu-reports.png)
+![](../../static/img/Client%20User%20Interface/Main%20Menu/Reports/Reports.png)
 
 Below is the list of supported reports:
  

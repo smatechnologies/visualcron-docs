@@ -11,5 +11,5 @@ You are able to use all VisualCron functions for free for a limited period (30 d
  
 If you want to extend you trial period you can contact support@visualcron.com and you will get a trial extension code. Enter the trial extension code in *Client->Server tab->License->Activate* and *Trial extension tab*.
 
-![](../../static/img/clip333444053.png)
+![](../../static/img/Using%20VisualCron/Licensing/Trial%20Information.png)
 

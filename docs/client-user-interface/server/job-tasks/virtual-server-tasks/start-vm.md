@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Virtual Server - Start VM Task starts a specific virtual machine.
 
-![](../../../../../static/img/taskvirtualserverstartvm.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/Start%20VM.png)
 
 **Local or Remote**
 

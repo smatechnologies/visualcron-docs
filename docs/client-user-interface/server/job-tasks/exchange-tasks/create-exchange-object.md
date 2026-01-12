@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Creates a new Exchange object, such as an appointment, task or contact.
 
-![](../../../../../static/img/taskexchangecreateobject.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Exchange%20Tasks/Create%20Exchange%20Object.png)
 
 **Mailbox URL**
 

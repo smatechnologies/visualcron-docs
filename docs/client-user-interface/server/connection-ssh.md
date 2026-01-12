@@ -13,17 +13,78 @@ Secure Shell (SSH) is a cryptographic network protocol for secure data communica
  
 The best-known application of the protocol is for access to shell accounts on Unix-like operating systems, but it can also be used in a similar fashion for accounts on Windows. It was designed as a replacement for Telnet and other insecure remote shell protocols such as the Berkeley rsh and rexec protocols, which send information, notably passwords, in plain text, rendering them susceptible to interception and disclosure using packet analysis. The encryption used by SSH is intended to provide confidentiality and integrity of data over an unsecured network, such as the Internet.
 
-**Manage Connections > Add > SSH - Secure Shell >Main settings** tab
+**Manage Connections > Add > SSH - Secure Shell > Common settings** tab
 
-![](../../../static/img/sshmainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSH/SSH.png)
+
+**Name**
+
+The name of the Connection to uniquely identifying it.
+
+**Group**
+
+The group that the connection is a part of.
 
 **Timeout**
 
 The timeout setting in the SSH Connection refers to the max time the full connection is opened. Using a too low value may abort the command prematurely. Default is 0 which is infinite timeout which means it will finish when the command finishes (Command timeout in the Task).
 
+**Code page**
+
+Code page being used.
+
+**Manage Connections > Add > SSH - Secure Shell > Connection settings** tab
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSH/SSH%20Setting.png)
+
+**Address**
+
+**Port**
+
+**Authentication Type**
+
+Password
+Public key
+
+**Username**
+
+User name for the SSH instance.
+ 
+**Password**
+
+Password for the SSH instance.
+
+**Override Authentication**
+
+Text ...
+
+**Manage Connections > Add > SSH - Secure Shell > Encryption** tab
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSH/Encryption.png)
+
+**Cryptographic protocol**
+
+Select between No encryption, SSL or TLS.
+ 
+**Security mode**
+
+Select between Explicit or Implicit mode type.
+ 
+**Use data channel encryption (PROT P)**
+
+If this property value is True the channel used for data transfer (files, directory listings) will be encrypted, otherwise only command channel will be encrypted.
+ 
+**Use command channel encryption**
+
+If this property value is True the command channel will be encrypted.
+ 
+**Use SSL session resumption**
+
+Specifices if SSL session resumption should be used.
+
 **Manage Connections > Add > SSH - Secure Shell > Extra settings** tab
 
-![](../../../static/img/connectionsshextrasettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSH/Extra%20Settings.png)
 
 **Transfer type**
 
@@ -48,7 +109,39 @@ Use this property to specify the number of upload or download requests sent befo
 **Download block size**
 
 Use this property to control the size of the single download request. The servers don't limit download request size, however the buffer is allocated to store the requests, so the larger the value is, the memory block is needed.
- 
+
+**Manage Connections > Add > SSH - Secure Shell > Proxy** tab
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSH/Proxy.png)
+
+**Proxy type**
+
+Select the proxy type to be used.
+
+**Address**
+
+The host name or IP address of the proxy server.
+
+**Port**
+
+The port of the proxy server.
+
+**Use credentials**
+
+The credentials that are associated with the account.
+
+**Domain**
+
+The name of the domain to be created.
+
+**Username**
+
+The user name to access the proxy server.
+
+**Password**
+
+The password to access the proxy server.
+
 **SFTP version support**
 
 [SFTP](connection-sftp) only.

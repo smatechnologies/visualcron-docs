@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Image overlay Task lets you place an image or text over an already existing image.
 
-![](../../../../../static/img/taskimageoverlaymain.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20overlay.png)
 
 **Overlay type**
 
@@ -23,7 +23,7 @@ In the File filter tab you define which file to be overlayed. Read more about fi
  
 **Image overlay > Image** sub tab
 
-![](../../../../../static/img/taskimageoverlayimage.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20overlay%20image.png)
 
 **Overlay image path**
 
@@ -31,7 +31,7 @@ Defines the path and file name of the the image to overlay.
  
 **Image overlay > Destinatio**n sub tab
 
-![](../../../../../static/img/taskimageoverlaydestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20overlay%20destination.png)
 
 **Save to**
 

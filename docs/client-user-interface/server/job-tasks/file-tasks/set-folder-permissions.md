@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Folder - Set folder permissions Task lets you apply security permissions on one or more folders.
 
-![](../../../../../static/img/taskfilesetfolderpermissions.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Set%20Folder%20Permissions.png)
 
 **Windows User or Group**
 

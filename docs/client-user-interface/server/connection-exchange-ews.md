@@ -7,9 +7,9 @@ hide_title: 'true'
 
 The Exchange EWS Connection uses the Exchange Web Service protocol which is similar to the IMAP protocol - but have more Exchange options in general. Select this protocol if it is implemented by the Exchange server.
  
-**Manage Connections > Add > Exchange EWS > Main settings** tab
+**Manage Connections > Add > Exchange EWS > Common settings** tab
 
-![](../../../static/img/connectionexchangeewsmainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Exchange%20EWS/Exchange%20EWS.png)
 
 **Test**
 
@@ -18,7 +18,25 @@ It is possible to test the connection once you have set all settings. Click the 
 **Name**
 
 The unique name for the Connection.
+
+**Group**
+
+The group that the connection is a part of
  
+**Timeout**
+
+The connection timeout in seconds. Connection will fail after this time is passed.
+ 
+**Code page**
+
+The table of values that describes the desired character set. Currently this is overridden by the code page in the Task.
+ 
+**Manage Connections > Add > Exchange EWS > Connection Settings** tab
+ 
+### Default
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Exchange%20EWS/Settings.png)
+
 **Address**
 
 The url to the Exchange EWS service. Here is how you can obtain it:
@@ -42,20 +60,6 @@ The URL can be composed using the following syntax: `https://<EXCHANGE_SERVER_HO
 * InternalNLBBypassUrl : `https://server name/ews/exchange.asmx`
 * InternalUrl          : `https://server name/EWS/Exchange.asmx`
 * ExternalUrl          : `https://mail.domain.com/ews/exchange.asmx`
- 
-**Timeout**
-
-The connection timeout in seconds. Connection will fail after this time is passed.
- 
-**Code page**
-
-The table of values that describes the desired character set. Currently this is overridden by the code page in the Task.
- 
-**Manage Connections > Add > Exchange EWS > Authentication** tab
- 
-### Default
-
-![](../../../static/img/ewsauthenticationdefault.png)
 
 **Username**
 
@@ -91,7 +95,7 @@ The email you want to work with.
  
 **Manage Connections > Add > Exchange EWS > Encryption** tab
 
-![](../../../static/img/ewsencryption.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Exchange%20EWS/Encryption.png)
 
 **Cryptographic protocol**
 
@@ -119,7 +123,7 @@ The port of the proxy server.
  
 **Use credentials**
 
-Text ...
+The credentials that are associated with the account.
  
 **Domain**
 
@@ -193,4 +197,3 @@ Set permissions for your application. **Please note that permissions from Office
 You can start with **full_access_as_app** permissions which allows all actions to be performed as default.
 
 ![](../../../static/img/ews-permission.png)
-

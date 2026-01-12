@@ -9,7 +9,7 @@ The MSMQ event trigger is able to monitor a private or public queue for new mess
  
 **Triggers > Add > Event Trigger > MSMQ** tab
 
-![](../../../static/img/triggereventmsmq.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20MSMQ.png)
 
 **Credential**
 
@@ -29,5 +29,4 @@ Select the queue to be received. Click the Refresh icon to populate the drop-dow
 
 Make sure you have installed MSMQ Triggers in Programs and Features dialog:
 
-![](../../../static/img/msmqtriggersprogramsfeatures.png)
-
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20MSMQ%20Windows.png)

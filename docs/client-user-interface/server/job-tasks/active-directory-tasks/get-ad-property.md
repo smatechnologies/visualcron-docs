@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Task Active Directory - Get AD Property
 
-![](../../../../../static/img/taskactivedirectorygetadproperty.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Get%20AD%20Object%20property.png)
 
 **Credentials**
 

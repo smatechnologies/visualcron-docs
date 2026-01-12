@@ -9,7 +9,7 @@ The PDF - Set field(s) Task set field value(s) in one or more PDF documents.
  
 **Set field(s) > Main settings** sub tab
 
-![](../../../../../static/img/taskpdfsetfields.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Set%20Fields.png)
 
 **Fields grid**
 
@@ -29,7 +29,7 @@ This tab uses the common [file filter](../../job-tasks-file-filter) to filter ou
  
 **Set field(s) > Destination** sub tab
 
-![](../../../../../static/img/taskpdfsetfieldvalues.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Set%20Fields%20Destination.png)
 
 **Save to**
 

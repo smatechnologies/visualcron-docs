@@ -19,11 +19,15 @@ The OneDrive Connection is used in the Cloud Tasks:
  
 **Manage Connections > Add > OneDrive > Main settings** tab
 
-![](../../../static/img/connectiononedrivemain.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/OneDrive/OneDrive.png)
 
 **Name**
 
 The name of the Connection to uniquely identifying it.
+
+**Group**
+
+The group that the connection is a part of
  
 **Timeout**
 
@@ -33,9 +37,9 @@ The connection timeout in seconds. Connection will fail after this time period.
 
 Code page being used.
  
-**Manage Connections > Add > OneDrive > Authentication** tab
+**Manage Connections > Add > OneDrive > Connection settings** tab
 
-![](../../../static/img/connectiononedriveauthentication.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/OneDrive/Settings.png)
 
 **Use VisualCron registered app**
 

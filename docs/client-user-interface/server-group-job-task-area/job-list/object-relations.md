@@ -11,6 +11,8 @@ This **Object relations** tab uses the same structure as the main menu **Tools >
  
 **Job > Object relations**
 
-![](../../../../static/img/toolsobjectsobjectrelations.png)
+![](../../../../static/img/Client%20User%20Interface/Toolbar/Object%20Relations.png)
+
+![](../../../../static/img/Client%20User%20Interface/Toolbar/Object%20Relations%202.png)
 
 The **Object finder > Object search** tab, in the above window, opens a window which uses the same structure as the main menu **Tools > Objects > Object search** option. See [here](../../tools/object-search) for more information.

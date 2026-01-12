@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Dynamics CRM - Delete Entity Task deletes an Entity in Dynamics CRM instance.
 
-![](../../../../../static/img/taskdynamicscrmdeleteentity.png)
+[](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Dynamics%20CRM%20Tasks/Delete%20entity.png)
 
 **Connection**
 

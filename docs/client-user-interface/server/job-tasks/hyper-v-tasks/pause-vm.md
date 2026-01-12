@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Hyper-V - Pause VM Task allows you to pause a specific virtual machine hosted on a local or remote, Hyper-V Management Server.
 
-![](../../../../../static/img/taskhypervpausevm.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Hyper-V%20Tasks/Pause%20VM.png)
 
 **Local/Remote server**
 

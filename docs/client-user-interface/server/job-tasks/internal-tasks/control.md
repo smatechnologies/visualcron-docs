@@ -9,7 +9,7 @@ The Job/Task control can change/control status of a Job or Task. With this Task 
  
 The VisualCron Task uses the [VisualCron Connection](../../../server/connection-visualcron) when you want to control a remote server.
 
-![](../../../../../static/img/taskinternaljobtaskcontrol.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Internal%20Tasks/Job%20Task%20Control.png)
 
 **Action**
 

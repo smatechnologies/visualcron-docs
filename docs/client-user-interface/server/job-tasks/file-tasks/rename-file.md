@@ -12,7 +12,7 @@ In the VisualCron standard [file filter](../../../server/job-tasks-file-filter) 
  
 **Rename file > Rename settings** sub tab
 
-![](../../../../../static/img/taskfilerenamefile.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Rename%20File.png)
 
 In the rename settings you control the final file name.
  

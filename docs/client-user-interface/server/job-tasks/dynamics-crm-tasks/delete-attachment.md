@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Dynamics CRM - Delete attachment Task deletes one or more attachments from a Dynamics CRM instance.
 
-![](../../../../../static/img/taskdynamicscrmdeleteattachment.png)
+[](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Dynamics%20CRM%20Tasks/delete%20attachment.png)
 
 **Connection details**
 

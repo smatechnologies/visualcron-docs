@@ -9,7 +9,7 @@ The PDF - Decrypt Task decrypts existing PDF files with a password or a Certific
  
 **Decrypt > Main settings** sub tab
 
-![](../../../../../static/img/pgpdecryptmainsettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Decrypt%20settings.png)
 
 **Certificate**
 
@@ -29,7 +29,7 @@ This tab uses the common [file filter](../../job-tasks-file-filter.md) to filter
  
 **Decrypt > Destination** sub tab
 
-![](../../../../../static/img/pgpdecryptdestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Decrypt%20Destination.png)
 
 **Save to**
 

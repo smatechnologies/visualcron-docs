@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Registry Task can perform various registry actions like read, rename and write values.
 
-![](../../../../../static/img/tasksystemregistry.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Registry.png)
 
 There are 7 kinds of registry Tasks:
  

@@ -17,11 +17,11 @@ The actual controls can return user defined values and the result of values can 
  
 **Sample popup**
 
-![](../../../../../static/img/taskinteractivitypopupmessage.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Example%20Popup.png)
 
 **Popup > Main settings** sub tab
 
-![](../../../../../static/img/taskinteractivitypopupmainsettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup.png)
 
 **Popup position**
 
@@ -69,23 +69,23 @@ Click this button to test the popup.
  
 **Popup > Target** sub tab
 
-![](../../../../../static/img/taskinteractivitypopuptarget.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup%20Target.png)
 
 Right now the Popup can be sent to single user(s), specified groups or the user that executes the Task/Job.
  
 **Popup > Buttons** sub tab
 
-![](../../../../../static/img/taskinteractivitypopupbuttons.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup%20Buttons.png)
 
 You are able to select among common buttons for the popup. In the Result tab you can control how the press of a specific button affect the result of the Task. In the Output tab you control if the button value should be returned as output or if the Input should be returned.
  
 You may also set the value that is returned for the specific button.
 
-![](../../../../../static/img/taskinteractivitypopupbuttonvalue.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Pop%20Up%20Button%20Options.png)
 
 **Popup > Input** sub tab
 
-![](../../../../../static/img/taskinteractivitypopupinput.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup%20Input.png)
 
 The Input tab controls optional input control that you can use. For example if you want the user to input text or select a radio button, checkbox or combobox. If you want the output from the input control you need to change behavior in the Output tab.
  
@@ -117,21 +117,17 @@ If checked, items are sorted alphabetically, otherwise in the order they are sup
  
 You can add input controls by pressing the Add button.
 
-![](../../../../../static/img/taskinteractivitypopupaddbutton.png)
-
 **Popup > Result** sub tab
 
-![](../../../../../static/img/taskinteractivitypopupresult.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup%20Result.png)
 
 The Result tab controls the result of the Task (if it should fail or not) depending on what you select, write or click.
  
 When adding or editing a "Popup Result" you are able to control what happens if, for example, the radio button is checked.
 
-![](../../../../../static/img/taskinteractivitypopuppopupresult.png)
-
 **Popup > Output** sub tab
 
-![](../../../../../static/img/taskinteractivitypopupoutput.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup%20Output.png)
 
 In the output settings you control what is returned from the Task. By default the Button value is returned *(Dialog result)* but you can also return input values in output *(Input values)*. When choosing input option "checkbox" each value will be returned in a new row.
  

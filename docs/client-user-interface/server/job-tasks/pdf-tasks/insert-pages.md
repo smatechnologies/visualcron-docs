@@ -9,7 +9,7 @@ The PDF - Insert pages Task inserts blank pages or pages extracted from another 
  
 **Insert pages > Main settings** sub tab
 
-![](../../../../../static/img/taskpdfinsertpagesmain.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Insert%20pages%20settings.png)
 
 **Password for file(s)**
 
@@ -33,7 +33,7 @@ This tab uses the common [file filter](../../job-tasks-file-filter.md) to filter
  
 **Insert pages > Destination** sub tab
 
-![](../../../../../static/img/taskpdfinsertpagesdestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Insert%20pages%20destination.png)
 
 **Insert at**
 

@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Virtual Server - Reset VM Task resets a specific virtual machine.
 
-![](../../../../../static/img/taskvirtualserverresetvm.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/Reset%20VM.png)
 
 **Local or Remote**
 

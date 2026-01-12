@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Retrieves information regarding one or more Exchange objects and places the result in the output.
 
-![](../../../../../static/img/taskexchangegetobjects.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Exchange%20Tasks/Get%20Exchange%20Object.png)
 
 **Mailbox URL**
 

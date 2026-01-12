@@ -9,7 +9,7 @@ The Set Variable Task allows you to create or update a Variable. Variables can b
  
 A Job variable is related to a job, thus when that specific job is exported, the Job variable is included.
 
-![](../../../../../static/img/taskinternalsetjobvariable.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Internal%20Tasks/Set%20job%20variable.png)
 
 **Job**
 

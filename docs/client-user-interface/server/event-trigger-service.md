@@ -13,7 +13,7 @@ Often, services start when the computer starts. Normally, a service stops when a
  
 **Triggers > Add > Event Trigger > Service** tab
 
-![](../../../static/img/triggereventservice.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Service.png)
 
 **Service name**
 

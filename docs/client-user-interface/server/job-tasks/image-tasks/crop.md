@@ -13,7 +13,7 @@ In the File filter tab you define the image file to be cropped. Read more about 
  
 **Image crop > Destination** sub tab
 
-![](../../../../../static/img/taskimagecropdestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20crop.png)
 
 **Crop position and dimensions**
 

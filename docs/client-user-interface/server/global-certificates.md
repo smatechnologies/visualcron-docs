@@ -11,7 +11,7 @@ VisualCron can handle standard X509 certificates. These can be stored at the ser
  
 **Global > Certificates**
 
-![](../../../static/img/globalcertificates.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Certificates/Global%20-%20Certificates.png)
 
 The Manage certificates window lets you view currently stored Certificates and their properties.
  
@@ -40,13 +40,13 @@ To start the Generate certificate wizard click on the Create certificate icon.
  
 **Global > Certificates > Create**
 
-![](../../../static/img/globalcertificatescreate.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Certificates/Manage%20Certificates.png)
 
 Select type of certificate (currently only Self-signed certificate).
  
 **Global > Certificates > Create 2**
 
-![](../../../static/img/globalcertificatescreate2.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Certificates/Certificate%20Creation%202.png)
 
 **Hash algorithm**
 
@@ -58,19 +58,19 @@ Use this property to control the strength of the public key in bits.
  
 **Global > Certificates > Create 3**
 
-![](../../../static/img/globalcertificatescreate3.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Certificates/Certificate%20Creation%203.png)
 
 Enter subject info for the certificate. Remember to set the Email property if you are going to use the Certificate in the [Email Task](../server/job-tasks/messaging-tasks/email).
  
 **Global > Certificates > Create 4**
 
-![](../../../static/img/globalcertificatescreate4.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Certificates/Certificate%20Creation%204.png)
 
 Enter validity period for the certificate.
  
 **Global > Certificates > Create 5**
 
-![](../../../static/img/globalcertificatescreate5.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Certificates/Certificate%20Creation%205.png)
 
 Last step. Click on Next to generate Certificate.
  

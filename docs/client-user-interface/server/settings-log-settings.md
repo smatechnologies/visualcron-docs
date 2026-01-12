@@ -9,7 +9,7 @@ In the main menu **Server > Main settings > Settings** dialog, there are a set o
  
 **Main > Settings > Log settings > Settings** sub tab
 
-![](../../../static/img/serversettingslogsettingssettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Log%20Settings.png)
 
 **Extended debug logging**
 
@@ -33,7 +33,7 @@ If any option is activated, a log file will be created and entries will be writt
  
 **Main > Settings > Log settings > Error handling** sub tab
 
-![](../../../static/img/serversettingslogsettingserrorhandling.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Error%20Handling.png)
 
 **Send unhandled server errors to VisualCron**
 
@@ -41,7 +41,7 @@ If you check this all errors are reported back to VisualCron. This way we can ge
  
 **Main > Settings > Log settings > Database settings** sub tab
 
-![](../../../static/img/dbsettingslog.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Database%20Settings.png)
 
 VisualCron uses an internal database to log server events and Job/Task result/output and audit logging. These are stored in separate tables in an internal database. You can control how many and/or how long time this data should be stored in each table. It is possible to store these logs externally.
  
@@ -108,7 +108,7 @@ If the database has exceeded maximum size you may have to manually delete it to 
  
 **Main > Settings > Log settings > Output settings** sub tab
 
-![](../../../static/img/output_settings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Output%20Settings.png)
 
 **Limit output size**
 

@@ -12,7 +12,7 @@ The .NET Condition was created to provide a Condition with almost no limits at a
 
 **Global > Conditions > Condition set Add > Conditions Add > .NET select > .NET** tab
 
-![](../../../static/img/globalconditionsdotnet.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Conditions/Condition%20-%20.NET.png)
 
 **Language**
 

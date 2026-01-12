@@ -9,5 +9,5 @@ The main menu **Tools > Server monitor** option shows some server performance pa
  
 **Tools > Server monitor**
 
-![](../../../static/img/toolsexploreservermonitor.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Server%20Monitor.png)
 

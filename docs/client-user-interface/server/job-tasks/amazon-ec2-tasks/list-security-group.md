@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Amazon EC2 - List security group Task returns a list of security groups according to the specified filter.
 
-![](../../../../../static/img/taskamazonec2listsecuritygroup.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Amazon%20EC2%20Tasks/List%20Security%20Group.png)
 
 **Connection**
 

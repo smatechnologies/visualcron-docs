@@ -9,7 +9,7 @@ The main menu **Tools > Objects > Object search** option performs search for a s
  
 **Tools > Objects > Object search** tab
 
-![](../../../static/img/objecttextreplace.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Objects/Object%20text%20search-replace.png)
 
 **Object(s) type**
 

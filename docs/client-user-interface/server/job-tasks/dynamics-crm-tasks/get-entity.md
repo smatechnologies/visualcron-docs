@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Dynamics CRM - Get Entity Task retrieves an Entity object from Dynamics CRM.
 
-![](../../../../../static/img/taskdynamicscrmgetentity.png)
+[](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Dynamics%20CRM%20Tasks/Get%20entity.png)
 
 **Connection**
 

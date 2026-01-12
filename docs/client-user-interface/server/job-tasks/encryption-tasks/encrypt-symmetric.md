@@ -21,7 +21,7 @@ The Encryption - Encrypt (symmetric) Task is able to encrypt one or more files t
  
 **Encrypt > Encryption settings** tab
 
-![](../../../../../static/img/taskencryptsymmetricsettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Encryption%20Tasks/Encrypt%20Symmetric.png)
 
 **Encryption algorithm**
 
@@ -47,7 +47,7 @@ In the File filter tab you define which files should be encrypted. Read more abo
  
 **Encrypt > Destination** tab
 
-![](../../../../../static/img/taskencryptsymmetricdestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Encryption%20Tasks/Encrypt%20Symmetric%20Destination.png)
 
 **Destination**
 

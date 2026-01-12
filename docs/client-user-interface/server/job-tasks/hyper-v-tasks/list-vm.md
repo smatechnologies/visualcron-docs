@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Hyper-V - List VM Task allows you to list virtual machines hosted on a specific, local or remote, Hyper-V Management Server.
 
-![](../../../../../static/img/taskhypervlistvm.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Hyper-V%20Tasks/List%20VM.png)
 
 **Local/Remote server**
 

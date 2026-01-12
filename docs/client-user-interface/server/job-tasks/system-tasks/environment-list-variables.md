@@ -8,7 +8,7 @@ hide_title: 'true'
 System - Environment - List variables lists all variables  for a process, user or local machine.
 
 
-![](../../../../../static/img/tasksystemenvironmentlistvariables.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/List%20Variables.png)
 
 **Variable scope**
 

@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The System shutdown Task can turn off a local or remote computer.
 
-![](../../../../../static/img/tasksystemshutdown.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Shutdown.png)
 
 **Credentials**
 

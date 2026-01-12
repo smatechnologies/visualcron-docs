@@ -13,7 +13,7 @@ The SharePoint Tasks supports the following versions:
 * SharePoint 2013
 * SharePoint Online
 
-![](../../../../../static/img/tasksharepointcreatelist.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Create%20List.png)
 
 **Connection**
 
@@ -56,5 +56,5 @@ If checked, specifies that new list folders can be added to the list. This param
 Columns are created by clicking the Add button using a Microsoft xml format.
 Read more here: [http://msdn.microsoft.com/en-us/library/office/ms457586.aspx](http://msdn.microsoft.com/en-us/library/office/ms457586.aspx)
 
-![](../../../../../static/img/tasksharepointcreatelistadd.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Create%20List%20Schema.png)
 

@@ -7,9 +7,9 @@ hide_title: 'true'
 
 The IMAP Connection stores connect and logon properties for the email server protocol IMAP4. The IMAP4 protocol is used to receive email. The IMAP Connection is used in the Email Trigger.
  
-**Manage Connections > Add > IMAP4 > Main settings** tab
+**Manage Connections > Add > IMAP4 > Common settings** tab
 
-![](../../../static/img/connectionimapmainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/IMAP4/IMAP.png)
 
 **Test**
 
@@ -19,14 +19,6 @@ It is possible to test the connection once you have set all settings. Click the 
 
 The unique name for the Connection.
  
-**Address**
-
-The DNS name or IP address of the email server.
- 
-**Port**
-
-The port used by the email server. Please note that it should match the port of the encryption. Normally encrypted connections uses port 993 while email servers with no encryption uses port 143.
- 
 **Timeout**
 
 The connection timeout in seconds. Connection will fail after this time is passed.
@@ -34,6 +26,35 @@ The connection timeout in seconds. Connection will fail after this time is passe
 **Code page**
 
 The table of values that describes the desired character set. Currently this is overridden by the code page in the Task.
+
+**Manage Connections > Add > IMAP4 > Connection settings** tab
+
+![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/IMAP4/Settings.png)
+
+**Address**
+
+The DNS name or IP address of the email server.
+ 
+**Port**
+
+The port used by the email server. Please note that it should match the port of the encryption. Normally encrypted connections uses port 993 while email servers with no encryption uses port 143.
+
+**Authentication**
+
+Default
+OAuth
+
+**Anonymous**
+
+Please note that Anonymous, accessing a shared mailbox is not supported in the IMAP protocol. Use Exchange Connection instead.
+
+**Username**
+
+The user name for the email account.
+ 
+**Password**
+
+The password for the email account.
  
 ### Default settings for some servers:
 
@@ -57,26 +78,9 @@ Encryption
 * Cryptographic protocol: SSL
 * SSL Version: 3
  
-**Manage Connections > Add > IMAP4 > Authentication** tab
+**Manage Connections > Add > IMAP4 > Connection settings > Encryption** tab
 
-![](../../../static/img/connectionimap4authentication.png)
-
-**Username**
-
-The user name for the email account.
- 
-**Password**
-
-The password for the email account.
- 
-**Alias**
-
-Please note that Alias, accessing a shared mailbox is not supported in the IMAP protocol. Use Exchange Connection instead.
- 
- 
-**Manage Connections > Add > IMAP4 > Encryption** tab
-
-![](../../../static/img/connectionimap4encryption.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/IMAP4/Encryption.png)
 
 **Cryptographic protocol**
 
@@ -90,9 +94,9 @@ Explicit or Implict encryption.
 
 Some IMAP4 servers require certain versions of SSL/TLS. Check the versions that are allowed. Sometimes it is necessary to specify the specific allowed version.
  
-**Manage Connections > Add > IMAP4 > Proxy** tab
+**Manage Connections > Add > IMAP4 > Connection settings > Proxy** tab
 
-![](../../../static/img/connectionimap4proxy.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/IMAP4/Proxy.png)
 
 **Proxy type**
 

@@ -11,13 +11,15 @@ To handle this, a way to control network drives from the system account is imple
  
 In the main menu, click on **Server > Global objects > Network drives** to access the interface for mapping/disconnecting.
 
-![](../../../static/img/clip333444095.gif)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Network%20Drives/Network%20Drives.png)
 
 **Map drive**
 
 When mapping a drive you need to specify a Credential, a user that has access to the network drives, that is either a domain user or a user on the remote server. Specify a wanted drive name and path.
 Path should be entered in UNC format like this: ```"\\servernameORip\folder\"```
- 
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Network%20Drives/Map%20Network%20Drives.png)
+
 Click on *Map drive* to map it. It is now controlled by VisualCron and each time VisualCron is started it tries to re-map the drives so these can be accessed after a server reboot.
  
 **Reconnect**

@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Hyper-V - Delete snapshot Task allows you to delete a system snapshot to a specific virtual machine hosted on a local or remote, Hyper-V Management Server.
 
-![](../../../../../static/img/taskhypervdeletesnapshot.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Hyper-V%20Tasks/Delete%20snapshot.png)
 
 **Local/Remote server**
 

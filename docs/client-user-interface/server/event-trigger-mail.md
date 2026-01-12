@@ -9,7 +9,7 @@ The Email event trigger is able to monitor a mailbox through the POP3 or the IMA
  
 **Triggers > Add > Event Trigger > Email > Main settings** tab
 
-![](../../../static/img/triggereventemailmain.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Mail.png)
 
 **Description**
 
@@ -33,7 +33,7 @@ The Trigger will run even though Server is set to off.
  
 **Triggers > Add > Event Trigger > Email > Email > Main settings** tab
 
-![](../../../static/img/triggereventemailemailmainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Mail%20Settings.png)
 
 **Connection**
 
@@ -49,7 +49,7 @@ VisualCron keeps tracks on which emails that have been checked or not. When an e
  
 **Triggers > Add > Event Trigger > Email > Email > S/MIME** tab
 
-![](../../../static/img/triggereventemailsmime.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Mail%20Key.png)
 
 VisualCron is able to decrypt S/MIME emails and verify signatures.
  
@@ -63,7 +63,7 @@ You can create/import your certificates defined in the [Manage Certificates](../
  
 **Triggers > Add > Event Trigger > Email > Email > Conditions** tab
 
-![](../../../static/img/triggereventemailconditions.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Mail%20Conditions.png)
 
 The Email Trigger has some Conditions. The Conditions are there to evaluate certain values from the parsed email. Each evaluation returns a result. The following results exist: All match, Any match and No match. If all match the evaluation then it will return All match. If at least one is matching it will return Any match. If none are matching it will return No match. The actual evaluation of the Condition is different depending on what part of the email is evaluated. For example, when evaluating a subject you can choose among the following checks:
  
@@ -91,7 +91,7 @@ This Condition compares the date and time the message was received against a Var
 
 **Triggers > Add > Event Trigger > Email > Email > Actions** tab
 
-![](../../../static/img/triggereventemailactions.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Mail%20Actions.png)
 
 Actions are controlling what happens when the Conditions has been evaluated - depending on collective result.
  

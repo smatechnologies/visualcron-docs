@@ -9,7 +9,7 @@ The SQL event trigger is able to monitor and Trigger upon a result value from a 
  
 **Triggers > Add > Event Trigger > SQL > Connection** sub tab
 
-![](../../../static/img/triggereventsqlconnection.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL.png)
 
 **Database Connection**
 
@@ -25,17 +25,17 @@ How long time before the query times out.
  
 **Triggers > Add > Event Trigger > SQL > Trigger > Text** sub tab
 
-![](../../../static/img/triggereventsqltriggertext.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL%20Trigger.png)
 
 Enter the query in the text field. If you have a stored procedure - select the stored procedure tab.
  
 **Triggers > Add > Event Trigger > SQL > Trigger > Stored procedure** sub tab
 
-![](../../../static/img/triggereventsqltriggerstoredproc.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL%20Trigger%20Stored.png)
 
 Enter the name of the stored procedure to execute. The grid shows all parameters. When clicking on the Add button, a parameter window will open. Enter parameter values for Name, Value, Data type and Parameter direction.
 
-![](../../../static/img/triggereventsqltriggerstoredprocinput.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL%20Trigger%20Stored%20Procedure.png)
 
 **Validate value**
 
@@ -45,7 +45,7 @@ Test your SQL Task before closing the VisualCron client. Errors will be reported
  
 **Triggers > Add > Event Trigger > SQL > Trigger > Condition** sub tab
 
-![](../../../static/img/triggereventsqlcondition.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL%20Condition.png)
 
 **Condition**
 

@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The System restore - Create restore point Task lets you create a restore point (of files and folders).
  
- ![](../../../../../static/img/tasksystemrestorecreaterestorepoint.png)
+ ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Restore%20Tasks/Create%20Restore%20Point.png)
 
 **Credentials**
 

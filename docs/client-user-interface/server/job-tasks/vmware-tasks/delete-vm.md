@@ -5,6 +5,8 @@ hide_title: 'true'
 
 ## Task VMWare - Delete VM
 
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Delete%20VM.png)
+
 The VMWare - Delete VM Task lets you delete a virtual machine.
  
 **Delete VM > Connection** sub tab

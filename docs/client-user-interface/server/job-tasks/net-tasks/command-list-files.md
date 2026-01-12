@@ -9,7 +9,7 @@ For list files, VisualCron uses the [remote file filter](../../../server/job-tas
 
 **List files** sub tab
 
-![](../../../../../static/img/commandlistfiles.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/List%20Files.png)
 
 **Output**
 

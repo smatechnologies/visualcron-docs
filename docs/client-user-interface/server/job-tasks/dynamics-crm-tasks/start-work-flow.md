@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Dynamics CRM - Start workflow Task starts an existing work flow in Dynamics CRM.
 
-![](../../../../../static/img/taskdynamicscrmstartworkflow.png)
+[](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Dynamics%20CRM%20Tasks/Start%20work%20flow.png)
 
 **Connection**
 

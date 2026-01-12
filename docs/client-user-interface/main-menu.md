@@ -5,4 +5,4 @@ hide_title: 'true'
 
 ## Main Menu
 
-![](../../static/img/mainmenu.png)
+![](../../static/img/dash.png)

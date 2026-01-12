@@ -7,7 +7,7 @@ hide_title: 'true'
 
 This Task type is a version of the Execute Task - specialized for script execution. This Task executes VBScripts and JScripts.
 
-![](../../../static/img/taskprocessexecutescript.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Execute%20Script.png)
 
 **Credentials**
 

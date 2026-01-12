@@ -14,11 +14,11 @@ The Task repository can be found in **Server tab->Global objects->Task** reposit
 
 What makes Task repository even more useful is that you can execute these Task repository Tasks through Variables. In the Variables browser you can see all Task repository Tasks and send your own arguments. The Variable string itself can be used in any field within VisualCron.
 
-![](../../../static/img/taskrepositoryvariables.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Task%20Repository/Task%20Repository%20variables.png)
 
 **Task repository - main window**
 
-![](../../../static/img/taskrepositorymain.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Task%20Repository/Task%20Repository.png)
 
 **Add**
 

@@ -9,7 +9,7 @@ Issues a SNMP SET message to an SNMP agent in order to alter the value of the va
  
 **SNMP Set > General** tab
 
-![](../../../../../static/img/tasksnmpsetgeneral.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Set%20General.png)
 
 **Agent IP Address**
 
@@ -29,7 +29,7 @@ Text ...
  
 **SNMP Set > Advanced** tab
 
-![](../../../../../static/img/tasksnmpsetadvanved.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Set%20Advanced.png)
 
 **Remote Port**
 

@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Dynamics CRM - Update Entity Task updates a specific Entity object in Dynamics CRM.
 
-![](../../../../../static/img/taskdynamicscrmupdateentity.png)
+[](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Dynamics%20CRM%20Tasks/Update%20Entity.png)
 
 **Connection**
 

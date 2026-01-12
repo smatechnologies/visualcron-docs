@@ -9,7 +9,7 @@ Issues a GETBULK message to an SNMP agent in order to inspect a group of variabl
  
 **SNMP Get Bulk > General** tab
 
-![](../../../../../static/img/tasksnmpgetbulkgeneral.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get%20Bulk.png)
 
 **Agent IP Address**
 
@@ -25,7 +25,7 @@ Text ...
  
 **SNMP Get Bulk > Advanced** tab
 
-![](../../../../../static/img/tasksnmpgetbulkadvanced.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get%20Bulk%20Advanced.png)
 
 **Remote Port**
 
@@ -45,7 +45,7 @@ Text ...
  
 **SNMP Get Bulk > Data bindings** tab
 
-![](../../../../../static/img/tasksnmpgetbulkdatabindings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get%20Bulk%20Data%20Bindings.png)
 
 **Variable name**
 

@@ -14,7 +14,7 @@ Some typical power consumption levels (watts) for computer equipment are:
 * Flat screen monitor: 25W
 * Laser jet printer: 7.2W
 
-![](../../../../../static/img/tasksystemcontrolmonitor.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Control%20Monitor.png)
 
 Select either Turn on or Turn off to control monitor power state.
 

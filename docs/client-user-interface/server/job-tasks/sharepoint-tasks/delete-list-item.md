@@ -13,7 +13,7 @@ The SharePoint Tasks supports the following versions:
 * SharePoint 2013
 * SharePoint Online
 
-![](../../../../../static/img/tasksharepointdeletelistitems.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/delete%20list%20items.png)
 
 **Connection**
 

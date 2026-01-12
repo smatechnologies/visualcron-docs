@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Amazon EC2 - Start instance Task starts instance that uses an Amazon EBS volume as its root device.
 
-![](../../../../../static/img/taskamazonec2startinstance.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Amazon%20EC2%20Tasks/Start%20Instance.png)
 
 **Connection**
 

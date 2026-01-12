@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Network change Trigger is able to monitor changes on a network connection.
 
-![](../../../static/img/networkchangetrigger.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Network%20Change.png)
 
 **Network adapters**
 

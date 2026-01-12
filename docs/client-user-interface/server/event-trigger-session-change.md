@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Unknown event type.
 
-![](../../../static/img/triggereventsessionchange.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Session%20Change.png)
 
 **Event type**
 

@@ -9,13 +9,13 @@ The upload command sends one or more files and creates recursive folders if nece
  
 **Upload > File filter** sub tab
 
-![](../../../../../static/img/commanduploadfileslocation.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Upload%20Settings.png)
 
 For upload, VisualCron uses the standard [file filter](../../../server/job-tasks-file-filter) to specify files that should be uploaded.
  
 **Upload** sub tab
 
-![](../../../../../static/img/commanduploadfilesupload.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Upload.png)
 
 **Delete source file after copy**
 

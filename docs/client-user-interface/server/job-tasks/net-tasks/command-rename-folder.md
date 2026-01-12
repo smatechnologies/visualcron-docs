@@ -9,7 +9,7 @@ The Rename folder command renames a folder on the remote server.
  
 **Rename folder** sub tab
 
-![](../../../../../static/img/commandrenamefolder.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Rename%20folder.png)
 
 **Original name**
 

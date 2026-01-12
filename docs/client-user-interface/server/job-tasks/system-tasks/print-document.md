@@ -13,11 +13,13 @@ In the File filter tab you define which file that should be printed. Read more a
  
 **Print document > Print settings** sub tab
 
-![](../../../../../static/img/tasksystemprintdocument.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Print%20Document.png)
 
 **Select printer**
 
 Select your desired printer here.
+
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Print%20Document%20Settings.png)
  
 **Printer settings**
 

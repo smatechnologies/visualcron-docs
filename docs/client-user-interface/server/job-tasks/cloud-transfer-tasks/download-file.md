@@ -12,7 +12,7 @@ This Task uses the [Cloud Remote file filter](../../../server/job-tasks-cloud-re
  
 **Download file(s) > Destination** sub tab
 
-![](../../../../../static/img/taskclouddownloadfiles.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Cloud%20Transfer%20Tasks/Download%20file(s).png)
 
 **Credential**
 

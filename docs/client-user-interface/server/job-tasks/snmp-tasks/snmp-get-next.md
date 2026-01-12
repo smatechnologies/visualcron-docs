@@ -9,7 +9,7 @@ Issues a GETNEXT message to an SNMP agent in order to inspect the value of the n
  
 **SNMP Get Next > General** tab
 
-![](../../../../../static/img/tasksnmpgetnextgeneral.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get%20Next.png)
 
 **Agent IP Address**
 
@@ -25,7 +25,7 @@ Text ...
  
 **SNMP Get Next > Advanced** tab
 
-![](../../../../../static/img/tasksnmpgetnextadvanced.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get%20Next%20Advanced.png)
 
 **Remote Port**
 
@@ -45,7 +45,7 @@ Text ...
  
 **SNMP Get Next > Data** tab
 
-![](../../../../../static/img/tasksnmpgetnextdata.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get%20Next%20Data.png)
 
 **Use string notation for OIDs**
 

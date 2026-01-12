@@ -9,7 +9,7 @@ The Task type HTTP enables execution a remote script/load webpage with standard 
  
 **HTTP > Main settings** tab
 
-![](../../../../../static/img/httptaskmain.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/HTTP.png)
 
 **Endpoint/URL**
 
@@ -54,7 +54,7 @@ Enable this if you get HTTP error 417.
  
 **HTTP > Headers** tab
 
-![](../../../../../static/img/httptaskheaders.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/HTTP%20headers.png)
 
 **Content-type header**
 
@@ -66,7 +66,7 @@ Custom headers can also be added by pressing Add button.
  
 **HTTP > Parameters/Body** tab
 
-![](../../../../../static/img/httptaskbody.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/HTTP%20parameter.png)
 
 **Parameters/body**
 
@@ -82,7 +82,7 @@ Depending on content-type header you can POST various content in the body. By se
  
 **HTTP > Security** tab
 
-![](../../../../../static/img/httptasksecurity.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/HTTP%20security.png)
 
 **Supported security protocols**
 
@@ -98,7 +98,7 @@ What kind of authentication method that is used. No authentication method is use
  
 **HTTP > Save content/response** tab
 
-![](../../../../../static/img/httptasksavecontent.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/HTTP%20save%20content%20response.png)
 
 **Save content**
 

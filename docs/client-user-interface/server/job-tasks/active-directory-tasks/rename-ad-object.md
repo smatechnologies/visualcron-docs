@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Renames the Active Directory object at the specified path to the provided name.
 
-![](../../../../../static/img/taskactivedirectoryrenameadobject.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Rename%20AD%20Object.png)
 
 **Credentials**
 

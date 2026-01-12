@@ -7,7 +7,7 @@ hide_title: 'true'
 
 System - Environment - Append variable appends a value to an existing environment variable for a process, user or local machine.
 
-![](../../../../../static/img/tasksystemenvironmentappendvariable.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Append%20Variable.png)
 
 **Variable name**
 

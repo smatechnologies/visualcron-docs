@@ -9,7 +9,7 @@ The Azure - Stop VM Task stops an existing virtual machine in the Azure cloud. T
  
 **Azure - Stop VM** tab
 
-![](../../../../../static/img/taskazurestopvm.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Azure%20Tasks/Stop%20VM.png)
 
 **Connection**
 

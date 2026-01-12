@@ -9,7 +9,7 @@ The PDF - Get field(s) Task returns value(s) from a PDF document based on field 
  
 **Get field(s) > Main settings** sub tab
 
-![](../../../../../static/img/taskpdfgetfieldsmainsettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Get%20Fields.png)
 
 **Fields grid**
 
@@ -33,7 +33,7 @@ This tab uses the common [file filter](../../job-tasks-file-filter) to filter ou
  
 **Get field(s) > Output** tab
 
-![](../../../../../static/img/taskpdfgetfieldsoutput.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Get%20Fields%20Output.png)
 
 **Include field names**
 

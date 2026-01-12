@@ -98,7 +98,7 @@ Once the File Trigger has been setup you can click on the Trigger to manually fi
  
 **Task right-click > Triggers**
 
-![](../../../static/img/clip333444078.png)
+![](../../../static/img/Client%20User%20Interface/Toolbar/Triggers.png)
 
 **Using File Trigger Variables in upcoming Tasks/Notifications**
 

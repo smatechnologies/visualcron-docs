@@ -17,21 +17,37 @@ In VisualCron you have the option, in the authentication tab, to use the existin
  
 Once you have created your app or selected to use the default one for VisualCron you enter your *phone* number and click on *Request code*. Use the code you obtain in your Telegram Client in VisualCron *Code* field.
  
-**Manage Connections > Add > Telegram > Main settings** tab
+**Manage Connections > Add > Telegram > Common settings** tab
 
-![](../../../static/img/connectiontelegrammain.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Telegram/Telegram.png)
 
-**Request code**
+**Protocol type**
 
-Click this to receive a code to authorize VisualCron for sending messages. You need to enter *Phone* number for this to work.
- 
+Text
+
+**Test**
+
+Text
+
 **Phone**
 
 Enter phone number including country code, i.e. +1888555222.
  
-**Manage Connections > Add > Telegram > Authentication** tab
+**Group**
 
-![](../../../static/img/connectiontelegramauthentication.png)
+The group that the connection is a part of.
+
+**Timeout**
+
+The connection timeout in seconds. Connection will fail after this time period.
+ 
+**Code page**
+
+Code page being used.
+
+**Manage Connections > Add > Telegram > Connection settings** tab
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Telegram/Settings.png)
 
 **Use VisualCron registered app**
 

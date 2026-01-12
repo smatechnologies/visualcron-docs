@@ -19,5 +19,5 @@ An important feature is the import function, ***Time exceptions* -> Collections 
 
 [US Federal Holidays](https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays)
 
-![](../../../static/img/clip333444097.gif)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Time%20Exceptions/Time%20Exceptions.png)
 

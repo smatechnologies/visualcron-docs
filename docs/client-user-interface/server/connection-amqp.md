@@ -23,11 +23,39 @@ Currently, the following protocols are supported:
  
 VisualCron supports AMQP version 1.0 or later.
 
-![](../../../static/img/amqpconnection-main.png)
+**Manage Connections > Add > AMQP > Common settings** tab
 
-![](../../../static/img/hmfile_hash_f160130b.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/AMQP/AMQP.png)
 
-**Broker type**
+**Name**
+
+The name of the Connection to uniquely identifying it.
+
+**Group**
+
+The group that the connection is a part of.
+
+**Timeout**
+
+The connection timeout in seconds. Connection will fail after this time period.
+ 
+**Code page**
+
+Code page being used.
+
+**Manage Connections > Add > AMQP > Connection settings** tab
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/AMQP/Settings.png)
+
+**Address**
+
+This is the host address to the server. It could be a DNS name or IP number.
+
+**Port**
+
+This is the remote connection port.
+
+**Broker Type**
 
 Select one of the two supported:
 
@@ -40,7 +68,7 @@ Username for the service.
  
 **Password**
 
-Username for the service.
+Password for the service.
  
 **Schema**
 

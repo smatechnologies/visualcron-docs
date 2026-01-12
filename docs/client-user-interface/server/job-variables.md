@@ -17,17 +17,14 @@ You find the Job Variables for a specific Job in the Job > Main settings tab by 
  
 **Add Job > Main settings**
 
-![](../../../static/img/jobmainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Main%20Settings/Job%20Variables.png)
 
 **Job Variables**
 
 In the Job Variables window all Variables that are connected to the current Job are listed. You can Add new, Edit or Delete by clicking the buttons or by double click on row.
 
-![](../../../static/img/jobvariablesmanage.png)
-
 **Add/Edit Job Variable**
 
 The add/edit Job Variable window lets you Add a new or Edit an existing Job Variable.
  
-![](../../../static/img/jobvariablesaddedit.png)
-
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Variables/Edit%20variables.png)

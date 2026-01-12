@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Excel - Get cell Task lets you extract data from certain worksheets, rows and colums.
 
-![](../../../../../static/img/taskofficeexcelgetcell.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Get%20Cell.png)
 
 **Credentials**
 

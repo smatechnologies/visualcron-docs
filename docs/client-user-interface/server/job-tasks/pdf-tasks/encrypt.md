@@ -9,7 +9,7 @@ The PDF - Encrypt Task encrypts existing PDF files with a password or a Certific
  
 **Encrypt > Main settings** sub tab
 
-![](../../../../../static/img/pdfencryptmainsettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Encrypt%20Settings.png)
 
 **Certificate**
 
@@ -47,7 +47,7 @@ This tab uses the common [file filter](../../job-tasks-file-filter) to filter ou
  
 **Encrypt > Destination** sub tab
 
-![](../../../../../static/img/pdfencryptdestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Encrypt%20Destination.png)
 
 **Save to**
 

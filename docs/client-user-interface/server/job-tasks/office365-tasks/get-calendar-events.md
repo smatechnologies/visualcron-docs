@@ -9,7 +9,7 @@ The Office365 - Get Calendar event(s) Task lets you retrieve a Calendar event fr
  
 **Office365 - Get calendar events** tab
 
-![](../../../../../static/img/office365getcalendarevents.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office365%20Tasks/O365%20Get%20calendar%20events.png)
 
 **Connection**
 

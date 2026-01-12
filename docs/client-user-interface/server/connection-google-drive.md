@@ -17,17 +17,29 @@ The Google Drive Connection is used in the following Cloud Tasks:
 * [Cloud - Create folder](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/create-folder)
 * [Cloud - Delete item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/delete-item)
  
-**Manage Connections > Add > Google Drive > Main settings** tab
+**Manage Connections > Add > Google Drive > Common settings** tab
 
-![](../../../static/img/connectiongoogledrivemainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Google%20Drive/Google%20Drive.png)
 
 **Name**
 
 The name of the Connection to uniquely identifying it.
- 
-**Manage Connections > Add > Google Drive > Authentication** tab
 
-![](../../../static/img/connectiongoogledriveauthentication.png)
+**Group**
+
+The group that the connection is a part of
+
+**Timeout**
+
+The connection timeout in seconds. Connection will fail after this time period.
+ 
+**Code page**
+
+Code page being used.
+ 
+**Manage Connections > Add > Google Drive > Connection settings** tab
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Google%20Drive/Settings.png)
 
 **Use VisualCron registered app**
 
@@ -66,7 +78,7 @@ In the **Google Drive > Authentication** tab, the *Use VisualCron registered app
 
 **Manage Connections > Add > Google Drive > Proxy** tab
 
-![](../../../static/img/connectiongoogledriveproxy.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Google%20Drive/Proxy.png)
 
 **Proxy type**
 
@@ -82,7 +94,7 @@ The port of the proxy server.
  
 **Use credentials**
 
-Text ...
+The credentials that are associated with the account.
  
 **Domain**
 
