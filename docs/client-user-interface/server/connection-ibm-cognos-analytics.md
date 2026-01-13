@@ -29,7 +29,7 @@ Code page being used.
  
 **Manage Connections > Add > IBM Cognos Analytics > Connection Settings** tab
 
-![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/IBM%20Cognos%20Analytics/Settings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/IBM%20Cognos%20Analytics/Settings.png)
 
 **Address**
 
