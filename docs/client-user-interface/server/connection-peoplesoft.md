@@ -9,7 +9,7 @@ This Connection is used for PeopleSoft.
 
 **Manage Connections > Add > PeopleSoft > Main settings** tab
 
-![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/PeopleSoft/PeopleSoft.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/PeopleSoft/PeopleSoft.png)
 
 **Protocol type**
 
@@ -37,7 +37,7 @@ Code page being used.
 
 **Manage Connections > Add > PeopleSoft > Connection settings** tab
 
-![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/PeopleSoft/Settings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/PeopleSoft/Settings.png)
 
 **Address**
 

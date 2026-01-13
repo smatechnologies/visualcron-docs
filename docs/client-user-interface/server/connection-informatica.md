@@ -13,7 +13,7 @@ This Connection is used for Informatica - Run Job. This connection is for the cl
 
 **Manage Connections > Add > Informatica> Common settings** tab
 
-![](../../../..//visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Informatica/Informatica.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Informatica/Informatica.png)
 
 **Name**
 
@@ -33,7 +33,7 @@ Code page being used.
  
 **Manage Connections > Add > IBM Cognos Analytics > Connection Settings** tab
 
-![](../../../..//visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Informatica/Settings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Informatica/Settings.png)
 
 **Address**
 
