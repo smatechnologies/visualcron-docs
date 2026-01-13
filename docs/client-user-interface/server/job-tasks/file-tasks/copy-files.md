@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Copy/Move file(s) Task lets you copy files easily based on file filters. Together with Credentials you are able to to copy/move from/to network drives.
 
-![](../../../../../static/img/taskcopyfiles.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Copy%20File.png)
 
 In the Copy files dialog you add, edit, clone or delete copy items and change order of copy items. Changes may be done either by the toolbar buttons or mouse right click on the grid.
  
@@ -17,13 +17,13 @@ Clicking on the Add option opens the File filter > Location tab.
  
 **File filter > Location** sub tab
 
-![](../../../../../static/img/taskfilecopyfiles.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Copy%20File%20Location.png)
 
 The [file filter](../../../server/job-tasks-file-filter) sub tab contains the standard [file filter](../../../server/job-tasks-file-filter). You use the file filter to "find" the files you want to copy.
  
 **Copy settings** sub tab
 
-![](../../../../../static/img/copyfiles-destination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Copy%20File%20Copy%20Settings.png)
 
 In the copy settings sub tab you control destination folder, naming and what should happen if the file already exists.
  

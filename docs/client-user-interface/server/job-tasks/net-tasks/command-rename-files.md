@@ -11,7 +11,7 @@ For rename files, VisualCron uses the [remote file filter](../../../server/job-t
  
 **Rename file** sub tab
 
-![](../../../../../static/img/clip0069.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Rename%20files.png)
 
 **New name**
 

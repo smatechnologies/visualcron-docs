@@ -11,7 +11,7 @@ The SQL Connection is used in the [Database - SQL](../../client-user-interface/s
  
 **Manage Connections > Add > SQL > Wizard**
 
-![](../../../static/img/connectionsqlwizard1.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SQL/SQL.png)
 
 **Use connection guide**
 

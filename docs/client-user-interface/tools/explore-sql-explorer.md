@@ -9,7 +9,7 @@ With the main menu **Tools > Explore > SQL Explorer** option, you can use your e
  
 **Tools > Explore > SQL Explorer**
 
-![](../../../static/img/toolsexploresqlexplorer.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/SQL.png)
 
 **Connections tree and connecting**
 

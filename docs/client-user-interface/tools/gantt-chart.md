@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The GANTT chart lets you view a timeline view of current Jobs. When they will execute and how long time (based on previous execution).
 
-![](../../../static/img/gantt-chart.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Gantt%20Chart.png)
 
 **Filter**
 

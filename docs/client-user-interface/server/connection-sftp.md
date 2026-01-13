@@ -11,9 +11,43 @@ The SFTP Connection stores connect and logon properties for the transfer protoco
 
 SFTP (SSH File Transfer Protocol, often called Secure File Transfer Protocol) is a protocol that lets you transfer files securely over a SSH connection. SFTP is not compatible with FTP (File Transfer Protocol), which has it's own security enhancements such as FTPS, FTP over SSL. SFTP is built on top of SSH connection. SSH supports various authentication schemes such as password-based and public key. Public key authentication requires a private key which can be linked to from the Security tab. The VisualCron implementation supports 3-5 of SFTP protocol (versions 1, 2 are outdated and not used anywhere). Default port for SFTP is 22.
  
-**Manage Connections > Add > SFTP > Authentication** tab
+**Manage Connections > Add > SFTP > Common settings** tab
 
-![](../../../static/img/connectionsftpauthentication.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/SFTP%20Settings.png)
+
+**Protocol type**
+
+VisualCron is able to connect using regular FTP and FTPS (with implicit and explicit encryption). Regular FTP offer no security and information is not encrypted. VisualCron supports both SSL 3.0 and TLS (SSL 3.1). SSL and TLS are protocols layered above connection protocols (such as TCP/IP) but beneath application protocols (such as FTP) that provide encrypted, authenticated communications between a client and a server.
+ 
+**Brute force test**
+
+When using FTP and you are unsure of connection properties you can use the Brute force test tool to test all connection combinations. Note, brute force test option is only available for FTP protocol.
+
+**Name**
+
+This is a descriptive name of the connection to distinguish from other connections.
+
+**Group**
+
+The group that the connection is a part of
+ 
+**Timeout**
+
+The connection timeout in seconds. Connection will fail after this time is passed.
+ 
+**Code page**
+
+The table of values that describes the desired character set.
+
+![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Connection%20Settings.png)
+
+**Address**
+
+This is the host address to the server. It could be a DNS name or IP number.
+ 
+**Port**
+
+This is the remote connection port. 
 
 **Authentication type**
 
@@ -49,6 +83,8 @@ By authentication, normally both Password and Keyboard authentication are sugges
  
 **Manage Connections > Add > SFTP > Encryption** tab
 
+![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Encryptions.png)
+
 Some SFTP servers require specific encryption for communication between Client and Server. 4 types of encryption can be adjusted in VisualCron:
  
 * Encryption algorithm
@@ -62,7 +98,7 @@ For any issues with auto-setting please refer to the _Other Connection error->Se
 
 **Manage Connections > Add > SFTP > Extra settings** tab
 
-![](../../../static/img/connectionsftpextrasettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Extra%20Settings.png)
 
 **Transfer type**
 
@@ -222,11 +258,10 @@ _Trace:	Initialised AES-256 SDCTR client->server encryption_
 
 _Trace:	Initialised HMAC-SHA-256 client->server MAC algorithm_
  
-4. Open the Connection in VisualCron and try to fins matching settings in the Encryption tab:
+4. Open the Connection in VisualCron and try to find matching settings in the Encryption tab:
 
-![](../../../static/img/encryptionalgorithm_ctr.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Troubleshooting%201.png)
 
-![](../../../static/img/encryption_keyexchange.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Troubleshooting%202.png)
 
-![](../../../static/img/encryption_macalgo.png)
-
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Troubleshooting%203.png)

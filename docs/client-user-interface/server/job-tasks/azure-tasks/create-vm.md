@@ -9,7 +9,7 @@ The Azure - Create VM Task creates an existing virtual machine in the Azure clou
  
 **Azure - Create VM** tab
 
-![](../../../../../static/img/taskazurecreatevm.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Azure%20Tasks/Create%20VM.png)
 
 **Connection**
 

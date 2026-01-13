@@ -17,11 +17,15 @@ The Pushbullet Connection is used in the following Tasks:
  
 **Manage Connections > Add > Pushbullet > Main settings** tab
 
-![](../../../static/img/connectionpushbulletmain.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/PushBullet/Pushbullet.png)
 
 **Name**
 
 The name of the Connection to uniquely identifying it.
+
+**Group**
+
+The group that the connection is a part of.
  
 **Timeout**
 
@@ -31,9 +35,13 @@ The connection timeout in seconds. Connection will fail after this time period.
 
 Code page being used.
  
-**Manage Connections > Add > Pushbullet > Authentication** tab
+**Manage Connections > Add > Pushbullet > Connection settings** tab
 
-![](../../../static/img/connectionpushbulletauthentication.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/PushBullet/Settings.png)
+
+**Username**
+
+Username for the service.
 
 **Token**
 

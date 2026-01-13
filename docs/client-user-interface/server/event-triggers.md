@@ -21,11 +21,11 @@ Some event based triggers, like the File event type, can in some cases, trigger 
  
 In the **Triggers** tab, clicking on _Add > Event trigger_, a selection window for the different event trigger types is opened.
 
-![](../../../static/img/clip333444077.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Triggers.png)
 
 **Triggers > Add > Event Trigger > Main settings** tab
 
-![](../../../static/img/clip0083.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Main%20Settings%20Tab.png)
 
 It is possible to change the event trigger type in the top combo box, which results in that the current trigger type tab is exchanged.
  
@@ -68,7 +68,7 @@ If checked, the Trigger will always run even though the Server status is Off.
 
 **Triggers > Add > Event Trigger > Timeout** tab
 
-![](../../../static/img/triggereventtimeout.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Timeout.png)
 
 **If trigger has not fired in x time**
 
@@ -80,7 +80,7 @@ When VisualCron detects the timeout it will fire the event.
  
 **Triggers > Add > Event Trigger > Expires** tab
 
-![](../../../static/img/triggereventexpires.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Expires.png)
 
 **Expiration enabled**
 

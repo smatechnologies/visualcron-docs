@@ -9,7 +9,7 @@ The Email Get Messages Task retrieves one or more messages.
  
 **Email - Get messages > Main settings** sub tab
 
-![](../../../../../static/img/taskemailgetmessagesmain.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/email%20-%20get%20messages.png)
 
 **Connection**
 

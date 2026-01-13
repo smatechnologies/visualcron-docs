@@ -14,7 +14,7 @@ This Task returns a string representation of the original return type (of the me
  
 **Service tab**
 
-![](../../../../../static/img/webservice-service.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Webservice%20WCF%20Execute.png)
 
 **URL**
 
@@ -24,7 +24,7 @@ This is the URL that points to the web service. If the method should be executed
 
 If you want to execute through a Proxy you click on the "Proxy.." button which will show the proxy settings window.
 
-![](../../../../../static/img/clip1004-2.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Webservice%20WCF%20Execute%20Proxy.png)
 
 **Timeout in seconds**
 
@@ -97,11 +97,9 @@ This label shows the return type of the selected method. This is the type that w
 
 Double click on parameter rows to set values. Depending on the value type different input forms will be used.
 
-![](../../../../../static/img/clip0009(2).png)
-
 **Security Tab**
 
-![](../../../../../static/img/webservice_security.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Webservice%20WCF%20Execute%20Security.png)
 
 **Security - Authentication method**
 

@@ -9,7 +9,7 @@ The Excel - Create Task can create an Excel file from a CSV file or Variable.
  
 **Excel - Create > Source** sub tab
 
-![](../../../../../static/img/taskofficeexcelcreate.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Create.png)
 
 **Source**
 
@@ -25,7 +25,7 @@ If you have selected File as source you are able to set the standard VisualCron 
  
 **Excel - Create > Columns** sub tab
 
-![](../../../../../static/img/taskofficeexcelcreatecolumns.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Create%20Columns.png)
 
 In the columns tab you can override existing columns or set columns if they do not exist. It is possible to override name and also format of column. Default format is `@` which is a string. You can see different format options when editing or adding a column.
  
@@ -45,7 +45,7 @@ You can deselect this option if you do not want to include any existing headers 
  
 **Excel - Create > Output** sub tab
 
-![](../../../../../static/img/taskofficeexcelcreateoutput.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Create%20Output.png)
 
 **Save to..**
 

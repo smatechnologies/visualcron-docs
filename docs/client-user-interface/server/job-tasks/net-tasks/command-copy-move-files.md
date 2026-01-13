@@ -11,7 +11,7 @@ This command uses the [Remote file filter](../../../server/job-tasks-remote-file
  
 **Copy/Move** sub tab
 
-![](../../../../../static/img/commandcopymovefiles.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/FTP%20Copy%20Move.png)
 
 **Destination folder**
 

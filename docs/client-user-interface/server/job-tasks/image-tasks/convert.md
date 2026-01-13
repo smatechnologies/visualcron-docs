@@ -12,7 +12,7 @@ In the File filter tab you define the image file to be converted. Read more abou
  
 **Image convert > Destination** sub tab
 
-![](../../../../../static/img/taskimageconvertdestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20Convert.png)
 
 **Convert to format**
 

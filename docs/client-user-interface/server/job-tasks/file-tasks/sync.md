@@ -9,21 +9,21 @@ The Task file - Sync files Task lets you sync files between two folders accordin
  
 Multiple sync file items
 
-![](../../../../../static/img/syncfiles-multiple.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Sync%20Files.png)
 
 You can add one or more file sync items in this Task.
  
  
 **Add file sync item->Source path and file filter** tab
 
-![](../../../../../static/img/filesyncitem-addd.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Sync%20Files%20Location.png)
 
 Use the regular [file filter](../../../server/job-tasks-file-filter) to filter what kind of files you want to sync.
  
  
 **Add file sync item->Destination path and sync settings** tab
 
-![](../../../../../static/img/filesync-destination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Sync%20Files%20Destination.png)
 
 **Credential**
 
@@ -57,7 +57,7 @@ If in one side the file is deleted - on the other side:
  
 **Destination->Advanced** tab
 
-![](../../../../../static/img/filesyncadvanced.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Sync%20Files%20Destination%20Advanced.png)
 
 **Copy attributes->Copy file creation time**
 
@@ -82,7 +82,7 @@ Do not create any sub folders (sync to base folder).
  
 **Destination->Source side options** tab
 
-![](../../../../../static/img/syncfilesourcesideoptions.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Sync%20Files%20Destination%20Source%20Side.png)
 
 **Compare files by->Compare checksum when needed**
 
@@ -118,7 +118,7 @@ When a directory on this side is found whose name matches the file name on the o
  
 **Destination->Destination side options **tab
 
-![](../../../../../static/img/filesyncdestinationside.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Sync%20Files%20Destination%20Destination%20Side.png)
 
 **Compare files by->Compare checksum when needed**
 

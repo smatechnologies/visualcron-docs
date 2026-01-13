@@ -18,17 +18,17 @@ Web Distributed Authoring and Versioning (WebDAV) is an extension of the Hyperte
  
 The WebDAV protocol makes the Web a readable and writable medium.[1] It provides a framework for users to create, change and move documents on a server, typically a web server or web share. The most important features of the WebDAV protocol include the maintenance of properties about an author or modification date, namespace management, collections, and overwrite protection. Maintenance of properties includes such things as the creation, removal, and querying of file information. Namespace management deals with the ability to copy and move web pages within a server’s namespace. Collections deal with the creation, removal, and listing of various resources. Lastly, overwrite protection handles aspects related to locking of files.
  
-**Manage Connections > Add > WebDAV > Main settings** tab
+**Manage Connections > Add > WebDAV > Common settings** tab
 
-![](../../../static/img/connectionwebdavmainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/WebDAV/WebDAV.png)
 
 **Name**
 
 The unique name for the Connection
  
-**Address**
+**Group**
 
-The DNS name or IP address of the server.
+The group that the connection is a part of.
  
 **Timeout**
 
@@ -38,9 +38,13 @@ The connection timeout in seconds. Connection will fail after this time is passe
 
 The table of values that describes the desired character set. Currently this is overridden by the code page in the Task.
  
-**Manage Connections > Add WebDAV > Authentication** tab
+**Manage Connections > Add WebDAV > Connection settings** tab
 
-![](../../../static/img/connectionwebdavauthenication.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/WebDAV/Settings.png)
+
+**Address**
+
+The DNS name or IP address of the server.
 
 **Authentication type**
 
@@ -53,18 +57,14 @@ The user name for the WebDAV account.
 **Password**
 
 The password for the WebDAV account.
- 
-**Manage Connections > Add > WebDAV > Encryption** tab
-
-![](../../../static/img/connectionwebdavencryption.png)
 
 **Allowed SSL/TLS versions**
 
 Some servers require certain versions of SSL/TLS. Check the versions that are allowed. Sometimes it is necessary to specify the specific allowed version.
  
-**Manage Connections > Add > WebDAV > Proxy** tab
+**Manage Connections > Add > WebDAV > Connection settings > Proxy** tab
 
-![](../../../static/img/connectionwebdavproxy.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/WebDAV/Proxy.png)
 
 **Proxy type**
 
@@ -80,7 +80,7 @@ The port of the proxy server.
  
 **Use credentials**
 
-Text ...
+The credentials that are associated with the account.
  
 **Domain**
 

@@ -19,7 +19,7 @@ In the _Add/Edit_ Job or the _Add/Edit_ Task windows, click on the **Conditions*
  
 **Edit Job > Conditions** tab
 
-![](../../../static/img/globalconditions.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Conditions/Global%20-%20Conditions.png)
 
 The condition set list consists of two bands, where the parent row is the condition set and the child rows are the conditions within the condition set.
  

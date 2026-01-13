@@ -11,7 +11,7 @@ By default, the VisualCron server is installed and started on the same computer 
  
 ### Manager servers window
 
-![](../../../static/img/servermanager.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/File/Manage%20Servers.png)
 
 :::info
 
@@ -31,7 +31,7 @@ The easiest way to switch between servers is to click on a server in a Server/Us
  
 Switching may also be done by using the toolbar server connection control (Default: "admin@localhost:IPC"):
 
-![](../../../static/img/fileserversswitching.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/File/Switching%20servers.png)
 
 Use the drop down list in the leftmost part of the toolbar to select a new server. If the icon to the left of the server connection is disconnected,  all items in the main menu is "greyed out" and not accessible. Click the Connect icon immediately to the right of the drop down server list to connect to the new server. By this, the server name is updated in all parts of the VisualCron client and also all Jobs/Tasks related to the connected server are shown in the Server/Job/Task grid.
  

@@ -9,11 +9,11 @@ The RSS event trigger is able to watch a remote RSS feed for changes.  Based on 
  
 **Triggers > Add > Event Trigger > RSS > Main settings** tab
 
-![](../../../static/img/triggereventrss.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20RSS.png)
 
 **Feed address**
 
-Text ... Click the Fetch button to
+Click the Fetch button to receive the address.
  
 **Trigger for each item - no conditions**
 
@@ -39,11 +39,11 @@ As for all event triggers we recommend that you set "Put Job in queue" in the ma
 
 **Triggers > Add > Event Trigger > RSS > Conditions** tab
 
-![](../../../static/img/triggereventrssconditions.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20RSS%20Condition.png)
 
 **Triggers > Add > Event Trigger > RSS > Security** tab
 
-![](../../../static/img/triggereventrsssecurity.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20RSS%20Security.png)
 
 **Supported security protocols**
 
@@ -59,6 +59,6 @@ Select a [Credential](../server/global-credentials) suitable for the selected au
  
 **RSS Event Trigger Variables**
 
-![](../../../static/img/triggereventrssvariables.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20RSS%20Variables.png)
 
 In the Variables window you can find related Variables from the Trigger.

@@ -11,9 +11,29 @@ The Office 365 Connection is used in the following places:
 * Microsoft Teams Trigger
 * Microsoft Teams Task
 
-![](../../../static/img/connectionoffice365mainsettings.png)
+**Manage Connections > Add > Office365 > Main settings** tab
 
-![](../../../static/img/office365auth.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Office365/Office365.png)
+
+**Name**
+
+The name of the Connection to uniquely identifying it.
+
+**Group**
+
+The group that the connection is a part of
+
+**Timeout**
+
+The connection timeout in seconds. Connection will fail after this time period.
+ 
+**Code page**
+
+Code page being used.
+
+**Manage Connections > Add > Office365 > Connection settings** tab
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Office365/Settings.png)
 
 **Application Id**
 

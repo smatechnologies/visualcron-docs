@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The File - Set file permissions Task lets you apply security permissions for one or more  files.
 
-![](../../../../../static/img/taskfilesetfilepermissions.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Set%20File%20Permissions.png)
 
 **Windows User or Group**
 

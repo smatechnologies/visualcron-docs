@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The XML Read node(s) Task can read any XML file and pickup a specific node in that XML file, with our without the surrounding XML.
 
-![](../../../../../static/img/taskxmlreadnode.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Read%20Node.png)
 
 **Credentials**
 
@@ -45,7 +45,7 @@ The XML Browser lets you select a specific node in your XML file. When selected,
 
 **Output** tab
 
-![](../../../../../static/img/taskxmlreadnodeoutput.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Read%20Node%20Output.png)
 
 In the output control how the output should look like. If you select Inner XML it will skip the parent XML tags while Outer XML will keep them.
  

@@ -9,7 +9,7 @@ The Change folder command changes to another folder location on the remote serve
  
 **Change folder** sub tab
 
-![](../../../../../static/img/commandchangefolder.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/FTP%20SFTP%20Command%20Types.png)
 
 **Folder name**
 

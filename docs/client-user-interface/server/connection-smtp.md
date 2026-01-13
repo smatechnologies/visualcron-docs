@@ -15,9 +15,9 @@ SMTP uses TCP port 25. The protocol for new submissions (MSA) is effectively the
  
 While electronic mail servers and other mail transfer agents use SMTP to send and receive mail messages, user-level client mail applications typically use SMTP only for sending messages to a mail server for relaying. For receiving messages, client applications usually use either the Post Office Protocol (POP) or the Internet Message Access Protocol (IMAP) or a proprietary system (such as Microsoft Exchange or Lotus Notes/Domino) to access their mail box accounts on a mail server.
  
-**Manage Connections > Add > SMTP > Main settings** tab
+**Manage Connections > Add > SMTP > Common settings** tab
 
-![](../../../static/img/connectionsmtpmainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SMTP/SMTP.png)
 
 **Test**
 
@@ -27,13 +27,9 @@ It is possible to test the connection once you have set all settings. Click the 
 
 The unique name for the Connection.
  
-**Address**
+**Group**
 
-The DNS name or IP address of the SMTP server.
- 
-**Port**
-
-The port used by the SMTP server. Please note that it should match the port of the encryption. Normally encrypted connections uses port 465 or 587 while SMTP servers with no encryption uses port 25.
+The group that the connection is a part of.
  
 **Timeout**
 
@@ -42,6 +38,18 @@ The connection timeout in seconds. Connection will fail after this time is passe
 **Code page**
 
 The table of values that describes the desired character set. Currently this is overridden by the code page in the Task.
+
+**Manage Connections > Add > SMTP > Connection settings** tab
+
+![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SMTP/Settings.png)
+
+**Address**
+
+The DNS name or IP address of the SMTP server.
+ 
+**Port**
+
+The port used by the SMTP server. Please note that it should match the port of the encryption. Normally encrypted connections uses port 465 or 587 while SMTP servers with no encryption uses port 25.
  
 ### Default settings for some servers:
 
@@ -82,10 +90,8 @@ Encryption
 Encryption
 * Cryptographic Protocol: TLS (1.2)
 * Security Mode: Implicit
- 
-**Manage Connections > Add > SMTP > Authentication** tab
 
-![](../../../static/img/connectionsmtpauthentication.png)
+------------------------------------------------------------------------------------
 
 **Anonymous**
 
@@ -99,9 +105,9 @@ The user name for the email account.
 
 The password for the email account.
  
-**Manage Connections > Add > SMTP > Encryption** tab
+**Manage Connections > Add > SMTP > Connection settings > Encryption** tab
 
-![](../../../static/img/connectionsmtpencryption.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SMTP/Encryption.png)
 
 **Cryptographic protocol**
 
@@ -115,9 +121,9 @@ Explicit or Implict encryption.
 
 Some SMTP servers require certain versions of SSL/TLS. Check the versions that are allowed. Sometimes it is necessary to specify the specific allowed version.
  
-**Manage Connections > Add > SMTP > Proxy** tab
+**Manage Connections > Add > SMTP > Connection settings > Proxy** tab
 
-![](../../../static/img/connectionsmtpproxy.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SMTP/Proxy.png)
 
 **Proxy type**
 
@@ -133,7 +139,7 @@ The port of the proxy server.
  
 **Use credentials**
 
-Text ...
+The credentials that are associated with the account.
  
 **Domain**
 

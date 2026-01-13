@@ -20,7 +20,7 @@ To be able to validate your activation code you have to connect to the VisualCro
 1. Be connected to the Internet
 2. Let VisualCron access Internet. If your firewall asks you what to do, you must permit VisualCron to access Internet
 
-![](../../static/img/clip333444051.png)
+![](../../static/img/Using%20VisualCron/Licensing/Online%20Activation.png)
 
 **Offline activation**
 
@@ -33,7 +33,11 @@ This feature is available if you have a server without Internet access. Note tha
 5. After entering you will get an URL. Copy that url in some way to USB stick or paper. Enter the URL in a browser on a computer that has Internet access. You will then get an offline ID.
 6. Enter the Offline ID in the Client
 
-![](../../static/img/clip333444052.png)
+The URL for accessing Offline activation from the VisualCron website is the following: https://admin.visualcron.com/activation/OfflineActivation2024.aspx
+
+![](../../static/img/Using%20VisualCron/Licensing/Offline%20Activation.png)
+
+![](../../static/img/Using%20VisualCron/Licensing/Offline%20Activation%20URL.png)
 
 **Deactivation / Move a licenses**
 

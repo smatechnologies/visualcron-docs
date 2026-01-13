@@ -11,15 +11,11 @@ This feature was introduced with version 7.0.0 and replaced existing Notificatio
  
 **Add/Edit Task > Flow** tab
 
-![](../../../static/img/taskflow.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Edit%20Job%20Flow.png)
 
 The main listing above contains a verbose description of when (On error/On success/On complete) and what happens - the flow action.
  
 If a new default flow is also desired for a previously defined Task, you need to click the *Get default flows* icon for each Task flow you want the default flow for. For more information about Default flows, see [Server > Settings > Default flows](settings-default-flows).
- 
-**Add/Edit Task > Flow > Add/Edit** tab
-
-![](../../../static/img/taskflowadd.png)
 
 The Task Flow window is divided into two parts:
 

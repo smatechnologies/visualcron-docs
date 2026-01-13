@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Hyper-V - Stop VM Task allows you to stop a specific virtual machine hosted on a local or remote, Hyper-V Management Server.
 
-![](../../../../../static/img/taskhypervstopvm.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Hyper-V%20Tasks/Stop%20VM.png)
 
 **Local/Remote server**
 

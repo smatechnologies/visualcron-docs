@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Amazon EC2 - List address(es) Task lists information about one or more of your Elastic IP addresses.
 
-![](../../../../../static/img/taskamazonec2listaddresses.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Amazon%20EC2%20Tasks/List%20Address(es).png)
 
 **Connection**
 

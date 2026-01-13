@@ -16,7 +16,7 @@ In the File filter tab you define which files should be encrypted. Read more abo
  
 **PGP Encrypt > Encryp**t sub tab
 
-![](../../../../../static/img/taskpgpencryptencrypt.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Encryption%20Tasks/PGP%20-%20Encrypt.png)
 
 Here you have two major options when encrypting a file; either Encrypt, Sign or both.
  
@@ -75,7 +75,7 @@ When decrypting a file you can either specify a file name in the *Destination fi
  
 **PGP Encrypt > Recipients** sub tab
 
-![](../../../../../static/img/pgprecipients.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Encryption%20Tasks/PGP%20-%20Encrypt%20Recipients.png)
 
 Specifies the key ring with public keys that belongs to the recipients of the file. Select a key ring, then mark the (public) keys that belongs to a recipient of the file.
  
@@ -85,7 +85,7 @@ Note: in certain scenarios, especially where heavy multi-subkey structures are u
  
 **PGP Encrypt > Signers** sub tab
 
-![](../../../../../static/img/taskpgpencryptdigners.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Encryption%20Tasks/PGP%20-%20Encrypt%20Signers.png)
 
 Specifies the key ring with keys which must be used for data signing. Select a key ring, then check the (private) keys you want to use for signing.
  

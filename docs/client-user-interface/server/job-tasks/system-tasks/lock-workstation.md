@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Lock workstation Task locks the local computer. No settings are required.
 
-![](../../../../../static/img/tasksystemlockworkstation.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Lock%20Workstation.png)
 
 **Credentials**
 

@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Creates a new Active Directory Group in the specified parent container. Groups are Active Directory (or local computer) objects that can contain users, contacts, computers and other groups that can be managed as a single unit.
 
-![](../../../../../static/img/taskactivedirectorycreateadgroup.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Create%20AD%20Group.png)
 
 **Credentials**
 

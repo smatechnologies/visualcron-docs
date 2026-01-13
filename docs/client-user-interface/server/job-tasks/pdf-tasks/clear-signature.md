@@ -9,7 +9,7 @@ The PDF - Clear signature(s) Task removes all or specific signatures within a PD
  
 **Clear signature > Main settings** sub tab
 
-![](../../../../../static/img/pdfclearsignaturesmainsettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Clear%20Signature%20settings.png)
 
 **All signatures**
 
@@ -29,7 +29,7 @@ This tab uses the common [file filter](../../job-tasks-file-filter.md) to filter
  
 **Clear signature > Destination** sub tab
 
-![](../../../../../static/img/pdfclearsignaturesdestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Clear%20Signature%20destination.png)
 
 **Save to**
 

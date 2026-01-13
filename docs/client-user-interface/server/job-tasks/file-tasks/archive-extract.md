@@ -29,7 +29,7 @@ The short instruction to allow accessing paths beyond the 260 characters limit:
 
 When the *Archive - extract* Task is selected in the Task window you are presented with a set of sub tabs within the Archive - extract tab.
 
-![](../../../../../static/img/clip00dfgfdgdfgdfg69.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Archive%20-%20Extract.png)
 
 **Archive type**
 
@@ -57,7 +57,7 @@ If the file filter string should be case sensitive.
  
 **Archive - extract > Extract > Location** sub tab
 
-![](../../../../../static/img/clip0sfdgsfdggfddfgfdg069.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Archive%20-%20Extract%20Location.png)
 
 The extract tab contains the [file filter](../../../server/job-tasks-file-filter) that is used to find zip files for extraction.
 

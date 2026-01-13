@@ -9,7 +9,7 @@ The Create folder command creates a folder on the remote server.
  
 **Create folder** sub tab
 
-![](../../../../../static/img/commandcreatefolder.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Create%20Folder.png)
 
 **Folder name**
 

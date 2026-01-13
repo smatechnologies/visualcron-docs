@@ -7,5 +7,5 @@ hide_title: 'true'
 
 The System Start/Shutdown Trigger is able to Trigger a Job when the computer has been startup or just before shutdown of the computer.
 
-![](../../../static/img/triggereventsystemstartupshutdown.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20System%20Start%20Shutdown.png)
 

@@ -9,7 +9,7 @@ In the main menu **Server > Main settings > Settings** dialog, there are a set o
  
 **Main > Settings > Proxy** tab
 
-![](../../../static/img/serversettingsproxy.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Proxy.png)
 
 
 **Proxy type**

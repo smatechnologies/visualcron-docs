@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The main menu **File > Updates > Check for updates** option connects to the VisualCron web site i order to find if there is a later version available.
 
-![](../../../static/img/fileupdatescheck.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/File/Check%20Updates.png)
 
 In case of this response, you should repeat the updates function at a later date until the official version is available.
  
@@ -17,6 +17,6 @@ If the VisualCron Client is off, the computer where the VisualCron Client runs i
 
 In **File > Settings > Client settings > Main settings** tab, uncheck Check for updates at startup if desired.
 
-![](../../../static/img/embim1.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/File/Check%20for%20Updates.png)
 
 In this case you are encouraged to download the latest official version.

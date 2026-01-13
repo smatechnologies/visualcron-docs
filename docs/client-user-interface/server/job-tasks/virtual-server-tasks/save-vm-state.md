@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Virtual Server - Save VM state Task saves the current state of a specific virtual machine.
 
-![](../../../../../static/img/taskvirtualserversavevmstate.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/Save%20VM%20State.png)
 
 **Local or Remote**
 

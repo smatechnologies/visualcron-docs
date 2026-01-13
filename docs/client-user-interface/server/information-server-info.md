@@ -9,9 +9,20 @@ The main menu **Server > Information > Server info** option shows some details r
  
 **Server > Information > Server info > Machine** tab
 
-![](../../../static/img/serverinformationserverinfo.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Information%20-%20Server%20Info/Machine.png)
 
 **Server > Information > Server info > License** tab
 
-![](../../../static/img/serverinformationserverinfolicense.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Information%20-%20Server%20Info/License.png)
 
+**Server > Information > Server info > Service** tab
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Information%20-%20Server%20Info/Service.png)
+
+**Server > Information > Server info > Environment** tab
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Information%20-%20Server%20Info/Environment.png)
+
+**Server > Information > Server info > Connection** tab
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Information%20-%20Server%20Info/Connection.png)

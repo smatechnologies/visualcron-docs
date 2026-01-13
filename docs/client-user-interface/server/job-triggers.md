@@ -11,7 +11,7 @@ By invoking the _Add Job, Clone Job or Edit Job_ functions, the **Triggers** tab
  
 **Job > Triggers** tab
 
-![](../../../static/img/jobtriggers.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Triggers.png)
 
 
 **Add**
@@ -32,7 +32,7 @@ By default, Triggers are executed in an "OR-matter". This means Triggers do not 
  
 **Job > Tiggers > Dependency**
 
-![](../../../static/img/jobtriggersdependency.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Trigger%20Dependency.png)
 
 **Trigger selection**
 

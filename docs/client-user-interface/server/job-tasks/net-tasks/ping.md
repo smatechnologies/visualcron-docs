@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The ping Task is used to test whether a particular host is reachable across an IP network. It works by sending ICMP “echo request” packets to the target host and listening for ICMP “echo response” replies. ping estimates the round-trip time in milliseconds.
 
-![](../../../../../static/img/tasknetping.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Ping.png)
 
 **Hostname**
 

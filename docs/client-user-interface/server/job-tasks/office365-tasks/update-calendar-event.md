@@ -9,7 +9,7 @@ The Office365 - Update Calendar event Task lets you update a Calendar event in t
  
 **Office365 - Update calendar events** tab
 
-![](../../../../../static/img/updatecalendarevent.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office365%20Tasks/O365%20Update%20calendar%20events.png)
 
 **Connection**
 

@@ -9,7 +9,7 @@ The String - JSON filter Task lets you perform JSON queries with the JSONPath an
  
 JQ filter manual: [https://stedolan.github.io/jq/manual/](https://stedolan.github.io/jq/manual/)
 
-![](../../../../../static/img/taskstringjsonfilter.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/String%20Tasks/JSON%20Filter.png)
 
 **Credentials**
 
@@ -31,3 +31,4 @@ Select JSONPath or JQ program as a “filter”: it takes an input, and produces
 
 Enter the JSONPath or JQ filter expression. Click the *Filter expression* icon to browse the input stream structure.
 
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/String%20Tasks/JSON%20Filter%20Output.png)

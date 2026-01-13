@@ -13,9 +13,9 @@ There are a couple of settings that affects exit code collections:
  
 2. **Server > Main settings** tab. Here you can control which exit code collection that should be used for new Tasks. Click the Setting icon to open the specific exit code collection (see note 3 below).
 
-![](../../../static/img/servermainsettingspart1.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Main%20Settings.png)
 
 3. **Server > Main settings > Default exit code collection > Settings** icon. Editing exit code collections. Here you can switch between existing collections and create, edit, clone and delete exit codes. You can also edit individual exit codes by double clicking on a row.
 
-![](../../../static/img/servermainsettingsexitcodecollection.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Exit%20Codes.png)
 

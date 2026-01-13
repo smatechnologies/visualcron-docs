@@ -18,7 +18,7 @@ The file filter is evaluated the following way:
 **File filter > Location**
 Contains the basic properties of finding one or more files.
 
-![](../../../static/img/filefilterlocation.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/File%20Location%20sub%20tab.png)
 
 **Credentials**
 
@@ -67,7 +67,7 @@ Makes it possible to check found files for content.
 
 Makes it possible to check found files for content.
 
-![](../../../static/img/filefiltercontent.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/File%20Content%20sub%20tab.png)
 
 The default **Content** property is *Don’t check*. Use the drop-down list to select the desired property.
  
@@ -75,7 +75,7 @@ The default **Content** property is *Don’t check*. Use the drop-down list to s
 
 Makes it possible to check the created/modified date against a Variable value.
 
-![](../../../static/img/filefilterdate.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/File%20Date%20sub%20tab.png)
 
 There are two types of checks *Older than* and *Newer than*. These can be combined with AND/OR or used separately. Only date variables can be used here. Once you have selected a Variable it can be previewed when hovering over text box (tool tip) or in the group caption.
  
@@ -85,7 +85,7 @@ Click the *Variables* icons to view and select available Date Variables.
 
 Makes it possible to filter out files based on size. Like the Date filter it can be combined with AND/OR and check can be done on *Larger than* or *Smaller than*.
 
-![](../../../static/img/filefiltersize.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Size%20sub%20tab.png)
 
 **Check if file is smaller than x size**
 
@@ -99,7 +99,7 @@ Select this to enable size checking. Enter a value in the numeric text box and s
 
 All files have different attributes. If you want to check for a specific attribute you can use whether to include or exclude a file based on attribute.
 
-![](../../../static/img/filefilterattributes.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/File%20Attributes%20sub%20tab.png)
 
 **Include all attributes**
 
@@ -113,7 +113,7 @@ Check the attributes you want to include or exclude.
 
 The filtered files can be presented (in output) in different ways. It is possible to sort the result on various values like name, modified date, created date and size. You can also limit the number of rows returned to, for example, only list the top 3 files according to the current sorting.
 
-![](../../../static/img/filefilterresult3.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/File%20Result%20sub%20tab.png)
 
 **Sort**
 
@@ -127,7 +127,7 @@ Check this if you want to limit the number of rows returned. It will be limited 
 
 Makes it possible to test your current file filter - if it matches any existing files
 
-![](../../../static/img/filfiltertest.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/File%20Test%20sub%20tab.png)
 
 **Show filtered files**
 

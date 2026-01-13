@@ -9,7 +9,7 @@ The Process event trigger monitors process changes like when a process has start
  
 **Triggers > Add > Event Trigger > Process** tab
 
-![](../../../static/img/triggereventprocess.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Process.png)
 
 **Process name**
 

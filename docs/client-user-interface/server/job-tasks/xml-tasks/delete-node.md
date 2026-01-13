@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Delete node Task lets you delete a specific node in a XML file.
 
-![](../../../../../static/img/taskxmldeletenode.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Delete%20Node.png)
 
 **Credentials**
 

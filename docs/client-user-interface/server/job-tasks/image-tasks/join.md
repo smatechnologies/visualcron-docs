@@ -17,7 +17,7 @@ In the File filter tab you define which images that should be joined. Read more 
  
 **Image join > Destination** sub tab
 
-![](../../../../../static/img/taskimagejoindestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20join.png)
 
 **Join mode**
 

@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Pushbullet - Send message Task allows you to send a link to any contact and/or your own device and/or channel.
 
-![](../../../../../static/img/pushbulletsendlink.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Pushbullet%20-%20send%20link.png)
 
 **Connection**
 
@@ -29,5 +29,5 @@ With Pushbullet you can send to a Contact, Device or a Channel. If you have sele
  
 **Pushbullet - Send Link > Recipients > Devices** sub tab
 
-![](../../../../../static/img/taskmessagingpushbulletdevices.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Pushbullet%20-%20send%20link%20recipients.png)
 

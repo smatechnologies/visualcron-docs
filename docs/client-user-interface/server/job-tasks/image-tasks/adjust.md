@@ -13,7 +13,7 @@ In the File filter tab you define the image file to be adjusted. Read more about
  
 **Image adjust > Adjust parameters** sub tab
 
-![](../../../../../static/img/taskimageadjustparameters.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20Adjust.png)
 
 **Adjust to**
 
@@ -21,7 +21,7 @@ All image adjust values are set to 0 by default. For RGB and Gamma, select a val
  
 **Image adjust > Destination** sub tab
 
-![](../../../../../static/img/taskimageadjustdestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20Adjust%20Destination.png)
 
 **Save to**
 

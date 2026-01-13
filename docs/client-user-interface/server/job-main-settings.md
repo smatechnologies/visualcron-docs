@@ -96,4 +96,4 @@ See [Job variables](../server/job-variables) for more information.
 
 From VisualCron version 6.1.2, permissions for a specific Job can be set. It is controlled by overriding the current existing groups. When a specific permission is overridden in a positive way (granting access) it becomes green in the grid and it becomes red if overridden in a negative way (denying access).
 
-![](../../../static/img/clipermissionsp0025.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Main%20Settings/Job%20Permissions.png)

@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Telegram Bot Send - Send message to subscribers of Telegram bot. Please read more about Telegram bots [here](https://core.telegram.org/bots).
 
-![](../../../../../static/img/taskmessagingtelegramsendbotmessage.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Telegram%20-%20send%20bot%20message.png)
 
 **Send to Token**
 

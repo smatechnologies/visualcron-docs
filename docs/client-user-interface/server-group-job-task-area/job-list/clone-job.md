@@ -13,3 +13,4 @@ All settings for an already defined Job can be cloned (copied) into a new Job. E
  
 Clone Job always works locally, i.e. a cloned Job can only be added to the currently connected server.
 
+![](../../../../static/img/Client%20User%20Interface/Toolbar/Clone%20Job.png)

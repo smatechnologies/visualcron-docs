@@ -12,7 +12,7 @@ In the File filter tab you define which image that should be filtered. Read more
  
 **Image filter > Destination** sub tab
 
-![](../../../../../static/img/taskimagefilterdestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20Filter.png)
 
 **Filter to**
 

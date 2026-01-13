@@ -9,7 +9,7 @@ The Dynamics CRM - Upload attachment Task uploads one or more attachments to a D
  
 **Upload attachment > Main settings** tab
 
-![](../../../../../static/img/taskdynamicscrmuploadattachment.png)
+[](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Dynamics%20CRM%20Tasks/upload%20attachments.png)
 
 **Connection**
 

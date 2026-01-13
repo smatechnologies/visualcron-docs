@@ -7,5 +7,5 @@ hide_title: 'true'
 
 The **Help** tab is a part of the main menu.
 
-![](../../../static/img/mainmenuhelp.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Help/Help.png)
 

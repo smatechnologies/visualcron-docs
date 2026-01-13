@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Virtual Server - List VM machines Task retrieves a list of all virtual machines on a specific virtual machine.
 
-![](../../../../../static/img/taskvirtualserverlistvm.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/List%20VM%20Machines.png)
 
 **Local or Remote**
 

@@ -11,7 +11,7 @@ These are the default settings that will be used for the Email Tasks. The SMTP c
  
 **Main > Settings > Email settings** tab
 
-![](../../../static/img/serversettingsemailsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Email%20Settings.png)
 
 **To email**
 

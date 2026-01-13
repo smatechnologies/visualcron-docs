@@ -7,7 +7,7 @@ hide_title: 'true'
 
 With the Task - Stop service you can stop a local or remote Windows service.
 
-![](../../../../../static/img/taskservicestopservice.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Service%20Tasks/Stop%20Service.png)
 
 **Credentials**
 

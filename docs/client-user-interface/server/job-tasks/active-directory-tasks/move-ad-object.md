@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Moves the specific Active Directory object to the selected parent container.
 
-![](../../../../../static/img/taskactivedirectorymoveadobject.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Move%20AD%20Object.png)
 
 **Credentials**
 

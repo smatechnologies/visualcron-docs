@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Encoding - Base 64 encode Task encodes a file or value to Base64 format and outputs to standard output file.
 
-![](../../../../../static/img/taskfilebase64encode.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Base64%20-%20encode%20settings.png)
 
 **Source**
 
@@ -19,8 +19,7 @@ This Task uses the standard VisualCron [File filter](../../../server/job-tasks-f
  
 **Base64 - encode > Destination** sub tab
 
-
-![](../../../../../static/img/taskfilebase64encodedestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Base64%20-%20encode%20destination.png)
 
 **Destination**
 

@@ -13,7 +13,7 @@ The exported settings consists of many files, but the Export settings function c
  
 **File > Import/Export > Export settings**
 
-![](../../../static/img/file_export_settings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/File/Export.png)
 
 **Select settings**
 

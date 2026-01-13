@@ -13,7 +13,7 @@ The Web API consists of a REST and web services API. It is possible to use encry
  
 **Main > Settings > Web API** tab
 
-![](../../../static/img/webapi.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Web%20API.png)
 
 **Allow Web API**
 

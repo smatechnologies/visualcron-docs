@@ -11,7 +11,7 @@ This Task uses the [Crystal Reports Connection](../../../server/connection-cryst
  
 **Crystal reports > Main settings** sub tab
 
-![](../../../../../static/img/clip0sdfgdggfgffg049.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Reporting%20Tasks/Reports%20settings.png)
 
 **Report file**
 
@@ -39,21 +39,19 @@ If the output file is on a network you need to specify a Credential.
  
 **Crystal reports > Parameters** sub tab
 
-![](../../../../../static/img/crparameters.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Reporting%20Tasks/Parameters.png)
 
 Your report might include required or optional parameters. If parameters are already defined you can click on "Import parameters". This will import and list your parameters. You can then edit any parameter by double clicking on it (or press Edit). Import parameters button require that you have setup your Connection settings in the Task before pressing - otherwise VisualCron will not be able to query for parameters.
  
 **Crystal reports > Record filter** sub tab
 
-![](../../../../../static/img/cr_recordfilter.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Reporting%20Tasks/Record%20Filter.png)
 
 The record filter allows you to choose from existing columns in the report and specify filters - similar like WHERE in a SQL query. This way you can filter the report.
  
 You can manually write the query in the Record filter text box or click "Reload" to load all existing columns, choose a condition, write a value and then press Add.
  
 **Crystal reports > Printer** sub tab
-
-![](../../../../../static/img/cr_printer.png)
 
 The printer tab lets you control various printer settings if you have chosen Printer as output type.
  

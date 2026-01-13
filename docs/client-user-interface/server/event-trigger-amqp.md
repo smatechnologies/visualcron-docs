@@ -9,7 +9,7 @@ The Advanced Message Queuing Protocol (AMQP) is an open standard application lay
  
 The AMQP Trigger is using the [AMQP Connection](../server/connection-amqp).
 
-![](../../../static/img/ampqptrigger.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20AMQP.png)
 
 **Name**
 

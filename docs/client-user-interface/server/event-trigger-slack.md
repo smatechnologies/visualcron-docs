@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Slack Event Triggers triggers on new messages in the Slack cloud. This Trigger is using the [Slack Connection](../server/connection-slack).
 
-![](../../../static/img/slacktrigger.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Slack.png)
 
 **Connection**
 

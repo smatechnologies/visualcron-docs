@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The MSMQ - Send message Task sends a message to the specified queue.
 
-![](../../../../../static/img/hmfile_hash_39e151a9.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/MSMQ%20Tasks/MSMQ%20-%20send%20message.png)
 
 **Credential**
 

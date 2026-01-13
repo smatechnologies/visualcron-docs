@@ -9,7 +9,7 @@ The _Folder_ condition lets you check information about a certain folder before 
  
 **Global > Conditions > Condition set Add > Conditions Add > Folder select > Folder** tab
 
-![](../../../static/img/globalconditionsfolder.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Conditions/Condition%20-%20Folder.png)
 
 **Folder path**
 

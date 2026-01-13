@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Amazon EC2 - List instances lists existing instances according to the specified filter.
 
-![](../../../../../static/img/taskamazonec2listinstances.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Amazon%20EC2%20Tasks/List%20Instance(s).png)
 
 **Connection**
 

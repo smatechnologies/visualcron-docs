@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Event log Write Task writes an event log record value based on various parameters.
 
-![](../../../../../static/img/taskeventlogwrite.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Event%20Log%20Tasks/Event%20Log%20-%20write.png)
 
 **Credentials**
 

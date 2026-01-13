@@ -9,7 +9,7 @@ The Remote File event trigger is able to monitor file events on remote computers
 
 **Triggers > Add > Event Trigger > Remote file > Main settings** tab
 
-![](../../../static/img/triggereventremotefilemainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Remote%20File.png)
 
 **Connection**
 
@@ -53,7 +53,7 @@ This Task is using the standard VisualCron [Folder filter](../server/job-tasks-f
  
 **Triggers > Add > Event Trigger > Remote file > Download** tab
 
-![](../../../static/img/triggereventremotefiledownload.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Remote%20File%20Download.png)
 
 **Download file before triggering**
 
@@ -97,7 +97,7 @@ Optionally delete the remote file after download.
  
 **Triggers > Add > Event Trigger > Remote file > Variables**
 
-![](../../../static/img/sdfsdfsdf.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Remote%20File%20Variables.png)
 
 **Last run**
 

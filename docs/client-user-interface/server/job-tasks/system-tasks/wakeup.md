@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Wake up Task prepare a computer for Wake up at a specific time or after a certain time.
 
-![](../../../../../static/img/tasksystemwakeup.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Wake%20up.png)
 
 **At a certain date and time**
 

@@ -9,7 +9,7 @@ The PDF - Delete attachment(s) Task removes one or more attachments embedded in 
  
 **Delete attachment(s) > Main settings** sub tab
 
-![](../../../../../static/img/taskpdfdeleteattachmentsmain.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Delete%20Attachments%20settings.png)
 
 In the *Delete Attachment(s) > Main settings* dialog you add or delete files to be deleted from a PDF file with attachments. Selection of file names is only possible for files included in the PDF file.
  
@@ -19,7 +19,7 @@ This tab uses the common [file filter](../../job-tasks-file-filter.md) to filter
  
 **Delete attachment(s) > Destination** sub tab
 
-![](../../../../../static/img/taskpdfdeleteattachmentsdestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Delete%20Attachments%20destination.png)
 
 **Save to**
 

@@ -9,7 +9,7 @@ The MFT Server event trigger monitors the internal MFT server for events. Genera
  
 **Triggers > Add > Event Trigger > MFT Server > MFT event type** sub tab
 
-![](../../../static/img/mft-trigger.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20MFT.png)
 
 **MFT Server name**
 

@@ -9,7 +9,7 @@ The VisualCron Web API is an alternative way to interact with VisualCron and ext
  
 **Server > Settings > Web API** tab
 
-![](../../static/img/serversettingswebapi.png)
+![](../../static/img/Using%20VisualCron/Interacting%20with%20VisualCron/Web%20API.png)
 
 **Allow Web API**
 

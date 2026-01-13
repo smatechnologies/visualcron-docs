@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Edit Node Task lets you change a specific node value or attribute in a XML file.
 
-![](../../../../../static/img/taskxmleditnode.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Edit%20Node.png)
 
 **Credentials**
 

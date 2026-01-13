@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Create folder Task lets you create a folder.
 
-![](../../../../../static/img/taskfilecreatefolder.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Create%20Folder.png)
 
 **Credentials**
 

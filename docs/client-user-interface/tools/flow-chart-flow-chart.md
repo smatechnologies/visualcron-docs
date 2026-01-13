@@ -9,7 +9,7 @@ The main menu T**ools > Flow chart > Flow char**t option lets you view the inter
  
 **Tools > Flow chart > Flow chart**
 
-![](../../../static/img/toolsflowchart.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Flow%20Chart.png)
 
 **Job selection**
 

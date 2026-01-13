@@ -11,7 +11,7 @@ In computing, Secure Shell or SSH is a set of standards and an associated networ
  
 VisualCron can, with the SSH Task, connect to a remote computer and execute commands securely via SSH. All output is captured and returned to the output of the Task.
 
-![](../../../../../static/img/tasknetssh.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/SSH.png)
 
 **Command type**
 
@@ -25,8 +25,6 @@ Send text: Use SendText to send a string data through the logical connection.
 Before entering any command you must create a Connection. Click on *Manage Connections* to add a new Connection. Select SSH connection and alter connection settings. There are some specific settings for the SSH connection like if there is support for SSH1 or SSH2.
  
 To add a new Command click on Add. Enter the Command in the text field and click on OK to save it.
-
-![](../../../../../static/img/tasknetsshadd.png)
 
 If you are using Command type *Send command*, the environment variables are not picked up automatically but you can specify them in the text field.
 

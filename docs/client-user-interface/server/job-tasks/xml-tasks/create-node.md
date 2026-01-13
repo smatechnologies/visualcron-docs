@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Create Node Task lets you insert a node in an already existing XML file.
 
-![](../../../../../static/img/taskxmlcreatenode.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Create%20Node.png)
 
 **Credentials**
 
@@ -47,7 +47,7 @@ If one or more nodes already exist the new node will, by default, be added in th
  
 **Create Node > Attributes** tab
 
-![](../../../../../static/img/taslxmlcreatenodeattributes.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Create%20Node%20Attributes.png)
 
 If you want to add attributes to the specific node you can enter name and value in the **Attributes** sub tab.
 

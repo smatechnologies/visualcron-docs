@@ -55,32 +55,36 @@ In the Task list, in main window or Task list of add/edit Job you can double cli
 
 **Add loop option**
 
-![](../../../static/img/taskloop.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20Main%20Settings.png)
 
 **Add loop > Main settings**
 
 In the main settings you enter the descriptive name of the Loop. You also set which Task the loop should start and end with.
-
-![](../../../static/img/taskloopadd.png)
 
 **Add loop > Loop settings**
 
 In the loop settings you control the loop type by clicking on one of the three radio buttons.
 You can click on the Variable button next to each text field to find and insert a Variable that can be used in the field.
 
-![](../../../static/img/tasklooploopsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20Settings.png)
 
 **For x to y**
 
 Enter two numerical values or Variables that contain numerical values.
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20For.png)
  
 **While x**
 
 Depending on type comparison you enter different kind of values/Variables.
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20While.png)
  
 **For each x in y**
 
 Enter a Variable that contains a list. You may need to alter field separator, text qualifier or line break depending on the format of the Variable list.
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20For%20each%20x%20in%20y.png)
  
 **Sleep/Wait in each iteration**
 
@@ -94,7 +98,7 @@ Set the maximum number of iterations. If your y value is less than 1000 then low
 
 Any Variable can be used in the settings of the actual loop to provide dynamic x and y values. Also, a set of dynamic, loop context sensitive Variables exist. You find them in the Variables browser:
 
-![](../../../static/img/taskloopvariables.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20Variables.png)
 
 **Loop Id**
 
@@ -168,7 +172,7 @@ A limit that prevents loop for going on forever. Default 1000. This value is sho
 
 To delete a loop you open the Add/Edit Job window and go to Tasks tab. Right click/select a Task row that contains a loop and click on Delete loop. This will only delete the related loop - not the Tasks in it.
 
-![](../../../static/img/image02.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Delete%20Loop.png)
 
 **Changing Task order**
 

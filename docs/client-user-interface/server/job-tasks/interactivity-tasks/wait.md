@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Wait Task lets you insert a pause of any length.
 
-![](../../../../../static/img/taskinteractivitywait.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Wait.png)
 
 Wait/sleep the specified days/hours/minutes/seconds/milliseconds before next Task is run.
 

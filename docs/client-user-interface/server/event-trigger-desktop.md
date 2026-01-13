@@ -13,6 +13,8 @@ Events are divided into categories: Process, Application, Window, Control, Syste
 
 ### Process category
 
+![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Process.png)
+
 The Process category contains 2 events: 
 * Process started
 * Process ended
@@ -22,6 +24,8 @@ The **Process started** event monitors the running of a specific process that ma
 The **Process ended** event monitors the ending of a specific process that matches the name of the process that the user-specified when adding an event.
 
 ### Application category
+
+![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Application.png)
 
 The Application category contains 4 events: 
 * Application focused 
@@ -38,6 +42,8 @@ The **Application clicked** event monitors the clicking to a specific applicatio
 The **Application double** clicked event monitors the double clicking to a specific application that matches the name of the application that the user-specified when adding an event.
 
 ### Window category
+
+![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Window.png)
 
 The Window category contains 6 events: 
 * Window opened
@@ -60,6 +66,8 @@ The **Window clicked** event monitors the clicking to a specific window that mat
 The **Window double clicked** event monitors the double clicking to a specific window that matches the name of the application and window that the user-specified when adding an event.
 
 ### Control category
+
+![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Control.png)
 
 The Control category contains 7 child categories: 
 * Button 
@@ -113,6 +121,8 @@ The **Combobox closed** event monitors the closing of a specific combobox that m
 
 ### System category
 
+![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20System.png)
+
 The **System** category contains 4 events: 
 * System locked
 * System unlocked
@@ -129,6 +139,8 @@ The **RDP disconnected** event monitors the RDP disconnecting.The event fires on
 
 ### Keyboard category
 
+![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Keyboard.png)
+
 The Keyboard category contains 3 events: 
 * Key pressed
 * Hotkey pressed
@@ -141,6 +153,8 @@ The **Hotkey pressed** event monitors the pressing to a specific hotkey.
 The **Key sequence pressed** event monitors the pressing to a specific key sequence.
 
 ### Control selector
+
+![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Control.png)
 
 All fields support wildcards such as: “?”, “*”
 “*” - any symbol and any count, “?” - one any symbol.

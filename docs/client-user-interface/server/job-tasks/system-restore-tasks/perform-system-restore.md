@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The System restore - Perform system restore Task restores an existing system restore to original state.
 
-![](../../../../../static/img/tasksystemrestoreperformsystemrestore.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Restore%20Tasks/Perform%20System%20Restore.png)
 
 **Credentials**
 

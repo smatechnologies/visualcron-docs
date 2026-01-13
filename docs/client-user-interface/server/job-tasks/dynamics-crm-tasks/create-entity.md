@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Dynamics CRM - Create Entity Task creates an Entity in Dynamics CRM.
 
-![](../../../../../static/img/taskdynamicscrmcreateentity.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Dynamics%20CRM%20Tasks/Create%20entity.png)
 
 **Connection**
 

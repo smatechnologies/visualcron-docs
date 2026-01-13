@@ -7,7 +7,7 @@ hide_title: 'true'
 
 A Task for a Job is managed either by mouse right-click on a Job (in the Server/Job/Task grid) and select _Add Task_ to Job ```'<Job name>'``` or by right-click on an existing Task and select _Edit Task_ ```'<Task name>'```.
 
-![](../../../static/img/taskmainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Toolbar/Task%20Main%20Settings.png)
 
 The above is an example of the Task > Main settings window.
  

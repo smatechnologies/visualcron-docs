@@ -9,21 +9,17 @@ The VisualCron Connection stores connect and logon properties for connecting int
  
 The VisualCron Connection is used in the [Internal - Job/Task control](../../client-user-interface/server/job-tasks/internal-tasks/control) Task and the [Event trigger - VisualCron](event-trigger-visualcron) Trigger. The Connection is used to connect to a local or remote VisualCron Server instance.
  
-**Manage Connections > Add > VisualCron > Main settings** tab
+**Manage Connections > Add > VisualCron > Common settings** tab
 
-![](../../../static/img/connectionvisualcronmain.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/VisualCron/VisualCron.png)
 
 **Name**
 
 The unique name for the Connection.
- 
-**Address**
 
-The DNS name or IP of the VisualCron server.
- 
-**Port**
+**Group**
 
-The port used by VisualCron - default 16444.
+The group that the connection is a part of.
  
 **Timeout**
 
@@ -33,9 +29,17 @@ The connection timeout in seconds. Connection will fail after this time period.
 
 Not used.
  
-**Manage Connections > Add > VisualCron > Authentication** tab
+**Manage Connections > Add > VisualCron > Connection settings** tab
 
-![](../../../static/img/connectionvisualcronauthentication.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/VisualCron/Settings.png)
+
+**Address**
+
+The DNS name or IP of the VisualCron server.
+ 
+**Port**
+
+The port used by VisualCron - default 16444.
 
 **Username**
 
@@ -45,9 +49,9 @@ The username for the user in the VisualCron Server.
 
 The password for the user in the VisualCron Server.
  
-**Manage Connections > Add > VisualCron > Proxy** tab
+**Manage Connections > Add > VisualCron > Connection settings > Proxy** tab
 
-![](../../../static/img/connectionvisualcronproxy.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/VisualCron/Proxy.png)
 
 **Proxy type**
 
@@ -63,7 +67,7 @@ Port of the proxy server.
  
 **Use credentials**
 
-Text ...
+The credentials that are associated with the account.
  
 **Username**
 

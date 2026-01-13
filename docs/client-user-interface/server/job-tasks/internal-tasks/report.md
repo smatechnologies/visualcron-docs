@@ -9,7 +9,7 @@ The Task Internal - Report Task creates a comprehensive report in a file or on a
  
 **Report > Output** sub tab
 
-![](../../../../../static/img/taskinternaljobreport.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Internal%20Tasks/Job%20Report%20setting.png)
 
 **Output type**
 
@@ -18,25 +18,13 @@ Select output to printer, to file or standard (Task) output.
 **File**
 
 If output to file, select Credentials and output folder.
- 
-**Internal > Report > Job range** sub tab
-
-![](../../../../../static/img/taskinternaljobreportjobrange.png)
 
 **Job range**
 
 Select output of all Jobs or narrow down to specific Jobs.
  
-**Internal > Report > Content** sub tab
-
-![](../../../../../static/img/taskinternaljobreportcontent.png)
-
-**Job and Task column selection**
-
-Select which properties of a Job and Task will appear in the report.
- 
 **Internal > Report > Printer** sub tab
 
-![](../../../../../static/img/taskinternaljobreportprinter.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Internal%20Tasks/report%20print.png)
 
 If output to printer is selected in the **Report > Output** sub tab, select printer settings.

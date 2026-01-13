@@ -11,7 +11,7 @@ The Amazon SQS Trigger in VisualCron is using the [Amazon Connection](../server/
  
 **Amazon SQS Trigger settings**
 
-![](../../../static/img/amazon_sqs_trigger.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQS.png)
 
 **Queue**
 

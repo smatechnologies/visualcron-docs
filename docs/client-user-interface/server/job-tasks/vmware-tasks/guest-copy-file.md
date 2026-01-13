@@ -9,11 +9,13 @@ The VMWare - Copy file Task copies a file or directory from the guest operating 
  
 **[Guest] Copy file(s) > Connection** sub tab
 
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Guest%20Section/Guest%20Copy%20Files.png)
+
 The Connection settings window is the same for all VMWare Task types. See [Start VM](start-vm) for details.
  
 **[Guest] Copy file(s) > VM Task settings** sub tab
 
-![](../../../../../static/img/taskvmwareguestcopyfilessettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Guest%20Section/Guest%20Copy%20Files%20Settings.png)
 
 **Source folder**
 

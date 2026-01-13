@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Modifies specific properties of an individual Exchange object.
 
-![alt text](../../../../../static/img/taskexchangemodifyobject.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Exchange%20Tasks/Modify%20Exchange%20Object.png)
 
 **Mailbox URL**
 

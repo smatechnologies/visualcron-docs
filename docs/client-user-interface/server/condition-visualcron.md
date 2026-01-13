@@ -9,7 +9,7 @@ The _VisualCron_ condition lets you check internal values within VisualCron.
  
 **Global > Conditions > Condition set Add > Conditions Add > VisualCron select > VisualCron** tab
 
-![](../../../static/img/globalconditionsvisualcron.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Conditions/Condition%20-%20VC.png)
 
 First you have to select a Task or a Job that you want to check. Remember that conditions needs the setting _Run Task in order_ if you want to check a Task.
  

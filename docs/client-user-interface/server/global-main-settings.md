@@ -9,7 +9,7 @@ When clicking on _Add, Edit or Clone_ or mouse right-click on a Condition Set ro
  
 **Global > Conditions > Main settings** tab
 
-![](../../../static/img/globalconditionsconditionsetmainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Conditions/Global%20-%20Conditions.png)
 
 **Description**
 

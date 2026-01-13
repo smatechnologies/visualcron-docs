@@ -17,7 +17,7 @@ In the main menu **Server > Main settings > Settings** dialog, there are a set o
  
 **Main > Settings > Main setting**s tab
 
-![](../../../static/img/serversettingsmainsettings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Main%20Settings.png)
 
 **Installed in a cluster environment**
 

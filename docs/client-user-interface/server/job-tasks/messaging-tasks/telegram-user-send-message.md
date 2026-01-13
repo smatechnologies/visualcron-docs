@@ -7,7 +7,7 @@ hide_title: 'true'
 
 Telegram User Send - Send message to users from user.
 
-![](../../../../../static/img/taskmessagetelegramusersendmessage.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Telegram%20-%20user%20send%20message.png)
 
 **Send to Connection**
 

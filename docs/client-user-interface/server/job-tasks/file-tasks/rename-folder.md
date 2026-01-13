@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Rename folder Task renames a single folder.
 
-![](../../../../../static/img/taskfilerenamefolder.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Rename%20Folder.png)
 
 **Credentials**
 

@@ -9,7 +9,7 @@ The Azure - Restart Web Site Task deletes an existing web instance in the Azure 
  
 **Azure - Remove web site** tab
 
-![alt text](../../../../../static/img/taskazureremovewebsite.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Azure%20Tasks/Remove%20Web%20Site.png)
 
 **Connection**
 

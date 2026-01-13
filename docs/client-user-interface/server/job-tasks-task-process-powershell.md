@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The **PowerShell** Task lets you execute PowerShell code on the fly or an existing PowerShell file.
 
-![](../../../static/img/powershelltask.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Powershell%20Main.png)
 
 **Credentials**
 

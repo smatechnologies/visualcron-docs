@@ -7,5 +7,5 @@ hide_title: 'true'
 
 The Task - Slack - Send message Task is able to send messages
 
-![](../../../../../static/img/slack_main.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/slack%20-%20send%20message.png)
 

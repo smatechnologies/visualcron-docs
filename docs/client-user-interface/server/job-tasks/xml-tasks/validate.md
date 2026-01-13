@@ -11,11 +11,13 @@ A XML document with correct syntax is called "Well Formed". An XML document vali
  
 **XML Validate > File filter > Location** sub tab
 
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Validate.png)
+
 The XML Transform Task uses the standard VisualCron [File filter](../../../server/job-tasks-file-filter) to define the properties of the listed files.
  
 **XML Validate > Destination** sub tab
 
-![](../../../../../static/img/taskxmlvalidatedestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Validate%20Destination.png)
 
 **Validation type**
 
@@ -27,7 +29,7 @@ A list of namespace prefix/namespace URI items, to uniquely identify an element,
  
 **XML Validate > Destination - Schema** sub tab
 
-![](../../../../../static/img/taskxmlvalidatedestinationschema.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Validate%20Schema.png)
 
 If *Validation type Schema* is selected, an extra sub tab is added to define the external schema file. The extra **XML Validate > Schema(s) > Location** sub tab has the same layout as the above referred X**ML Validate > File filter > Location** sub tab.
 

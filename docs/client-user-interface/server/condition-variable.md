@@ -9,7 +9,7 @@ The Variable Condition is able to compare two Variables or values. The values ar
  
 **Global > Conditions > Condition set Add > Conditions Add > Variable select > Variable** tab
 
-![](../../../static/img/globalconditionsvariable.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Conditions/Condition%20-%20Variable.png)
 
 **Value 1**
 

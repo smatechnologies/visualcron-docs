@@ -7,7 +7,7 @@ hide_title: 'true'
 
 System - Environment - Set Variable sets the value of an environment variable for a process, user or local machine.
 
-![]../../../../../static/img/tasksystemenvironmentsetvariable.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Set%20Variable.png)
 
 **Variable name**
 

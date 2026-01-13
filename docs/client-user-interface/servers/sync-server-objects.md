@@ -23,7 +23,7 @@ This feature was introduced in version 9.2.0 of VisualCron.
  
 The main window contains a list of all automated (real time) sync settings. Normally, one row represents a remote Server you want to sync from but it is possible to setup multiple sync settings against one Server.
 
-![](../../../static/img/serversync.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/Sync%20Server%20Objects/Sync%20Server%20Objects.png)
 
 **Add**
 
@@ -51,7 +51,7 @@ Run a manual sync.
  
 **Sync settings**
 
-![](../../../static/img/syncsettingswindow.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/Sync%20Server%20Objects/Sync%20Server%20Jobs.png)
 
 **Active**
 

@@ -8,7 +8,7 @@ The Database - SSRS Task lets you execute reports in SQL Server Reporting Servic
  
 **SSRS > Main settings** sub tab
 
-![](../../../../../static/img/ssrs-mainsettings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/SSRS.png)
 
 **Connection**
 
@@ -30,15 +30,13 @@ This describes what kind of service type the Reporting server uses. Use SSRS for
  
 **SSRS > Parameters** tab
 
-![](../../../../../static/img/ssrs-parameters.png)
-
-![](../../../../../static/img/clip333444080.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/SSRS%20Parameters.png)
 
 Click Refresh to load all parameters for the selected Report path. Add/Edit the values supplied to each report. You can click *Add Multi-Value button* if you want to supply a range of parameters. Alternatively, use a comma separated list and click *CSV button*.
 
 **SSRS > Destination** tab
 
-![](../../../../../static/img/ssrs-destination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/SSRS%20Destination.png)
 
 **File format**
 

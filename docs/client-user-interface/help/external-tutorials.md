@@ -6,3 +6,5 @@ hide_title: 'true'
 ## External - Tutorials
 
 The main menu **Help > External > Tutorials** option opens a new web browser window to the [VisualCron Demos](../../videotutorials) web page.
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Help/Tutorials.png)

@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Decoding - Base 64 - decode Task decodes a file or value from Base64 format and outputs to standard output or file.
 
-![](../../../../../static/img/taskfilebase64decode.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Base64%20-%20decode%20settings.png)
 
 **Source**
 
@@ -15,7 +15,7 @@ Select File if you want to decode an existing file. When selecting File, the sta
  
 **Base64 - decode > Destination** sub tab
 
-![](../../../../../static/img/taskfilebase64decodedestination.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Base64%20-%20decode%20destination.png)
 
 **Destination**
 

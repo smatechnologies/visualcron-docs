@@ -7,7 +7,7 @@ In the main menu **Server > Main settings > Settings** dialog, there are a set o
  
 **Main > Settings > Folders** tab
 
-![](../../../static/img/serversettingsfolders.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Folders.png)
 
 In the folders tab you view and change the folders that are used within VisualCron.
  

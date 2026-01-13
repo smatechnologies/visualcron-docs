@@ -13,7 +13,7 @@ You can examine the registry settings by starting "regedit.exe" from a Windows c
  
 **Triggers > Add > Event Trigger > Registry** tab
 
-![](../../../static/img/triggereventregistry.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Registry.png)
 
 **Registry event type**
 

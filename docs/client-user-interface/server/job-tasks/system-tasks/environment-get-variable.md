@@ -7,7 +7,7 @@ hide_title: 'true'
 
 System - Environment - Get variable retrieves the value of an environment variable for a process, user or local machine.
 
-![](../../../../../static/img/tasksystemenvironmentgetvariable.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Get%20Variable.png)
 
 **Credential**
 
