@@ -39,7 +39,7 @@ The connection timeout in seconds. Connection will fail after this time is passe
 
 The table of values that describes the desired character set.
 
-![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Connection%20Settings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Connection%20Settings.png)
 
 **Address**
 
@@ -83,7 +83,7 @@ By authentication, normally both Password and Keyboard authentication are sugges
  
 **Manage Connections > Add > SFTP > Encryption** tab
 
-![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Encryptions.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Encryptions.png)
 
 Some SFTP servers require specific encryption for communication between Client and Server. 4 types of encryption can be adjusted in VisualCron:
  

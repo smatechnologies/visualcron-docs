@@ -37,7 +37,7 @@ Let say the remote server you watch gets disconnected for some reason, perhaps t
  
 **Triggers > Add > Event Trigger > Cloud file > Cloud file > Remote file filter** tab
 
-![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Cloud%20Remote%20File.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Cloud%20Remote%20File.png)
 
 This Trigger uses the [Cloud Remote file filter](../server/job-tasks-cloud-remote-file-filter) for filtering out files to check for.
  

@@ -9,7 +9,7 @@ This Connection is used for IBM Cognos - Run report Task.
 
 **Manage Connections > Add > IBM Cognos Analytics > Common settings** tab
 
-![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/IBM%20Cognos%20Analytics/IBM%20Cognos%20Analytics.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/IBM%20Cognos%20Analytics/IBM%20Cognos%20Analytics.png)
 
 **Name**
 

@@ -15,7 +15,7 @@ The Connection settings window is the same for all VMWare Task types. See [Start
  
 **[Guest] Create directory > VM Task settings** sub tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Guest%20Section/Guest%20Create%20Directory%20Settings.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Guest%20Section/Guest%20Create%20Directory.png)
 
 **Folder**
 

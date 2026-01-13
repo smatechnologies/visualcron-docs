@@ -13,7 +13,7 @@ Events are divided into categories: Process, Application, Window, Control, Syste
 
 ### Process category
 
-![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Process.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Process.png)
 
 The Process category contains 2 events: 
 * Process started

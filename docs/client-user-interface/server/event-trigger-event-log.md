@@ -11,7 +11,7 @@ Some applications create their own log files and it is possible for you to creat
  
 **Triggers > Add > Event Trigger > Event log** tab
 
-![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Event%20Log.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Event%20Log.png)
 
 You can choose what kind of conditions to use by first enabling the setting and then enter a value in the text window or select a value. When enabling a condition you can choose to use "AND" or "OR". Think of it's as a query.
  

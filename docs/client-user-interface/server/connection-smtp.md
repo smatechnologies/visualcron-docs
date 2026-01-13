@@ -41,7 +41,7 @@ The table of values that describes the desired character set. Currently this is 
 
 **Manage Connections > Add > SMTP > Connection settings** tab
 
-![](../../../../visualcron-docs/static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SMTP/Settings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SMTP/Settings.png)
 
 **Address**
 
