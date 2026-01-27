@@ -15,7 +15,7 @@ module.exports = {
         'get-visualcron/assembly-resolver',
         'get-visualcron/remote-silent-customized-installation',
         'get-visualcron/multiple-clients-on-same-machine',
-        'get-visualcron/upgrade-2to4',
+        'get-visualcron/Upgrading Versions',
         'get-visualcron/language-management',
         'get-visualcron/custom-branding',
       ],
