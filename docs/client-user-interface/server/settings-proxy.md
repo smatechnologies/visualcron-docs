@@ -26,7 +26,7 @@ The port of the proxy server.
  
 **Use credentials**
 
-Text ...
+The credentials used for the proxy server.
  
 **Domain**
 

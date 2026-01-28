@@ -7,7 +7,7 @@ hide_title: 'true'
 
 In the main menu **Server > Health > Server health** dialog, a diagram of the last changes in the Server health level is displayed, as well as the conditions of the current health level and a list of previous levels from the event log.
  
-H**ealth > [current Server health level]**
+**Health > [current Server health level]**
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Health%20Server%20Health/Server%20Health.png)
 

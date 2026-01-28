@@ -1,5 +1,5 @@
 ---
-sidebar_label: 'upgrading versions'
+sidebar_label: 'Upgrading Versions'
 hide_title: 'true'
 ---
 

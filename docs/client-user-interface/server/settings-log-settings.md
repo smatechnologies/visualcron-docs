@@ -119,3 +119,57 @@ If checked, Task output will be limited in the Task log table to the value you s
 **Max output size**
 
 This is the max output size we store in real time. If a Task has larger output than specified we cap at at this level.
+
+**Important**
+
+VisualCron applies both settings together, but the maximum row limit takes priority over the number of days. If the row limit is reached, older logs will be deleted even if they are within the configured day range.
+
+For example: If you set retention to 15 days but keep the default row limit of 2000, the system may only retain logs for 2 days if the row count exceeds the limit. To ensure logs are kept for the full number of days, increase the maximum row limit accordingly or uncheck the row limit option.
+
+**External Database**
+
+When setting up an external database, you can copy the information from the VisualCron Internal Database to the External Database. For setting up an External Database, we recommend checking here first: [Connection - SQL](../../client-user-interface/server/connection-sql.md)
+
+Once the connection has been configured, go to **Main > Settings > Log Settings > Database Settings** and click on *Copy Database*
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Copy%20Database.png)
+
+**External Database Source**
+
+This is the original data source that is getting copied over to the new location.
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Copy%20Database%201.png)
+
+**External Database Destination**
+
+This is the destination we are trying to copy the original data to. This is where you would select your database connection and the credential associated with it.
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Copy%20Database%202.png)
+
+**External Database Log**
+
+Once the connection has been confirmed, press *Start copy* and the information will be copied over to the External Database.
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Copy%20Database%203.png)
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Copy%20Database%204.png)
+
+Once the information has been copied over, make sure the setting *Log to database* has been selected and choose the location to *External*
+
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Copy%20Database%205.png)
+
+**Common Questions**
+
+We are providing some common questions that get asked when it comes to VisualCron's Internal logging. Just as a reminder, the VisualCron client uses SQLCE compact when logging internally. 
+
+Q: How large is the internal storage for VisualCron?
+* 4GB 
+
+Q: Is all 4GB available for use? 
+* No, not all of the 4GB is available for storage - this is because the SQLCE compact capability is separate from VisualCron. We recommend taking a look at what SQLCE Compact is: [SQL Server Compact](https://en.wikipedia.org/wiki/SQL_Server_Compact).
+
+Q: How does the internal database handle file growth? Is there a mechanism (e.g., auto-shrink, compression, pre-allocation) that might explain why the file size appears unchanged even though new data is being added? 
+* The routine runs every 6 hours as part of server (this cannot be changed/adapted because of this). What this routine does is that it cleans according to row count and time period set in database settings. For example, if the file size exceeds 3.2 GB, 80% of the data is kept, including the number of days. Otherwise, both are kept. If the file size is still too high, SQLCE compact is run to optimize. 
+
+Q: How we can monitor or confirm that new data is actually being stored correctly within the internal .sdf?  
+* The easiest way is to check the logs within the client. If the new data exists, it is written to the database.

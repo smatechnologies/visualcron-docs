@@ -39,7 +39,7 @@ To control a remote computer you may need to use a Credential. The Credential mu
 
 The number of seconds this Task will use to perform the Task. If you have a value in the Timeout tab of the Task it will override this value.
  
-**Start VM > VM Task setting**s sub tab
+**Start VM > VM Task settings** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Start%20VMWare%20Settings.png)
 

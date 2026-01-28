@@ -109,7 +109,7 @@ This option copies a mail to another folder. It does not delete it unless you se
  
 **Save email**
 
-Both the actual mail and/or attachment can be saved to a file. You can choose to save the email at a custom location or at the default location. By default the content is saved in ```"C:\Program Files\VisualCron\data\triggers\mail\{MailId}\{MailId}.eml"```. Attachments of an email are by default stored in the attachments folder; ```"C:\Program Files\VisualCron\data\triggers\mail\{MailId}\attachments"```.
+Both the actual mail and/or attachment can be saved to a file. You can choose to save the email at a custom location or at the default location. By default the content is saved in ```"C:\Program Files\VisualCron\data\triggers\mail"```. Attachments of an email are by default stored in the attachments folder; ```"C:\Program Files\VisualCron\data\triggers\mail"```.
  
 :::tip Note 
 

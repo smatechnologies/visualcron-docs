@@ -35,7 +35,7 @@ The short instruction to allow accessing paths beyond the 260 characters limit:
 * Create a new 32-bit DWORD value named LongPathsEnabled and set it to 1.
 * Restart  Windows.
  
-Us**ing Group Policy (Windows Pro and Enterprise (Windows Server 2016 or above))**
+**Using Group Policy (Windows Pro and Enterprise (Windows Server 2016 or above))**
  
 * Press Win + R keys on your keyboard and type gpedit.msc then press Enter. Group Policy Editor will be opened.
 * Go to Local Computer Policy -> Computer Configuration -> Administrative Templates -> System -> Filesystem, then enable the Enable Win32 long paths option.

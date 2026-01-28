@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Add Shared Drive to Cluster
 
-Click S**tart > Windows Administrative tools > Failover Cluster Manager** to launch the *Failover Cluster Manager*.
+Click **Start > Windows Administrative tools > Failover Cluster Manager** to launch the *Failover Cluster Manager*.
 
 Click to **Storage -> Disks**.
 
