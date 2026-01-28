@@ -15,6 +15,6 @@ The Time unit (day, hour, minute, second or specific days of week/month) how oft
  
 **Every**
 
-The occurrence ( 1:st, 2:nd, etc.) is set.
+The occurrence ( 1st, 2nd, etc.) is set.
  
 Whatever interval time unit that is selected, also the Start time (date and time for first run occurrence) may be selected.

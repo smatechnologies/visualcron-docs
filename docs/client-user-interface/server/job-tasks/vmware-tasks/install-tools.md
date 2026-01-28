@@ -15,4 +15,3 @@ The Connection settings window is the same for all VMWare Task types. See [Start
  
 **Install tools > VM Task settings** sub tab
 
-No specific settings.

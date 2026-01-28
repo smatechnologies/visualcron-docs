@@ -19,4 +19,4 @@ The volume ID of the Amazon EBS volume.
  
 **Description**
 
-Descriptive text for the snapshot.
+Detailed description for the snapshot and what it is being used for.

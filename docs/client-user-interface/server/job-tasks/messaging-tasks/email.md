@@ -77,7 +77,7 @@ Enter the HTML message here. Will only be enabled if you have selected HTML as m
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Chrome.png)
 
-In the Chrome Preview tab you can see how your HTML text would look in the Internet Explorer web browser.
+In the Chrome Preview tab you can see how your HTML text would look.
  
 **Email -> Attachments** sub tab
 

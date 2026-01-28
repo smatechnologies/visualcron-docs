@@ -13,7 +13,7 @@ The main purpose of this Task is to use it for looping. For example, you could r
 
 The List file(s) Task uses the standard VisualCron [File filter](../../../server/job-tasks-file-filter) to define the properties of the listed files.
  
-**List file(s) > Output setting**s sub tab
+**List file(s) > Output settings** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/List%20file(s).png)
 
