@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Create a iSCSI Network Drive
 
-In the S**erver Manager > File and Storage Services > iSCSI**, click “to create an iSCSI virtual disk”.
+In the **Server Manager > File and Storage Services > iSCSI**, click “to create an iSCSI virtual disk”.
  
 The New iSCSI Virtual Disk Wizard window is displayed. Select Disk that you want yo use as location for iSCSI Virtual Disk.
  
