@@ -46,7 +46,7 @@ This is used on local accounts that are on the same server as VisualCron is inst
  
 When checked, the following steps are taken:
  
-Log on, then load the user profile in the "HKEY_USERS" registry key. The function returns after the profile is loaded. Loading the profile can be time-consuming, so it is best to use this value only if you must access the information in the "HKEY_CURRENT_USER" registry key or you have to access network resources. Windows Server 2003 and Windows 2000: The profile is unloaded after the new process is terminated, whether or not it has created child processes. Windows XP: The profile is unloaded after the new process and all child processes it has created are terminated.
+Log on, then load the user profile in the "HKEY_USERS" registry key. The function returns after the profile is loaded. Loading the profile can be time-consuming, so it is best to use this value only if you must access the information in the "HKEY_CURRENT_USER" registry key or you have to access network resources. 
  
 When not checked, the following steps are taken:
  

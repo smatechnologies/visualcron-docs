@@ -92,7 +92,9 @@ Some SFTP servers require specific encryption for communication between Client a
 * MAC algorithm
 * Public key algorithms
  
-By default, these are auto-negotiated by VisualCron but sometimes the remote server does provide the proper information to VisualCron and you need to, in detail, adjust which algorithms should be used. For each encryption type you can check "Auto adjust ciphers". When checked, VisualCron will try to find the right setting. If you uncheck you can select yourself.
+By default, these are auto-negotiated by VisualCron but sometimes the remote server does provide the proper information to VisualCron and you need to, in detail, adjust which algorithms should be used. For each encryption type you can check "Auto adjust ciphers". When checked, VisualCron will try to find the right setting. If you uncheck you can select manually.
+
+In some cases, not all ciphers presented in VisualCron will be used during negotiation because the remote server must explicitly support them. If the server is not configured to allow certain ciphers, it will not choose them during the handshake, even if they are enabled in VisualCron. Ensuring the server is configured with matching cipher support is required for successful selection and connection.
  
 For any issues with auto-setting please refer to the _Other Connection error->Set correct Encryption settings section_ below.
 

@@ -114,9 +114,13 @@ If a directory on this side is found whose name coincides with the file name on 
  
 **Same file/folder name conflicts->Rename file**
 
-When a directory on this side is found whose name matches the file name on the other side - copy the file with a new name.
+When a directory on this side is found whose name matches the file name on the other side - copy the file with a new name*.
+
+*The file rename settings can be reconfigured under **Main -> Settings -> Main Settings**
+
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/File%20Rename%20settings.png)
  
-**Destination->Destination side options **tab
+**Destination->Destination side options** tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Sync%20Files%20Destination%20Destination%20Side.png)
 

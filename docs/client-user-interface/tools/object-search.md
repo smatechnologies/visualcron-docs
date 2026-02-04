@@ -35,5 +35,12 @@ The search result table shows the object name, the internal class in VisualCron,
  
 **Replace**
 
-Enter the text that you want to replace with. Clicking Replace will replace all selected values from *Search*.
+Enter the text that you want to replace with. Clicking Replace will replace all selected values from *Search*. A good example can be found below: 
 
+Current String Value = This is a test
+
+We want to update "This is a test" to "This is a test example". To do that, we need to input the whole new string
+
+New String Value = This is a test example
+
+This will convert every "This is a test" to "This is a test example". 

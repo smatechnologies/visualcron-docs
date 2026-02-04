@@ -3,7 +3,7 @@ sidebar_label: 'Report - Print Job Report'
 hide_title: 'true'
 ---
 
-## Report - Pring Job Report
+## Report - Print Job Report
 
 The main menu **Tools > Report > Print job report** option allows you to print or create documents which contains settings from Jobs and Tasks.
  

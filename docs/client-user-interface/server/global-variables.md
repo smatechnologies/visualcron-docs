@@ -161,18 +161,17 @@ Identifier of the event. This is specific to the source that generated the event
  
 **Event type**
 
-Windows Server 2003, Windows 2000, and Windows XP: Type of event in a number representation. See Type for string representation.
-Value Meaning:
+Modern Windows Event Logs (Security, System, Application, etc.) uses Level instead of the old numeric “Type” field. The mapping is effectively the same conceptually, but the OS no longer exposes the 1–5 numeric codes.
 
-1        Error
+**Current Event Levels**
 
-2        Warning
-
-3        Information
-
-4        Security audit success
-
-5        Security audit failure
+| **Modern Level (String)**| **Meaning**                                     | **Notes**          |
+|--------------------------|-------------------------------------------------|--------------------|
+| Error                    | A significant problem that caused a failure     | Previously Type 1  |
+| Warning                  | A condition that may cause future issues        | Previously Type 2  |
+| Information              | Successful operations or informational messages | Previously Type 3  |
+| Audit Success            | A security-related action succeeded             | Previously Type 4  |
+| Audit Failure            | A security-related action failed                | Previously Type 5  |
  
 **Date created**
 
