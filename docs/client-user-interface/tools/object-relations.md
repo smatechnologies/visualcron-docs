@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Objects - Object Relations
 
-The main menu **Tools > Objects > Object relations** option helps you to find relations between objects within VisualCron. Since many objects are "global" and can me reused, multiple relations may exist. It can be useful to know which relations an object have before deleting as it can be used in many places.
+The main menu **Tools > Objects > Object relations** option helps you to find relations between objects within VisualCron. Since many objects are "global" and can be reused, multiple relations may exist. It can be useful to know which relations an object have before deleting as it can be used in many places.
  
 **Tools > Objects > Object relations** tab
 

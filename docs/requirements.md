@@ -9,7 +9,7 @@ hide_title: 'true'
 
 | **Component**            | **Requirement**                                                                 |
 |--------------------------|----------------------------------------------------------------------------------|
-| Operating system         | Microsoft-supported Windows Server and Desktop versions                          |
+| Operating system         | Microsoft-supported (Mainstream and Extended) Windows Server and Desktop versions|
 | Processor Architecture   | 32-bit and 64-bit supported                                                      |
 | .NET Framework Runtime   | .NET Framework 4.8  
 
@@ -19,7 +19,7 @@ hide_title: 'true'
 
 | **Component**            | **Requirement**                                                                 |
 |--------------------------|----------------------------------------------------------------------------------|
-| Operating system         | Microsoft-supported Windows Server versions                                     |
+| Operating system         | Microsoft-supported (Mainstream and Extended) Windows Server and Desktop versions|
 | Disk space               | 1 GB to 4 GB (depending on logging volume)                                      |
 | CPU                      | 2 GHz or more, quad core or better                                              |
 | Memory                   | 6 GB or more                                                                    |
@@ -28,7 +28,7 @@ hide_title: 'true'
 
 | **Component**            | **Requirement**                                                                 |
 |--------------------------|----------------------------------------------------------------------------------|
-| Operating system         | Microsoft-supported Windows Desktop versions                                    |
+| Operating system         | Microsoft-supported (Mainstream and Extended) Windows Server and Desktop versions|
 | Disk space               | 1 GB                                                                             |
 | CPU                      | 2 GHz or more, quad core or better                                              |
 | Memory                   | 6 GB or more                                                                    |
@@ -38,7 +38,7 @@ hide_title: 'true'
 
 | **Component**            | **Requirement**                                                                 |
 |--------------------------|----------------------------------------------------------------------------------|
-| Operating system         | Microsoft-supported Windows Server and Desktop versions                        |
+| Operating system         | Microsoft-supported (Mainstream and Extended) Windows Server and Desktop versions|
 | Disk space               | 1 GB to 4 GB (depending on logging volume)                                      |
 | CPU                      | 2 GHz or more, quad core or better                                              |
 | Memory                   | 12 GB or more                                                                    |
