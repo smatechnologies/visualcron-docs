@@ -60,7 +60,3 @@ Please note that this url need to match url on Box web site like this:
 **Authenticate**
 
 Click on the Authenticate link to start authentication.
- 
-**Authenticate in internal browser**
-
-You can choose to authenticate in your own browser or externally by checking the *Authenticate in internal browser* box (default). Click the *Authenticate* link.

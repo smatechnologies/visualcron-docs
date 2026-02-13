@@ -60,17 +60,12 @@ In order to connect authentication to an account, an app has to be created at th
 **Authenticate**
 
 Click on the Authenticate link to start authentication.
- 
-**Authenticate in internal browser**
 
-You can choose to authenticate in your own browser or externally by checking the Authenticate in internal browser box. Click on the Authenticate link.
- 
 **How to create a connection using the VisualCron app**
 
 In the **OneDrive > Authenticatio**n tab, the Use VisualCron registered app box shall be checked (default).
- 
-1. Check that the *Authenticate in internal browser* box is checked (default)
-2. Click the *Authenticate* link. In the Microsoft authentication window, login using your Microsoft account
+
+1. Click the *Authenticate* link. In the Microsoft authentication window, login using your Microsoft account
 
 ![](../../../static/img/connectiononedrivelogin.png)
 
@@ -97,7 +92,7 @@ You can create the Microsoft OneDrive app either by click on the Setup app link 
 8. Copy the generated password to **OneDrive > Authentication** tab *Application password* field
 9. In the Microsoft application, check the Redirect URL and, if necessary, update the **OneDrive > Extra settings > Redirect URL** information accordingly
 10. Click the *Save* button in the Microsoft application
-11. In the **OneDrive > Authentication** tab, check the *Authenticate in internal browser* box and click on the *Authenticate* link to test the authentication.  In the Microsoft authentication window, login using your Microsoft account
+11. In the **OneDrive > Authentication** tab, click on the *Authenticate* link to test the authentication. In the Microsoft authentication window, login using your Microsoft account
  
 **Manage Connections > Add > OneDrive > Extra settings** tab
 
