@@ -106,4 +106,3 @@ The Activity list provides access to available activities and actions you can ad
 - Use clear, recognizable screen positions for consistent playback
 - Test recordings in the same environment where they will run
 
-For more information on related tasks, see [Task Overview](../overview.md) or consult specific activity documentation for detailed configuration options.
