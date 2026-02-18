@@ -17,11 +17,19 @@ When connecting to a SAP server you need to setup a [SAP Connection](../../conne
  
 **Job**
 
-Text ...
- 
+The name of the SAP background job to execute.
+
+**SAP user**
+
+The SAP user account under which the job will run.
+
 **Delete Job when complete**
 
-Text ...
+When checked, the job is automatically deleted from VisualCron after it finishes executing.
+
+**Wait for completion - with interval**
+
+When checked, VisualCron waits for the SAP job to finish before continuing, polling for completion at the specified interval (in seconds). The default interval is 3 seconds.
  
 **Job steps**
 
@@ -97,4 +105,4 @@ The purpose of this distinction is to let system administrators execute any requ
 
 **Job**
 
-Text ...
+Select a previously executed SAP job from the dropdown to view its log. Use the refresh button to update the list, then click Show log to display the event log entries for the selected job, including event dates and messages.
