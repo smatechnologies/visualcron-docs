@@ -25,7 +25,7 @@ The SAP user account under which the job will run.
 
 **Delete Job when complete**
 
-When checked, the job is automatically deleted from VisualCron after it finishes executing.
+When checked, the job is automatically deleted from the SAP system after it finishes executing.
 
 **Wait for completion - with interval**
 
