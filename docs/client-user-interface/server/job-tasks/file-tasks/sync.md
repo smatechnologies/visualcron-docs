@@ -114,9 +114,14 @@ If a directory on this side is found whose name coincides with the file name on 
  
 **Same file/folder name conflicts->Rename file**
 
-When a directory on this side is found whose name matches the file name on the other side - copy the file with a new name*.
+When a directory on this side is found whose name matches the file name on the other side - copy the file with a new name. You can choose how conflicting files are renamed:
 
-*The file rename settings can be reconfigured under **Main -> Settings -> Main Settings**
+- **Numeric mode** (default): Files are renamed with numeric suffixes (e.g. *file1.txt*, *file2.txt*).
+- **Custom mask mode**: Check **UseMask** and set an **Include File Mask** pattern. Custom patterns support variable replacement and preserve file extensions. UseMask and the file mask are stored per sync side (source and destination each have their own settings).
+
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Sync%20Files%20Source%20Side%20Options%20Rename%20File.png)
+
+*Global file rename settings can be reconfigured under **Main -> Settings -> Main Settings**
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/File%20Rename%20settings.png)
  
@@ -154,7 +159,9 @@ If a directory on this side is found whose name coincides with the file name on 
  
 **Same file/folder name conflicts->Rename file**
 
-When a directory on this side is found whose name matches the file name on the other side - copy the file with a new name.
+When a directory on this side is found whose name matches the file name on the other side - copy the file with a new name. The same renaming options as on the Source side apply: numeric suffixes or a custom mask (UseMask and Include File Mask), with settings stored per side.
+
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Sync%20Files%20Destination%20Side%20Options%20Rename%20File.png)
  
 **Log copy result to output**
 
