@@ -61,9 +61,8 @@ If you use your own application you need to uncheck* Use VisualCron registered a
 **How to create a connection using the VisualCron app**
 
 In the **Google Drive > Authentication** tab, the *Use VisualCron registered app* box will be checked (default).
- 
-1. Check that the *Authenticate in internal browser* box is checked (default)
-2. Click the *Authenticate* link. In the Google authentication window, enter your Google login credentials or approve handling (if you are already logged in to Google) of files in Google Drive.
+
+1. Click the *Authenticate* link. In the Google authentication window, enter your Google login credentials or approve handling (if you are already logged in to Google) of files in Google Drive.
 
 ![](../../../static/img/connectiongoogledrivegogglesignin.png)
 

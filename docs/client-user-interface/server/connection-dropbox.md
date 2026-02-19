@@ -70,7 +70,7 @@ If you e.g. want your own logo and/or use your own permissions, you may choose t
  
 **How to connect your account to an app (Authentication)**
 
-1. You can choose to authenticate in your own browser or external by checking the Authenticate in internal browser box. Click on the Authenticate link.
+1. Click on the Authenticate link.
 
 ![](../../../static/img/connectiondropboxdropboxsignin.png)
 
