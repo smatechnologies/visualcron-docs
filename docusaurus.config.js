@@ -23,7 +23,7 @@ module.exports = {
         },
     footer: {
       style: 'dark',
-      copyright: `Copyright © ${new Date().getFullYear()} SMA Technologies.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Continuous.`,
     },
   },
   presets: [
