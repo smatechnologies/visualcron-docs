@@ -5,6 +5,40 @@ hide_title: 'true'
 
 ## Change Log
 
+### 13.0.0 [2026-02-19]    
+
+#### Features    
+
+:star: Client/Server: Advanced SFTP Endpoint for MFT Server (VCPCM-1742)
+
+:star: Client/Server: SSISDB package execution using DTEXEC for proper impersonation (VCPCM-1994)
+
+
+#### Bug Fixes
+
+:white_check_mark: Client/Server: Clone connecton fixed for better handling sensitive data (VCPCM-2869)
+
+:white_check_mark: Client/Server: Unable to use replace function in object search (VCPCM-2740)
+
+:white_check_mark: Client/Server: Client Connection stuck at 49% (VCPCM-2739)
+
+:white_check_mark: Client/Server: JSON Decode Task fix (VCPCM-2738)
+
+:white_check_mark: Client/Server: Out of Memory Exception when launching client from server (VCPCM-2712)
+
+:white_check_mark: Client/Server: Deprecate internal browser for OAuth authentication (VCPCM-2632)
+
+:white_check_mark: Client/Server: Sync Files Task not Renaming (VCPCM-2600)
+
+:white_check_mark: Client/Server: SFTP Connection Error 103 (VCPCM-2180)
+
+:white_check_mark: Client/Server: Unexpected token ")" in expression or statement (VCPCM-2085)
+
+:white_check_mark: Client/Server: Exception: Key not found Exception for File Trigger (VCPCM-1705)
+
+:white_check_mark: Client/Server: Mapped Drive Disappeared after reboot (VCPCM-1614)
+
+
 ### 12.3.1 [2025-12-08]
 
 #### Features
