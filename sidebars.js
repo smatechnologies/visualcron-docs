@@ -568,7 +568,10 @@ module.exports = {
                       items: [
                         'client-user-interface/server/job-tasks/interactivity-tasks/popup',
                         'client-user-interface/server/job-tasks/interactivity-tasks/desktop-macro',
-                        'client-user-interface/server/job-tasks/interactivity-tasks/robot-task',
+                        'client-user-interface/server/job-tasks/interactivity-tasks/robot-task/overview',
+                        'client-user-interface/server/job-tasks/interactivity-tasks/robot-task/recording-web-macro-for-robot-task',
+                        'client-user-interface/server/job-tasks/interactivity-tasks/robot-task/web-input-element-path',
+                        'client-user-interface/server/job-tasks/interactivity-tasks/robot-task/data-processing-logging',
                         'client-user-interface/server/job-tasks/interactivity-tasks/send-keys',
                         'client-user-interface/server/job-tasks/interactivity-tasks/wait',
                         'client-user-interface/server/job-tasks/interactivity-tasks/play-sound',                

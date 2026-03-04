@@ -17,7 +17,7 @@ Using the Robot Task, you can:
 - Handle legacy applications without APIs
 - Combine multiple applications into unified workflows
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Robot%20Task.png)
+![](../../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Robot%20Task.png)
 
 ### Key Features
 
