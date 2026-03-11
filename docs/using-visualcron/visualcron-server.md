@@ -11,5 +11,5 @@ The VisualCron **server** application status can be *On* or *Off*. If the server
  
 In the VisualCron client, the currently selected server name is displayed in the main menu **Server `[<server name>]`** tab and in the Username/Server entry in the the Server/Groups/Jobs/Tasks grid and in status bar. Server connections are global, thus if you change a connection definition, this will affect all commands associated with this connection.
  
-The default port number between the VisualCron Server and the Client is 16444. This means, that if you are connecting remotely from the outside you may have to open port 16444 in your firewall, software and/or hardware.
+The default port number between the VisualCron Server and the Client is 16444. VisualCron automatically manages a Windows Firewall inbound rule for the server port. If you are connecting remotely through additional firewalls (hardware or third-party software), you may need to open this port manually in those firewalls as well.
 

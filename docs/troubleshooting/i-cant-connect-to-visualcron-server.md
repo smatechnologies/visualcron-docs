@@ -7,6 +7,8 @@ Please check the following:
 
 * Is the port and address correct?
 
+* Did you recently change the server port? If the new firewall rule could not be created, VisualCron automatically rolls back to the previous port. Verify the current port in **Server > Main settings > Settings** and check that the corresponding Windows Firewall rule exists.
+
 * Open the _Windows Control Panel -> Administrative Tools -> Services_. In the list of services, locate VisualCron Service. Is the "VisualCron Service" started?
  
  
