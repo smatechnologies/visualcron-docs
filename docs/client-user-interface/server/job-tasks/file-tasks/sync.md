@@ -92,6 +92,12 @@ If the files are identical in length and the date of the last change, then compa
 
 If the files are identical in length, modification date and content, then compare attributes
  
+**Compare files by->Compare by creation time**
+
+When size and last-modified time are the same, the sync engine can use file creation date/time to decide which file is newer. Enable for the source side, destination side, or both. Works with **Copy file creation time** (Destination->Advanced). Leave unchecked if you don't need it; sync behavior is unchanged.
+
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Sync%20Files%20Source%20Side%20Options%20Compare%20by%20Creation%20Time.png)
+ 
 **Deleted/changed conflicts->Do not change**
 
 Do nothing - do not change the situation.
@@ -131,11 +137,17 @@ When a directory on this side is found whose name matches the file name on the o
 
 **Compare files by->Compare checksum when needed**
 
-Ff the files are identical in length and the date of the last change, then compare the checksum of the contents of the files
+If the files are identical in length and the date of the last change, then compare the checksum of the contents of the files
  
 **Compare files by->Compare attributes**
 
 If the files are identical in length, modification date and content, then compare attributes
+ 
+**Compare files by->Compare by creation time**
+
+Same as Source side options: when size and last-modified time match, creation time can decide which file is newer. Enable for source, destination, or both; leave unchecked to keep existing behavior.
+
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Sync%20Files%20Destination%20Side%20Options%20Compare%20by%20Creation%20Time.png)
  
 **Deleted/changed conflicts->Do not change**
 
