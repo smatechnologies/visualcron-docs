@@ -26,6 +26,8 @@ Check this if you are installing VisualCron (on two nodes) on a shared drive.
 **Server port**
 
 VisualCron sends encrypted information across the default TCP port 16444. If you want to change this port you enter a new integer value here.
+
+When you save a new port value, VisualCron automatically updates the Windows Firewall rule to allow inbound traffic on the new port and removes the rule for the old port. If creating the new firewall rule fails, the rule for the previous port is automatically restored so that connectivity is not lost.
  
 **Override HTTP connection limit**
 
