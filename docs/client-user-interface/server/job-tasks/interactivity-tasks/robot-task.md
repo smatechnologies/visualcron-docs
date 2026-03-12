@@ -17,7 +17,7 @@ Using the Robot Task, you can:
 - Handle legacy applications without APIs
 - Combine multiple applications into unified workflows
 
-![](../../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Robot%20Task.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Robot%20Task.png)
 
 ### Key Features
 
@@ -96,15 +96,6 @@ The Activity list provides access to available activities and actions you can ad
 - **Document Steps**: Add comments to complex sequences for future maintenance
 - **Monitor Execution**: Review job logs to ensure tasks execute reliably
 - **Handle Errors**: Implement error handling for critical steps that might fail
-- **Name Every Action**: Always set the **Display Name** field on each action so your sequence is readable at a glance. You should be able to tell exactly what an action does just from its name.
-- **Avoid Task Collisions**: Robot Tasks, Web Macro tasks, and any task that runs in the foreground share the same desktop session. If multiple jobs run simultaneously they can interfere with each other. Use a VisualCron Resource to serialize foreground jobs, or run concurrent RPA workloads on separate VMs.
-
-### Error Handling Notes
-
-The **TryCatch** activity does not work with Web Macro group actions. When an exception is thrown inside a Web Macro sequence the sequence is forcibly stopped before TryCatch can catch it. Two workarounds are available:
-
-- **Allow to ignore the element**: On any Web Macro action's settings, enable the *Allow to ignore the element* checkbox. This prevents the sequence from stopping when the element is not found.
-- **Error settings on the action**: Most non-Web Macro activities expose an *Error* tab where you can choose to continue on failure rather than stopping the sequence.
 
 ### Tips for Recording
 
