@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Task Interactivity - Desktop Macro
 
-This Task is obsolete. Please use the [Robot Task](robot-task).
+This Task is obsolete. Please use the [Robot Task](/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/overview.md).
  
 The Desktop macro Task lets you automate in a visual way. Desktop macro Task *records* your mouse moves and keystrokes and can *play them back* for you any time. The Task is advanced in many ways. It can interact with any program and restore windows to their original place if they are misplaced before playback.
  

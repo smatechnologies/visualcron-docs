@@ -30,7 +30,7 @@ This feature is implemented in the following Task(s):
 * [Process - Execute](job-tasks-task-process-execute)
 * [System - Control monitor](../server/job-tasks/system-tasks/control-monitor)
 * [Interactivity - Desktop macro](../server/job-tasks/interactivity-tasks/desktop-macro)
-* [Interactivity - Robot](../server/job-tasks/interactivity-tasks/robot-task)
+* [Interactivity - Robot](../server/job-tasks/interactivity-tasks/robot-task/overview.md)
 * [Interactivity - Send keys](../server/job-tasks/interactivity-tasks/send-keys)
  
 Instead of executing a file from the Windows service VisualCronService.exe we are executing through the VisualCron Tray Client. This requires that the proper Tray Client session that you specify in the Execution Context window is connected to the VisualCron service. The Tray Client is automatically started when a user logs in.
