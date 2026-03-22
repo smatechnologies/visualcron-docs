@@ -1,24 +1,51 @@
-# SMA OpCon Template Repo Docs
+# VisualCron Documentation
 
-This repository contains the content behind the VisualCron documentation hosted at </...>.
+Docusaurus-powered documentation site for VisualCron. Also produces a CHM (Compiled HTML Help) file for the desktop application's built-in help system.
 
-## Disclaimer
+## Prerequisites
 
-No Support and No Warranty are provided by SMA Technologies for this project and related material. The use of this project's files is on your own risk.
+- Node.js 18+
+- Yarn (`npm install -g yarn`)
+- [HTML Help Workshop](https://web.archive.org/web/20200918004813/https://www.microsoft.com/en-us/download/details.aspx?id=21138) (Windows only, required for CHM compilation)
 
-SMA Technologies assumes no liability for damage caused by the usage of any of the files offered here via this Github repository.
+## Getting Started
 
-## License
+```bash
+cd visualcron-docs
+yarn install
+yarn start
+```
 
-Copyright 2021 SMA Technologies
+This launches a local Docusaurus dev server with hot reload at `http://localhost:3000`.
 
-This VisualCron documentation is [Creative Commons licensed](LICENSE).
+## Available Scripts
 
-## Contribution
+| Command | Description |
+|---|---|
+| `yarn start` | Local Docusaurus dev server |
+| `yarn build` | Production Docusaurus build |
+| `yarn build:chm` | Generate CHM source files to `chm-output/` |
 
-Please see <https://help.smatechnologies.com/opcon/contributor-guide> for information on how to contribute.
+## CHM Build
 
-## Code of Conduct
+The CHM is built locally in two steps:
 
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code-of-conduct.md)
-SMA Technologies has adopted the [Contributor Covenant](CODE_OF_CONDUCT.md) as its Code of Conduct, and we expect project participants to adhere to it. Please read the [full text](CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
+```
+yarn build:chm                    # 1. Generate .htm files, .hhp project, .hhc TOC, .hhk index
+hhc.exe chm-output/VisualCron.hhp    # 2. Compile into VisualCron.chm (returns exit code 1 on success)
+```
+
+`hhc.exe` is installed with HTML Help Workshop, typically at `C:\Program Files (x86)\HTML Help Workshop\hhc.exe`.
+
+## Key Files
+
+| File | Purpose |
+|---|---|
+| `chm-config.json` | Maps doc IDs to `.htm` filenames, labels, and VC source references |
+| `scripts/build-chm.js` | Reads `chm-config.json` + Markdown sources, emits `chm-output/` |
+
+## Adding a New Help Topic
+
+1. Create the Markdown file under `docs/` and add it to `sidebars.js`.
+2. Add a mapping entry in `chm-config.json` with `chmFile`, `mdFile`, `label`, and (if applicable) `helpKeywordSources`.
+3. Run `yarn build:chm` and compile with `hhc.exe` to verify the topic appears in the CHM.
