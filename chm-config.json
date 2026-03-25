@@ -72,41 +72,6 @@
       "mdFile": "docs/get-visualcron/upgrading versions.md",
       "label": "Upgrading Versions"
     },
-    "get-visualcron/upgrading-from-2x-to-3x": {
-      "chmFile": "upgrading_from_visualcron_2_x_.htm",
-      "mdFile": "docs/get-visualcron/upgrading-from-2x-to-3x.md",
-      "label": "Upgrading from VisualCron 2.x to 3.x"
-    },
-    "get-visualcron/upgrading-from-3x-to-4x": {
-      "chmFile": "upgrading_from_visualcron_3_x_.htm",
-      "mdFile": "docs/get-visualcron/upgrading-from-3x-to-4x.md",
-      "label": "Upgrading from VisualCron 3.x to 4.x"
-    },
-    "get-visualcron/upgrading-from-4x-to-5x": {
-      "chmFile": "upgrading_from_visualcron_4_x_.htm",
-      "mdFile": "docs/get-visualcron/upgrading-from-4x-to-5x.md",
-      "label": "Upgrading from VisualCron 4.x to 5.x"
-    },
-    "get-visualcron/upgrading-from-5x-to-6x": {
-      "chmFile": "upgrading_from_visualcron_5_x_.htm",
-      "mdFile": "docs/get-visualcron/upgrading-from-5x-to-6x.md",
-      "label": "Upgrading from VisualCron 5.x to 6.x"
-    },
-    "get-visualcron/upgrading-from-6x-to-7x": {
-      "chmFile": "upgrading_from_visualcron_6_x_.htm",
-      "mdFile": "docs/get-visualcron/upgrading-from-6x-to-7x.md",
-      "label": "Upgrading from VisualCron 6.x to 7.x"
-    },
-    "get-visualcron/upgrading-from-7x-to-8x": {
-      "chmFile": "upgrading-from-visualcron-7_x2.htm",
-      "mdFile": "docs/get-visualcron/upgrading-from-7x-to-8x.md",
-      "label": "Upgrading from VisualCron 7.x to 8.x"
-    },
-    "get-visualcron/upgrading-from-8x-to-9x": {
-      "chmFile": "upgrading-from-visualcron-8_x-.htm",
-      "mdFile": "docs/get-visualcron/upgrading-from-8x-to-9x.md",
-      "label": "Upgrading from VisualCron 8.x to 9.x"
-    },
     "get-visualcron/language-management": {
       "chmFile": "language_management.htm",
       "mdFile": "docs/get-visualcron/language-management.md",
