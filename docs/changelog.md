@@ -10,7 +10,7 @@ hide_title: 'true'
 
 #### Features   
 
-:star: Client/Server: Server-Side Connection Explorer (VCPCM-2612)
+:star: Client/Server: Server-Side Connection Explorer for Google Cloud Storage provider (VCPCM-2612)
 
 :star: Client/Server: Sync Files Task - Added "Compare by Creation Time" option for source and destination (VCPCM-2873)
 
@@ -27,7 +27,7 @@ hide_title: 'true'
 
 :white_check_mark: Client/Server: Server Settings Apply/Save deletes and recreates firewall rule unnecessarily (VCPCM-2969)
 
-:white_check_mark: Client/Server: Docotic.Pdf Trial Error in Print Task (VCPCM-2985)
+:white_check_mark: Client/Server: Component's Trial Error in Print Task (VCPCM-2985)
 
 
 
