@@ -15,6 +15,7 @@
   --ifm-color-primary-lighter: rgb(102, 212, 189);
   --ifm-color-primary-lightest: rgb(146, 224, 208);
   --ifm-code-font-size: 95%;
+  --ifm-color-hover-orange: #d2b184;
 }
 
 .docusaurus-highlight-code-line {
@@ -22,4 +23,516 @@
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
+}
+
+/* ── Link styles ──────────────────────────────────────────────────────────── */
+
+/* Links default color */
+.markdown a {
+  color: var(--ifm-color-primary);
+}
+
+/* Links hover */
+.markdown a:hover {
+  color: var(--ifm-color-hover-orange);
+}
+
+/* Button hover */
+.button:hover {
+  background-color: var(--ifm-color-hover-orange);
+  border-color: var(--ifm-color-hover-orange);
+}
+
+/* ── Global doc page styles ───────────────────────────────────────────────── */
+
+/* Base body / paragraph text */
+.markdown {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.markdown p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0.85rem;
+}
+
+/* ── Headings ─────────────────────────────────────────────────────────────── */
+
+/* H1 — page title */
+.markdown h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--ifm-heading-color);
+  border-bottom: 2px solid var(--ifm-color-primary);
+  padding-bottom: 0.5rem;
+}
+
+/* H2 — major sections */
+.markdown h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--ifm-heading-color);
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+  padding-bottom: 0.35rem;
+}
+
+/* H3 — subsections */
+.markdown h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ifm-color-primary);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  padding-bottom: 0.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* H4 — sub-subsections */
+.markdown h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ifm-color-emphasis-700);
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* H5 — fine-grained labels */
+.markdown h5 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--ifm-color-emphasis-600);
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+/* H6 — rarely used, keep subtle */
+.markdown h6 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-500);
+  margin-top: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+/* ── Lists ────────────────────────────────────────────────────────────────── */
+
+.markdown ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.markdown ul ul {
+  list-style: circle;
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
+.markdown ul ul ul {
+  list-style: square;
+}
+
+.markdown ol {
+  padding-left: 1.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.markdown ol ol {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
+.markdown li {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0.3rem;
+}
+
+/* ── Tables ───────────────────────────────────────────────────────────────── */
+
+.markdown table {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.25rem;
+}
+
+.markdown table thead tr {
+  background-color: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.markdown table thead th {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.6rem 0.85rem;
+  text-align: left;
+  border: none;
+}
+
+.markdown table tbody tr:nth-child(even) {
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.markdown table tbody td {
+  padding: 0.5rem 0.85rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  vertical-align: top;
+}
+
+/* ── Code ─────────────────────────────────────────────────────────────────── */
+
+/* Inline code */
+.markdown code {
+  font-size: 0.85rem;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  background-color: #000;
+  color: #fff;
+}
+
+/* Fenced code blocks */
+.markdown pre {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  border-radius: 6px;
+  margin-bottom: 1.25rem;
+  background-color: #000;
+}
+
+/* Code inside fenced blocks - override syntax highlighting colors */
+.markdown pre code,
+.markdown pre code * {
+  color: #fff !important;
+}
+
+/* ── Breadcrumbs ──────────────────────────────────────────────────────────── */
+
+.breadcrumbs__link {
+  font-size: 0.8rem;
+}
+
+.breadcrumbs__item {
+  font-size: 0.8rem;
+}
+
+/* ── Sidebar menu styles ──────────────────────────────────────────────────── */
+
+/* All sidebar links and labels */
+.menu__link {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Spacing between sidebar items */
+.menu__list-item {
+  margin-bottom: 0.3rem;
+}
+
+/* Category heading labels — uppercase + letter-spaced like h3 */
+.menu__list-item-collapsible > .menu__link,
+.menu__list > .menu__list-item > .menu__link:not(.menu__link--sublist) {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ifm-color-primary);
+}
+
+/* ── Index page column grid ───────────────────────────────────────────────── */
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.nav-card {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-card-border-radius, 8px);
+  padding: 1.25rem 1.5rem;
+  background: var(--ifm-card-background-color, var(--ifm-background-surface-color));
+}
+
+.nav-card h3 {
+  margin-top: 0;
+}
+
+.nav-card ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.nav-card ul ul {
+  margin-top: 0.25rem;
+  padding-left: 1rem;
+}
+
+/* ── Integrations page grid ───────────────────────────────────────────────── */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.grid-item {
+  display: flex;
+}
+
+.grid-item .button {
+  width: 100%;
+  text-align: center;
+}
+
+.grid-item .button:hover {
+  background-color: var(--ifm-color-hover-orange);
+  border-color: var(--ifm-color-hover-orange);
+  color: white;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 996px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Search Results Enhancements ──────────────────────────────────────────── */
+
+/* Allow suggestions to grow taller to accommodate the badge + path line */
+:root {
+  --search-local-hit-height: auto;
+  --search-local-hit-min-height: 56px;
+}
+
+/* Ensure suggestions use min-height instead of fixed height */
+[class*="suggestion"] {
+  min-height: var(--search-local-hit-min-height) !important;
+  height: auto !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+/* Section / version badge shown in the path line of each search result */
+.search-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 2px 5px;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-right: 4px;
+  background-color: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  white-space: nowrap;
+}
+
+/* Current (Cloud) badge — highlighted with primary color */
+.search-badge--current {
+  background-color: var(--ifm-color-primary);
+  color: #fff;
+  border-color: var(--ifm-color-primary-dark);
+}
+
+/* Keep badge readable when the suggestion row is selected/hovered */
+[class*="cursor"] .search-badge {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+[class*="cursor"] .search-badge--current {
+  background-color: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* ── Search Page — Filter Pills ───────────────────────────────────────────── */
+
+.search-filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1.25rem;
+}
+
+.search-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.search-filter-pill:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
+
+.search-filter-pill--active {
+  background-color: var(--ifm-color-emphasis-200);
+  border-color: var(--ifm-color-emphasis-400);
+  font-weight: 600;
+}
+
+/* "OpCon · Current" pill gets branded styling when active */
+.search-filter-pill--current.search-filter-pill--active {
+  background-color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary-dark);
+  color: #fff;
+}
+
+.search-filter-count {
+  display: inline-block;
+  background-color: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
+  border-radius: 10px;
+  padding: 0 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  min-width: 20px;
+  text-align: center;
+}
+
+.search-filter-pill--active .search-filter-count {
+  background-color: var(--ifm-color-emphasis-300);
+}
+
+.search-filter-pill--current.search-filter-pill--active .search-filter-count {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+/* ── Search Page — Result article meta row ────────────────────────────────── */
+
+.search-result-article-meta {
+  margin-bottom: 4px;
+}
+
+.search-results-count {
+  color: var(--ifm-color-content-secondary);
+  font-size: 0.88rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ── Search dropdown — Quick searches (recent + popular when input is empty) ─ */
+
+.search-quick-container {
+  padding: 4px 0;
+}
+
+.search-quick-group {
+  margin-bottom: 10px;
+}
+
+.search-quick-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ifm-color-content-secondary);
+  padding: 0 2px 4px;
+}
+
+.search-quick-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.search-quick-term {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base) !important;
+  font-size: 0.78rem;
+  text-decoration: none !important;
+  transition: border-color 0.15s, background 0.15s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.search-quick-term:hover {
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-primary) !important;
+  text-decoration: none !important;
+}
+
+/* ── Search dropdown — No-results state ──────────────────────────────────────  */
+
+.search-no-results-help {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.search-no-results-hint {
+  font-size: 0.78rem;
+  color: var(--ifm-color-content-secondary);
+  margin-bottom: 8px;
+}
+
+.search-no-results-help .search-quick-items {
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.search-no-results-links {
+  font-size: 0.78rem;
+  margin-top: 8px;
+}
+
+.search-no-results-links a {
+  color: var(--ifm-color-primary) !important;
+  text-decoration: underline !important;
+}
+
+/* ── Search Page — keyboard shortcut hint shown on filter pills ───────────── */
+
+.search-filter-pill[data-key]::before {
+  content: attr(data-key);
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 3px;
+  padding: 0 3px;
+  margin-right: 5px;
+  opacity: 0.7;
+  font-family: monospace;
 }

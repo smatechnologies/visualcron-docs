@@ -42,6 +42,7 @@ module.exports = {
         },
         gtag: {
           trackingID: 'G-0VVXGG8JGT',
+          trackingID: "G-7XYMFXX81Y",
           anonymizeIP: false,
         },
       },
