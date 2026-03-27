@@ -1,7 +1,15 @@
 ---
-sidebar_label: 'Connection - Twitter'
+sidebar_label: 'Connection - Twitter (deprecated from VisualCron v13.2.1)'
 hide_title: 'true'
 ---
+
+:::warning
+
+**Deprecated**
+
+Twitter integration described on this page is deprecated from **VisualCron v13.2.1**.
+
+:::
 
 ## Connection - Twitter
 

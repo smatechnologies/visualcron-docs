@@ -1,7 +1,15 @@
 ---
-sidebar_label: 'Task Social - Twitter - Send Direct Message'
+sidebar_label: 'Task Social - Twitter - Send Direct Message (deprecated from VisualCron v13.2.1)'
 hide_title: 'true'
 ---
+
+:::warning
+
+**Deprecated**
+
+Twitter integration described on this page is deprecated from **VisualCron v13.2.1**.
+
+:::
 
 ## Task Social - Twitter - Send Direct Message
 
