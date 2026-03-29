@@ -52,7 +52,7 @@ Currently the following Connection protocols exist:
 * [XendApp](connection-xendapp)
 * [Pushbullet](connection-pushbullet)
 * [Telegram](connection-telegram)
-* [Twitter](connection-twitter)
+* [Twitter](connection-twitter) (deprecated from VisualCron v13.2.1)
 * [Crystal reports](connection-crystalreports)
 * [VMWare](connection-vmware)
 * [Dynamics CRM](connection-dynamics-crm)

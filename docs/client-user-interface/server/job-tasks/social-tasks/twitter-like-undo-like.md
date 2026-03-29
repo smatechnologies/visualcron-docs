@@ -1,7 +1,15 @@
 ---
-sidebar_label: 'Task Social - Twitter - Like/Undo Like'
+sidebar_label: 'Task Social - Twitter - Like/Undo Like (deprecated from VisualCron v13.2.1)'
 hide_title: 'true'
 ---
+
+:::warning
+
+**Deprecated**
+
+Twitter integration described on this page is deprecated from **VisualCron v13.2.1**.
+
+:::
 
 ## Task Social - Twitter - Like/Undo Like
 
