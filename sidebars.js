@@ -419,8 +419,6 @@ module.exports = {
                       collapsed: true,
                       items: [
                         'client-user-interface/server/job-tasks/string-tasks/json-filter',
-                        'client-user-interface/server/job-tasks/string-tasks/json-encode',
-                        'client-user-interface/server/job-tasks/string-tasks/json-decode',
                       ],
                     },
                     {
@@ -847,7 +845,25 @@ module.exports = {
                       'client-user-interface/server/job-tasks/pdf-tasks/insert-pages',
                     ],
                   },
-                  'client-user-interface/server/job-tasks/iis-tasks/iis-tasks',
+                  {
+                    type: 'category',
+                    label: 'IIS Tasks',
+                    collapsed: true,
+                    items: [
+                      'client-user-interface/server/job-tasks/iis-tasks/iis-tasks',
+                      'client-user-interface/server/job-tasks/iis-tasks/iis-add-application-pool',
+                      'client-user-interface/server/job-tasks/iis-tasks/iis-add-web-site',
+                      'client-user-interface/server/job-tasks/iis-tasks/iis-add-web-site-application',
+                      'client-user-interface/server/job-tasks/iis-tasks/iis-add-app-virtual-directory',
+                      'client-user-interface/server/job-tasks/iis-tasks/iis-change-application-pool-state',
+                      'client-user-interface/server/job-tasks/iis-tasks/iis-change-web-site-state',
+                      'client-user-interface/server/job-tasks/iis-tasks/iis-delete-application-pool',
+                      'client-user-interface/server/job-tasks/iis-tasks/iis-delete-web-site',
+                      'client-user-interface/server/job-tasks/iis-tasks/iis-delete-web-site-application',
+                      'client-user-interface/server/job-tasks/iis-tasks/iis-delete-app-virtual-directory',
+                      'client-user-interface/server/job-tasks/iis-tasks/iis-is-app-pool-exists',
+                    ],
+                  },
                   {
                     type: 'category',
                     label: 'SAP Tasks',
@@ -955,6 +971,7 @@ module.exports = {
                   'client-user-interface/server/connection-facebook',
                   'client-user-interface/server/connection-peoplesoft',
                   'client-user-interface/server/connection-ibm-cognos-analytics',
+                  'client-user-interface/server/connection-iis',
                 ],
               },
               'client-user-interface/server/global-credentials',
