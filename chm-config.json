@@ -742,7 +742,7 @@
     },
     "client-user-interface/server/job-conditions-overview": {
       "chmFile": "job_-_conditions.htm",
-      "mdFile": "docs/client-user-interface/server/job-conditions-overview.md",
+      "mdFile": "docs/client-user-interface/server/job-conditions.md",
       "label": "Job - Conditions"
     },
     "client-user-interface/server/job-conditions": {
@@ -1972,7 +1972,7 @@
     },
     "client-user-interface/server/job-tasks/system-tasks/wake-up": {
       "chmFile": "system_-_wake_up.htm",
-      "mdFile": "docs/client-user-interface/server/job-tasks/system-tasks/wake-up.md",
+      "mdFile": "docs/client-user-interface/server/job-tasks/system-tasks/wakeup.md",
       "label": "Task System - Wake Up"
     },
     "client-user-interface/server/job-tasks/system-tasks/wakeup": {
@@ -2194,7 +2194,7 @@
     },
     "client-user-interface/server/job-tasks/internal-tasks/set-user-variable-task": {
       "chmFile": "task-internal---set-user-varia.htm",
-      "mdFile": "docs/client-user-interface/server/job-tasks/internal-tasks/set-user-variable-task.md",
+      "mdFile": "docs/client-user-interface/server/job-tasks/internal-tasks/set-user-variable.md",
       "label": "Task Internal - Set User Variable"
     },
     "client-user-interface/server/job-tasks/internal-tasks/calculate-variable": {
@@ -4579,7 +4579,7 @@
     },
     "security/interactive-logon": {
       "chmFile": "interactive_logon.htm",
-      "mdFile": "docs/security/interactive-logon.md",
+      "mdFile": "docs/security.md",
       "label": "Interactive Logon"
     },
     "commands/commands-scripts-third-party-tools": {

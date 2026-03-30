@@ -419,6 +419,8 @@ module.exports = {
                       collapsed: true,
                       items: [
                         'client-user-interface/server/job-tasks/string-tasks/json-filter',
+                        'client-user-interface/server/job-tasks/string-tasks/json-encode',
+                        'client-user-interface/server/job-tasks/string-tasks/json-decode',
                       ],
                     },
                     {
