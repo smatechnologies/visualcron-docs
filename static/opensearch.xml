@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>VisualCron Help</ShortName>
+  <Description>Search VisualCron documentation</Description>
+  <Url type="text/html" template="https://help.visualcron.com/search?q={searchTerms}"/>
+  <Image width="16" height="16" type="image/png">https://help.visualcron.com/img/favicon.ico</Image>
+  <InputEncoding>UTF-8</InputEncoding>
+</OpenSearchDescription>

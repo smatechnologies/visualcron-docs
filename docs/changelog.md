@@ -5,6 +5,32 @@ hide_title: 'true'
 
 ## Change Log
 
+
+### 13.1.1 [2026-03-25]    
+
+#### Features   
+
+:star: Client/Server: Server-Side Connection Explorer for Google Cloud Storage provider (VCPCM-2612)
+
+:star: Client/Server: Sync Files Task - Added "Compare by Creation Time" option for source and destination (VCPCM-2873)
+
+
+#### Bug Fixes
+
+:white_check_mark: Client/Server: Passwords Expiring Issue (VCPCM-2745)
+
+:white_check_mark: Client/Server: Accounts within "Administrator" permission group not registering changes (VCPCM-2746)
+
+:white_check_mark: Client/Server: 7-Zip Upgrade to v25 (VCPCM-2815)
+
+:white_check_mark: Client/Server: ntdll.dll Crash in New Install on Server 2022 Hyper-V (VCPCM-2872)
+
+:white_check_mark: Client/Server: Server Settings Apply/Save deletes and recreates firewall rule unnecessarily (VCPCM-2969)
+
+:white_check_mark: Client/Server: Component's Trial Error in Print Task (VCPCM-2985)
+
+
+
 ### 13.0.0 [2026-02-19]    
 
 #### Features    

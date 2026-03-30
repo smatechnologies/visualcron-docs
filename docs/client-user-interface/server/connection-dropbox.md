@@ -39,7 +39,7 @@ Code page being used.
 
 **Manage Connections > Add > Dropbox > Connection Settings** tab
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dropbox/Settings.png)
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dropbox/dropbox_new.png)
 
 **Use VisualCron registered app**
 
