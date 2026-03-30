@@ -231,8 +231,9 @@ function processDoc(docId) {
   const chmFile = getChmFilename(docId);
 
   let html = marked(mdContent);
-  // Strip leading <h1> to avoid duplication — the template already adds one
-  html = html.replace(/^\s*<h1[^>]*>[\s\S]*?<\/h1>\s*/, '');
+  // Strip the first heading if its text matches the title — the template already adds an <h1>
+  const escapedTitle = escapeHtml(title).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  html = html.replace(new RegExp(`^\\s*<h[1-6][^>]*>\\s*${escapedTitle}\\s*</h[1-6]>\\s*`), '');
   html = replaceEmojiShortcodes(html);
   const mdFileDir = path.dirname(mdPath);
   html = fixImagePaths(html, mdFileDir);
