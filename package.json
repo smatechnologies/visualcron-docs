@@ -11,7 +11,8 @@
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "build:chm": "node scripts/build-chm.js"
   },
   "dependencies": {
     "@easyops-cn/docusaurus-search-local": "^0.40.1",
@@ -22,6 +23,9 @@
     "@svgr/webpack": "^8.0.0",
     "clsx": "^2.0.0",
     "file-loader": "^6.2.0",
+    "gray-matter": "^4.0.3",
+    "latest": "^0.2.0",
+    "marked": "^17.0.5",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "url-loader": "^4.1.1"
