@@ -231,6 +231,8 @@ function processDoc(docId) {
   const chmFile = getChmFilename(docId);
 
   let html = marked(mdContent);
+  // Strip leading <h1> to avoid duplication — the template already adds one
+  html = html.replace(/^\s*<h1[^>]*>[\s\S]*?<\/h1>\s*/, '');
   html = replaceEmojiShortcodes(html);
   const mdFileDir = path.dirname(mdPath);
   html = fixImagePaths(html, mdFileDir);
