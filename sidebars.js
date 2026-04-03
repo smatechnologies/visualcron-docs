@@ -1,7 +1,15 @@
 module.exports = {
   mySidebar: [
     'index',
-    'license',
+    {
+      type: 'category',
+      label: 'License',
+      collapsed: true,
+      items: [
+        'license',
+        'notice-of-updated-terms',
+      ],
+    },
     'requirements',
     'changelog',
     //'videotutorials',
