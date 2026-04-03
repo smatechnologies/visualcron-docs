@@ -5,17 +5,17 @@ hide_title: 'true'
 
 ## VisualCron — Updated Terms and Conditions
 
-**Summary of Changes and Frequently Asked Questions  |  Effective May 6, 2026**
+**Summary of Changes and Frequently Asked Questions  |  Effective May 7, 2026**
 
 
 
-We are updating the VisualCron End-User License Agreement, effective May 6, 2026. The following summary identifies key changes. This summary does not capture every change; we encourage you to review the full updated agreement at: https://help.visualcron.com/license. You do not need to take any action. Continued use of VisualCron on or after May 6, 2026 constitutes your acceptance of the revised terms.
+We are updating the VisualCron End-User License Agreement, effective May 7, 2026. The following summary identifies key changes. This summary does not capture every change; we encourage you to review the full updated agreement at: https://help.visualcron.com/license. You do not need to take any action. Continued use of VisualCron on or after May 7, 2026 constitutes your acceptance of the revised terms.
 
 
 
 ### Summary of Changes
 
-Two new regulatory addenda have been added to the agreement. Exhibit A addresses DORA (EU Digital Operational Resilience Act) obligations applicable to financial sector customers. Exhibit B addresses EU Data Act compliance. If neither regulation applies to your organization, these addenda do not impose additional obligations on you.
+A new regulatory addendum has been added to the agreement. Exhibit A addresses DORA (EU Digital Operational Resilience Act) obligations applicable to our financial sector customers. If this regulation does not apply to your organization, this addendum does not impose additional obligations on you.
 
 The trial period has been clarified to confirm it is available to new customers only. Existing customers may not use the trial period to obtain additional licenses.
 
@@ -23,10 +23,9 @@ Support limitations now include an express cross-reference to transitional servi
 
 The service location provision has been updated to reflect Continuous' global customer base, including US customers. VisualCron is and remains installed in your own environment; you control where your data is stored.
 
-The agreement has been updated throughout to reflect the Company's current operating name, Continuous, in place of prior references.
+The agreement has been updated throughout to reflect the Company's current operating name, "Continuous", in place of prior references.
 
 Key defined terms throughout the agreement have been clarified for consistency and ease of understanding.
-
 
 
 
@@ -54,16 +53,14 @@ No. This update does not affect your pricing, subscription term length, or renew
 
 6.  Is VisualCron storing or processing my data?
 
-VisualCron is installed in your own environment and you control all data locations and storage. The updated agreement expressly clarifies this. For EU-based customers whose use involves connected products or related digital services, Exhibit B separately addresses Product Data access rights, third-party sharing rights, and cloud switching entitlements under the EU Data Act. Those provisions apply only where the EU Data Act is applicable to your use of the product.
+VisualCron is installed in your own environment, and you control all data locations and storage. The updated agreement expressly clarifies this.
 
 7.  What is DORA and why is it referenced?
 
-DORA (the Digital Operational Resilience Act, EU Regulation 2022/2554) is a regulatory framework that applies to financial sector entities in the European Union and their ICT third-party service providers, including software vendors. We have added Exhibit A — the DORA Addendum — so that customers subject to DORA have the contractual documentation required for compliance. The Addendum establishes Supplier commitments covering ICT risk management, business continuity and disaster recovery, incident detection and reporting assistance, audit and inspection rights, subcontractor oversight, data location disclosure, and regulatory cooperation. Customers who are not financial entities subject to DORA are not affected by this Addendum and it does not impose any additional obligations on them.
+DORA (the Digital Operational Resilience Act, EU Regulation 2022/2554) is a regulatory framework that applies to financial sector entities in the European Union and their ICT third-party service providers, including software vendors. We have added Exhibit A — the DORA Addendum — so that customers subject to DORA have the contractual documentation required for compliance. The Addendum establishes Supplier commitments covering ICT risk management, business continuity and disaster recovery, incident detection and reporting assistance, audit and inspection rights, subcontractor oversight, data location disclosure, and regulatory cooperation. Customers who are not financial entities subject to DORA are not affected by this Addendum, and it does not impose any additional obligations on them.
 
-8.  What is the EU Data Act and does it affect me?
+8.  What do I need to do?
 
-The EU Data Act (EU Regulation 2023/2854, applicable since September 12, 2025) establishes rights and obligations regarding data generated by connected products and related digital services. We have added Exhibit B to reflect our obligations and your rights under this regulation. In practical terms, Exhibit B gives EU-based Users the right to access their Product Data free of charge in a machine-readable format, the right to direct us to share that data with a third party of their choice, and cloud switching rights with no switching fees as of January 12, 2027. It also restricts how we and any third party may use your data, including a prohibition on using Product Data to develop a competing product. If you are not based in the EU, or your use of VisualCron does not involve connected products or related services as defined under the EU Data Act, this Addendum does not impose additional obligations on you.
+You do not need to take any action. Continued use of VisualCron on or after May 7, 2026 constitutes your acceptance of the updated terms. We encourage you to review the full updated agreement before that date.
 
-9.  What do I need to do?
-
-You do not need to take any action. Continued use of VisualCron on or after May 6, 2026 constitutes your acceptance of the updated terms. We encourage you to review the full updated agreement before that date.
+Questions? Please reach out to our legal team at legal@continuous.com.

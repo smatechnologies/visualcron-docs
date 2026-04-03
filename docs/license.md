@@ -4,7 +4,7 @@ hide_title: 'true'
 ---
 
 :::warning Important Notice
-We are updating our Terms and Conditions, effective May 6, 2026. Please review our [Notice of Updated Terms and Summary of Changes](/notice-of-updated-terms) for the full updated Terms and Conditions before the effective date.
+We are updating our Terms and Conditions, effective May 7, 2026. Please review our [Notice of Updated Terms and Summary of Changes](/notice-of-updated-terms) for the full updated Terms and Conditions before the effective date.
 :::
 
 ## VisualCron End-User License Agreement
