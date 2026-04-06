@@ -133,26 +133,9 @@ Select the appropriate authentication type from the **Authentication type** drop
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Sharepoint%20Online/Settings.png)
 
-#### Basic (Delegated user credentials)
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Sharepoint%20Online/Basic.png)
-
-**Username**
-
-The SharePoint Online user's email address (e.g. `user@yourtenant.onmicrosoft.com`).
-
-**Password**
-
-The SharePoint Online user's password.
-
-**Tenant Id**
-
-The Azure AD Tenant ID (GUID) for your Microsoft 365 organization.
-
-**Application Id**
-
-The Application (Client) ID of the Azure AD app registration configured for
-delegated access.
+Basic Authentication — Deprecated
+Microsoft has permanently disabled Basic Authentication across its services, including Exchange Online, SharePoint Online, and Microsoft Graph. Any connection configured to use Basic Authentication will fail with an authorization error and cannot be restored.
+Basic Authentication is disabled at the Microsoft platform level and is not configurable by VisualCron or your system administrator. Affected connections must be reconfigured to use a supported authentication type.
 
 #### AppOnly (Client credentials)
 
