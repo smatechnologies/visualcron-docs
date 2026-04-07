@@ -25,5 +25,4 @@ The title of the list to be updated. Click the Folder icon to browse a SharePoin
  
 **Field(s)**
 
-Text ...
-Click the *Refresh fields* button to update all available fields.
+The grid lists the available fields for the selected list item. Each row has a **Use** checkbox, a **Name** column showing the field name, and a **Value** column where you enter the updated value for that field. Check the **Use** checkbox for each field you want to update. Click the *Refresh fields* button to populate the grid with all available fields from the list associated with the selected item.
