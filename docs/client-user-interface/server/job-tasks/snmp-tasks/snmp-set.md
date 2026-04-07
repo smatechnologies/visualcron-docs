@@ -37,7 +37,7 @@ The new value to assign to the specified variable.
 
 **Remote Port**
 
-The UDP port number on the remote SNMP agent to send requests to. The default port is 162.
+The UDP port number on the remote SNMP agent to send requests to. The default port is 161.
 
 **Time out after**
 
