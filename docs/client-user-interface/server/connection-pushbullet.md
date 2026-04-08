@@ -46,3 +46,37 @@ Username for the service.
 **Token**
 
 A string token you get when you create an account at [pushbullet.com](https://www.pushbullet.com/).
+
+**Create an account at pushbullet.com**
+
+A link that opens the Pushbullet website where you can create an account and obtain your access token.
+
+**Manage Connections > Add > Pushbullet > Proxy** tab
+
+**Proxy type**
+
+Select the proxy type to be used.
+
+**Address**
+
+The host name or IP address of the proxy server.
+
+**Port**
+
+The port of the proxy server.
+
+**Use credentials**
+
+The credentials that are associated with the account.
+
+**Domain**
+
+The domain of the proxy server.
+
+**Username**
+
+The user name to access the proxy server.
+
+**Password**
+
+The password to access the proxy server.
