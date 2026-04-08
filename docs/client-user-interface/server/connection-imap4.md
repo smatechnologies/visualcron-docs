@@ -39,22 +39,24 @@ The DNS name or IP address of the email server.
 
 The port used by the email server. Please note that it should match the port of the encryption. Normally encrypted connections uses port 993 while email servers with no encryption uses port 143.
 
-**Authentication**
+**Authentication type**
 
-Default
-OAuth
+The method used to authenticate with the email server.
+
+* _Default_ - authenticate using a username and password
+* _OAuth_ - authenticate using OAuth; the Username label changes to _Application Id_ and the Password label changes to _Client secret_. A _Setup app_ link and an _Authenticate_ link are also shown to guide the OAuth app configuration process
 
 **Anonymous**
 
-Please note that Anonymous, accessing a shared mailbox is not supported in the IMAP protocol. Use Exchange Connection instead.
+When checked, disables the Username and Password fields. Please note that anonymous access to a shared mailbox is not supported in the IMAP protocol. Use Exchange Connection instead.
 
 **Username**
 
-The user name for the email account.
+The user name for the email account. When Authentication type is set to _OAuth_, this field is labeled _Application Id_.
  
 **Password**
 
-The password for the email account.
+The password for the email account. When Authentication type is set to _OAuth_, this field is labeled _Client secret_.
  
 ### Default settings for some servers:
 
@@ -84,15 +86,22 @@ Encryption
 
 **Cryptographic protocol**
 
-Encryption protocol to use; No encryption, SSL or TLS.
- 
-**Security mode**
+The encryption protocol to use.
 
-Explicit or Implict encryption.
+* _No encryption_ - connection is not encrypted
+* _SSL_ - use SSL encryption
+* _TLS_ - use TLS encryption
  
 **Allowed SSL/TLS versions**
 
-Some IMAP4 servers require certain versions of SSL/TLS. Check the versions that are allowed. Sometimes it is necessary to specify the specific allowed version.
+Some IMAP4 servers require certain versions of SSL/TLS. Check the versions that are allowed. The available options are:
+
+* _SSL version 2_
+* _SSL version 3_
+* _TLS version 1_
+* _TLS version 1.1_
+* _TLS version 1.2_
+* _TLS version 1.3_
  
 **Manage Connections > Add > IMAP4 > Connection settings > Proxy** tab
 
@@ -112,11 +121,11 @@ The port of the proxy server.
  
 **Use credentials**
 
-Text ...
+Enable to provide credentials for authenticating with the proxy server.
  
 **Domain**
 
-The name of the domain to be created.
+The domain of the proxy server.
  
 **Username**
 
