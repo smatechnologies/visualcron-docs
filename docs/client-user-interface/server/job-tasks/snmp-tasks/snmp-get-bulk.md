@@ -33,7 +33,7 @@ The SNMP community string used for authentication. The default value is `public`
 
 **Remote Port**
 
-The UDP port number on the remote SNMP agent to send requests to. The default port is 162.
+The UDP port number on the remote SNMP agent to send requests to. The default port is 161.
 
 **Time out after**
 
