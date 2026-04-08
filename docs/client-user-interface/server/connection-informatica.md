@@ -31,7 +31,7 @@ The connection timeout in seconds. Connection will fail after this time period.
 
 Code page being used.
  
-**Manage Connections > Add > IBM Cognos Analytics > Connection Settings** tab
+**Manage Connections > Add > Informatica > Connection Settings** tab
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Informatica/Settings.png)
 
