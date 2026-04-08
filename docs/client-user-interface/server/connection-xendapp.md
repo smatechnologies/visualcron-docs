@@ -44,3 +44,37 @@ The username for the registered XendApp account. Register [here](https://xendapp
 **Password**
 
 The password for the registered XendApp account. Register [here](https://xendapp.com/Register.aspx) for free.
+
+**Create an account at xendapp.com**
+
+A link that opens the XendApp registration page where you can create a free account.
+
+**Manage Connections > Add > XendApp > Proxy** tab
+
+**Proxy type**
+
+Select the proxy type to be used.
+
+**Address**
+
+The host name or IP address of the proxy server.
+
+**Port**
+
+The port of the proxy server.
+
+**Use credentials**
+
+The credentials that are associated with the account.
+
+**Domain**
+
+The domain of the proxy server.
+
+**Username**
+
+The user name to access the proxy server.
+
+**Password**
+
+The password to access the proxy server.
