@@ -37,12 +37,14 @@ The address to the IBM Cognos Analytics server.
 
 **Port**
 
-This is the remote connection port.
+The remote connection port. Default is 9300.
 
-**Authentication Type**
+**Authentication type**
 
-Harmony LDAP
-Anonymous
+The method used to authenticate with the IBM Cognos Analytics server.
+
+* _Harmony LDAP_ - authenticate using a username and password
+* _Anonymous_ - authenticate without credentials
 
 **Username**
 
