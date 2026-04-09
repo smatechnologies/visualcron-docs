@@ -37,14 +37,20 @@ Code page being used.
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSH/SSH%20Setting.png)
 
-**Address**
+*Address**
+
+The host address of the server. This can be a DNS name or IP address.
 
 **Port**
 
-**Authentication Type**
+The remote connection port. Default is 22.
 
-Password
-Public key
+**Authentication type**
+
+The method used to authenticate with the SSH server.
+
+* _Password_ - authenticate using a username and password
+* _Public key_ - authenticate using an SSH private key (password field is hidden and an SSH key selector is shown)
 
 **Username**
 
@@ -52,11 +58,19 @@ User name for the SSH instance.
  
 **Password**
 
-Password for the SSH instance.
+The password for the SSH connection. Only visible when Authentication type is set to _Password_.
+
+**SSH key**
+
+The SSH private key used for authentication. Only visible when Authentication type is set to _Public key_.
 
 **Override Authentication**
 
-Text ...
+Options to override the default authentication behavior.
+
+* _Auto authentication_ - when enabled, the Password authentication and Keyboard authentication options are disabled and authentication is handled automatically
+* _Password authentication_ - enables password-based authentication (disabled when Auto authentication is checked)
+* _Keyboard authentication_ - enables keyboard-interactive authentication (disabled when Auto authentication is checked)
 
 **Manage Connections > Add > SSH - Secure Shell > Encryption** tab
 
@@ -88,27 +102,30 @@ Specifices if SSL session resumption should be used.
 
 **Transfer type**
 
-[FTP](connection-ftp)/[SFTP](connection-sftp) only.
+[FTP](connection-ftp)/[SFTP](connection-sftp) only. The method used to transfer data. Options are _ASCII_ or _Binary_ (default).
  
-**Data connection type**
+**SSH version support**
 
-[FTP](connection-ftp) only option.
- 
-**Max packet size**
+Checkboxes to select which SSH protocol versions are supported: _1_ and/or _2_.
 
-Use this property to specify the maximal length of packet in bytes. The default value is 262144, i.e., 256 KBytes.
- 
-**Auto adjust transfer block**
+**New line (server system)**
 
-Use this property to enable or disable automatic adjustment of pipeline length and block sizes. By default automatic adjustment is enabled, and normally you don't need to disable it.
- 
-**Pipeline length**
+The newline character format used by the remote server.
 
-Use this property to specify the number of upload or download requests sent before waiting for all requests to complete. The more requests are sent, the faster the transfer is. However, in case of error, all requests are discarded. Also, more pending requests means more memory used, so if speed is not critical and memory consumption is, set Pipeline Length to 1. Default value is 10.
- 
-**Download block size**
+* _Cr (*nix)_ - carriage return, used on Unix/Linux systems
+* _CrLf (Windows)_ - carriage return + line feed, used on Windows systems
 
-Use this property to control the size of the single download request. The servers don't limit download request size, however the buffer is allocated to store the requests, so the larger the value is, the memory block is needed.
+**Emulation**
+
+The terminal emulation type to use for the SSH session.
+
+**Log sent messages to task output**
+
+When enabled, sent messages are logged to the task output.
+
+**Log received messages to task output**
+
+When enabled, received messages are logged to the task output.
 
 **Manage Connections > Add > SSH - Secure Shell > Proxy** tab
 
