@@ -1,5 +1,5 @@
 ---
-sidebar_label: 'Task Interactivy - Popup'
+sidebar_label: 'Task Interactivity - Popup'
 hide_title: 'true'
 ---
 

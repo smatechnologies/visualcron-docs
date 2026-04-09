@@ -1745,7 +1745,7 @@
       ]
     },
     "client-user-interface/server/job-tasks/image-tasks/scan-document-cloud": {
-      "chmFile": "task-image---scan-document-(cl.htm",
+      "chmFile": "task-image---scan-document-cl.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/image-tasks/scan-document-cloud.md",
       "label": "Task Image - Scan Document (Cloud)"
     },
@@ -2095,7 +2095,7 @@
     "client-user-interface/server/job-tasks/interactivity-tasks/popup": {
       "chmFile": "task_interactivity_-_popup.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/popup.md",
-      "label": "Task Interactivy - Popup",
+      "label": "Task Interactivity - Popup",
       "helpKeywordSources": [
         "Definitions/Tasks/clsTask.vb"
       ]
@@ -2103,7 +2103,7 @@
     "client-user-interface/server/job-tasks/interactivity-tasks/desktop-macro": {
       "chmFile": "interactivity_-_desktop_macro.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/desktop-macro.md",
-      "label": "Task Interactivy - Desktop Macro",
+      "label": "Task Interactivity - Desktop Macro",
       "helpKeywordSources": [
         "Definitions/Tasks/clsTask.vb"
       ]
@@ -2117,12 +2117,10 @@
       ]
     },
     "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/recording-web-macro-for-robot-task": {
-      "chmFile": "task-net---web-macro.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/recording-web-macro-for-robot-task.md",
       "label": "Recording Web Macro for Robot Task"
     },
     "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/web-input-element-path": {
-      "chmFile": "task-net---web-macro.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/web-input-element-path.md",
       "label": "Web Input - Element Path"
     },
@@ -2134,7 +2132,7 @@
     "client-user-interface/server/job-tasks/interactivity-tasks/send-keys": {
       "chmFile": "interactivity_-_send_keys.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/send-keys.md",
-      "label": "Task Interactivy - Send Keys",
+      "label": "Task Interactivity - Send Keys",
       "helpKeywordSources": [
         "Definitions/Tasks/clsTask.vb"
       ]
@@ -2142,7 +2140,7 @@
     "client-user-interface/server/job-tasks/interactivity-tasks/wait": {
       "chmFile": "interactivity_-_wait.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/wait.md",
-      "label": "Task Interactivy - Wait",
+      "label": "Task Interactivity - Wait",
       "helpKeywordSources": [
         "Definitions/Tasks/clsTask.vb"
       ]
@@ -2150,7 +2148,7 @@
     "client-user-interface/server/job-tasks/interactivity-tasks/play-sound": {
       "chmFile": "interactivity_-_play_sound.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/play-sound.md",
-      "label": "Task Interactivy - Play Sound",
+      "label": "Task Interactivity - Play Sound",
       "helpKeywordSources": [
         "Definitions/Tasks/clsTask.vb"
       ]
@@ -3885,7 +3883,7 @@
       ]
     },
     "client-user-interface/server/connection-telnet": {
-      "chmFile": "connection---telnet.htm",
+      "chmFile": "connection-telnet.htm",
       "mdFile": "docs/client-user-interface/server/connection-telnet.md",
       "label": "Connection - Telnet",
       "helpKeywordSources": [

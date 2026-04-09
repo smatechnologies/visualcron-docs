@@ -1,5 +1,5 @@
 ---
-sidebar_label: 'Task Interactivy - Wait'
+sidebar_label: 'Task Interactivity - Wait'
 hide_title: 'true'
 ---
 
