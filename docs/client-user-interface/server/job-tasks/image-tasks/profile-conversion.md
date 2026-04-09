@@ -19,24 +19,28 @@ In the File filter tab you define the image file to change the profile for. Read
 
 **Input profile file**
 
-The current profile name of the input file.
+The file path to the ICC color profile of the input image. Click the File icon to browse for a profile file.
  
 **Output profile file**
 
-The profile name to be applied to the output file.
+The file path to the ICC color profile to apply to the output image. This field is required. Click the File icon to browse for a profile file.
  
 **Filter string for delete profile(s)**
 
-Text ...
+A filter string specifying which embedded profiles to remove from the image during conversion.
  
 **Save to**
 
-Enter destination file and folder names.
+Select where to save the converted output file:
+
+* _Same file_ - overwrites the original source file with the converted output; the Folder and File mask fields are disabled
+* _Same folder but use file mask_ - saves the output to the same folder as the source using a new file name pattern; the Folder field is disabled but the File mask field is enabled
+* _Different folder and use file mask_ - saves the output to a different folder with a new file name pattern; both the Folder and File mask fields are enabled
  
 **Folder**
 
-If *Different folder and use file mask* is selected, use manual folder specification or click the Folder icon.
+The destination folder for the output file. Only enabled when _Different folder and use file mask_ is selected. Click the Folder icon to browse for a folder.
  
 **File mask**
 
-Save file with different name.
+The file name pattern to use for the output file. Enabled when _Same folder but use file mask_ or _Different folder and use file mask_ is selected.
