@@ -45,8 +45,10 @@ This is the remote connection port.
 
 **Authentication type**
 
-Password
-Public Key
+The method used to authenticate with the SCP server.
+
+* _Password_ - authenticate using a username and password
+* _Public key_ - authenticate using an SSH private key (password field is hidden and an SSH key selector is shown)
 
 **Username**
 
@@ -54,8 +56,16 @@ The user name for the connection.
  
 **Password**
 
-The password for the connection.
+The password for the connection. Only visible when Authentication type is set to _Password_.
 
-**Log Traffic**
+**SSH key**
 
-Text
+The SSH private key used for authentication. Only visible when Authentication type is set to _Public key_.
+
+**Log sent messages to task output**
+
+When enabled, sent messages are logged to the task output.
+
+**Log received messages to task output**
+
+When enabled, received messages are logged to the task output.
