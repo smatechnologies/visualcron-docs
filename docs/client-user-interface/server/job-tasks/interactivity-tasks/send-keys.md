@@ -1,5 +1,5 @@
 ---
-sidebar_label: 'Task Interactivy - Send Keys'
+sidebar_label: 'Task Interactivity - Send Keys'
 hide_title: 'true'
 ---
 

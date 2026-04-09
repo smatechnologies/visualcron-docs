@@ -1,5 +1,5 @@
 ---
-sidebar_label: 'Task Interactivy - Desktop Macro'
+sidebar_label: 'Task Interactivity - Desktop Macro'
 hide_title: 'true'
 ---
 

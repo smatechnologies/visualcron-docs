@@ -1,5 +1,5 @@
 ---
-sidebar_label: 'Task Interactivy - Play Sound'
+sidebar_label: 'Task Interactivity - Play Sound'
 hide_title: 'true'
 ---
 
