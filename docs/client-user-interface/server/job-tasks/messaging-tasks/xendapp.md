@@ -18,24 +18,31 @@ The instant messaging sender is centrally stored in [Connections](../../../serve
  
 **Provider**
 
-Text ...
+The XendApp provider to send the message through. Click the _Refresh_ button to populate the list from the selected connection. Selecting a provider automatically loads its available channels.
  
 **Channel**
 
-Text ...
+The channel belonging to the selected provider. Populated automatically when a provider is selected.
  
 **Subject**
 
-Text ...
+The subject line of the message. This field is required and has a maximum length of 100 characters.
  
 **Content type**
 
-Text ...
+The format of the message body. Available options:
+
+* _Plain text_ - sends the body as plain text
+* _HTML_ - sends the body as HTML-formatted content
  
 **Body**
 
-Text ...
+The body text of the message.
  
 **Encrypt body**
 
-Text ...
+When checked, the message body is encrypted before sending.
+
+**Expire message in**
+
+The number of days after which the message expires. Minimum is 1, maximum is 90, default is 30.
