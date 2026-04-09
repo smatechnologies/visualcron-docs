@@ -21,18 +21,10 @@ Once you have created your app or selected to use the default one for VisualCron
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Telegram/Telegram.png)
 
-**Protocol type**
+**Name**
 
-Text
+A descriptive name for the connection to distinguish it from other connections.
 
-**Test**
-
-Text
-
-**Phone**
-
-Enter phone number including country code, i.e. +1888555222.
- 
 **Group**
 
 The group that the connection is a part of.
@@ -64,3 +56,37 @@ If you want to use your own app then copy this information from settings of the 
 **Code**
 
 Once you have clicked Request code in main settings tab you will receive a code in your Telegram Client. Paste this here.
+
+**Create an app in my.telegram.org**
+
+A link that opens the Telegram app registration page where you can create your own Telegram app to obtain the App app_id and App api_hash values.
+
+**Manage Connections > Add > Telegram > Proxy** tab
+
+**Proxy type**
+
+Select the proxy type to be used.
+
+**Address**
+
+The host name or IP address of the proxy server.
+
+**Port**
+
+The port of the proxy server.
+
+**Use credentials**
+
+The credentials that are associated with the account.
+
+**Domain**
+
+The domain of the proxy server.
+
+**Username**
+
+The user name to access the proxy server.
+
+**Password**
+
+The password to access the proxy server.
