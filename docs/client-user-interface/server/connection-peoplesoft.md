@@ -47,13 +47,15 @@ The address to the PeopleSoft server.
 
 This is the remote connection port.
 
-**Authentication Type**
+**Authentication type**
 
-Default
-Basic
-Digest
-Windows
-Certificate
+The method used to authenticate with the PeopleSoft server.
+
+* _Default_ - uses the default authentication method
+* _Basic_ - HTTP Basic authentication
+* _Digest_ - HTTP Digest authentication
+* _Windows_ - Windows authentication
+* _Certificate_ - certificate-based authentication
 
 **Username**
 
@@ -65,8 +67,10 @@ Password for the service.
 
 **Schema**
 
-Text
+The schema/protocol used for the connection. Defaults to `http`.
 
-***Path**
+**Manage Connections > Add > PeopleSoft > Additional parameter** section
 
-Text
+**Path**
+
+The WSDL path on the PeopleSoft server. Defaults to `/PSIGW/PeopleSoftServiceListeningConnector/PROCESSREQUEST.1.wsdl`.
