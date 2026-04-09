@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The SQL Task can execute a SQL command or a stored procedure against any database through ODBC, OLEDB and support for direct connections to MSSQL, Oracle and MySQL.
  
-Select type of query; T*ext* or *Stored Procedur*e, only the active tab is saved.
+Select type of query; *Text* or *Stored Procedure*, only the active tab is saved.
  
 **SQL** tab
 
@@ -30,7 +30,7 @@ Enter your SQL text query.
  
 **Split and run multiple queries with semicolon as separator**
 
-Text ...
+When checked, the SQL text is split on semicolons and each query is executed individually in sequence.
  
 **SQL > Stored Procedure** sub tab
 
@@ -72,39 +72,75 @@ Specify the Job name if you want to execute a Job in the database.
  
 **Job steps**
 
-Define a flow of steps with decision points depending on correct or failed result.
+A read-only grid displaying the steps of the selected SQL job. Columns show the step number, name, database, and query. Click _Refresh steps_ to reload the steps from the server.
  
 **Output** tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/SQL%20output.png)
 
 The output tab controls the format of the date output from the SQL Task.
+
+**Output to standard output**
+
+When selected, query results are written to the Task's standard output.
+
+**Output to file**
+
+When selected, query results are written to a file. Enables the File output settings section below.
  
 **Include field names**
 
-If the columns should be included in the output or not.
+When checked, column headers are included in the output.
  
 **Field separator**
 
-Here you can control what separates each field.
+Controls what character separates each field in the output.
  
 **Text qualifier**
 
-The text qualifier is the parts surrounding a field. Normally nothing which is default.
+The character surrounding each field value. Default is none.
  
 **Line break**
 
-Controls what type of line break should be used.
+Controls what type of line break is used between rows.
+
+**Indent XML**
+
+When checked, XML output is formatted with indentation for readability.
  
 **Add info messages to output**
 
-Internal SQL database engine debug and warning output will be added to Task output if this is checked.
+When checked, internal SQL database engine debug and warning messages are added to the Task output.
+
+**File output settings**
+
+These settings are enabled when _Output to file_ is selected.
+
+**Credential**
+
+Optional credential to use when writing to the output file.
+
+**File path**
+
+The full path to the output file.
+
+**Append to file**
+
+When checked, output is appended to the file rather than overwriting it.
+
+**Include BOM (if UTF8)**
+
+When checked, a byte order mark is included at the start of the file when using UTF-8 encoding.
+
+**Write buffer size**
+
+The size of the write buffer in bytes used when writing the output file.
  
 :::info Note
 
 * use appropriate prefix on variable, normally @variablename
 * take advantage of predefined connection strings
-* when using ODBC, remembe to add your parameters in the order you want to use them
+* when using ODBC, remember to add your parameters in the order you want to use them
 * if you have DNS connections - take advantage of them
 * test SQL Tasks and look for error message in the log window
 * if you are running PL-SQL statement on Oracle write them like this: ```BEGIN FM.MQ.ADD_MSG_DIRECT('FORM','LV_SENDER','LV_POSN_UPLOAD',213,'ORG_ID'); END;```
