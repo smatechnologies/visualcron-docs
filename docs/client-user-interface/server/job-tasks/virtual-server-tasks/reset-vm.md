@@ -9,22 +9,30 @@ The Virtual Server - Reset VM Task resets a specific virtual machine.
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/Reset%20VM.png)
 
-**Local or Remote**
+**Remote VMWare server / Local VMWare workstation**
 
-Select the the *Local server* radio button if you want to control the local computer, select the *Remote server* radio button if you want to control a remote computer.
- 
-**Server name**
+Select _Remote VMWare server_ to connect to a remote VMWare server, or _Local VMWare workstation_ to use the local machine.
 
-The name of the remote server.
- 
-**Credential**
+**Connection**
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and pass word of the user that you want to login. Click on *Manage credentials* to add or edit Credentials. Select a Credential in the combo box.
- 
-**Virtual Machine Name**
+Select the VMWare connection to use. Only enabled when _Remote VMWare server_ is selected.
 
-The host name of the virtual machine, Click the *Refresh* button to populate connected virtual machine names.
- 
-**Start Virtual machine if turned off**
+**Server VMX path**
 
-Text ...
+The path to the virtual machine's VMX file on the remote server. Click the _Refresh_ button to populate the list from the selected connection. Only enabled when _Remote VMWare server_ is selected.
+
+**Local VMX path**
+
+The path to the virtual machine's VMX file on the local machine. Click the File icon to browse. Only enabled when _Local VMWare workstation_ is selected.
+
+**Timeout in seconds**
+
+The number of seconds to wait before timing out the operation. Minimum is 1, maximum is 36000, default is 180. Note that a Timeout tab setting on the task overrides this value.
+
+**Stop type**
+
+The method used to reset the virtual machine. Available options:
+
+* _Hard_ - immediately resets the virtual machine (equivalent to a hard power cycle)
+* _Soft_ - requests the guest OS to perform a graceful restart (default)
+* _TrySoft_ - attempts a soft reset first; falls back to hard reset if unsuccessful
