@@ -222,6 +222,7 @@ module.exports = {
                           'client-user-interface/server/event-trigger-tcp',
                           'client-user-interface/server/event-trigger-sql',
                           'client-user-interface/server/event-trigger-powershell',
+                          'client-user-interface/server/event-trigger-performance-counter',
                           'client-user-interface/server/event-trigger-net-code-execute',
                           'client-user-interface/server/event-trigger-mail',
                           'client-user-interface/server/event-trigger-process',
