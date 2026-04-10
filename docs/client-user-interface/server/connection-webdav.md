@@ -46,9 +46,17 @@ The table of values that describes the desired character set. Currently this is 
 
 The DNS name or IP address of the server.
 
+**Port**
+
+The port used by the WebDAV server. Default is 80.
+
 **Authentication type**
 
-Select authentication type required for server; Basic, Digest or NTLM (Windows authentication).
+Select the authentication type required by the server. Available options:
+
+* _Basic_ - standard HTTP Basic authentication (default)
+* _Digest_ - HTTP Digest authentication
+* _NTLM_ - Windows (NTLM) authentication
  
 **Username**
 
@@ -60,7 +68,14 @@ The password for the WebDAV account.
 
 **Allowed SSL/TLS versions**
 
-Some servers require certain versions of SSL/TLS. Check the versions that are allowed. Sometimes it is necessary to specify the specific allowed version.
+Some servers require certain versions of SSL/TLS. Check the versions that are allowed:
+
+* _SSL version 2_
+* _SSL version 3_
+* _TLS version 1_
+* _TLS version 1.1_
+* _TLS version 1.2_
+* _TLS version 1.3_
  
 **Manage Connections > Add > WebDAV > Connection settings > Proxy** tab
 
