@@ -52,11 +52,12 @@ Currently the following Connection protocols exist:
 * [XendApp](connection-xendapp)
 * [Pushbullet](connection-pushbullet)
 * [Telegram](connection-telegram)
-* [Twitter](connection-twitter) (deprecated from VisualCron v13.2.1)
+* [Twitter](connection-twitter)
 * [Crystal reports](connection-crystalreports)
 * [VMWare](connection-vmware)
 * [Dynamics CRM](connection-dynamics-crm)
 * [AS/400](connection-as400)
 * [SAP](connection-sap)
- 
+* [IIS](connection-iis)
+
 Click on protocol link above to read more information and connection setting specifics of that protocol.
