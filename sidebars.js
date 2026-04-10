@@ -647,6 +647,7 @@ module.exports = {
                       'client-user-interface/server/job-tasks/sharepoint-tasks/delete-list',
                       'client-user-interface/server/job-tasks/sharepoint-tasks/describe-list',
                       'client-user-interface/server/job-tasks/sharepoint-tasks/get-list',
+                      'client-user-interface/server/job-tasks/sharepoint-tasks/update-list',
                       'client-user-interface/server/job-tasks/sharepoint-tasks/add-list-item',
                       'client-user-interface/server/job-tasks/sharepoint-tasks/update-list-item',
                       'client-user-interface/server/job-tasks/sharepoint-tasks/delete-list-item',
