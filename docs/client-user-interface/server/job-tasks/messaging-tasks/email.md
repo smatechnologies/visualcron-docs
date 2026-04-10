@@ -31,35 +31,47 @@ If you want another reply address than the From email you enter it here. Leave b
  
 **Priority**
 
-The priority of the email. Will be marked differently depending on what type of client the recipient has.
+The priority of the email. Available options: _Low_, _Normal_, _High_. Will be marked differently depending on what type of client the recipient has.
  
 **Security**
 
-You can choose to Sign and/or Encrypt the message in S/MIME or PGP/MIME format. Select appropriate method. When selected new tabs Sign/Encrypt will be enabled which needs further settings to complete the Task.
+Select the security method for signing and/or encrypting the message. Available options:
+
+* _Do not use security features for this message_ - sends without signing or encryption (default)
+* _Use S/MIME security features_ - enables the Sign and Encrypt tabs with S/MIME settings
+* _Use PGP/MIME security features_ - enables the Sign and Encrypt tabs with PGP/MIME settings
  
 **Message type**
 
-The message can be sent in text and/or html format. Check the boxes here and tabs will be enabled for editing.
+Select the format(s) for the message body. The corresponding tabs are enabled based on the selections:
+
+* _Send Text_ - enables the Text tab for plain text message body (checked by default)
+* _Send HTML_ - enables the HTML and Chrome Preview tabs for HTML message body
+* _Request delivery receipt_ - requests a delivery confirmation from the recipient's mail server
+* _Request read receipt_ - requests a read confirmation when the recipient opens the message
  
 **Email -> Recipients** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Recipients.png)
 
-**Recipients separator**
+**Recipient separator**
 
-If you specify multiple addresses manually or in a file, VisualCron needs to know how you separated these. Select the appropriate separator here.
- 
-**Specify manually**
-
-Here you can manually enter email addresses separated by the appropriate separator.
- 
-**Load from file**
-
-Specify a path to a file that contains a separated list of emails.
+If you specify multiple addresses manually or in a file, VisualCron needs to know how you separated these. Available options: _Semicolon_, _Comma_, _Newline_.
  
 **Send separate emails**
 
-By default, for privacy, VisualCron sends one email per recipient and does not show other recipients in the To-field. If you want to change this behavior you can uncheck this box.
+By default, for privacy, VisualCron sends one email per recipient and does not show other recipients in the To field. Uncheck this to send a single email with all recipients visible.
+
+**To / Cc / Bcc**
+
+Each recipient group (To, Cc, Bcc) has its own source dropdown and input controls. Select the source for each group:
+
+* _Not used_ - the group is not used
+* _Manual_ - enter addresses directly in the text field, separated by the selected recipient separator
+* _File_ - load addresses from a file; enter the file path in the text field and select a Credential if the file is on a restricted network location
+* _List_ - use a predefined list
+
+When _File_ is selected, a **Credential** dropdown is enabled to provide access to the file location.
  
 **Email -> Text** sub tab
 
