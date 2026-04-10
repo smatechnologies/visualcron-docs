@@ -13,15 +13,33 @@ The Task Database - Execute SSISDB package executes an existing package in from 
 
 **Connection**
 
-Text ...
+Select the SQL Connection to the SSISDB server. You must create a Connection first in the [Connections](../../../server/global-connections) dialog.
  
 **Credentials**
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
+Optional credential for executing the package. When using Windows authentication, the Credential must be a valid Windows user with permissions to execute packages in SSISDB.
  
 **Package details**
 
-Text ...
+**Catalog**
+
+The SSISDB catalog name. Click the Refresh button to populate the list from the server.
+
+**Folder**
+
+The folder within the catalog that contains the project. Click the Refresh button to populate the list.
+
+**Project name**
+
+The name of the SSIS project. Click the Refresh button to populate the list.
+
+**Package name**
+
+The name of the package to execute within the project. Click the Refresh button to populate the list.
+
+**Environment**
+
+Optional environment reference to use when executing the package. Click the Refresh button to populate the list.
 
 **Execution details**
 
@@ -42,13 +60,17 @@ When using dtexec.exe for package execution, empty string parameter values canno
 
 :::
 
-**Execute in 32 bit mode**
+**Execute in 32 bit mode (on 64 bit systems)**
 
-Check this option if your SSIS package requires 32-bit execution mode. This is commonly needed when the package uses 32-bit drivers or components.
+When checked, the package is executed in 32-bit mode. This is commonly needed when the package uses 32-bit drivers or components.
 
-**Package parameters**
+**Package parameters** tab
 
-Text ...
+A grid listing the parameters for the selected package. Columns show Name, Value, Direction, and Data type. Use the Add, Edit, Delete, and Refresh buttons to manage parameters.
+
+**Project parameters** tab
+
+A grid listing the parameters for the selected project. Columns show Name, Value, Direction, and Data type. Use the Add, Edit, Delete, and Refresh buttons to manage parameters.
 
 :::info Note
 
