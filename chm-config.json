@@ -1975,11 +1975,6 @@
       "mdFile": "docs/client-user-interface/server/job-tasks/system-tasks/wakeup.md",
       "label": "Task System - Wake Up"
     },
-    "client-user-interface/server/job-tasks/system-tasks/wakeup": {
-      "chmFile": "system-tasks.htm",
-      "mdFile": "docs/client-user-interface/server/job-tasks/system-tasks/wakeup.md",
-      "label": "Task System - Wakeup"
-    },
     "client-user-interface/server/job-tasks/system-tasks/wakeup-on-lan": {
       "chmFile": "system_-_wake_up_on_lan.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/system-tasks/wakeup-on-lan.md",
