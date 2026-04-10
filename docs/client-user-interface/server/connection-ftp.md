@@ -72,14 +72,10 @@ This is the host address to the server. It could be a DNS name or IP number.
 **Port**
 
 This is the remote connection port. Default port for regular FTP is 21. Default port for Implicit FTPS is 990.
-
-**Authentication type**
-
-Authentication type can either by _Password_ or _Public key_. For the FTP protocol only password authentication is available. When using SFTP together with public key authentication you have to specify a path to a private key file.
  
 **Anonymous**
 
-If your connection does not require a user name and password this box should be checked.
+If your connection does not require a user name and password this box should be checked. When checked, the Username, Password, and ACCT fields are disabled.
  
 **Username**
 
@@ -92,6 +88,14 @@ The password for the connection.
 **ACCT**
 
 This property is only for some proxies that require ACCT value. FTP protocol only.
+
+**Maximum number of threads (download)**
+
+The maximum number of concurrent download threads. Minimum is 1, maximum is 8, default is 1.
+
+**Maximum number of threads (upload)**
+
+The maximum number of concurrent upload threads. Minimum is 1, maximum is 8, default is 1.
  
 **Manage Connections > Add > FTP > Encryption** tab
 
@@ -99,11 +103,18 @@ This property is only for some proxies that require ACCT value. FTP protocol onl
 
 **Cryptographic protocol**
 
-Select between No encryption, SSL or TLS.
+Select the encryption protocol. Available options:
+
+* _No encryption_ - standard FTP with no encryption; disables all other Encryption tab settings and hides the Certificates tab
+* _SSL_ - uses SSL encryption; enables security mode, channel encryption options, SSL/TLS version selection, and the Certificates tab
+* _TLS_ - uses TLS encryption; enables security mode, channel encryption options, SSL/TLS version selection, and the Certificates tab
  
 **Security mode**
 
-Select between Explicit or Implicit mode type.
+Select the connection mode. Only enabled when a cryptographic protocol is selected:
+
+* _Explicit_ - the connection starts in clear text and upgrades to encrypted using AUTH TLS/SSL (default port 21)
+* _Implicit_ - the connection is encrypted from the start (default port 990; port is automatically set to 990 when Implicit is selected on a new connection)
  
 **Use data channel encryption (PROT P)**
 
@@ -117,6 +128,21 @@ If this property value is True the command channel will be encrypted.
 
 Specifices if SSL session resumption should be used.
  
+**Auto adjust ciphers**
+
+When checked, VisualCron automatically selects the encryption cipher suites. When unchecked, the cipher suite grid is enabled and you can manually select which algorithms to allow using the _Select all_ and _Deselect all_ buttons.
+
+**Allowed SSL/TLS versions**
+
+Select which SSL/TLS protocol versions are permitted for this connection:
+
+* _SSL version 2_
+* _SSL version 3_
+* _TLS version 1_
+* _TLS version 1.1_
+* _TLS version 1.2_
+* _TLS version 1.3_
+
 For the FTP SSL/TLS connection types, an extra **Certificates** tab is provided.
  
 **Manage Connections > Add > FTP SSL/TLS > Certificates** tab
@@ -143,7 +169,11 @@ Select if you want to transfer through binary (default) or ASCII mode.
  
 **Sync data channel**
 
-This option specifies whether to synchronize data channel. Switch it on if component hangs when trying to establish data connection, i.e., on using commands list, upload, download.
+This option specifies whether to synchronize data channel. Switch it on if component hangs when trying to establish data connection, i.e., on using commands list, upload, download. Only enabled when a cryptographic protocol is selected.
+
+**KeepAlive**
+
+The interval (in seconds) for sending keepalive signals to maintain the connection.
  
 **Data connection type**
 
@@ -167,7 +197,15 @@ If this property is set to True, in passive mode data transfer, VisualCron will 
  
 **Override date format**
 
-VisualCron is trying to interpret the dateformat of files when listing files. In some situations there is a compatibility or a FTP server not behaving according to standard. In these cases you will see an error in the log file which contains the incoming date format. By overriding and using the same format as in the log you will force VisualCron to use this specific date format.
+VisualCron is trying to interpret the dateformat of files when listing files. In some situations there is a compatibility or a FTP server not behaving according to standard. In these cases you will see an error in the log file which contains the incoming date format. By overriding and using the same format as in the log you will force VisualCron to use this specific date format. When checked, the date format text field is enabled (default format: `yy-MM-dd HH.mm.ss`).
+
+**Log sent messages to task output**
+
+When checked, all messages sent from VisualCron to the FTP server are logged and stored in the Task output.
+
+**Log received messages to task output**
+
+When checked, all messages received from the FTP server are logged and stored in the Task output.
  
 ### Proxy tab
 
