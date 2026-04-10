@@ -15,14 +15,12 @@ To control a remote computer you may need to use a Credential. The Credential mu
  
 **Local or Remote**
 
-Select the the *Local* radio button if you want to control the local computer, select the *Remote* radio button if you want to control a remote computer.
+Select the *Local* radio button if you want to control the local computer, select the *Remote* radio button if you want to control a remote computer.
  
 **Hostname**
 
-The name of the remote computer.
+The name of the remote computer. Only enabled when _Remote_ is selected.
  
 **Sequence number**
 
-Text ...
-
-Press the Get list button to populate the Sequence number list with previously created restore points.
+Select the restore point to restore to. Click the _Get list_ button to populate the list with restore points from the local or remote computer. The list displays the following columns: **Description**, **Event type**, **Restore point type**, and **#** (sequence number).
