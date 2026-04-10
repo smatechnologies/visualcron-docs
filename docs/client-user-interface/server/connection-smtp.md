@@ -93,17 +93,24 @@ Encryption
 
 ------------------------------------------------------------------------------------
 
+*Authentication type**
+
+The authentication method to use. Available options:
+
+* _Default_ - standard username and password authentication; shows the Anonymous checkbox, Username, and Password fields
+* _Gmail OAuth_ - OAuth authentication for Gmail; hides the Anonymous checkbox, changes the Username label to _Application Id_ and the Password label to _Client secret_, and shows the _Setup app_ and _Authenticate_ links
+
 **Anonymous**
 
-Check this if you want to logon without providing user name and password.
+Check this if you want to log on without providing a user name and password. When checked, the Username and Password fields are disabled. Hidden when _Gmail OAuth_ authentication type is selected.
  
 **Username**
 
-The user name for the email account.
+The user name for the email account. Shown as _Application Id_ when _Gmail OAuth_ authentication type is selected.
  
 **Password**
 
-The password for the email account.
+The password for the email account. Shown as _Client secret_ when _Gmail OAuth_ authentication type is selected.
  
 **Manage Connections > Add > SMTP > Connection settings > Encryption** tab
 
@@ -111,15 +118,37 @@ The password for the email account.
 
 **Cryptographic protocol**
 
-Encryption protocol to use; No encryption, SSL or TLS.
+Encryption protocol to use. Available options:
+
+* _No encryption_ - standard SMTP with no encryption; disables the Allowed SSL/TLS versions group
+* _SSL_ - uses SSL encryption; enables the Allowed SSL/TLS versions group
+* _TLS_ - uses TLS encryption; enables the Allowed SSL/TLS versions group
  
 **Security mode**
 
-Explicit or Implict encryption.
+The connection mode. Available options:
+
+* _Explicit_ - the connection starts in clear text and upgrades to encrypted
+* _Implicit_ - the connection is encrypted from the start (port is automatically set to 990 on a new connection)
  
 **Allowed SSL/TLS versions**
 
-Some SMTP servers require certain versions of SSL/TLS. Check the versions that are allowed. Sometimes it is necessary to specify the specific allowed version.
+Some SMTP servers require certain versions of SSL/TLS. Only enabled when a cryptographic protocol is selected. Check the versions that are allowed:
+
+* _SSL version 2_
+* _SSL version 3_
+* _TLS version 1_
+* _TLS version 1.1_
+* _TLS version 1.2_
+* _TLS version 1.3_
+
+**SASL Mechanisms**
+
+Select which SASL authentication mechanisms are permitted for this connection:
+
+* _NTLM_
+* _DIGEST-MD5_
+* _CRAM-MD5_
  
 **Manage Connections > Add > SMTP > Connection settings > Proxy** tab
 
