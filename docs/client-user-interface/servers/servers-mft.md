@@ -32,7 +32,9 @@ Turns on and of the selected MFT server.
  
 **MFT Servers list**
 
-This is the list of existing MFT servers (of any type).
+This is the list of existing MFT servers (of any type). This is the list of existing MFT servers (of any type). The grid displays the following columns: **Server name**, **Ports**, **Type**, **Users**, **State**, and **Status**.
+
+The toolbar provides the following actions: **Add**, **Edit**, **Delete**, **Activate/Deactivate Server**, **Run/Stop Server**, and **Log history**.
  
 Upon pressing the Add Servers icon, the Server settings dialog is opened.
  
@@ -80,7 +82,7 @@ This property specifies whether the non-compressed transfer is supported by the 
  
 **Use UTF8**
 
-Text ...
+When checked, UTF-8 character encoding is used for file names and paths when communicating with connecting SFTP clients. Recommended when clients transfer files with non-ASCII characters in names.
  
 **Root folder**
 
@@ -155,14 +157,38 @@ Speed in bytes per second for outgoing traffic. Default 0 is unlimited speed.
 **Incoming speed limit**
 
 Speed in bytes per second for incoming traffic. Default 0 is unlimited speed.
+
+**Security type**
+
+Select the security type for the FTP endpoint. Available options:
+
+* _None_ - standard FTP with no encryption
+* _TLS_ - uses TLS encryption
+* _SSL_ - uses SSL encryption
+
+**Allow Anonymous**
+
+When checked, anonymous users can connect to this FTP endpoint without providing a username or password.
  
 **FTP Endpoint->Additional settings**
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/FTP%20Settings.png)
 
-**X509 certificates**
+**Certificate with private key file**
 
-If you select TLS or SSL for security of the FTP endpoint you can optionally
+When TLS or SSL is selected as the security type, select an X.509 certificate with a private key for encryption. This is required when the security type is TLS or SSL. Select a certificate from those defined in [Global Certificates](../server/global-certificates).
+
+**Implicit SSL**
+
+When checked, the connection is encrypted from the start using SSL. When unchecked, the connection starts unencrypted and upgrades to encrypted (explicit mode).
+
+**Require TLS for control channel**
+
+When checked, clients must establish TLS encryption on the command channel before logging in.
+
+**Require TLS for data channel**
+
+When checked, clients must use TLS encryption on the data transfer channel.
  
 **Use passive mode**
 
@@ -246,9 +272,57 @@ The private key password used for the connection.
  
 **Test key**
 
-Text ...
+Click to validate the selected SSH key. VisualCron attempts to load the key (using the private key password if provided) and displays a checkmark icon if the key is valid or an error icon if the key cannot be loaded.
  
 **Main > Settings > MFT Server > Users > Permissions** sub tab
+
+The permissions grid lists folder-level access permissions for this user across MFT servers. Select an MFT server from the server selector to filter the list. The grid displays the following columns: **Folder**, **FR** (File Read), **FW** (File Write), **FD** (File Delete), **FA** (File Append), **DL** (Directory List), **DC** (Directory Create), **DD** (Directory Delete), **DS** (Directory + Subfolders).
+
+The toolbar provides **Add**, **Edit**, and **Delete** actions for managing permissions. Upon pressing Add, the User permissions dialog is opened with the following fields:
+
+**Server**
+
+The MFT server these permissions apply to.
+
+**Folder**
+
+The folder path on the MFT server this permission entry controls.
+
+**File Read**
+
+When checked, the user can read/download files from the folder.
+
+**File Write**
+
+When checked, the user can write/upload files to the folder.
+
+**File Delete**
+
+When checked, the user can delete files in the folder.
+
+**File Append**
+
+When checked, the user can append to existing files in the folder.
+
+**Show File List**
+
+When checked, the user can list files in the folder.
+
+**Show Folder List**
+
+When checked, the user can list subfolders in the folder.
+
+**Folder + Subfolders**
+
+When checked, the permissions apply to this folder and all of its subfolders.
+
+**Folder Create**
+
+When checked, the user can create new folders within this folder.
+
+**Folder Delete**
+
+When checked, the user can delete folders within this folder.
 
 **Main > Servers > MFT Server > Servers > SFTP Endpoints > Advanced Settings > Main settings** sub tab
 
