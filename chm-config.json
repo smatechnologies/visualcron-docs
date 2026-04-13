@@ -1346,13 +1346,8 @@
         "Definitions/Tasks/clsTask.vb"
       ]
     },
-    "client-user-interface/server/job-tasks/social-tasks/facebook-publish-task": {
-      "chmFile": "task-facebook---publish.htm",
-      "mdFile": "docs/client-user-interface/server/job-tasks/social-tasks/facebook-publish-task.md",
-      "label": "Task Social - Facebook - Publish"
-    },
     "client-user-interface/server/job-tasks/social-tasks/facebook-publish": {
-      "chmFile": "social-tasks.htm",
+      "chmFile": "task-facebook---publish.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/social-tasks/facebook-publish.md",
       "label": "Task Social - Facebook - Publish"
     },
@@ -1970,7 +1965,7 @@
         "Definitions/Tasks/clsTask.vb"
       ]
     },
-    "client-user-interface/server/job-tasks/system-tasks/wake-up": {
+    "client-user-interface/server/job-tasks/system-tasks/wakeup": {
       "chmFile": "system_-_wake_up.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/system-tasks/wakeup.md",
       "label": "Task System - Wake Up"
@@ -2156,7 +2151,7 @@
     "client-user-interface/server/job-tasks/internal-tasks/control": {
       "chmFile": "internal_-_jobtask_control.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/internal-tasks/control.md",
-      "label": "Task Internal -Job/Task Control",
+      "label": "Task Internal - Job/Task Control",
       "helpKeywordSources": [
         "Definitions/Tasks/clsTask.vb"
       ]
@@ -2178,14 +2173,6 @@
       ]
     },
     "client-user-interface/server/job-tasks/internal-tasks/set-user-variable": {
-      "chmFile": "internal_-_set_variable.htm",
-      "mdFile": "docs/client-user-interface/server/job-tasks/internal-tasks/set-user-variable.md",
-      "label": "Task Internal - Set User Variable",
-      "helpKeywordSources": [
-        "Definitions/Tasks/clsTask.vb"
-      ]
-    },
-    "client-user-interface/server/job-tasks/internal-tasks/set-user-variable-task": {
       "chmFile": "task-internal---set-user-varia.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/internal-tasks/set-user-variable.md",
       "label": "Task Internal - Set User Variable"
@@ -3400,7 +3387,7 @@
       "label": "Task PDF - Insert Pages"
     },
     "client-user-interface/server/job-tasks/iis-tasks/iis-tasks": {
-      "chmFile": "job_-_tasks.htm",
+      "chmFile": "iis-tasks.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/iis-tasks/iis-tasks.md",
       "label": "IIS Tasks"
     },
