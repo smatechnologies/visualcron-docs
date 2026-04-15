@@ -9,38 +9,28 @@ The Virtual Server - List VM machines Task retrieves a list of all virtual machi
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/List%20VM%20Machines.png)
 
-**Local or Remote**
+**Remote VMWare server / Local VMWare workstation**
 
-Select the the *Local server* radio button if you want to control the local computer, select the *Remote server* radio button if you want to control a remote computer.
- 
-**Server name**
+This task requires a remote VMWare server connection. The _Local VMWare workstation_ option is disabled.
 
-The name of the remote server.
- 
-**Credential**
+**Connection**
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and pass word of the user that you want to login. Click on *Manage credentials* to add or edit Credentials. Select a Credential in the combo box.
- 
-**Running**
+Select the VMWare connection to use for the remote server.
 
-Text ...
- 
-**Turned off (guest saved)**
+**Server VMX path**
 
-Text ...
- 
-**Turned off (guest unsaved)**
+The path to list virtual machines from on the remote server. Click the _Refresh_ button to populate the list from the selected connection.
 
-Text ...
- 
-**Paused**
+**Timeout in seconds**
 
-Text ...
- 
-**Other (includes all transient states)**
+The number of seconds to wait before timing out the operation. Minimum is 1, maximum is 36000, default is 180. Note that a Timeout tab setting on the task overrides this value.
 
-Text ...
- 
-**Invalid**
+**VM listing status filter**
 
-Text ...
+Select which VM power states to include in the results. Check one or more of the following:
+
+* _Powered on_ - includes virtual machines that are running
+* _Powered off_ - includes virtual machines that are powered off
+* _Suspended_ - includes virtual machines that are suspended
+* _Stuck_ - includes virtual machines that are stuck
+* _Unknown_ - includes virtual machines with an unknown status
