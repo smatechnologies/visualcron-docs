@@ -15,4 +15,4 @@ To control a remote computer you may need to use a Credential. The Credential mu
  
 **Lock settings**
 
-Text ...
+No additional settings are required. The task locks the local workstation where VisualCron is running.
