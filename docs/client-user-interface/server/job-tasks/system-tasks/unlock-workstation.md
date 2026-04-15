@@ -15,8 +15,10 @@ To control a remote computer you may need to use a Credential. The Credential mu
  
 **Unlock/Login settings**
 
-Text ...
- 
+**Lock workstation after login**
+
+When checked, the workstation is automatically locked again after the login completes.
+
 :::info Note 
 
 For Windows Server 2008 you must enable a setting in Local Security Policy.
