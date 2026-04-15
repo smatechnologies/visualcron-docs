@@ -55,7 +55,7 @@ The password for the user in the VisualCron Server.
 
 **Proxy type**
 
-The FTP implementation supports the HTTP proxy type and the SFTP implementation supports the SOCKS4 and SOCKS5 proxy types.
+Select the proxy type to be used when connecting to the remote VisualCron server.
  
 **Address**
 
