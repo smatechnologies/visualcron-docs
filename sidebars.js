@@ -7,6 +7,8 @@ module.exports = {
       collapsed: true,
       items: [
         'license',
+        'terms-and-conditions',
+        'dora',
         'notice-of-updated-terms',
       ],
     },

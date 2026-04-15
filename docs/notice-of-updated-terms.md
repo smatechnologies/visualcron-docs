@@ -5,13 +5,9 @@ hide_title: 'true'
 
 ## VisualCron — Updated Terms and Conditions
 
-**Summary of Changes and Frequently Asked Questions  |  Effective May 7, 2026**
+**Summary of Changes and Frequently Asked Questions  |  Effective May 16, 2026**
 
-
-
-We are updating the VisualCron End-User License Agreement, effective May 7, 2026. The following summary identifies key changes. This summary does not capture every change; we encourage you to review the full updated agreement at: https://help.visualcron.com/license. You do not need to take any action. Continued use of VisualCron on or after May 7, 2026 constitutes your acceptance of the revised terms.
-
-
+We are updating the VisualCron End-User License Agreement, effective May 16, 2026. The following summary identifies key changes. This summary does not capture every change; we encourage you to review the full updated agreement at [Terms and Conditions](/terms-and-conditions). You do not need to take any action. Continued use of VisualCron on or after May 16, 2026, constitutes your acceptance of the revised terms.
 
 ### Summary of Changes
 
@@ -26,8 +22,6 @@ The service location provision has been updated to reflect Continuous' global cu
 The agreement has been updated throughout to reflect the Company's current operating name, "Continuous", in place of prior references.
 
 Key defined terms throughout the agreement have been clarified for consistency and ease of understanding.
-
-
 
 ### Frequently Asked Questions
 
@@ -61,6 +55,6 @@ DORA (the Digital Operational Resilience Act, EU Regulation 2022/2554) is a regu
 
 8.  What do I need to do?
 
-You do not need to take any action. Continued use of VisualCron on or after May 7, 2026 constitutes your acceptance of the updated terms. We encourage you to review the full updated agreement before that date.
+You do not need to take any action. Continued use of VisualCron on or after May 16, 2026 constitutes your acceptance of the updated terms. We encourage you to review the full updated agreement before that date.
 
 Questions? Please reach out to our legal team at legal@continuous.com.
