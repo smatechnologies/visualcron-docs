@@ -5,11 +5,9 @@ hide_title: 'true'
 
 ## Connection - Box
 
-The Box Connection stores connect and logon properties for the Box cloud services.
- 
-Box is a cloud service from Google that you have to pay for. You can use VisualCron to sync files between that service and a local folder.
- 
-The GoogleDrive Connection is used in the Cloud Tasks:
+TThe Box Connection stores connect and login properties for the Box cloud storage service. You can use VisualCron to transfer files between Box and a local folder, or between Box and other cloud services.
+
+The Box Connection is used in the following Cloud Tasks:
 
 * [Cloud - Upload file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/upload-file)
 * [Cloud - List item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/list-item)
@@ -23,11 +21,11 @@ The GoogleDrive Connection is used in the Cloud Tasks:
 
 **Name**
 
-The name of the Connection to uniquely identifying it.
+The name of the Connection to uniquely identify it.
 
 **Group**
 
-The group that the connection is a part of
+The group that the connection is a part of.
  
 **Timeout**
 
@@ -43,20 +41,58 @@ Code page being used.
 
 **Client Id**
 
-Client Id which you gets when registering application at [Box](https://www.box.com/platform). See sample below:
+Client Id which you gets when registering your application at the Box Developer Console - [Box](https://www.box.com/platform). See sample below:
 
 ![](../../../static/img/boxoacredentials.png)
 
 **Client secret**
 
-Client secret which you gets when registering application at [Box](https://www.box.com/platform).
+The Client Secret obtained when registering your application at the Box Developer Console.
 
 **Redirect Url**
 
-Please note that this url need to match url on Box web site like this:
+The OAuth redirect URI used during authentication. This value must match exactly the redirect URI configured for your app in the Box Developer Console.
 
 ![](../../../static/img/boxredirecturi.png)
 
+**Auto-accept server certificates**
+
+When checked, VisualCron automatically accepts server certificates without prompting. Enabled by default.
+
+**Create an account**
+
+Click this link to open the Box Developer Console to register or manage your Box application: [https://app.box.com/developers/services](https://app.box.com/developers/services)
+
 **Authenticate**
 
-Click on the Authenticate link to start authentication.
+Click this link to initiate the OAuth authentication flow. A browser window will open for you to sign in with your Box account and grant VisualCron access. Once authentication is complete, click OK to save the connection.
+
+**Manage Connections > Add > Box > Proxy** tab
+
+**Proxy type**
+
+Select the proxy type to be used.
+
+**Address**
+
+The host name or IP address of the proxy server.
+
+**Port**
+
+The port of the proxy server.
+
+**Use credentials**
+
+Enable to provide credentials for authenticating with the proxy server.
+
+**Domain**
+
+The domain of the proxy server.
+
+**Username**
+
+The user name to access the proxy server.
+
+**Password**
+
+The password to access the proxy server.
