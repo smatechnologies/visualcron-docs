@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Google Drive Connection stores connect and login properties for the Google cloud service Google Drive.
  
-Google Drive is a cloud service from Google. You can use VisualCron to sync files between that service and a local folder.
+Google Drive is a cloud storage and file synchronization service developed by Google. It allows users to store files in the cloud, share files, and collaborate. You can use VisualCron to transfer files between Google Drive and a local folder, or between Google Drive and other cloud services.
  
 The Google Drive Connection is used in the following Cloud Tasks:
 
@@ -23,11 +23,11 @@ The Google Drive Connection is used in the following Cloud Tasks:
 
 **Name**
 
-The name of the Connection to uniquely identifying it.
+The name of the Connection to uniquely identify it.
 
 **Group**
 
-The group that the connection is a part of
+The group that the connection is a part of.
 
 **Timeout**
 
@@ -41,37 +41,40 @@ Code page being used.
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Google%20Drive/Settings.png)
 
-**Use VisualCron registered app**
+**App key**
 
-If you use your own application, you need to uncheck the *Use VisualCron registered app* box (checked as default). If you want to use your own app, then click the Setup account link to create or enter in your own *Client Id* and *Client secret* information.
+The App key (Client ID) obtained when registering your application at [Google Cloud Console](https://console.developers.google.com/apis).
  
-**Client Id**
+**App secret**
 
-Client Id which you gets when registering the application at [Google Drive](https://console.developers.google.com/apis).
+The App secret (Client secret) obtained when registering your application at [Google Cloud Console](https://console.developers.google.com/apis).
  
-**Client secret**
+**Redirect URL**
 
-Client secret which you gets when registering the application at [Google Drive](https://console.developers.google.com/apis).
- 
-**How to create a connection using your own Google Drive app**
+The OAuth redirect URL used during authentication. The default value is `http://localhost:9999`. This URL must match the redirect URI configured in your Google Cloud Console app settings.
 
-If you e.g. want your own logo and/or use your own permissions, you may choose to use your own app.
-If you use your own application you need to uncheck* Use VisualCron registered app* in the **Google Drive > Authentication** tab then click *Setup account* or go to: [https://console.developers.google.com/apis](https://console.developers.google.com/apis)
- 
-**How to create a connection using the VisualCron app**
+**Auto-accept server certificates**
 
-In the **Google Drive > Authentication** tab, the *Use VisualCron registered app* box will be checked (default).
+When checked, VisualCron automatically accepts server certificates without prompting. Enabled by default.
 
-1. Click the *Authenticate* link. In the Google authentication window, enter your Google login credentials or approve handling (if you are already logged in to Google) of files in Google Drive.
+**How to create a Google Drive connection**
+
+To use Google Drive with VisualCron, you must register an application in the Google Cloud Console and authenticate it with your Google account.
+
+1. Click the *Create an account* link or go to: [https://console.developers.google.com/apis](https://console.developers.google.com/apis) to create and register your application.
+2. Enable the Google Drive API for your project and create OAuth 2.0 credentials.
+3. Copy the App key (Client ID) and App secret (Client secret) from your registered app and enter them in the **Connection settings** tab.
+4. Set the Redirect URI in your Google Cloud Console app to match the **Redirect URL** field value (default: `http://localhost:9999`).
+5. Click the *Authenticate* link. In the Google authentication window, enter your Google login credentials or approve access (if you are already logged in to Google) to allow VisualCron to handle files in your Google Drive.
 
 ![](../../../static/img/connectiongoogledrivegogglesignin.png)
 
-3. Once the authentication is performed, click OK to save the connection
-4. The connection can be tested by right-click and select *Explorer* in the **Server > Global objects > Connections** tab
+6. Once the authentication is complete, click OK to save the connection.
+7. The connection can be tested by right-clicking and selecting *Explorer* in the **Server > Global objects > Connections** tab.
 
 ![](../../../static/img/connectiongoogledriveexplorer.png)
 
-5. Double-click on the Google Drive Connection in the **Tools > Explore > Connection Explorer > Connections** window to verify the current files in your Google Drive folder or in [https://drive.google.com/drive/my-drive](https://drive.google.com/drive/my-drive).
+8. Double-click on the Google Drive Connection in the **Tools > Explore > Connection Explorer > Connections** window to verify the current files in your Google Drive folder or browse directly at [https://drive.google.com/drive/my-drive](https://drive.google.com/drive/my-drive).
 
 ![](../../../static/img/connectiongoogledriveconnectionexplorer.png)
 
