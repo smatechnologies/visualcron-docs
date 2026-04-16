@@ -3,7 +3,7 @@ sidebar_label: 'DORA Addendum'
 hide_title: 'true'
 ---
 
-Updated: 4.10.2026
+**Effective Date: May 16, 2026**
 
 ## EU DIGITAL OPERATIONAL RESILIENCE ACT (DORA) ADDENDUM
 
