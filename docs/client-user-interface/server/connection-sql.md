@@ -5,25 +5,29 @@ hide_title: 'true'
 
 ## Connection - SQL
 
-The SQL Connection is used in the [Database - SQL](../../client-user-interface/server/job-tasks/database-tasks/sql) Task and the [Event trigger - SQL](event-trigger-sql) Trigger.
- 
-**Use Connection guide** wizard
- 
+The SQL Connection stores database connection properties for use in the [Database - SQL](../../client-user-interface/server/job-tasks/database-tasks/sql) Task and the [Event trigger - SQL](event-trigger-sql) Trigger.
+
+The SQL Connection is configured through a wizard with three starting options:
+
 **Manage Connections > Add > SQL > Wizard**
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SQL/SQL.png)
 
 **Use connection guide**
 
-This starts the wizard which suggests connection strings depending on database and connection type.
+Starts a guided wizard that builds the connection string based on your database type and provider. Recommended for new connections.
  
 **Use existing data source**
 
-This option lets you choose from existing ODBC data sources within the System DSN.
+Lets you select from existing ODBC data sources listed under System DSN.
  
 **Use existing connection string**
 
-This lets you specify a plain connection string - if you have one from before.
+Lets you enter a connection string directly if you already have one.
+
+---
+
+### Use connection guide
  
 **Manage Connections > Add > SQL > Guide 1 - Step 1**
 
@@ -31,25 +35,49 @@ This lets you specify a plain connection string - if you have one from before.
 
 **Storage type**
 
-Normally a database, but you can also use file and other.
+The type of data storage to connect to. Available options:
+
+* _Database_ - a standard relational database (most common)
+* _File_ - a file-based data source such as Excel or Access
+* _Other_ - other data source types
  
 **Database type**
 
-Select if it is an Oracle, MySQL, MSSQL or other database type.
+The specific database system to connect to. Supported types include: MSSQL, Oracle, MySQL, Snowflake, IBM DB2, PostgreSQL, SQLite, Sybase, Informix, Interbase, Firebird, Teradata, AS400, Amazon Aurora, Excel, Access, and many others.
  
 **Data provider**
 
-Different data providers exist for different database types. For Oracle, MySQL and MSSQL VisualCron provides direct connection and ODBC/OLEDB. For other database types you have to use either ODBC or OLEDB. A direct connection is faster than using ODBC or OLEDB.
- 
+The driver or library used to connect to the database. Available options:
+
+* _ODBC_ - connect via ODBC driver; works with most database types
+* _OLEDB_ - connect via OLE DB provider; works with most database types
+* _Native MSSQL_ - direct connection to Microsoft SQL Server (faster than ODBC/OLEDB)
+* _Native MySQL_ - direct connection to MySQL
+* _Native Oracle_ - direct connection to Oracle
+* _Native DB2_ - direct connection to IBM DB2
+* _Native PostgreSQL_ - direct connection to PostgreSQL
+
+A direct (native) connection is faster than using ODBC or OLEDB.
+
+**Allowed SSL/TLS versions**
+
+Select which SSL/TLS protocol versions are permitted for this connection:
+
+* _SSL version 3_
+* _TLS version 1_
+* _TLS version 1.1_
+* _TLS version 1.2_
+* _TLS version 1.3_
+
 **Manage Connections > Add > SQL > Guide 1 - Step 2**
 
 ![](../../../static/img/connectionsqlguide2.png)
 
-In step 2 you select the connection type. In the _Connection type_ select box there is a list of predefined connection strings. Choose the appropriate one and the connection string grid will be filled with connection parameters. Edit the parameter value to set username, password etc. The connection string is update in realtime in the connection string text box. Click the _Refresh_ icon to refresh the parameters. When you are done you can test the connection by clicking on _Test connection_.
- 
-:::tip Note 
+Select a connection type from the _Connection type_ list. The connection string grid is populated with the relevant parameters for the selected type. Edit the parameter values (server, username, password, database, etc.) as needed. The connection string is updated in real time as parameters are edited. Click the _Refresh_ icon to reload the parameters. Click _Test connection_ to verify the connection before saving.
 
-To use trusted connection you may have to select a Credential in your final SQL Task. If you connect now you are using the user you are logged in as. When the actual SQL Task is being run it is normally run as SYSTEM. That is why you may need a Credential at a later stage - in the SQL Task.
+:::tip Note
+
+To use a trusted (Windows) connection, you may also need to select a Credential in the SQL Task. When testing the connection now, it runs as the currently logged-in user. When the SQL Task executes on a schedule it normally runs as SYSTEM, so a Credential may be required at the Task level.
 
 :::
  
@@ -57,13 +85,15 @@ To use trusted connection you may have to select a Credential in your final SQL 
 
 ![](../../../static/img/connectionsqlguide3.png)
 
-At step 3 you save the actual connection by giving it a name.
+Enter a name for the Connection and optionally assign it to a group.
  
 **Convert data types**
 
-When checked and using Stored procedures in combination with OLEDB/ODBC, VisualCron will try to, convert values to their specified format. Normally this is only needed and should only be used for certain databases like SYBASE/SAP.
- 
-**Use existing data source** wizard
+When checked and using stored procedures with OLEDB or ODBC, VisualCron will attempt to convert values to their specified data types. This is generally only needed for certain databases such as Sybase or SAP.
+
+---
+
+### Use existing data source
  
 **Manage Connections > Add > SQL > Guide 2 - Step 1**
 
@@ -71,15 +101,17 @@ When checked and using Stored procedures in combination with OLEDB/ODBC, VisualC
 
 ![](../../../static/img/clip333444084.gif)
 
-Please select the System DSN you want to use.
+Select the System DSN you want to use. Only System DSN entries are shown — User DSN entries are not available across users and cannot be used by VisualCron.
  
 **Manage Connections > Add > SQL > Guide 2 - Step 2**
 
 ![](../../../static/img/clip333444085.gif)
 
-Edit DSN parameters if needed.
- 
-**Use existing connection string** wizard
+Edit the DSN parameters if needed before saving.
+
+---
+
+### Use existing connection string
  
 **Manage Connections > Add > SQL > Guide 3 - Step 1**
 
@@ -91,11 +123,9 @@ Enter the connection string.
 
 ![](../../../static/img/connectionsqlwizard3step2.png)
 
-The following parameters can be used for Oracle:
+Select the data provider (ODBC, OLEDB, Native MSSQL, Native MySQL, Native Oracle, etc.). For Oracle, the following connection string parameters are available:
 
 ![](../../../static/img/oracleparameters.png)
-
-Choose the data provider (ODBC, OLEDB, MSSQL, MySQL, Oracle).
  
 **Manage Connections > Add > SQL > Guide 3 - Step 3**
 
@@ -105,14 +135,16 @@ Enter the name of the Connection.
  
 **Convert data types**
 
-Text ...
+When checked and using stored procedures with OLEDB or ODBC, VisualCron will attempt to convert values to their specified data types. This is generally only needed for certain databases such as Sybase or SAP.
+
+---
  
 ### Troubleshooting
 
-**Error ORA12514 when using Oracle Direct mode in Task**
+**Error ORA-12514 when using Oracle Direct mode in Task**
 
-Make sure you are not using both SID and Service name in the Connection string. Delete one of them if you do as the must not be used together.
- 
-**Error ORA-28009 and "Keydowrd not supported: dba privilege"**
+Make sure you are not using both SID and Service Name in the connection string. These cannot be used together — remove one of them.
 
-Try using "Connect Mode" parameter instead of "DBA Privilege". For example: Connect Mode=SYSDBA
+**Error ORA-28009 and "Keyword not supported: dba privilege"**
+
+Try using the `Connect Mode` parameter instead of `DBA Privilege`. For example: `Connect Mode=SYSDBA`
