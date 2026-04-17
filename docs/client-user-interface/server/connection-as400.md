@@ -17,17 +17,17 @@ The AS/400 Connection is used in the AS/400 Task:
 
 **Name**
 
-The unique name for the Connection
+The name of the Connection to uniquely identify it.
 
 **Group**
 
-The group that the connection is a part of
+The group that the connection is a part of.
  
 **Timeout**
 
 The connection timeout in seconds. Connection will fail after this time period.
  
-**Codepage**
+**Code page**
 
 Code page being used.
  
@@ -37,12 +37,12 @@ Code page being used.
 
 **Address**
 
-The address to the AS/400 server.
+The host name or IP address of the AS/400 server.
 
 **Username**
 
-The username for the server.
+The user name for the AS/400 server.
  
 **Password**
 
-The password for the server.
+The password for the AS/400 server.
