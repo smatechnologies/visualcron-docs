@@ -5,23 +5,19 @@ hide_title: 'true'
 
 ## Connection - AMQP
 
+The Advanced Message Queuing Protocol (AMQP) is an open standard application layer protocol for message-oriented middleware. It provides message orientation, queuing, routing (including point-to-point and publish-and-subscribe), reliability, and security. VisualCron supports AMQP version 1.0 or later.
+
+The AMQP Connection stores connect and authentication properties for AMQP message brokers.
+
 The AMQP Connection is used in:
- 
+
 * [AMQP - Send message Task](../../client-user-interface/server/job-tasks/messaging-tasks/amqp-send-message)
 * [AMQP - Trigger](../../client-user-interface/server/event-trigger-amqp)
  
- 
- 
-The Advanced Message Queuing Protocol (AMQP) is an open standard application layer protocol for message-oriented middleware. The defining features of AMQP are message orientation, queuing, routing (including point-to-point and publish-and-subscribe), reliability and security. AMQP defines a self-describing encoding scheme allowing interoperable representation of a wide range of commonly used types. It also allows typed data to be annotated with additional meaning,[17] for example a particular string value might be annotated so that it could be understood as a URL. Likewise a map value containing key-value pairs for 'name', 'address' etc., might be annotated as being a representation of a 'customer' type.
- 
- 
-Currently, the following protocols are supported:
- 
+Currently, the following broker types are supported:
+
+* RabbitMQ
 * Azure Service Bus
-* Rabbit MQ
- 
- 
-VisualCron supports AMQP version 1.0 or later.
 
 **Manage Connections > Add > AMQP > Common settings** tab
 
@@ -29,7 +25,7 @@ VisualCron supports AMQP version 1.0 or later.
 
 **Name**
 
-The name of the Connection to uniquely identifying it.
+The name of the Connection to uniquely identify it.
 
 **Group**
 
@@ -49,35 +45,53 @@ Code page being used.
 
 **Address**
 
-This is the host address to the server. It could be a DNS name or IP number.
+The host name or IP address of the AMQP broker.
 
 **Port**
 
-This is the remote connection port.
+The port of the AMQP broker. Default port is 5672 for AMQP and 5671 for AMQPS. When Azure Service Bus is selected as the broker type, the port is automatically set to 5671.
 
 **Broker Type**
 
-Select one of the two supported:
+The message broker to connect to. Available options:
 
-* Azure Service Bus
-* Rabbit MQ
+* _RabbitMQ_ - connects to a RabbitMQ broker. Default port: 5672, default schema: AMQP.
+* _Azure Service Bus_ - connects to an Azure Service Bus namespace. Default port: 5671, schema is automatically set to AMQPS.
+
+**Authentication type**
+
+The authentication method to use. Available options:
+
+* _Password_ - authenticate using a username and password.
+* _Certificate_ - authenticate using a certificate; a certificate selector is shown. A username and password may still be required to access the Management HTTP API when listing queues.
  
 **Username**
 
-Username for the service.
+The user name for the AMQP broker.
  
 **Password**
 
-Password for the service.
+The password for the AMQP broker.
+
+**Certificate** _(Certificate authentication only)_
+
+Select the certificate to use for authentication.
  
 **Schema**
 
-"AMQP" (port 5672) or "AMQPS" (port 5672). Azure Service Bus - have only AMQPS (port 5671)
+The connection schema. Use `AMQP` for unencrypted connections (port 5672) or `AMQPS` for encrypted connections (port 5671). Azure Service Bus requires AMQPS.
  
 **Path**
 
-May be important for RabbitMQ - VirtualHost, the default is "/" in Azure Service Bus
+The virtual host path for RabbitMQ connections. The default value is `/`. For Azure Service Bus this field is not used.
  
 **Connection string**
 
-This property is used for administrative purposes - getting a list of queues, in RabbitMQ, here you need to specify the administrative port or path, for example, for local server installation - "http://localhost:15672/api/queues", for Azure Service Bus this is the Connnection String in the format: "Endpoint=sb://xxx.servicebus.windows.net/;SharedAccessKeyName=yyy;SharedAccessKey=zzz" and this default address is formed from the connection parameters: host (in the example, this is xxx.servicebus.microsoft.net/), username (yyy) and password (zzz).
+Used for administrative purposes such as retrieving a list of queues.
+
+* For RabbitMQ: the URL of the RabbitMQ Management HTTP API, for example `http://localhost:15672/api/queues`.
+* For Azure Service Bus: the connection string in the format `Endpoint=sb://xxx.servicebus.windows.net/;SharedAccessKeyName=yyy;SharedAccessKey=zzz`. This is automatically constructed from the Address, Username, and Password fields.
+
+**Disable Server Certificate Validation**
+
+When checked, VisualCron skips validation of the server's SSL/TLS certificate. Use this only when connecting to a broker with a self-signed or untrusted certificate.
