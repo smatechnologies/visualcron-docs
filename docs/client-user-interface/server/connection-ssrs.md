@@ -5,9 +5,9 @@ hide_title: 'true'
 
 ## Connection - SSRS
 
-The SSRS Connection stores connect and logon properties for the Reporting Services (SSRS).
- 
-The SSRS Connection is used in the [Database - SSRS](../../client-user-interface/server/job-tasks/database-tasks/ssrs) Task. The Task is used to execute reports through SQL Server Reporting Services (SSRS).
+he SSRS Connection stores connect and logon properties for SQL Server Reporting Services (SSRS).
+
+The SSRS Connection is used in the [Database - SSRS](../../client-user-interface/server/job-tasks/database-tasks/ssrs) Task, which executes and exports reports through SQL Server Reporting Services.
  
 **Manage Connections > Add > SSRS > Common settings** tab
 
@@ -15,7 +15,7 @@ The SSRS Connection is used in the [Database - SSRS](../../client-user-interface
 
 **Name**
 
-The unique name for the Connection.
+The name of the Connection to uniquely identify it.
  
 **Group**
 
@@ -35,12 +35,42 @@ The table of values that describes the desired character set.
 
 **Address**
 
-The IP or DNS name to the SSRS server. Do not use http prefix or full folder address.
+The IP address or DNS name of the SSRS server. Do not include the `http://` prefix or a full folder path.
 
 **Username**
 
-Username for the SSRS server.
+The user name for the SSRS server.
  
 **Password**
 
-Password for the SSRS server.
+The password for the SSRS server.
+
+**Manage Connections > Add > SSRS > Proxy** tab
+
+**Proxy type**
+
+Select the proxy type to be used.
+
+**Address**
+
+The host name or IP address of the proxy server.
+
+**Port**
+
+The port of the proxy server.
+
+**Use credentials**
+
+Enable to provide credentials for authenticating with the proxy server.
+
+**Domain**
+
+The domain of the proxy server.
+
+**Username**
+
+The user name to access the proxy server.
+
+**Password**
+
+The password to access the proxy server.
