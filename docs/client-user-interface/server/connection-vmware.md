@@ -5,9 +5,9 @@ hide_title: 'true'
 
 ## Connection - VMWare
 
-The VMWare Connection stores connect and logon properties for guest and remote VMWare instances.
- 
-The VMWare Connection is used for connecting to remote VMWare instances in the following Tasks:
+The VMWare Connection stores connect and logon properties for remote VMWare instances.
+
+The VMWare Connection is used in the following Tasks:
 
 * [VMWare - Start VM](../../client-user-interface/server/job-tasks/vmware-tasks/start-vm)
 * [VMWare - Stop VM](../../client-user-interface/server/job-tasks/vmware-tasks/stop-vm)
@@ -46,7 +46,7 @@ The VMWare Connection is used for connecting to remote VMWare instances in the f
 
 **Name**
 
-The unique name for the Connection
+The name of the Connection to uniquely identify it.
  
 **Group**
 
@@ -66,20 +66,23 @@ Code page being used.
 
 **Address**
 
-The address to the VMWare server.
+The host name or IP address of the VMWare server.
 
 **Authentication type**
 
-Choose between VIX or vSphere. VIX stands for the old API that uses COM libraries to manage vSphere. This is supported up to version 6.0 of vSphere. For future version the new vSphere API is used which is based on web services. The VMware vSphere® Web Services SDK includes all the components necessary to work with the VMware vSphere API, including WSDL files, sample code, and libraries. The vSphere Web Services SDK facilitates development of client applications that target the VMware vSphere API. With the vSphere Web Services SDK, developers can create client applications to manage, monitor, and maintain VMware vSphere components, as deployed on VMware® VMware vSphere® ESX®, ESXi™, and VMware® vCenter™ Server systems.
+The API used to connect to the VMWare server. Available options:
+
+* _Vix_ - uses the legacy VIX COM API. Supported up to vSphere version 6.0.
+* _vSphere_ - uses the VMware vSphere Web Services SDK, which is based on web services. Recommended for vSphere versions after 6.0.
+* _vSphere 7_ - uses the vSphere Web Services SDK targeting vSphere version 7 and later.
  
 **Username**
 
-The username for the server.
+The user name for the VMWare server.
  
 **Password**
 
-The password for the server.
- 
+The password for the VMWare server.
  
 ### Troubleshooting
 
