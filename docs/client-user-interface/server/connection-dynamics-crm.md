@@ -5,9 +5,9 @@ hide_title: 'true'
 
 ## Connection - Dynamics CRM
 
-The Dynamics CRM Connection stores connect and logon properties for a Dynamics CRM instance.
- 
-The Dynamics CRM Connection is used in the Dynamics CRM Tasks:
+The Dynamics CRM Connection stores connect and logon properties for a Microsoft Dynamics CRM instance.
+
+The Dynamics CRM Connection is used in the following Dynamics CRM Tasks:
 
 * [Dynamics CRM - Get entity](../../client-user-interface/server/job-tasks/dynamics-crm-tasks/get-entity)
 * [Dynamics CRM - Create entity](../../client-user-interface/server/job-tasks/dynamics-crm-tasks/create-entity)
@@ -20,17 +20,17 @@ The Dynamics CRM Connection is used in the Dynamics CRM Tasks:
 * [Dynamics CRM - Download attachment](../../client-user-interface/server/job-tasks/dynamics-crm-tasks/download-attachments)
 * [Dynamics CRM - Upload attachment](../../client-user-interface/server/job-tasks/dynamics-crm-tasks/upload-attachment)
  
-**Manage Connections > Add > Dynamics CRM > Main settings** tab
+**Manage Connections > Add > Dynamics CRM > Common settings** tab
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dynamics%20CRM/Dynamics%20CRM.png)
 
 **Name**
 
-The unique name for the Connection
+The name of the Connection to uniquely identify it.
 
 **Group**
 
-The group that the connection is a part of
+The group that the connection is a part of.
  
 **Timeout**
 
@@ -40,18 +40,18 @@ The connection timeout in seconds. Connection will fail after this time period.
 
 Code page being used.
  
-**Manage Connections > Add > Dynamics CRM > Connection Settings** tab
+**Manage Connections > Add > Dynamics CRM > Connection settings** tab
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dynamics%20CRM/Settings.png)
 
 **Address**
 
-The address to the Dynamics CRM server.
+The host name or URL of the Dynamics CRM server.
 
 **Username**
 
-The username for the server.
+The user name for the Dynamics CRM server.
  
 **Password**
 
-The password for the server.
+The password for the Dynamics CRM server.
