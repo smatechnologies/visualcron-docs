@@ -60,7 +60,13 @@ Causes the TCP Trigger to fire with the current message; a list of result messag
  
 **Force exit**
 
-Forces the negotiation to stop and closes the TCP connection after processing the current rule, including existing child rules. Might be useful in scenarios with infinite loops.
+Controls whether the negotiation stops and the TCP connection closes after processing the current rule, including existing child rules. Options:
+
+* *(blank)* — no forced exit (default); negotiation continues normally.
+* *Success* — forces the negotiation to end successfully after this rule.
+* *Failure* — forces the negotiation to abort with an exception after this rule.
+
+Might be useful in scenarios with infinite loops.
  
 **Send** rule properties
 
@@ -121,7 +127,7 @@ As a remote TCP server (listener), a similar test scenario can be launched in th
  
 **Setup maximum number of iterations**
 
-All rules with a large or infinite number of repetitions automatically terminate after the specified maximum number of iterations.
+All rules with a large or infinite number of repetitions automatically terminate after the specified maximum number of iterations. Default is 10 (minimum 1, maximum 999).
  
 ### TCP Task Result Variables
  
