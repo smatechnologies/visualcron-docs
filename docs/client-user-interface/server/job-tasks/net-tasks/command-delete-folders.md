@@ -13,6 +13,8 @@ The Delete folder(s) command deletes one or more folders on the remote server.
 
 **Folder**
 
-Specify the name of a folder to delete on the server. If the server supports it you can specify a relative path; ```/folder/subfolder```. If not, you first have to use the change folder command (if you are not already in that folder).
-If sub folder(s) to a folder to be deleted exist, also these are deleted.
+The path of the folder to delete on the remote server. If the server supports it you can specify a relative path (e.g. `/folder/subfolder`); otherwise use the Change folder command first to navigate to the target location. Use the folder browse button to select a folder from the server. Sub-folders are also deleted recursively.
 
+**Credential**
+
+Select a Credential if the folder resides on a network drive that requires authentication.
