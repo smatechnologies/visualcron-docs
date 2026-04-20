@@ -9,6 +9,12 @@ The Inject JS step lets you send javascript code for execution on the current pa
 
 ![](../../../../../static/img/stepinjectjs.png)
 
+**Inject JS tab**
+
+**Script code**
+
+The JavaScript code to execute on the page. Click the **Variables** button to insert a VisualCron variable into the script.
+
 **Wait tab**
 
-The wait tab controls how long time the step should wait before performing the step and after performing the step (in milliseconds).
+Controls how long the step waits before and after performing the action.
