@@ -15,8 +15,8 @@ The IP address or host name of the server you want to PING.
  
 **Timeout in milliseconds**
 
-Timeout before the reply is considered too long. Produces error if longer than timeout.
+Timeout before the reply is considered too long. Produces error if longer than timeout. Default is 2000 ms (maximum 20000 ms).
  
 **TTL**
 
-Time to live (sometimes abbreviated TTL) is a limit on the period of time or number of iterations or transmissions in computer and computer network technology that a unit of data (e.g. a packet) can experience before it should be discarded. Use a value between 1 and 255.
+Time to live (sometimes abbreviated TTL) is a limit on the period of time or number of iterations or transmissions in computer and computer network technology that a unit of data (e.g. a packet) can experience before it should be discarded. Default is 32. Use a value between 1 and 255.
