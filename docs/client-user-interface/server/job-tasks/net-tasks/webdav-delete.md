@@ -11,16 +11,16 @@ The WebDAV - Delete lets you delete, one or more, files or folders. Web-based Di
 
 **Connection**
 
-All WebDAV Task uses connection settings from a Connection. In Connections you can create a new WebDAV connection with all other details like Proxy. In the combo box you select the Connection after creation.
- 
-**Folder URL**
+All WebDAV Tasks use connection settings from a Connection. In Connections you can create a new WebDAV connection with all other details like Proxy. In the combo box you select the Connection after creation.
 
-The full remote base folder URL.
- 
+**Relative folder/file URL**
+
+The relative path (within the WebDAV server) to the base folder or file to delete. Use the folder browse button to select a folder from the server (a Connection must be selected first).
+
 **File/folder mask**
 
-This field is able to use either the exact name of a file or folder you want to delete or a combination with wild cards to find one or more files.
- 
+Filters which files or folders to delete. Use the exact name or a wildcard pattern (e.g. `*` for all, `*.csv` for CSV files only). Use the file browse button to populate this field from a selected file. Default is `*`.
+
 **Delete filter**
 
-If the file/folder mask should look for Files or Folders when deleting.
+Controls what type of items to delete. Options: Files (default), Folders, All.
