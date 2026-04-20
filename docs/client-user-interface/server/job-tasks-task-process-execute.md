@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Task Process - Execute
 
-The Execute Task lets you start a command or executable with arguments. Optionally you can run the process as a certain user with the help of Credentials.
+The Execute Task lets you start a command or executable with arguments. Optionally, you can run the process as a certain user with the help of Credentials.
 
 ![](../../../static/img/clip333444123.png)
 
@@ -17,7 +17,7 @@ This option may be used if you for example want to execute a PHP script which ha
  
 **Run in hidden window**
 
-When checked, VisualCron will run the Task in hidden mode which means that if a Task normally creates a window, this will not be displayed. If you want to hide a GUI application (winform) you must also check Use shell execute.
+When checked, VisualCron will hide the window that is normally displayed when you run your command. If you want to hide a GUI application you must also check Use shell execute.
  
 **Use shell execute**
 
@@ -27,9 +27,7 @@ This setting concerns whether or not to use the operating system shell to start 
  
 The *Working Directory* property behaves differently when *Use shell execute* is true than when *Use shell execute* is false. When *Use shell execute* is true, *Working Directory* specifies the location of the executable. If *Working Directory* is an empty string, the current directory is understood to contain the executable. When *Use shell execute* is false, the *Working Directory* property is not used to find the executable. Instead, it is used by the process that is launched and only has meaning within the context of the new process.
  
-Setting this property to false enables you to redirect input, output, and error streams.
- 
-One reason to use shell execute is when you want to run a GUI application (winform) in hidden mode and not want output of the application. To make a winform application hidden you must use shell execute in combination with run in hidden window.
+Together with *Run in hidden window*, this option can be used to hide GUI applications. Note that no Task output can be captured when *Use shell execute* is enabled.
  
 **Command and parameters**
  
@@ -44,12 +42,19 @@ Batch - ability to create batch files inside the Batch tab of this Task. The adv
  
 **Command**
 
-This is the path to the executable - always enter full path and name to the executable file.
+This is the path to the executable - always enter full path and name to the executable file. UNC paths to network drives are supported.
 The rightmost button opens a file browser for selection. The only mandatory parameter in the Execute window.
  
 **Arguments**
 
 Arguments don't have to start with a space key, look at the Add Task view for an example. Use "" around long arguments.
+
+**Standard input**
+
+You can pass standard input (stdin) to the process either from a file or as inline text.
+
+* *File* - specify the path to a file whose contents will be passed as standard input to the process.
+* *Text* - enter the text directly to be passed as standard input to the process.
  
 **Run Task as**
 
@@ -70,15 +75,6 @@ If the user belongs to a domain you must specify that domain. If the computer is
 Use "" around arguments.
 
 :::
-
-**Run with API code**
-
-When using this option all processes as started through an API call of Win32 API.
-This is the default option. Don't change this unless you get problems with Access Denied when opening Desktop in the log file.
- 
-**Run with managed code**
-
-When using this option the all processes are started through the managed wrapper of the API. Don't change to this setting unless you get problems with Access Denied when opening Desktop in the log file.
  
 **Process priority**
 
@@ -92,18 +88,20 @@ VisualCron Tasks can be run with any standard process priority. The following pr
  
 **Don't start Task if Task process is already running**
 
-If you want VisualCron to start a Task only if a process is NOT running, then check this box and enter the name of the process. The process name must be an existing process, for convenience use the "3-dots­button" and pick that process (ensure that it is running before you open the window).
+If you want VisualCron to start a Task only if a process is NOT running, then check this box and enter the name of the process. The process name must be an existing process, for convenience use the Select button and pick that process (ensure that it is running before you open the window).
  
 **Queue process start**
 
-If a Don't  start Task if process is alrady running is checked you can choose to queue the process (wait for it to complete before starting new). The # Instances value controls how many we allow before starting a new process. If value is 0 the current process need to finish. If value is 10 and we execute 30 times we will allow 10 first, then add one by one as the processes terminate.
+If Don't start Task if process is already running is checked you can choose to queue the process (wait for it to complete before starting new). The # Instances value controls how many we allow before starting a new process. If value is 0 the current process need to finish. If value is 10 and we execute 30 times we will allow 10 first, then add one by one as the processes terminate.
  
 **# instances**
 See Queue process start.
- 
-**Kill process / Close main window**
 
-Instead of adding two Tasks, one execute and one kill, you can specify the time the main window or process should be active. If you for example check the box and specify "Kill process" after "1 minute(s)", the Task will start and then terminated after exactly one minute. However, try "Close main window" instead of "Kill process". Killing the process is harder and may interrupt the process if it is trying to save anything on exit. Kill may also result in Task exit code -1. When trying to kill a hidden window you must use kill process.
+:::tip Remote execution
+
+If you want to execute on a remote Server, change the Execution context in Main settings.
+
+:::
  
 ### Notes about Troubleshooting:
  
