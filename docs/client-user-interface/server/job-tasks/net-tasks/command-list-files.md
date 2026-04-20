@@ -13,4 +13,6 @@ For list files, VisualCron uses the [remote file filter](../../../server/job-tas
 
 **Output**
 
-Disable or enable Full path for listed files
+**Full path**
+
+When checked, the full path is included in the output for each listed file. When unchecked, only the file name is listed. Default is checked.
