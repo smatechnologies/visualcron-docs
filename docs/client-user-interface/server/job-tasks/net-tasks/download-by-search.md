@@ -12,7 +12,7 @@ When forced download, the user must check the “Force download” checkbox. A f
  
 When the direct download is impossible, for example, downloading occurs only after clicking on the button, then the user needs to uncheck the “Force download”. After the user unchecked, the “Element” tab will be available.
  
-In this tab, the user can select three options: Relative, By Position, By Search.
+In this tab, the user can select three options: Relative, By position, By search.
  
 The relative option allows you to access an element by a relative path. The user must specify the path to the HTML element. This element will be clicked for further download.
  
