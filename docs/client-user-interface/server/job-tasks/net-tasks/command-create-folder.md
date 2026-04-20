@@ -13,5 +13,8 @@ The Create folder command creates a folder on the remote server.
 
 **Folder name**
 
-Specify the folder name to be created. If the server supports it you can specify a relative path; /folder/subfolder. If not, you first have to use the change folder command (if you are not already in that folder).
+The name or path of the folder to create on the remote server. If the server supports it you can specify a relative path (e.g. `/folder/subfolder`); otherwise use the Change folder command first to navigate to the target location. Use the folder browse button to select a location from the server.
 
+**Credential**
+
+Select a Credential if the folder needs to be created on a network drive that requires authentication.
