@@ -12,6 +12,10 @@ The Process - Remote Kill Task can terminate a process on another server in the 
 **Credentials**
 
 To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
+
+**Host name**
+
+The hostname or IP address of the remote server on which the process will be terminated. This is a required field.
  
 **Process name**
 
