@@ -21,7 +21,7 @@ Select if you want to use a proxy.
  
 **Method**
 
-There are two kinds of methods which are most common when calling a remote script or page. Some web frameworks (such as PHP) provide separate mechanisms for accessing POST and GET data. POST is generally recommended because URL:s don't appear in web logs.
+Select the HTTP method to use when calling a remote script or page. Available options are POST, PUT, GET, DELETE, and PATCH. Some web frameworks (such as PHP) provide separate mechanisms for accessing POST and GET data. POST is generally recommended because URLs don't appear in web logs.
  
 **Version**
 
@@ -33,7 +33,7 @@ Optional. If your script requires a certain UserAgent you can use this field to 
  
 **Timeout in seconds**
 
-This is the timeout of the web request. Default is 600 seconds.
+This is the timeout of the web request. Default is 100 seconds.
  
 **KeepAlive**
 
@@ -59,10 +59,18 @@ Enable this if you get HTTP error 417.
 **Content-type header**
 
 This header controls the content type of the HTTP request. In the drop down most common headers can be found. This setting is also related to the Parameters/Body tab as it affects the way the body is posted.
+
+**Base on file type**
+
+When checked (default), VisualCron automatically sets the content-type header based on the type of file being sent. Uncheck to use the content-type header value set manually above.
  
 **Other headers**
 
 Custom headers can also be added by pressing Add button.
+
+**Use cookies from headers only**
+
+When checked, cookies are parsed exclusively from response headers rather than from the response body.
  
 **HTTP > Parameters/Body** tab
 
@@ -86,7 +94,7 @@ Depending on content-type header you can POST various content in the body. By se
 
 **Supported security protocols**
 
-Set the supported security protocols (by your web server) to use the maximum security.
+Set the supported security protocols (by your web server) to use the maximum security. Available options (all enabled by default): SSL 3, TLS 1.0, TLS 1.1, TLS 1.2, TLS 1.3.
  
 **Credentials**
 
@@ -94,7 +102,14 @@ Optional. If your script requires authentication you can select a credential fro
  
 **Auth type**
 
-What kind of authentication method that is used. No authentication method is used if no Credential is selected. By default NTLM auth type is used.
+What kind of authentication method that is used. No authentication method is used if no Credential is selected. Available options:
+
+* *Basic* — sends credentials as a Base64-encoded username/password pair.
+* *NTLM* — Windows NT LAN Manager challenge-response authentication (default).
+* *Digest* — MD5-based challenge-response authentication.
+* *Negotiate* — automatically selects between Kerberos and NTLM.
+* *Kerberos* — ticket-based authentication for domain environments.
+* *OAuth* — OAuth 2.0 token-based authentication. When selected, the **OAuth parameters** tab becomes active.
  
 **HTTP > Save content/response** tab
 
