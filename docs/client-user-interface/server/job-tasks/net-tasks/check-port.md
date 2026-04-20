@@ -15,12 +15,12 @@ The IP address or host name of the server you want to check port for.
  
 **Port**
 
-Port number to be used.
+Port number to be used. Default is 16444.
  
 **Protocol**
 
-Type of protocol to be used.
+Type of protocol to be used. Options: TCP (default) or UDP.
  
 **Timeout in milliseconds**
 
-Timeout before the reply is considered too long. Produces error if longer than timeout.
+Timeout before the reply is considered too long. Produces error if longer than timeout. Default is 5000 ms.
