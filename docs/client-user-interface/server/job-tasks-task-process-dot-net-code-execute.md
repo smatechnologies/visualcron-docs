@@ -11,7 +11,7 @@ You are able to use Variables wherever in the code and parameters. The output of
  
 The code is compiled in real time for each execution.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/NET%20Code%20Execute.png)0896
+![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/NET%20Code%20Execute.png)
 
 **Credentials**
 
@@ -24,6 +24,17 @@ Select either C# or VB.NET language. The syntax editor and compile methods will 
 **Edit references..**
 
 Add/remove any dll that you want to use as a reference to make our code work or be more compact.
+
+**Execute in server process**
+
+When checked, executes the .NET code within the VisualCron server process instead of launching a separate external process. Should only be used for simple code without complex dependencies.
+ 
+**Output format**
+
+Select how the method's return value is serialized:
+
+* *ToString representation of output* — calls `.ToString()` on the return value (default). Arrays are comma-separated.
+* *XML representation of output* — serializes the return value as XML.
  
 **Code**
 
