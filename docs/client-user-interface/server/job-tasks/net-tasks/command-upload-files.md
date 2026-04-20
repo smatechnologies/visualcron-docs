@@ -1,4 +1,4 @@
----
+1---
 sidebar_label: 'Command - Upload File(s)'
 hide_title: 'true'
 ---
@@ -19,26 +19,42 @@ For upload, VisualCron uses the standard [file filter](../../../server/job-tasks
 
 **Delete source file after copy**
 
-Deletes the local file after being uploaded.
+When checked, the local source file is deleted after it has been uploaded. Default is unchecked.
  
 **Destination folder**
 
-Enter the folder name where the files are to be sent. If your server supports relative paths, you could specify a destination folder in this way: /topfolder/subfolder
+The remote folder on the server where the file(s) should be uploaded. If the server supports relative paths, specify a path such as `/topfolder/subfolder`. Use the folder browse button to select a folder from the server. Default is `/`.
  
 **Overwrite options**
 
-* *Overwrite - always if existing*: if destination file already exists it will be overwritten
-* *Overwrite - if newer*: if the source file is newer than the destination file the destination file will be overwritten
-* *Overwrite - if destination size is -*: with this option you can overwrite a file depending on destination file size compared to the original file size on the ftp
-* *Do not overwrite if existing* - VisualCron does not overwrite the existing file if it already exists
-* *Append if destination is smaller - otherwise overwrite*: writes bytes to existing data until size is the same as source - if not smaller then a overwrite will done
-* *Append if destination is smaller - otherwise overwrite if newer*: writes bytes to existing data until size is the same as source - if not smaller then a overwrite will done if source file is newer than destination file
-* *Append if destination is smaller - otherwise skip*:  writes bytes to existing data until size is the same as source - if not the file will not be sent
- 
-**Resume if transfer failed**
+Controls what happens when a file with the same name already exists at the destination. Options:
 
-Will append to the file if something fails during transfer. The second interval will be used as a pause between each retry. Specify number of retries it will do before finally giving up.
- 
-**Transfer type**
+* Overwrite - always if existing** (default) — always replace the destination file
+* Overwrite - if newer** — replace only if the source file is newer
+* Overwrite - if destination size is** — replace based on size comparison (activates the size dropdown below)
+* Append if destination is smaller - otherwise overwrite** — append bytes until size matches source; if not smaller, overwrite
+* Append if destination is smaller - otherwise overwrite if newer** — append bytes until size matches; if not smaller, overwrite only if source is newer
+* Append if destination is smaller - otherwise skip** — append bytes until size matches; if not smaller, skip the file
+* Append if existing - otherwise create** — append to an existing file, or create a new file if it does not exist
+* Append if existing - otherwise skip** — append to an existing file; skip if the file does not exist at the destination
+* Do not overwrite if existing** — skip the file if it already exists at the destination
 
-Original transfer type settings are stored in the [Connection](../../../server/global-connections). It is possible to override this setting for this specific command.
+**Overwrite size**
+
+Active only when **Overwrite options** is set to "Overwrite - if destination size is". Specifies the size condition for overwriting. Options: Same, Smaller, Larger, Smaller or larger, Different.
+ 
+**Resume if transfer failed. Try resuming**
+
+When checked, VisualCron appends to the partially uploaded file and retries on failure. Set the number of retry attempts and the interval in seconds between retries. Default for both is 999.
+
+**Keep modified/created date**
+
+When checked, the uploaded file's modified and created timestamps are set to match those of the local source file. Default is unchecked.
+
+**Override transfer type set in Connection**
+
+When checked, the transfer type for this command overrides the setting configured in the [Connection](../../../server/global-connections). Select the desired transfer type from the dropdown.
+
+**Maximum number of threads**
+
+The number of simultaneous upload threads. Default is 1, maximum is 8.
