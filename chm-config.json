@@ -3391,6 +3391,61 @@
       "mdFile": "docs/client-user-interface/server/job-tasks/iis-tasks/iis-tasks.md",
       "label": "IIS Tasks"
     },
+    "client-user-interface/server/job-tasks/iis-tasks/add-website": {
+      "chmFile": "task-iis---add-website.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/iis-tasks/add-website.md",
+      "label": "Task IIS - Add Website"
+    },
+    "client-user-interface/server/job-tasks/iis-tasks/add-application-pool": {
+      "chmFile": "task-iis---add-application-pool.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/iis-tasks/add-application-pool.md",
+      "label": "Task IIS - Add Application Pool"
+    },
+    "client-user-interface/server/job-tasks/iis-tasks/add-website-application": {
+      "chmFile": "task-iis---add-website-application.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/iis-tasks/add-website-application.md",
+      "label": "Task IIS - Add Website Application"
+    },
+    "client-user-interface/server/job-tasks/iis-tasks/add-app-virtual-directory": {
+      "chmFile": "task-iis---add-app-virtual-directory.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/iis-tasks/add-app-virtual-directory.md",
+      "label": "Task IIS - Add App Virtual Directory"
+    },
+    "client-user-interface/server/job-tasks/iis-tasks/change-website-state": {
+      "chmFile": "task-iis---change-website-state.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/iis-tasks/change-website-state.md",
+      "label": "Task IIS - Change Website State"
+    },
+    "client-user-interface/server/job-tasks/iis-tasks/change-application-pool-state": {
+      "chmFile": "task-iis---change-application-pool-state.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/iis-tasks/change-application-pool-state.md",
+      "label": "Task IIS - Change Application Pool State"
+    },
+    "client-user-interface/server/job-tasks/iis-tasks/delete-website": {
+      "chmFile": "task-iis---delete-website.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/iis-tasks/delete-website.md",
+      "label": "Task IIS - Delete Website"
+    },
+    "client-user-interface/server/job-tasks/iis-tasks/delete-application-pool": {
+      "chmFile": "task-iis---delete-application-pool.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/iis-tasks/delete-application-pool.md",
+      "label": "Task IIS - Delete Application Pool"
+    },
+    "client-user-interface/server/job-tasks/iis-tasks/delete-website-application": {
+      "chmFile": "task-iis---delete-website-application.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/iis-tasks/delete-website-application.md",
+      "label": "Task IIS - Delete Website Application"
+    },
+    "client-user-interface/server/job-tasks/iis-tasks/delete-app-virtual-directory": {
+      "chmFile": "task-iis---delete-app-virtual-directory.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/iis-tasks/delete-app-virtual-directory.md",
+      "label": "Task IIS - Delete App Virtual Directory"
+    },
+    "client-user-interface/server/job-tasks/iis-tasks/is-application-pool-exists": {
+      "chmFile": "task-iis---is-application-pool-exists.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/iis-tasks/is-application-pool-exists.md",
+      "label": "Task IIS - Is Application Pool Exists"
+    },
     "client-user-interface/server/job-tasks/sap-tasks/overview": {
       "chmFile": "sap-tasks.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/sap-tasks/overview.md",
