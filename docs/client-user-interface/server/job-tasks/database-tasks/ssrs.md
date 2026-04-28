@@ -26,13 +26,21 @@ This defines that the execution is related to a SharePoint report.
  
 **Service type**
 
-This describes what kind of service type the Reporting server uses. Use SSRS for SQL Server 2005.
+Select the service type matching your Reporting Services version. Use *SSRS 2005* for SQL Server 2005, or *SSRS 2010* for SQL Server 2008 R2 and later.
+
+**Use default folder**
+
+When checked, uses the default report server virtual directory (`hostname/reportserver/`). Uncheck to specify a custom folder name in the field below.
+
+**Report folder**
+
+The virtual directory name for the report server. Defaults to `reportserver`. Only active when *Use default folder* is unchecked.
  
 **SSRS > Parameters** tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/SSRS%20Parameters.png)
 
-Click Refresh to load all parameters for the selected Report path. Add/Edit the values supplied to each report. You can click *Add Multi-Value button* if you want to supply a range of parameters. Alternatively, use a comma separated list and click *CSV button*.
+Click *Refresh* to load all parameters for the selected Report path. Use the *Add*, *Edit*, and *Delete* buttons to manage parameter values. Each parameter has a Name, Data type, and Value. Check *Is null* to pass a null value for a parameter. Click *Add Multi-Value* to supply a range of values for a single parameter, or use a comma-separated list and click *CSV* to split it into multiple values.
 
 **SSRS > Destination** tab
 
@@ -40,7 +48,7 @@ Click Refresh to load all parameters for the selected Report path. Add/Edit the 
 
 **File format**
 
-This is the output file format.
+The output format for the rendered report. Available formats are: XML, CSV, Image, PDF, Excel, ExcelOpenXML, Word, MHTML, and HTML4.
  
 **Credential**
 
