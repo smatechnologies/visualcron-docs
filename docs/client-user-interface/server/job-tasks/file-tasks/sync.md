@@ -29,18 +29,19 @@ Use the regular [file filter](../../../server/job-tasks-file-filter) to filter w
 
 To access a remote computer you may need to use a [Credential](../../../server/global-credentials). Normally that Credential is a remote or AD user with "Local logon" unchecked. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials. This Credential is used to access the destination directory.
  
- 
 **Destination folder**
 
 Specify a absolute path to the directory you want to sync between.
- 
  
 **Destination->General** tab
  
 **Sync type**
 
-Both sides - this option allows mirroring of files against two folders according to the current file filter.
- 
+Controls the direction of synchronization:
+
+- *Left to right* — copies and updates files from the source folder to the destination folder only.
+- *Right to left* — copies and updates files from the destination folder to the source folder only.
+- *Both sides* — mirrors files in both directions according to the current file filter.
  
 **Propagate deletions**
 
@@ -53,7 +54,6 @@ If in one side the file is deleted - on the other side:
 " and "
 `{version}`
 ", the first is replaced by the current name, the second is replaced with the version number, if the number of versions is exceeded, the previous versions of the files are renamed with the lower version number.
- 
  
 **Destination->Advanced** tab
 
@@ -73,12 +73,21 @@ Create sub folders when needed.
  
 **Folder creation options->Create full folder structure**
 
-Create full folder structure including empty folders.
+Create the full folder structure including empty folders. Only active when *Create sub folders* is selected.
  
 **Folder creation options->Don't create sub folders**
 
 Do not create any sub folders (sync to base folder).
- 
+
+**Analyze**
+
+**Detect File and Folder Moves and Renames**
+
+When checked, the sync engine attempts to detect when files or folders have been moved or renamed rather than treating them as a delete and a new file. This reduces unnecessary data transfer.
+
+**Estimate disk space required for Sync**
+
+When checked, VisualCron calculates the disk space required on the destination before performing the sync.
  
 **Destination->Source side options** tab
 
