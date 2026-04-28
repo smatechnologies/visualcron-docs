@@ -19,13 +19,19 @@ Specify a Credential that consists of the server name or IP address together wit
 
 To use the Sync tables Task you need to create a [Source connection](../../../server/global-connections) first. Click the Settings icon to open the Manage Connections dialog.
  
-**Source connection**
+**Destination connection**
 
 To use the Sync tables Task you need to create a [Destination connection](../../../server/global-connections) first. Click the Settings icon to open the Manage Connections dialog.
  
-**Table copy parameters**
+**Table sync parameters**
 
-Enter Table name and Schema name for the table to be copied.
+**Table name(s)**
+
+Select one or more tables to be synchronized. The dropdown supports multi-select.
+
+**Schema name**
+
+The schema name where additional sync tracking tables and procedures will be created. Defaults to `sync`.
  
 **One time copy**
 
