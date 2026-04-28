@@ -21,13 +21,17 @@ The path to the file you want to write to.
 
 If checked, the byte order mark character is included in the start of the text stream
  
+**Is Base64 (write directly as bytes and not as text)**
+
+When checked, the Value is treated as a Base64-encoded string and written to the file as raw bytes rather than as text.
+
 **Append to file**
 
-Check this box if you to add rows to an existing file. If you want to overwrite the file please leave this unchecked.
- 
-**Add new line**
+When checked, the value is appended to an existing file. When unchecked, the file is overwritten.
 
-When appending you can check this if you want to add a new line for each string/value you add.
+**Line break**
+
+The character or sequence inserted after the value when writing. Options are: Cr, CrLf (default), Lf, Comma, SemiColon, Pipe, Tab, and NoLineBreak.
  
 **Value**
 
