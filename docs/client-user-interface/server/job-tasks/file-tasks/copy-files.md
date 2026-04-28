@@ -1,5 +1,5 @@
 ---
-sidebar_label: 'Task File - Copy  Files'
+sidebar_label: 'Task File - Copy Files'
 hide_title: 'true'
 ---
 
@@ -76,13 +76,20 @@ When this setting is checked no files are overwritten if they exist.
 **Delete source file after copy**
 
 When this setting is checked, the source file (not the folder) will be deleted after a successful copy. Thus, the source file will be deleted even though it wasn't copied due to the settings of *Overwrite if existing* (if it was already existing) and *Overwrite if source file is newer* (if the source file was older than the destination).
+
+**Delete source empty sub folders**
+
+When checked, any empty sub folders left in the source after copying are deleted. Only active when *Delete source file after copy* is checked.
+
+**Create empty sub folders**
+
+When checked, sub folders that exist in the source but contain no matching files are still created in the destination.
  
 **Folder creation options**
 
-1. Create full folder structure
-Creates the full directory structure from root folder and up.
-2. Don't create sub folders
-Puts all files in in the same (destination) folder
+*Create sub folders* — recreates the source sub folder structure in the destination (default).
+*Create full folder structure* — when checked, creates the complete directory path from the root down. Only active when *Create sub folders* is selected.
+*Don't create sub folders* — places all copied files directly in the destination folder without recreating any sub folder structure.
  
 **Log copy result to output**
 
