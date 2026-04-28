@@ -37,15 +37,15 @@ Select any of the supported archive types.
  
 **Extract to folder**
 
-Select which folder you want to extract the zip file(s) to.
+Select which folder you want to extract the archive contents to.
  
 **Overwrite if existing**
 
-If checked, VisualCron will attempt to overwrite any existing files (from the zip folder).
+If checked, VisualCron will overwrite any existing files in the extract folder that match files in the archive.
  
 **Use password**
 
-If checked you are able to specify a password for the zip file.
+If checked you are able to specify a password for the archive.
  
 **File filter**
 
@@ -59,5 +59,10 @@ If the file filter string should be case sensitive.
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Archive%20-%20Extract%20Location.png)
 
-The extract tab contains the [file filter](../../../server/job-tasks-file-filter) that is used to find zip files for extraction.
+The extract tab contains the [file filter](../../../server/job-tasks-file-filter) that is used to find archive files for extraction.
 
+:::info Note 
+
+When you are accessing a network drive (a folder on a remote computer) as source or destination folder you must specify the path in UNC format and not the letter of the logical drive. For example `Y:\remotefolder\` must be specified as `\\remoteservername\remotefolder\`.
+
+:::
