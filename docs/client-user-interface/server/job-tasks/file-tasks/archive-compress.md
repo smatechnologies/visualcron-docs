@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Task File - Archive - Compress
 
-The Compress Task is able to compress  files with the formats Zip,7z,Xz,Bzip2 Tar,Tar+Gzip and GZip.
+The Compress Task is able to compress files with a wide range of archive formats including Zip, Zipx, 7z, Xz, BZip2, Tar, Tar+GZip, GZip, Rar, CAB, LZH, LZMA, ARJ, and more.
  
 The different formats provides different functionality and compatibility across different operating systems. The Tar and GZip formats can be used to read or write archives between Windows and Linux/Unix. The **Zip** format is the most versatile and the most common in Windows workstations. It allows you to encrypt your archive with a password and select a compression level.
  
@@ -53,7 +53,11 @@ The archive settings windows controls the main settings including what archiving
  
 **Archive type**
 
-VisualCron supports the archive types **Zip,7z,Xz,Bzip2 Tar,Tar+Gzip** and **GZip**.
+VisualCron supports a wide range of archive types for compression including **Zip**, **Zipx**, **7z**, **Xz**, **BZip2**, **Tar**, **Tar+GZip**, **GZip**, **Rar**, **CAB**, **LZH**, **LZMA**, **ARJ**, and others. Additional read-capable formats are also available.
+ 
+**Credential**
+
+Optional credential for accessing the archive path when it is on a remote or network location.
  
 **Archive path**
 
@@ -70,7 +74,7 @@ Password protection and encryption is only selectable for the Zip format. When c
  
 **Compression level**
 
-This option is available when the archive type Zip is selected. Set the compression level; higher compression level is slower but makes the file smaller.
+This option is available when the archive type Zip is selected. Set the compression level; higher compression level is slower but makes the file smaller. Available levels are: **Ultra**, **High**, **Normal** (default), **Low**, and **None**.
  
 **Encryption method**
 
@@ -82,21 +86,29 @@ WinZipAES - The WinZip AES encryption method. This is a strong encryption method
 
 This option is available when the archive type Zip is selected, password is used and WinZipAES encryption method is selected. Select an integer value representing the encryption strength of this file in bits, 256 is the highest bit setting and security of encryption strength.
  
-**Overwrite to archive if existing**
+**Overwrite archive if existing**
 
 When this option is selected, the archive will be overwritten (if existing).
  
 **Append to archive**
 
 If the archive exists it will be appended with new items.
+
+**Always create archive**
+
+When checked, an empty archive file is created even if no files match the content filter. When unchecked, no archive is written if there are no matching files.
  
 **Archive - compress > Content** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Archive%20-%20Compress%20Content.png)
 
-This sub tab contains a list of items/objects to be compressed. Click on Add to add a new item.
- 
-The Archive item dialog is using the standard file filter for selecting one or more file that you want to add to the zip library. Read more about the [file filter](../../../server/job-tasks-file-filter) here.
+This sub tab contains a list of items/objects to be compressed. Use the Add, Edit, Clone, and Delete toolbar buttons to manage items.
+
+The Archive item dialog uses the standard [file filter](../../../server/job-tasks-file-filter) to select which files to add to the archive.
+
+**Delete source file after**
+
+When checked, the source file is deleted after it has been successfully added to the archive.
  
 :::info Note 
 
