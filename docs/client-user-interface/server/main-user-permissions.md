@@ -131,3 +131,22 @@ See the list of all permissions with a description in the [Supported permissions
 **Overriding group permissions**
 
 From VisualCron version 6.1.2. permissions can be overridden on Job level so you can set specific permission for a group on a specific Job. From version 8.4.2 you can override Credential permissions.
+
+**Default groups**
+
+VisualCron includes two built-in groups: **Administrators** and **Viewers**.
+
+**Administrators** have full access to all objects and features.
+
+**Viewers** are intended for read-oriented monitoring access. The following table describes the default Viewers group permissions as of VisualCron 13.2.1:
+
+| Feature | Read | Add | Edit | Delete | Execute |
+|---------|:----:|:---:|:----:|:------:|:-------:|
+| Jobs | ✓ | | | | |
+| Tasks | ✓ | | | | |
+| Log | ✓ | | | | |
+| Audit Log | ✓ | | | | |
+| Task Manager | ✓ | | | | |
+| Remote File Explorer | ✓ | | | | |
+| Connections | ✓ | | | | |
+
