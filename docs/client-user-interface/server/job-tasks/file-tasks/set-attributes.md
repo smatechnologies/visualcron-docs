@@ -17,8 +17,28 @@ Select if you want to target by File or Folder. If you set Folder you use the Fo
  
 **Change attributes**
 
-Select an attribute and if you want to turn on or off the attribute based on the files that are found.
- 
-**Set attributes > File filter > Location **sub tab
+For each attribute, select whether to turn it on, turn it off, or leave it unchanged. Each attribute has three options: Do not modify, Turn on, Turn off.
 
-The standard VisualCron [File filter](../../../server/job-tasks-file-filter) is used to specify one or more files or folders you want to retrieve set attributes for.
+**Read-only attribute**
+
+Controls the read-only attribute on the matching files or folders.
+
+**Hidden attribute**
+
+Controls the hidden attribute on the matching files or folders.
+
+**System attribute**
+
+Controls the system attribute on the matching files or folders.
+
+**Archive attribute**
+
+Controls the archive attribute on the matching files or folders.
+ 
+**Set attributes > Folder filter** sub tab
+
+The standard VisualCron [Folder filter](../../../server/job-tasks-folder-filter) is used to specify one or more folders to set attributes for. This tab is only visible when **Folders** is selected in Target.
+ 
+**Set attributes > File filter** sub tab
+
+The standard VisualCron [File filter](../../../server/job-tasks-file-filter) is used to specify one or more files to set attributes for. This tab is only visible when **Files** is selected in Target.
