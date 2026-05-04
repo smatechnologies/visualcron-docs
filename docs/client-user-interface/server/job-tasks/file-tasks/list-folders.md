@@ -17,4 +17,14 @@ This Task is using the standard VisualCron [Folder filter](../../../server/job-t
 
 **Output settings**
 
-List file settings includes folder path and folder separator options.
+**Full path to folder**
+
+If selected, the output contains the full path to each folder.
+
+**Folder name only**
+
+If selected, the output contains only the folder name, without the path.
+
+**Folder separator**
+
+Specifies the character used to separate folders in the output. Options: Colon, Semicolon, Comma, Pipe, Tab, Blankspace, Tilde, None, Equal, Cr, CrLF, Lf.
