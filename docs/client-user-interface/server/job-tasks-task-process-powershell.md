@@ -9,29 +9,50 @@ The **PowerShell** Task lets you execute PowerShell code on the fly or an existi
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Powershell%20Main.png)
 
+### Main settings tab
+
 **Credentials**
 
 To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
  
 **Scope**
 
-You can execute on the local machine or on a remote machine. To execute on a remote machine you need to combine settings with a Credential.
+Select **Local** to execute the script on the same server that VisualCron is running on. Select **Remote** to execute on a different machine. When Remote is selected, the following fields become active:
+
+* **Hostname** - the hostname or IP address of the remote machine.
+* **Port** - the WinRM port on the remote machine. Default is 5985.
+* **Authentication mechanism** - the authentication protocol to use when connecting. Options are:
+  * *Basic* - transmits credentials as Base64-encoded text. Simple but less secure.
+  * *CredSSP* - delegates credentials to the remote machine, enabling "second hop" scenarios where the remote machine needs to connect to additional resources.
+  * *Default* - uses the transport default (Negotiate or Kerberos for WSMan).
+  * *Digest* - transmits credentials as a hash value rather than clear text.
+  * *Kerberos* - uses Kerberos authentication.
+  * *Negotiate* - uses Kerberos for domain accounts or NTLM for local accounts. Specify the username as domain\username for domain users or servername\username for local users.
+  * *NegotiateWithImplicitCredential* - uses credentials cached on the PSSession computer.
+ 
+### Script tab
  
 **Execute in x86 mode**
 
-This settings is forcing 32 bit execution of your PowerShell script.
+When checked, forces 32-bit execution of your PowerShell script.
  
 **PowerShell file**
 
-Full path to a PowerShell script.
+Select this option to execute an existing PowerShell script file. Enter the full path to the .ps1 file in the field below, or use the browse button to select it.
+
+**Working directory**
+
+The working directory for the PowerShell process when executing a file. Only active when **PowerShell file** is selected.
  
 **PowerShell script text**
 
-You enter your PowerShell code here which will be compiled and run in real time.
+Select this option to enter PowerShell code directly. Type or paste your script into the editor below. The code will be compiled and run in real time.
  
-### Parameters
+### Parameters tab
 
-Click on Parameters button to edit parameters. You can parse parameters in the PowerShell script like this:
+The Parameters tab lets you define named parameters that are passed into your PowerShell script. Each parameter has a Name, Type, and Value. Use the Add, Edit, and Delete buttons to manage the list.
+
+You can also parse parameters inline in the PowerShell script using the `param` block:
 
 ```powershell
 param (
@@ -40,7 +61,13 @@ param (
 )
 Write-Output $parameterkeyname1
 ```
- 
+
+### Commands tab
+
+The Commands tab lets you build a list of discrete PowerShell commands to execute in sequence, as an alternative to writing a full script. Each command entry has a Command name, Parameters, and Arguments. Use the Add, Edit, Delete, and Clear all buttons to manage the list.
+
+### Script examples
+
 About Script blocks
 More information about script blocks here: [https://www.sapien.com/blog/2019/05/13/advanced-powershell-functions-begin-to-process-to-end/](https://www.sapien.com/blog/2019/05/13/advanced-powershell-functions-begin-to-process-to-end/)
  
@@ -133,7 +160,7 @@ Function Test-ScriptBlock
  
  
 1, 2, 3 | Test-ScriptBlock
-``
+```
 
 4. Using VisualCron parameters into script block
 
@@ -162,7 +189,6 @@ Function Test-ScriptBlock
 Test-ScriptBlock -Number $Number
 ``` 
  
-
 ### Passing back data from PowerShell
 
 You can use these PowerShell commands to pass back output to VisualCron:
