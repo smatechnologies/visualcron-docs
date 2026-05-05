@@ -14,17 +14,13 @@ This Task uses the file filter to find one or more files to merge. Optionally, a
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Concatenate%20File.png)
 
-**Optional File B**
+**Optional File B to merge (use file filter to merge more)**
 
-You use the file filter to merge one or more files. Optionally, another file can be added. Specify the full path here.
+Optionally, another file can be added. Specify the full path here.
  
 **Destination file**
 
-Enter the full path where the merged file should be saved to
- 
-**Overwrite settings**
-
-You can control what happens if the file already exists:
+Enter the full path where the merged file should be saved to. Select what happens if the destination file already exists:
 
 * Overwrite if existing - overwrites the existing file
 * Append - merges the new file with the existing
