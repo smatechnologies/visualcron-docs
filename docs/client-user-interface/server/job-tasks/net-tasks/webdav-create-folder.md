@@ -11,8 +11,8 @@ The WebDAV - Create folder lets you create a remote folder. Web-based Distribute
 
 **Connection**
 
-All WebDAV Task uses connection settings from a Connection. In Connections you can create a new WebDAV connection with all other details like Proxy. In the combo box you select the Connection after creation.
- 
-**Folder URL**
+All WebDAV Tasks use connection settings from a Connection. In Connections you can create a new WebDAV connection with all other details like Proxy. In the combo box you select the Connection after creation.
 
-The full URL to the folder you want to create.
+**Relative folder URL**
+
+The relative path (within the WebDAV server) to the folder you want to create.
