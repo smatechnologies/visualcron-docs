@@ -7,15 +7,17 @@ hide_title: 'true'
 
 The XML - Verify Task verifies if the signature of the specified XML file is valid. If the XML file has been signed, this action can detect modifications to that file that may invalidate the signature.
  
-**XML Verify > File filter > Location** sub tab
+**XML Verify > File filter** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Verify.png)
 
-The XML Transform Task uses the standard VisualCron [File filter](../../../server/job-tasks-file-filter) to define the properties of the listed files.
+The XML Verify Task uses the standard VisualCron [File filter](../../../server/job-tasks-file-filter) to define the properties of the listed files.
  
 **XML Verify > Destination** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Verify%20Destination.png)
+
+**XML verify parameters**
 
 **Certificate**
 
