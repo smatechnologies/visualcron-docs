@@ -13,6 +13,14 @@ The settings forms for many activities in the Web macro Task include a tab for s
 
 ![](../../../../../static/img/taskwebmacropathsettings.png)
 
+**Allow to ignore the element**
+
+When checked, a failure to locate the element does not cause the step to fail. The step is silently skipped instead. Default is unchecked.
+
+**Wait element**
+
+When checked, VisualCron waits for the element to appear in the DOM before interacting with it. Default is checked. Set the timeout in seconds in the adjacent field. Default timeout is 60 seconds.
+
 ### Relative mode
  
 **Element path** is a field that specifies the path to the element to be detected. It is possible to use a **CSS selector** or an XPath expression as the path to the Element. It is enough to specify only a **CSS selector** in this field, but the full format of this path string is
@@ -76,7 +84,7 @@ Some examples of element path using **XPath**:
 
 [%][%]//span[contains(., "Hello")]
  
-Frame path is a field that specifies the path to the html tag Frame, where the path is represented as a valid CSS selector string. In most cases this field is optional. This field is only filled if the web page uses HTML frames (when the HTML web page contains a ```<frame>``` tag).
+Frame path is a field that specifies the path to the html tag Frame, where the path is represented as a valid CSS selector string. In most cases this field is optional. This field is only filled if the web page uses HTML inline frames (when the HTML web page contains an ```<iframe>``` tag).
 
 ![](../../../../../static/img/taskwebmacropathrelativeframe.png)
 
