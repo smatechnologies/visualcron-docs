@@ -19,12 +19,24 @@ You can execute one or more commands after each other. When one command is done,
  
 Send command: This is a high-level method that connects to server, executes command and gets the entire response. Use this method to execute a simple command which does not require client-server interaction.
 Send text: Use SendText to send a string data through the logical connection.
+
+**Receive timeout**
+
+How long in seconds the SSH client waits for output before giving up. Default is 10 seconds. This setting is only active when Command type is set to *Send text*.
+ 
+**SendKeepAlive every**
+
+When checked, VisualCron sends periodic keep-alive packets to prevent the SSH connection from being dropped by the server. Default is unchecked.
+ 
+**Keep alive interval**
+
+The interval in seconds between keep-alive packets. Default is 30 seconds (minimum 5). Only active when SendKeepAlive is checked.
  
 **Connection**
 
 Before entering any command you must create a Connection. Click on *Manage Connections* to add a new Connection. Select SSH connection and alter connection settings. There are some specific settings for the SSH connection like if there is support for SSH1 or SSH2.
  
-To add a new Command click on Add. Enter the Command in the text field and click on OK to save it.
+To add a new Command click on Add. Enter the Command in the text field and click on OK to save it. You can also right-click the commands grid to Add, Edit, Clone, or Delete a command, or double-click a row to edit it. Use the Order column to control the execution sequence.
 
 If you are using Command type *Send command*, the environment variables are not picked up automatically but you can specify them in the text field.
 
