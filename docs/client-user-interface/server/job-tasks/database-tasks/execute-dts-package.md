@@ -14,10 +14,22 @@ This Task lets you execute local DTS packages. VisualCron must reside on the ser
 **Package located in file**
 
 Specify the full path to the file.
+
+**Password**
+
+The password for the DTS package file, if it is password protected.
  
 **Package located in database**
 
-If the package is located in the database then you specify the package name here.
+If the package is located in a SQL Server database, specify the server hostname and package name.
+
+**SQL server host name**
+
+The hostname or IP address of the SQL Server where the package is stored.
+
+**Package name**
+
+The name of the DTS package stored in the database.
  
 **SQL Credential**
 
@@ -31,4 +43,4 @@ Check this if you want to impersonate as a Windows user to access database inste
  
 **Variables**
 
-If the package needs variables you enter them here by clicking on Add.
+If the package needs variables you enter them here. Click *Add* to add a new variable, *Edit* to modify a selected variable, or *Delete* to remove one.
