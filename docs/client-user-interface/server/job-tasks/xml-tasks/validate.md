@@ -9,27 +9,32 @@ The XML - Validate Task validates that an XML file is well-formed, schema compli
  
 A XML document with correct syntax is called "Well Formed". An XML document validated against a DTD or a Schema is both "Well Formed" and "Valid".
  
-**XML Validate > File filter > Location** sub tab
+**XML Validate > File filter** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Validate.png)
 
-The XML Transform Task uses the standard VisualCron [File filter](../../../server/job-tasks-file-filter) to define the properties of the listed files.
+The XML Validate Task uses the standard VisualCron [File filter](../../../server/job-tasks-file-filter) to define the properties of the listed files.
  
 **XML Validate > Destination** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Validate%20Destination.png)
 
+**XML validate parameters**
+
 **Validation type**
 
-A XML document with correct syntax is called "Well Formed". Schema validation uses a schema file (*.xsd), default attributes are expanded from schema and type information is supplied. Document Type Definition (DTD) validation expands default attributes and entities, but general entities are loaded and parsed only if they are used (expanded). No type information is supplied.
+Select how the XML file should be validated. Options:
+
+* **WellFormed** — Validates that the XML file is syntactically well-formed, with no schema or DTD checking.
+* **Schema** — Validates the XML file against an external schema file (*.xsd). When selected, the **Schema(s)** tab becomes available to specify the schema file.
+* **DTD** — Validates the XML file against a Document Type Definition. Expands default attributes and entities, but general entities are loaded and parsed only if they are used.
  
 **Namespaces**
 
 A list of namespace prefix/namespace URI items, to uniquely identify an element, to be used for validation.
  
-**XML Validate > Destination - Schema** sub tab
+**XML Validate > Schema(s)** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Validate%20Schema.png)
 
-If *Validation type Schema* is selected, an extra sub tab is added to define the external schema file. The extra **XML Validate > Schema(s) > Location** sub tab has the same layout as the above referred X**ML Validate > File filter > Location** sub tab.
-
+This tab is only visible when **Validation type** is set to **Schema**. Use the standard VisualCron [File filter](../../../server/job-tasks-file-filter) to specify the external schema file (*.xsd) to validate against.
