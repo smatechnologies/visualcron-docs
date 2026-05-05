@@ -31,8 +31,21 @@ Select return type of the method.
  
 **Calling convention**
 
-Set the type of calling convention.
+Set the calling convention used to invoke the function. Options are:
+
+* *Cdecl* — C-style convention; the caller cleans up the stack. Required for variadic (variable-argument) functions.
+* *FastCall* — passes the first arguments in registers; rarely needed outside low-level or compiler-generated code.
+* *StdCall* — the callee cleans up the stack. Standard for most Win32 API functions (default).
+* *ThisCall* — passes the `this` pointer in the ECX register; used for non-static C++ member functions.
+* *Winapi* — maps to the platform-default convention (StdCall on x86/x64 Windows).
+ 
+**Output format**
+
+Select how the function's return value is serialized:
+
+* *ToString representation of output* — calls `.ToString()` on the return value (default). Arrays are comma-separated.
+* *XML representation of output* — serializes the return value as XML.
  
 **Parameters**
 
-If the selected method contains any parameter can double click on the row to add your own parameter value. Click right click to add
+Lists the parameters of the selected function. Double-click a row to edit its value. Right-click the grid to access Add, Edit, and Delete options.
