@@ -9,7 +9,14 @@ The Process - Assembly execute Task lets you specify a .NET .exe or .dll file an
  
 **Output**
 
-The Assembly execute will return a string representation of the result and will try to separate value by a comma if it is an array.
+The Assembly execute returns a string representation of the result. The output format determines how the return value is serialized. When using the ToString format, array values are separated by commas.
+
+**Output format**
+
+Select how the method's return value is serialized:
+
+* *ToString representation of output* — calls `.ToString()` on the return value (default). Arrays are comma-separated.
+* *XML representation of output* — serializes the return value as XML.
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Assembly%20Execute.png)
 
@@ -52,6 +59,10 @@ When selecting a file or clicking refresh method information is loaded from the 
 **Return type**
 
 This label shows the return type of the selected method. This is the type that will be converted to a string in the Output of the Task.
+
+**Nesting level**
+
+Controls how many levels deep VisualCron reflects into complex types when loading class and method information. Default is 3. Increase this value if nested parameter types are not fully resolved; lower it if loading is slow for assemblies with deeply nested types.
  
 **Parameters**
 
