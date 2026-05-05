@@ -21,6 +21,10 @@ The full path to the XML file.
 
 XPath is a query language used for finding a specific object within XML. Enter the query manually or use the XPath browser by clicking the button.
  
-**Attribute**
+**Attribute (optional)**
 
 If a specific attribute should be deleted then set the attribute name here.
+
+**Namespaces**
+
+VisualCron tries to load all namespaces that a XML file contains. If you want to add one namespace manually you can click on Add. If you want to reload all namespaces you can click on Reload.
