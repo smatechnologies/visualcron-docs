@@ -24,14 +24,18 @@ Paste any XML code or Variable that contains XML here.
 **XPath expression**
 
 XPath is a query language used for finding a specific object within XML. Enter the query manually or use the XPath browser by clicking the button.
+
+**Evaluate the specified XPath expression and return the typed result**
+
+When enabled, evaluates the XPath expression and returns the typed result directly. Disables the **Attribute** and **Select single node** fields.
  
 **Attribute**
 
-Optional. If you want to select a specific Attribute value of that node you can enter the attribute name here.
+Optional. If you want to select a specific Attribute value of that node you can enter the attribute name here. Disabled when **Evaluate the specified XPath expression and return the typed result** is checked.
  
 **Select single node**
 
-If one or modes should be selected for output
+If one or more nodes should be selected for output. Disabled when **Evaluate the specified XPath expression and return the typed result** is checked.
  
 **Namespaces**
 
