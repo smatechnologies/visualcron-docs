@@ -15,7 +15,7 @@ To control a remote computer you may need to use a Credential. The Credential mu
  
 **File path**
 
-Select a path to the file you want to read.
+The full path to the file you want to read. Click the browse button to select a file. Supports Variables.
  
 :::info Note 
 
