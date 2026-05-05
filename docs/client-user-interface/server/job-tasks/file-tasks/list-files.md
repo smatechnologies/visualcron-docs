@@ -17,6 +17,14 @@ The List file(s) Task uses the standard VisualCron [File filter](../../../server
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/List%20file(s).png)
 
-**Output settings**
+**Full path to file**
 
-List file settings includes path and file separator options.
+When selected, each entry in the output includes the full path to the file (e.g. `C:\folder\file.txt`).
+
+**File name only**
+
+When selected, each entry in the output includes only the file name without the path (e.g. `file.txt`).
+
+**File separator**
+
+The character used to separate each file entry in the output. Options are: Colon, Semicolon, Comma, Pipe, Tab, Blankspace, Tilde, None, Equal, Cr, CrLF, and Lf. Default is CrLF.
