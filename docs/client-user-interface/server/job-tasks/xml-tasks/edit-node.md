@@ -21,14 +21,21 @@ The full path to the XML file.
 
 XPath is a query language used for finding a specific object within XML. Enter the query manually or use the XPath browser by clicking the button.
  
-**Attribute**
+**Attribute (optional)**
 
 If a specific attribute should be edited then set the attribute name here.
  
 **Value**
 
-The value in the node.
+The new value to set in the node.
  
 **Edit node**
 
-If the first found node should be edited or all.
+Controls which matching nodes are edited. Options:
+
+* **First** — Edit only the first node found by the XPath expression.
+* **All** — Edit all nodes found by the XPath expression.
+
+**Namespaces**
+
+VisualCron tries to load all namespaces that a XML file contains. If you want to add one namespace manually you can click on Add. If you want to reload all namespaces you can click on Reload.
