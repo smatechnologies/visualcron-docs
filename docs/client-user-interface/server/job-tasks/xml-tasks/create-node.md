@@ -29,11 +29,14 @@ The name of the node.
 
 The value in the node.
  
-**If node already exists**
+Controls what happens if the node already exists in the document. Options:
 
-You are able to control what happens if the node already exists in the document.
+* **Ignore** — Create the node even if it already exists.
+* **Skip** — Do not create the node if it already exists.
+* **Overwrite** — Overwrite the existing node.
+* **Fail** — Fail the Task if the node already exists.
  
-**Namespace**
+**Namespace (optional)**
 
 If the node is in a specific namespace you enter the name here.
  
@@ -45,9 +48,9 @@ If a prefix is needed for finding the node then enter it here.
 
 If one or more nodes already exist the new node will, by default, be added in the end of the list. If you want it to appear in the beginning then check this check box.
  
-**Create Node > Attributes** tab
+**Create Node > Attributes** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Create%20Node%20Attributes.png)
 
-If you want to add attributes to the specific node you can enter name and value in the **Attributes** sub tab.
+If you want to add attributes to the specific node you can enter name and value in the **Attributes** sub tab. Click **Add** to add a new attribute row. Select a row and click **Remove** to delete it.
 
