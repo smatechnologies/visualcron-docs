@@ -13,7 +13,7 @@ This Task lets you execute local SSIS packages. VisualCron must reside on the se
 
 **MSSQL server version**
 
-Select if you are using MSSQL 2005 or 2008.
+Select the SQL Server version of the MSSQL installation. Supported versions are 2005, 2008, 2012, 2014, 2016, 2017, and 2019.
  
 **Execute in 32 bit mode**
 
@@ -22,22 +22,46 @@ Check this if your MSSQL version is running in 32 bit mode.
 **Credential**
 
 A set of Credentials that is used to impersonate the whole SSIS call. Click the Settings icon to open the Manage credentials dialog.
+
+**Load configuration file**
+
+When checked, an external XML configuration file is loaded for the package before execution.
+
+**Configuration file path**
+
+The full path to the configuration file to load.
  
 **Package located in file**
 
-Specify the full path to the file.
+Specify the full path to the package file.
+
+**Package password**
+
+The password for the SSIS package file, if it is password protected.
  
 **Package located in database**
 
-If the package is located in the database then you specify the package name here.
- 
-**SQL Credential**
+If the package is stored on a SQL Server, specify the server hostname and package name below.
 
-Specify a Credential that consists of the server name or IP address together with user name and password.
+**Database ip/dns name**
+
+The hostname or IP address of the SQL Server where the package is stored.
+
+**Package name**
+
+The name of the SSIS package stored on the SQL Server.
+
+**Database credential**
+
+The credential used to authenticate against the SQL Server when loading the package from a database location.
+
+**Trusted connection**
+
+When checked, Windows integrated authentication is used instead of SQL Server credentials to access the database.
  
 **Variables**
 
-If the package needs variables you enter them here by clicking on Add.
+If the package needs variables you enter them here. Click *Add* to add a new variable, *Edit* to modify a selected variable, or *Delete* to remove one.
  
 :::info Note
 
