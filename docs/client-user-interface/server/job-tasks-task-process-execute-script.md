@@ -13,9 +13,13 @@ This Task type is a version of the Execute Task - specialized for script executi
 
 To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
  
-**File path**
+**Script file**
 
-This is the full path to the script file.
+Select this option to execute a script from an existing file. When selected, enter the full path to the script file in the **File path** field. The rightmost button opens a file browser for selection.
+ 
+**Script text**
+
+Select this option to enter the script inline. When selected, type or paste your VBScript or JScript directly into the script editor below. This is useful for short scripts that you want to manage within VisualCron rather than as external files.
  
 **Notes:**
 
