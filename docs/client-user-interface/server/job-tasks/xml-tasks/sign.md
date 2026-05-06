@@ -7,15 +7,17 @@ hide_title: 'true'
 
 The XML - Sign Task signs an XML file with a specified key.
  
-**XML Sign > File filter > Location** sub tab
+**XML Sign > File filter** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Sign.png)
 
-The XML Transform Task uses the standard VisualCron [File filter](../../../server/job-tasks-file-filter) to define the properties of the listed files.
+The XML Sign Task uses the standard VisualCron [File filter](../../../server/job-tasks-file-filter) to define the properties of the listed files.
  
 **XML Sign > Destination** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Sign%20Destination.png)
+
+**XML sign parameters**
 
 **Signature type**
 
@@ -27,7 +29,10 @@ Select method for converting data into a "standard", "normal", or canonical form
  
 **Signature method**
 
-The signature method to use for signing the request. This provides a valid hashing algorithm for signature calculation. Select HMAC or Signature main types and the desired sub type.
+Select the main signature method type and the desired sub type:
+
+* **HMAC** — Select this radio button to use an HMAC-based algorithm, then choose the specific HMAC method from the dropdown. The HMAC method dropdown is only enabled when HMAC is selected.
+* **Signature** — Select this radio button to use an asymmetric signature algorithm, then choose the specific signature method from the dropdown. The signature method dropdown is only enabled when Signature is selected.
  
 **Certificate**
 
@@ -43,12 +48,16 @@ Enter the public key name to be able to decrypt. The KeyName element contains a 
  
 **Save to**
 
-Enter destination file and folder names.
+Select where to save the signed output file:
+
+* **Same file** — Overwrites the original source file.
+* **Same folder but use file mask** — Saves to the same folder with a new file name specified in File mask.
+* **Different folder and use file mask** — Saves to a different folder with a new file name.
  
 **Folder**
 
-If Different folder and use file mask is selected, use manual folder specification or click the Folder icon.
+The destination folder path. Only available when **Different folder and use file mask** is selected.
  
 **File mask**
 
-Save file with different name.
+The file name to use for the saved file. Available when **Same folder but use file mask** or **Different folder and use file mask** is selected.
