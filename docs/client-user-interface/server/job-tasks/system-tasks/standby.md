@@ -15,33 +15,34 @@ In Standby mode, your computer might appear to be turned off but it could automa
 
 To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
  
-**Local or Remote**
+**Hibernate**
 
-Select the the *Local server* radio button if you want to control the local computer, select the *Remote server* radio button if you want to control a remote computer.
- 
-**Hostname**
+**Local host** / **Remote host**
 
-The name of the remote computer.
- 
+Select **Local host** to put the local computer into standby. Select **Remote host** to put a remote computer into standby and enter the hostname in the field alongside the radio button.
+
 **Force**
 
-Force suspend/standby = do not send permission request to applications.
- 
+When checked, forces the suspend/standby without sending a permission request to running applications.
+
 **Wake up**
 
-Turns on or off wake up.
- 
+**Wake up**
+
+When checked, enables the wake up options below and schedules the computer to wake from standby automatically.
+
 **At a certain date and time**
 
-Wakes up the computer at the specified year, month, day, hour, minute and second.
- 
+Wakes up the computer at the specified date and time. Only available when **Wake up** is checked.
+
 **At a certain time**
 
-Wakes up the computer at the specified hour, minute and second.
- 
-**After a certain time**
+Wakes up the computer at the specified time of day. Only available when **Wake up** is checked.
 
-Wakes up the computer after a certain time; hour, minute and second.
+**After a certain time (hour,minute,second)**
+
+Wakes up the computer after the specified duration. Only available when **Wake up** is checked.
+
 
 :::info Note
 
