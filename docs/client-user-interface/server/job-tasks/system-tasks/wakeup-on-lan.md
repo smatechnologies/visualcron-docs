@@ -25,6 +25,8 @@ The Magic Packet is a broadcast frame, transmitted over port 0 (historically the
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Wake%20up%20on%20LAN.png)
 
+**Wake up on lan**
+
 **MAC Address**
 
 Enter the MAC address of the remote network card. Click on *Scan/Find MAC* to search for MAC's in your network.
@@ -32,6 +34,7 @@ Enter the MAC address of the remote network card. Click on *Scan/Find MAC* to se
 **Scan/Find MAC**
 
 Enter a host name or range like 192.168.1.1 to 192.168.1.100. Click on *Search* to start finding MAC's. Double click on row to use the MAC found.
+
  
 :::info Note
 
