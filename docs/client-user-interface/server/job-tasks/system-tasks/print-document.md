@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Print document Task can print a document in number of formats like pdf, Word, images and text.
  
-**Print document > File filter > Location** sub tab
+**Print document > File filter** sub tab
 
 In the File filter tab you define which file that should be printed. Read more about file filter [here](../../../server/job-tasks-file-filter).
  
@@ -23,31 +23,45 @@ Select your desired printer here.
  
 **Printer settings**
 
-You can set some basic printer settings.
+**Paper source**
+
+Select the paper source tray to use when printing. Note: applies to images, PDF, and text files only.
  
 **Page range**
 
-You can either print all pages of the document or select pages.
- 
-**Pages**
+**All pages** / **Pages**
 
-You can set the number of copies here.
+Select **All pages** to print the entire document. Select **Pages** to print specific pages and enter the page number or page range (for example, 2-4) in the field. Defaults to **All pages**.
+
+**Number of copies**
+
+Set the number of copies to print. Defaults to 1.
  
 **Orientation**
 
 Select either portrait or landscape.
+
+**Auto** / **Portrait** / **Landscape**
+
+Select the page orientation. Defaults to **Portrait**.
+
+**Margin**
+
+Set the page margins in the **Left**, **Right**, **Top**, and **Bottom** fields.
  
 **Document**
 
-Specify a path to the document you want to print.
- 
-**Auto detect document type from extension**
+**Auto detect document type from extension** / **Specify document type**
 
-VisualCron tries to print the document from the extension name. It is important that the extension is correct otherwise you will get printing problems.
- 
-**Specify document type**
+Select **Auto detect document type from extension** to let VisualCron determine the document type from the file extension. It is important that the extension is correct, otherwise you will get printing problems. Select **Specify document type** to manually choose the document type from the dropdown. Defaults to **Auto detect document type from extension**.
 
-Instead of auto detecting, if you know the document type, you can specify it here.
+**Password**
+
+Enter the password for the document if it is password-protected.
+
+**Use fallback method**
+
+When checked, uses an alternative printing method. Try this option if landscape mode is not working or if the document fails to print with the default method.
  
 :::info Note
 
@@ -63,4 +77,4 @@ This is probably a permissions problem. Please check the sharing permissions on 
  
 **Landscape mode is not working**
 
-Try checking the option Use fallback mode.
+Try checking the option Use fallback method.
