@@ -13,10 +13,12 @@ The System restore - List system restore points Task returns a list of existing 
 
 To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
  
-**Local or Remote**
+**Scope**
 
-Select the the *Local* radio button if you want to control the local computer, select the *Remote* radio button if you want to control a remote computer.
- 
+**Local** / **Remote**
+
+Select **Local** to list restore points on the local computer. Select **Remote** to list restore points on a remote computer. Defaults to **Local**.
+
 **Hostname**
 
-The name of the remote computer.
+Enter the hostname of the remote computer, or select from the list of network computers. Only available when **Remote** is selected.
