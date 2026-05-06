@@ -15,8 +15,18 @@ To control a remote computer you may need to use a Credential. The Credential mu
  
 **Select Excel file**
 
-Select full path to the Excel file.
- 
+Select the full path to the Excel file.
+
+**Password**
+
+Enter the password for the Excel file, if it is password protected.
+
 **Worksheet**
 
-Select which worksheet in the workbook to access. Press the Get button to populate the list of existing worksheets.
+**Use first worksheet** / **Use specific worksheet**
+
+Select **Use first worksheet** to use the first worksheet in the workbook. Select **Use specific worksheet** to choose a specific worksheet.
+
+**Worksheet**
+
+Select the worksheet to count rows in. Only available when **Use specific worksheet** is selected. Click the **Get** button to populate the list with worksheets from the selected file.
