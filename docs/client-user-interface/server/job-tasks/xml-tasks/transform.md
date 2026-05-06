@@ -9,7 +9,7 @@ The XML - Transform Task transforms a XML file to HTML using an XSLT (Extensible
  
 The original document is not changed; rather, a new document is created based on the code of an existing one. The new document can be output to HTML or plain text.
  
-**XML Transform > File filter > Location** sub tab
+**XML Transform > File filter** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Transform.png)
 
@@ -19,7 +19,9 @@ The XML Transform Task uses the standard VisualCron [File filter](../../../serve
 
 ![](../../../../../static/img/taskxmltransformdestination.png)
 
-**XLST file**
+**XML transform parameters**
+
+**XSLT file**
 
 The path and file name of a XSLT file that resides on the local system which will be used to transform the specified XML file. Click the *Folder* icon to select the XSL folder/file.
  
@@ -35,18 +37,22 @@ If checked, support for embedded script blocks is enabled.
 
 If checked, the DTD will be parsed. Within an XML document's `<!DOCTYPE>`, there can be an internal subset of the DTD, or an external DTD can be referenced. In order to fully comply with the XML 1.0 or 1.1 specification, DTD must be parsed.
  
-**XLST parameters**
+**XSLT parameters**
 
-Add/edit a XLST parameter using name and value to the parameter list. Select and press the Windows Del button to delete a parameter.
- 
+Add/edit a XSLT parameter using name and value to the parameter list. Select and press the Windows Del button to delete a parameter.
+
 **Save to**
 
-Enter destination file and folder names.
+Select where to save the transformed output file:
+
+* **Same file** — Overwrites the original source file.
+* **Same folder but use file mask** — Saves to the same folder with a new file name specified in File mask.
+* **Different folder and use file mask** — Saves to a different folder with a new file name.
  
 **Folder**
 
-If Different folder and use file mask is selected, use manual folder specification or click the Folder icon.
+The destination folder path. Only available when **Different folder and use file mask** is selected.
  
 **File mask**
 
-Save file with different name.
+The file name to use for the saved file. Available when **Same folder but use file mask** or **Different folder and use file mask** is selected.
