@@ -17,9 +17,19 @@ First you select an existing Variable to store the new value in.
 
 Here you can preview the future value of the next calculation.
  
-**Left and right hand value**
+**Left hand value**
 
-You can choose to either work with the current Variable, one or two other Variables or just two other values. By combining different settings you have the following choices:
+**Existing variable** / **Other value**
+
+Select whether to use an existing variable or enter another value for the left side of the calculation. Defaults to **Existing variable**.
+
+**Right hand value**
+
+**Existing variable** / **Other value**
+
+Select whether to use an existing variable or enter another value for the right side of the calculation. Defaults to **Other value**.
+
+By combining different settings you have the following choices:
 
 * VariableX = VariableY (math operation) VariableZ
 * VariableX = VariableX (math operation) Value1
