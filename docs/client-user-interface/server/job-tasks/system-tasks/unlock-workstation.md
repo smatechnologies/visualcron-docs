@@ -11,8 +11,8 @@ The System Unlock workstation Task can auto-login or unlock a desktop. If a scre
 
 **Credentials**
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and pass word of the user that you want to login. Click on *Manage credentials* to add or edit Credentials. Select a Credential in the combo box.
- 
+To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
+
 **Unlock/Login settings**
 
 **Lock workstation after login**
