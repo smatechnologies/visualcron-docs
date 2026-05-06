@@ -16,5 +16,8 @@ Some typical power consumption levels (watts) for computer equipment are:
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Control%20Monitor.png)
 
-Select either Turn on or Turn off to control monitor power state.
+**Control monitor**
 
+**Turn on** / **Turn off**
+
+Select **Turn on** to power on the monitor. Select **Turn off** to power off the monitor. Defaults to **Turn off**.
