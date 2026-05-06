@@ -25,13 +25,23 @@ The output will be placed in 2,2 to 3,3:
 
 **Input value**
 
-The input value can either be hard coded string or Variable. It is important that input value matches format so that lines and columns are split in the  right way. Please note that if you need another format than Text format in excel you need to specify column format in "Column format "tab.
+The input value can either be hard coded string or Variable. It is important that input value matches format so that lines and columns are split in the right way. Please note that if you need another format than Text format in excel you need to specify column format in "Column format" tab.
  
 **Format**
 
-You need to adjust format controls so they fit the format of the incoming value.  The text qualifier is any surrounding character.
+**Field separator**
+
+Select the character used to separate fields in the input value.
+
+**Text qualifier**
+
+Select the character used to surround field values in the input value.
+
+**Line break**
+
+Select the character used to indicate a new row in the input value.
  
-**Excel - Set cell > File filter > Location** sub tab
+**Excel - Set cell > File filter** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Set%20Cell%20File.png)
 
@@ -51,13 +61,32 @@ In the columns tab you can override column format. Default format is `@` which i
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Set%20Cell%20Target.png)
 
+**Use first worksheet** / **Use specific worksheet**
+
+Select **Use first worksheet** to use the first worksheet in the workbook. Select **Use specific worksheet** to choose a specific worksheet.
+
 **Worksheet**
 
-The worksheet to be updated.
+Select the worksheet to update. Only available when **Use specific worksheet** is selected.
+
+**Clear cells before updating**
+
+When checked, clears the target cells before writing the new values.
  
 **Cell coordinates**
 
-The relative position the update should start at.
+**Cell by position**
+
+Identifies the starting cell by its row and column position.
+
+* **Row** — The row number of the starting cell.
+* **Column** — The column number of the starting cell.
+
+**Cell by reference (i.e. A3)**
+
+Identifies the starting cell by its reference.
+
+* **Cell reference** — The cell reference (for example, A3).
  
 **Excel - Set cell > Output** sub tab
 
@@ -65,16 +94,32 @@ The relative position the update should start at.
 
 **Save to..**
 
-You are able to control if the update should be saved to same file or different file.
- 
-**Credential**
+* **Same file** — Overwrites the original source file.
+* **Same folder but use file mask** — Saves to the same folder with a new file name specified in File mask.
+* **Different folder and use file mask** — Saves to a different folder with a new file name.
 
-If you are planning to save on a network location you can select a Credential.
+**Folder**
+
+The destination folder path. Only available when **Different folder and use file mask** is selected.
+
+**File mask**
+
+The file name to use for the saved file. Available when **Same folder but use file mask** or **Different folder and use file mask** is selected.
+
+**Credentials**
+
+To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
  
 **Password protection**
 
-If you want to protect the file with Excel password authentication you can check this value and enter a password.
- 
+**Use password when accessing file**
+
+Check this option and enter a password if the Excel file is password protected.
+
 **Remove password when saving**
 
-If you want to remove the password after execution you need to check this. You need to specify password for accessing the file the first time. After writing the "Use password.." option will be unchecked so that the Task does not try to open it with a password anymore.
+When checked, removes the password from the file after writing. You need to specify the password for accessing the file the first time. After writing, the **Use password when accessing file** option will be unchecked so that the Task does not try to open it with a password anymore.
+
+**Only remove password**
+
+When checked, the Task only removes the password from the file without writing any cell values. The Source tab is disabled when this option is selected.
