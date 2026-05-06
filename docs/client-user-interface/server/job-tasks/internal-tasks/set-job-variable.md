@@ -13,8 +13,12 @@ A Job variable is related to a job, thus when that specific job is exported, the
 
 **Job**
 
+**Job**
+
 List of defined jobs.
  
+**Variable**
+
 **Name/Unique key**
 
 The name you set on the Variable is also the unique key for the Variable. Wherever you want to use your defined Variable you use this Variable key: `{USERVAR(variablename)}`
