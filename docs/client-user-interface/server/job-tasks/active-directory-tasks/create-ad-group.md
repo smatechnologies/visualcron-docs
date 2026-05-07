@@ -13,6 +13,8 @@ Creates a new Active Directory Group in the specified parent container. Groups a
 
 To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
  
+**Create group**
+
 **Parent path**
 
 The Lightweight Directory Access Protocol (LDAP) path of the parent Active Directory container. This is usually the top most container or the root of the directory data tree on a directory server. Click the *Select container* button to select an existing Active Directory container.
@@ -45,4 +47,4 @@ The Domain Local Group grant permissions to domain resources that are located in
 
 The Global Group contains users with similar function and can be given permission to access e.g. a printer or shared folder available in a local or another domain in same forest.
 
-The Universal Group are used for e-mail distribution and can be granted access to resources in all trusted domains as a security principal in a Windows 2000 native or Windows server 2003 domain.
+The Universal Group are used for e-mail distribution and can be granted access to resources in all trusted domains.
