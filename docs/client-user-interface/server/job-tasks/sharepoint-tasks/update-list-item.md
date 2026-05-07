@@ -3,11 +3,9 @@ sidebar_label: 'Task Sharepoint - Update List Item'
 hide_title: 'true'
 ---
 
-## Task Sharepoint- Update List Item
-
-The SharePoint - Update List Task updates a List in the SharePoint library.
+## Task Sharepoint - Update List Item
  
-The SharePoint Tasks supports the following versions:
+The SharePoint - Update List Item Task updates an item in a list in the SharePoint library.
 
 * SharePoint 2010
 * SharePoint 2013
@@ -21,7 +19,7 @@ To use SharePoint Tasks you need to create a [Connection](../../global-connectio
  
 **List item Id (full path)**
 
-The title of the list to be updated. Click the Folder icon to browse a SharePoint site in order to view or select a specific item.
+The full path identifier of the list item to update. Click the *Folder* icon to browse a SharePoint site and select a specific item.
  
 **Field(s)**
 
