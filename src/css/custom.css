@@ -17,6 +17,13 @@
   --ifm-code-font-size: 95%;
 }
 
+/* Navbar links always black, not the primary brand colour */
+.navbar__link,
+.navbar__link:hover,
+.navbar__link--active {
+  color: #000000;
+}
+
 .docusaurus-highlight-code-line {
   background-color: rgb(72, 77, 91);
   display: block;

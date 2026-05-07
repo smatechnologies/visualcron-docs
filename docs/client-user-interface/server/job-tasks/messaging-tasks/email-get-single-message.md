@@ -6,36 +6,42 @@ hide_title: 'true'
 ## Task Messaging - Email - Get Single Messages
 
 The Email Get Single Message Task retrieves one message by its ID or message index number.
- 
+
+:::tip Supported protocols
+
+This task supports **POP3**, **IMAP4**, **Exchange EWS**, and **Microsoft Graph** connections. When using a Microsoft Graph connection, the message is retrieved by its Graph message ID.
+
+:::
+
 **Email - Get single message > Main setting**s sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/email%20-%20get%20single%20messages.png)
 
 **Connection**
 
-To use Email Tasks you need to create a [Connection](../../../server/global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
- 
+To use Email Tasks you need to create a [Connection](../../../server/global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog. Supported connection types: [POP3](../../../server/connection-pop3), [IMAP4](../../../server/connection-imap4), [Exchange EWS](../../../server/connection-exchange-ews), and [Microsoft Graph](../../../server/connection-microsoft-graph).
+
 **Mail identifier**
 
-Specify mail ID or index number for message that is to be retrieved.
- 
+Specify mail ID or index number for message that is to be retrieved. When using a Microsoft Graph connection, use the Graph message ID.
+
 **Message on server**
 
 If desired, change message on server options.
- 
+
 **Decryption by**
 
 If email decryption is used, enter certificate name.
- 
+
 **Save email**
 
 If desired, change save email options. For credential, click the *Settings* icon to open the *Manage Credentials* dialog.
- 
+
 :::tip Note
 
-Note when forming the folder name and file name in which the message is saved, all incorrect characters in mail ID are replaced with the � symbol.
+Note when forming the folder name and file name in which the message is saved, all incorrect characters in mail ID are replaced with the &#xFFFD; symbol.
 The final folder and/or file name can be calculated by applying the built-in variable function "*File variables / Encode FileName*" to mail ID as follows: ```{PATH(EncodeFileName|Mail_ID_from_Task_settings|MASK)}```.
- 
+
 :::
 
 **Email - Get single message > Attachment filter** sub tab

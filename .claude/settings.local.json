@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm start)",
+      "Bash(git checkout:*)",
+      "Read(//tmp/**)",
+      "Bash(node_modules/.bin/docusaurus start:*)",
+      "Bash(ls /c/Users/PhilBurney/Desktop/*.png /c/Users/PhilBurney/Desktop/*.jpg /c/Users/PhilBurney/Desktop/*.jpeg)"
+    ]
+  }
+}

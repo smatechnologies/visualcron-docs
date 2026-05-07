@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" width="150" height="150">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0078d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#005a9e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Rounded square background -->
+  <rect x="5" y="5" width="140" height="140" rx="20" ry="20" fill="url(#bgGrad)" />
+  <!-- Icosahedron / geometric shape - Microsoft Graph icon -->
+  <g transform="translate(75,70)" fill="none" stroke="white" stroke-width="2.5" stroke-linejoin="round">
+    <!-- Outer hexagon -->
+    <polygon points="0,-40 34.6,-20 34.6,20 0,40 -34.6,20 -34.6,-20" />
+    <!-- Inner triangles forming the icosahedron look -->
+    <!-- Top triangle -->
+    <line x1="0" y1="-40" x2="34.6" y2="20" />
+    <line x1="0" y1="-40" x2="-34.6" y2="20" />
+    <!-- Bottom triangle -->
+    <line x1="0" y1="40" x2="34.6" y2="-20" />
+    <line x1="0" y1="40" x2="-34.6" y2="-20" />
+    <!-- Horizontal middle lines -->
+    <line x1="-34.6" y1="-20" x2="34.6" y2="20" />
+    <line x1="-34.6" y1="20" x2="34.6" y2="-20" />
+  </g>
+</svg>
