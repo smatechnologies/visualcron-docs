@@ -9,6 +9,8 @@ The Virtual Server - List VM machines Task retrieves a list of all virtual machi
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/List%20VM%20Machines.png)
 
+**List VM Machines > Connection** tab
+
 **Remote VMWare server / Local VMWare workstation**
 
 This task requires a remote VMWare server connection. The _Local VMWare workstation_ option is disabled.
@@ -24,6 +26,8 @@ The path to list virtual machines from on the remote server. Click the _Refresh_
 **Timeout in seconds**
 
 The number of seconds to wait before timing out the operation. Minimum is 1, maximum is 36000, default is 180. Note that a Timeout tab setting on the task overrides this value.
+
+**List VM Machines > VM Task settings** tab
 
 **VM listing status filter**
 
