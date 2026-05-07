@@ -17,21 +17,22 @@ To control a remote computer you may need to use a Credential. The Credential mu
  
 **Path**
 
-The LDAP path of the Active Directory group to modify. Click *Select Group* to select an existing group.
+The LDAP path of the Active Directory group to modify. Click *Select group* to select an existing group.
  
 **Action**
 
 The action to perform on the Active Directory group. The options are: Add user, Remove user, Rename group and Delete group.
+
+**New name**
+
+The new name for the group. Used when the Rename group action is selected.
  
 **Modify AD Group > Users** tab
 
 ![](../../../../../static/img/taskactivedirectorymodifyadgroupusers.png)
 
-**Add User's**
+The Users tab displays a list of user LDAP paths. Enter each user's LDAP DN or common name (CN) in the text field, then click *Add User(s)* to add them to the list, or *Add* to add a single entry.
 
-Click the *Add User(s)* button and enter the property name of the Active Directory object (i.e. CN, CommonName, DN, DistinguishedName, etc.).
- 
- 
 ### Troubleshooting
  
 **Error 0x80072035**
