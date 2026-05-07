@@ -29,6 +29,10 @@ The path to the virtual machine's VMX file on the local machine. Click the File 
 
 The number of seconds to wait before timing out the operation. Minimum is 1, maximum is 36000, default is 180. Note that a Timeout tab setting on the task overrides this value.
 
+**Start VM > VM Task settings** tab
+
+**Start VM**
+
 **Launch GUI**
 
 When checked, the VMWare GUI is launched and displayed when the virtual machine starts.
