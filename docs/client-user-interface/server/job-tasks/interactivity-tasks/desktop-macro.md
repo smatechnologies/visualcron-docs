@@ -20,6 +20,8 @@ The Desktop macro Task is dependent on access to the desktop. Mouse moves and ke
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Desktop%20Macro.png)
 
+**Macro info**
+
 **Edit**
 
 This feature is currently unavailable but will let you edit mouse moves, key strokes in detail. Please let us know if you find this an important feature and we will prioritize it.
@@ -28,14 +30,18 @@ This feature is currently unavailable but will let you edit mouse moves, key str
 
 Displays the playback length of the macro when played back with *normal speed*.
  
+**Record**
+
 **Start Recording**
 
 Minimizes the VisualCron windows and starts the recording. You can interrupt this any time by clicking CTRL + ALT + S or if you click on Stop button on Record dialog. During record you perform the steps which you want VisualCron to do later. One tip could be to take things slowly as the time it may take to open a program/window may vary.
  
 **Show record stop dialog**
 
-If this is property is unchecked you will not see the window with the Stop button. To stop recording you must press CTRL + ALT + S.
- 
+If this property is unchecked you will not see the window with the Stop button. To stop recording you must press CTRL + ALT + S.
+
+**Playback**
+
 **Show playback window**
 
 If this property is unchecked the playback popup will not be shown.
