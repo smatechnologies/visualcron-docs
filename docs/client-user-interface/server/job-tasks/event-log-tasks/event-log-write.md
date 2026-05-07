@@ -11,18 +11,17 @@ The Event log Write Task writes an event log record value based on various param
 
 **Scope**
 
-Select whether to write to the event log on the local machine or a remote computer.
+**Local** / **Remote**
 
-* _Local_ - writes to the event log on the machine where VisualCron is running
-* _Remote_ - writes to the event log on a remote computer; enables the remote host field below
+Select **Local** to write to the event log on the local computer. Select **Remote** to write to the event log on a remote computer. Defaults to **Local**.
 
 **Remote host**
 
-The hostname or IP address of the remote computer. Only enabled when _Remote_ is selected.
+Enter the hostname or IP address of the remote computer, or select from the list of network computers. Only available when **Remote** is selected.
 
-**Credential**
+**Credentials**
 
-Optional credential for accessing the remote computer's event log. The Credential must match the user name and password of the user you want to log in as.
+To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
 
 **Event log entry**
 
