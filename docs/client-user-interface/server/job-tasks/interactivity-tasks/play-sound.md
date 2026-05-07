@@ -12,6 +12,8 @@ The Play sound Task can play any sound file that the Media player can play. If y
 **Credentials**
 
 To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
+
+**Play sound**
  
 **File path**
 
