@@ -9,6 +9,8 @@ The Virtual Server - Save VM state Task saves the current state of a specific vi
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/Save%20VM%20State.png)
 
+**Save VM State > Connection** tab
+
 **Remote VMWare server / Local VMWare workstation**
 
 Select _Remote VMWare server_ to connect to a remote VMWare server, or _Local VMWare workstation_ to use the local machine. This task defaults to _Local VMWare workstation_.
