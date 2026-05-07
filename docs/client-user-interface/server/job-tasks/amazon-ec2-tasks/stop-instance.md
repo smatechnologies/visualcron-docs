@@ -5,18 +5,20 @@ hide_title: 'true'
 
 ## Task Amazon EC2 - Stop Instance
 
-The Amazon EC2 - Stop instance Task stops an instance that uses an Amazon EBS (Elastic Block Store) volume as its root device. When you stop an EC2 instance, the instance will be shutdown and the virtual machine that was provisioned for you will be permanently taken away and you will no longer be charged for the instance usage. The key difference between stopping and terminating an instance is that the attached bootable EBS volume will not be deleted. The data on your EBS volume will remain after stopping while all information on the local (ephemeral) hard drive will be lost as usual.
+The Amazon EC2 - Stop instance Task stops a running EC2 instance that uses an Amazon EBS (Elastic Block Store) volume as its root device. When an instance is stopped, the underlying virtual machine is released and per-hour charges stop, but the attached EBS root volume is preserved (data on the EBS volume remains available, while data on any local/ephemeral storage is lost as usual). The key difference between *stopping* and *terminating* is that stopping preserves the EBS volume, allowing the instance to be started again later.
+
+The Task issues the StopInstances call and reports the call result; it does not wait for the instance to reach the *stopped* state.
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Amazon%20EC2%20Tasks/Stop%20Instance.png)
 
 **Connection**
 
-To use Amazon EC2 Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
- 
+To use Amazon EC2 Tasks you need to create an Amazon [Connection](../../connection-amazon) first. The Connection supplies the access key, secret access key and region used by the Task. Click the *Settings* icon to open the *Manage Connections* dialog. Only Amazon connections are listed.
+
 **Instance**
 
-The instance ID to start. Click the *Refresh* icon to populate the drop-down instance ID list.
- 
+The ID of the instance to stop. Click the *Refresh* icon to query the selected Connection and populate the drop-down with the instance IDs available in that account/region. Variables can be entered manually if the instance ID is determined at run time.
+
 **Force**
 
-If checked, the instance will be forced to stop. This may cause file system problems and is not recommended for Windows instances.
+If checked, the instance is forced to stop (the underlying call is made with the `-ForceStop` flag). Forcing a stop does not give the operating system a chance to flush file system caches or shut down cleanly, so it can leave the file system in an inconsistent state. Not recommended for Windows instances.
