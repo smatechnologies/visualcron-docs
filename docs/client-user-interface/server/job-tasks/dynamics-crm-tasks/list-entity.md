@@ -9,11 +9,11 @@ The Dynamics CRM - List Entity Task lists entities in Dynamics CRM.
  
 This Task is similar to Get entity but lists the values of a specific attribute on all objects within an entity.
 
-[](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Dynamics%20CRM%20Tasks/List%20entity.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Dynamics%20CRM%20Tasks/List%20entity.png)
 
 **Connection**
 
-To use Dynamics CRM Tasks you need to create a [Connection](../../global-connections ) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+To use Dynamics CRM Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
  
 **Entity name**
 
