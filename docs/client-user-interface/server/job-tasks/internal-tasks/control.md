@@ -13,6 +13,8 @@ The VisualCron Task uses the [VisualCron Connection](../../../server/connection-
 
 **Action**
 
+**Action**
+
 Select the appropriate Action. The following actions exist:
 
 * **Run Job** - Starts a Job
@@ -24,7 +26,7 @@ Select the appropriate Action. The following actions exist:
 * **Activate Task** - Sets a Task to Active
 * **Inactivate Task** - Sets a Task to Inactive
  
-**Run synchronous**
+**Run synchronous (wait for completion)**
 
 Waits for Job or Task completion before continuing to next Task.
  
@@ -35,12 +37,22 @@ By default the result from the Job/Task is inherited (sent back) to this Task. S
 **Inherit output from child Task**
 
 By default, output from the Task you want to run will not be send back to this Task. But if you want it to be sent back you can check this box.
- 
-**Local/Remote server**
 
-You are able to execute a Job/Task located on a remote Server (where VisualCron is installed). To do that you select Remote server and then choose a *VisualCron Connection*.
+**VisualCron Server location**
+
+**Local VisualCron Server** / **Remote VisualCron Server**
+
+Select whether to execute the Job or Task on the local server or on a remote VisualCron Server. Defaults to **Local VisualCron Server**.
+
+**VisualCron Connection**
+
+Select the [VisualCron Connection](../../../server/connection-visualcron) to use for the remote server. Only available when **Remote VisualCron Server** is selected.
  
-**Reload (Jobs)**
+**Job**
+
+Select the Job to target from the list.
+
+**Reload**
 
 Press this button to populate the Job list.
  
@@ -56,11 +68,21 @@ Checking this produces the same behavior as when you check similar on Set Variab
 
 When enabled, the target Job Variables will be updated with the Variables supplied here.
  
-**Reload (Triggers)**
+**Trigger**
+
+**All**
+
+When checked, targets all triggers. When unchecked, select specific triggers from the dropdown.
+
+**Reload**
 
 Press this button to populate the Trigger list.
- 
-**Reload (Tasks)**
+
+**Tasks**
+
+Select the specific Task to target from the list.
+
+**Reload**
 
 Press this button to populate the Task list.
  
