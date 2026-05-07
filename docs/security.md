@@ -7,19 +7,17 @@ hide_title: 'true'
 
 Many actions have been taken to ensure security. Look at the following chapters to learn more.
 
-### Task Manager — Delete Removed from Viewers Default (13.2.1)
+### Task Manager Permissions for the Viewers Group (13.2.1)
 
-Prior to VisualCron 13.2.1, the default Viewers group included **Task Manager → Delete**, which allowed Viewer-role users to terminate system processes on the connected server. This permission has been removed from the Viewers group default in 13.2.1.
+As of VisualCron 13.2.1, the default Viewers group does not include **Task Manager → Delete**. The Viewers role is intended for read-oriented monitoring access.
 
-Existing customized groups that explicitly granted Task Manager → Delete are not automatically changed. Only installations that have not modified the Viewers group baseline are affected. Administrators who require process termination for a non-administrator role must grant Task Manager → Delete explicitly.
+Administrators who need to grant delete permissions to a non-administrator role can do so by explicitly adding Task Manager → Delete to a custom group. Existing customized groups are not affected by this default.
 
-### Remote File Explorer — Effective Permissions in Remote Connections (13.2.1)
+### Remote File Explorer — Permissions in Remote Connections (13.2.1)
 
-When **Remote File Explorer → Read** is enabled for a user connecting remotely (non-local connection), the effective capability includes file upload, modification, and execution running as NT AUTHORITY\SYSTEM on the server host — broader than the "Read" label implies.
+As of VisualCron 13.2.1, when **Remote File Explorer → Read** is enabled for a remote (non-local) connection, the interface displays the full set of effective permissions for that context. This ensures administrators have a clear view of what access is being granted before saving the configuration.
 
-As of VisualCron 13.2.1, when Read is enabled on a remote connection the interface surfaces the full set of effective permissions so administrators are not misled by the read-only label.
-
-Administrators should audit any existing group configurations that include Remote File Explorer → Read for remote users. If read-only monitoring is the intended use case, granting this permission to non-administrator groups on remote connections is not recommended.
+For least-privilege setups, it is encouraged to review Remote File Explorer permission assignments for any group that is not intended to have write access to the server file system.
 
 ### TLS Communication Between Client and Server
 
