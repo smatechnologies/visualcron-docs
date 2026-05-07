@@ -3,7 +3,7 @@ sidebar_label: 'Task Sharepoint - Delete List'
 hide_title: 'true'
 ---
 
-## Task Sharepoint- Delete List
+## Task Sharepoint - Delete List
 
 The SharePoint - Delete List(s) Task deletes a list in the SharePoint library.
  
