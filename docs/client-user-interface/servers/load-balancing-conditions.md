@@ -13,40 +13,40 @@ Load balancing Conditions can be used in several different VisualCron components
 * [Variable Trigger](../server/event-trigger-variable)
  
 **Editing Load balancing Conditions**
- 
+
 All Load balancing Conditions are created and edited using a single form consisting of two tabs.
- 
+
 On the first tab, the basic properties are configured: condition type and description.
 
 ![](../../../static/img/lbconditionedit_main.png)
 
-On the second tab, special properties for a particular type of condition are edited.
+On the second tab, properties specific to the chosen condition type are edited.
 
 ![](../../../static/img/lbconditionedit_configure.png)
 
 Depending on the condition type, the following property groups can be edited:
- 
-* select Server
-* select Job
-* select Connection
-* select Network
-* select Time exception
-* select Variable
-* select file
-* select process
-* select Windows service
-* operand and value to compare with
-* duration, including average checkbox
-* act as an event (for state-check conditions)
-* event parameters (for event-based conditions) 
+
+* Server selector
+* Job selector
+* Connection selector
+* Network selector
+* Time exception selector
+* Variable selector
+* File selector
+* Process selector
+* Windows service selector
+* Operand and value to compare with
+* Duration, including average checkbox
+* Act as an event (for state-check conditions)
+* Event parameters (for event-based conditions)
  
 **Condition classification**
- 
-All Conditions can be divided into two groups: conditions that check some state, and conditions that react to some event in the system.
- 
-* State-check Condition example: the value of the Variable “TestNumber” is “42“.
-* Event-based Condition example: the value of the Variable “TestNumber” has been updated.
-* Finally, an example of the state-check Condition acting as an event: the value of the Variable “TestNumber” has been updated and became equal to “42“.
+
+All Conditions fall into two groups: conditions that check some state, and conditions that react to some event in the system.
+
+* State-check Condition example: the value of the Variable *TestNumber* is `42`.
+* Event-based Condition example: the value of the Variable *TestNumber* has been updated.
+* State-check Condition acting as an event: the value of the Variable *TestNumber* has been updated and became equal to `42`.
  
 **Configuring parameters of an event-based Condition**
 
@@ -54,16 +54,15 @@ All Conditions can be divided into two groups: conditions that check some state,
 
 **Pause after triggering**
 
-The period after previous triggering when the event generation is suppressed.
-If an event occurs in the system before the suppression period has ended, the event will be ignored (see below the difference for state-check conditions).
- 
+The period after a previous trigger when event generation is suppressed. If an event occurs before the suppression period ends, the event is ignored (the behavior is different for state-check conditions — see below).
+
 **Force event reset after each condition set calculation** (the default)
 
-The state will be set to nonsignaled when calculating the entire condition tree, regardless of whether the event is checked directly or not.
+The state is set to nonsignaled when the entire condition tree is calculated, regardless of whether the event is checked directly or not.
  
 **Keep signaled state until event is checked directly**
 
-The event will remain in the signaled state until it is checked directly during condition calculations.
+The event remains in the signaled state until it is checked directly during condition calculations.
  
 **Configuring parameters of a state-check Condition acting as an event**
 
@@ -71,18 +70,15 @@ The event will remain in the signaled state until it is checked directly during 
 
 **Act as an event**
 
-The next match of the state-check condition is possible only after an unmatched state is detected or reset timeout expires.
- 
+The next match of the state-check condition is possible only after an unmatched state is detected or the reset timeout expires.
+
 **Auto reset timeout**
 
-If nonzero, the condition can trigger again after the specified timeout, even if the state matched all the time.
-Takes precedence over the “pause after triggering” period, that is, can reduce the suppression period.
- 
+If non-zero, the condition can trigger again after the specified timeout even if the state has matched the whole time. Takes precedence over the *Pause after triggering* period, so it can shorten the suppression period.
+
 **Pause after triggering**
 
-The period after previous triggering when the event generation is suppressed.
-However, if while waiting for the end of the suppression period, the state changes to non-matching, and then changes back to matching, then immediately after the end of the suppression period, the condition will be triggered again.
- 
+The period after a previous trigger when event generation is suppressed. If, while waiting for the suppression period to end, the state changes to non-matching and then back to matching, the condition triggers again immediately after the suppression period ends.
  
 **The list of supported Load balancing Conditions**
  
