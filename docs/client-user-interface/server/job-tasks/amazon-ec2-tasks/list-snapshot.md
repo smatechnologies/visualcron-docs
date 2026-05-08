@@ -11,14 +11,14 @@ The Amazon EC2 - List snapshots Task lists one or more of the Amazon EBS snapsho
 
 **Connection**
 
-To use Amazon EC2 Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
- 
+To use Amazon EC2 Tasks you need to create an Amazon [Connection](../../connection-amazon) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+
 **Filter**
 
-Filter for snapshots. 
+Filter for snapshots.
 
-:::tip Example: 
+:::tip Example
 
-`{"Name": "instance-type", "Values": ["t2.micro", "m1.medium"]}`
- 
+`@{Name="owner-alias"; Values="self"}`
+
 :::
