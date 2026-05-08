@@ -5,40 +5,44 @@ hide_title: 'true'
 
 ## Task PDF - Add Attachment
 
+The PDF - Add attachment(s) Task attaches one or more files to a PDF file.
+
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Add%20attachment%20settings.png)
-
-The PDF - Add attachment(s) Task attaches one or more files to a pdf file.
  
-**Add  attachment(s) > File filter > Location** sub tab
+**Add attachment(s) > File filter > Location** sub tab
 
-This tab uses the common [file filter](../../job-tasks-file-filter.md) to filter out the files that should be processed in this Task.
- 
-**Add  attachment(s) > Attachment files** sub tab
+This tab uses the common [file filter](../../job-tasks-file-filter.md) to choose which PDF files should be processed in this Task.
+
+**Add attachment(s) > Attachment files** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Add%20attachment%20attachment.png)
 
-In the Attachment files dialog you add, edit, clone or delete files and change order of the items. Changes can be done either by the toolbar buttons or mouse double click on an item.
- 
+In the *Attachment files* dialog you add, edit, clone or delete the files to attach and change the order of the items. Changes can be made either with the toolbar buttons or by double-clicking an item.
+
 **Add attachment(s) > PDF Destination** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Add%20attachment%20output.png)
 
 **Save to**
 
-The destination folder and file mask which the output file is saved to.
- 
+Selects where the output PDF is written. Available options:
+
+* _Save to same file_ - overwrite the source PDF in place
+* _Same folder with file mask_ - keep the original folder, but save under a different name (set the *File mask* below)
+* _Different folder with file mask_ - save under a different name in a different folder (set both *Folder* and *File mask* below)
+
 **Folder**
 
-If *Different folder and use file mask* is selected, use manual folder specification or click the *Folder* icon.
- 
+The destination folder. Enabled when *Save to* is set to _Different folder with file mask_. Click the *Folder* icon to browse for the folder.
+
 **File mask**
 
-Save file with different name.
- 
+The file mask used to name the output file. Enabled when *Save to* is set to _Same folder with file mask_ or _Different folder with file mask_.
+
 **Password for input files**
 
-Enter password if desired (optional setting).
- 
+If the source PDF files are password protected, enter the password here. Optional.
+
 **Attachment description**
 
-Enter description to label the attached files (optional setting).
+Free-text description applied to the attached files. Optional.
