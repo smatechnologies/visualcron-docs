@@ -11,8 +11,8 @@ The Amazon EC2 - Delete snapshot Task deletes the specified snapshot. When you m
 
 **Connection**
 
-To use Amazon EC2 Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
- 
-**Snapshots**
+To use Amazon EC2 Tasks you need to create an Amazon [Connection](../../connection-amazon) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+
+**Snapshot**
 
 The snapshot to be deleted. Click the *Refresh* icon to populate the drop-down snapshot list.
