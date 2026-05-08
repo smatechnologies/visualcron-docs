@@ -11,7 +11,7 @@ The Hyper-V - Start VM Task allows you to start a specific virtual machine hoste
 
 **Local/Remote server**
 
-Select the the *Local server* radio button if you want to control the local computer, select the *Remote server* radio button if you want to control a remote computer.
+Select the *Local server* radio button if you want to control the local computer, select the *Remote server* radio button if you want to control a remote computer.
  
 **Server name**
 
@@ -24,4 +24,3 @@ To control a remote computer you may need to use a Credential. The Credential mu
 **Virtual machine**
 
 Enter the name of the virtual machine. Click the *Refresh* icon to populate the drop-down list with available virtual machines.
-
