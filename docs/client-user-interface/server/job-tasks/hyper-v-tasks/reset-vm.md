@@ -11,7 +11,7 @@ The Hyper-V - Reset VM Task allows you to reset a specific virtual machine hoste
 
 **Local/Remote server**
 
-Select the the *Local server* radio button if you want to control the local computer, select the *Remote server* radio button if you want to control a remote computer.
+Select the *Local server* radio button if you want to control the local computer, select the *Remote server* radio button if you want to control a remote computer.
  
 **Server name**
 
