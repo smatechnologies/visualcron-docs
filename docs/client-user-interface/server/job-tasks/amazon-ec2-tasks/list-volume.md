@@ -11,16 +11,16 @@ The Amazon EC2 - List volume(s) Task returns a list containing various status pr
 
 **Connection**
 
-To use Amazon EC2 Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
- 
+To use Amazon EC2 Tasks you need to create an Amazon [Connection](../../connection-amazon) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+
 **Filter**
 
-Filter for volumes. 
+Filter for volumes.
 
-:::tip Example: 
+:::tip Example
 
-`{"Name": "instance-type", "Values": ["t2.micro", "m1.medium"]}`
- 
+`@{Name="status"; Values="available"}`
+
 :::
 
 **Volume IDs**
