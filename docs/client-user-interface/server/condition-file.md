@@ -5,24 +5,28 @@ hide_title: 'true'
 
 ## Condition - File
 
-The _File_ condition lets you check information about a certain file before running your Task or Job.
- 
+The *File* condition lets you check whether a file exists or check its content before running a Task or Job.
+
 **Global > Conditions > Condition set Add > Conditions Add > File select > File** tab
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Conditions/Condition%20-%20File.png)
 
 **File path**
 
-First you have to select a file. Write the full UNC path to the file, or select it by clicking on the File browser icon to the right.
- 
+The full UNC path to the file to check. Click the *File* browser icon to the right to browse for the file.
+
 **Credentials**
 
-If your file is located at a network resource or any other protected area, it may require some "credentials" to access that file. Select a credential from the list. The credentials are stored globally, which lets you create new credentials that can be accessed in different levels and functions in VisualCron. Click on Manage credentials to add a credential that you may require.
- 
+If the file is on a network share or any other protected location, select a [Credential](global-credentials) for accessing it. Click *Manage credentials* to add a new Credential.
+
 **File exists**
 
-Checks whether a file exists or not. Select true or false.
- 
+Checks whether the file exists. Select *True* or *False* to match.
+
 **File content**
 
-This check type tries to read the content of a file and compare it, depending on your match type "Is", "Is not", "Contains", to the string you specify in the text box to the right.
+Reads the content of the file and compares it to the value entered in the text box to the right. Available match types:
+
+* *Is* - matches if the file content equals the value
+* *Is not* - matches if the file content does not equal the value
+* *Contains* - matches if the file content contains the value as a substring
