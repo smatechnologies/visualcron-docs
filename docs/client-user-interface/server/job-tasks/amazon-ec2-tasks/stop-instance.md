@@ -11,12 +11,12 @@ The Amazon EC2 - Stop instance Task stops an instance that uses an Amazon EBS (E
 
 **Connection**
 
-To use Amazon EC2 Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
- 
+To use Amazon EC2 Tasks you need to create an Amazon [Connection](../../connection-amazon) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+
 **Instance**
 
-The instance ID to start. Click the *Refresh* icon to populate the drop-down instance ID list.
- 
+The instance ID to stop. Click the *Refresh* icon to populate the drop-down instance ID list.
+
 **Force**
 
 If checked, the instance will be forced to stop. This may cause file system problems and is not recommended for Windows instances.
