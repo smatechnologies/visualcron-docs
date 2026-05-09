@@ -11,14 +11,14 @@ The Amazon EC2 - List security group Task returns a list of security groups acco
 
 **Connection**
 
-To use Amazon EC2 Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
- 
+To use Amazon EC2 Tasks you need to create an Amazon [Connection](../../connection-amazon) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+
 **Filter**
 
-Filter for security groups. 
+Filter for security groups.
 
 :::tip Example
 
-`{"Name": "instance-type", "Values": ["t2.micro", "m1.medium"]}`
+`@{Name="vpc-id"; Values="vpc-1a2b3c4d"}`
 
 :::
