@@ -11,14 +11,14 @@ The Amazon EC2 - List key pair(s) Task lists one or more of your key pairs.
 
 **Connection**
 
-To use Amazon EC2 Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
- 
+To use Amazon EC2 Tasks you need to create an Amazon [Connection](../../connection-amazon) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+
 **Filter**
 
-Filter for key pairs. 
+Filter for key pairs.
 
-:::tip Example 
+:::tip Example
 
-`{"Name": "instance-type", "Values": ["t2.micro", "m1.medium"]}`
+`@{Name="key-name"; Values="websvr-keypair"}`
 
 :::
