@@ -5,30 +5,34 @@ hide_title: 'true'
 
 ## Task PDF - Get Attachment
 
-The PDF - Get attachment(s) Task extracts all files or specific files attached to a pdf document and saves them to the specified location file(s).
- 
+The PDF - Get attachment(s) Task extracts all or specific files attached to a PDF document and saves them to disk.
+
 **Get attachment(s) > Main settings** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Get%20Attachment%20settings.png)
 
-In the *Get Attachment(s) > Main settings* dialog you add or delete files to be retrieved from a PDF file with attachments. Selection of file names is only possible for files included in the PDF file.
- 
+In the *Main settings* dialog, add or delete the names of the attachments to extract. Only file names that already exist inside the source PDF can be selected.
+
 **Get attachment(s) > File filter > Location** sub tab
 
-This tab uses the common [file filter](../../job-tasks-file-filter.md) to filter out the files that should be processed in this Task.
- 
+This tab uses the common [file filter](../../job-tasks-file-filter.md) to choose which PDF files should be processed in this Task.
+
 **Get attachment(s) > Destination** sub tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Get%20Attachment%20destination.png)
 
-**Save t**o
+**Save to**
 
-The destination folder and file mask which the output file is saved to.
- 
+Selects where the extracted attachment files are written. Available options:
+
+* _Save to same file_ - extract to the same folder as the source PDF, using the original attachment names
+* _Same folder with file mask_ - extract to the same folder as the source PDF, using a custom file mask
+* _Different folder with file mask_ - extract to a different folder, using a custom file mask
+
 **Folder**
 
-If *Different folder and use file mask* is selected, use manual folder specification or click the *Folder* icon.
- 
+The destination folder. Enabled when *Save to* is set to _Different folder with file mask_. Click the *Folder* icon to browse for the folder.
+
 **File mask**
 
-Save file with different name.
+The file mask used to name the extracted file(s). Enabled when *Save to* is set to _Same folder with file mask_ or _Different folder with file mask_.
