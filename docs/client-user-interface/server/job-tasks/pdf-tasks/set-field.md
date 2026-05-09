@@ -33,12 +33,16 @@ This tab uses the common [file filter](../../job-tasks-file-filter) to filter ou
 
 **Save to**
 
-The destination folder and file mask which the output file is saved to.
- 
+Selects where the modified PDF is written. Available options:
+
+* _Save to same file_ - overwrite the source PDF in place
+* _Same folder with file mask_ - keep the original folder, but save under a different name (set the *File mask* below)
+* _Different folder with file mask_ - save under a different name in a different folder (set both *Folder* and *File mask* below)
+
 **Folder**
 
-If *Different folder and use file mask* is selected, use manual folder specification or click the *Folder* icon.
- 
+The destination folder. Enabled when *Save to* is set to _Different folder with file mask_. Click the *Folder* icon to browse for the folder.
+
 **File mask**
 
-Save file with different name.
+The file mask used to name the output file. Enabled when *Save to* is set to _Same folder with file mask_ or _Different folder with file mask_.
