@@ -11,7 +11,7 @@ The Hyper-V - Apply snapshot Task allows you to apply an existing snapshot to a 
 
 **Local/Remote server**
 
-Select the the *Local server* radio button if you want to control the local computer, select the *Remote server* radio button if you want to control a remote computer.
+Select the *Local server* radio button if you want to control the local computer, select the *Remote server* radio button if you want to control a remote computer.
  
 **Server name**
 
