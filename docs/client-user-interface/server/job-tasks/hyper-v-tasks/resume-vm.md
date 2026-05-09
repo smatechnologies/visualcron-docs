@@ -11,7 +11,7 @@ The Hyper-V - Resume VM Task allows you to resume a specific virtual machine hos
 
 **Local/Remote server**
 
-Select the the *Local server* radio button if you want to control the local computer, select the *Remote server* radio button if you want to control a remote computer.
+Select the *Local server* radio button if you want to control the local computer, select the *Remote server* radio button if you want to control a remote computer.
  
 **Server name**
 
