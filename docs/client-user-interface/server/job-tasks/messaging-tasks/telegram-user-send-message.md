@@ -5,18 +5,18 @@ hide_title: 'true'
 
 ## Task Messaging - Telegram - User Send Message
 
-Telegram User Send - Send message to users from user.
+The Telegram - User Send Message Task sends a Telegram message from one of your user accounts to another Telegram user.
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Telegram%20-%20user%20send%20message.png)
 
-**Send to Connection**
+**Connection**
 
-Select and existing [Telegram Connection](../../../server/connection-telegram).
- 
-**Send to Phone number**
+Select an existing [Telegram Connection](../../../server/connection-telegram). The Connection holds the credentials for the user account that the message is sent from.
 
-The phone number of the user you want to send to including country code like; +1888555222
- 
+**Phone number**
+
+The phone number of the recipient, including the country code (for example `+1888555222`).
+
 **Message**
 
-The message you want to send.
+The message text to send.
