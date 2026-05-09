@@ -11,14 +11,14 @@ The Amazon EC2 - List address(es) Task lists information about one or more of yo
 
 **Connection**
 
-To use Amazon EC2 Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
- 
+To use Amazon EC2 Tasks you need to create an Amazon [Connection](../../connection-amazon) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+
 **Filter**
 
-Filter for elastic IP addresses. 
+Filter for elastic IP addresses.
 
 :::tip Example
 
-`{"Name": "instance-type", "Values": ["t2.micro", "m1.medium"]}`
+`@{Name="domain"; Values="vpc"}`
 
 :::
