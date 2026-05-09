@@ -11,12 +11,12 @@ The Amazon EC2 - Create snapshot Task creates a snapshot of an Amazon EBS volume
 
 **Connection**
 
-To use Amazon EC2 Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
- 
+To use Amazon EC2 Tasks you need to create an Amazon [Connection](../../connection-amazon) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+
 **Volume ID**
 
-The volume ID of the Amazon EBS volume.
- 
+The volume ID of the Amazon EBS volume. Click the *Refresh* icon to populate the drop-down volume list.
+
 **Description**
 
 Detailed description for the snapshot and what it is being used for.
