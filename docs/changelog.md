@@ -6,6 +6,61 @@ hide_title: 'true'
 ## Change Log
 
 
+### 13.2.1 [2026-05-11]
+
+#### Features
+
+:star: Client/Server: User-Agent Override on SOAP Web Service Clients for ZScaler Compatibility (VCPCM-3055, VCPCM-3061)
+
+:star: Client/Server: Twitter Integration Removed (VCPCM-1702)
+
+:star: Client/Server: SSIS Package Execution Extended to SQL Server 2022 and SQL Server 2025 (VCPCM-2462)
+
+:star: Client/Server: CHM Help File and help.visualcron.com Single Source of Truth (VCPCM-3004)
+
+
+#### Bug Fixes
+
+:white_check_mark: Client/Server: EO Browser Package Update (VCPCM-2853)
+
+:white_check_mark: Client/Server: NuGet Package Vulnerability Remediation (VCPCM-2891, VCPCM-3251)
+
+:white_check_mark: Client: SQL Task Parameter Value Retention on Parameter Refresh (VCPCM-3219)
+
+:white_check_mark: Client: Certificate Creation Typo in Certificates UI (VCPCM-2994)
+
+:white_check_mark: Client/Server: Dropbox Connection Authentication Error (VCPCM-2847)
+
+:white_check_mark: Client/Server: HTTP REST Trigger Memory Leak from TriggerResult Accumulation (VCPCM-2851)
+
+:white_check_mark: Client: Azure Queue Storage Trigger Queue List Loading (VCPCM-2485)
+
+:white_check_mark: Client/Server: SharePoint Get Lists Task Authentication Error (VCPCM-2832)
+
+:white_check_mark: Client/Server: Web Macro Task Execution After Child Process Failure (VCPCM-3050)
+
+:white_check_mark: Client/Server: Multiple Simultaneous Connections to Server Resource (VCPCM-2801)
+
+:white_check_mark: Client: Calendar View Job and Task Display (VCPCM-2804)
+
+:white_check_mark: Client/Server: View Settings Permission Enforcement in Web Client (VCPCM-2790)
+
+:white_check_mark: Client/Server: SFTP Task File Listing Fallback for Non-Standard Servers (VCPCM-2222)
+
+:white_check_mark: Client/Server: Default Viewer Group Permission Security Hardening (VCPCM-3138)
+
+:white_check_mark: Client: VC Connection Test Unsupported Display (VCPCM-2995)
+
+:white_check_mark: Client: Google Cloud Storage Bucket Browsing for Sync Files Task (VCPCM-3507)
+
+:white_check_mark: Client/Server: Sync Files Task GCP Connection Execution (VCPCM-3511)
+
+:white_check_mark: Client/Server: Web Macro Task Editor Access for Non-Administrator Users (VCPCM-3519)
+
+:white_check_mark: Client/Server: Sync Task Subsequent Run Execution (VCPCM-3045)
+
+:white_check_mark: Client/Server: Dropbox Team-Scoped App Authentication Error (VCPCM-3515)
+
 ### 13.1.1 [2026-03-25]    
 
 #### Features   
