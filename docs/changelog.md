@@ -16,18 +16,18 @@ hide_title: 'true'
 
 :star: Client/Server: SSIS Package Execution Extended to SQL Server 2022 and SQL Server 2025 (VCPCM-2462)
 
-:star: Client/Server: NuGet Package Vulnerability Remediation (VCPCM-2891, VCPCM-3251)
-
 :star: Client/Server: CHM Help File and help.visualcron.com Single Source of Truth (VCPCM-3004)
-
-:star: Client/Server: EO Browser Package Update (VCPCM-2853)
-
-:star: Client: SQL Task Parameter Value Retention on Parameter Refresh (VCPCM-3219)
-
-:star: Client: Certificate Creation Typo in Certificates UI (VCPCM-2994)
 
 
 #### Bug Fixes
+
+:white_check_mark: Client/Server: EO Browser Package Update (VCPCM-2853)
+
+:white_check_mark: Client/Server: NuGet Package Vulnerability Remediation (VCPCM-2891, VCPCM-3251)
+
+:white_check_mark: Client: SQL Task Parameter Value Retention on Parameter Refresh (VCPCM-3219)
+
+:white_check_mark: Client: Certificate Creation Typo in Certificates UI (VCPCM-2994)
 
 :white_check_mark: Client/Server: Dropbox Connection Authentication Error (VCPCM-2847)
 
