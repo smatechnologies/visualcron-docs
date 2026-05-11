@@ -25,8 +25,6 @@ If checked, the read-only attribute is removed from files, allowing deletion of 
  
 **Secure before delete a file**
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Delete%20File%20Secure.png)
-
 **Secure content with random data**
 
 If checked, the file content is overwritten with random data before deletion. Note: using this on a SSD drive can degrade performance.

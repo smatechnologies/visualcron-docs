@@ -85,7 +85,7 @@ Displays the fields extracted from the document. Each row represents a variable 
 
 **Provider Connection**
 
-Select the cloud provider connection to use for scanning. Connections are configured in the [Connections](../../../server/connections) settings.
+Select the cloud provider connection to use for scanning. Connections are configured in the [Connections](../../../server/global-connections) settings.
 
 **Document type**
 
