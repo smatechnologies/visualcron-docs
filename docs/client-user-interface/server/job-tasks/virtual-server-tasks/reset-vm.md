@@ -9,6 +9,8 @@ The Virtual Server - Reset VM Task resets a specific virtual machine.
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/Reset%20VM.png)
 
+**Reset VM > Connection** tab
+
 **Remote VMWare server / Local VMWare workstation**
 
 Select _Remote VMWare server_ to connect to a remote VMWare server, or _Local VMWare workstation_ to use the local machine.
@@ -28,6 +30,10 @@ The path to the virtual machine's VMX file on the local machine. Click the File 
 **Timeout in seconds**
 
 The number of seconds to wait before timing out the operation. Minimum is 1, maximum is 36000, default is 180. Note that a Timeout tab setting on the task overrides this value.
+
+**Reset VM > VM Task settings** tab
+
+**Destination**
 
 **Stop type**
 

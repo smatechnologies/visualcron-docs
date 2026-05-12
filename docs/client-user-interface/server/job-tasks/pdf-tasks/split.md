@@ -59,12 +59,16 @@ This tab uses the common [file filter](../../job-tasks-file-filter) to filter ou
 
 **Save to**
 
-The destination folder and file mask which the output files are saved to.
- 
+Selects where the split output files are written. Available options:
+
+* _Save to same file_ - write to the same folder as the source, using the default split naming
+* _Same folder with file mask_ - keep the original folder, but save with a custom file mask (set the *File mask* below)
+* _Different folder with file mask_ - save in a different folder with a custom file mask (set both *Folder* and *File mask* below)
+
 **Folder**
 
-If Different folder and use file mask is selected, use manual folder specification or click the *Folder* icon.
- 
+The destination folder. Enabled when *Save to* is set to _Different folder with file mask_. Click the *Folder* icon to browse for the folder.
+
 **File mask**
 
-Save file with different name.
+The file mask used to name the output files. Enabled when *Save to* is set to _Same folder with file mask_ or _Different folder with file mask_.

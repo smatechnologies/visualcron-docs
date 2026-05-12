@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Image crop Task removes the outer parts of an image according to dimensions specified to an existing image.
  
-**Image crop  > File filter > Location** sub tab
+**Image crop > File filter** sub tab
 
 In the File filter tab you define the image file to be cropped. Read more about file filter [here](../../../server/job-tasks-file-filter).
  
@@ -17,20 +17,37 @@ In the File filter tab you define the image file to be cropped. Read more about 
 
 **Crop position and dimensions**
 
-Top and Left define the upper left corner of the cropped image.
-Width and Height define the size of the cropped image.
+**Top**
+
+The number of pixels from the top edge of the original image to where the crop starts.
+
+**Left**
+
+The number of pixels from the left edge of the original image to where the crop starts.
+
+**Width**
+
+The width of the cropped area in pixels.
+
+**Height**
+
+The height of the cropped area in pixels.
  
 **Save to**
 
-The destination folder and file mask which the image is saved to.
+Select where to save the cropped image:
+
+* **Same file** — Overwrites the original source file.
+* **Same folder but use file mask** — Saves to the same folder with a new file name specified in File mask.
+* **Different folder and use file mask** — Saves to a different folder with a new file name.
  
 **Folder**
 
-If *Different folder and use file mask* is selected, use manual folder specification or click the *Folder* icon.
+The destination folder path. Only available when **Different folder and use file mask** is selected.
  
 **File mask**
 
-Save file with different name.
+The file name to use for the saved image. Available when **Same folder but use file mask** or **Different folder and use file mask** is selected.
  
 :::info Note
 

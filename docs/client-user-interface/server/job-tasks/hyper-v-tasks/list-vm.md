@@ -11,8 +11,8 @@ The Hyper-V - List VM Task allows you to list virtual machines hosted on a speci
 
 **Local/Remote server**
 
-Select the the *Local server* radio button if you want to control the local computer, select the *Remote server* radio button if you want to control a remote computer.
- 
+Select the *Local server* radio button if you want to control the local computer, select the *Remote server* radio button if you want to control a remote computer.
+
 **Server name**
 
 Host name of the remote server.

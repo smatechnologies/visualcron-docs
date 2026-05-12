@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The Image adjust Task lets you change colors, brightness and contrast in an existing image.
  
-**Image adjust > File filter > Location** sub tab
+**Image adjust > File filter** sub tab
 
 In the File filter tab you define the image file to be adjusted. Read more about file filter [here](../../../server/job-tasks-file-filter).
  
@@ -17,7 +17,13 @@ In the File filter tab you define the image file to be adjusted. Read more about
 
 **Adjust to**
 
-All image adjust values are set to 0 by default. For RGB and Gamma, select a value between 0 and 255 to intense a red, green or blue color.
+Select the type of adjustment to apply. Only one mode is active at a time:
+
+* **Color RGB** — Adjust color by red, green, and blue channel values (Red, Green, Blue).
+* **Color HSB** — Adjust color by hue, saturation, and brightness (Hue, Saturation, Brightness).
+* **Gamma** — Adjust gamma correction per color channel (Red, Green, Blue).
+* **Brightness** — Adjust the overall brightness of the image.
+* **Contrast** — Adjust the overall contrast of the image.
  
 **Image adjust > Destination** sub tab
 
@@ -25,12 +31,16 @@ All image adjust values are set to 0 by default. For RGB and Gamma, select a val
 
 **Save to**
 
-Enter destination file and folder names.
- 
+Select where to save the adjusted image:
+
+* **Same file** — Overwrites the original source file.
+* **Same folder but use file mask** — Saves to the same folder with a new file name specified in File mask.
+* **Different folder and use file mask** — Saves to a different folder with a new file name.
+
 **Folder**
 
-If *Different folder and use file mask* is selected, use manual folder specification or click the *Folder* icon.
- 
+The destination folder path. Only available when **Different folder and use file mask** is selected.
+
 **File mask**
 
-Save file with different name.
+The file name to use for the saved image. Available when **Same folder but use file mask** or **Different folder and use file mask** is selected.

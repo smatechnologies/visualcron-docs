@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Task Database - Execute SSISDB Package
 
-The Task Database - Execute SSISDB package executes an existing package in from catalogs (SSISDB).
+The Task Database - Execute SSISDB package executes an existing package from the catalogs (SSISDB).
  
 **Execute SSISDB package** tab
 
@@ -15,7 +15,7 @@ The Task Database - Execute SSISDB package executes an existing package in from 
 
 Select the SQL Connection to the SSISDB server. You must create a Connection first in the [Connections](../../../server/global-connections) dialog.
  
-**Credentials**
+**Credential**
 
 Optional credential for executing the package. When using Windows authentication, the Credential must be a valid Windows user with permissions to execute packages in SSISDB.
  

@@ -50,3 +50,37 @@ The delay to apply when sending broadcast requests, allowing agents time to resp
 **SNMP version**
 
 The SNMP protocol version to use for the request. The default is SNMPv1.
+
+**SNMP Set > Security** tab
+
+**Security Level**
+
+The SNMPv3 security level to use. Select from the dropdown.
+
+**Authentication Protocol**
+
+The authentication protocol to use for SNMPv3. Select from the dropdown.
+
+**Authentication Passphrase**
+
+The passphrase used for SNMPv3 authentication.
+
+**Encryption Protocol**
+
+The encryption protocol to use for SNMPv3. Select from the dropdown.
+
+**Encryption Passphrase**
+
+The passphrase used for SNMPv3 encryption.
+
+**Specify Context**
+
+When checked, allows you to specify an SNMPv3 context name and context engine ID.
+
+**Context Name**
+
+The SNMPv3 context name to use. Available when Specify Context is checked.
+
+**Context Engine ID**
+
+The SNMPv3 context engine ID to use. Available when Specify Context is checked.

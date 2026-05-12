@@ -15,18 +15,61 @@ To control a remote computer you may need to use a Credential. The Credential mu
  
 **Select Excel file**
 
-Select full path to the Excel file.
+Select the full path to the Excel file.
+
+**Password**
+
+Enter the password for the Excel file, if it is password protected.
+
+**Worksheet**
+
+**Use first worksheet** / **Use specific worksheet**
+
+Select **Use first worksheet** to use the first worksheet in the workbook. Select **Use specific worksheet** to choose a specific worksheet.
  
 **Worksheet**
 
-Select which worksheet in the workbook to access. Press the Get button to populate the list of existing worksheets.
+Select the worksheet to access. Only available when **Use specific worksheet** is selected. Click the **Get** button to populate the list with worksheets from the selected file.
  
 **Cell coordinates**
 
-The options for output of cell content.
+**Cell by position**
 
-Select *Cell* by position or Cell by reference if you want a single cell result.
-Select *Cells* by position range if you want to obtain a *Row* to *End row* and *Column* to *End column* result.
-Select *Cell* by *reference range* if you want to obtain a C*ell reference* to *End cell* reference result.
-Select *Get all cells* if you want a result for a number of columns.
+Returns the value of a single cell identified by its row and column position.
 
+* **Row** — The row number of the cell.
+* **Column** — The column number of the cell.
+
+**Cell by reference (i.e. A3)**
+
+Returns the value of a single cell identified by its reference.
+
+* **Cell reference** — The cell reference (for example, A3).
+
+**Cells by position range**
+
+Returns the values of a range of cells identified by row and column positions.
+
+* **Row** — The starting row of the range.
+* **End row** — The ending row of the range.
+* **Column** — The starting column of the range.
+* **End column** — The ending column of the range.
+
+**Cell by reference range (i.e. B2)**
+
+Returns the values of a range of cells identified by cell references.
+
+* **Cell reference** — The starting cell reference of the range.
+* **End cell reference** — The ending cell reference of the range.
+
+**Get all cells**
+
+Returns all cell values up to a specified number of columns.
+
+* **Number of columns** — The number of columns to include in the result.
+
+**Get by column numbers**
+
+Returns cell values from specified column numbers.
+
+* **Column numbers** — The column numbers to retrieve.

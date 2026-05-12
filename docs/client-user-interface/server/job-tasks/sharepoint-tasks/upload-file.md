@@ -3,7 +3,7 @@ sidebar_label: 'Task Sharepoint - Upload File'
 hide_title: 'true'
 ---
 
-## Task Sharepoint- Upload File
+## Task Sharepoint - Upload File
 
 The SharePoint - Upload file(s) Task uploads one or more files to the SharePoint library.
  
@@ -15,7 +15,7 @@ The SharePoint Tasks supports the following versions:
  
 **Upload file(s) > File filter > Location** sub tab
 
-The List file(s) Task uses the standard VisualCron [File filter](../../job-tasks-file-filter) to define the properties of the listed files.
+The Upload file(s) Task uses the standard VisualCron [File filter](../../job-tasks-file-filter) to define the properties of the files to upload.
  
 **Upload file(s) > Destination** sub tab
 
@@ -27,9 +27,9 @@ To use SharePoint Tasks you need to create a [Connection](../../global-connectio
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Upload%20files%20destination.png)
 
-**Destination folder**
+**Destination folder (relative server url)**
 
-The destination folder for the files. Click the *Folder* icon to browse a SharePoint site in order to view or select a specific folder.
+The destination folder for the files, specified as a relative server URL. Click the *Folder* icon to browse a SharePoint site in order to view or select a specific folder.
  
 **Overwrite**
 

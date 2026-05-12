@@ -5,12 +5,14 @@ hide_title: 'true'
 
 ## Upload Step
 
-The upload file step is created wherever you select a file to upload in a web page. What is important to know that the step is created there but then you can later edit the step to make it more dynamic.
+The Upload step uploads one or more files from the local file system as part of a web macro. The step is created automatically when a file upload interaction is recorded, and can be edited afterwards to make the file selection more dynamic.
 
 ![](../../../../../static/img/stepupload.png)
 
-The upload step uses the same [file filter](../../../server/job-tasks-file-filter) as the rest of VisualCron application.
- 
+**File filter tab**
+
+Specifies the files to upload using the standard VisualCron [file filter](../../../server/job-tasks-file-filter).
+
 **Wait tab**
 
-The wait tab controls how long time the step should wait before performing the step and after performing the step (in milliseconds).
+Controls how long the step waits before and after performing the action.

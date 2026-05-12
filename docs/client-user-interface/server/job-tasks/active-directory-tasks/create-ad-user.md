@@ -19,13 +19,27 @@ To control a remote computer you may need to use a Credential. The Credential mu
 
 The Lightweight Directory Access Protocol (LDAP) path of the parent Active Directory container. This is usually the top most container or the root of the directory data tree on a directory server. Click the *Select container* button to select an existing Active Directory container.
  
-**First/Initials/Middle/Last name**
+**First name**
 
-The user's different name parts.
+The user's first name.
+
+**Initials**
+
+The user's initials.
+
+**Middle name**
+
+The user's middle name.
+
+**Last name**
+
+The user's last name.
  
 **Full name**
 
 First, Middle/Initial and Last Name parameters combined.
+
+**Create AD User > Login details** sub tab
 
 ![](../../../../../static/img/taskactivedirectorycreateaduserlogin.png)
 
@@ -41,7 +55,7 @@ The Pre-Windows 2000 logon name of the Active Directory user to be created. This
 
 The logon password of the Active Directory user to be created.
  
-**E-mail**
+**Email**
 
 The e-mail address of the Active Directory user to be created.
  
@@ -53,7 +67,7 @@ If checked the user must modify the assigned password at next logon.
 
 If checked the user cannot change the assigned password. Only applicable only if the *User must change password at next logon* parameter is unchecked.
  
-**Password never expires**
+**Password Never Expires**
 
 If checked the assigned password never expires.
  

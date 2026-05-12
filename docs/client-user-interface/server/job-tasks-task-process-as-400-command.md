@@ -15,7 +15,11 @@ Select a AS/400 Connection. You can set up the Connection here: [AS/400 Connecti
  
 **Full command**
 
-Specify the command to call the program with any parameters according to the default format.
+Specify the command to call the program with any parameters according to the default format. For example:
+
+```
+CALL PGM(programName) PARM(param1 param2)
+```
  
 :::tip Note
 

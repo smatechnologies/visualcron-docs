@@ -17,11 +17,11 @@ If the source pdf file is password protected, enter password here.
  
 **Page range**
 
-Select *All* pages or a page range for text replacement.
+The pages from the extract file that should be inserted. Specify *All pages* or a range like 2-4 or specific pages 1,3,5-6.
  
 **Extract page(s) from file**
 
-If pages shall be extracted from another file, specify full path file name here. Click the *Folder* icon to browse and select a folder.
+If pages should be extracted from another PDF file, specify the full path here. Click the *File* icon to browse and select the file. Leave empty to insert blank pages instead.
  
 **Password for extract file**
 
@@ -41,12 +41,16 @@ Page number in source document to start insert pages in.
  
 **Save to**
 
-The destination folder and file mask which the output file is saved to.
- 
+Selects where the modified PDF is written. Available options:
+
+* _Save to same file_ - overwrite the source PDF in place
+* _Same folder with file mask_ - keep the original folder, but save under a different name (set the *File mask* below)
+* _Different folder with file mask_ - save under a different name in a different folder (set both *Folder* and *File mask* below)
+
 **Folder**
 
-If *Different folder and use file mask* is selected, use manual folder specification or click the *Folder* icon.
- 
+The destination folder. Enabled when *Save to* is set to _Different folder with file mask_. Click the *Folder* icon to browse for the folder.
+
 **File mask**
 
-Save file with different name.
+The file mask used to name the output file. Enabled when *Save to* is set to _Same folder with file mask_ or _Different folder with file mask_.

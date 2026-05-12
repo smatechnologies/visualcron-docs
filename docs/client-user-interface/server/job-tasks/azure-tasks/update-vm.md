@@ -5,29 +5,27 @@ hide_title: 'true'
 
 ## Task Azure - Update VM
 
-This Task is using the [Microsoft Azure Connection](../../connection-microsoft-azure).
+The Azure - Update VM Task updates an existing virtual machine in the Azure cloud. This Task is using the [Microsoft Azure Connection](../../connection-microsoft-azure).
+
+**Azure - Update VM** tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Azure%20Tasks/Update%20VM.png)
 
 **Connection**
 
-Select the Microsoft Azure Connection to use. Only connections of type Azure are shown.
+To use the Azure Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
 
-**Virtual machine**
+**Type**
 
-**Classic / Resource manager**
+Select the deployment model of the target virtual machine. Available options:
 
-Select the VM deployment model.
-
-* _Classic_ - uses the Azure Classic deployment model; the service name field is labeled _Service name_
-* _Resource manager_ - uses the Azure Resource Manager model; the service name field is labeled _Resource group_
-
-If the selected connection type does not match the selected mode, a warning is displayed.
+* _Classic_ - the virtual machine was deployed using the classic deployment model
+* _Resource Manager_ - the virtual machine was deployed using Azure Resource Manager
 
 **VM name**
 
-The name of the virtual machine to update. Click the Refresh button to populate the list from the Azure connection.
+The Azure virtual machine name. Click the *Refresh* icon to populate the drop-down VM name list.
 
 **Service name / Resource group**
 
-The cloud service name (Classic mode) or resource group name (Resource Manager mode) that contains the virtual machine. Click the Refresh button to populate the list. This field is automatically populated when a VM is selected.
+The Azure service name (when *Type* is set to _Classic_) or the resource group (when *Type* is set to _Resource Manager_). The label changes to match the selected *Type*. Click the *Refresh* icon to populate the drop-down list.

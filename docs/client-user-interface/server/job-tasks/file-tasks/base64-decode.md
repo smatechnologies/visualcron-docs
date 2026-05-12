@@ -7,11 +7,21 @@ hide_title: 'true'
 
 The Decoding - Base 64 - decode Task decodes a file or value from Base64 format and outputs to standard output or file.
 
+**Base64 - decode > Main settings** sub tab
+
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Base64%20-%20decode%20settings.png)
 
 **Source**
 
 Select File if you want to decode an existing file. When selecting File, the standard VisualCron [File filter](../../../server/job-tasks-file-filter) will be enabled. Select Value/Variable to use an existing value or Variable.
+
+**Remove non-supported characters**
+
+Removes any characters that are not valid Base64 characters from the input before decoding.
+ 
+**Base64 - decode > File filter** sub tab
+
+This Task uses the standard VisualCron [File filter](../../../server/job-tasks-file-filter) to filter out files. This tab is only enabled when **File** is selected in Source.
  
 **Base64 - decode > Destination** sub tab
 
@@ -23,7 +33,11 @@ Select **File** if you want to save the decoded content to file or select *Stand
  
 **Destination file**
 
-You can choose to save files to same folder as where the original file was found by selecting *Use same folder* as source. If you select *Use custom destination folder* you are able to select a different destination folder for the saved file than source folder.
+You can choose to save files to same folder as where the original file was found by selecting Use same folder as source. If you select *Use custom destination folder* you are able to select a different destination folder for the saved file than source folder.
+
+**Credential**
+
+Select a Credential if you need specific permissions to write the destination file.
  
 **Destination file mask**
 

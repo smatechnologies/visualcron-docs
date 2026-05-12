@@ -7,7 +7,8 @@ hide_title: 'true'
 
 The Image flip Task flips an image horizontally or vertically.
  
-**Image flip > File filter > Location** sub tab
+**Image flip > File filter** sub tab
+
 In the File filter tab you define which image that should be flipped. Read more about file filter [here](../../../server/job-tasks-file-filter).
  
 **Image flip > Destination** sub tab
@@ -16,16 +17,20 @@ In the File filter tab you define which image that should be flipped. Read more 
 
 **Flip type**
 
-Specify Horizontal or Vertical flip.
+Select the direction to flip the image. Options: Horizontal, Vertical.
  
 **Save to**
 
-The destination folder and file mask which the image is saved to.
+Select where to save the flipped image:
+
+* **Same file** — Overwrites the original source file.
+* **Same folder but use file mask** — Saves to the same folder with a new file name specified in File mask.
+* **Different folder and use file mask** — Saves to a different folder with a new file name.
  
 **Folder**
 
-If Different folder and use file mask is selected, use manual folder specification or click the Folder icon.
+The destination folder path. Only available when **Different folder and use file mask** is selected.
  
 **File mask**
 
-Save file with different name.
+The file name to use for the saved image. Available when **Same folder but use file mask** or **Different folder and use file mask** is selected.

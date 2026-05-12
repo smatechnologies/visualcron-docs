@@ -29,6 +29,10 @@ Closing the main window of the application is a nicer method because the applica
 Please note that the application will not shut down if there is a dialog box to confirm exit (i.e. "Are you sure you want to quit?"). If this is used try to disable the confirm dialog or, if it's not possible, use the "Kill process" method.
  
 "Kill process" terminates all processes with the defined name directly. It is similar to open the Task manager and right click to select "End process".
+
+**Kill child processes**
+
+When checked (default), VisualCron will also terminate any child processes that were spawned by the target process.
  
 **If more that one matching process is found**
 
@@ -52,4 +56,8 @@ Do not kill any process.
  
 **Conditions**
 
-Limits for memory and CPU to be considered in kill process.
+Conditions allow you to limit the kill to processes that meet specific resource usage criteria. The kill will only be performed if the enabled conditions are met.
+
+*Memory usage* — when checked, the process is only killed if its memory usage is over or under the specified value. Set the comparison (Over/Under), the numeric value, and the size unit (kB, MB, GB, etc.).
+
+*CPU usage* — when checked, the process is only killed if its CPU usage percentage is over or under the specified value. Set the comparison (Over/Under) and the percentage value.

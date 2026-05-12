@@ -48,8 +48,7 @@ Save file with different name.
 
 This tab uses the common [file filter](../../job-tasks-file-filter) to filter out the files that should be processed in this Task.
  
- 
-**Add footer/header > Imag**e sub tab
+**Add footer/header > Image** sub tab
 
 This tab appears after choosing an Image content type in the Main settings tab.
 

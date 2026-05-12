@@ -21,6 +21,10 @@ The Remote execute Task some limitations (limited by Windows API). In some scena
 **Credentials**
 
 To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
+
+**Host name**
+
+The hostname or IP address of the remote server on which the command will be executed. This is a required field.
  
 **Command**
 
@@ -29,20 +33,20 @@ Enter full path and name to the executable file. The rightmost button opens a fi
 **Arguments**
 
 Arguments don't have to start with a space key, look at the Add Task view for an example. Use "" around long arguments.
- 
-**Working directory**
 
-This option may be used if you for example want to execute a PHP script which has no absolute links. Let say that the PHP script tries to write a file "test.txt". If you specify a working directory, you also specify where PHP will write the file. If not specified in this case, PHP will write the file where php.exe is stored, not where the script is stored (that is because the Working Directory by default will be where the command is located, in this case php.exe is the Task and the script is the argument).
- 
-**Run in hidden window**
-
-When checked, VisualCron will run the Task in hidden mode which means that if a Task normally creates a window, this will not be displayed. If you want to hide a GUI application (winform) you must also check Use shell execute.
- 
 :::tip Note about arguments/parameters:
 
 Use "" around arguments.
 
 :::
+
+**Working directory**
+
+This option may be used if you for example want to execute a PHP script which has no absolute links. Let say that the PHP script tries to write a file "test.txt". If you specify a working directory, you also specify where PHP will write the file. If not specified in this case, PHP will write the file where php.exe is stored, not where the script is stored.
+ 
+**Run in hidden window**
+
+When checked, VisualCron will run the Task in hidden mode which means that if a Task normally creates a window, this will not be displayed.
 
 **Process priority**
 
@@ -53,6 +57,14 @@ VisualCron Tasks can be run with any standard process priority. The following pr
 * Above Normal - Indicates a process that has priority higher than Normal but lower than High
 * High - Indicates a process that performs time-critical Tasks that must be executed immediately for it to run correctly. The threads of a high-priority class process preempt the threads of normal or idle priority class processes. An example is the Task List, which must respond quickly when called by the user, regardless of the load on the operating system. Use extreme care when using the high-priority class, because a high-priority class CPU-bound application can use nearly all available cycles.
 * RealTime - Indicates a process that has the highest possible priority. The threads of a real-time priority class process preempt the threads of all other processes, including operating system processes performing important Tasks. For example, a real-time process that executes for more than a very brief interval can cause disk caches not to flush or cause the mouse to be unresponsive.
+
+**Wait for completion**
+
+When checked (default), VisualCron will wait for the remote process to finish before the Task completes. Uncheck this if you want the Task to return immediately after launching the process on the remote server.
+ 
+**Use fallback method**
+
+When checked, VisualCron uses an alternative thread-watcher method to monitor the remote process. Enable this if the standard completion detection is unreliable in your environment.
  
 :::tip Note about Return codes:
 

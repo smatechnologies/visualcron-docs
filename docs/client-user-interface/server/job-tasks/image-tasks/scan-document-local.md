@@ -17,12 +17,11 @@ The following document and image formats are supported:
 * GIF
 * PNG
  
-**File filter tab**
+**Scan document (local) > File filter** sub tab
 
 The Scan document Task is built to process one file at a time. It is using the [File filter](../../../server/job-tasks-file-filter) for finding the file to process. It will only use the first found file in the [File filter](../../../server/job-tasks-file-filter). The reason for this is that output and Variables is tied to the file that is processed. If you have several documents of same kind to process you should put the Task in a [loop](../../../server/job-tasks-loop-functionality) or base it on a [File Trigger](../../../server/event-trigger-file) for example that will run the Task once for each file.
  
- 
-**Scan properties tab**
+**Scan document (local) > Scan properties** sub tab
 
 In the Scan properties tab you define which areas (rectangles) are going to be processed for scanning and how to save the content of those rectangles.
  
@@ -126,27 +125,56 @@ Taken into account if "by end of table interval" option selected. Specifies the 
 
 Taken into account if "by another variable" option selected. If on, the variable selected as the “End of the table variable” will be included in the table.
  
-**Output settings tab**
+**Output settings**
 
-The output settings tab controls what we do with the scanned result and how we save the result.
+The output settings control what we do with the scanned result and how we save the result.
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Scan%20document%20(local).png)
 
-**Text result**
+**Include field names**
 
-* Field separator - here you can control what separates each field.
-* Text qualifier - the text qualifier is the parts surrounding a field. Normally nothing which is default.
-* Line break - controls what type of line break should be used.
- 
-**Location for saving value**
+When enabled, field names are included in the output.
 
-* Output to Task Variable - the Variable is available in the Result node of the Task.
-* Output to Job Variable - the Variable is added as a Job Variable in the Job.
-* Output to file - the Variable is saved to file. You control where to save in the File output settings.
+**Field separator**
+
+Controls what character separates each field in the output.
+
+**Text qualifier**
+
+The character used to surround a field value in the output. Normally nothing, which is the default.
+
+**Line break**
+
+Controls what type of line break is used in the output.
+
+**Output to standard output**
+
+Saves the result to standard output, available as a Task Variable in the Result node of the Task.
+
+**Output to file**
+
+Saves the result to a file. Configure the file location and options in the **File output settings** section below.
+
+**File output settings**
+
+**Credential**
+
+The credential to use when writing to the output file.
+
+**File path**
+
+The full path and file name where the output will be saved.
+
+**Include BOM (if UTF8)**
+
+When enabled, a byte order mark is included in the output file when using UTF-8 encoding.
+
+**Append to file**
+
+When enabled, the output is appended to the existing file rather than overwriting it.
  
 **Variables**
 
 When scanning to Task you find the result below in the Variables browser:
 
 ![](../../../../../static/img/variablesbrowserscandocument.png)
-

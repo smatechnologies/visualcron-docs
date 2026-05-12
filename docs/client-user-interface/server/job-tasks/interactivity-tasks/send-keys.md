@@ -9,6 +9,12 @@ The Task type Send keys is a way to control another application that is already 
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Send%20Keys.png)
 
+**Main settings**
+
+**Application title** / **Process name**
+
+Select the method used to identify the target window. Defaults to **Application title**.
+
 **Application title**
 
 To be able to send keys, VisualCron needs to have the application title or the process name. Enter title name or open Active *window titles* by clicking on the *select*. Note that this retrieves application titles from computer where the server reside. This function does not search child windows. This function does not perform a case-sensitive search. You can also hold drag the *arrow* button over a specific window. Release the button when you have selected the window.

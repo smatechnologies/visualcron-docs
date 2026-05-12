@@ -7,11 +7,15 @@ hide_title: 'true'
 
 The Dynamics CRM - Download attachment Task downloads one or more attachments a from Dynamics CRM instance.
 
-[](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Dynamics%20CRM%20Tasks/Download%20attachment(s).png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Dynamics%20CRM%20Tasks/Download%20attachment(s).png)
+
+**Connection details**
 
 **Connection**
 
 To use Dynamics CRM Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+
+**Download settings**
  
 **Destination folder**
 
@@ -19,4 +23,4 @@ Local destination folder where the downloaded files should be stored. Click the 
  
 **Source file mask**
 
-File mask for filtering out attachments in Dynamics CRM instance.
+File mask for filtering out attachments in Dynamics CRM instance. Click the *Refresh* button to populate the list of available attachments.

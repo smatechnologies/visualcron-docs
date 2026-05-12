@@ -64,6 +64,10 @@ When checked VisualCron will update the step preview images when running.
 **Extended Variables**
 
 This turns on and off sync of Variables. This property is subject to change.
+
+**Maximize window on test/record**
+
+When checked (default), the recorder window opens maximized when you click Record or Test run. Uncheck to open it in a normal-sized window.
  
 **Override referer**
 
@@ -103,17 +107,17 @@ Click on the Record button to start recording. This open the Web macro recorder 
  
 ### Playing back a web macro
 
-A web macro can be played back in both Client and Server. If you press Play it starts playing back in Client. You can also press Pause to stop playback.
+A web macro can be played back in both Client and Server. Click **Test run** to start playing back in Client.
  
 **Web macro > Actions** tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Web%20Macro%20actions.png)
 
-The Steps tab contains all recorded steps. Some of them can be edited/deleted by double clicking on Step or select and click Edit. Adding a step manually is currently not possible.
+The Actions tab contains all recorded steps. Some of them can be edited/deleted by double clicking on a step or selecting and clicking Edit. Adding a step manually is currently not possible.
  
-**Set wait for all steps**
+**Set wait for all actions**
 
-Each Step has a Before and After step wait time in milliseconds. If you want to increase or decrease this on all steps you can click this button and set these values for all steps.
+Each step has a Before and After wait time in milliseconds. If you want to increase or decrease this on all steps you can click this button and set these values for all steps.
  
 **Auto-creation of steps and adding manually**
 
@@ -149,9 +153,9 @@ There are two different type of plug-in standard: NPAPI and PPAPI. NPAPI origina
 5. Click "Download Now" to download install the Flash Player system plug-in. This will install the plug-in inside sub directory "```Macromed\Flash```" under your Windows system32 or SysWOW64 directory;
 6. VisualCron should auto detect the plug-in next time you record. If not, specify the folling folder in plugin text field: ```C:\Windows\SysWOW64\Macromed\Flash```
  
-**Auto scan common plugins**
+**Allow plugins**
 
-Indicating whether to automatically scan commonly used plugins.
+When checked (default), plugins are enabled and the plugin settings below become active. Uncheck to disable all plugin support entirely.
  
 **Disable built in plugins**
 

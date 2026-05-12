@@ -13,13 +13,31 @@ The Excel - Create Task can create an Excel file from a CSV file or Variable.
 
 **Source**
 
-You can select File if the source for conversion is one or more files. You can also select Value/Variable if the source comes from a previous Task for example.
+**File** / **Value/Variable**
+
+Select **File** if the source for conversion is one or more files. Select **Value/Variable** if the source comes from a Variable or a previous Task output.
+
+**Value/Variable**
+
+Enter the value or Variable to use as the source. Only available when **Value/Variable** is selected. Click the Variable selector button to insert a Variable.
  
 **Format**
 
-You need to adjust format controls so they fit the format of the incoming file. The text qualifier is any surrounding character.
+Adjust the format controls to match the format of the incoming file or value.
+
+**Field separator**
+
+Select the character used to separate fields in the input.
+
+**Text qualifier**
+
+Select the character used to surround field values in the input.
+
+**Line break**
+
+Select the character used to indicate a new row in the input.
  
-**Excel - Create > File filter > Location** sub tab
+**Excel - Create > File filter** sub tab
 
 If you have selected File as source you are able to set the standard VisualCron [File filter](../../../server/job-tasks-file-filter) values.
  
@@ -47,18 +65,38 @@ You can deselect this option if you do not want to include any existing headers 
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Create%20Output.png)
 
+**Sheet**
+
+Select the Excel file format for the output file.
+
 **Save to..**
 
-Depending on if you have selected File or Variable as source different options are available. If you have selected File all options are available and if you have selected Variable only *Different folder and use file mask* is available. When using Variable option the file mask must be the full name of the file.
- 
-**Credential**
+When the source is **File**, all three options are available. When the source is **Value/Variable**, only **Different folder and use file mask** is available.
 
-If you are planning to save on a network location you can select a Credential.
+* **Same folder but change extension** — Saves to the same folder with the same file name but changes the file extension to match the selected format.
+* **Same folder but use file mask** — Saves to the same folder with a new file name specified in File mask.
+* **Different folder and use file mask** — Saves to a different folder with a new file name. When using Value/Variable as source, the file mask must be the full name of the file.
+
+**Folder**
+
+The destination folder path. Only available when **Different folder and use file mask** is selected.
+
+**File mask**
+
+The file name to use for the saved file. Available when **Same folder but use file mask** or **Different folder and use file mask** is selected.
+
+**Credentials**
+
+To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
  
 **Password protection**
 
-If you want to protect the file with Excel password authentication you can check this value and enter a password.
- 
+**Password protect file with password**
+
+When checked, the output Excel file will be protected with a password. Enter the password in the field below.
+
 **Sheet**
 
-The created Excel sheet name.
+**Sheet name**
+
+The name of the worksheet in the created Excel file.

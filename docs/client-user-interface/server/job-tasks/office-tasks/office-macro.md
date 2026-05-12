@@ -11,35 +11,49 @@ The Office macro Task is able to execute macros located in Excel, PowerPoint, Ac
 
 **Credentials**
 
-You must specify a Credential, a remote server name, user name and pass word for a user on the remote server which the command will execute as. Click on the Manage credentials button to add a new Credential.
- 
-**File type**
+To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
 
-Select either Excel, PowerPoint, Access or Word.
- 
-**Execute in 32 bit mode**
+**File**
 
-Set this to 32 bit if your Office is 32 bit - otherwise uncheck it.
- 
-**File path**
+**Type**
 
-This is the full path to the document.
- 
+Select the Office application type: Excel, PowerPoint, Access, or Word.
+
+**Execute in 32bit mode**
+
+When checked, executes the macro using the 32-bit Office process. Enable this if your Office installation is 32-bit.
+
+**Path**
+
+The full path to the Office document containing the macro.
+
 **Password**
 
-Any password for accessing the document. Leave empty if no password is used.
- 
+The password for the document. Leave empty if the document is not password protected.
+
 **Update file after execution**
 
-This saves the document after execution. Useful if you have performed a calculation on in the document.
- 
+When checked, saves the document after the macro runs. Useful when the macro performs calculations or modifies data.
+
+**CallQuit**
+
+When checked, calls the Quit method on the Office application after the macro completes. If your macro already calls Quit, uncheck this option to avoid conflicts.
+
+**Visible**
+
+When checked, makes the Office application window visible during execution. Leave unchecked to run the macro in the background.
+
+**Macro name**
+
+Enter the name of the macro to execute. Use only the macro name — do not include the full file path. For macros in a specific module, use the format **ModuleName.MacroName** (for example, **MainModule.CalcSomething**).
+
 **Parameters**
 
-If a macro function needs parameters you can specify them here by clicking Add.
+If the macro function requires parameters, use the **Add**, **Edit**, and **Delete** buttons to manage them.
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Office%20Macro%20Parameters.png)
 
-Choose appropriate *value type* and set the actual *value*. Normally VisualCron validates the value against the data type. If you use a Variable that validation can fail if the value is not set in the Variable. To prevent failure you can uncheck the *Validate value* checkbox.
+Choose the appropriate *value type* and set the actual *value*. Normally VisualCron validates the value against the data type. If you use a Variable that validation can fail if the value is not set in the Variable. To prevent failure you can uncheck the *Validate value* checkbox.
  
 ### Errors
  

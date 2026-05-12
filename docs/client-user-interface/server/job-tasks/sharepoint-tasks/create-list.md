@@ -21,11 +21,11 @@ To use SharePoint Tasks you need to create a [Connection](../../global-connectio
  
 **Title**
 
-The title of the group to create.
+The title of the list to create.
  
 **Description**
 
-A user defined description of the group to create.
+A user defined description of the list to create.
  
 **Template type**
 
@@ -57,4 +57,3 @@ Columns are created by clicking the Add button using a Microsoft xml format.
 Read more here: [http://msdn.microsoft.com/en-us/library/office/ms457586.aspx](http://msdn.microsoft.com/en-us/library/office/ms457586.aspx)
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Create%20List%20Schema.png)
-

@@ -13,8 +13,12 @@ The Rename folder command renames a folder on the remote server.
 
 **Original name**
 
-The original relative folder name.
- 
+The path of the folder to rename on the remote server. Use the folder browse button to select a folder from the server.
+
 **New name**
 
-The new relative folder name.
+The new name for the folder.
+
+**Credential**
+
+Select a Credential if the folder resides on a network drive that requires authentication.

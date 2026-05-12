@@ -5,16 +5,16 @@ hide_title: 'true'
 
 ## Condition - Process
 
-The _Process_ condition lets you check information about a certain process before running your Task or Job.
- 
+The *Process* condition lets you check whether a process is running on the VisualCron server before running a Task or Job.
+
 **Global > Conditions > Condition set Add > Conditions Add > Process select > Process** tab
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Conditions/Condition%20-%20Process.png)
 
 **Process name**
 
-Enter the process name or select the process from a list by clicking on the _Select_ process button. Note that the check is case sensitive and that processes spawned from the VisualCron server may be in upper case. A good way to find the right process name, is to first start the Task Manager at the server from VisualCron and then select the process from the list.
- 
+Enter the process name or click the *Select process* button to choose one from the list. The check is case sensitive, and processes spawned from the VisualCron server may use upper case in their names. A reliable way to find the correct process name is to start the Task Manager on the server from VisualCron and pick the process from the list.
+
 **Is running**
 
-This checks whether a process is running or not. Select True or False.
+Checks whether the process is running. Select *True* or *False* to match.

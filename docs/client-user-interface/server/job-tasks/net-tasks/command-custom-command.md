@@ -11,4 +11,6 @@ Custom commands can be sent. This can be useful if you need to send a command wh
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Custom%20Command.png)
 
-Enter the commands separated by new lines in the text box.
+**Custom command(s)**
+
+Enter one or more FTP commands, one per line. Each line is sent as a separate command to the server.
