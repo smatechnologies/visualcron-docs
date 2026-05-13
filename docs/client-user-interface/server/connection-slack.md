@@ -56,6 +56,18 @@ This needs to match the Client secret settings in online Slack settings.
 
 Setup application links opens Slack workspace creation link. See images below how to create a workspace
  
+**Certificate**
+
+Required. The certificate used to terminate the HTTPS OAuth redirect listener during authentication. Pick a certificate that contains a usable private key from **Certificates**. Slack only accepts HTTPS redirect URLs, so the certificate must be present even when redirecting to `localhost`.
+
+**Accept all server certificates**
+
+When enabled, certificate validation errors on the OAuth redirect listener are ignored. Useful with self-signed certificates against `localhost`.
+
+**Redirect Url**
+
+This setting is for first time authentication only. Slack requires an HTTPS redirect URL; the default is [https://localhost:9999](https://localhost:9999) and it must match the Redirect URL configured in the Slack app. See images below.
+
 **Authenticate**
 
 When you have created a workspace or have an existing you click on Authenticate. See images below about authentication.
@@ -63,15 +75,6 @@ When you have created a workspace or have an existing you click on Authenticate.
 **Application token**
 
 More details..
- 
- 
-**Manage Connections > Add > Slack > Extra settings** tab
-
-![](../../../static/img/slack_redirecturi.png)
-
-**Redirect Url**
-
-This setting is for first time authentication only. We recommend using [http://localhost:9999](http://localhost:9999) which should match Redirect Url settings in Slack. See images below.
  
 ### Setting up Slack -> Create workspace
 
@@ -90,6 +93,8 @@ This setting is for first time authentication only. We recommend using [http://l
 ![](../../../static/img/slack_clickpermissions.png)
 
 ### Setting up Slack -> Set Redirect URLs
+
+The Redirect URL configured in the Slack app must use HTTPS (for example `https://localhost:9999`) and must match the Redirect Url set on the VisualCron connection.
 
 ![](../../../static/img/slack_setredirecturi.png)
 
