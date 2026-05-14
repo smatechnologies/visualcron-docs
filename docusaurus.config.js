@@ -46,6 +46,14 @@ module.exports = {
   ],
   plugins: [
     [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          { from: '/license', to: '/terms-and-conditions' },
+        ],
+      },
+    ],
+    [
       '@docusaurus/plugin-google-gtag',
       {
         id: 'gtag-1',
