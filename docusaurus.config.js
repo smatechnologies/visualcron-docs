@@ -6,7 +6,7 @@ module.exports = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   markdown: {
-    format: 'md',
+    format: 'detect',
   },
   favicon: 'img/favicon.ico',
   organizationName: 'smatechnologies',
