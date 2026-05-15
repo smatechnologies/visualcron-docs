@@ -11,7 +11,7 @@ The IIS - Change Website State Task starts, stops, or restarts an existing websi
 
 **Connection**
 
-To use IIS Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+To use IIS Tasks you need to create an [IIS Connection](../../connection-iis) first. Click the *Settings* icon to open the *Manage Connections* dialog.
 
 **Web site parameters**
 

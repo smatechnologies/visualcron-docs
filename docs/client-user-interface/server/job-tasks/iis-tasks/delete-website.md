@@ -11,7 +11,7 @@ The IIS - Delete Website Task removes an existing website from Internet Informat
 
 **Connection**
 
-To use IIS Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+To use IIS Tasks you need to create an [IIS Connection](../../connection-iis) first. Click the *Settings* icon to open the *Manage Connections* dialog.
 
 **Web site name**
 

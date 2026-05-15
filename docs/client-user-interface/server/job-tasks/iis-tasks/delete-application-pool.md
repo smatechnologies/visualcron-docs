@@ -11,7 +11,7 @@ The IIS - Delete Application Pool Task removes an existing application pool from
 
 **Connection**
 
-To use IIS Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+To use IIS Tasks you need to create an [IIS Connection](../../connection-iis) first. Click the *Settings* icon to open the *Manage Connections* dialog.
 
 **Application pool name**
 

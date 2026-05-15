@@ -11,7 +11,7 @@ The IIS - Change Application Pool State Task starts, stops, or recycles an exist
 
 **Connection**
 
-To use IIS Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+To use IIS Tasks you need to create an [IIS Connection](../../connection-iis) first. Click the *Settings* icon to open the *Manage Connections* dialog.
 
 **Application pool parameters**
 

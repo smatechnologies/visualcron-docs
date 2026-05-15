@@ -975,6 +975,7 @@ module.exports = {
                   'client-user-interface/server/connection-twitter',
                   'client-user-interface/server/connection-crystalreports',
                   'client-user-interface/server/connection-vmware',
+                  'client-user-interface/server/connection-iis',
                   'client-user-interface/server/connection-dynamics-crm',
                   'client-user-interface/server/connection-as400',
                   'client-user-interface/server/connection-sap',
