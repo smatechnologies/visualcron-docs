@@ -42,6 +42,8 @@ There are a set of watch types which monitors changes that might occur to a file
 * "Deleted" - the deletion of a file or folder
 * "Renamed" - the renaming of a file or folder
 
+The _Renamed_ watch type cannot be combined with _Use polling (Samba compatible)_ — it is disabled when polling is enabled.
+
 **Include subfolders**
 
 This setting enables monitoring of all sub folders of the Path.
@@ -57,6 +59,8 @@ If you are planning on using the file that was triggered directly you could use 
 **Trailing Trigger**
 
 When checked VisualCron will watch for changes within a file and through Variables deliver the change (of text) between write to the file. Use this Variable to track changes: `{TRIGGER(Active|LastTrigger|File.Result.NewText)}`
+
+Enabling _Trailing Trigger_ automatically sets the watch type to **Changed** and the notify filter to **Last write**, since those are required for tracking text changes inside a file.
  
 **Notify filters**
 
@@ -74,11 +78,15 @@ You can combine the notify filters to watch for more than one kind of change. Fo
  
 **On error reconnect attempts**
 
-Let say the remote folder you watch gets disconnected for some reason, perhaps the network or computer is down. The reconnect attempts value controls how many times VisualCron tries to reconnect. Default value is 3 times.
+Let say the remote folder you watch gets disconnected for some reason, perhaps the network or computer is down. The reconnect attempts value controls how many times VisualCron tries to reconnect. Value 1 to 1000 is available. Default value is 5 times.
+
+**No limit**
+
+When checked, VisualCron will keep retrying the connection indefinitely and the _On error reconnect attempts_ field is disabled.
  
 **On error reconnect interval (*seconds*)**
 
-Let say the remote folder you watch gets disconnected for some reason, perhaps the network or computer is down. The reconnect interval which you can specify is the number of seconds it will wait between each reconnect attempt, in seconds. Value 1 to 500 is available. Default is 5 seconds which may be a long time when the network is down and a short time if the remote computer is down. VisualCron attempts to reconnect 3 times by default.
+Let say the remote folder you watch gets disconnected for some reason, perhaps the network or computer is down. The reconnect interval which you can specify is the number of seconds it will wait between each reconnect attempt, in seconds. Value 1 to 500 is available. Default is 5 seconds which may be a long time when the network is down and a short time if the remote computer is down.
  
 **Duplicate file delay (*milliseconds*)**
 
