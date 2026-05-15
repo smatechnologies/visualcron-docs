@@ -58,5 +58,6 @@ Currently the following Connection protocols exist:
 * [Dynamics CRM](connection-dynamics-crm)
 * [AS/400](connection-as400)
 * [SAP](connection-sap)
+* [IIS](connection-iis)
  
 Click on protocol link above to read more information and connection setting specifics of that protocol.
