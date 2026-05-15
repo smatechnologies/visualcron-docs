@@ -11,24 +11,13 @@ The Network change Trigger is able to monitor changes on a network connection.
 
 **Network adapters**
 
-Select the network adapter(s) you want to monitor.
+A multi-select checkbox list of the network adapters available on the VisualCron Server. Check one or more adapters to monitor. At least one adapter must remain selected.
  
-**Type of events**
+**Event type**
 
-Select the type of event you want to monitor.
- 
-**Disconnected**
+A multi-select checkbox list of network change events. Check one or more of the following events to listen for. At least one event type must remain selected:
 
-Whenever the network adapter goes offline.
- 
-**Connected**
-
-Whenever the network adapter goes online.
- 
-**Media disconnected**
-
-Whenever a network media is disconnected.
- 
-**IP address changed**
-
-Whenever the IP address changes.
+* **Disconnected** — fires whenever the network adapter goes offline
+* **Connected** — fires whenever the network adapter goes online
+* **Media disconnected** — fires whenever a network media is disconnected
+* **IP address changed** — fires whenever the IP address changes
