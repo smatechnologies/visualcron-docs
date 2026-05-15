@@ -17,14 +17,21 @@ You can examine the registry settings by starting "regedit.exe" from a Windows c
 
 **Registry event type**
 
-The registry can be monitored for changes in the following ways:
-* "RegistryKeyChange" - represents changes to a specific key. The changes apply only to the key, not its sub keys
-* "RegistryTreeChange" - represents changes to a key and its sub keys
-* "RegistryValueChange" - represents changes to a single value of a specific key
+A group of radio buttons that controls how the registry is monitored:
+
+* **Registry key change** — fires on changes to a specific key. The changes apply only to the key, not its sub keys
+* **Registry tree change** — fires on changes to a key and its sub keys
+* **Registry value change** — fires on changes to a single value of a specific key (default)
  
 **Hive**
 
-Name of the hive that contains the key (or keys) that is changed.
+A group of radio buttons for selecting the registry hive that contains the key (or keys) being monitored:
+
+* **HKEY_CLASSES_ROOT**
+* **HKEY_CURRENT_USER**
+* **HKEY_LOCAL_MACHINE** (default)
+* **HKEY_USERS**
+* **HKEY_CURRENT_CONFIG**
  
 **Registry key path**
 
@@ -36,3 +43,4 @@ path example: "SOFTWARE\Microsoft\DirectX". Do not include the hive.
 Name of the value in the registry key.
 Example: "InstalledVersion" located in ```RegistryKeyPath: SOFTWARE\Microsoft\DirectX```.
 
+This field is only used when **Registry value change** is selected and is disabled when **Registry key change** or **Registry tree change** is selected.
