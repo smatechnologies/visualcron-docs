@@ -41,11 +41,25 @@ Select an existing [POP3](../server/connection-pop3)/[IMAP4](../server/connectio
  
 **Mail folder**
 
-When VisualCron connects it uses the default folder retrieved from the mail server. If you want to change the folder you monitor you select "Use specified folder" and write the folder name in the text box.
+When VisualCron connects it uses the default folder retrieved from the mail server. If you want to change the folder you monitor you select **Use specified folder** and write the folder name in the text box. Click the **Select folder** button to browse for a folder on the mail server. Check **Is public** when the folder is a shared/public mailbox folder.
  
 **Reset checked emails when modified**
 
 VisualCron keeps tracks on which emails that have been checked or not. When an email has been checked it is added to an internal list. In the next polling interval VisualCron will check if that email has been parsed or not. To keep this list and efficiency to a minimum it is recommended that you either delete or move the email once the email has been parsed. This is controlled in the Actions tab. If you, for some reason, wants VisualCron to reset that list you check this box and VisualCron will consider all emails found in the mail folder as new.
+
+**Error handling**
+
+**Timeout**
+
+The number of seconds to wait for a response from the mail server before considering the operation as failed.
+
+**Number of retries**
+
+The number of times VisualCron will retry the mail operation when the server does not respond before giving up.
+
+**Keep connection**
+
+When checked, VisualCron keeps the connection to the mail server open between polling intervals (IMAP IDLE), rather than reconnecting every time. This reduces overhead and allows the trigger to react more quickly to new messages on servers that support it.
  
 **Triggers > Add > Event Trigger > Email > Email > S/MIME** tab
 
@@ -79,37 +93,113 @@ This Condition checks the actual address part of the message (not name of sender
  
 **Subject**
 
-This Condition checks the subject of the email
+This Condition checks the subject of the email. Check **Case sensitive** to make the comparison case‑sensitive.
  
 **Body**
 
-This Condition checks the body of the email
+his Condition checks the body of the email. Check **Case sensitive** to make the comparison case‑sensitive.
  
 **Received date**
 
-This Condition compares the date and time the message was received against a Variable. Please not that you can only use date Variables and that it does not matter what kind of formatting of the Variable you use.
+This Condition compares the date and time the message was received against a Variable. Please note that you can only use date Variables and that it does not matter what kind of formatting of the Variable you use. Click the variables button to insert a date variable.
+
+The following comparison operators are available for _Received date_:
+
+* **Equal** / **Not equal** — the received date must (or must not) match the supplied date exactly
+* **Larger** / **Larger or equal** — the received date must be later than (or equal to) the supplied date
+* **Smaller** / **Smaller or equal** — the received date must be earlier than (or equal to) the supplied date
+* **Don't check** — this Condition is not checked
 
 **Triggers > Add > Event Trigger > Email > Email > Actions** tab
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Mail%20Actions.png)
 
-Actions are controlling what happens when the Conditions has been evaluated - depending on collective result.
+Actions are controlling what happens when the Conditions has been evaluated - depending on collective result. Most actions can be set to run for one of the following condition results:
+
+* **All match** — every Condition matched
+* **Any match** — at least one Condition matched
+* **No match** — none of the Conditions matched
+* **Always** — run regardless of Condition result
+* **Never** — do not run the action
  
 **Trigger**
 
-This action controls if the Job should be triggered or not depending on result.
+This action controls if the Job should be triggered or not depending on result. Use the _Trigger when result is_ dropdown to choose which Condition result causes the Job to fire.
  
 **Message on Server**
 
-This controls what happens with the message on the mail server. It is recommended that you delete or move the mail or VisualCron will check that email again in the next polling interval. If you leave the message on the server you can choose to mark it as read (this option is only available in IMAP4 because it does not exist in POP3 protocol). Note that VisualCron does not care if it is read or not - VisualCron has it's internal list to check if email has been checked or not.
+This controls what happens with the message on the mail server. It is recommended that you delete or move the mail or VisualCron will check that email again in the next polling interval.
+
+Use the Condition‑result dropdown to choose when the action applies, then select one of the following radio options:
+
+* **Delete from server** — remove the message from the mail server
+* **Leave message on server** — keep the message on the server
+
+When _Leave message on server_ is selected, the **Mark as read** checkbox becomes available. Checking it marks the message as read on the server (IMAP4 only; the POP3 protocol does not support this). Note that VisualCron does not care if it is read or not — VisualCron has its internal list to check if an email has been processed.
  
 **Copy message to folder (_not POP3_)**
 
 This option copies a mail to another folder. It does not delete it unless you set Delete message on Server in previous setting. This option is only available when using IMAP4 as protocol mode.
- 
-**Save email**
 
-Both the actual mail and/or attachment can be saved to a file. You can choose to save the email at a custom location or at the default location. By default the content is saved in ```"C:\Program Files\VisualCron\data\triggers\mail"```. Attachments of an email are by default stored in the attachments folder; ```"C:\Program Files\VisualCron\data\triggers\mail"```.
+Choose when the copy is performed using the Condition‑result dropdown, then enter the target folder or click the Select folder button to browse. Check **Mark as read** to also mark the copied message as read.
+
+**Forward email**
+
+Open the **Forward Email** sub‑tab and check **Forward email** to enable forwarding of the matched email through an SMTP connection.
+
+* **Connection** — the SMTP [Connection](../server/global-connections) used to send the forwarded email
+* **Subject prefix** — text prepended to the original subject when forwarding
+* **Recipient separator** — the character used to separate multiple recipients in the To/Cc/Bcc fields
+* **Send separate emails** — when checked, a separate email is sent to each recipient instead of one email with multiple recipients
+* **To / Cc / Bcc** — for each recipient group, choose the **Source** (_Not used_, _Manual_, or _File_), then either type recipients in the textbox or pick a file containing recipients. When _File_ is selected, a [Credential](../server/global-credentials) can be supplied for accessing the file
+
+**Triggers > Add > Event Trigger > Email > Email > Save mail** tab
+
+Both the actual mail and/or attachment can be saved to a file. By default the content is saved in ```"C:\Program Files\VisualCron\data\triggers\mail"```. Attachments of an email are by default stored in the attachments folder; ```"C:\Program Files\VisualCron\data\triggers\mail"```.
+
+**Email save action**
+
+Choose when the email itself should be saved to disk based on the Condition result (_Never_, _Always_, _All match_, _Any match_, _No match_).
+
+**Save location**
+
+Choose between:
+
+* **Save to default folder** — store the email in the default VisualCron mail data folder
+* **Save to custom folder** — pick a destination folder. Use the browse button to select a folder on disk
+
+**Create folder tree for each email**
+
+When checked, VisualCron creates a separate folder tree for each saved email so that the email and its attachments are grouped together.
+
+**Attachment save action**
+
+Choose when attachments should be saved to disk, using the same Condition‑result options as _Email save action_.
+
+**Triggers > Add > Event Trigger > Email > Email > Attachment filter** tab
+
+Use this tab to limit which attachments are saved when _Attachment save action_ is enabled.
+
+**File mask**
+
+A file mask used to match attachment names (for example `*.pdf`). Use the browse button to select a sample file, check **Is regex** to treat the mask as a regular expression, and check **Case sensitive** to make matching case‑sensitive.
+
+**File size**
+
+Optionally filter attachments by size:
+
+* **Smaller than** — only save attachments smaller than the given size
+* **Larger than** — only save attachments larger than the given size
+
+Each size has its own numeric value and a unit dropdown (B, kB, mB, gB, tB). When both checks are enabled, use the operator dropdown to combine them with **AND** or **OR**.
+
+**Overwrite existing files**
+
+When checked, an attachment with the same file name as an existing file is overwritten.
+
+**Add number to existing file**
+
+When checked, a numeric suffix is added to the file name to avoid overwriting an existing file.
  
 :::tip Note 
 
