@@ -9,6 +9,8 @@ The **Desktop trigger** monitors changes in a UI via a locally or remotely runne
 
 ### Events tab
  
+Configured events are listed in a grid showing the **Event type** and the **Watching value** (a summary of the parameters that the event is matching on). Use the toolbar above the grid to **Add**, **Edit**, or **Delete** events, or double‑click a row to edit it.
+
 Events are divided into categories: Process, Application, Window, Control, System, Keyboard.
 
 ### Process category
@@ -156,10 +158,21 @@ The **Key sequence pressed** event monitors the pressing to a specific key seque
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Control.png)
 
+Depending on the event category, the dialog exposes one or more of the following fields:
+
+* **Process name** — the name of the process to match
+* **Window name** — the title of the window to match
+* **Control name** — the name of the UI control to match
+* **Control value** — the content/value of the UI control to match
+
 All fields support wildcards such as: “?”, “*”
 “*” - any symbol and any count, “?” - one any symbol.
  
 For example, if we enter ‘notep*’ to Process name field, trigger will listen for all processes whose name begins with ‘notep’.
+
+**Match case**
+
+When checked, the values entered in the selector fields are matched case‑sensitively. When unchecked, matching is case‑insensitive.
  
 If you don't know the details of the control, you can click on the search button.
 
@@ -167,9 +180,16 @@ Then select the control you need. To select hold down the Ctrl button and click 
 
 The fields will be filled in automatically.
 
+### Keyboard event configuration
+
+For the **Key pressed**, **Hotkey pressed**, and **Key sequence pressed** events, the configuration dialog includes a key capture field that listens for keystrokes as you press them. Captured keys are stored as a comma‑separated list (for example, `ControlKey,L`). Use the **Clear** button to reset the captured keys.
+
 ### Connections tab
 
-In the Connections tab, configure a connection that will listen for an event on a local or remote client.
+In the Connections tab, select the **VisualCron Server location** that the trigger should listen on:
+
+* **Local VisualCron Server** — listen for events on the same machine as the VisualCron Server (default)
+* **Remote VisualCron Server** — listen for events on a remote VisualCron Server. When selected, choose the [VisualCron Connection](../server/connection-visualcron) to use
 
 Before initializing the trigger, make sure that you have a tray client running, depending on which connection you have selected.
 
