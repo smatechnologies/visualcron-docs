@@ -6,6 +6,28 @@ hide_title: 'true'
 ## Change Log
 
 
+### 13.2.2 [2026-05-16]
+
+#### Notes
+
+:memo: Client/Server: Our Terms and Conditions have been updated, effective May 16, 2026. Your continued use of our services on or after May 16, 2026 constitutes your acceptance of the updated Terms and Conditions.
+
+#### Bug Fixes
+
+:white_check_mark: Client/Server: .tif File Format Not Working in PDF Convert Task (VCPCM-3185)
+
+:white_check_mark: Client/Server: Connection Explorer Showing Future/Invalid Modified Dates (VCPCM-3204)
+
+:white_check_mark: Client/Server: Slack Connector Timeout (VCPCM-1402)
+
+:white_check_mark: Client/Server: FTPS ShareFile Works in Test but Not in Connection Explorer or Task (VCPCM-3498)
+
+:white_check_mark: Client/Server: Cloud Upload Task - Google Drive Connection Not Working (VCPCM-3057)
+
+:white_check_mark: Client/Server: SharePoint Download File(s) Produces Zero-Byte CSV Files (VCPCM-2799)
+
+:white_check_mark: Client: "Is a Local Server" Setting Reselects Itself After Client Restart (VCPCM-2674)
+
 ### 13.2.1 [2026-05-11]
 
 #### Features
