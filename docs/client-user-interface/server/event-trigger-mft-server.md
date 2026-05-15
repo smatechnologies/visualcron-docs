@@ -11,14 +11,16 @@ The MFT Server event trigger monitors the internal MFT server for events. Genera
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20MFT.png)
 
-**MFT Server name**
+Each section below contains an **All** checkbox and a dropdown. Check **All** to match every value (the dropdown is then disabled), or uncheck it and pick a specific value from the dropdown to narrow the match.
 
-Select all or a specific MFT endpoint.
+**MFT Servers**
+
+Select **All** to listen to every configured MFT endpoint, or uncheck _All_ and pick a specific MFT server from the dropdown. Each entry in the dropdown shows the server name together with its protocol (for example FTP, SFTP, FTPS, or HTTP).
  
-**Event type**
+**Event types**
 
-Select all or specific MFT event type.
+Select **All** to react to every MFT event, or uncheck _All_ and pick a specific event type from the dropdown. Available event types cover directory operations (list, create, rename, move, delete, copy), file operations (create, rename, move, delete, copy), uploads (started, completed, failed), downloads, authentication (login success/failure), sessions (connect, connect failure, disconnect), user management (create, update, delete, enable, disable), and server state (started, stopped, activated, deactivated, error).
  
-**User**
+**MFT Users**
 
-Select all or a specific User.
+Select **All** to match events from any MFT user, or uncheck _All_ and pick a specific MFT user from the dropdown.
