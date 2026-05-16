@@ -6,7 +6,6 @@ module.exports = {
       label: 'License',
       collapsed: true,
       items: [
-        'license',
         'terms-and-conditions',
         'dora',
         'notice-of-updated-terms',

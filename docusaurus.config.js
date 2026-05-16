@@ -6,7 +6,7 @@ module.exports = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   markdown: {
-    format: 'md',
+    format: 'detect',
   },
   favicon: 'img/favicon.ico',
   organizationName: 'smatechnologies',
@@ -45,6 +45,14 @@ module.exports = {
     ],
   ],
   plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          { from: '/license', to: '/terms-and-conditions' },
+        ],
+      },
+    ],
     [
       '@docusaurus/plugin-google-gtag',
       {

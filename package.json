@@ -15,10 +15,11 @@
     "build:chm": "node scripts/build-chm.js"
   },
   "dependencies": {
-    "@easyops-cn/docusaurus-search-local": "^0.40.1",
     "@docusaurus/core": "3.9.2",
+    "@docusaurus/plugin-client-redirects": "3.9.2",
     "@docusaurus/plugin-google-gtag": "3.9.2",
     "@docusaurus/preset-classic": "3.9.2",
+    "@easyops-cn/docusaurus-search-local": "^0.40.1",
     "@mdx-js/react": "^3.0.0",
     "@svgr/webpack": "^8.0.0",
     "clsx": "^2.0.0",
