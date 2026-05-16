@@ -20,6 +20,11 @@ WMI supports namespaces, allowing users to logically group WMI classes together.
 **Event class name**
 
 Some drivers require that you specify their class belonging. If necessary, this information can be retrieved from the WMI Code Create. Normally, the Event class name is the "table name" when constructing a query.
+
+Use the operator dropdown next to the field to control how the Event class name is applied:
+
+* **Ignore** — the Event class name is not used and the field is disabled
+* **Include** — the Event class name is enabled and applied to the trigger
  
 **Query**
 
