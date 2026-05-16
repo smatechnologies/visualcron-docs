@@ -13,14 +13,18 @@ The Azure Queue Storage Trigger is using the [Microsoft Azure Connection](../ser
 
 Select the Microsoft Azure Connection to use. The connection must be configured with the appropriate Azure credentials before use.
 
+**Queue**
+
 **Name**
 
 Name of the queue. Click the refresh button to populate the list with available queues from the selected Connection.
 
-**On error reconnect interval (seconds)**
-
-The number of seconds to wait before attempting to reconnect after a connection error.
+**Re-connect option**
 
 **On error reconnect attempts**
 
 The number of times VisualCron will attempt to reconnect after a connection error before giving up.
+
+**On error reconnect interval (seconds)**
+
+The number of seconds to wait before attempting to reconnect after a connection error.
