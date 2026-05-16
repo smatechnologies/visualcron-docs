@@ -13,7 +13,9 @@ Some applications create their own log files and it is possible for you to creat
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Event%20Log.png)
 
-You can choose what kind of conditions to use by first enabling the setting and then enter a value in the text window or select a value. When enabling a condition you can choose to use "AND" or "OR". Think of it's as a query.
+Each condition has an operator dropdown next to it with three options: **Ignore**, **AND**, or **OR**. Setting the operator to _Ignore_ disables that condition, while _AND_ or _OR_ enables the value field and combines the condition with the others. Think of it as building a query.
+
+Note: the **Description contains** condition only supports _Ignore_ and _AND_ — it cannot be combined using _OR_.
  
 **Log file**
 
@@ -26,10 +28,10 @@ Each application (event source) can define its own numbered categories and the t
 **Category**
 
 This is a description of the numeric value, which could be, for example: "Kernel" or "Disk". Each application (event source) can define its own numbered categories and the text strings to which they are mapped. The text strings associated with the category are stored in the computer's registry. The Event Viewer can use the category to filter events in the log.
- 
-**Event id**
 
-Event code is a numeric value to further distinguish an entry.
+**Event code**
+
+A numeric value that further distinguishes an event log entry. Enter the event code that the trigger should match.
  
 **Event type**
 
