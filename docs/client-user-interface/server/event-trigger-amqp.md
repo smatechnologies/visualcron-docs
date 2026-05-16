@@ -11,6 +11,12 @@ The AMQP Trigger is using the [AMQP Connection](../server/connection-amqp).
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20AMQP.png)
 
+**Connection**
+
+Select the AMQP Connection that the trigger should use to subscribe to messages.
+
+**Queue**
+
 **Name**
 
 Name of the queue. Click refresh to get all once you have selected a Connection.
@@ -26,3 +32,13 @@ Timeout duration that an expiring source will be retained. The source starts exp
 **Dynamic**
 
 Dynamic request dynamic creation of a remote node. When set to true by the receiving link endpoint, this field constitutes a request for the sending peer to dynamically create a node at the source. In this case the address field MUST NOT be set. When set to true by the sending link endpoint this field indicates creation of a dynamically created node. In this case the address field will contain the address of the created node. The generated address SHOULD include the link name and other available information on the initiator of the request (such as the remote container-id) in some recognizable form for ease of traceability.
+
+**Re-connect option**
+
+**On error reconnect attempts**
+
+The number of times the trigger will try to re-establish the connection to the AMQP broker after a connection error.
+
+**On error reconnect interval (seconds)**
+
+The number of seconds to wait between re-connect attempts when the trigger is recovering from a connection error.
