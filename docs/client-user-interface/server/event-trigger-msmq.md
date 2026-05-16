@@ -11,17 +11,26 @@ The MSMQ event trigger is able to monitor a private or public queue for new mess
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20MSMQ.png)
 
+**Scope**
+
 **Credential**
 
 Select a [Credential](../server/global-credentials) if you are going to monitor a remote MSMQ queue. Click the Settings icon to populate the drop-down list with available credentials.
  
-**Local/Remote MSMQ**
+**Local MSMQ / Remote MSMQ**
 
-You can choose to monitor a local or a remote MSMQ Server. If you want to monitor a remote MSMQ Server you need to define a Host name.
+Choose between the two radio options to monitor either a local or a remote MSMQ server:
+
+* **Local MSMQ** — watch the queue on the same machine as the VisualCron Server
+* **Remote MSMQ** — watch the queue on another machine. When selected, the **Host name** field below is enabled
+
+**Host name**
+
+The host name or IP address of the remote MSMQ server. The field is an editable dropdown populated with the available computers, so you can either pick from the list or type the host name directly. Enabled only when **Remote MSMQ** is selected.
  
 **Queue**
 
-Select the queue to be received. Click the Refresh icon to populate the drop-down list of queues.
+Select the queue to be received. The queue field is an editable dropdown, so you can either pick from the list or type the queue path directly. Click the Refresh icon to populate the drop-down list of queues from the selected MSMQ server.
  
 ## Troubleshooting:
 
