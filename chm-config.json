@@ -24,10 +24,10 @@
       "mdFile": "docs/visualcron-documentation.md",
       "label": "VisualCron Documentation"
     },
-    "license": {
+    "terms-and-conditions": {
       "chmFile": "license.htm",
-      "mdFile": "docs/license.md",
-      "label": "license"
+      "mdFile": "docs/_eula.mdx",
+      "label": "Terms and Conditions"
     },
     "requirements": {
       "chmFile": "system_requirements.htm",
