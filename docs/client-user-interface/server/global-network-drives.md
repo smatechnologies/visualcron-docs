@@ -13,6 +13,24 @@ In the main menu, click on **Server > Global objects > Network drives** to acces
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Network%20Drives/Network%20Drives.png)
 
+The Network Drives window displays the configured drives in a grid with the following columns:
+
+* **Drive** — the assigned drive letter (A: – Z:)
+* **Path** — the UNC path the drive is mapped to
+* **Connection status** — an icon indicating whether the drive is currently connected
+* **Controlled** — whether the drive is managed by VisualCron (re‑mapped automatically on startup)
+* **Credential** — the [Credential](../server/global-credentials) used to authenticate when mapping the drive
+
+The toolbar above the grid provides the following buttons:
+
+* **Map drive** — opens the Map drive dialog described below
+* **Unmap drive** — disconnects the selected drive
+* **Refresh** — reloads the list of network drives from the Server
+* **Reconnect** — reconnects all drives that have been disconnected during the current VisualCron session
+* **Audit log** — opens the [Audit log](../tools/objects-audit-log) for network drives
+
+Right‑clicking a row opens a context menu with **Map drive**, **Unmap drive**, **Audit log**, and **Versions** (view the version history of the network drive entry).
+
 **Map drive**
 
 When mapping a drive you need to specify a Credential, a user that has access to the network drives, that is either a domain user or a user on the remote server. Specify a wanted drive name and path.
@@ -20,12 +38,17 @@ Path should be entered in UNC format like this: ```"\\servernameORip\folder\"```
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Network%20Drives/Map%20Network%20Drives.png)
 
-Click on *Map drive* to map it. It is now controlled by VisualCron and each time VisualCron is started it tries to re-map the drives so these can be accessed after a server reboot.
+The Map drive dialog contains the following fields:
+
+* **Credential** — pick the [Credential](../server/global-credentials) used to authenticate against the network share
+* **Drive** — a dropdown of drive letters (A: – Z:) to assign to the mapped path
+* **Path** — the UNC path that the drive letter should be mapped to. Click the browse button next to the field to pick a folder
+
+Click on *Map drive* at the bottom of the dialog to map it. It is now controlled by VisualCron and each time VisualCron is started it tries to re-map the drives so these can be accessed after a server reboot.
  
 **Reconnect**
 
 If a drive has been disconnected during a VisualCron session you can reconnect it here.
- 
  
 ### Troubleshooting
 
