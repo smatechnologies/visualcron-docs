@@ -59,6 +59,15 @@ To get single date parts you can use percentage sign first:
 ```{DATEFORMAT(%M)}```
 
 ```{DATEFORMAT(%d)}```
+
+**VisualCron-specific format keywords**
+
+In addition to the standard .NET format specifiers, the `{DATEFORMAT(...)}` Variable also supports the following VisualCron-specific keywords:
+
+| Keyword | Format |
+| --- | --- |
+| JulianYearDay | Two-digit year followed by the three-digit day of the year (for example `00229` for 17 August 2000) |
+| JulianDay | Three-digit day of the year (for example `229` for 17 August 2000) |
  
 More information:
 [Microsoft date time strings](https://learn.microsoft.com/en-us/previous-versions/dotnet/netframework-1.1/az4se3k1(v=vs.71)?redirectedfrom=MSDN)
@@ -67,4 +76,3 @@ More information:
 If you have a problem with Variables displaying other format than system it might be because you need to check the following below:
 
 ![](../../../static/img/clip0fdgdfggdf069.png)
-
