@@ -13,7 +13,29 @@ VisualCron can handle standard X509 certificates. These can be stored at the ser
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Certificates/Global%20-%20Certificates.png)
 
-The Manage certificates window lets you view currently stored Certificates and their properties.
+The Manage certificates window lets you view currently stored Certificates and their properties. The grid shows the following columns:
+
+* **Common name** — the subject common name from the certificate
+* **Self signed** — whether the certificate is self‑signed
+* **Private key** — whether the certificate includes a private key
+* **Can encrypt** — whether the certificate can be used for encryption
+* **Can sign** — whether the certificate can be used for signing
+* **Key valid** — whether the certificate's private key is valid
+* **Issuer name** — the name of the certificate issuer
+* **Email** — the email address from the subject information
+* **Name** — the VisualCron friendly name used to identify the certificate inside VisualCron
+
+The toolbar at the top of the window provides the following buttons (left to right): **Import certificate**, **Export certificate**, **Create certificate**, **Delete certificate**, **Audit log**, **Get from Windows** (imports certificates from the local Windows certificate store).
+
+Right‑clicking a row in the certificate grid opens a context menu with the following commands:
+
+* **Set name** — edit the VisualCron friendly name of the certificate
+* **Copy Certificate Id** — copy the certificate's internal identifier to the clipboard
+* **Change Certificate Id** — change the certificate's internal identifier
+* **Audit log** — open the audit log entries related to this certificate
+* **Versions** — view the version history of the certificate
+* **Object relations** — view other VisualCron objects that reference this certificate
+* **Export…** — open the export dialog for the selected certificate
  
 ### Import certificate
 
@@ -42,7 +64,7 @@ To start the Generate certificate wizard click on the Create certificate icon.
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Certificates/Manage%20Certificates.png)
 
-Select type of certificate (currently only Self-signed certificate).
+Step 1 of the wizard. Enter the VisualCron **Name** that will be used to identify the certificate inside VisualCron, then select the type of certificate (currently only **Self-signed certificate** is selectable).
  
 **Global > Certificates > Create 2**
 
@@ -50,29 +72,47 @@ Select type of certificate (currently only Self-signed certificate).
 
 **Hash algorithm**
 
-Use this property to get or set algorithm that will be used for hash calculation.
+A set of radio buttons that selects the signature/hash algorithm used by the certificate. The available options are:
+
+* **md2 / RSA**
+* **md5 / RSA**
+* **sha1 / RSA**
+* **sha256 / RSA**
+* **sha1 / DSA**
+* **sha256 / DSA**
  
 **Public key strength**
 
-Use this property to control the strength of the public key in bits.
+A dropdown that controls the strength of the public key in bits. The available values are **256**, **512**, **768**, **1024**, **2048**, and **4096**.
  
 **Global > Certificates > Create 3**
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Certificates/Certificate%20Creation%203.png)
 
-Enter subject info for the certificate. Remember to set the Email property if you are going to use the Certificate in the [Email Task](../server/job-tasks/messaging-tasks/email).
+Enter the subject information for the certificate. All fields below are required except _Email_. Remember to set the **Email** property if you are going to use the Certificate in the [Email Task](../server/job-tasks/messaging-tasks/email):
+
+* **Country**
+* **State/Province**
+* **Locality**
+* **Organization**
+* **Organization unit**
+* **Common name**
+* **Email** (optional)
  
 **Global > Certificates > Create 4**
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Certificates/Certificate%20Creation%204.png)
 
-Enter validity period for the certificate.
+Enter the validity period for the certificate using two date pickers:
+
+* **Valid From** — the date from which the certificate is valid. Can be left blank to use the current date
+* **Valid To** — the date until which the certificate is valid. Defaults to one year from today
  
 **Global > Certificates > Create 5**
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Certificates/Certificate%20Creation%205.png)
 
-Last step. Click on Next to generate Certificate.
+Last step. Click on **Next** to generate the Certificate. The wizard notes that the generation process may take some time, depending on the key length selected on step 2.
  
 **Delete certificate**
 
