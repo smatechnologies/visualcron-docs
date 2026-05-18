@@ -27,20 +27,19 @@ In the **Triggers** tab, clicking on _Add > Event trigger_, a selection window f
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Main%20Settings%20Tab.png)
 
-It is possible to change the event trigger type in the top combo box, which results in that the current trigger type tab is exchanged.
+It is possible to change the event trigger type using the **Choose Event type** button at the top of the Main settings tab. Clicking the button opens a tree of available event types organized by category; selecting an entry swaps the trigger‑type tab with the controls for the chosen type.
  
 **Description**
-
 
 Enter a description which will distinguish several triggers from each other in a trigger list.
  
 **Auto description**
 
-This will general a description automatically based on Trigger type and settings.
+When checked, the _Description_ field is automatically generated based on the Trigger type and its current settings. This option is enabled by default.
  
 **Auto refresh description**
 
-This forces update of the description even though it is not empty.
+When checked, the auto‑generated description is refreshed every time the Trigger settings change, even if the _Description_ field already contains text. The option is only available when _Auto description_ is checked.
  
 **Active**
 
@@ -48,19 +47,23 @@ Determines if the current event is active from start. If not, it can be reactiva
  
 **Run delay**
 
-You can set a delay which means that the trigger will fire x number of times before executing. Default is 1 which means that the it will fire when the first time it has been triggered.
+Configures how many times the Trigger must fire before the Job is actually executed. The field is labelled _Run after the trigger has been triggered_ and is followed by a numeric editor and a `time(s)` suffix. Default is 1 which means that the Job will run on the first trigger event.
  
 **Polling interval**
 
-This value is only used by certain WMI events, otherwise grayed out. The polling interval defines how often VisualCron should check for changes in the system. Default is every 60 second. Setting it to a lower value than 10 will increase the load on the server. What's good is that you won't miss any events even though you are not checking it every second. Changes are stored and if something has happened you will be notified at your polling interval. What is important to know is that if you are watching for state "stopped" at a service and the service has started then stopped, any change has not occurred since the service was stopped in the first place. The service has to be started before monitoring a "stopped" change. Also, if the the service has started before monitoring and it turns from started to stopped within the polling interval no change is observed and you won't be notified.
+This value is only used by certain WMI events, otherwise grayed out. The field is labelled _Check every_ and is followed by a numeric editor and a `second(s)` suffix. The polling interval defines how often VisualCron should check for changes in the system. Default is every 60 second. Setting it to a lower value than 10 will increase the load on the server. What's good is that you won't miss any events even though you are not checking it every second. Changes are stored and if something has happened you will be notified at your polling interval. What is important to know is that if you are watching for state "stopped" at a service and the service has started then stopped, any change has not occurred since the service was stopped in the first place. The service has to be started before monitoring a "stopped" change. Also, if the the service has started before monitoring and it turns from started to stopped within the polling interval no change is observed and you won't be notified.
  
 **Remote event**
 
-This value is only used by certain WMI events, otherwise grayed out. Can remotely monitor another computer in the network, specify the name or IP address of the remote computer. The computer has to be in the local network. Default is "." which means that VisualCron is monitoring the the local computer. A network credential must be specified when connecting to a remote computer. Also you must check so that the remote computer let's this computer or user access the WMI on the remote computer.
+This value is only used by certain WMI events, otherwise grayed out. The field is labelled _Computer name_. Can remotely monitor another computer in the network, specify the name or IP address of the remote computer. The computer has to be in the local network. Default is "." which means that VisualCron is monitoring the the local computer. A network credential must be specified when connecting to a remote computer. Also you must check so that the remote computer let's this computer or user access the WMI on the remote computer.
  
 **Credentials**
 
 To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
+
+**Trigger debugging**
+
+When checked, additional diagnostic information is written to the log every time the Trigger evaluates an event. Use this when troubleshooting a Trigger that is not firing as expected. Leave it unchecked in production to reduce log noise.
  
 **Ignore Server Off (always run)**
 
@@ -70,13 +73,19 @@ If checked, the Trigger will always run even though the Server status is Off.
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Timeout.png)
 
+**Use timeout**
+
+A master checkbox that enables the timeout settings. When unchecked, the timeout fields and the timeout action below are disabled.
+
 **If trigger has not fired in x time**
 
-Specify number of hours, minutes and seconds for the timeout.
+Specify the maximum time the Trigger can go without firing using three numeric editors for **Hour(s)**, **Minute(s)** (0–59), and **Second(s)** (0–59).
  
 **Timeout action**
 
-When VisualCron detects the timeout it will fire the event.
+The action that is performed when the timeout elapses without the Trigger having fired:
+
+* **Fire trigger** — fire the Trigger as if its normal condition had been met
  
 **Triggers > Add > Event Trigger > Expires** tab
 
@@ -84,8 +93,16 @@ When VisualCron detects the timeout it will fire the event.
 
 **Expiration enabled**
 
-Check this option to enable an expiration type. You are able to set if a Trigger should be deleted or deactivated at a certain time or after a certain number of triggered times. Select either date or x time(s) the trigger has to fire before action.
+Check this option to enable an expiration type. When checked, the expiration mode controls and the _Expire action_ group below become editable. You are able to set if a Trigger should be deleted or deactivated at a certain time or after a certain number of triggered times.
+
+Select one of the two expiration modes using the radio buttons:
+
+* **Expire date** — expire on a specific date and time. A date picker and a time picker become editable for entering the expiration moment
+* **Expire after being triggered _x_ time(s)** — expire after the Trigger has fired the specified number of times. A numeric editor (minimum `1`) becomes editable for entering the fire count
  
 **Expire action**
 
-Select desired activity when a Trigger has expired. Choose between "Inactivate trigger" and "Delete trigger".
+Select desired activity when a Trigger has expired using the two radio buttons:
+
+* **Deactivate trigger** — keep the Trigger but mark it as inactive
+* **Delete trigger** — remove the Trigger entirely (default)
