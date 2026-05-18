@@ -20,6 +20,15 @@ What makes Task repository even more useful is that you can execute these Task r
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Task%20Repository/Task%20Repository.png)
 
+The local Task repository window shows the stored Tasks in a grid with the following columns:
+
+* **Name** — the name of the repository Task
+* **Description** — a description of what the Task does
+* **Lang** — an icon indicating the language (.NET or PowerShell)
+* **Version** — the current version of the repository Task
+
+Right‑clicking a row opens a context menu with the **Add**, **Edit**, **Delete**, **Clone**, **Upload**, and **Import** commands. The toolbar above the grid provides the same commands plus _Refresh_, _Search_, _Clear filter_, and _Online repository_:
+
 **Add**
 
 Opens the Add popup menu where you can select to add a Powershell or .NET Task for the repository.
@@ -64,9 +73,17 @@ Uploads the selected local Task repository object to the Online repository. This
 
 ![](../../../static/img/onlinetaskrepository.png)
 
+The Online Task repository window has the same **Name**, **Description**, **Lang**, and **Version** columns as the local view, plus a details panel on the right side that shows additional information for the row currently selected in the grid.
+
+The toolbar above the grid provides the following buttons:
+
 **View**
 
 Opens the Task repository Task for viewing
+ 
+**Search** / **Clear filter**
+
+Filter the list of online Task repository objects by text. The search matches against the Name and Description columns.
  
 **Delete**
 
@@ -80,3 +97,16 @@ Reloads the online list of Task repository objects.
 
 Downloads the selected Task repository object to the local Task repository.
 
+**Details panel**
+
+A collapsible panel on the right side of the window shows details about the selected online Task repository object. It contains the following controls:
+
+* **Version** — a dropdown of all available versions of the selected Task
+* **Installed version** — the version number currently present in the local repository (if any)
+* **Name** — the name of the Task
+* **Created** — the date when the version was first uploaded
+* **Modified** — the date when the version was last modified
+* **Author** — the user that uploaded the version
+* **Description** — a longer description of the Task
+* **Compare installed and selected version** — opens a comparison view between the locally installed version and the version selected in the _Version_ dropdown above
+* **Delete selected version** — removes the specific version selected in the _Version_ dropdown (only available for your own uploads)
