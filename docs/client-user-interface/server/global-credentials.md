@@ -20,25 +20,54 @@ The Manage credentials window can be reached either from the main menu Server > 
 
 ![](../../../static/img/manage_credentials_list.png)
 
+The Manage Credentials window displays the configured credentials in a grid with the following columns:
+
+* **User@Domain** — the credential's username combined with its domain
+* **Local** — whether the credential is configured for a local logon
+* **Load profile** — whether the credential loads the user profile during logon
+
+The toolbar above the grid provides the following buttons:
+
+* **Add** — create a new credential
+* **Edit** — edit the selected credential
+* **Clone** — create a copy of the selected credential
+* **Delete** — delete the selected credential
+* **Copy Id to clipboard** — copy the internal credential identifier (GUID) to the clipboard
+* **Audit log** — open the [Audit log](../tools/objects-audit-log) for credentials
+
+Right‑clicking a credential opens a context menu that includes the toolbar commands plus the additional options **Versions** (view version history), **Object relations** (see which Jobs, Tasks, Triggers, or other objects reference this credential), and **Export** (export the selected credential).
+
 ### Editing a Credential
 
 ![](../../../static/img/manage_credentials_edit.png)
 
 **Username**
  
-Username for the user you want to logon.
+Username for the user you want to logon. The field is an editable dropdown populated with users from the Server. When **Is Managed Service Account** is checked, the dropdown is repopulated with available (g)MSA accounts instead.
  
 **Password**
  
-Password for the user you want to logon.
+Password for the user you want to logon. The field is masked with asterisks.
  
 **Domain**
  
-Domain or computer name/IP where you want to logon.
+Domain or computer name/IP where you want to logon. The field is an editable dropdown populated with known computers/domains.
+
+**Is Managed Service Account**
+
+When checked, the credential is treated as a Managed Service Account (MSA) or Group Managed Service Account (gMSA). The Username dropdown switches to listing the available MSA accounts and the password is supplied automatically by Active Directory at runtime — the _Password_ field is no longer used. See the **(g)MSA accounts** section below for setup prerequisites.
  
 **Local login**
  
 This tells VisualCron to perform a local logon. This checkbox should be unchecked if you are using Credentials to gain access to a network drive (using a user/domain on another server as Credential).
+
+**Test**
+
+Validates the credential against the Server immediately, without saving. The Test button requires both _Local login_ and _Load profile_ to be enabled.
+
+**Permissions**
+
+Opens a permissions dialog where group-level permissions can be overridden for this credential individually.
  
 ### Load  profile
  
@@ -57,6 +86,18 @@ Log on, but use the specified credentials on the network only. The new process u
 *In this case there are some additional options available for fine-tuning the login process*
 
 ![](../../../static/img/manage_credentials_edit_extended_debugging.png)
+
+The additional options shown when Extended debugging is enabled are:
+
+* **Execution API** — which underlying impersonation API to use. Available values are **API** and **API2**
+* **Logon type** — Windows logon type passed to the impersonation API. Available values are **LOGON32_LOGON_INTERACTIVE**, **LOGON32_LOGON_NETWORK**, **LOGON32_LOGON_BATCH**, **LOGON32_LOGON_SERVICE**, **LOGON32_LOGON_UNLOCK**, **LOGON32_LOGON_NETWORK_CLEARTEXT**, **LOGON32_LOGON_NEW_CREDENTIALS**
+* **Logon provider** — Windows logon provider. Available values are **LOGON32_PROVIDER_DEFAULT**, **LOGON32_PROVIDER_WINNT50**, **LOGON32_PROVIDER_WINNT40**, **LOGON32_PROVIDER_WINNT35**
+* **SeTcbPrivilege** — enable the SeTcb (act as part of the operating system) privilege when impersonating
+* **Suppress flow** — suppress the flow of execution context across asynchronous calls during impersonation
+* **Override LT/LP** — override the default logon type and logon provider with the values selected above
+* **Open desktop** — open the user's desktop on logon. When checked, the **Desktop path** field becomes editable for specifying the desktop name/path
+* **Duplicate Token** — duplicate the access token for the impersonated session
+* **Reset to default** — restore the impersonation options back to their default values
 
 ### (g)MSA accounts
  
