@@ -26,3 +26,52 @@ The condition set list consists of two bands, where the parent row is the condit
 **Use**
 
 A condition can, by itself, be active or inactive. Check the _Use_ box to the left of each condition set for each set you want to activate for your Job or Task. If inactive, the condition will be ignored.
+
+### Manage conditions window
+
+Opening **Server > Global objects > Conditions** displays a hierarchical grid with two bands:
+
+* **Condition sets** (parent rows) — show the condition set icon and **Description**
+* **Conditions** (child rows) — show the condition type icon and the condition's **Description**
+
+Two toolbars are provided. The **Condition sets** toolbar contains **Add**, **Edit**, **Clone**, **Delete**, and **Clear filter**. The **Conditions** toolbar contains **Add**, **Edit**, **Clone**, **Delete**, **Audit log**, and **Clear filter**. The same commands are available from the right‑click context menu, which also exposes **Versions**, **Object relations**, and **Export**.
+
+### Add / Edit condition set
+
+The Add/Edit condition set dialog has three tabs.
+
+**Main settings**
+
+* **Description** — a free‑text name shown in the condition set list
+* **Extended debug logging** — when checked, the condition set writes detailed evaluation information to the log. Use this when troubleshooting; leave unchecked in production
+
+**Conditions**
+
+A list of the individual conditions that make up the set. Buttons above the list let you **Add**, **Edit**, **Clone**, and **Delete** conditions. When clicking **Add**, you choose the condition type from the following:
+
+* **VisualCron**
+* **File**
+* **Folder**
+* **Process**
+* **Service**
+* **Variable**
+* **.NET**
+
+Each condition type has its own editor with the parameters relevant to that check (for example, the _Variable_ condition supports the operators _Equal_, _Not equal_, _Larger_, _Larger or equal_, _Smaller_, _Smaller or equal_).
+
+**Actions**
+
+The Actions tab contains four independent sections that define what should happen for each possible result of evaluating the condition set:
+
+* **On Match All** — all conditions evaluated to true
+* **On Match Any** — at least one condition evaluated to true
+* **On Match None** — no conditions evaluated to true
+* **On Match Error** — an error occurred while evaluating the conditions
+
+Each section has the same set of controls:
+
+* **Action Type** — what the Job/Task should do. Available values are **Continue**, **Next**, **Retry**, **Exit**, **Run Job**, and **Run Task**
+* **Wait Type** — **Wait** or **No Wait**, controlling whether VisualCron blocks until the action finishes
+* **Wait** duration — three numeric editors for **Hours**, **Minutes**, and **Seconds**, enabled only when _Retry_ is selected
+* **Job** picker — enabled when _Run Job_ or _Run Task_ is selected
+* **Task** picker — enabled when _Run Task_ is selected, listing the Tasks of the selected Job
