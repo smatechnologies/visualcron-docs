@@ -17,13 +17,19 @@ Before configuring any interaction rules you must create a Connection. Click on 
  
 **Interaction rules** tab
 
-The tab contains a toolbar with commands to configure a tree-like structure, which, in turn, is used for setting up the messaging logic between the TCP server (listener) and the TCP client.
+The tab is split into two panes: a tree on the left that holds the rule hierarchy, and a properties panel on the right that displays the settings for the rule selected in the tree. A toolbar above the tree provides commands to manage the rules.
  
 Available commands:
 
-**Append rule**: append a rule of some type (send a message, receive a message, or check the received message body).
+**Append rule**: a drop‑down with three rule types — _Send_, _Receive_, and _Check_ — for appending the corresponding rule under the current selection.
 **Delete**: delete a rule with all child rules.
-**Demo**: automatically create a set of rules with an example of a simple communication algorithm between a client and a server.
+**Demo**: automatically create a set of rules with an example of a simple communication algorithm between a client and a server. The command is only available when the rule tree is empty.
+
+The properties panel on the right shows a **General** tab for every rule (rule name, result message key, _Use key as format string_, _Fire trigger_, _Force exit_) and one of the following rule‑type tabs depending on the selected rule:
+
+* **Send** — text body, number of iterations, delay before send (ms), delay after send (ms)
+* **Receive** — number of iterations and receive timeout in seconds (`-1` uses the Connection timeout)
+* **Check** — match condition, match value, and exclusive group index used to combine mutually exclusive conditions
  
 See "[TCP messaging rules](../server/job-tasks/net-tasks/tcp#tcp-messaging-rules)" section in the TCP Task topic.
  
@@ -36,7 +42,7 @@ As a remote TCP client, a similar test scenario can be launched in the [TCP Task
  
 **Setup maximum number of iterations**
 
-All rules with a large or infinite number of repetitions automatically terminate after the specified maximum number of iterations.
+All rules with a large or infinite number of repetitions automatically terminate after the specified maximum number of iterations. The value can be set between `1` and `999`; the default is `10`. Click the **Test** button to execute the configured rules against the Log window without saving the trigger.
  
 **TCP Trigger Result Variables**
  
