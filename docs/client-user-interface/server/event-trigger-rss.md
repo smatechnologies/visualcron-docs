@@ -83,6 +83,8 @@ Checkboxes to select which SSL/TLS protocol versions are allowed when connecting
 * _TLS 1.0_
 * _TLS 1.1_
 * _TLS 1.2_
+
+**Credentials**
  
 **Auth type**
 
