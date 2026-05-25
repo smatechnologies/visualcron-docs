@@ -13,7 +13,26 @@ For Time trigger select one of _Interval_ or _Custom_ types.
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Time%20Triggers/Interval%20Time%20Trigger%20Settings.png)
 
-Enter a description which will distinguish several triggers from each other in a trigger list. You can also choose between the [Interval Time Trigger](interval-time-trigger) and [Custom Time Trigger](custom-time-trigger) type triggers. One trigger type is always selected and the other option will be grayed out.
+The Settings tab contains the **Main settings** group with the following fields:
+
+**Description**
+
+Enter a description that distinguishes the Trigger from others in the trigger list.
+
+**Auto description**
+
+When checked, the _Description_ field is generated automatically from the Trigger type and its current settings. Enabled by default.
+
+**Auto refresh description**
+
+When checked, the auto‑generated description is refreshed whenever the Trigger settings change, even if the _Description_ field already contains text. Only effective when _Auto description_ is checked.
+
+**Time trigger type**
+
+A pair of mutually exclusive radio buttons that select which type of time schedule is applied:
+
+* **Interval time trigger** — use the schedule configured on the [Interval Time Trigger](interval-time-trigger) tab (default)
+* **Custom time trigger** — use the schedule configured on the [Custom Time Trigger](custom-time-trigger) tab
  
 **Interval tab**
 
