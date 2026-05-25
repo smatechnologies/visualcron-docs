@@ -21,3 +21,35 @@ An important feature is the import function, ***Time exceptions* -> Collections 
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Time%20Exceptions/Time%20Exceptions.png)
 
+### Manage Time Exceptions window
+
+The Time Exceptions window displays a two‑band hierarchical grid:
+
+* **Collection** rows (parent) show the **Name**, **Description**, and a **Use** checkbox indicating whether the collection is active
+* **Exception** rows (child, expanded under each collection) show the **Name**, **Next exception** (the next time the exception will be active), and **Description**
+
+The toolbar above the grid is split into two sections — **Collections** and **Exceptions** — with the following buttons:
+
+* Collections: **Add**, **Edit**, **Clone**, **Remove**
+* Exceptions: **Add**, **Edit**, **Remove**
+* Shared: **Download** (download community‑shared time exception collections), **Audit log**
+
+Right‑clicking a row opens a context menu with the same commands plus **Versions** (view the version history of the collection or exception), **Object relations** (see which Jobs reference the collection), and **Export**.
+
+### Add / Edit collection
+
+The Add/Edit collection dialog has the following fields:
+
+* **Name** — the name shown in the collection grid
+* **Description** — optional free‑text description
+
+When editing an existing collection, a link is also shown that lets you copy the internal collection ID to the clipboard.
+
+### Add / Edit time exception
+
+The Add/Edit time exception dialog uses a tab layout similar to a Custom Time Trigger:
+
+* **Main** — **Name** and **Description** fields for the individual exception
+* **Year**, **Month**, **Day**, **Hour**, **Minute**, **Second** — one tab per time unit, each offering _Every_, _Choose_, or _Between_ options. The **Day** tab also includes weekday selection (_Choose weekdays_ and _Between weekdays_)
+
+The **Next exception** value is shown in the status bar at the bottom of the dialog and is recalculated automatically as you change the time settings.
