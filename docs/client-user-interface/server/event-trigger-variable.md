@@ -25,6 +25,15 @@ Perform a check of configured conditions at intervals specified in Main settings
 
 One or more conditions can be configured here.
 By default, conditions are linked with the AND operator, but if necessary, the conditions can be combined into groups, and the groups can be linked with the OR operator.
+
+The Conditions sub‑tab provides the following commands for managing the condition tree:
+
+* **Add condition** — append a new condition at the current level
+* **Add group** — wrap conditions in a sibling group so that group‑level AND/OR can be applied
+* **Add nested group** — add a sub‑group under the current selection
+* **Edit** / **Delete** — modify or remove the selected condition or group
+
+Toggle the AND/OR operator between conditions or groups by clicking the operator label in the tree.
  
 **Conditions** sub tab > **Add condition** > **Main Settings** tab
 
@@ -51,13 +60,27 @@ An event-based condition that triggers every time the value of a Variable change
 
 Variable, or a combination of several Variables, the value of which is checked in the condition.
  
-**Condition**
-
-Comparison operator for the current Variable value and the "Value to compare with".
- 
 **Type**
 
-Variable value type.
+The data type that the Variable value should be interpreted as. The selected type determines which operators are available in the **Condition** dropdown. The supported types are:
+
+* **String**
+* **Boolean**
+* **Int32**
+* **Int64**
+* **Single**
+* **Double**
+* **Decimal**
+* **DateTime**
+
+**Condition**
+
+Comparison operator for the current Variable value and the "Value to compare with". The list of available operators depends on the selected _Type_:
+
+* **String** — _Equal_, _Not equal_, _Contains_, _Not contains_, _RegEx match_, _RegEx no match_
+* **Boolean** — _Equal_, _Not equal_
+* **Int32 / Int64 / Single / Double / Decimal** — _Equal_, _Not equal_, _Smaller_, _Smaller or equal_, _Larger_, _Larger or equal_
+* **DateTime** — _Equal_, _Not equal_, _Smaller_, _Smaller or equal_, _Larger_, _Larger or equal_
  
 **Value to compare with**
 
@@ -97,13 +120,12 @@ Variable, or a combination of several Variables, the value of which is checked i
 The period of time after previous triggering when the event generation is suppressed.
 If an event occurs in the system before the suppression period has ended, the event will be ignored.
  
-**Force event reset after each condition set calculation**
+**Event reset behavior**
 
-The state will be set to nonsignaled when calculating the entire condition tree, regardless of whether the event is checked directly or not.
- 
-**Keep signaled state until event is checked directly**
+A pair of radio buttons that control how the signaled state of the change event is reset:
 
-The event will remain in the signaled state until it is checked directly during condition calculations.
+* **Force event reset after each condition set calculation** — the state is set to non‑signaled when the entire condition tree is calculated, regardless of whether the event is checked directly or not
+* **Keep signaled state until event is checked directly** — the event remains in the signaled state until it is checked directly during condition calculations
  
 #### Variable Trigger Result Variables
  
@@ -270,4 +292,3 @@ Run the Job every time the value of the Variable "VarX" becomes "X", provided th
 * set up the condition parameters on the Configure tab:
     * *Variable = `{USERVAR(VarN)}`*
     * *Keep signaled state until event is checked directly = Checked*
-
