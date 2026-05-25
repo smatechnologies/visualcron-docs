@@ -22,6 +22,14 @@ If your [Credential](../server/global-credentials) requires integrated security 
 **Command timeout**
 
 How long time before the query times out.
+
+**On error reconnect attempts**
+
+The number of times VisualCron tries to reconnect to the database when a connection error occurs. Value 1 to 500 is available. Default value is 5 times.
+
+**On error reconnect interval (seconds)**
+
+The number of seconds to wait between reconnect attempts. Value 1 to 500 is available. Default is 10 seconds.
  
 **Triggers > Add > Event Trigger > SQL > Trigger > Text** sub tab
 
@@ -33,7 +41,9 @@ Enter the query in the text field. If you have a stored procedure - select the s
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL%20Trigger%20Stored.png)
 
-Enter the name of the stored procedure to execute. The grid shows all parameters. When clicking on the Add button, a parameter window will open. Enter parameter values for Name, Value, Data type and Parameter direction.
+Enter the **Name of Stored Procedure** to execute. The field is an editable dropdown — click the refresh button next to it to populate the dropdown with stored procedures from the selected database Connection, or type a stored procedure name directly.
+
+The **Parameters** grid below shows all parameters for the stored procedure. Use the **Add**, **Edit**, and **Delete** buttons (also available from the grid's context menu) to manage parameters. When clicking on the Add button, a parameter window will open. Enter parameter values for Name, Value, Data type and Parameter direction.
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL%20Trigger%20Stored%20Procedure.png)
 
@@ -47,13 +57,24 @@ Test your SQL Task before closing the VisualCron client. Errors will be reported
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL%20Condition.png)
 
-**Condition**
-
-Select the comparison method.
- 
 **Data type**
 
-Select the result data type and the value to compare with.
+Select the data type that the SQL query result should be interpreted as. The available comparison methods in the _Condition_ dropdown change depending on the selected data type:
+
+* **String**
+* **Boolean**
+* **Int32**
+* **Int64**
+* **Decimal**
+* **Double**
+
+**Condition**
+
+Select the comparison method that should be applied between the result and the _Value to compare with_. The list of available methods depends on the selected _Data type_:
+
+* **Boolean** — _Equal_, _Not equal_
+* **String** — _Equal_, _Not equal_, _Contains_, _Not contains_, _RegEx match_, _RegEx no match_
+* **Int32 / Int64 / Decimal / Double** — _Equal_, _Not equal_, _Larger_, _Larger or equal_, _Smaller_, _Smaller or equal_, _Contains_
  
 **Value to compare with**
 
@@ -61,4 +82,8 @@ Enter a value/Variable to compare the result with. Click the Variables icon to o
  
 **If value is the same as last time**
 
-You can control what happens if the same value comes two times in a row. By default the Trigger fire each time the Condition is met.
+Choose how the Trigger should behave when the new result matches the previous result:
+
+* **Fire Trigger** — fire the Trigger every time the Condition is met (default)
+* **Do not fire Trigger** — skip firing when the result is the same as last time
+* **Disable Trigger** — disable the Trigger after a repeated identical match
