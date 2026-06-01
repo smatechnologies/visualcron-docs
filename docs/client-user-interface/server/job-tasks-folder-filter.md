@@ -38,6 +38,22 @@ If the include folder mask is a regular expression
 **Case sensitive**
 
 If case sensitive search should be done on the include folder mask.
+
+**Use folder exclusion**
+
+Check this to enable the exclude folder mask below. When unchecked, no exclusion mask is applied.
+ 
+**Exclude folder mask**
+
+Wild card for excluding folder names. Separate multiple folder names with semicolon ";". Click the Folder icon to browse the folder tree.
+ 
+**Is regex**
+
+If the exclude folder mask is a regular expression.
+ 
+**Case sensitive**
+
+If case sensitive search should be done on the exclude folder mask.
  
 **Folder filter > Date** sub tab
 
@@ -57,7 +73,21 @@ Select this to enable size checking. Enter a value in the numeric text box and s
  
 **Check if folder is larger than x size**
 
-Select this to enable size checking. Enter a value in the numeric text box and select the size unit to compare with. Default is kilobyte(s). If the size on the folder is larger than the value you enter in the numeric box it will return true (=file folder be included).
+Select this to enable size checking. Enter a value in the numeric text box and select the size unit to compare with. Default is kilobyte(s). If the size on the folder is larger than the value you enter in the numeric box it will return true (= folder will be included).
+ 
+The two size checks can be combined with the AND/OR selector.
+ 
+**Folder filter > Result** sub tab
+
+The filtered folders can be sorted and the number of returned rows limited.
+
+**Sort**
+
+By checking *Sort* you can sort the found folders on values like name, modified date, created date and size, in *Ascending* or *Descending* direction. If sort is unchecked the folders are presented in the order they are discovered.
+ 
+**Limit**
+
+Check this if you want to limit the number of rows returned. It will be limited according to the number (which could be a Variable) and the current sorting.
  
 **Folder filter > Test** sub tab
 
@@ -65,4 +95,4 @@ Select this to enable size checking. Enter a value in the numeric text box and s
 
 **Show filtered folders**
 
-The test will use the selected Credential and lets you test your folder filter - what folders it returns based on the filter.
+The test will use the selected Credential and lets you test your folder filter - what folders it returns based on the filter. The number of folders found and the elapsed time are shown.
