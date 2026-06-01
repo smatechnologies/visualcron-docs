@@ -52,18 +52,19 @@ There are two main views:
  
 * CPU % - this is a % being used during the execution time period
 * CPU Time - this is the cost value for the CPU during the execution time period
+
+The CPU % view shows the following:
  
-The CPU % usage is separted 4 categories:
+* **CPU %** - the overall CPU % used by the Job during the execution time period
+* **VisualCron CPU** - how much CPU % the VisualCron Server consumed during that time, so general usage can be compared. Enable it with the *Show VC CPU* checkbox.
+* **OS CPU** - how much CPU % the operating system was using at that moment. Enable it with the *Show OS CPU* checkbox.
  
-* **Thread CPU **- how much CPU % is consumed by the Task internally in VisualCron
-* **Process CPU** - how much CPU % is consumed by any process related to the Task. For example, the PowerShell Task uses an external process or execution.
-* **VisualCron CPU** - how much CPU % consumed by VisualCron Server during that time. This way general usage can be compared  (can be optionally compared with checkbox)
-* **OS CPU** - how much CPU % the operating system is using at that moment (can be optionally compared with checkbox)
+The CPU Time view is separated into the following categories:
  
-The CPU time usage is separated into 2 categories:
- 
-* **Thread CPU** - how much CPU time is consumed by the Task internally in VisualCron
-* **Process CPU** - how much CPU time is consumed by any process related to the Task. For example, the PowerShell Task uses an external process or execution.
+* **Job thread** - how much CPU time is consumed by the Job thread itself
+* **Tasks** - how much CPU time is consumed by the Job's Tasks
+* **Notifications** - how much CPU time is consumed by Notifications
+* **Triggers** - how much CPU time is consumed by Triggers
  
 There is a chart showing the latest value which is based on the selection Date + Time in the top left window. The data range defines the period being used for the line chart and the range values - this is controlled by the date range controls. It is possible to zoom with the mouse wheel and mark certain areas.
 
@@ -86,4 +87,3 @@ The date range controls the line chart and range values. The current value is co
 The stats in the ROI tab shows how much each execution of a Job, during a period, saved the company.
 
 ![](../../../static/img/jobresultroi.png)
-
