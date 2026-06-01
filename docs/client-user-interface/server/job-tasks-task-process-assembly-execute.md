@@ -44,7 +44,7 @@ Tries to load the app.config of your dll if it exists.
 
 This is the name of the Class.
  
-**Show only public types**
+**Show only Public types**
 
 When selecting a file or clicking refresh class information is loaded from the assembly. By default, only public classes are loaded. If you want to load class with other modifiers/visibility you must uncheck this.
  
