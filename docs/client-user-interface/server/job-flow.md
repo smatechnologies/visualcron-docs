@@ -60,18 +60,30 @@ Event conditions contains some basic conditions that are optionally evaluated wh
 * Always - will continue without evaluating any condition
 * If other value/Variable - matches any two values - could be two Variables or a mix. Click the Variables icon to open the Variables list.
 * If exit code - matches a value with the exit code of the Job
+
+The *If exit code* condition is not available for the *On start* event, since no exit code exists yet at that point.
  
 **Type/Condition**
 
-When you have selected an event condition you decide how to match this condition - with what value and data type. As for the condition, you can select from Equal, Not equal, Contains and Not contains.
+When you have selected an event condition you decide how to match this condition - with what value and data type. The data type can be *Boolean*, *Decimal*, *Double*, *Int32*, *Int64* or *String*.
+
+The available match operators depend on the selected data type:
+
+* *String* - Equal, Not equal, Contains, Not contains
+* *Boolean* - Equal, Not equal
+* *Decimal*, *Double*, *Int32*, *Int64* - Equal, Not equal, Smaller than, Larger than, Smaller than or equal, Larger than or equal
  
 **Value/Variable**
 
 Enter a value or click the Variables icon to open the Variables list.
- 
-### Task Flow control
+
+### Job flow control
 
 The flow control group controls what happens when the Job Condition has been matched with event and condition.
+
+**Stop Job**
+
+Stops the Job immediately. No further Tasks will be run.
  
 **Wait and retry**
 
@@ -79,7 +91,7 @@ Waits a specified time and then try to run the Job again. You can choose how man
  
 **Run Job**
 
-Runs another Job (asynchronous or synchronous).
+Runs another Job. Check *Run asynchronous* to start the other Job without waiting for it to complete, or leave it unchecked to run it synchronously.
  
 **Run Notification**
 
@@ -87,4 +99,4 @@ Runs the specified Notification (this replaces previous Notifications).  Click t
  
 **Deactivate Job**
 
-Deactivates the current Job.
+Deactivates the current Job. This option is not available for the *On start* event.
