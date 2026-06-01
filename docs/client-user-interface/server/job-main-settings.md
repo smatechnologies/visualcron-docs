@@ -27,9 +27,9 @@ Add information to see the difference between Jobs.
 
 When checked, VisualCron logs additional information during the execution - for example information about Triggers and all internal operations. This is mainly used for debugging if you experience a problem.
  
-**Run once (can be activated later)**
+**Run once (can be reactivated later)**
  
-**Run missed Jobs once at start**
+**Run missed Job once at start**
 
 This function can be used for a specific Job to let a Job automatically run if it should have been run during a time when the VisualCron service was down/stopped for any reason (typically due to server computer off). For example, a Job is supposed to run once a day at 08:00. Let's say that the server goes down at 07:00 because a power failure. The problem is corrected and the server goes up at 09:00. If the Run missed Jobs once at start box is checked, VisualCron will at startup check if the Job was supposed to run between the last time VisualCron was up and the current time. If so, that Job will be run **once**.
  
@@ -46,7 +46,7 @@ The "run missed events" behavior is not active when the server has been stopped 
 
 :::
 
-**Remove Job after running**
+**Remove Job after execution**
 
 If you check this box the Job will be removed right after running.
  
@@ -54,7 +54,7 @@ If you check this box the Job will be removed right after running.
 
 To be selected if you want to run Jobs at irregular time intervals. Check the box and enter a probability value. For example value 2 means that the Job will run approximately 1 out of 2 times. So if you want your Job to run approximately three times an hour, you should specify value 20 and in the Time settings select to run it every minute. 1 out of 20 times, the Job will run every minute (60/20 = 3 times in one hour). Note that this is a probability value. In this case, the Job may run 2 times one hour and 4 times another hour.
  
-**Do not start if Job if is already running**
+**Do not start if job is already running**
 
 When a Job is running it is "flagged" as running. If you don't want to execute your Job while it's running the check this box. This can be useful when using the new events which can trigger your Job very often if you set the watch parameters "loosely". If the Job is triggered when this box is checked, a log entry will inform that the Job wasn't run due to this setting.
  
