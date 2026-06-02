@@ -13,5 +13,4 @@ The timeout value can be set both at Task and Job level.
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/TimeOut.png)
 
-When the timeout is activated, all processes related the current Task will be terminated.
-
+Check *Use timeout* and specify the time in hours, minutes and seconds. When the timeout is reached, all processes related to the current Task will be terminated.
