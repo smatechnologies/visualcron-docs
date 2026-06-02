@@ -35,10 +35,22 @@ By default, the parameters supplied to a Variables is using pipe (|) or comma (,
 **Functions**
 
 Functions contains a set of string and path functions that can be useful for editing/changing text.
+
+**Logic**
+
+Conditional functions. A *{LOGIC(If|...)}* variable compares two values and returns one of two results depending on whether the comparison matches.
+ 
+**Math**
+
+Math functions such as Add, Subtract, Multiply, Divide, Abs, Round, Ceiling, Floor and Pow, with an optional output format.
  
 **System variables**
 
 These are values collected from the current computer/server, such as Environment and Memory variables and system uptime.
+
+**Server variables**
+
+Values that describe the VisualCron Server, such as its IP, port, version and activation status, and the settings, backup, temp, log and output cache folders. You can also list the users and groups on the Server.
  
 **Date variables**
 
@@ -59,6 +71,10 @@ These are the most powerful variables which let you access a large part of your 
 **User defined variables**
 
 You are able to create your own static or dynamic Variables - with different value types. To Add/Edit/Remove a Variable you ca either click at the *Add/Edit/Delete* buttons or create Tasks ([Set Variable](../../client-user-interface/server/job-tasks/internal-tasks/set-job-variable), [Remove Variable](../../client-user-interface/server/job-tasks/internal-tasks/remove-variable), [Calculate Variable](../../client-user-interface/server/job-tasks/internal-tasks/calculate-variable)) that does this.
+
+**Task repository variables**
+
+Variables for accessing items stored in the Task repository.
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Variables/Edit%20variables.png)
 
@@ -137,6 +153,22 @@ Gets the fully qualified path of the affected file or folder.
 **Name**
 
 Gets the name of the affected file or folder.
+
+**Path of triggered folder**
+
+The path of the watched folder that triggered the event.
+ 
+**Old Name**
+
+The previous name of the affected file or folder (available on rename).
+ 
+**Old full Path**
+
+The previous full path of the affected file or folder (available on rename).
+ 
+**New text**
+
+The new text content of the affected file (available when watching for content changes).
  
 More information:
 [Microsoft file system event arguments](https://learn.microsoft.com/en-us/dotnet/api/system.io.filesystemeventargs?view=net-8.0&redirectedfrom=MSDN)
@@ -211,6 +243,14 @@ Value Meaning
 8        Security audit success
 
 16        Security audit failure
+
+**XML**
+
+The raw XML representation of the event.
+ 
+**Keywords**
+
+The keywords associated with the event.
  
 More information:
 [Microsoft log events](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/eventlogprov/win32-ntlogevent?redirectedfrom=MSDN)
@@ -295,6 +335,14 @@ Windows error code that defines errors encountered in starting or stopping the s
 **Service specific exit code**
 
 Service specific error code for errors that occur while the service is either starting or stopping. The exit codes are defined by the service represented by this class. This value is only set when the ExitCode property value is ERROR_SERVICE_SPECIFIC_ERROR (1066).
+
+**Process Id**
+
+Process identifier of the service.
+ 
+**Description**
+
+Description of the service.
  
 More information:
 [Microsoft service info](https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-service?redirectedfrom=MSDN)
