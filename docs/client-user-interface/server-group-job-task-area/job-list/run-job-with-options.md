@@ -13,6 +13,7 @@ In the window that opens you can control the following:
 * If it should override Variables or use new ones
 * If it should update current Job Variables with new ones or not
 * If it should start from a certain Task on complete with a certain Task
+* If it should raise Trigger events
  
 **Run Job with options**
 
@@ -33,3 +34,7 @@ When checked, it will update existing Job Variables. If unchecked it will use th
 **Tasks**
 
 You can choose to start from first Task or a certain Task and run to last Task or a certain Task.
+
+**Raise Trigger events**
+
+When checked, the Job's Triggers raise their events for this run. When unchecked the Job is run without raising Trigger events.
