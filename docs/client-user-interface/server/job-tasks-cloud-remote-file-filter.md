@@ -21,7 +21,7 @@ To use a specific cloud service you need to create a [Connection](../server/glob
  
 **Bucket/Container**
 
-This property is used for Amazon Cloud services to specify the Bucket.
+The top-level container to look in. The label changes with the cloud provider - for example *Bucket* for Amazon S3, *Container* for Azure Blob, *Share* for Azure Fileshare and *Drive* for Google Drive.
  
 **Source folder**
 
@@ -49,13 +49,15 @@ Check if you want to include sub folders and not just the base *Source folder*.
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Date%20Sub%20Tab.png)
 
-**Modified date**
+The Date tab filters items by date. It has two checks, *Newer than* and *Older than*, which can be combined with the *AND/OR* selector.
 
-Use a Variable to, for example, download files older than a specific modified date.
- 
-**Created date**
+**Newer than**
 
-Use a Variable to, for example, download files older than a specific modified date.
+Select which date to check (*Don't check*, *Created date* or *Modified date*) and enter a value or Variable. Items with that date later than the value match.
+
+**Older than**
+
+Select which date to check (*Don't check*, *Created date* or *Modified date*) and enter a value or Variable. Items with that date earlier than the value match.
  
 **Size** sub tab
 
@@ -63,11 +65,13 @@ Use a Variable to, for example, download files older than a specific modified da
 
 **Check if file is smaller than x size**
 
-Filter files that are smaller than a value/Variable.
+Filter files that are smaller than a value/Variable. Select the unit (*byte(s)*, *kilobyte(s)*, *megabyte(s)*, *gigabyte(s)* or *terabyte(s)*).
  
 **Check if file is larger than x size**
 
-Filter files that are larger than a value/Variable.
+Filter files that are larger than a value/Variable. Select the unit (*byte(s)*, *kilobyte(s)*, *megabyte(s)*, *gigabyte(s)* or *terabyte(s)*).
+
+The two size checks can be combined with the *AND/OR* selector.
  
 **Result** sub tab
 
@@ -75,14 +79,14 @@ Filter files that are larger than a value/Variable.
 
 **Sort**
 
-By checking sort you can sort the found files according to your desired order. This is important if you later want to limit the result to, for example, the 10 newest files.
+By checking *Sort* you can sort the found files according to your desired order. Select the column to sort by and the direction (*Ascending* or *Descending*). This is important if you later want to limit the result to, for example, the 10 newest files.
  
 **Limit**
 
-How many files you want to return.
+How many files you want to return. Enter a value or use a Variable.
  
 **Test** sub tab
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/File%20Test%20sub%20tab.png)
 
-The Test tab lets you test the result of your set filters to see what is really returned.
+The Test tab lets you test the result of your set filters to see what is really returned. Click *Show filtered files* to run the test; the returned items are listed together with the number of files found and the elapsed time.
