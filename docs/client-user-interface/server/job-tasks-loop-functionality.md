@@ -82,7 +82,7 @@ Depending on type comparison you enter different kind of values/Variables.
  
 **For each x in y**
 
-Enter a Variable that contains a list. You may need to alter field separator, text qualifier or line break depending on the format of the Variable list.
+Enter a Variable that contains a list. You may need to alter *Use column*, *Field separator*, *Text qualifier*, *Line break* or *Start row* depending on the format of the Variable list. *Use column* selects which column the x value is picked up from, and *Start row* lets you skip a number of leading rows.
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20For%20each%20x%20in%20y.png)
  
@@ -93,6 +93,10 @@ Sets the wait time between each iteration. This is especially interesting if you
 **Limitations**
 
 Set the maximum number of iterations. If your y value is less than 1000 then lower or keep value to prevent never ending loops.
+
+**Validate values when saving**
+
+When checked, the loop values are validated when the loop settings are saved.
  
 **Add loop > Loop settings > Loop Variables**
 
@@ -123,6 +127,14 @@ The original right hand value in For, While or For Each loop.
 **Current X value**
 
 The value of the position in the loop. This value is interesting when using For or For Each loop.
+
+**Current X line**
+
+The current line of the X value when using a For Each loop.
+ 
+**Current line in X - specify column**
+
+The value of a specific column in the current X line. Specify the column index in the Variable.
  
 **Current Y value**
 
@@ -144,19 +156,19 @@ Task Id for the selected start Task in the loop.
 
 Task Id for the selected end Task in the loop.
  
-**Column position that it used in For Each loop**
+**Column position that is used in For Each loop**
 
 The numeric value of column position where x value is picked up.
  
 **Field separator**
 
-The character that is used to separate feilds in For Each loop.
+The character that is used to separate fields in For Each loop.
  
 **Text qualifier**
 
 The surrounding character of each column.
  
-**Line break**
+**New line character**
 
 The line break character that is used in each column.
  
