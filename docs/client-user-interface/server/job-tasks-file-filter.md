@@ -50,6 +50,10 @@ If the include file mask is a regular expression. For more information about reg
 **Case sensitive**
 
 If the file name search is case sensitive.
+
+**Use file exclusion**
+
+Check this to enable the exclude file mask below. When unchecked, no exclusion mask is applied.
  
 **Exclude file mask**
 
@@ -69,7 +73,7 @@ Makes it possible to check found files for content.
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/File%20Content%20sub%20tab.png)
 
-The default **Content** property is *Don’t check*. Use the drop-down list to select the desired property.
+The default **Content** property is *Don't check*. Use the drop-down list to select the desired check. The available checks are *Contains*, *Not contains*, *Equal*, *Not equal*, *Match RegEx* and *Not match RegEx*.
  
 **File filter > Date**
 
@@ -80,6 +84,8 @@ Makes it possible to check the created/modified date against a Variable value.
 There are two types of checks *Older than* and *Newer than*. These can be combined with AND/OR or used separately. Only date variables can be used here. Once you have selected a Variable it can be previewed when hovering over text box (tool tip) or in the group caption.
  
 Click the *Variables* icons to view and select available Date Variables.
+
+Check *Validate dates before saving* if you want the entered date Variables to be validated against the server date format when the filter is saved.
  
 **File filter > Size**
 
