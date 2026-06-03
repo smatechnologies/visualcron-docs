@@ -50,7 +50,13 @@ Event conditions contains some basic conditions that are optionally evaluated wh
  
 **Type/Condition**
 
-When you have selected an event condition you decide how to match this condition - with what value and data type. As for the condition, you can select from Equal, Not equal, Contains and Not contains.
+When you have selected an event condition you decide how to match this condition - with what value and data type. The data type can be *Boolean*, *Decimal*, *Double*, *Int32*, *Int64* or *String*.
+
+The available match operators depend on the selected data type:
+
+* *String* - Equal, Not equal, Contains, Not contains
+* *Boolean* - Equal, Not equal
+* *Decimal*, *Double*, *Int32*, *Int64* - Equal, Not equal, Smaller than, Larger than, Smaller than or equal, Larger than or equal
  
 **Value/Variable**
 
