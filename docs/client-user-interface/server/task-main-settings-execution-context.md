@@ -45,7 +45,7 @@ In the Execution context window (which you reach from [main Task window](../serv
 
 **VisualCron Server location**
 
-Some Tasks (currently only Execute Task) allows execution on the local machine but also remote VisualCron Server. Select a VisualCron Connection to execute the Task on a remote VisualCron Server. Please note that VisualCron needs to be installed in the remote location.
+Some Tasks (currently only Execute Task) allows execution on the local machine but also remote VisualCron Server. The default is *Local VisualCron Server*. Select *Remote VisualCron Server* and choose a VisualCron Connection to execute the Task on a remote VisualCron Server. Please note that VisualCron needs to be installed in the remote location.
  
 **Background/Foreground execution**
 
@@ -53,7 +53,7 @@ Background execution is default and requires no logged in Tray Client. When choo
  
 **Execution target**
 
-You can choose to *Execute on any desktop sessions* - this executes on the first available session. By default you can *Execute on same user session as unlock Credential* - this means that VisualCron will launch the process on the same user that is set in Before execution.
+You can choose to *Execute on any desktop session* - this executes on the first available session. By default you can *Execute on same user session as unlock Credential* - this means that VisualCron will launch the process on the same user that is set in Before execution.
  
 You can also choose to Execute on specified desktop session. You can  choose from the list of connected sessions and click *Select*. If you are locally connected you can also click on *Select current* which retrieves information about your session.
  
@@ -81,13 +81,15 @@ For Windows 2008 you must enable a setting in [Local Security Policy](../../secu
 
 The [VisualCron Tray Client](../../using-visualcron/visualcron-tray-client) needs to be running in order to execute a foreground Task. If no one is logged in the desktop is not active and no Tray Client is started. There is also a scenario when the computer may be locked. This prevents Tasks that need access to desktop (for example the [Desktop Macro Task](../server/job-tasks/interactivity-tasks/desktop-macro)) to be able to run. The solution to that is to tell VisualCron to perform a logon/unlock. If the computer is locked VisualCron will try to unlock. If no user is logged in VisualCron will logon. You need to check Logon/Unlock using Credential and specify a Credential. Note that the Credential must match the desktop session (if you are not using Execute on any desktop session).
  
-If multiple users are logged in at the same time you need to handle this as only one user can be active. There are 3 options for this:
+If multiple users are logged in at the same time you need to handle this as only one user can be active. Under *If other user has an active session:* there are 4 options:
 
-1. Disconnect - disconnects the session for other user
+1. Do nothing if target user is connected (otherwise Disconnect) - the default; does nothing as long as the target user is connected, otherwise disconnects the other session
 
-2. Lock - locks the computer of the active session (however only the person who locked can unlock)
+2. Disconnect other session - disconnects the session for the other user
 
-3. Logoff - signs out the other user (current applications will be closed)
+3. Lock other session - locks the computer of the active session (however only the person who locked can unlock)
+
+4. Logoff other session - signs out the other user (current applications will be closed)
  
 **After logon/unlock**
 
@@ -95,7 +97,7 @@ You can choose that VisualCron should automatically lock after logon. This could
  
 **After execution**
 
-You may want to "close" after yourself. Lock or logoff current user. Select Do nothing if you want to keep the desktop open.
+You may want to "close" after yourself. Choose *Lock workstation* or *Logoff user*. Select *Do nothing* if you want to keep the desktop open.
  
 ### Troubleshooting
  
