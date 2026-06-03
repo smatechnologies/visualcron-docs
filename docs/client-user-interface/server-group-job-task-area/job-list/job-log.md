@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Job Log
 
-When a Job is defined, right-click on the Job or Task in the Server/Group/Job/Task grid and select *Job log* to open the log window.
+When a Job is defined, right-click on the Job or Task in the Server/Group/Job/Task grid and select *Log history* to open the log window.
  
 The data in this window is based on the local database file. The number of entries in this file is limited by the *Job Log* settings in **Server > Settings > Log settings  > Database settings**.
  
