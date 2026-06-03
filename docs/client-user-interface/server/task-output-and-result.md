@@ -23,7 +23,7 @@ Task result is specific for each Task. Depending on the result type we display i
 * Robot Task - Video of the playback
 * Etc.
  
-You may be able to increase output details by checking Extra Task debugging in Main settings of the Task.
+You may be able to increase output details by checking Extended Task debug logging in Main settings of the Task.
  
 **Accessing Output and Result**
 
