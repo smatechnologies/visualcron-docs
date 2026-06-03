@@ -23,6 +23,14 @@ If several Tasks are defined for a Job and the Tasks are under execution, the Ta
 
 ::: 
 
+**Name**
+
+The name of the Task.
+ 
+**Description**
+
+A description of the Task.
+
 **Encoding**
 
 The encoding property sets which encoding to use. This feature is not implemented in all Tasks. If you got any encoding problem please contact support.
@@ -33,9 +41,9 @@ Click the Change button to set [Execution context](../server/task-main-settings-
  
 **Processor affinity settings**
 
-This control if the CPU usage of a Task should be controlled automatically (divided over processors/cores) or if you want to execute on a specific processor/core.
+This controls whether the CPU usage of a Task is handled *Automatically* (divided over processors/cores) or run on specific processors/cores (*Custom*). Click the *Set affinity* button to choose the option and, for *Custom*, the individual processors/cores.
  
-**Stor stanard output/error**
+**Store standard output / Store standard error**
 
 By default, VisualCron is capturing and storing all output from executed processes. If you don't want this and want Windows to capture all output you uncheck these options.
  
