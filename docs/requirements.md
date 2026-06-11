@@ -43,3 +43,9 @@ hide_title: 'true'
 | CPU                      | 2 GHz or more, quad core or better                                              |
 | Memory                   | 12 GB or more                                                                    |
 | Screen resolution        | Minimum 1920×1080                                                               |
+
+:::note
+
+VisualCron supports third-party integrations but can only assist with versions that are actively maintained by their vendors. Requests involving end-of-life tools may be closed without resolution.
+
+:::
