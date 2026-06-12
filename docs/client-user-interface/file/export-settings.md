@@ -19,13 +19,13 @@ The exported settings consists of many files, but the Export settings function c
 
 Select the Server settings in the list which you want to export. If there are no specific reason for the export, it is strongly advised that you export all settings, you may later choose to import just some settings. Note that when importing settings again and using "Clear existing settings" only existing object types will be cleared. For example, if you only export your Jobs the Jobs will only be cleared when importing.
  
-**Default file path**
+**Path to default file**
 
-The default file for Export is C:\Program Files (x86)\VisualCron\backup\VC-Settings.zip.
+Select this option to export to the default file, which is `VC-Settings.zip` in the backup folder configured under [Client settings](client-settings) (by default the `backup` folder in the VisualCron installation).
  
 **Custom file path**
 
-If you want to use another destination for the exported file than the default file path then specify another file path.
+Select this option if you want to use another destination for the exported file than the default file path, then browse to or enter the file path.
  
 **Password**
 
