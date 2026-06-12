@@ -11,6 +11,8 @@ In the main menu **Server > Information > Log** you can list events from the cli
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Information%20-%20Log/Log%20Information.png)
 
+The log window is divided into tabs. The **Realtime - general** tab shows live events, while the **Historic** tabs (general, Job, Task, Notification and transfers) let you look up previously stored events. On the realtime tab you can also set an extra filter on a specific column and clear it with the *Clear filter* button.
+
 **Menu File > Export**
 
 The log can be exported in Microsoft Excel format. Choose path, enter log file name and click on save.
