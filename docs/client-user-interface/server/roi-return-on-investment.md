@@ -50,6 +50,10 @@ Default time that will be used for new Jobs and existing one using default setti
 **Default rate saved for new Jobs**
 
 Default hourly rate that will be used for new Jobs and existing Jobs using default settings.
+
+**Only store successful executions**
+
+If checked, only successful executions are counted towards the ROI.
  
 **Update Jobs**
 
