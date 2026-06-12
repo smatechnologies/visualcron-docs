@@ -13,7 +13,7 @@ With the main menu **Tools > Explore > Connection Explorer** option, there is on
 
 **The Connections list**
 
-The Connection list shows all Connection types that are viewable by this Explorer. You can view FTP, SFTP, Terminal and SSH. You can right click on any connection and choose to set Properties or Connect.
+The Connection list shows all Connection types that are viewable by this Explorer. You can view FTP and SFTP Connections, as well as cloud storage Connections such as Windows Azure, Amazon S3, Dropbox, Google Drive, Google Cloud Storage, OneDrive, Box, WinSCP and SharePoint. You can right click on any connection and choose to set Properties or Connect.
 
 **Drag and drop support**
 
