@@ -5,6 +5,6 @@ hide_title: 'true'
 
 ## Add Job
 
-A new Job can be created by clicking on the toolbar Add Job option. For more information, see the [Main - Jobs](../server/jobs-jobs) section.
+A new Job can be created by clicking on the toolbar Add Job option. The new Job is added to the currently selected Job group. For more information, see the [Main - Jobs](../server/jobs-jobs) section.
 
 ![](../../../static/img/Client%20User%20Interface/Toolbar/Add%20Job.png)
