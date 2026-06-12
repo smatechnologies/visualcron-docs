@@ -5,46 +5,40 @@ hide_title: 'true'
 
 ## Report - Print Job Report
 
-The main menu **Tools > Report > Print job report** option allows you to print or create documents which contains settings from Jobs and Tasks.
+The **Reports** option lets you generate reports based on your Jobs, Tasks, Server, Connections and Notifications. Each report opens in its own window where it is rendered as a document that you can review, print or copy.
+
+The available reports are grouped by area, for example:
+
+* **Jobs** - Overview, List, Result, Executions, ROI, Time distribution and Next execution
+* **Tasks** - Overview
+* **Server** - Health, Optimization, Overview and SLA
+* **Connections** - Overview and Executions
+* **Notifications** - Overview
  
 **Tools > Report > Print job** report
 
 ![](../../../static/img/toolsreportprintjobreport.png)
 
-**Job and Task selection**
+**Date range**
 
-In the Job and Task selection group box you select which columns to include in the report. You can select columns from common/generic properties of Jobs and Tasks.
- 
-**Report styling**
+Where applicable, a *From* and *To* date filter controls the period the report covers. By default the last 7 days are shown.
 
-The report styling group allows you to control header/footer and Jobs/Tasks details.
- 
-**Printer settings**
+**Show**
 
-The printer settings group box lets you select printer, orientation and other common printer properties.
- 
-**Generate and print**
+The *Show* button generates the report (and refreshes it after you change the date range). While the report is being generated the button changes to *Cancel*.
 
-**Generate**
+**Theme**
 
-The generate button creates the report (based on column and styling settings) which will be visible in the Preview window.
- 
-**Print preview**
+The theme drop down lets you switch the report styling between *Dark Blue*, *Dark Grey* and *Light Grey*.
 
-The Print preview button shows the print preview window.
- 
-**Save as PDF**
-
-The Save as PDF button generates a PDF file and allows you to save it anywhere in the file system.
- 
-**Save as HTML**
-
-Saves the report as HTML.
- 
 **Print**
 
-Prints the report according to preview window on the selected printer.
- 
+The *Print* button prints the report.
+
+**Copy HTML**
+
+The *Copy HTML* button copies the report as HTML to the clipboard.
+
 **Permission**
 
 To block a user from viewing the Job report you need to disable the Jobs Read property in [User permissions > Groups](../server/main-user-permissions).
