@@ -5,21 +5,26 @@ hide_title: 'true'
 
 ## Objects - Object Search
 
-The main menu **Tools > Objects > Object search** option performs search for a string within all internal objects of VisualCron. All properties that matches this string will be listed in the result grid. it is possible to replace these strings with other value.
+The main menu **Tools > Objects > Object search** option performs a search for a string within all internal objects of VisualCron. All properties that match this string will be listed in the result grid. Encrypted strings may not be found unless you choose to include them.
  
 **Tools > Objects > Object search** tab
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Objects/Object%20text%20search-replace.png)
 
-**Object(s) type**
+**Search string**
 
-Select the internal object type in VisualCron which the Search and Replace should be based on.
- 
-**Search**
+Enter the text string to search for and click *Search* (or press Enter).
 
-**Search text**
+**Object types**
 
-Text string that is used for the Search.
+Select which object types the search should cover. The following types can be included, and all are selected by default:
+
+* Jobs
+* Tasks
+* Conditions
+* Notifications
+* Connections
+* Variables
  
 **Use exact search**
 
@@ -31,7 +36,7 @@ Some values are encrypted in VisualCron. Searching these takes longer time. It i
  
 **Search result**
 
-The search result table shows the object name, the internal class in VisualCron, the property name of the object in the class and the Property value which is the string it was matched to. You can double click on an object to edit the information. Check the checkbox to the left to include it in the *Replace*.
+The search result grid shows the object **Name/Description**, the internal **Class** in VisualCron, the **Property Name** of the object in the class and the **Property Value** which is the string it was matched to. You can double click on a row to open and edit the object.
  
 **Replace**
 
