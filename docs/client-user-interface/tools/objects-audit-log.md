@@ -26,4 +26,6 @@ The amount of data stored (history) is controlled by the [Server > Settings > Lo
  
 By default, if you open the audit log from the Tools menu, the audit log is opened with no filters, displaying the events of today.  The audit log can be opened from various places and use different filters by default. For example, if you right click on a Job, it will show you events for this specific Job only. If you open the audit log from the Credentials window (and do not click on a specific Credential) changes to all Credentials are listed.
  
-Double clicking on a row opens the Versions window, see [Audit log > Versions](audit-log-versions) for details.
+You can refine the result with the filter controls at the top of the window: **User**, **Object type**, **Timespan** (a date range), **Event type**, **Object** and **Job**. Click *Search* to apply the filters. The *Export* button lets you export the listed events.
+ 
+Double clicking on a row opens the Versions window, see [Audit log > Versions](audit-log-versions) for details. You can also right click a row and choose *Versions and details* or *Revert to selected*.
