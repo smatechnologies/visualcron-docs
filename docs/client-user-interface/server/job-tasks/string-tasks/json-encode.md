@@ -7,13 +7,21 @@ hide_title: 'true'
 
 The String - JSON Encode Task allows you to encode a JSON string from a file or value/Variable into formatted output.
 
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/String%20Tasks/JSON%20Encode.png)
+
 **JSON Encode** tab
+
+*Input*
+
+Choose whether the input is read from a **File** or from a **Variable/Value**, then provide the input.
 
 *Map columns to properties*
 
-Optionally, you can configure mapping between object properties (including nested ones) and column names in the input.
+Optionally, you can configure mapping between object properties (including nested ones) and column names in the input. Use the *Add*, *Edit*, *Delete* and *Refresh* buttons to manage the mapping (you can also double click a row to edit it).
 
 If mapping is configured and the "Include field names" checkbox is turned off, then each configured property will correspond to the value index in the input line.
+
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/String%20Tasks/JSON%20Encode%20Input-Output.png)
 
 **Input/Output** tab
 
