@@ -13,9 +13,9 @@ The Telegram Connection is used in the following Task:
  
 ### Setting up a Telegram application
 
-In VisualCron you have the option, in the authentication tab, to use the existing Telegram app "VisualCron". If you for some reason, want to use your own app, you need to create one [here](https://my.telegram.org/auth?to=apps) and then enter *App app_id* and *App api_hash* in authentication tab.
+To use the Telegram Connection you need your own Telegram app. Create one [here](https://my.telegram.org/auth?to=apps) and then enter the *App app_id* and *App api_hash* values from the app in the *Connection settings > Main settings* tab.
  
-Once you have created your app or selected to use the default one for VisualCron you enter your *phone* number and click on *Request code*. Use the code you obtain in your Telegram Client in VisualCron *Code* field.
+When you authenticate the Connection, a login code is requested and sent to you. Enter that code in the *Code* field and save the Connection.
  
 **Manage Connections > Add > Telegram > Common settings** tab
 
@@ -37,31 +37,31 @@ The connection timeout in seconds. Connection will fail after this time period.
 
 Code page being used.
 
-**Manage Connections > Add > Telegram > Connection settings** tab
+The **Connection settings** tab is divided into two sub-tabs: **Main settings** and **Proxy**.
+
+**Manage Connections > Add > Telegram > Connection settings > Main settings** tab
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Telegram/Settings.png)
 
-**Use VisualCron registered app**
-
-See setup in top of documentation. Check this if you want to use the default VisualCron app.
+The **Credentials** group contains the following fields:
  
 **App app_id**
 
-If you want to use your own app then copy this information from the settings of the app online.
+Copy this value from the settings of your app online.
  
 **App api_hash**
 
-If you want to use your own app then copy this information from settings of the app online.
+Copy this value from the settings of your app online.
  
 **Code**
 
-Once you have clicked Request code in main settings tab you will receive a code in your Telegram Client. Paste this here.
+The login code that is sent to you when you authenticate the Connection. Enter it here and save the Connection.
 
 **Create an app in my.telegram.org**
 
 A link that opens the Telegram app registration page where you can create your own Telegram app to obtain the App app_id and App api_hash values.
 
-**Manage Connections > Add > Telegram > Proxy** tab
+**Manage Connections > Add > Telegram > Connection settings > Proxy** tab
 
 **Proxy type**
 
