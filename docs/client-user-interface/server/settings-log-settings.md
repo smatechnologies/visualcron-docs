@@ -19,25 +19,25 @@ If you experience problems the VisualCron support may ask you to turn on extende
 
 Use Windows event log for logging.
  
-**Log to file - Client events**
-
-Controls if Client should write events to a file (placed in VisualCron X/log folder).
- 
 **Log to file - Server events**
 
-Controls if Server should write events to a file (placed in VisualCron X/log folder).
+Controls if Server should write events to a file (placed in VisualCron X/log folder). Client event logging to file is configured separately in [Client settings](../file/client-settings).
  
 **Log to file**
 
 If any option is activated, a log file will be created and entries will be written into the log file. A new log file is created for each day. If no Job has been run during a day (with logging on) - no file will be created. The server/client log file names are "log_serverYYYYMMDD.txt"/"log_remoteYYYYMMDD.txt". By default the log files are located in the "C:\Program Files\VisualCron\log\" folder.
  
-**Main > Settings > Log settings > Error handling** sub tab
+**Main > Settings > Log settings > Error and diagnostics** sub tab
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Error%20Handling.png)
 
 **Send unhandled server errors to VisualCron**
 
 If you check this all errors are reported back to VisualCron. This way we can get enough information to detect and fix bugs as soon as possible.
+
+**Send anonymous diagnostics and usage data**
+
+If checked, anonymous diagnostics and usage data is sent to VisualCron to help improve the product.
  
 **Main > Settings > Log settings > Database settings** sub tab
 
