@@ -45,10 +45,3 @@ Once the new environment is ready, we can import our backup .zip folder
 ![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/Import%20Settings.png)
 
 When Importing, make sure everything is selected then press "Start". 
-
-
-**Upgrade Notes: 2025-2026** 
-
-Please be aware that when upgrading to v12+, the client and server version must match. This version is not backwards compatible with any pre v12 versions. 
-
-![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/12.0.0%20Reminder.png)
