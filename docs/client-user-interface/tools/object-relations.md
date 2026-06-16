@@ -21,6 +21,6 @@ Once you have filtered out the object type you can select the name. When the nam
  
 **Result grid**
 
-In the result grid all objects that use the object name is listed. You can double click to edit any object that is listed in the grid.
+In the result grid all objects that use the object name is listed, showing the **Name/Description**, **Type** and **Job name** of each. You can double click to edit any object that is listed in the grid, and use the *Filter* field to narrow down the results.
  
 The **Object finder > Object search** tab, in the above window, opens a window which uses the same structure as the main menu **Tools > Objects > Object search** option. See [here](object-search) for more information.
