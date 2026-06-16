@@ -19,6 +19,12 @@ As of VisualCron 13.2.1, when **Remote File Explorer → Read** is enabled for a
 
 For least-privilege setups, it is encouraged to review Remote File Explorer permission assignments for any group that is not intended to have write access to the server file system.
 
+### Security Upgrade Note
+
+Please be aware that when upgrading to v12+, the client and server version must match. This version is not backwards compatible with any pre v12 versions. 
+
+![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/12.0.0%20Reminder.png)
+
 ### TLS Communication Between Client and Server
 
 We are using the [NetTcpBinding](https://learn.microsoft.com/en-us/dotnet/api/system.servicemodel.nettcpbinding?view=dotnet-plat-ext-8.0) class uses TCP for message transport. Security for the transport mode is provided by implementing Transport Layer Security (TLS) over TCP. The TLS implementation is provided by the operating system.
@@ -26,6 +32,8 @@ We are using the [NetTcpBinding](https://learn.microsoft.com/en-us/dotnet/api/sy
 ### Import Values are Stored Encrpyted
 
 Important values like Username, Password etc. are encrypted by VisualCron with AES-256 encryption ensuring that no one who gets the hands of the files can read and interpret that information.
+
+### No Longer Supported
 
 ### Interactive Logon
 
