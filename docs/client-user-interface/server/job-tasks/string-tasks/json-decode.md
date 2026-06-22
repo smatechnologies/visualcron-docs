@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The String - JSON Decode Task allows you to decode a JSON string from a file or value/Variable into formatted output.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/String%20Tasks/JSON%Decode.png)
+![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/String%20Tasks/JSON%20Decode.png)
 
 **JSON Decode** tab
 
