@@ -85,7 +85,35 @@ Depending on type comparison you enter different kind of values/Variables.
 Enter a Variable that contains a list. You may need to alter *Use column*, *Field separator*, *Text qualifier*, *Line break* or *Start row* depending on the format of the Variable list. *Use column* selects which column the x value is picked up from, and *Start row* lets you skip a number of leading rows.
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20For%20each%20x%20in%20y.png)
- 
+
+**Referencing columns in For Each loops**
+
+When a For Each loop iterates over multi-column data (such as a CSV file), each row is available as an array. You can reference individual columns from the current row in two ways:
+
+*By numeric index:*
+
+```
+{LOOP(CurrentValueXArray|0)}    — first column
+{LOOP(CurrentValueXArray|8)}    — ninth column
+```
+
+*By column name:*
+
+```
+{LOOP(CurrentValueXArray|Email)}
+{LOOP(CurrentValueXArray|CustomerID)}
+```
+
+Column name references require that the data has a header row. VisualCron reads the first row as the column name map. Name matching is case-insensitive.
+
+Using column names makes workflows resilient to column reordering — if a CSV gains a new column or the order changes, name-based references continue to resolve correctly. Numeric index references will silently return the wrong value if the column order shifts.
+
+| Index syntax (fragile) | Name syntax (resilient) |
+|---|---|
+| `{LOOP(CurrentValueXArray\|0)}` | `{LOOP(CurrentValueXArray\|CustomerID)}` |
+| `{LOOP(CurrentValueXArray\|3)}` | `{LOOP(CurrentValueXArray\|Email)}` |
+| `{LOOP(CurrentValueXArray\|7)}` | `{LOOP(CurrentValueXArray\|Department)}` |
+
 **Sleep/Wait in each iteration**
 
 Sets the wait time between each iteration. This is especially interesting if you are using a While loop because you might want to save resources and not check _all_ the time.
@@ -158,8 +186,8 @@ Task Id for the selected end Task in the loop.
  
 **Column position that is used in For Each loop**
 
-The numeric value of column position where x value is picked up.
- 
+The column position where the x value is picked up in a For Each loop. This can be a numeric index (e.g. `0` for the first column) or a column header name (e.g. `Email`). See [Referencing columns in For Each loops](#referencing-columns-in-for-each-loops) for details and examples.
+
 **Field separator**
 
 The character that is used to separate fields in For Each loop.
