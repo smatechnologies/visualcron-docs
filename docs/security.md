@@ -23,7 +23,7 @@ For least-privilege setups, it is encouraged to review Remote File Explorer perm
 
 Please be aware that when upgrading to v12+, the client and server version must match. This version is not backwards compatible with any pre v12 versions. 
 
-![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/12.0.0%20Reminder.png)
+![](../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/12.0.0%20Reminder.png)
 
 ### TLS Communication Between Client and Server
 
