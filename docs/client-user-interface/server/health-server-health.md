@@ -11,6 +11,14 @@ In the main menu **Server > Health > Server health** dialog, a diagram of the la
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Health%20Server%20Health/Server%20Health.png)
 
+The **Overview** tab contains:
+
+* A diagram of the recent changes in the Server health level.
+* A **Condition state** section listing the conditions of the current health level.
+* A **Health events** section listing the previous health level changes, with the columns *Event date*, *Result*, *Health*, *Server name* and *Reason for change*.
+
+A **Settings** tab is also available (when the Server health settings feature is licensed) where each health level and its conditions are shown and can be edited. The *Reset to default* button restores the default conditions.
+
 ### Server health levels*
 
 *default health settings for version 10.0.2

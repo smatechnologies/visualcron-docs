@@ -19,25 +19,25 @@ If you experience problems the VisualCron support may ask you to turn on extende
 
 Use Windows event log for logging.
  
-**Log to file - Client events**
-
-Controls if Client should write events to a file (placed in VisualCron X/log folder).
- 
 **Log to file - Server events**
 
-Controls if Server should write events to a file (placed in VisualCron X/log folder).
+Controls if Server should write events to a file (placed in VisualCron X/log folder). Client event logging to file is configured separately in [Client settings](../file/client-settings).
  
 **Log to file**
 
 If any option is activated, a log file will be created and entries will be written into the log file. A new log file is created for each day. If no Job has been run during a day (with logging on) - no file will be created. The server/client log file names are "log_serverYYYYMMDD.txt"/"log_remoteYYYYMMDD.txt". By default the log files are located in the "C:\Program Files\VisualCron\log\" folder.
  
-**Main > Settings > Log settings > Error handling** sub tab
+**Main > Settings > Log settings > Error and diagnostics** sub tab
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Error%20Handling.png)
 
 **Send unhandled server errors to VisualCron**
 
 If you check this all errors are reported back to VisualCron. This way we can get enough information to detect and fix bugs as soon as possible.
+
+**Send anonymous diagnostics and usage data**
+
+If checked, anonymous diagnostics and usage data is sent to VisualCron to help improve the product.
  
 **Main > Settings > Log settings > Database settings** sub tab
 
@@ -169,7 +169,10 @@ Q: Is all 4GB available for use?
 * No, not all of the 4GB is available for storage - this is because the SQLCE compact capability is separate from VisualCron. We recommend taking a look at what SQLCE Compact is: [SQL Server Compact](https://en.wikipedia.org/wiki/SQL_Server_Compact).
 
 Q: How does the internal database handle file growth? Is there a mechanism (e.g., auto-shrink, compression, pre-allocation) that might explain why the file size appears unchanged even though new data is being added? 
-* The routine runs every 6 hours as part of server (this cannot be changed/adapted because of this). What this routine does is that it cleans according to row count and time period set in database settings. For example, if the file size exceeds 3.2 GB, 80% of the data is kept, including the number of days. Otherwise, both are kept. If the file size is still too high, SQLCE compact is run to optimize. 
+* The routine runs every 12 hours as part of server (this cannot be changed/adapted because of this). What this routine does is that it cleans according to row count and time period set in database settings. For example, if the file size exceeds 3.2 GB, 80% of the data is kept, including the number of days. Otherwise, both are kept. If the file size is still too high, SQLCE compact is run to optimize. 
 
 Q: How we can monitor or confirm that new data is actually being stored correctly within the internal .sdf?  
 * The easiest way is to check the logs within the client. If the new data exists, it is written to the database.
+
+Q: We've had the product for several years and never had issues with logging. The settings have not changed but our environment is only retaining X amount of days instead of X. Is this normal? 
+*  This is normal since the environment has grown over time (more jobs have been added, more connections, etc.) If the settings has not been changed but the environment has, this is why the product is only retaining X amount of days of retention. The settings will need to be configured based off how many days worth of retention is needed or how many rows of data.

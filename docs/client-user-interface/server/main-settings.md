@@ -7,6 +7,7 @@ hide_title: 'true'
 
 In the main menu **Server > Main settings > Settings** dialog, there are a set of important setting groups/tabs. See the following sub chapters for information about other tabs than Main settings:
 
+* [Main - Settings - Default flows](../../client-user-interface/server/settings-default-flows)
 * [Main - Settings - Users/Logon](../../client-user-interface/server/settings-users-logon)
 * [Main - Settings - Log settings](../../client-user-interface/server/settings-log-settings)
 * [Main - Settings - Email settings](../../client-user-interface/server/settings-email-settings)
@@ -15,11 +16,13 @@ In the main menu **Server > Main settings > Settings** dialog, there are a set o
 * [Main - Settings - Web API](../../client-user-interface/server/settings-web-api)
 * [Main - Settings - Web Client](../../client-user-interface/server/settings-web-client)
  
+The dialog also includes a **Password rules** tab where password requirements for internal users can be configured.
+
 **Main > Settings > Main setting**s tab
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Main%20Settings/Main%20Settings.png)
 
-**Installed in a cluster environment**
+**Installed in cluster**
 
 Check this if you are installing VisualCron (on two nodes) on a shared drive.
  
@@ -55,3 +58,7 @@ This policy setting controls the behavior of all User Account Control (UAC) poli
  
 Alternatively you can edit the registry and set:
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Windows\NoInteractiveServices to 0
+
+**Assembly resolving options**
+
+The *Auto download missing dependencies* option lets VisualCron automatically download missing assembly dependencies when they are needed.

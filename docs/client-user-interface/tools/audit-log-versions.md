@@ -24,10 +24,10 @@ This means that the object that you clicked on (right clicked or selected) will 
 
 This tab contains basic information like:
 
-* Name
+* Name/Description
 * Id of object
-* Created
-* Modified
+* Created by and created date
+* Modified by and modified date
 * Object size
  
 There is also a [Object relations](object-relations) button so you can see where this object is used.

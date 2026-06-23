@@ -15,7 +15,7 @@ VisualCron settings consists of many files. By using Export settings you can reg
 
 **File to import**
 
-Enter full file path or click the File icon to browse and select a previously exported settings file. The default file for Export settings is C:\Program Files (x86)\VisualCron\backup\VC-Settings.zip
+Enter full file path or click the File icon to browse and select a previously exported settings (zip) file. By default, exported settings are saved as `VC-Settings.zip` in the backup folder configured under [Client settings](client-settings).
  
 **Password**
 

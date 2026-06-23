@@ -95,3 +95,19 @@ Used for administrative purposes such as retrieving a list of queues.
 **Disable Server Certificate Validation**
 
 When checked, VisualCron skips validation of the server's SSL/TLS certificate. Use this only when connecting to a broker with a self-signed or untrusted certificate.
+
+**RabbitMQ Address Format**
+
+RabbitMQ 4.x enforces AMQP 1.0 address syntax, which requires a typed prefix in the queue or exchange address field when configuring Send Message tasks or AMQP Triggers. If you're running RabbitMQ 3.x, this prefix is not required.
+
+If you see an error like Attach refused: {amqp_address_v1_not_permitted, ...} or your AMQP Trigger deactivates immediately after starting, check that your address matches the format below.
+
+Intent	Address format:
+
+* Send to a queue (via default exchange) =	/queues/your-queue-name
+* Publish to an exchange with a routing key =	/exchanges/exchange-name/routing-key
+* Publish to an exchange with no routing key =	/exchanges/exchange-name
+* Receive/consume from a queue (Trigger) =	/queues/your-queue-name
+
+Note: Existing connections configured for RabbitMQ 3.x using plain queue names (e.g. my-queue) will need to be updated to the prefixed format when upgrading to RabbitMQ 4.x.
+

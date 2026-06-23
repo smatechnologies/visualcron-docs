@@ -9,6 +9,8 @@ The main menu **File > Updates > Check for updates** option connects to the Visu
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/File/Check%20Updates.png)
 
+The window shows the **Server name**, the **Server version** and the **Client version**, together with a status line. If a later version is available, the status shows that a new version is available and the release notes for the newer versions are listed. The *Download new version* button lets you choose a destination folder and download the new version, with a progress bar shown during the download.
+
 In case of this response, you should repeat the updates function at a later date until the official version is available.
  
 If the VisualCron Client is off, the computer where the VisualCron Client runs is offline and the VisualCron Client is started, the below message is displayed. It is also shown when the computer where the VisualCron Client runs is offline and the **File > Updates > Check for updates** is clicked.
