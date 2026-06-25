@@ -109,6 +109,14 @@ The current Job or Task is the Job or Task that you currently are editing. It is
 You can always refer to the last run Task by using the PrevTask Identifier, like this:
  
 ```{TASK(PrevTask,Name)}```
+
+**StandardOutput / StandardError with concurrent Job instances**
+ 
+The Task output variables StandardOutput and StandardError (for example ```{TASK(PrevTask,StdOut)}``` or ```{TASK(PrevTask,StdErr)}```) are stored per Job and Task, not per running instance. If more than one instance of the same Job runs at the same time, these variables share a single value across those instances. As a result a Task may read the output produced by a parallel instance instead of its own.
+ 
+For example, if a Job containing an Execute Task followed by a second Task that reads ```{TASK(PrevTask,StdOut)}``` is started twice and both instances run simultaneously, the second Task in one instance may pick up the StandardOutput written by the other instance.
+ 
+Avoid relying on StandardOutput and StandardError in Jobs that can run concurrently, especially where a later Task depends on the value. If you need instance-safe output, capture it to a file or to a Job variable scoped to that run, or prevent the Job from running multiple instances at the same time.
  
 **Triggers**
 
