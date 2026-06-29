@@ -3993,6 +3993,14 @@
         "frmManagePGPKeyRings.Designer.vb"
       ]
     },
+    "client-user-interface/server/global-ssh-keys": {
+      "chmFile": "ssh_keys.htm",
+      "mdFile": "docs/client-user-interface/server/global-ssh-keys.md",
+      "label": "Global - SSH Keys",
+      "helpKeywordSources": [
+        "frmManageSSHKeys.Designer.vb"
+      ]
+    },
     "client-user-interface/server/global-time-exceptions": {
       "chmFile": "time_exceptions2.htm",
       "mdFile": "docs/client-user-interface/server/global-time-exceptions.md",
