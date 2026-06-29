@@ -1,55 +1,104 @@
-# CLAUDE.md
+# OpCon Documentation — Claude Code Project
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This repository contains the OpCon product documentation site built with Docusaurus.
 
-## What this is
+## Technical Writer Skill
 
-Docusaurus 3.9.2 site for the VisualCron documentation at https://help.visualcron.com. The same Markdown sources are also compiled into a CHM (Compiled HTML Help) file shipped with the VisualCron desktop app for F1-help.
+A technical writer skill and its resource files are bundled in this repository at `.claude/skills/technical-writer/`. The skill enforces OpCon documentation standards for terminology, voice, structure, and formatting.
 
-Stack: Docusaurus classic preset, React 18, Node.js 18+, Yarn. No ESLint/Prettier/Biome configured.
-
-## Project layout
+### Skill Location
 
 ```
-help.visualcron.com/         <- usual CWD; NOT a git repo, just a container
-├── chm_extracted/           <- historical CHM dump, reference only; do not edit
-└── visualcron-docs/         <- THIS repo (smatechnologies/visualcron-docs, branch: main)
-    ├── docs/                <- Markdown sources (the only thing you usually edit)
-    ├── sidebars.js          <- navigation tree
-    ├── chm-config.json      <- doc-id -> .htm filename + label mapping for CHM
-    ├── scripts/build-chm.js <- generates chm-output/ from docs/ + chm-config.json
-    ├── chm-output/          <- generated; never edit
-    └── build/               <- Docusaurus output; never edit
+.claude/skills/technical-writer/
+├── SKILL.md                          # Skill definition and operating modes
+└── resources/
+    ├── opcon-documentation-standards.md   # Action verbs, UI terms, formatting rules, pre-flight checklist
+    ├── opcon-documentation-types.md       # Conceptual / Procedural / Reference templates
+    ├── opcon-glossary.md                  # Controlled vocabulary — customer-facing terms and banned terms
+    ├── opcon-learner-roles.md             # Audience profiles and tone guidance per role
+    ├── opcon-golden-examples.md           # Reference examples for each documentation type
+    └── opcon-api-reference.md             # API endpoint documentation templates
 ```
 
-## Commands
+### Using the Skill
 
-| Command | What it does |
+Invoke the skill when writing, reviewing, or editing documentation pages. The skill operates in four modes:
+
+| Mode | Trigger words | Behavior |
+|---|---|---|
+| **Write** | "Write," "Create," "Draft" | Produce complete documentation matching the page type template |
+| **Review** | "Review," "Check," "Audit" | Report violations with line references and suggested fixes |
+| **Edit** | "Fix," "Update," "Revise" | Apply targeted changes while preserving compliant content |
+| **Consult** | "Should I," "How do I" | Provide guidance from the standards without producing output |
+
+### Automatic invocation on document changes
+
+Apply the technical-writer skill automatically whenever you work on `.md` files in `docs/`:
+
+| Situation | Mode | Required action |
+|---|---|---|
+| You edit an existing `.md` file in `docs/` | Edit | Run the skill before reporting the task complete — fix all violations found |
+| You create a new `.md` file in `docs/` | Write | Produce a compliant page from the start using the correct page type template |
+| User asks you to review or audit docs | Review | Report all violations with file path, line number, and suggested fix |
+| User asks "should I" or "how do I" about standards | Consult | Answer from the standards without producing output |
+
+Do not report a documentation task as complete until the skill has run and all violations are resolved.
+
+### Key Standards
+
+- **Terminology**: Use customer-facing terms. Never use: LSAM, execute/executed/executing, right-select, click, drop-down, checkbox, navigate to, launch, client, task/process (as job synonyms)
+- **Voice**: Second person ("you") for instructions. No first person ("we," "our"). Present tense for descriptions, imperative for steps.
+- **Structure**: Numbered steps for procedures, one action per step. Lead-in sentence required: "To [goal], complete the following steps:"
+- **Front matter**: Every page requires `title:`, `description:`, and `tags:` (Type + Role + Feature area)
+
+## OpCon Documentation Analyzer Skill
+
+A second skill is bundled at `.claude/skills/opcon-doc-analyzer/`. It compares documentation against the OpCon codebase to identify gaps, inaccuracies, and outdated content. It is **read-only** — it reports findings and never modifies files.
+
+### Skill Location
+
+```
+.claude/skills/opcon-doc-analyzer/
+├── SKILL.md                          # Skill definition and analysis workflow
+└── references/
+    ├── code-surface-patterns.md      # Grep patterns for extracting the public-facing code surface
+    └── impact-rubric.md              # How to rate findings as High / Medium / Low impact
+```
+
+### Using the Skill
+
+| Trigger phrases | Behavior |
 |---|---|
-| `yarn start` | Dev server with hot reload at http://localhost:3000 |
-| `yarn build` | Production Docusaurus build. `onBrokenLinks: 'throw'` -> internal link rot fails the build. Run this before pushing. |
-| `yarn build:chm` | Generates `chm-output/` (.htm, .hhp, .hhc, .hhk) |
-| `hhc.exe chm-output/VisualCron.hhp` | Compiles the final `.chm`. Requires HTML Help Workshop (Windows-only). **Exit code 1 means success** (not failure). |
+| "Check my docs," "Audit the docs," "Find gaps" | Run a full cross-reference analysis and produce a structured report |
+| "Is this still accurate," "Compare docs to code" | Targeted accuracy check against the codebase |
+| "What's missing," "What's undocumented" | Surface features in code with no matching documentation |
 
-## Adding a new help topic
+### What it produces
 
-Both files must be updated, or the topic is unreachable in one of the two outputs:
+A structured report with six sections: Missing Documentation, Unclear/Incomplete Documentation, Outdated/Incorrect Documentation, Structural and Cross-Reference Issues, a Summary Table, and Unverifiable Findings. Every finding includes a source citation (doc path and/or code file + line range).
 
-1. Create `docs/<slug>.md` and add it to `sidebars.js`.
-2. Add a mapping entry in `chm-config.json` (`chmFile`, `mdFile`, `label`, optional `helpKeywordSources`).
-3. `yarn build` to verify (catches broken links).
-4. `yarn build:chm` + `hhc.exe chm-output/VisualCron.hhp` if you need to verify CHM output locally.
+### What it does NOT do
 
-## Editing existing topics — do not rename `chmFile` entries
+- It never modifies, creates, or deletes files
+- It never invents feature descriptions or fills in missing content
+- To fix findings, use the **technical-writer skill** or ask Claude to switch modes
 
-The `chmFile` values in `chm-config.json` are anchor targets that the VisualCron desktop app links to from F1-help (via `helpKeywordSources`). Renaming a `chmFile` silently breaks F1-help in shipped builds. Change `label` and `mdFile` freely; treat `chmFile` as a stable identifier.
+---
 
-## Workflow
+## Repository Structure
 
-- Feature branch -> PR -> merge to `main`.
-- Push to `main` triggers `.github/workflows/deploy.yml`, which builds a Docker image and pushes it to the configured registry. There is no separate test/lint step in CI, so `yarn build` locally is the only pre-push gate.
+```
+docs/                    # Primary documentation pages
+versioned_docs/          # Archived versions
+src/                     # Docusaurus theme customizations
+static/                  # Images and static assets
+sidebars.js              # Navigation structure
+docusaurus.config.js     # Site configuration
+```
 
-## Conventions
+## Running Locally
 
-- Use PowerShell for scripts and shell snippets in this codebase (Windows-first environment).
-- Avoid em-dashes in any generated content.
+```bash
+yarn install
+yarn start
+```
