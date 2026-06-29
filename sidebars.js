@@ -991,6 +991,7 @@ module.exports = {
               'client-user-interface/server/global-network-drives',
               'client-user-interface/server/global-notifications',
               'client-user-interface/server/global-pgp-key-rings',
+              'client-user-interface/server/global-ssh-keys',
               'client-user-interface/server/global-time-exceptions',
               {
                 type: 'category',
