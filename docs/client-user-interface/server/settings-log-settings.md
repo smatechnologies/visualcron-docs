@@ -120,6 +120,22 @@ If checked, Task output will be limited in the Task log table to the value you s
 
 This is the max output size we store in real time. If a Task has larger output than specified we cap at at this level.
 
+**Store full output**
+
+By default, Task output stored in the Task log is capped at the **Max output size** value above, so historic runs only show the trimmed (limited) output. If **Store full output** is checked, VisualCron also stores the full, untrimmed output for each Task execution, so you can view the complete output later from the Task history — not just the latest run. When unchecked, only the limited output is stored (the previous behavior).
+
+Full output is stored in the Task log table (`TaskLogs`), so how long it is retained is tied to — and capped by — the **Task** Log DB retention settings on the **Database settings** sub tab. Full output can never be retained for more executions or days than the Task-logs limits allow. The two options below let you retain full output for a smaller window than the Task-logs limits if you want to save space.
+
+**Retention policy (# executions)**
+
+If checked, VisualCron keeps full output for the most recent *x* Task executions and trims the full output from older ones. This count is across **all** Task executions stored in the Task log (not per Task/Job). This value cannot exceed the Task-logs row limit set on the **Database settings** sub tab; if you lower the Task-logs row limit below this value, VisualCron will prompt you to reduce it accordingly.
+
+**Retention policy (days)**
+
+If checked, VisualCron keeps full output for executions from the last *x* days and trims the full output from older ones. This value cannot exceed the Task-logs day limit set on the **Database settings** sub tab; if you lower the Task-logs day limit below this value, VisualCron will prompt you to reduce it accordingly.
+
+**Please note:** Trimming full output only removes the untrimmed copy — the limited output (truncated to the **Limit output size** value) is still retained under the normal Task-logs retention rules. Cleanup runs on the regular server cleanup interval, so older full output is trimmed on the next cleanup cycle rather than instantly.
+
 **Important**
 
 VisualCron applies both settings together, but the maximum row limit takes priority over the number of days. If the row limit is reached, older logs will be deleted even if they are within the configured day range.
