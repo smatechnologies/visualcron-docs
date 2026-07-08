@@ -122,7 +122,7 @@ This is the max output size we store in real time. If a Task has larger output t
 
 **Store full output**
 
-By default, Task output stored in the Task log is capped at the **Max output size** value above, so historic runs only show the trimmed (limited) output. If **Store full output** is checked, VisualCron also stores the full, untrimmed output for each Task execution, so you can view the complete output later from the Task history — not just the latest run. When unchecked, only the limited output is stored (the previous behavior).
+By default, Task output stored in the Task log is trimmed to the **Limit output size** value above, so historic runs only show the trimmed (limited) output. If **Store full output** is checked, VisualCron also stores the full, untrimmed output (up to the **Max output size** real-time cap) for each Task execution, so you can view the complete output later from the Task history — not just the latest run. When unchecked, only the limited output is stored (the previous behavior).
 
 Full output is stored in the Task log table (`TaskLogs`), so how long it is retained is tied to — and capped by — the **Task** Log DB retention settings on the **Database settings** sub tab. Full output can never be retained for more executions or days than the Task-logs limits allow. The two options below let you retain full output for a smaller window than the Task-logs limits if you want to save space.
 
