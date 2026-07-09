@@ -43,6 +43,12 @@ Below is a screenshot from Task Flow of a Task which, On error, also sends a Not
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Notifications/Job%20Notification%20Flow.png)
 
+:::info Note
+
+If cloning a notification, object relations are not cloned.
+
+:::
+
 **Variables**
 
 As usual you can use any Variable in any field within VisualCron.
