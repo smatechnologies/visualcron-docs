@@ -6,6 +6,13 @@ hide_title: 'true'
 ## Change Log
 
 
+### Unreleased
+
+#### Features
+
+:star: Client/Server: Numeric Conversion Variable Functions for INTEGER, LONG, DECIMAL and DOUBLE (VCPCM-3473)
+
+
 ### 13.2.2 [2026-05-16]
 
 #### Notes

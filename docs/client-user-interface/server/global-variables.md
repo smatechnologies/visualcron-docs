@@ -44,6 +44,28 @@ Conditional functions. A *{LOGIC(If|...)}* variable compares two values and retu
 
 Math functions such as Add, Subtract, Multiply, Divide, Abs, Round, Ceiling, Floor and Pow, with an optional output format.
  
+**Number conversion**
+
+Convert a value to a specific numeric type inside a variable expression. There are four families: *{INTEGER}* (32-bit integer), *{LONG}* (64-bit integer), *{DECIMAL}* and *{DOUBLE}*. Each family accepts two forms:
+
+```{INTEGER(value|defaultValue)}```
+
+```{INTEGER(value|format|defaultValue)}```
+
+The first argument is the value to convert. The last argument is the default value, which is returned when the value cannot be converted (empty, non numeric, out of range, or when an invalid format is supplied). The optional middle argument is a standard .NET numeric format string that is applied to the converted result. *{INTEGER}* and *{LONG}* truncate any fractional part toward zero, while *{DECIMAL}* and *{DOUBLE}* keep it. Values are parsed using the invariant culture, so a period is always the decimal separator.
+
+Examples:
+
+```{INTEGER(5.9|0)}``` returns 5
+
+```{INTEGER(5.9|000|0)}``` returns 005
+
+```{LONG(9999999999|0)}``` returns 9999999999
+
+```{DECIMAL(5.5|0.00|0)}``` returns 5.50
+
+```{DOUBLE(abc|-1)}``` returns -1, the default value, because the value is not a number
+ 
 **System variables**
 
 These are values collected from the current computer/server, such as Environment and Memory variables and system uptime.
