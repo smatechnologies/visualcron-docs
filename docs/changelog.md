@@ -5,6 +5,44 @@ hide_title: 'true'
 
 ## Change Log
 
+### 13.3.1 [2026-07-14]
+
+#### Features
+
+:star: Client/Server: Security Improvements Including Third-Party Dependencies (VCPCM-3242)
+
+:star: Client/Server: Large File Upload Support for SharePoint Online (VCPCM-2658)
+
+:star: Client/Server: Column Name References in Loop/Array Variables (VCPCM-3481)
+
+:star: Client/Server: Full Output Retention Across Task Runs (VCPCM-2802)
+
+
+#### Bug Fixes
+
+:white_check_mark: Client/Server: Server Info Link Wording (VCPCM-2819)
+
+:white_check_mark: Client/Server: Boolean Variables in Conditions (VCPCM-2882)
+
+:white_check_mark: Client/Server: Blank Lines in CSV From Multi-Query SQL Task (VCPCM-3533)
+
+:white_check_mark: Client/Server: Take Screenshot Handles Missing Target Folder (VCPCM-3567)
+
+:white_check_mark: Client/Server: WebMacro Repeated Save-Password Prompt (VCPCM-3618)
+
+:white_check_mark: Client/Server: Server Connection Dropdown Empty on Web Client Load (VCPCM-2223)
+
+:white_check_mark: Client/Server: Scan Document (Local) Single-Digit Value Scanning (VCPCM-2968)
+
+:white_check_mark: Client: Credential Password Lost After Service Restart (VCPCM-3648)
+
+:white_check_mark: Client/Server: SharePoint Get List(s) Refresh Error (VCPCM-2854)
+
+:white_check_mark: Client/Server: PDF Decrypt Task Reporting Success as Exception (VCPCM-3644)
+
+:white_check_mark: Client/Server: Azure Queue Storage Trigger Assembly Version Mismatch (VCPCM-3635)
+
+:white_check_mark: Client/Server: Group Permissions Take Precedence Over Object Overrides (VCPCM-2734)
 
 ### 13.2.2 [2026-05-16]
 
