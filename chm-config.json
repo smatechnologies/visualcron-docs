@@ -3726,6 +3726,14 @@
       "mdFile": "docs/client-user-interface/server/connection-exchange-ews.md",
       "label": "Connection - Exchange EWS"
     },
+    "client-user-interface/server/connection-microsoft-graph-api": {
+      "chmFile": "connection-microsoft-graph-api.htm",
+      "mdFile": "docs/client-user-interface/server/connection-microsoft-graph-api.md",
+      "label": "Connection - Microsoft Graph API",
+      "helpKeywordSources": [
+        "Definitions/Connection/clsConnection.vb"
+      ]
+    },
     "client-user-interface/server/connection-exchange-webdav": {
       "chmFile": "exchange-webdav.htm",
       "mdFile": "docs/client-user-interface/server/connection-exchange-webdav.md",
