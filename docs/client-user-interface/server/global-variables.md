@@ -65,6 +65,10 @@ Examples:
 ```{DECIMAL(5.5|0.00|0)}``` returns 5.50
 
 ```{DOUBLE(abc|-1)}``` returns -1, the default value, because the value is not a number
+
+```{INTEGER(2147483648|-1)}``` returns -1, the default value, because 2147483648 is outside the 32-bit integer range (use ```{LONG}``` for larger whole numbers)
+
+```{LONG(2147483648|0)}``` returns 2147483648, which is within the 64-bit integer range
  
 **System variables**
 
