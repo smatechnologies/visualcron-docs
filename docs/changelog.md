@@ -11,11 +11,11 @@ hide_title: 'true'
 
 :star: Client/Server: Security Improvements Including Third-Party Dependencies (VCPCM-3242)
 
-:star: Client/Server: Large File Upload Support for SharePoint Online (VCPCM-2658)
-
 :star: Client/Server: Column Name References in Loop/Array Variables (VCPCM-3481)
 
 :star: Client/Server: Full Output Retention Across Task Runs (VCPCM-2802)
+
+:star: Client/Server: Microsoft Graph API Connection Type for Email Tasks (VCPCM-2661)
 
 
 #### Bug Fixes
@@ -25,6 +25,8 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Boolean Variables in Conditions (VCPCM-2882)
 
 :white_check_mark: Client/Server: Blank Lines in CSV From Multi-Query SQL Task (VCPCM-3533)
+
+:white_check_mark: Client/Server: Large File Upload Support for SharePoint Online (VCPCM-2658)
 
 :white_check_mark: Client/Server: Take Screenshot Handles Missing Target Folder (VCPCM-3567)
 
@@ -43,6 +45,8 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Azure Queue Storage Trigger Assembly Version Mismatch (VCPCM-3635)
 
 :white_check_mark: Client/Server: Group Permissions Take Precedence Over Object Overrides (VCPCM-2734)
+
+:white_check_mark: Client: DynamoDB Put Item Attribute Grid Hidden in Task Editor (VCPCM-3652)
 
 ### 13.2.2 [2026-05-16]
 
