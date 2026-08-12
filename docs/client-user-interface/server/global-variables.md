@@ -52,7 +52,15 @@ Convert a value to a specific numeric type inside a variable expression. There a
 
 ```{INTEGER(value|format|defaultValue)}```
 
-The first argument is the value to convert. The last argument is the default value, which is returned when the value cannot be converted (empty, non numeric, out of range, or when an invalid format is supplied). The optional middle argument is a standard .NET numeric format string that is applied to the converted result. *{INTEGER}* and *{LONG}* truncate any fractional part toward zero, while *{DECIMAL}* and *{DOUBLE}* keep it. Values are parsed using the invariant culture, so a period is always the decimal separator.
+The first argument is the value to convert. The last argument is the default value. The optional middle argument is a standard or custom .NET numeric format string that is applied to the converted result. *{INTEGER}* and *{LONG}* truncate any fractional part toward zero, while *{DECIMAL}* and *{DOUBLE}* keep it.
+
+Values are parsed using the invariant culture, so a period is always the decimal separator and thousand separators are not accepted in the value. Leading zeros are removed, scientific notation such as 1e3 is accepted, and any space before or after the value is ignored.
+
+The default value is returned, exactly as you typed it, when the value is not a number, when it is only spaces, when it is outside the range of the target type, when *{DOUBLE}* would result in an infinite or non numeric value, and when the format cannot be applied. In the three argument form the default value is returned without the format applied.
+
+A format is rejected when it is longer than 64 characters, and a standard format is rejected when its precision is above 99, so a format such as F100000000 returns the default value instead of building a very large string.
+
+An empty value has to reach the function through another variable, for example ```{INTEGER({STRING(Null)}|0)}```, which returns 0. Writing an empty first argument directly, as in ```{INTEGER(|0)}```, is read as a single argument and reports an invalid number of arguments instead of returning the default value.
 
 Examples:
 
@@ -69,6 +77,12 @@ Examples:
 ```{INTEGER(2147483648|-1)}``` returns -1, the default value, because 2147483648 is outside the 32-bit integer range (use ```{LONG}``` for larger whole numbers)
 
 ```{LONG(2147483648|0)}``` returns 2147483648, which is within the 64-bit integer range
+
+```{DECIMAL(1e3|0)}``` returns 1000, because scientific notation is accepted
+
+```{INTEGER(abc|000|-1)}``` returns -1, the default value, without the 000 format applied to it
+
+```{DOUBLE(1e400|-1)}``` returns -1, the default value, because the value is too large to be a valid number
  
 **System variables**
 
