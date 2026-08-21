@@ -38,25 +38,19 @@ The acronym DTAP is short for Development, Testing, Acceptance and Production an
 
 For these reasons users choose to purchase multiple or unlimited licenses.
 
-### Choosing between Basic and Pro license
+### Choosing the Right Edition
 
-*Two different editions of VisualCron with different features*
+*VisualCron is available in three editions with different features*
 
-* VisualCron is released in two editions with different features
-* A full comparison of features can be found here
-* It is possible to later upgrade from Basic to Pro - however that may cost more than purchasing the Pro version from the beginning
-* You can see if you have a Basic or Pro license on the My licenses page and also upgrade from Basic to Pro there.
+Choose the edition that matches the level of functionality you need:
 
+* Essentials - Entry-level edition with the core scheduling and automation features. A good fit for small teams and straightforward automation.
+* Advanced - Adds capabilities for growing environments, including Master/Slave synchronization, Managed File Transfer (MFT) server support, the Task Repository, and additional messaging triggers.
+* Pro - The full edition for enterprise automation and RPA, adding load balancing, desktop and web browser automation, document scanning, and the complete set of triggers and tasks.
 
-### Choosing between Site license, Country license and World license
+For a full, side-by-side breakdown of the features in each edition, see the Compare Licenses page. 
 
-*Different licensing for unlimited Server installations*
-
-* Choose a Site license if you have all Servers within one physical location i.e. a data center.
-* Choose a Country license if you have more than one data center, one cloud service with more than 2 regions or more than one cloud service.
-* Chose a World license if you operate with installations in more than one country.
-
-The need for limitless storage space, high availability, low latency and scalable infrastructures has increased the number of available cloud services for file storage. Data backup, synchronization of files, redundancy and cross platform support are some reasons for using cloud services.
+Not sure which edition is right for you? Use our license guide to help you choose.
 
 
 ### FAQ
@@ -73,7 +67,7 @@ A Server license is required for each machine independent of the role of the mac
 
 **Can we upgrade our license to x type of license later?**
 
-We do not offer upgrade from single server license to 5-server license pack but we offer upgrade from 5-server license pack to greater. Please contact Sales for a personal offer based on your situation.
+We do not offer upgrades for existing licenses, but we offer the ability to convert a perpetual to subscription to access all new features your tier has access to. 
 
 **May I resell VisualCron licenses of type Site, Cloud, Country and World?**
 
@@ -81,11 +75,11 @@ No, but if you want to act as reseller we can give you discount on all purchases
 
 **How does renewal work?**
 
-For more information of the Subscription / Maintenance & Support Pack please check here.
+For more information of the Subscription / Maintenance & Support Pack please login to your VisualCron account found at: https://admin.visualcron.com/MyLicenses.aspx
 
 **How much are the different licenses and renewals?**
 
-You can find the current pricing [here](https://www.visualcron.com/order.aspx).
+You can find the current pricing on new license keys at  here, and your renewal price through emails or at: https://admin.visualcron.com/MyLicenses.aspx by selecting renew selected. 
 
 **Is the Client application free / not requiring a license?**
 
