@@ -707,6 +707,11 @@
       "mdFile": "docs/client-user-interface/server/event-trigger-slack.md",
       "label": "Event Trigger - Slack"
     },
+    "client-user-interface/server/event-trigger-microsoft-teams": {
+      "chmFile": "event-trigger---ms-teams.htm",
+      "mdFile": "docs/client-user-interface/server/event-trigger-microsoft-teams.md",
+      "label": "Event Trigger - Microsoft Teams"
+    },
     "client-user-interface/server/event-trigger-amqp": {
       "chmFile": "event-trigger---amqp.htm",
       "mdFile": "docs/client-user-interface/server/event-trigger-amqp.md",
@@ -1218,6 +1223,11 @@
       "chmFile": "task-messaging---slack.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/messaging-tasks/slack-send-message.md",
       "label": "Task Messaging - Slack - Send Message"
+    },
+    "client-user-interface/server/job-tasks/messaging-tasks/microsoft-teams-add-channel-message": {
+      "chmFile": "task-messaging---ms-teams---ad.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/messaging-tasks/microsoft-teams-add-channel-message.md",
+      "label": "Task Messaging - Microsoft Teams - Add Channel Message"
     },
     "client-user-interface/server/job-tasks/messaging-tasks/amqp-send-message": {
       "chmFile": "task-messaging---amqp---send-m.htm",
