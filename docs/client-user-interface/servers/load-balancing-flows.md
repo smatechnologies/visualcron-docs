@@ -5,6 +5,12 @@ hide_title: 'true'
 
 ## Load Balancing Flows
 
+:::info Availability
+
+Load Balancing requires VisualCron **11.2.1** or later and a **Pro Subscription** license. See [Load Balancer](load-balancer) for the full feature overview.
+
+:::
+
 Load balancing Flows (**Flows** for short) - allow to perform a set of different Actions depending on the match of certain Load balancing Conditions.
 
 ![](../../../static/img/lb_settings_flows.png)
@@ -43,3 +49,19 @@ Both Conditions and Actions are universal and not necessarily related directly t
 For example, if there is significant fragmentation in the local Log database, or CPU usage exceeds threshold, the system administrator can be notified accordingly.
 
 Another example is when, due to a large number of simultaneously running jobs, it might be necessary to temporarily block the launch of new Jobs, or put them in a queue.
+
+**Examples**
+
+*Queue new Jobs while the computer is under load*
+
+* Condition: *OS CPU (%)* is over `90` for `5` minutes
+* Action: *Adjust settings*, changing the runtime Job start policy so new Jobs are queued
+
+Because the *Adjust settings* Action is reversible, configure it to restore the original setting when the Condition stops matching. New Jobs are then held while CPU is high and released automatically once it drops.
+ 
+*Notify an administrator about the Log database*
+
+* Condition: *LogDB fragmentation (%)* is over `30`
+* Action: *Run Notification*, sending to the administrator
+
+See [Load balancing Conditions](load-balancing-conditions) for the full list of Conditions that can be used here.
