@@ -5,6 +5,12 @@ hide_title: 'true'
 
 ## Broker Server
 
+:::info Availability
+
+Load Balancing requires VisualCron **11.2.1** or later and a **Pro Subscription** license. See [Load Balancer](load-balancer) for the full feature overview, and [Deploying Load Balancing](load-balancing-deployment) for the order in which to configure the components.
+
+:::
+
 **Broker Server** (Broker for short) - acts as a link between several VisualCron Servers, called Server Agents (hereinafter either Server or Agent for short).
  
 Broker collects statistics from all connected Agents, sends different actions to the Agents for execution (e.g. execution of a certain Job), and most importantly: the Broker determines which of the controlled Agents should have the Scheduler role, i.e. start and monitor events of different Triggers.
