@@ -5,6 +5,12 @@ hide_title: 'true'
 
 ## Execution Distribution
 
+:::info Availability
+
+Load Balancing requires VisualCron **11.2.1** or later and a **Pro Subscription** license. See [Load Balancer](load-balancer) for the full feature overview.
+
+:::
+
 **Execution Distribution** is a setting up of a certain Job so that execution of the Job can be performed not only on the local Server, but also on one or more Servers connected to the Broker.
 
 Distributed execution is configured on the "*Agent distribution*" tab in the Job editing form:
