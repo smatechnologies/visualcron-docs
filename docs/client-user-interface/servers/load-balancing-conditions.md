@@ -5,6 +5,12 @@ hide_title: 'true'
 
 ## Load Balancing Conditions
 
+:::info Availability
+
+Conditions used by the [Broker](broker-server) and by [Load balancing Flows](load-balancing-flows) require VisualCron **11.2.1** or later and a **Pro Subscription** license. Conditions used by [Server Health](../server/health-server-health) and the [Variable Trigger](../server/event-trigger-variable) follow the license requirements of those features.
+
+:::
+
 Load balancing Conditions can be used in several different VisualCron components:
  
 * Load balancing [Broker](broker-server) (Scheduler switch condition; Server Agents filter)
@@ -79,6 +85,33 @@ If non-zero, the condition can trigger again after the specified timeout even if
 **Pause after triggering**
 
 The period after a previous trigger when event generation is suppressed. If, while waiting for the suppression period to end, the state changes to non-matching and then back to matching, the condition triggers again immediately after the suppression period ends.
+
+**Examples**
+
+*Move the Scheduler role off a Server that is struggling*
+
+Used as a Broker Scheduler switch condition:
+
+* Condition type: *Health status*
+* Value: *Very bad*
+* Duration: `5` minutes
+
+Adding a duration prevents a momentary spike from moving the Scheduler role.
+ 
+*Do not send Jobs to a Server that is already busy*
+
+Used as a Broker agent filter condition:
+
+* Condition type: *Total running Jobs*
+* Operand and value: over `0`
+
+*Act on sustained CPU load*
+
+Used in a Load balancing Flow:
+
+* Condition type: *OS CPU (%)*
+* Operand and value: over `90`
+* Duration: `5` minutes, with *Check average* enabled
  
 **The list of supported Load balancing Conditions**
  
