@@ -55,7 +55,30 @@ If checked, the NULL value will override the Value.
 **Validate value**
 
 If checked, VisualCron will validate the value with the value type. Leave not checked if you are using a Variable as value and the Variable is not yet set.
- 
+
+**Date and DateTime parameter formats**
+
+When a parameter data type is a date or date/time type, VisualCron parses the **Value** text before sending it to the provider. Parsing uses this order:
+
+1. Exact match against the primary format for that provider and data type (see table below)
+2. Exact match against date/time patterns from the Server's local culture
+3. Exact match against date/time patterns from the invariant culture
+4. A general date parse using the Server's current culture (then invariant)
+5. If nothing matches, the value is rejected as invalid
+
+| Provider / data type | Primary format | Example values |
+| --- | --- | --- |
+| OLE DB **Date** | `yyyyMMddHHmmss` | `20260630143000`, `06/30/2026` |
+| OLE DB **DBDate** | `yyyyMMdd` | `20260630` |
+| OLE DB **DBTime** | `HHmmss` | `143000` |
+| ODBC **Date** | `yyyyMMdd` | `20260630` |
+| ODBC **DateTime** | `yyyyMMddHHmmss` | `20260630143000` |
+| Native MSSQL **Date** | `yyyyMMdd` | `20260630` |
+| Native MSSQL **DateTime** / **DateTime2** / **SmallDateTime** | `yyyyMMddHHmmss` | `20260630143000` |
+| Other native providers (Oracle, MySQL, PostgreSQL, etc.) for date/time types | Typically `yyyyMMdd` or `yyyyMMddHHmmss` | Same pattern as above |
+
+Culture-based and general parse steps allow common regional forms (for example `06/30/2026` on an en-US Server) when the primary format does not match. Prefer the primary formats when you need the same behavior on every Server culture.
+
 Test your SQL Task before closing the VisualCron client. Errors will be reported in the log window.
  
 **SQL > Job** sub tab
