@@ -5,6 +5,73 @@ hide_title: 'true'
 
 ## Change Log
 
+### 13.4.1 [2026-09-08]
+
+#### Features
+
+:star: Client/Server: Server-Side Connection Explorer for Remote Terminal Execution (VCPCM-1820)
+
+:star: Client: Rate Lock-In Messaging for License/Maintenance Renewal Reminder (VCPCM-3729)
+
+:star: Client/Server: Numeric Conversion Variable Functions (INTEGER, LONG, DECIMAL, DOUBLE) (VCPCM-3473)
+
+:star: Client: Edit Job Group in Import Settings Dialog (VCPCM-980)
+
+:star: Client/Server: Kill Process With PID (VCPCM-976)
+
+:star: Client/Server: PDF Convert Task: Added Paper Size and Dimension Output Options (VCPCM-3485)
+
+
+#### Bug Fixes
+
+:white_check_mark: Client: Slack OAuth Requests Insufficient Scopes for File Upload and Channel Resolution (VCPCM-3736)
+
+:white_check_mark: Client: Slack OAuth Authenticate Ignores Unsaved Client Secret Changes (VCPCM-3733)
+
+:white_check_mark: Client/Server: Slack Send Message Channel Lookup Excludes Private Channels (VCPCM-3740)
+
+:white_check_mark: Client: Folders Pane Draggable Off the Left Edge (VCPCM-3580)
+
+:white_check_mark: Client/Server: Web Automation Task Recorder Resolves Credentials From Redacted Client Cache (VCPCM-3778)
+
+:white_check_mark: Client: Copy Job/Task ID Crashes Client (VCPCM-3639)
+
+:white_check_mark: Client/Server: PGP Key Expiration Date Not Set (VCPCM-2218)
+
+:white_check_mark: Client: PGP Create Key Allows Backdated Expiry (VCPCM-3785)
+
+:white_check_mark: Client: PGP Create Key: Encryption Algorithm List Shows Wrong Label for ElGamal (VCPCM-3789)
+
+:white_check_mark: Client/Server: Slack Send Message Task Writes Error to Server Log When Not Uploading File (VCPCM-3762)
+
+:white_check_mark: Client/Server: Rest API Trigger "Save Content" Does Not Output Content to File (VCPCM-3046)
+
+:white_check_mark: Client/Server: Non VC MFT Users Do Not Update Last Login (VCPCM-3529)
+
+:white_check_mark: Client/Server: GUI Errors When Different Clients Connect to Same Server (VCPCM-3766)
+
+:white_check_mark: Client/Server: Time Exception Calendar Updater Fails to Store OAuth Token in Console App Context (VCPCM-3657)
+
+:white_check_mark: Client: Add/Edit Name-Value Dialog Variable/Expression Button Unresponsive (VCPCM-2879)
+
+:white_check_mark: Client: Create PGP Key: Encrypt-Only Algorithms Fail With Invalid Signing Algorithm Error (VCPCM-3793)
+
+:white_check_mark: Client/Server: PDF Decryption Fails After 11.1.4 (VCPCM-2106)
+
+:white_check_mark: Client: FTP/SFTP Endpoint Log Dates Do Not Show Up in Certain Cases (VCPCM-3528)
+
+:white_check_mark: Client/Server: DynamoDB: Put Item Task Object Reference Not Set to an Instance of an Object (VCPCM-2225)
+
+:white_check_mark: Client/Server: File Trigger Missed Events on Bursts During Windows Cluster Failover (VCPCM-2825)
+
+:white_check_mark: Client/Server: Connection Explorer Showing Wrong Dates With SFTP Connection (VCPCM-3570)
+
+:white_check_mark: Client/Server: JSON Encode Task Treating Spaced Column Names as Separate Columns (VCPCM-3617)
+
+:white_check_mark: Client/Server: Job History Shows Retried Task as Failed After It Ultimately Succeeded (VCPCM-3782)
+
+:white_check_mark: Client: Main Grid Client Crash From Off-Thread Grid Reads (VCPCM-3568)
+
 ### 13.3.1 [2026-07-20]
 
 #### Features
