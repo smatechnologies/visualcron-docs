@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Change Log
 
-### 13.4.1 [2026-09-08]
+### 13.4.2 [2026-09-12]
 
 #### Features
 
@@ -71,6 +71,10 @@ hide_title: 'true'
 :white_check_mark: Client/Server: Job History Shows Retried Task as Failed After It Ultimately Succeeded (VCPCM-3782)
 
 :white_check_mark: Client: Main Grid Client Crash From Off-Thread Grid Reads (VCPCM-3568)
+
+:white_check_mark: Client/Server: PDF Convert Task Page Margins Label Does Not State Points Unit (VCPCM-4028)
+
+:white_check_mark: Client/Server: Robot Task False Failures, Web Macro Download Hangs (VCPCM-3619)
 
 ### 13.3.1 [2026-07-20]
 
