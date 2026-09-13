@@ -1098,10 +1098,12 @@ module.exports = {
               items: [
                 'client-user-interface/servers/servers-execution-distribution',
                 'client-user-interface/servers/load-balancer',
+                'client-user-interface/servers/load-balancing-deployment',
                 'client-user-interface/servers/broker-server',
                 'client-user-interface/servers/execution-distribution',
                 'client-user-interface/servers/load-balancing-flows',
                 'client-user-interface/servers/load-balancing-conditions',
+                'client-user-interface/servers/server-launcher',
               ],
             }, 
           ],

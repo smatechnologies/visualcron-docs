@@ -4249,6 +4249,16 @@
       "mdFile": "docs/client-user-interface/servers/load-balancing-conditions.md",
       "label": "Load Balancing Conditions"
     },
+    "client-user-interface/servers/load-balancing-deployment": {
+      "chmFile": "loadbalancer-deployment.htm",
+      "mdFile": "docs/client-user-interface/servers/load-balancing-deployment.md",
+      "label": "Deploying Load Balancing"
+    },
+    "client-user-interface/servers/server-launcher": {
+      "chmFile": "serverlauncher.htm",
+      "mdFile": "docs/client-user-interface/servers/server-launcher.md",
+      "label": "Server Launcher"
+    },
     "client-user-interface/tools/overview": {
       "chmFile": "the_tools_tab.htm",
       "mdFile": "docs/client-user-interface/tools/overview.md",
