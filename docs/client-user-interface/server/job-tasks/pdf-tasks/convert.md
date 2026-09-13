@@ -75,3 +75,39 @@ The destination folder. Enabled when *Save to* is set to _Different folder with 
 **File mask**
 
 The file mask used to name the output file. Enabled when *Save to* is set to _Same folder with file mask_ or _Different folder with file mask_.
+
+**Convert > Destination sub tab, converting to PDF from TXT**
+
+When *To PDF->From* is set to TXT, three extra group boxes appear on the Destination tab: Page margins, Font details, and Page orientation and Line fit.
+
+![](pathname:///img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Convert%20Destination%20TXT.png)
+
+**Page margins**
+
+Left, Right, Top, and Bottom margin around the page content, in points. Leave a field blank (or enter a value that can't be parsed as a number) and VisualCron falls back to 50pt on that side. This group also appears when converting to PDF from IMAGE.
+
+**Font details**
+
+* _Font_ - the installed system font used to render the text. Leave blank to use Courier New.
+* _Font size_ - point size for the text. Leave blank to use 12pt.
+* _Font style_ - Regular, Bold, Italic, or Bold Italic.
+
+**Page orientation and Line fit**
+
+* _Orientation_ - Auto, Portrait, or Landscape. Auto uses Landscape when the text content is wider than it is tall, otherwise Portrait.
+* _Line Fit_ - when checked, scales the text horizontally so it fits within the page margins.
+
+**Convert > Destination sub tab, Output paper size**
+
+An **Output paper size** group lets you fix the page dimensions of the converted PDF instead of relying on the auto-derived size.
+
+* Converting to PDF: available for every *To PDF->From* format except SVG.
+* Converting from PDF: available when *From PDF->To* is set to DOC, PPT, or XPS.
+
+**Paper size**
+
+Default (auto), A3, A4, A5, Letter, Legal, Tabloid, or Custom. Default (auto) reproduces the size VisualCron would have produced before this option existed.
+
+**Width / Height / Unit**
+
+Shown only when *Paper size* is set to Custom. Enter the page width and height and choose the unit (mm, in, or pt). Both values must be greater than 0 and, once converted to points, no larger than 14400pt (the maximum page dimension VisualCron supports) - VisualCron blocks the task if either is out of range.
