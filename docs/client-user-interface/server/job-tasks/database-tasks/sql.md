@@ -55,7 +55,32 @@ If checked, the NULL value will override the Value.
 **Validate value**
 
 If checked, VisualCron will validate the value with the value type. Leave not checked if you are using a Variable as value and the Variable is not yet set.
- 
+
+**Date and DateTime parameter formats**
+
+When a parameter data type is a date or date/time type, VisualCron parses the **Value** text before sending it to the provider. Leading and trailing whitespace is ignored. Parsing uses this order:
+
+1. Exact match against the **primary format** for that provider and data type (see table below)
+2. Exact match against a fixed, year-first format list (same on every Server culture): `yyyyMMddHHmmss`, `yyyyMMdd`, `yyyy-MM-dd HH:mm:ss`, `yyyy-MM-ddTHH:mm:ss.fff`, `yyyy-MM-ddTHH:mm:ss`, `yyyy-MM-dd`
+3. Exact match against date/time patterns from the Server's **current culture**
+4. A general date parse using the Server's **current culture**
+5. If nothing matches, the value is rejected as invalid
+
+Ambiguous regional values (for example `03/04/2026`) follow the Server culture's day/month order. Culture-invariant pattern matching is not used for that step, so day and month are not silently swapped.
+
+| Provider / data type | Primary format | Example values |
+| --- | --- | --- |
+| OLE DB **Date** | `yyyyMMddHHmmss` | `20260630143000`, `20260630`, `2026-06-30`, `06/30/2026` |
+| OLE DB **DBDate** | `yyyyMMdd` | `20260630` |
+| OLE DB **DBTime** | `HHmmss` | `143000` |
+| ODBC **Date** | `yyyyMMdd` | `20260630` |
+| ODBC **DateTime** | `yyyyMMddHHmmss` | `20260630143000` |
+| Native MSSQL **Date** | `yyyyMMdd` | `20260630` |
+| Native MSSQL **DateTime** / **DateTime2** / **SmallDateTime** | `yyyyMMddHHmmss` | `20260630143000` |
+| Other native providers (Oracle, MySQL, PostgreSQL, etc.) for date/time types | Typically `yyyyMMdd` or `yyyyMMddHHmmss` | Same pattern as above |
+
+Prefer the primary format or a year-first value from the fixed list when you need the same result on every Server culture. Culture-based forms (step 3–4) depend on the Server's regional settings.
+
 Test your SQL Task before closing the VisualCron client. Errors will be reported in the log window.
  
 **SQL > Job** sub tab
