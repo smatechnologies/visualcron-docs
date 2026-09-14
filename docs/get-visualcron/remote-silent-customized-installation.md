@@ -11,7 +11,7 @@ In the download page there is a link for "silent" installation. This means an in
  
 **Custom installation**
 
-1. Download the "Custom installation package" from the [download page](https://www.visualcron.com/download.aspx).
+1. Download the "Custom installation package" from the [download page](https://visualcron.com/download/).
 2. Unzip the content to an empty folder
 3. Open the command window (cmd.exe)
 4. In the command window, go to the folder where the installation is unzipped
@@ -33,7 +33,7 @@ In the download page there is a link for "silent" installation. This means an in
 It is possible to install VisualCron remotely - on a domain or private network.  
 
 1. To do this you need to use a tool called "PsExec" which is downloadable from [Microsoft PsExec](https://learn.microsoft.com/en-us/sysinternals/downloads/psexec). Once downloaded, unzip the content of the PSTools.zip file into the `"C:\WINDOWS\system 32\"` folder.
-2. Download the "Custom installation package" from the [download page](https://www.visualcron.com/download.aspx).
+2. Download the "Custom installation package" from the [download page](https://visualcron.com/download/).
 3. Unzip the package on a shared drive on your network.
 4. Open the command window (cmd.exe)
 5. Combine the row below with the command string above in the Custom installation section like this:
