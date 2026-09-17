@@ -29,7 +29,14 @@ Read more [here](https://help.visualcron.com/)
 From time to time we validate the license. Both that the actual activation code is valid and the Maintenance or Subscription is covering the current version. If our servers cannot be reached, you need to do a manual validation from time to time. We strongly recommend that you open firewall to host visualcron.com on port 443 so this can be validated and updated without you having to do a manual validation.
  
 If you fail to validate VisualCron, will either stop working or you will not be able to connect to the Server with the Client.
- 
+
+**What happens if I do not renew?** 
+
+This will depend on the license that you have: 
+
+* Subscription licenses: VisualCron will stop executing Jobs.
+* Perpetual licenses: The license itself is perpetual so it is forever but it is bound to a specific version. In order to update and get priority support, you need to renew. Also, Perpetual licenses cannot be renewed after they've expired, and a new license would have to be purchased at https://admin.visualcron.com/order.aspx.
+
  
 ### Troubleshooting
  
