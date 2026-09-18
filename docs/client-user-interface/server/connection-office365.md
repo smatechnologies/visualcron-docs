@@ -1,4 +1,4 @@
-1---
+---
 sidebar_label: 'Connection - Office365'
 hide_title: 'true'
 ---
@@ -10,8 +10,8 @@ The Office 365 Connection stores connect and authentication properties for Micro
 The Office 365 Connection is used in the following places:
  
 * Office Tasks
-* Microsoft Teams Trigger
-* Microsoft Teams Task
+* [Microsoft Teams Trigger](../server/event-trigger-microsoft-teams)
+* [Microsoft Teams Task](../server/job-tasks/messaging-tasks/microsoft-teams-add-channel-message)
 
 **Manage Connections > Add > Office365 > Common settings** tab
 
