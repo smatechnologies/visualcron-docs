@@ -739,6 +739,7 @@ module.exports = {
                       'client-user-interface/server/job-tasks/sharepoint-tasks/download-file',
                       'client-user-interface/server/job-tasks/sharepoint-tasks/list-file',
                       'client-user-interface/server/job-tasks/sharepoint-tasks/delete-file',
+                      'client-user-interface/server/job-tasks/sharepoint-tasks/create-folder',
                     ],
                   },
                   {
