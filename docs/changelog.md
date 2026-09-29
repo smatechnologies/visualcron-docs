@@ -5,6 +5,18 @@ hide_title: 'true'
 
 ## Change Log
 
+### Unreleased
+
+#### Notes
+
+:memo: Server: Slack trigger conditions using Equal or Not equal with multiple configured channels or users may match a different set of values after upgrading (VCPCM-3902).
+
+
+#### Bug Fixes
+
+:white_check_mark: Server: Slack Trigger Equal/Not Equal Conditions Only Matched First Configured Channel or User (VCPCM-3902)
+
+
 ### 13.4.2 [2026-09-12]
 
 #### Features
