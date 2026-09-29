@@ -9,6 +9,10 @@ hide_title: 'true'
 
 #### Notes
 
+:memo: Server: Slack connections need to re-run Authenticate after upgrading - the required OAuth scopes have changed, and Slack only applies scope changes the next time you go through consent (VCPCM-3902).
+
+:memo: Client/Server: Slack triggers now connect over Socket Mode instead of the retired RTM API. Enable Socket Mode in your Slack app and generate an app-level token under Basic Information, then enter it in the connection's new App-Level Token field - triggers will not fire without it (VCPCM-3902).
+
 :memo: Server: Slack trigger conditions using Equal or Not equal with multiple configured channels or users may match a different set of values after upgrading (VCPCM-3902).
 
 
