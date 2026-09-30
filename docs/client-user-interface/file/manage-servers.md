@@ -67,49 +67,56 @@ The **Identity type** and **Principal name** settings tell the Client how to aut
  
 **Identity type:**
 
-Select the Identity type that matches the account the VisualCron Service runs under on the Server computer. To check this, open the Windows Services console on the Server, right click **VisualCron Service**, select **Properties** and look at the **Log On** tab.
+**Automatic (recommended)** is the default for new connections. The Client works out the identity itself: it derives the SPN `HOST/<server FQDN>` from the Server name you entered, and once it has connected to a Server that runs under a domain user account it remembers that account's UPN and uses it from then on. Select one of the other types only when you need to override this.
 
-| VisualCron Service runs as | Select Identity type | Principal name |
+| VisualCron Service runs as | Identity type | Principal name |
 |---|---|---|
-| Local System, Network Service or Local Service | **SPN identity** | Required |
-| A domain user account, for example ```DOMAIN\username``` | **UPN identity** | Required |
+| Any account | **Automatic (recommended)** | Derived automatically, leave empty |
+| Local System | **SPN identity** | `HOST/<server FQDN>`, for example `HOST/server.contoso.com` |
+| A domain user account, for example `DOMAIN\username` | **UPN identity** | `username@domain`, for example `username@contoso.com` |
 | Internal logon only, no Active Directory | **DNS Identity** | Not used |
+
+To check the service account, open the Windows Services console on the Server computer, open the properties of **VisualCron Service** and look at the **Log On** tab. The values the Server derives for itself are shown in **Server > Settings > Users/Logon** as **SPN** and **UPN**.
 
 :::caution
 
-**SPN identity** and **UPN identity** are mutually exclusive. The Server publishes only one of the two, depending on how the service is started. Selecting the wrong one, or leaving **Principal name** empty, prevents the Client from connecting. See [Troubleshooting](#troubleshooting) below.
+The Server publishes only one of the two Windows-authentication endpoints: the SPN endpoint when the service runs as Local System, the UPN endpoint otherwise. A connection that asks for the other one fails with a "Server not running" message and a hint naming the identity type to switch to. Automatic asks for the SPN endpoint until it knows the Server's UPN, so for a Server running under a domain user account, select **UPN identity** and enter the UPN once. After that first successful connection, Automatic remembers it.
 
 :::
- 
-**DNS Identity** 
 
-Left for backwards compatibility, all messages between client and server are protected by VC certificate encryption. Used when internal authentication is being used. This identity type cannot complete an Active Directory logon to a remote Server.
+**Automatic (recommended)**
 
-**Windows Default** 
+Derives `HOST/<server FQDN>` for the Server name, or uses the Server's service-account UPN once it is known. The **Server** field must be a host name that resolves to the Server's fully qualified domain name; an IP address cannot be turned into an SPN. Existing connections keep the identity type they were saved with, so after upgrading, edit each connection that uses Active Directory logon and select Automatic.
 
-Not supported for connections to a remote Server. Select **SPN identity** or **UPN identity** instead.
+**DNS Identity**
 
-**UPN Identity** 
+Kept for backwards compatibility. All messages between Client and Server are still protected by the VisualCron certificate encryption, but this identity type carries no Windows credentials to a remote Server, so an Active Directory logon over it is refused. Use it for internal logon only.
 
-This identity type is used when VisualCron Service starts as a custom AD user account, so the client needs to know this information explicitly. Please provide a Principal Name value as well.
+**Windows Default**
 
-**SPN identity** 
+Not supported for connections to a remote Server. Select **Automatic** instead.
 
-This identity type is used when VisualCron Service starts as SystemService\LocalService\NetworkService, so the client needs to know this information explicitly. Please provide a Principal Name value as well.
- 
-**Principal Name:**
- 
-Applies for UPN and SPN identity types only, should contain explicit principal name when negotiating during AD authentication. A value is required for both of those identity types. If it is left empty the connection fails, even though the Client allows the connection to be saved.
+**UPN identity**
 
-**UPN identity type:** 
+Use when the VisualCron Service runs under a domain user account. Enter that account's UPN in **Principal name**.
 
-Principal Name should look like ```username@FQDN```
+**SPN identity**
 
-**SPN identity type:** 
-Principal Name might look like ```HOST/serverDNSname.FQDN``` or ```serverDNSname.FQDN```. In order to check for possible SPN values please run the following command ```setspn -l serverDNSname``` in Windows CommandLine utility.
- 
-The UPN and SPN values detected by your Server are displayed in **Server > Settings > Users/Logon**. Copy the matching value from there. Sample values used to start VisualCron service could be found at [user logon settings](../server/settings-users-logon).
- 
+Use when the VisualCron Service runs as Local System and you want to state the SPN yourself. Enter it in **Principal name**.
+
+**Principal name:**
+
+Applies to UPN identity and SPN identity only. A value is required for both, and the Client checks its form when you save:
+
+- **UPN identity:** `username@domain`, for example `username@contoso.com`.
+- **SPN identity:** `service/host`, for example `HOST/server.contoso.com`. A bare host name such as `server.contoso.com` is not an SPN. Windows cannot issue a Kerberos ticket for it, so authentication silently falls back to NTLM, which a domain that enforces Kerberos refuses. A connection saved with a bare host name in an earlier release still connects where NTLM is allowed, but the next time you edit it, save is refused until you correct the value or select Automatic. To list the SPNs registered for the Server computer, run `setspn -L <server name>` at a command prompt.
+
+:::caution
+
+A connection saved with **Automatic** cannot be read by a Client from an earlier release. That older Client fails to load the whole server list and then overwrites the file with a default entry. Back up `servers.xml` (in the Client's settings folder) before running an older Client with the same Windows profile.
+
+:::
+
 **Username**
 
 Default: "admin". This is the user name the server uses. Be sure to change this after the initial login.
@@ -136,15 +143,18 @@ You might have disabled TLS 1.2 on the machine. Install .NET 4.7.x or greater an
 
 _The requested upgrade is not supported by 'net.tcp://servername:16444/'. This could be due to mismatched bindings (for example security enabled on the client and not on the server)._
 
-The **Identity type** on the Client connection does not match how the VisualCron Service is started on the Server. Check the following in order:
-
-1. Confirm the account the VisualCron Service runs under, in the Windows Services console on the Server computer (**VisualCron Service > Properties > Log On**).
-2. Set **Identity type** to **SPN identity** if that account is Local System, Network Service or Local Service. Set it to **UPN identity** if it is a domain user account.
-3. Confirm that **Principal name** is not empty, copying the matching value from **Server > Settings > Users/Logon**.
-4. Confirm that **Identity type** is not set to **Windows Default**, which cannot be used for a connection to a remote Server.
+The **Identity type** on the connection does not match how the VisualCron Service is started on the Server. Set **Identity type** to **Automatic**. If the Service runs under a domain user account and this is the first connection to it, set **UPN identity** and enter the account's UPN from **Server > Settings > Users/Logon**.
 
 To regain access to the Client while resolving this, add a connection that uses **Use internal logon** with an internal VisualCron account.
- 
-_Login failed, reason: Failed to obtain security context from client. Switch identity type(?)_
 
-The Client reached the Server but no Active Directory security context was negotiated. This happens when **Use Active Directory logon** is combined with **DNS Identity** on a connection to a remote Server. Change **Identity type** to **SPN identity** or **UPN identity** as described above.
+_Connection failed to '...'. This may indicate that the Server has not been fully started ... If the Server is running, it did not offer the Windows-authentication endpoint this connection asked for._
+
+The Server is running but publishes the other Windows-authentication endpoint. The message names the identity type to switch to: **UPN identity** with the service account's UPN for a Server running under a domain user account, **Automatic** for a Server running as Local System.
+
+_Connection failed with error: 'The logon attempt failed' ... The Server rejected the Windows authentication handshake before login was attempted._
+
+Windows could not obtain a Kerberos ticket for the principal name in use, and the Server refused the NTLM fallback, which is what a domain that enforces Kerberos does, for example through the **Protected Users** group. The message names the identity type in use and what to correct. For **SPN identity** that is usually a principal name that is not in `service/host` form; for **Automatic** it is a **Server** field that is an IP address or does not resolve to the Server's fully qualified domain name. Select **Automatic** and enter the Server by host name.
+
+_Login failed, reason: the Server did not receive a Windows identity from this connection, so Active Directory logon cannot proceed._
+
+The connection reached the Server, but its **Identity type** is **DNS Identity**, which carries no Windows credentials to a remote Server. Edit the connection and select **Automatic**. In earlier releases this failure was not reported and the Client appeared connected although no logon had taken place.

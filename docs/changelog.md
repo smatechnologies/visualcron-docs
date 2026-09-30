@@ -5,6 +5,20 @@ hide_title: 'true'
 
 ## Change Log
 
+### Unreleased
+
+#### Features
+
+:star: Client/Server: Kerberos-Only Windows Authentication for Active Directory Protected Users Accounts (VCPCM-4084)
+
+
+#### Bug Fixes
+
+:white_check_mark: Server: Failed Active Directory Lookup at Logon Was Reported as "User Does Not Exist" (VCPCM-4084)
+
+:white_check_mark: Client: Connection Appeared Connected When the Server Received No Windows Identity (VCPCM-4084)
+
+
 ### 13.4.2 [2026-09-12]
 
 #### Features
