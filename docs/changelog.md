@@ -5,6 +5,13 @@ hide_title: 'true'
 
 ## Change Log
 
+### Unreleased
+
+#### Bug Fixes
+
+:white_check_mark: Client: PGP Key Rings: Export Public/Private Key Saves to the Wrong Machine When Connected to a Remote Server (VCPCM-3818)
+
+
 ### 13.4.2 [2026-09-12]
 
 #### Features
