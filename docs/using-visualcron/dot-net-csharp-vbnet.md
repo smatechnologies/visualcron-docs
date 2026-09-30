@@ -11,8 +11,17 @@ A c# project sample with a lot of functionality exists in the API folder of the 
  
 We recommend looking at the basic tutorial for the API [here](../videotutorials) - then look at the API sample project.
  
+:::info API changes for Kerberos-only Windows authentication
+
+- `EndpointIdentityT.AutomaticIdentity` can be set on `Connection.EndpointIdentityType`. `Client.Connect` resolves it before connecting, to `HOST/<server FQDN>` or to the DNS identity when the Server name has no FQDN; the value itself never reaches the Server.
+- `Client.Connect` throws `ClientLoginFailedException` with `LoginResult.ADSecurityContextFailure` when the Server received no Windows identity for an Active Directory logon, for example on a DNS-identity connection to a remote Server. Earlier releases returned a Server object marked connected without a logon.
+- `ServerSettingsClass.ADForceSealedConnection` is the new **Force sealed connection** setting. When you send settings with `Server.UpdateServerSettings`, also set `ADForceSealedConnectionSent = true`, otherwise the Server keeps its current value.
+- The `ActiveDirectoryAPI` methods `GetUser`, `GetUsers`, `GetGroups`, `GetUserGroupMembership`, `CheckADCredential` and `CheckADCredentialDirectLDAP` keep their previous signatures. New overloads take a `forceSealedConnection` argument.
+
+:::
+
 Below is a quick sample in c#:
- 
+
 ```csharp
 
 // create Server object that holds all VisualCron objects like Jobs, Credentials, Connections etc.
@@ -48,9 +57,11 @@ else
  
 if (conn.ConnectionType == Connection.ConnectionT.Remote)
  {
-  // for the remote connection with AD credentials we can optionally specify Server identity: either UPN or SPN
+  // for the remote connection with AD credentials the Client derives the Server identity when set to Automatic (recommended)
+  conn.EndpointIdentityType = EndpointIdentityT.AutomaticIdentity;
+  // or specify the Server identity explicitly: either UPN or SPN
   if (specifyUpnIdentity)
-   {
+{
      conn.EndpointIdentityType = EndpointIdentityT.UpnIdentity;
     // specify the UPN of the service account. The UPN is in the form username@domain. For example, when the service is running in a user account, it may be username@contoso.com
      conn.PrincipalName = "username@domain.com";
