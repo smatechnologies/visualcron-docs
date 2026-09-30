@@ -39,13 +39,25 @@ Mark the key ring and click on the Import key(s) icon to select a path to a key 
  
 **Create key**
 
-Mark the key ring and click on the Create key icon.
+Mark the key ring and click on the Create key icon. The *Generate PGP key* window opens.
  
-Select encryption. Currently you can select "RSA" or "Elgamal/DSS" encryption. Contact us if you are interested in other encryption algorithms.
+**Select encryption**
+
+Select the key algorithm:
+
+* *RSA (encrypt or sign)* - creates a single RSA key that can be used for both encryption and signing
+* *RSA (encrypt only)* - creates an RSA signing key with a separate RSA encryption sub key
+* *ElGamal (encrypt only)* - creates a DSA signing key with a separate ElGamal encryption sub key
+
+All keys are created as version 4 OpenPGP keys. Elliptic curve (ECC) keys are not available.
  
 **Strength**
 
-Select bit strength.
+Select bit strength: 512, 1024, 1536, 2048 or 4096. The default is 512, which is not considered secure today. Select 2048 or 4096 for new keys.
+ 
+**Expiry date**
+
+Select the date the key expires. The default is one year from today. The date cannot be earlier than today. Check *Never* to create a key that does not expire.
  
 **Username**
 
@@ -60,6 +72,22 @@ Enter your email address.
 Enter password.
  
 Click *OK* to generate the key.
+
+**Algorithms used when a key is created**
+
+The Generate PGP key window does not let you select the algorithms below. They are set automatically:
+
+* *Private key protection* - the private key is protected with your password using the CAST5 (128-bit) cipher and an iterated and salted SHA-1 hash
+* *Self-signature* - the signature that binds the username, email and expiry date to the key uses SHA-1
+* *Preferred algorithms* - the key does not list preferred ciphers or hashes. Software that encrypts files for this key uses its own default settings
+
+The encryption algorithm used for your files is selected separately in the [PGP Encrypt Task](job-tasks/encryption-tasks/pgp-encrypt), where AES-256 is available.
+
+:::tip Tip
+
+If you need a key where the private key is protected with AES-256 and SHA-2, create the key in a dedicated PGP tool such as GnuPG or Kleopatra and then import it into a VisualCron key ring with *Import key(s)*.
+
+:::
  
 **Signing and revoking** 
 
