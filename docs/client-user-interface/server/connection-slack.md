@@ -106,12 +106,29 @@ The Redirect URL configured in the Slack app must use HTTPS (for example `https:
 
 ![](../../../static/img/slack_visualcronpermissions.png)
 
+### Required OAuth scopes
+
+The Slack app used for this connection must be authorized with the following scopes:
+
+* commands
+* chat:write
+* channels:read
+* files:write
+* users:read
+* groups:read
+
+| Scope | Required for |
+|---|---|
+| `files:write` | Uploading files (e.g. Take Screenshot &rarr; Slack, attachments) |
+| `users:read` | "Send to User" resolution by username/email |
+| `groups:read` | Resolving private channels by name |
+
+:::note
+Existing Slack connections created before this update were authenticated with a reduced scope set. If tasks fail with `missing_scope`, re-run **Authenticate** on the connection to request the additional scopes (`files:write`, `users:read`, `groups:read`).
+:::
+
 ### Troubleshooting
  
 *"Missing scope" error*
 
-Make sure the following oauth scopes are setup:
-
-* chat:write
-* chat:write.public
-* incoming-webhook
+Make sure the [Required OAuth scopes](#required-oauth-scopes) above are set up, then re-run **Authenticate** on the connection.
