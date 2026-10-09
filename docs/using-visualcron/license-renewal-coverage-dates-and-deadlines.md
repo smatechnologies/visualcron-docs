@@ -38,7 +38,7 @@ This change allows us to ensure coverage is consistent and predictable across al
 
 **When can I renew my license?**
 
-Renewals can be processed within 90 days of the expiration date.
+Renewals can only be processed from 90 days before the expiration date to 180 days after the expiration date.
 
 **How can I renew my license?**
 
