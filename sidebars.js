@@ -7,6 +7,7 @@ module.exports = {
       collapsed: true,
       items: [
         'terms-and-conditions',
+        'updated-terms-and-conditions',
         'dora',
       ],
     },
@@ -58,6 +59,7 @@ module.exports = {
                 'using-visualcron/license-validation',
               ],
             },
+            'using-visualcron/license-renewal-coverage-dates-and-deadlines',
             'using-visualcron/move-a-license',
           ],
         },
