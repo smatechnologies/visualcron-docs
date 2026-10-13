@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Task Cloud Transfer - Upload File
 
-he Cloud - Upload file(s) Task lets you upload files from the local file system to a cloud service such as Amazon S3, Box, Dropbox, Google Drive, Google Storage, Microsoft Azure or OneDrive.
+The Cloud - Upload file(s) Task lets you upload files from the local file system to a cloud service such as Amazon S3, Box, Dropbox, Google Drive, Google Storage, Microsoft Azure or OneDrive.
  
 **Upload file(s) > Main settings** sub tab
 
