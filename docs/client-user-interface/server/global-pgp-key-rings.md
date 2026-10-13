@@ -37,6 +37,10 @@ You can either create an empty key ring or create a key ring from already existi
 
 Mark the key ring and click on the Import key(s) icon to select a path to a key ring file.
  
+**Export public key / Export private key**
+ 
+Mark a key and click *Export public key* to save its public key, or *Export private key* to save its private key. The key file is written by the Client, so the save dialog always browses the workstation running the Client, even when the Client is connected to a remote VisualCron server. The dialog proposes a file name based on the key's user ID with an `.asc` extension (the private key gets a `-private.asc` suffix); you can change the name and location before saving.
+ 
 **Create key**
 
 Mark the key ring and click on the Create key icon.
