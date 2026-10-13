@@ -42,7 +42,9 @@ When you add, edit or clone a user you are presented with the Add/Edit user wind
 **Is AD user**
 
 You can select users from the active directory by clicking on the Search button next to the Name.
- 
+
+The search binds to the AD Server shown in the search window with the credential you select there. When **Force sealed connection** is on in [Users/Logon](../server/settings-users-logon), the search requires Kerberos as well, and an AD Server on port 636 or 3269 is refused for the user, because a logon for a user that has its own credential binds to that user's own AD Server.
+
 **User permissions from AD Group**
 
 It is possible to inherit the permissions from the Groups tab of the AD group. This is enabled by default if user is created from a group. If unchecked, the Groups tab, from the Add user window will be used instead of the settings from the AD group.
@@ -74,7 +76,9 @@ If the current user is active or not (login enabled).
 **Group name**
 
 The AD group name. This can not be altered manually - you need to search and select the group.
- 
+
+The same rule as for AD users applies to the group's AD Server: with **Force sealed connection** on, the search requires Kerberos and an LDAPS port (636 or 3269) is refused for the group.
+
 **Active**
 
 If the current group is active or not (login enabled).
