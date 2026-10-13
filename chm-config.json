@@ -2628,6 +2628,14 @@
         "Definitions/Tasks/clsTask.vb"
       ]
     },
+    "client-user-interface/server/job-tasks/sharepoint-tasks/create-folder": {
+      "chmFile": "task_sharepoint_-_create_folder.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/sharepoint-tasks/create-folder.md",
+      "label": "Task Sharepoint - Create Folder",
+      "helpKeywordSources": [
+        "Definitions/Tasks/clsTask.vb"
+      ]
+    },
     "client-user-interface/server/job-tasks/sharepoint-tasks/delete-file": {
       "chmFile": "task_sharepoint_-_delete_files.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/sharepoint-tasks/delete-file.md",
