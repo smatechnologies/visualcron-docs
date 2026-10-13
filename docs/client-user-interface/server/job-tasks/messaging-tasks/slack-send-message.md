@@ -15,8 +15,8 @@ The Slack - Send message task sends a message to a Slack channel, or to a Slack 
 
 Choose who receives the message. Each mode has its own row: a radio button, then that mode's box and a refresh button on the same line. Only one row is active at a time.
 
-* **To channel**: sends the message to a Slack channel. Select or type the channel in the box on the same row. The refresh button next to the box loads the channels from Slack.
-* **To user**: sends the message to one Slack user. Select or type the user in the box on the same row. The message comes from the Slack app and appears in that user's conversation with the app. It is not a direct message from your own Slack account. The refresh button next to the box loads the users the Slack app already has a conversation with.
+* **To channel**: sends the message to a Slack channel. Select or type the channel in the box on the same row. The refresh button next to the box loads the public channels, shown with a leading `#`, and the private channels the Slack app can see, shown without one. A channel name must start with `#`. A value without a leading `#` is treated as a Slack channel ID, so add the `#` yourself to a private channel picked from the list.
+* **To user**: sends the message to one Slack user. Select or type the user in the box on the same row. Use the Slack user name exactly as the list shows it, including upper and lower case. A display name or an email address does not match. A user who is not in the list can still be typed. The message comes from the Slack app and appears in that user's conversation with the app. It is not a direct message from your own Slack account. The refresh button next to the box loads the users the Slack app already has a conversation with.
 
 The box for the mode that is not selected is disabled and is saved empty. Switching modes does not carry the old value across. If the active box is empty when you click OK, the editor asks for the missing value ("You must set the channel name." or "You must set the user name.").
 
