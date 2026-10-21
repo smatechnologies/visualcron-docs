@@ -19,6 +19,14 @@ For each time unit, _Every_, _Between_ or _Choose_ can be selected:
 
 The _Between ..._ option specifies a range of values for the specific time unit. For example, Between weekdays "Friday" and "Tuesday" means that the Job will run on "Friday", "Saturday", "Sunday", "Monday" and "Tuesday".
 
+**How the time units combine**
+
+Every time unit must match for the Job to run. The units are combined, not treated as alternatives, so the schedule is the overlap of all of them.
+
+This is what makes the Custom type more capable than the [Interval](interval-time-trigger) type: because each unit is set separately, one schedule can restrict the hour, the minute and the weekday at the same time.
+
+It is also the reason a unit left as _Every_ places no restriction at all. A Trigger with Minute = _Choose_ 0 and every other unit left as _Every_ fires at the top of every hour, on every day, in every month.
+
 **Day sub‑tab**
 
 The Day sub‑tab offers additional options for weekday selection. In addition to choosing days of the month (1–31), you can:
@@ -31,6 +39,22 @@ The Day sub‑tab offers additional options for weekday selection. In addition t
 * Choosing for example day "31" results in that the Job will only execute on months with 31 days
 * By default, Second = "0" is checked. In order to be able to set a correct time on a Job, a Job must have a least one second specified. Second "0" is the first second in a minute.
 * Exemptions remain valid up to the top of the hour. For example, an exemption is considered active through 4:59. A time‑based exemption applies when the current time falls between 2 and 4 minutes past the hour.
+
+**Worked examples**
+
+Each of these leaves any unit not mentioned set to _Every_, and keeps the default Second = _Choose_ 0.
+
+* **At the top of every hour** — Minute = _Choose_ 0
+* **Once a day at 23:45** — Hour = _Choose_ 23, Minute = _Choose_ 45
+* **Every 30 minutes during business hours on weekdays** — Hour = _Between_ 8 And 17, Minute = _Choose_ 0 and 30, Day = _Choose weekdays_ Monday through Friday
+* **Twice an hour, overnight only** — Hour = _Between_ 22 And 5, Minute = _Choose_ 0 and 30. A _Between_ range may wrap past midnight, in the same way a weekday range may wrap past Sunday
+* **The first day of each quarter** — Month = _Choose_ January, April, July, October, Day = _Choose_ 1, Hour = _Choose_ 6
+
+:::warning
+
+If no Second is selected the Trigger cannot resolve a time to run, and _Next run_ shows **Never**. Leave Second = 0 selected unless you specifically need the Job to run on other seconds within the minute.
+
+:::
 
 **Next run**
 

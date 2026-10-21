@@ -9,9 +9,17 @@ The Process - Kill Task lets you stop a process on the same computer.
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Kill.png)
 
-**Process name**
+**Kill process with name**
 
-Enter the name of the process, i.e. notepad.exe. If you want to be sure of the name then you can start the process on the server and the click on "Select" to show a list of all running processes.
+Enter the name of the process, i.e. notepad.exe. If you want to be sure of the name then you can start the process on the server and then click on "Select" to show a list of all running processes.
+
+**Kill process with PID**
+
+Enter the process id (PID) of the exact process you want to stop. Use this when several processes share the same name and you need to target one specific process.
+
+You can either type a PID (a positive whole number) or select a Variable that resolves to a PID at run time. Variables must be selected through VisualCron rather than typed by hand, so the correct Variable is always inserted. If the Variable does not resolve to a valid PID when the Task runs, the Task fails and reports that no process could be stopped.
+
+If both a process name and a PID are provided, the PID is used. A PID points to one exact process, while a name can match many, so the PID takes preference to avoid stopping the wrong process.
  
 **Case sensitive**
 

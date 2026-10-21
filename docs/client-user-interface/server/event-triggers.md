@@ -18,6 +18,12 @@ Some Triggers require higher privileges than the default privileges of the Local
 **Warning:** 
 
 Some event based triggers, like the File event type, can in some cases, trigger several times a second. This will run your Job several times a second.
+
+There are several ways to keep this under control:
+
+* Use _Run delay_ on the **Main settings** tab so the Job only runs after the Trigger has fired a given number of times
+* On the Job's **Main settings** tab, enable _Do not start if Job is already running_ so overlapping fires do not stack up
+* Make the Trigger itself more specific, for example by narrowing a file mask so fewer events match
  
 In the **Triggers** tab, clicking on _Add > Event trigger_, a selection window for the different event trigger types is opened.
 
@@ -48,6 +54,14 @@ Determines if the current event is active from start. If not, it can be reactiva
 **Run delay**
 
 Configures how many times the Trigger must fire before the Job is actually executed. The field is labelled _Run after the trigger has been triggered_ and is followed by a numeric editor and a `time(s)` suffix. Default is 1 which means that the Job will run on the first trigger event.
+
+For example, setting it to 5 on a File Trigger runs the Job once five matching files have arrived, rather than once per file. This is useful for batching, and for damping down Triggers that fire very frequently.
+
+:::note
+
+_Run delay_ counts fires of this one Trigger. To require several **different** Triggers to fire before the Job runs, use a dependency instead. See [Job Triggers](job-triggers).
+
+:::
  
 **Polling interval**
 
@@ -73,6 +87,8 @@ If checked, the Trigger will always run even though the Server status is Off.
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Timeout.png)
 
+The Timeout tab is for acting on the **absence** of an event. Where the Trigger itself fires when something happens, a timeout fires when nothing has happened for too long.
+
 **Use timeout**
 
 A master checkbox that enables the timeout settings. When unchecked, the timeout fields and the timeout action below are disabled.
@@ -86,6 +102,10 @@ Specify the maximum time the Trigger can go without firing using three numeric e
 The action that is performed when the timeout elapses without the Trigger having fired:
 
 * **Fire trigger** — fire the Trigger as if its normal condition had been met
+
+For example, a File Trigger watching for a nightly file from a supplier can be given a timeout of 8 hours. If the file arrives, the Trigger fires normally and the Job processes it. If the file never arrives, the timeout fires the Trigger anyway, and the Job can send an alert about the missing file.
+
+The timer measures the gap since the Trigger last fired, so a Trigger that fires regularly never reaches its timeout.
  
 **Triggers > Add > Event Trigger > Expires** tab
 

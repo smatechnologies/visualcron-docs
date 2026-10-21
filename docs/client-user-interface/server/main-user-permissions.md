@@ -101,6 +101,16 @@ Name of the group.
 **Default group for new users**
 
 If this group should be the default group when a new user is created.
+
+**Auto override object permission**
+
+Controls whether members of the group are automatically granted full rights to the Jobs, Credentials, and Connections that they create. This option is enabled by default.
+
+When enabled, if a user whose group has limited object permissions creates a new Job, Credential, or Connection, VisualCron automatically adds an object-level permission override that grants that user's group full access (Read, Edit, Delete, List, and Execute) to the item just created. This lets users manage the objects they create without an administrator granting permission on each new object individually.
+
+The override is only added when the group does not already have full rights for that object type. If the group already holds all of those permissions at the group level, no override is created.
+
+This option has no effect for AD users that inherit permissions from an AD group. It is skipped entirely for any user who has "Is AD user" set and inherits (rather than clones) permissions from an AD group. It applies only to internal users and to AD users whose permissions are cloned (the "Let users inherit (not clone) permissions" option unchecked). This is why toggling the option produces no visible change in an environment where every user inherits from AD groups.
  
 **Permission**
 
@@ -127,10 +137,11 @@ See the list of all permissions with a description in the [Supported permissions
 * Execute - Controls if a user can Execute a Task or similar with the selected Credential
 * Delete - Controls if the user can Delete Credentials
  
- 
 **Overriding group permissions**
 
 From VisualCron version 6.1.2. permissions can be overridden on Job level so you can set specific permission for a group on a specific Job. From version 8.4.2 you can override Credential permissions.
+
+A permission override set on a Job applies to that Job object's own actions (Read, Edit, Delete, Execute, and List). It does not grant Task-level permissions. Adding or editing Tasks inside a Job is governed by the group's **Tasks** permission (Add and Edit), not by a Job-level override. To allow a group to add or edit Tasks from within the Job editor, grant that group the Tasks > Add and Tasks > Edit permissions at the group level.
 
 **Default groups**
 
@@ -149,4 +160,3 @@ VisualCron includes two built-in groups: **Administrators** and **Viewers**.
 | Task Manager | ✓ | | | | |
 | Remote File Explorer | ✓ | | | | |
 | Connections | ✓ | | | | |
-

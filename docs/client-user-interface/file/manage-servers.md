@@ -63,36 +63,52 @@ Default: "16444". You can only change the port number (which the server is liste
 
 VisualCron has two different authentication systems; one internal and one that is extended by Active Directory. If you want to allow Active directory logon you need to do that in [user logon settings](../server/settings-users-logon).
  
-We have updated security settings for AD authentication, so now negotiation is handled by native WCF service API.
-Update involves providing some explicit WCF endpoint settings like Identity type and Principal name. Those applies when VisualCron Server starts on AD environment only.
+The **Identity type** and **Principal name** settings tell the Client how to authenticate against the Server. They apply only when **Use Active Directory logon** is selected and the connection is to a remote Server. If **Is a local server** is checked, both settings are ignored.
  
 **Identity type:**
+
+Select the Identity type that matches the account the VisualCron Service runs under on the Server computer. To check this, open the Windows Services console on the Server, right click **VisualCron Service**, select **Properties** and look at the **Log On** tab.
+
+| VisualCron Service runs as | Select Identity type | Principal name |
+|---|---|---|
+| Local System, Network Service or Local Service | **SPN identity** | Required |
+| A domain user account, for example ```DOMAIN\username``` | **UPN identity** | Required |
+| Internal logon only, no Active Directory | **DNS Identity** | Not used |
+
+:::caution
+
+**SPN identity** and **UPN identity** are mutually exclusive. The Server publishes only one of the two, depending on how the service is started. Selecting the wrong one, or leaving **Principal name** empty, prevents the Client from connecting. See [Troubleshooting](#troubleshooting) below.
+
+:::
  
 **DNS Identity** 
 
-Left for backwards compatibility, all messages between client and server are protected by VC certificate encryption. Used when internal authentication is being used.
-Windows default: Default option for AD authentication when negotionation attempt is made without any explicit settings.
+Left for backwards compatibility, all messages between client and server are protected by VC certificate encryption. Used when internal authentication is being used. This identity type cannot complete an Active Directory logon to a remote Server.
+
+**Windows Default** 
+
+Not supported for connections to a remote Server. Select **SPN identity** or **UPN identity** instead.
 
 **UPN Identity** 
 
-This identity type is used when VisualCron Service starts as custom AD user account, so client need to know this information explicitly. Please provide Principal Name value as well.
+This identity type is used when VisualCron Service starts as a custom AD user account, so the client needs to know this information explicitly. Please provide a Principal Name value as well.
 
 **SPN identity** 
 
-This identity type is used when VisualCron Service starts as SystemService\LocalService\NetworkService, so client need to know this information explicitly. Please provide Principal Name value as well.
+This identity type is used when VisualCron Service starts as SystemService\LocalService\NetworkService, so the client needs to know this information explicitly. Please provide a Principal Name value as well.
  
 **Principal Name:**
  
-Applies for UPN and SPN identity types only, should contain explicit principal name when negotiating during AD authentication.
+Applies for UPN and SPN identity types only, should contain explicit principal name when negotiating during AD authentication. A value is required for both of those identity types. If it is left empty the connection fails, even though the Client allows the connection to be saved.
 
 **UPN identity type:** 
 
-Principal Name should look like username@FQDN
+Principal Name should look like ```username@FQDN```
 
 **SPN identity type:** 
-Principal Name might look like HOST/serverDNSname.FQDN or serverDNSname.FQDN. In order to check for possible SPN values please run the following command setspn -l serverDNSname in Windows CommandLine utility.
+Principal Name might look like ```HOST/serverDNSname.FQDN``` or ```serverDNSname.FQDN```. In order to check for possible SPN values please run the following command ```setspn -l serverDNSname``` in Windows CommandLine utility.
  
-Sample values used to start VisualCron service could be found at [user logon settings](../server/settings-users-logon).
+The UPN and SPN values detected by your Server are displayed in **Server > Settings > Users/Logon**. Copy the matching value from there. Sample values used to start VisualCron service could be found at [user logon settings](../server/settings-users-logon).
  
 **Username**
 
@@ -117,3 +133,18 @@ If you are using a proxy to connect to the Internet and can't connect, uncheck t
  
 _The client and server cannot communicate_, because they do not process a common algorithm
 You might have disabled TLS 1.2 on the machine. Install .NET 4.7.x or greater and reboot.
+
+_The requested upgrade is not supported by 'net.tcp://servername:16444/'. This could be due to mismatched bindings (for example security enabled on the client and not on the server)._
+
+The **Identity type** on the Client connection does not match how the VisualCron Service is started on the Server. Check the following in order:
+
+1. Confirm the account the VisualCron Service runs under, in the Windows Services console on the Server computer (**VisualCron Service > Properties > Log On**).
+2. Set **Identity type** to **SPN identity** if that account is Local System, Network Service or Local Service. Set it to **UPN identity** if it is a domain user account.
+3. Confirm that **Principal name** is not empty, copying the matching value from **Server > Settings > Users/Logon**.
+4. Confirm that **Identity type** is not set to **Windows Default**, which cannot be used for a connection to a remote Server.
+
+To regain access to the Client while resolving this, add a connection that uses **Use internal logon** with an internal VisualCron account.
+ 
+_Login failed, reason: Failed to obtain security context from client. Switch identity type(?)_
+
+The Client reached the Server but no Active Directory security context was negotiated. This happens when **Use Active Directory logon** is combined with **DNS Identity** on a connection to a remote Server. Change **Identity type** to **SPN identity** or **UPN identity** as described above.

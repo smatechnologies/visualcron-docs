@@ -15,18 +15,10 @@ VisualCron is an advanced Job/Task scheduler for Windows.
 
 VisualCron is a tool/utility that runs other commands/programs/tools/utilities at predefined time(s), interval(s) or events. VisualCron is designed for Windows with the intention to simplify scheduling of Windows Tasks.
  
-VisualCron is provided by the NetCart AB, an SMA Technologies company, a company that develops applications and web services. Don't hesitate to use [contact web page](https://www.visualcron.com/contact.aspx) for improvement suggestions, problem reports or business proposals.
+VisualCron is provided by the NetCart AB, Continuous. Continuous is a company that develops applications and web services. Don't hesitate to use [contact web page](https://www.visualcron.com/contact.aspx) for improvement suggestions, problem reports or business proposals.
 
 ### VisualCron Documentation
 
-This is the VisualCron documentation, build date 6/2/2025.
+This is the VisualCron documentation. The most current version is always published online at [help.visualcron.com](https://help.visualcron.com).
  
-Download a PDF of this documentation: [PDF](../static/pdf/visualcrondocs-june-2024.pdf)
- 
-This documentation is provided as is, please check [visualcron.com](https://www.visualcron.com) for latest documentation and support information. For a quick introduction in VisualCron, click on the top right flash Tutorial area in the [VisualCron Web Site](http://www.visualcron.com/tutorials.aspx). The goal is to have a tool tip to every enter field, label and combo box in the VisualCron Client application. Hovering the mouse over a field is an easy way to get quick information and what to enter.
- 
-:::note 
-
-If you Download help file from [visualcron.com](https://www.visualcron.com), don't forget to "unblock" the file before opening. Due to the Windows security system, the help chapters might show an "Illegal address" message indicating a wrong address entered in an internet browser, instead of the help text. Right-click on the downloaded file _Properties -> **General** -> Unblock (Windows XP)_.
-
-:::
+This documentation is provided as is, please check [visualcron.com](https://www.visualcron.com) for latest documentation and support information. For a quick introduction to VisualCron, see the [video tutorials](https://www.visualcron.com/tutorials). The goal is to have a tool tip to every enter field, label and combo box in the VisualCron Client application. Hovering the mouse over a field is an easy way to get quick information and what to enter.

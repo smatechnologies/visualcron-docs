@@ -49,6 +49,11 @@
       "mdFile": "docs/get-visualcron/download-install-upgrade-uninstall.md",
       "label": "Download, Install, Upgrade and Uninstall"
     },
+    "get-visualcron/antivirus-exclusions": {
+      "chmFile": "antivirus-exclusions.htm",
+      "mdFile": "docs/get-visualcron/antivirus-exclusions.md",
+      "label": "Antivirus and Endpoint Protection Exclusions"
+    },
     "get-visualcron/assembly-resolver": {
       "chmFile": "assembly-resolver.htm",
       "mdFile": "docs/get-visualcron/assembly-resolver.md",
@@ -129,11 +134,6 @@
       "chmFile": "choosing-the-right-license.htm",
       "mdFile": "docs/using-visualcron/choosing-the-right-license.md",
       "label": "Choosing the Right License"
-    },
-    "using-visualcron/basic-vs-pro-edition": {
-      "chmFile": "basic-vs-pro-edition.htm",
-      "mdFile": "docs/using-visualcron/basic-vs-pro-edition.md",
-      "label": "Basic vs Pro Edition"
     },
     "using-visualcron/license-and-activation": {
       "chmFile": "trial_license_and_activation.htm",
@@ -288,11 +288,6 @@
       "chmFile": "enable-windows-authentication.htm",
       "mdFile": "docs/using-visualcron/enable-windows-authentication.md",
       "label": "Enable Windows Authentication / Active Directory Logon"
-    },
-    "using-visualcron/mobile-app": {
-      "chmFile": "mobile-app.htm",
-      "mdFile": "docs/using-visualcron/mobile-app.md",
-      "label": "Mobile App"
     },
     "using-visualcron/visualcron-api": {
       "chmFile": "visualcron_api.htm",
@@ -2118,6 +2113,141 @@
       "chmFile": "database-tasks.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/data-processing-logging.md",
       "label": "Data Processing & Logging"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/overview": {
+      "chmFile": "task-interactivity---robot---activities.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/overview.md",
+      "label": "Robot Task Activities"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/conditions": {
+      "chmFile": "task-interactivity---robot---conditions.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/conditions.md",
+      "label": "Robot Task Activities - Conditions"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/loops": {
+      "chmFile": "task-interactivity---robot---loops.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/loops.md",
+      "label": "Robot Task Activities - Loops"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/error-handling": {
+      "chmFile": "task-interactivity---robot---error-handling.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/error-handling.md",
+      "label": "Robot Task Activities - Error Handling"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/other": {
+      "chmFile": "task-interactivity---robot---other.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/other.md",
+      "label": "Robot Task Activities - Other"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/mouse": {
+      "chmFile": "task-interactivity---robot---mouse.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/mouse.md",
+      "label": "Robot Task Activities - Mouse"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/keyboard": {
+      "chmFile": "task-interactivity---robot---keyboard.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/keyboard.md",
+      "label": "Robot Task Activities - Keyboard"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/text": {
+      "chmFile": "task-interactivity---robot---text.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/text.md",
+      "label": "Robot Task Activities - Text"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/controls": {
+      "chmFile": "task-interactivity---robot---controls.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/controls.md",
+      "label": "Robot Task Activities - Controls"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/windows": {
+      "chmFile": "task-interactivity---robot---windows.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/windows.md",
+      "label": "Robot Task Activities - Windows"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/image": {
+      "chmFile": "task-interactivity---robot---image.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/image.md",
+      "label": "Robot Task Activities - Image"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/ocr": {
+      "chmFile": "task-interactivity---robot---ocr.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/ocr.md",
+      "label": "Robot Task Activities - OCR"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/web-macro": {
+      "chmFile": "task-interactivity---robot---web-macro.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/web-macro.md",
+      "label": "Robot Task Activities - Web Macro"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/element-path": {
+      "chmFile": "task-interactivity---robot---element-path.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/element-path.md",
+      "label": "Robot Task Activities - Element Path"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/excel": {
+      "chmFile": "task-interactivity---robot---excel.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/excel.md",
+      "label": "Robot Task Activities - Excel"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/excel-workbook": {
+      "chmFile": "task-interactivity---robot---excel-workbook.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/excel-workbook.md",
+      "label": "Robot Task Activities - Excel Workbook"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/excel-sheet": {
+      "chmFile": "task-interactivity---robot---excel-sheet.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/excel-sheet.md",
+      "label": "Robot Task Activities - Excel Sheet"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/excel-cell": {
+      "chmFile": "task-interactivity---robot---excel-cell.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/excel-cell.md",
+      "label": "Robot Task Activities - Excel Cell"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/excel-row": {
+      "chmFile": "task-interactivity---robot---excel-row.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/excel-row.md",
+      "label": "Robot Task Activities - Excel Row"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/excel-column": {
+      "chmFile": "task-interactivity---robot---excel-column.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/excel-column.md",
+      "label": "Robot Task Activities - Excel Column"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/excel-macros": {
+      "chmFile": "task-interactivity---robot---excel-macros.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/excel-macros.md",
+      "label": "Robot Task Activities - Excel Macros"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/file": {
+      "chmFile": "task-interactivity---robot---file.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/file.md",
+      "label": "Robot Task Activities - File"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/folder": {
+      "chmFile": "task-interactivity---robot---folder.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/folder.md",
+      "label": "Robot Task Activities - Folder"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/list-variable": {
+      "chmFile": "task-interactivity---robot---list-variable.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/list-variable.md",
+      "label": "Robot Task Activities - List Variable"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/variables": {
+      "chmFile": "task-interactivity---robot---variables.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/variables.md",
+      "label": "Robot Task Activities - Variables"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/clipboard": {
+      "chmFile": "task-interactivity---robot---clipboard.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/clipboard.md",
+      "label": "Robot Task Activities - Clipboard"
+    },
+    "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/process": {
+      "chmFile": "task-interactivity---robot---process.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/activities/process.md",
+      "label": "Robot Task Activities - Process"
     },
     "client-user-interface/server/job-tasks/interactivity-tasks/send-keys": {
       "chmFile": "interactivity_-_send_keys.htm",
@@ -4119,6 +4249,16 @@
       "mdFile": "docs/client-user-interface/servers/load-balancing-conditions.md",
       "label": "Load Balancing Conditions"
     },
+    "client-user-interface/servers/load-balancing-deployment": {
+      "chmFile": "loadbalancer-deployment.htm",
+      "mdFile": "docs/client-user-interface/servers/load-balancing-deployment.md",
+      "label": "Deploying Load Balancing"
+    },
+    "client-user-interface/servers/server-launcher": {
+      "chmFile": "serverlauncher.htm",
+      "mdFile": "docs/client-user-interface/servers/server-launcher.md",
+      "label": "Server Launcher"
+    },
     "client-user-interface/tools/overview": {
       "chmFile": "the_tools_tab.htm",
       "mdFile": "docs/client-user-interface/tools/overview.md",
@@ -4636,10 +4776,10 @@
       "mdFile": "docs/security/encrypted-values.md",
       "label": "Important Values Are Stored Encrypted"
     },
-    "security/interactive-logon": {
+    "security/archived-security": {
       "chmFile": "interactive_logon.htm",
-      "mdFile": "docs/security.md",
-      "label": "Interactive Logon"
+      "mdFile": "docs/security/archived-security.md",
+      "label": "Archived Security"
     },
     "commands/commands-scripts-third-party-tools": {
       "chmFile": "commands_scripts_and_third_par.htm",

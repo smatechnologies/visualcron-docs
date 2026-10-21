@@ -49,10 +49,30 @@ Click on *Map drive* at the bottom of the dialog to map it. It is now controlled
 **Reconnect**
 
 If a drive has been disconnected during a VisualCron session you can reconnect it here.
+
+### Which account authenticates the mapping
+
+The mapping is performed by the VisualCron Server service itself. It is not performed inside a Task's execution context, so the account that the service runs under matters:
+
+* When a Credential is selected on the drive entry, those credentials are used to authenticate against the share.
+* When the Credential field is left empty, no credentials are sent and the connection is made using the service's own identity. Under the default SYSTEM account that is the computer account of the VisualCron host, which most file shares do not grant any access to.
+
+Because Windows keeps mapped drive letters per logon session, a drive mapped by one account is not visible to another. If a drive mapping fails while a Task using the same Credential can reach the same share through a UNC path, running the VisualCron service under a domain account that has access to the share has resolved this in practice. See [Credentials](../server/global-credentials) for the available account options.
+
+### Authentication protocol
+
+VisualCron does not select an authentication protocol for network shares. The credentials are passed to Windows, and Windows negotiates Kerberos or NTLM on its own. There is no setting in VisualCron that prefers, forces, or falls back to either protocol, and VisualCron does not record which protocol was used. It logs only whether the mapping or file access succeeded.
+
+To confirm which protocol Windows used, check the Windows event logs:
+
+* On the file server, Security event ID **4624**. The *Authentication Package* field names the protocol, and the *Package Name (NTLM only)* field is populated only when NTLM was used.
+* On a domain controller, event IDs **4768** and **4769** indicate Kerberos, while event ID **4776** indicates NTLM.
+
+If NTLM has been disabled at the operating system or domain level, VisualCron cannot use NTLM on its own, as it has no separate NTLM implementation for network drives. Windows will either use Kerberos or the connection will fail.
  
 ### Troubleshooting
 
-A specified logon session does not exist
+*A specified logon session does not exist*
  
 Try disabling this policy:
 
@@ -63,10 +83,14 @@ Try disabling this policy:
 *The specified network password is not correct*
 
 Double check so that date and time is matching (synced) between VisualCron and server of remote share.
- 
-*Multiple connections to a server or shared resoource from the same user using multiple usernames are not allowed. Disconnect all previous verbands to the server or shared resource and try again.*
 
-Try using the IP instead of the DNS name to the server.
+*The network path was not found* / *The network name cannot be found*
+
+These are name resolution or share name errors rather than authentication failures. A rejected logon reports incorrect credentials or access denied instead. Confirm from the VisualCron host that the server name resolves and that the share is reachable. Also check that the Path is a plain UNC path with no scheme prefix such as ```http://``` in front of it, and that the share name is spelled correctly.
+ 
+*Multiple connections to a server or shared resource by the same user, using more than one user name, are not allowed. Disconnect all previous connections to the server or shared resource and try again.*
+
+Windows allows only one set of credentials per remote server per logon session. A connection to that server already exists under a different user. Disconnect it on the VisualCron host before mapping again.
  
 *Access denied trying to connect to IFS (AS400) share*
 

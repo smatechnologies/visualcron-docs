@@ -40,3 +40,21 @@ When _Specific days of the week_ is selected, a panel with seven checkboxes appe
 **Server Start time**
 
 The date and time of the first run occurrence on the Server. The field is split into a date picker and a separate time picker. The Trigger schedule is calculated relative to this start time.
+
+Because the schedule is counted from this value, the start time also sets the offset of the run. An _Hourly_ Trigger with _Every_ = 1 and a start time of 08:20 fires at 20 minutes past every hour, not on the hour.
+
+**Examples**
+
+* **Every 15 minutes** — _Interval_ = Minutely, _Every_ = 15
+* **Every other hour** — _Interval_ = Hourly, _Every_ = 2. The start time decides which hours are used, so a start time of 01:00 gives 01:00, 03:00, 05:00 and so on
+* **Once a day at 22:00** — _Interval_ = Daily, _Every_ = 1, with the start time set to 22:00
+* **Weekdays only** — _Interval_ = Specific days of the week, with Monday through Friday ticked. The time of day comes from the start time
+* **The 1st and 15th of every month** — _Interval_ = Specific days of the month, _Day(s)_ mode, with 1 and 15 ticked
+* **The last day of every month** — _Interval_ = Specific days of the month, _Last day of month_ mode. This correctly handles months of different lengths, including February in a leap year
+* **The last working day of every month** — _Interval_ = Specific days of the month, _Last (ordinal) workday_ mode, with the country set so public holidays for that country are excluded
+
+:::tip
+
+If the schedule you need cannot be expressed here, use a [Custom Time Trigger](custom-time-trigger) instead, which allows each time unit to be set individually. The Interval type is a simplified version of the same engine.
+
+:::

@@ -73,7 +73,7 @@ If you are not executing on the same user and session as you have selected you w
 
 :::info Note 
 
-For Windows 2008 you must enable a setting in [Local Security Policy](../../security)
+For Windows 2008 you must enable a setting in [Local Security Policy](../../security/archived-security#interactive-logon)
 
 :::
 
@@ -105,7 +105,7 @@ Failed to connect to Credential Provider. Pipe result: 0
 
 1. Make sure you have tried rebooting after the VisualCron install - this installs the the Credential provider properly
 
-2. Make sure you have enabled [this setting](../../security#interactive-logon) in the Local Security Policy
+2. Make sure you have enabled [this setting](../../security/archived-security#interactive-logon) in the Local Security Policy
 
 3. Test with recommended settings "Execute on same user as unlock Credential" and check "Logon/Unlock using Credential". Select the Credential you want to logon as (recommended is that it is same user as you normally is logged in as)
 

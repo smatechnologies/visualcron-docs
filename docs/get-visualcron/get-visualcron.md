@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## Get VisualCron
 
-To be sure to get the latest version, we encourage you to download VisualCron from this [web page](https://www.visualcron.com/download.aspx).
+To be sure to get the latest version, we encourage you to download VisualCron from this [web page](https://visualcron.com/download/).
 
 You can also download the latest version once you have signed into your account, 
 

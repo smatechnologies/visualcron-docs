@@ -33,6 +33,21 @@ A pair of mutually exclusive radio buttons that select which type of time schedu
 
 * **Interval time trigger** — use the schedule configured on the [Interval Time Trigger](interval-time-trigger) tab (default)
 * **Custom time trigger** — use the schedule configured on the [Custom Time Trigger](custom-time-trigger) tab
+
+Only the selected type is used. Switching between them does not discard the settings on the other tab, so a schedule can be built on both tabs and swapped between while testing.
+
+**Choosing between Interval and Custom**
+
+Both types use the same underlying scheduling engine, and the Interval type is a simplified front end to it.
+
+* Use **Interval** for a schedule that repeats on one unit, such as every 15 minutes, every other hour, weekdays only, or the last working day of the month
+* Use **Custom** when different time units need different rules at the same time, for example "every 30 minutes, but only between 08:00 and 18:00, and only Monday to Friday". That combination cannot be expressed with a single interval
+
+:::note
+
+A Time Trigger fires on the Server's clock, not the clock of the machine running the Client. The _Next run_ value shown at the bottom of the Job window is always calculated using Server time.
+
+:::
  
 **Interval tab**
 

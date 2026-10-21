@@ -3,6 +3,10 @@ sidebar_label: 'Connection - Exchange EWS'
 hide_title: 'true'
 ---
 
+**Please note that Microsoft will be turning off EWS access for all non-Microsoft apps starting October 1st, 2026. For more information see here: [Retirement of EWS](https://devblogs.microsoft.com/microsoft365dev/retirement-of-exchange-web-services-in-exchange-online/)**
+
+**For setting up Exchange Access via the Graph API please see our documentation here: [Graph API](https://help.visualcron.com/client-user-interface/server/connection-microsoft-graph-api)**
+
 ## Connection - Exchange EWS
 
 The Exchange EWS Connection uses the Exchange Web Service protocol which is similar to the IMAP protocol - but have more Exchange options in general. Select this protocol if it is implemented by the Exchange server.

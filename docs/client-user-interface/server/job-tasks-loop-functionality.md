@@ -86,7 +86,7 @@ Enter a Variable that contains a list. You may need to alter *Use column*, *Fiel
 
 ![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20For%20each%20x%20in%20y.png)
 
-**Referencing columns in For Each loops**
+#### Referencing columns in For Each loops
 
 When a For Each loop iterates over multi-column data (such as a CSV file), each row is available as an array. You can reference individual columns from the current row in two ways:
 

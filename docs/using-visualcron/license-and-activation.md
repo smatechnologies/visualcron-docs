@@ -27,7 +27,7 @@ To be able to validate your activation code you have to connect to the VisualCro
 This feature is available if you have a server without Internet access. Note that you still can use online activation if your desktop computer has access to Internet and if your desktop computer can be internally connected (within your network) to the server. If that is not possible you can use offlien activation. Offline activation can be done with the following steps:
 
 1. Start the Client locally on your server
-2. Choose Activate in the About menu
+2. Choose Activate in the Server > License menu
 3. Choose Offline activation tab
 4. Enter your activation code
 5. After entering you will get an URL. Copy that url in some way to USB stick or paper. Enter the URL in a browser on a computer that has Internet access. You will then get an offline ID.

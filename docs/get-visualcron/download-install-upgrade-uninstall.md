@@ -9,11 +9,11 @@ hide_title: 'true'
 
 VisualCron utilizes functions and features in the .NET Framework 4.8. The .NET runtime, typically Version 4.8 Redistributable Package, can be downloaded from [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48).
  
-Download the latest VisualCron version from [VisualCron](https://www.visualcron.com/download.aspx). Download older versions [here](https://www.visualcron.com/download-latest.aspx).
+Download the latest VisualCron version from [VisualCron](https://visualcron.com/download/). Download older versions [here](https://visualcron.com/download/).
  
 To create "silent package" (non exe package) follow these steps:
  
-1. download old version [here](https://www.visualcron.com/download-latest.aspx)
+1. download old version [here](https://visualcron.com/download/)
 2. install 7-Zip File Manager
 3. right click on exe and choose extract to folder
  
@@ -82,6 +82,10 @@ VisualCron can be uninstalled by opening the Control Panel -> Add/Remove program
 3. Open command prompt
 4. Write something like to log the installation file: msiexec /i "C:\MyPackage\Example.msi" /L*V "C:\log\example.log"
 5. Send the log file to support@visualcron.com
+ 
+**Antivirus**
+
+For the full list of folders, processes, and ports to consider excluding on a VisualCron server, see [Antivirus and Endpoint Protection Exclusions](antivirus-exclusions). The two install time detections below are the ones most people hit first.
  
 **Antivirus and problems with psexec.exe**
 

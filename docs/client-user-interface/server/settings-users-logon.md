@@ -46,6 +46,8 @@ After testing, server log messages (starting with "GotADTest") will help determi
 
 screen also displays possible UPN / SPN values used to start the VisualCron Server and create secure endpoints for data exchange.
 You can use those as hints setting up new Client connections.
+
+Only one of the two values applies, depending on the account the VisualCron Service runs under. Use the SPN value if the service runs as Local System, Network Service or Local Service, and the UPN value if it runs as a domain user account. For how to enter this on the Client, see [manage servers](../file/manage-servers).
  
 **UPN**
 
