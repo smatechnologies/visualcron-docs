@@ -35,6 +35,18 @@ Select **Local** to execute the script on the same server that VisualCron is run
 **Execute in x86 mode**
 
 When checked, forces 32-bit execution of your PowerShell script.
+
+**Write warnings to Error output**
+
+Check this to keep the warnings your script writes with `Write-Warning`. Each warning is added to the Task's error output with `WARNING: ` in front of it. For example, `Write-Warning "Disk space is low"` shows up as `WARNING: Disk space is low`. Warnings are not added to the standard output.
+
+This option is unchecked by default. When it is unchecked, warnings are not saved anywhere. Tasks you already have stay unchecked after an upgrade.
+
+Things to know:
+
+* A warning on its own does not make the Task fail, even if **Contains error output** is checked on the On error tab. A script that uses `-WarningAction Stop` still fails the Task.
+* **Store standard error** must be checked in the **Output** group on the Task's **Main settings** tab. If it is not, there is no error output to write to, and the warnings are lost.
+* The option is on the PowerShell Task only. The PowerShell trigger does not have it.
  
 **PowerShell file**
 
@@ -204,6 +216,14 @@ write-output "my output"
 ```powershell
 write-error "my error"
 ```
+
+**VisualCron warnings**
+
+```powershell
+write-warning "my warning"
+```
+
+By default, VisualCron does not keep warnings. To keep them, check **Write warnings to Error output** on the Script tab. The warning then appears in the error output as `WARNING: my warning`. A warning on its own does not fail the Task.
  
 **Raising/Throwing errors**
 
