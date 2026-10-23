@@ -124,3 +124,5 @@ In the [Slack - Send message Task](../../client-user-interface/server/job-tasks/
 2. Go to the **Connection settings** tab.
 3. Click *Authenticate*, sign in to Slack, and approve the permissions VisualCron asks for.
 4. Click OK to save, then refresh the user list again.
+
+The task also loads its lists when you open it, and that automatic load shows no error. If the User list is empty after you open the task, click the refresh button to see the message.

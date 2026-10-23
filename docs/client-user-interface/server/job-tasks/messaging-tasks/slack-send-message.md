@@ -20,5 +20,9 @@ Choose who receives the message. Each mode has its own row: a radio button, then
 
 The box for the mode that is not selected is disabled and is saved empty. Switching modes does not carry the old value across. If the active box is empty when you click OK, the editor asks for the missing value ("You must set the channel name." or "You must set the user name.").
 
+When you open a task that has a connection selected, the list for the selected mode loads on its own. This automatic load shows no error and does not pick anything for you. Click the refresh button to reload a list or to load the list for the other mode. If the box is empty, a refresh puts the first item from the list in it. A refresh click is ignored while that refresh is still running, or if the last successful click on the same button was less than 10 seconds ago. Changing the connection empties both lists and keeps the text in each box.
+
+In both modes the message is posted under the Slack app's own name. The task has no setting for a different sender name.
+
 Loading the user list in **To user** mode requires the `im:read` OAuth scope on the Slack connection. See Troubleshooting on the [Connection - Slack](../../../client-user-interface/server/connection-slack) page.
 
