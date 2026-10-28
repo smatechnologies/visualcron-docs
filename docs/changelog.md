@@ -5,6 +5,12 @@ hide_title: 'true'
 
 ## Change Log
 
+### Unreleased
+
+#### Bug Fixes
+
+:white_check_mark: Server: Web Macro Task: Download Step No Longer Fails After 120 Seconds When a Site Is Slow to Start the File (VCPCM-4216)
+
 ### 13.4.2 [2026-09-12]
 
 #### Features
