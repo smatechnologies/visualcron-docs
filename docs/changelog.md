@@ -5,6 +5,18 @@ hide_title: 'true'
 
 ## Change Log
 
+### Unreleased
+
+#### Bug Fixes
+
+:white_check_mark: Server: Task Flow Wait and Retry Ignored When Run Tasks in Order Is Unchecked (VCPCM-1721)
+
+#### Notes
+
+:memo: Server: Jobs with "Run Tasks in order" unchecked now honor the Task Flow On success/On error actions Wait and retry and Stop Job and run specified Job, and the Deactivate Task/Deactivate Job options. These flows were previously ignored in that mode, so review such Jobs before upgrading: they may now retry Tasks, start other Jobs or deactivate Tasks and Jobs, and a Job stays running while a retry is waiting. See [Task - Flow](client-user-interface/server/task-flow). (VCPCM-1721)
+
+:memo: Server: Jobs with "Run Tasks in order" unchecked now log an error when a Task Flow uses Stop Job or Go to Task, which are not supported in that mode. The log entry contains "is not supported when 'Run Tasks in order' is unchecked". Unchanged default flows do not log. (VCPCM-1721)
+
 ### 13.4.2 [2026-09-12]
 
 #### Features
