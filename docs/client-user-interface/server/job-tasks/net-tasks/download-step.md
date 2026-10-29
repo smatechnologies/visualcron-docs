@@ -56,3 +56,5 @@ When checked, saves the local path of the downloaded file to a variable. Configu
 **Wait tab**
 
 Controls how long the step waits before and after performing the action.
+
+The step then waits until the download finishes, however long the site takes to start sending the file. To limit how long it can wait, use the Timeout tab setting on the task. After the download starts, the step fails if the browser reports no download activity for 2 minutes and the download is no longer in progress, or for 10 minutes while it is still in progress. A download that keeps reporting activity but transfers slowly is not cut off by these limits, so the Timeout tab setting is the only overall limit.
