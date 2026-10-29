@@ -102,3 +102,17 @@ Deactivates the current Task.
 **Deactivate Job**
 
 Deactivates the current Job.
+
+**Jobs with Run Tasks in order unchecked**
+
+When [Run Tasks in order](job-main-settings) is unchecked, the Tasks of a Job run at the same time, so there is no "next" Task. On success and On error flows behave as follows in that mode:
+
+* *Run Notification* - runs the Notification.
+* *Wait and retry* - waits and runs the Task again, as in a Job that runs Tasks in order. The Job keeps running until the retry has finished. If the retries are used up, the Job stops starting new Tasks; Tasks already running finish. *If finally failing - goto Task* is not supported and is treated as Stop Job.
+* *Stop Job and run specified Job* - the Job stops starting new Tasks and pending retries are cancelled; Tasks already running finish. The specified Job is then started.
+* *Continue to next Task in order* - has no effect other than the Deactivate options.
+* *Stop Job* and *Go to Task* - not supported. The flow is ignored and an error containing "is not supported when 'Run Tasks in order' is unchecked" is written to the log. The default flows added to every Task do not log this error.
+
+*Deactivate Task* and *Deactivate Job* apply to every action above. On complete flows only run Notifications in this mode.
+
+In earlier versions, only Run Notification flows had any effect in Jobs with Run Tasks in order unchecked.
