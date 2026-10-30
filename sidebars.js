@@ -111,6 +111,7 @@ module.exports = {
             'using-visualcron/visualcron-web-client',
             'using-visualcron/installation-of-web-client',
             'using-visualcron/enable-windows-authentication',
+            'using-visualcron/kerberos-protected-users',
             'using-visualcron/visualcron-api',
             'using-visualcron/dot-net-csharp-vbnet',
             'using-visualcron/powershell',

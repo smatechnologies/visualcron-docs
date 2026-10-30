@@ -5,6 +5,26 @@ hide_title: 'true'
 
 ## Change Log
 
+### Unreleased
+
+#### Features
+
+:star: Client/Server: Kerberos-Only Windows Authentication for Active Directory Protected Users Accounts (VCPCM-4084)
+
+:star: Client: Server Connection Dialog Fills In the SPN or UPN Identity From the Connected Server (VCPCM-4084)
+
+:star: Client/Server: Force Sealed Connection Setting Encrypts Active Directory LDAP Traffic (Does Not Block NTLM) (VCPCM-4084)
+
+
+#### Bug Fixes
+
+:white_check_mark: Client/Server: Active Directory Binds Now Send DOMAIN\user From the Credential's Domain So Kerberos Can Be Used (VCPCM-4084)
+
+:white_check_mark: Server: Failed Active Directory Lookup at Logon Was Reported as "User Does Not Exist" (VCPCM-4084)
+
+:white_check_mark: Client: Connection Appeared Connected When the Server Received No Windows Identity (VCPCM-4084)
+
+
 ### 13.4.2 [2026-09-12]
 
 #### Features
