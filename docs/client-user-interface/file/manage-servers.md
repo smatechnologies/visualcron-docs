@@ -63,38 +63,44 @@ Default: "16444". You can only change the port number (which the server is liste
 
 VisualCron has two different authentication systems; one internal and one that is extended by Active Directory. If you want to allow Active directory logon you need to do that in [user logon settings](../server/settings-users-logon).
  
-The **Identity type** and **Principal name** settings tell the Client how to authenticate against the Server. They apply only when **Use Active Directory logon** is selected and the connection is to a remote Server. If **Is a local server** is checked, both settings are ignored.
+The **Identity type** and **Principal name** settings tell the Client how to authenticate against the Server. They apply only when **Use Active Directory logon** is selected and the connection is to a remote Server. If **Is a local server** is selected, both settings are ignored.
  
 **Identity type:**
 
-**Automatic (recommended)** is the default for new connections. The Client works out the identity itself: it derives the SPN `HOST/<server FQDN>` from the Server name you entered, and once it has connected to a Server that runs under a domain user account it remembers that account's UPN and uses it from then on. Select one of the other types only when you need to override this.
+Select the identity type that matches the account the VisualCron Service runs under:
 
 | VisualCron Service runs as | Identity type | Principal name |
 |---|---|---|
-| Any account | **Automatic (recommended)** | Derived automatically, leave empty |
 | Local System | **SPN identity** | `HOST/<server FQDN>`, for example `HOST/server.contoso.com` |
 | A domain user account, for example `DOMAIN\username` | **UPN identity** | `username@domain`, for example `username@contoso.com` |
 | Internal logon only, no Active Directory | **DNS Identity** | Not used |
 
 To check the service account, open the Windows Services console on the Server computer, open the properties of **VisualCron Service** and look at the **Log On** tab. The values the Server derives for itself are shown in **Server > Settings > Users/Logon** as **SPN** and **UPN**.
 
+**Filling in the identity from the connected Server**
+
+A new connection starts with **DNS Identity** and an empty **Principal name**. When the Client is connected to the Server the connection points at, it fills both fields in for you with the values that Server reports for itself: **UPN identity** and the service account's UPN when the service runs under a domain user account, or **SPN identity** and `HOST/<server FQDN>` when it runs as Local System. The Client fills the fields in only when all of the following are true:
+
+- **Use Active Directory logon** is selected and **Is a local server** is cleared.
+- The identity is still **DNS Identity** with an empty **Principal name**. A value you have entered or selected is never replaced.
+- The Client is connected to the Server named in the **Server** field. For a new connection that is the Server you are currently connected to; for a connection you edit, it is that connection's own Server. The names must match, or resolve to the same host name.
+- The Server reports a usable value. Nothing is filled in when the service runs as Network Service or Local Service, or as Local System on a Windows installation in a language other than English.
+
+The fields are filled in when you select **Use Active Directory logon**, when you open a connection for editing, and, for a new connection, when you leave the **Server** field or change **Is a local server**. The filled-in values stay editable, and nothing is saved until you select **Add** or **Update**. When the Client is not connected to that Server, select the identity type and enter the principal name yourself, using the table above.
+
 :::caution
 
-The Server publishes only one of the two Windows-authentication endpoints: the SPN endpoint when the service runs as Local System, the UPN endpoint otherwise. A connection that asks for the other one fails with a "Server not running" message and a hint naming the identity type to switch to. Automatic asks for the SPN endpoint until it knows the Server's UPN, so for a Server running under a domain user account, select **UPN identity** and enter the UPN once. After that first successful connection, Automatic remembers it.
+The Server publishes only one of the two Windows-authentication endpoints: the SPN endpoint when the service runs as Local System, the UPN endpoint when it runs under a domain user account. A connection that asks for the other one fails with a message saying that the Server does not offer the Windows-authentication endpoint the connection asked for, and naming the identity type to switch to.
 
 :::
 
-**Automatic (recommended)**
-
-Derives `HOST/<server FQDN>` for the Server name, or uses the Server's service-account UPN once it is known. The **Server** field must be a host name that resolves to the Server's fully qualified domain name; an IP address cannot be turned into an SPN. Existing connections keep the identity type they were saved with, so after upgrading, edit each connection that uses Active Directory logon and select Automatic.
-
 **DNS Identity**
 
-Kept for backwards compatibility. All messages between Client and Server are still protected by the VisualCron certificate encryption, but this identity type carries no Windows credentials to a remote Server, so an Active Directory logon over it is refused. Use it for internal logon only.
+The default for new connections, and the identity type saved for every connection that uses internal logon. All messages between Client and Server are still protected by the VisualCron certificate encryption, but this identity type carries no Windows credentials to a remote Server, so an Active Directory logon over it is refused. Use it for internal logon only.
 
 **Windows Default**
 
-Not supported for connections to a remote Server. Select **Automatic** instead.
+Not supported for connections to a remote Server. Select **SPN identity** or **UPN identity** instead.
 
 **UPN identity**
 
@@ -109,13 +115,7 @@ Use when the VisualCron Service runs as Local System and you want to state the S
 Applies to UPN identity and SPN identity only. A value is required for both, and the Client checks its form when you save:
 
 - **UPN identity:** `username@domain`, for example `username@contoso.com`.
-- **SPN identity:** `service/host`, for example `HOST/server.contoso.com`. A bare host name such as `server.contoso.com` is not an SPN. Windows cannot issue a Kerberos ticket for it, so authentication silently falls back to NTLM, which a domain that enforces Kerberos refuses. A connection saved with a bare host name in an earlier release still connects where NTLM is allowed, but the next time you edit it, save is refused until you correct the value or select Automatic. To list the SPNs registered for the Server computer, run `setspn -L <server name>` at a command prompt.
-
-:::caution
-
-A connection saved with **Automatic** cannot be read by a Client from an earlier release. That older Client fails to load the whole server list and then overwrites the file with a default entry. Back up `servers.xml` (in the Client's settings folder) before running an older Client with the same Windows profile.
-
-:::
+- **SPN identity:** `service/host`, for example `HOST/server.contoso.com`. A bare host name such as `server.contoso.com` is not an SPN. Windows cannot issue a Kerberos ticket for it, so authentication silently falls back to NTLM, which a domain that enforces Kerberos refuses. A connection saved with a bare host name in an earlier release still connects where NTLM is allowed, but the next time you edit it, save is refused with "Principal Name should be in service/host format" until you correct the value. To list the SPNs registered for the Server computer, run `setspn -L <server name>` at a command prompt.
 
 **Username**
 
@@ -141,20 +141,20 @@ If you are using a proxy to connect to the Internet and can't connect, uncheck t
 _The client and server cannot communicate_, because they do not process a common algorithm
 You might have disabled TLS 1.2 on the machine. Install .NET 4.7.x or greater and reboot.
 
-_The requested upgrade is not supported by 'net.tcp://servername:16444/'. This could be due to mismatched bindings (for example security enabled on the client and not on the server)._
+_Connection failed to '...'. The Server is running but does not offer the Windows-authentication endpoint this connection asked for._
 
-The **Identity type** on the connection does not match how the VisualCron Service is started on the Server. Set **Identity type** to **Automatic**. If the Service runs under a domain user account and this is the first connection to it, set **UPN identity** and enter the account's UPN from **Server > Settings > Users/Logon**.
+The connection uses **Use Active Directory logon**, and its **Identity type** does not match how the VisualCron Service is started on the Server. The message names the identity type to switch to: **UPN identity** with the service account's UPN for a Server running under a domain user account, **SPN identity** with `HOST/<server FQDN>` for a Server running as Local System. Both values are shown in **Server > Settings > Users/Logon**. The original error, _The requested upgrade is not supported by 'net.tcp://servername:16444/...'_, follows the explanation in the message.
 
 To regain access to the Client while resolving this, add a connection that uses **Use internal logon** with an internal VisualCron account.
 
 _Connection failed to '...'. This may indicate that the Server has not been fully started ... If the Server is running, it did not offer the Windows-authentication endpoint this connection asked for._
 
-The Server is running but publishes the other Windows-authentication endpoint. The message names the identity type to switch to: **UPN identity** with the service account's UPN for a Server running under a domain user account, **Automatic** for a Server running as Local System.
+Either the Server is still starting, or it is running and publishes the other Windows-authentication endpoint. Wait a few seconds and try again. If the message persists, switch the identity type as the message describes.
 
 _Connection failed with error: 'The logon attempt failed' ... The Server rejected the Windows authentication handshake before login was attempted._
 
-Windows could not obtain a Kerberos ticket for the principal name in use, and the Server refused the NTLM fallback, which is what a domain that enforces Kerberos does, for example through the **Protected Users** group. The message names the identity type in use and what to correct. For **SPN identity** that is usually a principal name that is not in `service/host` form; for **Automatic** it is a **Server** field that is an IP address or does not resolve to the Server's fully qualified domain name. Select **Automatic** and enter the Server by host name.
+Windows could not obtain a Kerberos ticket for the principal name in use, and the Server refused the NTLM fallback, which is what a domain that enforces Kerberos does, for example through the **Protected Users** group. The message names the identity type in use and what to correct. For **SPN identity**, check that the principal name is a complete SPN in `service/host` form and that it is registered in Active Directory. For **UPN identity**, check that the principal name is the UPN of the service account and that the **Server** field is a host name rather than an IP address.
 
 _Login failed, reason: the Server did not receive a Windows identity from this connection, so Active Directory logon cannot proceed._
 
-The connection reached the Server, but its **Identity type** is **DNS Identity**, which carries no Windows credentials to a remote Server. Edit the connection and select **Automatic**. In earlier releases this failure was not reported and the Client appeared connected although no logon had taken place.
+The connection reached the Server, but its **Identity type** is **DNS Identity**, which carries no Windows credentials to a remote Server. Edit the connection and set **Identity type** to **SPN identity** or **UPN identity** with the matching principal name from **Server > Settings > Users/Logon**. In earlier releases this failure was not reported and the Client appeared connected although no logon had taken place.

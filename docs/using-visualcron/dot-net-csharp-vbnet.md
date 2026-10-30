@@ -13,10 +13,11 @@ We recommend looking at the basic tutorial for the API [here](../videotutorials)
  
 :::info API changes for Kerberos-only Windows authentication
 
-- `EndpointIdentityT.AutomaticIdentity` can be set on `Connection.EndpointIdentityType`. `Client.Connect` resolves it before connecting, to `HOST/<server FQDN>` or to the DNS identity when the Server name has no FQDN; the value itself never reaches the Server.
+- A remote connection with `UseADLogon = true` needs `EndpointIdentityType` set to `SpnIdentity` or `UpnIdentity` with a `PrincipalName`: `HOST/<server FQDN>` when the VisualCron Service runs as Local System, the service account's UPN when it runs under a domain user account. A connected `Server` reports both values as `PossibleSPN` and `PossibleUPN`, and `ActiveDirectoryAPI.SuggestConnectionIdentity` picks the one that applies.
 - `Client.Connect` throws `ClientLoginFailedException` with `LoginResult.ADSecurityContextFailure` when the Server received no Windows identity for an Active Directory logon, for example on a DNS-identity connection to a remote Server. Earlier releases returned a Server object marked connected without a logon.
 - `ServerSettingsClass.ADForceSealedConnection` is the new **Force sealed connection** setting. When you send settings with `Server.UpdateServerSettings`, also set `ADForceSealedConnectionSent = true`, otherwise the Server keeps its current value.
-- The `ActiveDirectoryAPI` methods `GetUser`, `GetUsers`, `GetGroups`, `GetUserGroupMembership`, `CheckADCredential` and `CheckADCredentialDirectLDAP` keep their previous signatures. New overloads take a `forceSealedConnection` argument.
+- The `ActiveDirectoryAPI` methods `GetUser`, `GetUsers`, `GetGroups`, `GetUserGroupMembership`, `CheckADCredential` and `CheckADCredentialDirectLDAP` keep their previous signatures. New overloads take a `forceSealedConnection` argument, which requests an encrypted (sealed) LDAP session; it does not block NTLM.
+- These `ActiveDirectoryAPI` methods now bind with `DOMAIN\user` when the credential has a bare user name and a Domain. A UPN or an already qualified user name is sent unchanged, and a credential with no Domain, `.` or the local computer name as its Domain is sent as the bare user name.
 
 :::
 
@@ -57,11 +58,9 @@ else
  
 if (conn.ConnectionType == Connection.ConnectionT.Remote)
  {
-  // for the remote connection with AD credentials the Client derives the Server identity when set to Automatic (recommended)
-  conn.EndpointIdentityType = EndpointIdentityT.AutomaticIdentity;
-  // or specify the Server identity explicitly: either UPN or SPN
+  // for the remote connection with AD credentials specify the Server identity: either UPN or SPN
   if (specifyUpnIdentity)
-{
+   {
      conn.EndpointIdentityType = EndpointIdentityT.UpnIdentity;
     // specify the UPN of the service account. The UPN is in the form username@domain. For example, when the service is running in a user account, it may be username@contoso.com
      conn.PrincipalName = "username@domain.com";

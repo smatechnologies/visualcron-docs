@@ -43,7 +43,7 @@ When you add, edit or clone a user you are presented with the Add/Edit user wind
 
 You can select users from the active directory by clicking on the Search button next to the Name.
 
-The search binds to the AD Server shown in the search window with the credential you select there. When **Force sealed connection** is on in [Users/Logon](../server/settings-users-logon), the search requires Kerberos as well, and an AD Server on port 636 or 3269 is refused for the user, because a logon for a user that has its own credential binds to that user's own AD Server.
+The search binds to the AD Server shown in the search window with the credential you select there, qualifying the credential's user name with its Domain the same way the Server does; see **Credential** in [Users/Logon](../server/settings-users-logon). When **Allow Active Directory logon** and **Force sealed connection** are both on in Users/Logon, the search requests an encrypted (sealed) LDAP session, and an AD Server on port 636 or 3269 is refused, both in the search and when you save the user, because a logon for a user that has its own credential binds to that user's own AD Server.
 
 **User permissions from AD Group**
 
@@ -77,7 +77,7 @@ If the current user is active or not (login enabled).
 
 The AD group name. This can not be altered manually - you need to search and select the group.
 
-The same rule as for AD users applies to the group's AD Server: with **Force sealed connection** on, the search requires Kerberos and an LDAPS port (636 or 3269) is refused for the group.
+The same rule as for AD users applies to the group's AD Server: with **Force sealed connection** on, the search requests an encrypted (sealed) LDAP session, and an LDAPS port (636 or 3269) is refused in the search and when you save the group.
 
 **Active**
 
