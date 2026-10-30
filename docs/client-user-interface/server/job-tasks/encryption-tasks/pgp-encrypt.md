@@ -26,7 +26,7 @@ Mark this option to enable encryption of your file. The Recipients tab is connec
  
 **Encryption algorithm**
 
-VisualCron offers some standard algorithms. If you need any other algorithm then contact us.
+VisualCron offers some standard algorithms. Select the symmetric cipher used to encrypt the file: AES128, AES256, CAST5, 3DES, IDEA, BLOWFISH or TWOFISH. AES256 is the strongest option. If you need any other algorithm then contact us.
  
 **Protection level**
 
@@ -57,6 +57,7 @@ If the property is set to False, then the result will be compatible with PGP 2.6
 **Sign source**
 
 Mark this option if you want to sign your file. Use the this option along with selecting private key rings in the PGP -> Signers tab.
+Signatures on RSA keys are created with the SHA-1 hash. The signing hash cannot be changed in the Task.
  
 **Treat input as text**
 
