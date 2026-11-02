@@ -9,13 +9,13 @@ A set of different Task types can be defined using the **Add/Edit Job > Tasks** 
  
 **Add Job > Tasks > Add** tab
 
-![](../../../static/img/Client%20User%20Interface/Toolbar/Add%20Job.png)
+![Add Job window, Tasks tab, opened with Add Job on the toolbar](../../../static/img/Client%20User%20Interface/Toolbar/Add%20Job.png)
 
-After selecting a Task, in this case the **Internal > Set Job Variable**, the **Set Job Variable > Main Settings** tab is displayed. Also, the selected Task is preset as *Task type* but this may be changed.
+After selecting a Task, in this case *Export settings* from the *Internal* group, the **_Main settings_** tab is displayed. Also, the selected Task is preset as *Task type* but this may be changed.
  
-**Set Job Variable > Main Settings** tab
+**Add/Edit Task > Main settings** tab
 
-![](../../../static/img/Client%20User%20Interface/Toolbar/Task%20Main%20Settings.png)
+![Edit Task window, Main settings tab, opened from a Task on the Job's Tasks tab](../../../static/img/Client%20User%20Interface/Toolbar/Task%20Main%20Settings.png)
 
 :::tip Note 
 
@@ -33,7 +33,7 @@ A description of the Task.
 
 **Encoding**
 
-The encoding property sets which encoding to use. This feature is not implemented in all Tasks. If you got any encoding problem please contact support.
+Sets the code page the Task uses to read and write text. A new Task gets the Server's default code page. Not every Task type uses this setting.
  
 **Execution context**
 
@@ -49,7 +49,7 @@ By default, VisualCron is capturing and storing all output from executed process
  
 **Extended Task debug logging**
 
-Sometimes support of VisualCron asks you do check this to provide additional debug information for a problem. When checked, additional debug output will be added to standard output.
+When selected, the Task writes additional debug entries to the Server log, and some Task types also add debug information to the Task's output, where later Tasks and Notifications that use the output also receive it. Support may ask you to select it to investigate a problem; clear it again afterward.
  
 **Task order**
 
@@ -57,7 +57,7 @@ The task order can be changed by either clicking on the up/down arrows next to e
  
 **Edit Job > Tasks** tab
 
-![](../../../static/img//Client%20User%20Interface/Toolbar/List%20of%20Tasks.png)
+![Tasks tab of the Edit Job window with a list of Tasks](../../../static/img//Client%20User%20Interface/Toolbar/List%20of%20Tasks.png)
 
 **Loop**
 

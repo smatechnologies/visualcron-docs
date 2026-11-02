@@ -9,11 +9,11 @@ The **On error** tab in the Task window controls what is causing an error in Vis
  
 **Add/Edit Task > On error** tab
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/On%20Error%20Settings.png)
+![Edit Task window, On error tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/On%20Error%20Settings.png)
 
 **Error causes**
 
-Different Task types have different reasons to fail. The goal is that you should be able to control what actually is considered an error by you - for all kinds of Tasks. We have not implemented handling for all kinds of errors but if you request handling for a specific error, in our request forum, we will add that.
+Different Task types have different reasons to fail, so the list of errors on this tab depends on the Task type. For example, the FTP Task lists "Unaccepted FTP server reply" and "No file(s) downloaded". Every Task type also lists "IO exception", "Permission denied", "Task times out" and "Unhandled errors". Select which of them count as an error for this Task.
  
 **Error cause categories**
 
@@ -21,13 +21,15 @@ VisualCron evaluates a set of different error categories that will trigger the T
 
 * "All errors" - all kinds of errors raise a Task error
 
-* "Only selected errors" - only items that you select in the list raises a Task error
+* "Only selected errors" - only the items that you select in the list raise a Task error
 
-* "All except selected" - only items that you have not select in the list raises a Task error
+* "All except selected" - only the items that you have not selected in the list raise a Task error
+
+A Task can also meet an error that is not in its list. For example, the FTP Task meets "Connection not found" when its Connection no longer exists, but "Connection not found" is not in the FTP Task's list. With "Only selected errors", which is the default, VisualCron ignores such an error: the Task continues without that step and can finish as successful. To have such an error raise a Task error, select "All errors" or "All except selected".
  
 **Exit code collection**
 
-Exit codes controls the result of the Task. By default we are using the Windows exit code scheme which basically means that 0 is success and the rest are errors defined in Windows by Microsoft. It is possible to create your own collection of exit codes and control which exit code is success or not and its description. Read more about this [here](task-exit-code-collection).
+Exit codes control the result of the Task. A new Task uses the Server's *Default exit code collection*, which is the Windows collection unless it was changed: 0 is success and other codes are errors defined by Microsoft. You can create your own collection of exit codes to control which codes count as success and how they are described. See [Task - Exit Code Collection](task-exit-code-collection).
  
 **Output/Variable error handling**
 
@@ -45,15 +47,15 @@ This means that if the conditions below match any success of Task will be overri
 
 **Do not raise error** 
 
-This means that if the conditions below match any failure of Task will be overridden with success and the specified exit code.
+If the conditions below match and the Task's exit code equals the *Exit code* value, a failure is changed to success. Set *Exit code* to the code the Task returns for that failure: with the default 77777, only a failure with exit code 77777 is changed. The exit code itself is not changed.
  
 **Exit code**
 
-This exit code overrides the current exit code when the condition is matched. The default value is 77777.
+With *Raise error*, the exit code the Task gets when the condition matches. With *Do not raise error*, the exit code that must match for a failure to be changed to success. The default value is 77777.
  
 **Check type**
 
-You can choose to check output (std), output (err) or evaluate a Variable/value in real time. When evaluating a Variable/value use both the first and second text field.
+Select *If output*, *If error output* (the default) or *If other value*. With *If other value*, use both text fields to compare two values or Variables.
  
 **Type**
 
