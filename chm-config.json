@@ -485,6 +485,14 @@
         "frmServerSettings.vb"
       ]
     },
+    "client-user-interface/server/settings-password-rules": {
+      "chmFile": "settings_password-rules.htm",
+      "mdFile": "docs/client-user-interface/server/settings-password-rules.md",
+      "label": "Settings - Password Rules",
+      "helpKeywordSources": [
+        "frmServerSettings.vb"
+      ]
+    },
     "client-user-interface/server/main-user-permissions": {
       "chmFile": "user_permissions.htm",
       "mdFile": "docs/client-user-interface/server/main-user-permissions.md",
