@@ -9,39 +9,49 @@ The Messaging - XendApp Task sends messages of multiple content types directly t
 
 XendApp is a free platform for delivering instant messages to any device (phone or tablet) using notification services. Registration can be done [here](https://xendapp.com). The Task uses the [XendApp Connection](../../../server/connection-xendapp).
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/XendApp.png)
- 
-**Connection**
+![XendApp tab with the Connection, Provider and Channel, and Message groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/XendApp.png)
 
-Select the [XendApp Connection](../../../server/connection-xendapp) representing the user account that messages are sent from. Click the *Settings* icon to open the *Manage Connections* dialog.
+:::warning
 
-**Provider**
+This Task uses a XendApp Connection; see [Connection - XendApp](../../connection-xendapp). The Connection calls the XendApp services over HTTP, without transport encryption: the user name and password of the Connection and _Subject_ are sent in clear text. _Encrypt body_ encrypts the body only.
 
-The XendApp provider to send the message through. Click the *Refresh* icon to populate the drop-down from the selected Connection. Selecting a provider automatically loads its available channels into the *Channel* drop-down.
+:::
 
-**Channel**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-The channel belonging to the selected *Provider*. Populated automatically when a provider is selected.
+### XendApp tab
 
-**Subject**
+#### Connection
 
-The subject line of the message. Required. Maximum length 100 characters.
+- _Connection_: the XendApp Connection of the account that sends the messages
 
-**Content type**
+  The Task uses the proxy set on the Connection.
 
-The format of the message body. Available options:
+#### Provider and Channel
 
-* _Plain text_ - send the body as plain text
-* _HTML_ - send the body as HTML-formatted content
+- _Provider_: the XendApp provider to send through. Required
+- _Channel_: the channel of the selected provider. Required
 
-**Body**
+  The list is filled when you select a provider.
 
-The body text of the message.
+- _Refresh_: lists the providers of the Connection's account
 
-**Encrypt body**
+#### Message
 
-When checked, the message body is encrypted before sending.
+- _Subject_: the subject of the message. Required, up to 100 characters
+- _Expire message in_: the number of day(s) after which the message expires, from "1" to "90"; "30" by default
+- _Content type_: "Plain text" or "HTML"
+- _Body_: the text of the message
+- _Encrypt body_: when selected, the message body is encrypted before sending
 
-**Expire message in**
+Variables are resolved in _Subject_ and _Body_.
 
-The number of days after which the message expires. Minimum 1, maximum 90, default 30.
+### Output and errors
+
+When the message is sent, the output of the Task shows its message ID.
+
+:::warning
+
+If XendApp rejects the message, the error is written to standard error, and the Task reports success.
+
+:::
