@@ -7,7 +7,6 @@ module.exports = {
       collapsed: true,
       items: [
         'terms-and-conditions',
-        'updated-terms-and-conditions',
         'dora',
       ],
     },
