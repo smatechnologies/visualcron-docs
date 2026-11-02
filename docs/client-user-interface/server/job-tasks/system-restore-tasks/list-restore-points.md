@@ -5,20 +5,24 @@ hide_title: 'true'
 
 ## Task System Restore - List Restore Points
 
-The System restore - List system restore points Task returns a list of existing restore points.
+The List restore points Task lists the Windows System Restore points on the Server computer or on a remote computer.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Restore%20Tasks/List%20Restore%20Point.png)
+![List restore points tab, with the Credential and the scope](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Restore%20Tasks/List%20Restore%20Point.png)
+
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
+
+### List restore points tab
 
 **Credentials**
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
- 
+The Credential used to connect to the remote computer. Use it only with _Remote_: Windows does not accept a user name and password for a connection to the local computer, and the Task fails. Click the settings button to open _Manage credentials_; see [Credentials](../../global-credentials).
+
 **Scope**
 
-**Local** / **Remote**
+- _Local_ (default): lists the restore points on the Server computer
+- _Remote_: lists the restore points on another computer
+- _Hostname_: the name of the remote computer. Type it or select it from the list of network computers. Available with _Remote_
 
-Select **Local** to list restore points on the local computer. Select **Remote** to list restore points on a remote computer. Defaults to **Local**.
+### Output and errors
 
-**Hostname**
-
-Enter the hostname of the remote computer, or select from the list of network computers. Only available when **Remote** is selected.
+The output has one line for each restore point: its sequence number and its description, separated by a tab. Use the sequence number in the [Perform system restore Task](perform-system-restore).
