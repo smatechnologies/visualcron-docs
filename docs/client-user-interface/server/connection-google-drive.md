@@ -5,107 +5,100 @@ hide_title: 'true'
 
 ## Connection - Google Drive
 
-The Google Drive Connection stores connect and login properties for the Google cloud service Google Drive.
- 
-Google Drive is a cloud storage and file synchronization service developed by Google. It allows users to store files in the cloud, share files, and collaborate. You can use VisualCron to transfer files between Google Drive and a local folder, or between Google Drive and other cloud services.
- 
-The Google Drive Connection is used in the following Cloud Tasks:
+The Google Drive Connection stores the sign-in and security settings that these Tasks and Triggers use to connect to Google Drive:
 
-* [Cloud - Upload file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/upload-file)
-* [Cloud - List item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/list-item)
-* [Cloud - Download file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/download-file)
-* [Cloud - Create folder](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/create-folder)
-* [Cloud - Delete item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/delete-item)
- 
-**Manage Connections > Add > Google Drive > Common settings** tab
+- [Cloud - Upload file(s)](job-tasks/cloud-transfer-tasks/upload-file)
+- [Cloud - Download file(s)](job-tasks/cloud-transfer-tasks/download-file)
+- [Cloud - List item(s)](job-tasks/cloud-transfer-tasks/list-item)
+- Cloud - List folder(s)
+- [Cloud - Create folder](job-tasks/cloud-transfer-tasks/create-folder)
+- [Cloud - Delete item(s)](job-tasks/cloud-transfer-tasks/delete-item)
+- [Cloud - Copy/move item(s)](job-tasks/cloud-transfer-tasks/copy-move)
+- [Cloud - Sync file(s)](job-tasks/cloud-transfer-tasks/sync)
+- The [Cloud file Trigger](event-trigger-cloud-file)
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Google%20Drive/Google%20Drive.png)
+Use it to transfer files between Google Drive and a local folder, or between Google Drive and another cloud service.
 
-**Name**
+### Common settings
 
-The name of the Connection to uniquely identify it.
+![Google Drive Connection, Common settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Google%20Drive/Google%20Drive.png)
 
-**Group**
+The ***Common settings*** and ***Proxy*** tabs are the same for every Connection type that has them; see [Common settings](global-connections#common-settings) and [Proxy](global-connections#proxy).
 
-The group that the connection is a part of.
+_Test_ asks the Server to connect with the stored sign-in and read the root folder of the Google Drive.
 
-**Timeout**
+### Main settings
 
-The connection timeout in seconds. Connection will fail after this time period.
- 
-**Code page**
+![Google Drive Connection, Main settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Google%20Drive/Settings.png)
 
-Code page being used.
- 
-**Manage Connections > Add > Google Drive > Connection settings** tab
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Google%20Drive/Settings.png)
+_App Key_
 
-**App key**
+The client ID of the OAuth client that you create in the Google Cloud console. Required.
 
-The App key (Client ID) obtained when registering your application at [Google Cloud Console](https://console.developers.google.com/apis).
- 
-**App secret**
+_App Secret_
 
-The App secret (Client secret) obtained when registering your application at [Google Cloud Console](https://console.developers.google.com/apis).
- 
-**Redirect URL**
+The client secret of that OAuth client.
 
-The OAuth redirect URL used during authentication. The default value is `http://localhost:9999`. This URL must match the redirect URI configured in your Google Cloud Console app settings.
+_Redirect Url_
 
-**Auto-accept server certificates**
+The address that Google sends the sign-in result to. Default: "http://localhost:9999". Add the same address as an authorized redirect URI of the OAuth client.
 
-When checked, VisualCron automatically accepts server certificates without prompting. Enabled by default.
+_Auto-accept server certificates_
 
-**How to create a Google Drive connection**
+Selected by default.
 
-To use Google Drive with VisualCron, you must register an application in the Google Cloud Console and authenticate it with your Google account.
+:::warning
 
-1. Click the *Create an account* link or go to: [https://console.developers.google.com/apis](https://console.developers.google.com/apis) to create and register your application.
-2. Enable the Google Drive API for your project and create OAuth 2.0 credentials.
-3. Copy the App key (Client ID) and App secret (Client secret) from your registered app and enter them in the **Connection settings** tab.
-4. Set the Redirect URI in your Google Cloud Console app to match the **Redirect URL** field value (default: `http://localhost:9999`).
-5. Click the *Authenticate* link. In the Google authentication window, enter your Google login credentials or approve access (if you are already logged in to Google) to allow VisualCron to handle files in your Google Drive.
+Google Drive Connections accept any server certificate, whether or not _Auto-accept server certificates_ is selected. The Server does not check the server certificate when it connects to Google, so it cannot tell the real server from another server that answers at the same address. Connect to Google only over a network path that you trust.
 
-![](../../../static/img/connectiongoogledrivegogglesignin.png)
+:::
 
-6. Once the authentication is complete, click OK to save the connection.
-7. The connection can be tested by right-clicking and selecting *Explorer* in the **Server > Global objects > Connections** tab.
+_Create an account_
 
-![](../../../static/img/connectiongoogledriveexplorer.png)
+Opens the APIs page of the Google Cloud console.
 
-8. Double-click on the Google Drive Connection in the **Tools > Explore > Connection Explorer > Connections** window to verify the current files in your Google Drive folder or browse directly at [https://drive.google.com/drive/my-drive](https://drive.google.com/drive/my-drive).
+_Authenticate_
 
-![](../../../static/img/connectiongoogledriveconnectionexplorer.png)
+Starts the Google sign-in. See [Authentication and token expiry](#authentication-and-token-expiry).
 
-**Manage Connections > Add > Google Drive > Proxy** tab
+### How to create a Google Drive Connection
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Google%20Drive/Proxy.png)
+To create a Google Drive Connection, complete the following steps:
 
-**Proxy type**
+1. Open the Google Cloud console at [https://console.cloud.google.com/apis](https://console.cloud.google.com/apis), or click _Create an account_.
+2. Select or create a project.
+3. Enable the Google Drive API for the project.
+4. Set up the OAuth consent screen of the project.
+5. Publish the app, or select the "Internal" user type if the Google accounts belong to your Google Workspace organization. While an app with the "External" user type is in "Testing" status, Google ends its sign-ins after 7 days, and Jobs that use the Connection then fail.
+6. Create an OAuth client ID of the type "Web application".
+7. Add the value of _Redirect Url_, by default "http://localhost:9999", as an authorized redirect URI of the client.
+8. Copy the client ID into _App Key_.
+9. Copy the client secret into _App Secret_.
+10. Click _Authenticate_.
+11. Sign in with the Google account.
 
-Select the proxy type to be used.
- 
-**Address**
+    ![The Google sign-in page](../../../static/img/connectiongoogledrivegogglesignin.png)
 
-The host name or IP address of the proxy server.
- 
-**Port**
+12. Allow VisualCron to access the Google Drive of the account.
+13. Click _OK_ to save the Connection.
+14. Click _Test_ on the ***Common settings*** tab.
 
-The port of the proxy server.
- 
-**Use credentials**
+The test reports that it was successful. You can also browse the files of the Connection in the Connection Explorer.
 
-The credentials that are associated with the account.
- 
-**Domain**
+![The Manage Connections window with a Google Drive Connection](../../../static/img/connectiongoogledriveexplorer.png)
 
-The name of the domain to be created.
- 
-**Username**
+![The Connection Explorer with a Google Drive Connection open](../../../static/img/connectiongoogledriveconnectionexplorer.png)
 
-The user name to access the proxy server.
- 
-**Password**
+### Authentication and token expiry
 
-The password to access the proxy server.
+- _Authenticate_ runs on the computer where the Client runs. The browser opens there, and the Client listens for the sign-in result on the port of _Redirect Url_, so that port must be free on that computer
+- After the sign-in, the Connection stores the refresh token encrypted, and the Server uses it at run time
+- When Google no longer accepts the refresh token, the Server marks the Connection as expired, and the Client shows the message "Connection session expired". Open the Connection and click _Authenticate_ again
+
+### Proxy
+
+![Google Drive Connection, Proxy tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Google%20Drive/Proxy.png)
+
+The Cloud Tasks and the Cloud file Trigger send their Google Drive requests through the proxy on this tab.
