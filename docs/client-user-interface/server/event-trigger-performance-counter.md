@@ -5,47 +5,49 @@ hide_title: 'true'
 
 ## Event Trigger - Performance Counter
 
-The Performance counter Trigger lets you set up a watcher for the internal counters in Windows that are called Performance counters. Counters are used to provide information as to how well the operating system or an application, service, or driver is performing.
- 
-The counter data can help determine system bottlenecks and fine-tune system and application performance. The operating system, network, and devices provide counter data that an application can consume to provide users with a graphical view of how well the system is performing.
- 
-It is possible to monitor a remote computer by entering computer name and Credentials in the main settings.
- 
-**Triggers > Add > Event Trigger > Performance counter** tab
+The Performance counter Trigger watches one Windows performance counter and starts the Job when its value meets a condition for a length of time. Windows and many applications, services and drivers publish performance counters, for example the CPU use of a process or the free memory of the computer.
 
-![](../../../static/img/triggereventperformancecounter.png)
+To watch a counter on another computer, enter the computer in *Computer name* under *Remote event* on the ***Main settings*** tab, and select a Credential that can read the counters on that computer. The default `.` is the computer that runs the VisualCron Server.
 
-With VisualCron you can select a category and a specific instance of a counter to monitor a value. For example, in the screen shot below you can select the Process category with the % Processor time counter. This lets you monitor the CPU usage of a specific process. In the built in Conditions you can then select that (in this example); if this process is using more than 10% CPU for more than 10 seconds - then Trigger.
+The settings are on the ***Performance counter*** tab.
+
+![The Performance counter tab of the Add/Edit event window: the Process category is expanded in the Categories tree, an instance is selected under Instances of selected object, and the Condition group shows Greater than (>), Value 10, the three Duration boxes and Average](../../../static/img/triggereventperformancecounter.png)
+
+Select a category, a counter and an instance, then set the condition. For example, to start the Job when one process uses more than 10% CPU for 10 seconds, select the *Process* category and the *% Processor Time* counter, select the process under *Instances of selected object*, and set *Condition* to *Greater than (>)*, *Value* to "10" and *Duration* to 10 seconds.
 
 **List categories**
 
-Click this button to fetch the available Performance Counter categories from the target computer. The header label above the tree shows which computer the categories were loaded from (for example, _Categories for computer '.'_ for the local machine).
+Click this button to fetch the performance counter categories, then select a counter in the tree. The VisualCron Server reads the categories, using the Credential if one is selected. The label above the tree shows which computer they came from, for example *Categories for computer 'SERVER01'*.
+
+When *Computer name* is `.`, this button lists the categories of the computer that runs the Client. If the Client runs on another computer than the Server, enter the Server's computer name in *Computer name* first. When you open an existing Trigger, the categories of its saved computer are listed.
 
 **Categories**
 
-A tree on the left side of the form that lists the available Performance Counter categories. Each category can be expanded to reveal the counters it contains. Select a counter in the tree to populate the _Instances_ list and the counter description on the right.
+The tree lists the categories that *List categories* fetched, or that were listed when you opened the Trigger. Expand a category to see its counters. When you select a category or a counter, *Instances of selected object* lists the instances of that category, and the box below it shows the description.
 
 **Instances of selected object**
 
-A list on the right side of the form that shows the available instances for the selected counter (for example, the running processes when the _Process_ category is chosen). Select the instance that should be monitored.
+The instances of the selected category, for example the running processes for the *Process* category. The first instance is selected; select the instance to watch.
 
 **Counter description**
 
-A read-only text box below the instance list that displays the help text returned by Windows for the selected category or counter. This text is populated automatically as you navigate the tree.
+The read-only box below *Instances of selected object* shows the help text that Windows gives for the selected category or counter.
 
 **Condition**
 
-Configures when the Trigger fires based on the value of the selected counter.
+In the *Condition* group, choose how the counter value is compared with *Value*:
 
-**Condition**
+* *Greater than (>)*: the default
+* *Greater or equal than (>=)*
+* *Equal (=)*
+* *Less or equal than (\<=)*
+* *Less than (\<)*
 
-The comparison operator used to evaluate the counter value. The following operators are available:
+:::warning
 
-* **Greater than (>)**
-* **Greater or equal (>=)**
-* **Equal (=)**
-* **Less or equal (\<=)**
-* **Less than (\<)**
+*Equal (=)* currently matches every sample, whatever the counter value, so the Trigger starts the Job after every *Duration*. Do not use *Equal (=)*. To catch an exact value, use *Greater or equal than (>=)* or *Less or equal than (\<=)* with the value you want.
+
+:::
 
 **Value**
 
@@ -53,16 +55,44 @@ The threshold value the counter is compared against. Accepts a numeric (double) 
 
 **Duration**
 
-The length of time the condition must remain true before the Trigger fires. The duration is entered as three spinners for **Hours**, **Minutes** (0–59), and **Seconds** (0–59).
+How long the condition must hold before the Trigger fires. Enter hours, minutes (0 to 59) and seconds (0 to 59) in the three boxes, from left to right. The default is 0.
+
+VisualCron reads the counter every second, starting two seconds after the Trigger starts. The time is counted from the first matching sample. A sample that does not match does not restart the count: the Trigger fires on the first matching sample at least *Duration* after the first match, even if some samples in between did not match. After the Trigger fires, the count starts again at the next matching sample, so a value that keeps matching fires the Trigger about every *Duration* plus 1 second.
+
+The *Polling interval* on the ***Main settings*** tab is not used by this Trigger and is unavailable.
+
+:::warning
+
+With the defaults (*Greater than (>)*, *Value* 0, *Duration* 0), the Trigger fires on every sample above 0, which can start the Job every second. Set *Value* and *Duration* before you activate the Trigger.
+
+:::
 
 **Average**
 
-When checked, the counter is sampled over the configured _Duration_ and the average of those samples is compared against the threshold, rather than requiring the condition to be continuously true.
- 
-**Troubleshooting**
- 
-_0x800007d0 when trying to select categories_
+When checked, the condition is checked against the average of the samples read since the Trigger started or since *Duration* was last reached (at most the latest 1,001 samples), instead of the latest sample. *Duration* still applies. The samples are cleared each time *Duration* is reached, even when *Run delay* holds back the Job. After the samples are cleared, the average starts again from the next sample. When *Average* is cleared, each sample is checked on its own.
 
-![](../../../static/img/performancecounteraccesserror.png)
+If the counter cannot be read, for example because the instance no longer exists, the Trigger is deactivated and the error is written to the log.
 
-Try right clicking on VisualCronClient.exe in installation folder and select Run as administrator.
+### Result Variables
+
+When the Trigger fires, it sets these result Variables:
+
+* `PerformanceCounter.Result.LastValue`: the latest sample
+* `PerformanceCounter.Result.AverageValue`: the average of the samples since the Trigger started or since *Duration* was last reached
+* `PerformanceCounter.Result.ExpectedValue`: the *Value* you entered
+
+For example, `{TRIGGER(Active|LastTrigger|PerformanceCounter.Result.LastValue)}` returns the value that fired the Trigger that started the run. *Last run*, `{TRIGGER(Active|LastTrigger|LastRun)}`, returns the time the Trigger fired. See [Variables](global-variables) for how *Last trigger* and the other keys work.
+
+### Troubleshooting
+
+*List categories* can show this error:
+
+`An error occured while refreshing Categories, exception: Unknown error (0x800007d0)`
+
+![Error message: An error occured while refreshing Categories, exception: Unknown error (0x800007d0)](../../../static/img/performancecounteraccesserror.png)
+
+The VisualCron Server could not read the performance counter categories of the computer it was asked for. Check these causes:
+
+* *Computer name* is `.` and the Client runs on another computer than the Server: the Server is then asked for the categories of the Client computer. Enter the Server's computer name, or the computer you want to watch, in *Computer name*
+* The computer name is wrong or the computer cannot be reached
+* The account the VisualCron service runs as, or the selected Credential, may not read performance counters on that computer
