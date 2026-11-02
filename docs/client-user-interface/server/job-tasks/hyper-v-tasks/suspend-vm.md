@@ -5,22 +5,26 @@ hide_title: 'true'
 
 ## Task Hyper-V - Suspend VM
 
-The Hyper-V - Suspend VM Task allows you to suspend a specific virtual machine hosted on a local or remote, Hyper-V Management Server.
+The Hyper-V - Suspend VM Task saves the state of a virtual machine and turns the virtual machine off, by running `Stop-VM` with `-Save`. The virtual machine can be on the VisualCron Server computer or on a remote Hyper-V host. To run it again, use the [Start VM](start-vm) Task.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Hyper-V%20Tasks/Suspend%20VM.png)
+![Suspend VM tab of the Hyper-V Suspend VM Task, with the Server location options, Credential and Virtual machine fields](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Hyper-V%20Tasks/Suspend%20VM.png)
 
-**Local/Remote server**
+:::warning
 
-Select the *Local server* radio button if you want to control the local computer, select the *Remote server* radio button if you want to control a remote computer.
- 
-**Server name**
+With _Remote server_, the Credential's user name and password are written as plain text into the PowerShell script that runs on the VisualCron Server computer; see [Hyper-V Tasks overview](overview). Errors that PowerShell reports while the command runs, such as an unknown virtual machine name or a failed remote sign-in, are not checked, and the Task reports success.
 
-Host name of the remote server.
- 
-**Credential** 
+:::
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
- 
-**Virtual machine**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-Enter the name of the virtual machine. Click the *Refresh* icon to populate the drop-down list with available virtual machines.
+### Suspend VM tab
+
+- _Local server_: run the command on the VisualCron Server computer. Selected by default
+- _Remote server_: run the command on another computer through PowerShell remoting
+- _Server name_: the host name of the remote Hyper-V computer. Variables are not replaced in this field
+- _Credential_: the [Credential](../../global-credentials) to sign in to the remote computer. Required with _Remote server_. The Credential's domain is not used, so enter the user name of a domain account as `DOMAIN\user`. Click the _Settings_ icon to add or edit Credentials
+- _Virtual machine_: the name of the virtual machine. With _Local server_, click _Refresh_ to list the virtual machines on the VisualCron Server computer. With _Remote server_, _Refresh_ fails in this version; type the name. Variables are replaced in this field
+
+### Output and errors
+
+An error that stops the PowerShell script makes the Task fail. Other errors are not checked; see [Hyper-V Tasks overview](overview).
