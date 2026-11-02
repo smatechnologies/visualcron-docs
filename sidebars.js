@@ -1009,6 +1009,8 @@ module.exports = {
                       'client-user-interface/server/condition-file',
                       'client-user-interface/server/condition-folder',
                       'client-user-interface/server/condition-process',
+                      'client-user-interface/server/condition-service',
+                      'client-user-interface/server/condition-variable',
                       'client-user-interface/server/condition-dot-net',
                     ],
                   },

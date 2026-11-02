@@ -3764,6 +3764,11 @@
       "mdFile": "docs/client-user-interface/server/condition-process.md",
       "label": "Condition - Process"
     },
+    "client-user-interface/server/condition-service": {
+      "chmFile": "condition_type_-_service.htm",
+      "mdFile": "docs/client-user-interface/server/condition-service.md",
+      "label": "Condition - Service"
+    },
     "client-user-interface/server/condition-variable": {
       "chmFile": "condition_-_variable.htm",
       "mdFile": "docs/client-user-interface/server/condition-variable.md",
