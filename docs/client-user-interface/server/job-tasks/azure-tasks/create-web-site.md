@@ -5,24 +5,21 @@ hide_title: 'true'
 
 ## Task Azure - Create Web Site
 
-The Azure - Create Web Site Task creates a new web instance in the Azure cloud. This Task is using the [Microsoft Azure Connection](../../connection-microsoft-azure).
+The Azure - Create Web Site Task is meant to create a web site in Azure, using a Microsoft Azure Connection.
 
-**Azure - Create web site** tab
+:::warning
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Azure%20Tasks/Create%20Web%20site.png)
+The Task does not create the web site: it sends no request to Azure, writes no output, and the Task reports success. Create the web site in the Azure portal.
 
-**Connection**
+:::
 
-To use the Azure Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-**Site name**
+### Azure - Create web site tab
 
-The name to assign to the new web instance.
+![Azure - Create web site tab with the Connection list, Hosting plan name, Site name, and Geo region with its Refresh button](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Azure%20Tasks/Create%20Web%20site.png)
 
-**Hosting plan name**
-
-The name of the hosting plan that the new web instance should belong to.
-
-**Geo region**
-
-The Azure geographic region in which to create the web instance. Click the *Refresh* icon to populate the drop-down list.
+- _Connection_: the Microsoft Azure Connection to use; see [Connection - Microsoft Azure](../../connection-microsoft-azure). Click the _Settings_ icon to open _Manage Connections_
+- _Hosting plan name_: the name of the hosting plan for the web site
+- _Site name_: the name of the new web site
+- _Geo region_: the Azure region for the web site. Click _Refresh_ to fill the list
