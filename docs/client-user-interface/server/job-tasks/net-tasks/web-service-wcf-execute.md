@@ -5,141 +5,119 @@ hide_title: 'true'
 
 ## Task Net - Web Service/WCF Execute
 
-The web service / WCF Task lets you execute web service- and WCF (basic HTTP binding) methods.
+The Web Service/WCF Execute Task calls a method of a SOAP web service or a WCF service and returns the method's return value as the output of the Task. You can also send a SOAP body that you write yourself.
+
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
  
-**Output**
+### Service tab
 
-This Task returns a string representation of the original return type (of the method).
+![Service tab of the Web Service/WCF Execute Task, with the URL, Discovery mode, SOAP header, class and method, and Parameters groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Webservice%20WCF%20Execute.png)
 
- **Output format**
+- _URL_: the address of the service, for example `http://<host>/<service>.asmx`
 
-Select how the method's return value is serialized:
+  To use another port, put it after the host name, as in `http://<host>:<port>/<service>.asmx`.
 
-* *ToString representation of output* — calls `.ToString()` on the return value (default). Arrays are comma-separated.
-* *XML representation of output* — serializes the return value as XML.
- 
-**Service tab**
+- _Proxy.._: opens the proxy settings window, to reach the service through a proxy
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Webservice%20WCF%20Execute.png)
+  With "Web service" and "WCF", the proxy is used when VisualCron reads the service description; the method call itself does not go through the proxy. With "SOAP Body", the proxy is not used.
 
-**URL**
+![Proxy settings window of the Web Service/WCF Execute Task](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Webservice%20WCF%20Execute%20Proxy.png)
 
-This is the URL that points to the web service. If the method should be executed on a different port you separate original URL with a a colon and then enter the port number like this: [http://mywebsite/mywebservice.asmx:8080](http://mywebsite/mywebservice.asmx:8080)
- 
-**Proxy**
+- _Discovery mode_: "Web service", "WCF" or "SOAP Body"
 
-If you want to execute through a Proxy you click on the "Proxy.." button which will show the proxy settings window.
+  With "SOAP Body", you write the SOAP envelope yourself, and the Server posts it to _URL_. In this mode, _Custom endpoint_, _Timeout in seconds_, _Expect 100 Continue_, the proxy and the authentication settings on the ***Security*** tab are not used.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Webservice%20WCF%20Execute%20Proxy.png)
+- _Custom endpoint_: optional. An endpoint URL that replaces the endpoint of the service
 
-**Custom endpoint**
+  Used with "Web service". With "WCF", use _Binding_ instead. With "SOAP Body", the Server posts to _URL_.
 
-An optional custom endpoint URL to override the default service endpoint. Available when Discovery mode is set to Web service or SOAP Body (disabled for WCF mode, which uses Binding instead).
+- _Timeout in seconds_: how long the method call can take
 
-**Timeout in seconds**
+  A new Task has "3600". With "WCF", the value limits opening the connection and sending the call, and "0" means no time limit. With "Web service", enter a value greater than "0". With "SOAP Body", the setting is not used. To limit how long the whole Task can run, use the Task's ***TimeOut*** tab (see [Task - Timeout](../../task-timeout)).
 
-Time until the Task gives up to receive a response. Default one hour, 3600 seconds.
- 
-**SOAP header (XML) - only available for discovery mode Web- and WCF service**
+- _SOAP Header (XML) - optional_: with "Web service" and "WCF", a SOAP header to add to the message, for example for a simple authentication scheme
 
-An optional header to use before the normal XML message. Could be used for some simple authentication
- 
-**SOAP action (string) - only available for discovery mode SOAP Body**
+  With "SOAP Body", this box is _SOAP Action (string) - optional_: the SOAP action to send. If it is empty, VisualCron generates one.
 
-If you want a specific SOAP action you specify it here. Otherwise VisualCron will try to auto-generate it.
- 
-**Discovery mode**
+- _SOAP Body (XML)_: "SOAP Body" only. The SOAP envelope to send, for example:
 
-Select if the service is a Web or WCF service or SOAP Body (through web service).
- 
-**SOAP body (XML) - only available for discovery mode SOAP Body**
-Specify the SOAP body you want to send. For example:
+  ```xml
+  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+    <soapenv:Header/>
+    <soapenv:Body>
+      <tem:ExportData>
+        <tem:exportName>export-name</tem:exportName>
+      </tem:ExportData>
+    </soapenv:Body>
+  </soapenv:Envelope>
+  ```
 
-```<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">```
+- _Binding_: with "WCF", the binding to use, which you can choose after the classes and methods are loaded
 
-```<soapenv:Header/>```
+  The binding tells VisualCron how to communicate with the service.
 
-```<soapenv:Body>```
+- _Class_: the class that has the method
+- _Show only Public types_: selected by default, so only public classes are loaded
 
-```<tem:ExportData>```
+  Clear it to also load classes with other access modifiers.
 
-```<tem:exportName>abc123</tem:exportName>```
+- _Method_: the method to call
 
-```<tem:userName>abc</tem:userName>```
+  When you change _Class_, the list shows the methods of that class.
 
-```<tem:password>123</tem:password>```
+- _Show only Public methods_: selected by default, so only public methods are loaded
 
-```</tem:ExportData>```
+  Clear it to also load methods with other access modifiers.
 
-```</soapenv:Body>```
+- _Expect 100 Continue_: "Web service" only. Selected by default, so the request sends an `Expect: 100-continue` header
 
-```</soapenv:Envelope>```
+  If the server returns HTTP error 417, clear this check box.
 
-**Binding**
+- _Return type_: the type of the method's return value, which the Task converts to text for its output
+- _Nesting level_: how many levels deep VisualCron reads complex types when it loads the classes and methods
 
-When selecting a WCF service you may select binding after refreshing the classes and methods. The binding tells VisualCron which communication method to use.
- 
-**Class**
+  The default is "3". Increase it if nested parameter types are not fully loaded; lower it if loading is slow.
 
-This is the name of the Class.
- 
-**Show only public types**
+- _Parameters (double click to edit)_: double-click a parameter to set its value
 
-When selecting a file or clicking refresh class information is loaded from the assembly. By default, only public classes are loaded. If you want to load class with other modifiers/visibility you must uncheck this.
- 
-**Method**
+  The input form depends on the type of the value.
 
-When you change the Class all methods within that Class will be populated into the method combo box.
- 
-**Show only Public methods**
+### Security tab
 
-When selecting a file or clicking refresh method information is loaded from the assembly. By default, only public methods are loaded. If you want to load method with other modifiers/visibility you must uncheck this.
- 
-**Expect 100 Continue**
+![Security tab of the Web Service/WCF Execute Task, with the Supported security protocols group and the Security group](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Webservice%20WCF%20Execute%20Security.png)
 
-Enable this if you get HTTP error 417.
- 
-**Return type**
+- _Supported security protocols_: the protocols the Task can use with an "https://" URL: "SSL 3", "TLS 1.0", "TLS 1.1", "TLS 1.2" and "TLS 1.3"
 
-This label shows the return type of the selected method. This is the type that will be converted to a string in the Output of the Task.
+  All are selected by default.
 
-**Nesting level**
+- _Security_: the authentication method:
+  - "None" (default): no authentication
+  - "Basic": the user name and password of the selected Credential, Base64 encoded. Base64 is an encoding, not encryption. With "WCF", "Basic" is not applied, and the call is sent without the Credential
+  - "Digest": the Credential is used only to read the service description. The method call itself is sent without Digest authentication
+  - "Windows": Windows authentication with the selected Credential
+  - "Certificate": "Web service" only. Presents the client certificate selected in _Certificate_. With "WCF", the call fails
+  - "Transport": the transport-level security of the WCF binding
+- _Credential_: required for "Basic", "Digest" and "Windows", and available only for them (see [Global - Credentials](../../global-credentials))
+- _Certificate_: required for "Certificate". The client certificate, from [Global - Certificates](../../global-certificates)
 
-Controls how many levels deep VisualCron reflects into complex types when loading class and method information. Default is 3. Increase this value if nested parameter types are not fully resolved; lower it if loading is slow for assemblies with deeply nested types.
- 
-**Parameters**
+With "SOAP Body", only _Supported security protocols_ is used; the request is sent without authentication.
 
-Double click on parameter rows to set values. Depending on the value type different input forms will be used.
+:::warning
 
-**Security Tab**
+The Task accepts every server certificate and has no setting to check it, so it cannot tell the real server from another server that answers at the same address. With "Basic", anyone who can see the traffic can read the user name and password. Use "Basic" only with an "https://" URL on a network path that you trust.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Webservice%20WCF%20Execute%20Security.png)
+:::
 
-**Supported security protocols**
+### Output tab
 
-Set the supported security protocols (by your web server) to use the maximum security. Available options (all enabled by default): SSL 3, TLS 1.0, TLS 1.1, TLS 1.2, TLS 1.3.
+On the Task window's ***Output*** tab, choose how the return value is written to the output:
 
-**Security - Authentication method**
+- _ToString representation of output_ (default): the text of the return value
 
-This Task lets you execute a web service with some different security methods for web authentication:
+  Arrays are separated by commas.
 
-1. *None* - no authentication is made
-2. *Basic* - Before transmission, the user name is appended with a colon and concatenated with the password. The resulting string is encoded with the Base64 algorithm. For example, given the user name Aladdin and password open sesame, the string Aladdin:open sesame is Base64 encoded, resulting in ```QWxhZGRpbjpvcGVuIHNlc2FtZQ==```. The Base64-encoded string is transmitted and decoded by the receiver, resulting in the colon-separated user name and password string.
-3. *Digest* - Digest authentication is intended to supersede unencrypted use of the Basic access authentication, allowing user identity to be established securely without having to send a password in plain text.
-4. *Windows* - the current Windows user information on the client computer is supplied by client through a cryptographic exchange involving hashing with the Web server.
-5. *Certificate* - this authentication method uses your existing Windows certificates when authenticating.
-6. *Transport* - uses transport-level security as defined by the WCF binding configuration.
- 
-**Credential**
+- _XML representation of output_: the return value as XML
 
-This is the Credential that is used in the authentication method (None, Basic, Digest, or Windows). Click on Manage Credentials to create a new Credential.
- 
-**Certificate**
+### Troubleshooting
 
-The client certificate to use when the authentication method is set to Certificate. Click on Manage Certificates to add or edit certificates.
-
-### Troubleshooting:
-
-**The HTTP request is unauthorized with client authentication scheme 'Ntlm'. The authentication header received from the server was 'NTLM'.**
-
-The user name and/or password is wrong.
+If the Task fails with the error `The HTTP request is unauthorized with client authentication scheme 'Ntlm'. The authentication header received from the server was 'NTLM'.`, the user name or password in the Credential is wrong.
