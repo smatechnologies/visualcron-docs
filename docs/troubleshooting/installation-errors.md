@@ -5,9 +5,4 @@ hide_title: 'true'
 
 ## Installation Errors
 
-If you get installation errors then please:
- 
-1. Place the VisualCron.msi file in C:\
-2. Open a command window and go to C:\
-3. Enter the following text: "msiexec /i VisualCron.msi /log log.txt"
-4. Please send the log.txt file using the [contact web page](https://www.visualcron.com/contact.aspx)
+This page used to describe how to create an installation log to send to VisualCron support. For the current steps, see [Installation troubleshooting](../get-visualcron/download-install-upgrade-uninstall#installation-troubleshooting).
