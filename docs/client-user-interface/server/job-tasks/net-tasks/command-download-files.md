@@ -51,6 +51,8 @@ Active only when **Overwrite options** is set to "Overwrite - if destination siz
 
 When checked, VisualCron appends to the partially downloaded file and retries on failure. Set the number of retry attempts and the interval in seconds between retries. Default for both is 999.
 
+For SFTP connections, a download that ends before the whole file arrives is treated as an error and retried. Each retry continues from where the local file ends, and only when the download overwrites the local file. When the retries run out, or this option is unchecked, VisualCron fails the Task and removes the partial download.
+
 **Keep modified/created date**
 
 When checked, the downloaded file's modified and created timestamps are set to match those on the remote server. Default is unchecked.
