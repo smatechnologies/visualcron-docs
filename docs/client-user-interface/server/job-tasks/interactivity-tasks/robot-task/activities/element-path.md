@@ -5,44 +5,42 @@ hide_title: 'true'
 
 ## Robot Task Activities - Element Path
 
-Many [Web Macro](web-macro) activities include a tab on their settings form for specifying the path to the target HTML element. There are three ways to specify that path:
+The element path settings tell a [Web Macro](web-macro) activity which HTML element on the page to act on. Many Web Macro activities have a ***Source*** tab for this, with three ways to specify the element:
 
-- **Relative**
-- **By position**
-- **By search**
+- _Relative_
+- _By position_
+- _By search_
 
 ---
 
-### Relative mode
+### Relative
 
-**Element path** specifies the path to the element to be detected. Both a CSS selector and an XPath expression are supported. Specifying only a CSS selector is enough, but the full format of the path string is:
+_Element path_ specifies the path to the element. Both a CSS selector and an XPath expression are supported. A CSS selector on its own is enough, but the full format of the path string is:
 
-```
+```text
 pathCss[%]pathHtml[%]pathXPath
 ```
 
-| Part | Description |
-|---|---|
-| pathCss | A CSS selector. |
-| pathHtml | An additional internal format for representing the path to the element. |
-| pathXPath | An XPath expression. |
-| `[%]` | The separator between parts. |
+- `pathCss`: a CSS selector
+- `pathHtml`: an additional internal format for the path to the element
+- `pathXPath`: an XPath expression
+- `[%]`: the separator between the parts
 
 #### How the path is resolved
 
-The full path format is used in recording mode for increased dependability. When configuring activities manually, the path does not need to be specified in its entirety.
+A recorded action may store the path in the full format. When you configure an activity yourself, the path does not need all three parts.
 
 At runtime the path is split on the `[%]` separator and the element is searched for in this order:
 
-1. By the third part (**pathXPath**), if one exists after the split.
-2. If not found by XPath, by the second part (**pathHtml**).
-3. If still not found, by the CSS selector (**pathCss**).
+1. By the third part (`pathXPath`), if there is one.
+2. If it is not found by XPath, by the second part (`pathHtml`).
+3. If it is still not found, by the CSS selector (`pathCss`).
 
-If no `[%]` separator is present, the whole value is interpreted as a CSS selector.
+If there is no `[%]` separator, the whole value is treated as a CSS selector.
 
-To find an element using XPath only, provide the expression after two separators:
+To find an element by XPath only, put the expression after two separators:
 
-```
+```text
 [%][%]/HTML/BODY/APP-ROOT[1]/DIV[2]/APP-RPA1[1]/DIV[1]/DIV[2]/FORM[1]/INPUT[1]
 ```
 
@@ -61,19 +59,17 @@ Given this HTML:
 </html>
 ```
 
-Any of these selectors will find the span element:
+Any of these selectors finds the span element:
 
-| Selector type | Example |
-|---|---|
-| Class selector | `.toolbarbutton-content` |
-| ID selector | `#rX8Qvb-cnt` |
-| Type selector | `span` |
-| Attribute selector | `span[id="rX8Qvb-cnt"]` |
-| Child selector | `html > body > span` |
+- Class selector: `.toolbarbutton-content`
+- ID selector: `#rX8Qvb-cnt`
+- Type selector: `span`
+- Attribute selector: `span[id="rX8Qvb-cnt"]`
+- Child selector: `html > body > span`
 
 #### XPath examples
 
-```
+```text
 [%][%]//*[@id="rX8Qvb-cnt"]
 [%][%]/HTML/BODY/SPAN[1]
 [%][%]//span[contains(., "Hello")]
@@ -81,9 +77,9 @@ Any of these selectors will find the span element:
 
 #### Frame path
 
-**Frame path** specifies the path to the HTML `frame` tag containing the element, as a valid CSS selector string.
+_Frame path_ specifies the path to the HTML `frame` element that contains the element, as a CSS selector.
 
-In most cases this field is optional. It only needs to be filled in when the web page uses HTML frames, that is when the page contains a `<frame>` tag. For example, a frame path of `FRAME:nth-child(2)` with an element path of `#ddlCustomer`.
+In most cases this field can be left empty. Fill it in only when the element is inside a frame, that is when the page contains a `<frame>` or `<iframe>` element. For example, a _Frame path_ of `FRAME:nth-child(2)` with an _Element path_ of `#ddlCustomer`.
 
 Further reading:
 
@@ -94,30 +90,26 @@ Further reading:
 
 ### By position
 
-A mode for locating an element by its coordinates on the page.
-
-> This mode is currently out of date and upgrades are planned. Prefer **Relative** or **By search** for new work.
+Locates the element by its _X_ and _Y_ coordinates on the page. A position stops matching as soon as the page layout changes, so prefer _Relative_ or _By search_.
 
 ---
 
 ### By search
 
-This mode searches for elements using a CSS selector, which is passed to the JavaScript `querySelectorAll` function. It is useful when an element's path changes between runs.
+Searches for elements with a CSS selector, which is passed to the JavaScript `querySelectorAll` function. Use it when an element's path changes between runs.
 
-| Setting | Description |
-|---|---|
-| Selector | The CSS selector passed to `querySelectorAll`, defining the candidate list of elements. |
-| Attribute | The element attribute whose value is matched. Element properties `innerHTML`, `outerHTML`, `innerText`, and `outerText` can also be used. |
-| Regex value | A regular expression the attribute value is tested against, filtering the candidate list. |
-| Position | The ordinal position within the filtered results that identifies the element to return. |
+- _Selector_: the CSS selector passed to `querySelectorAll`, which defines the list of candidate elements
+- _Attribute_: the element attribute whose value is tested; the element properties `innerHTML`, `outerHTML`, `innerText` and `outerText` can also be used
+- _Regex value_: the regular expression the attribute value is tested against, which filters the list of candidates
+- _Position_: which of the filtered elements to use
 
 The search runs in three steps:
 
-1. Build a list of HTML elements matching the CSS selector.
-2. Filter that list by testing the specified attribute or property value against the regular expression.
-3. Select the element at the ordinal position given in the settings.
+1. Build a list of the HTML elements that match the CSS selector.
+2. Filter the list by testing the attribute or property value against the regular expression.
+3. Take the element at the position given in the settings.
 
-For example, a Selector of `span`, an Attribute of `innerText`, a Regex value of `Hello`, and a Position of `First` returns the first span on the page whose visible text contains `Hello`.
+For example, a _Selector_ of `span`, an _Attribute_ of `innerText`, a _Regex value_ of `Hello` and the first position returns the first span on the page whose visible text contains `Hello`.
 
 Further reading:
 
@@ -130,17 +122,18 @@ Further reading:
 
 ### Additional notes
 
-When setting activity settings manually, the fastest way to determine the correct CSS selector or XPath expression is to use the web browser's Inspector mode.
+When you configure an activity yourself, the fastest way to find the right CSS selector or XPath expression is the web browser's inspector.
 
-Some selectors include quotes. It is important to make sure that in paths they are specified as double quotes and not single quotes.
+Some selectors include quotes. In paths, use double quotes, not single quotes.
 
-For a practical walkthrough of using the Inspector to build a selector for a form field, see [Web Input - Element Path](../web-input-element-path).
+For a walkthrough of using the inspector to build a selector for a form field, see [Web Input - Element Path](../web-input-element-path).
 
 ---
 
 ### Tips
 
-- Prefer selectors built on `id` and `name` attributes. They are the most stable and least likely to change when a page is updated.
-- Avoid purely positional XPath such as `/HTML/BODY/DIV[3]/INPUT[1]`. It breaks as soon as the page structure changes.
-- Test a selector in the browser console with `document.querySelector('your-selector')` before using it in VisualCron, to confirm it returns the element you expect.
-- Use **By search** when several similar elements exist and the one you want is distinguished by its text or an attribute value rather than by its position in the document.
+- Prefer selectors built on `id` and `name` attributes. They are the most stable and the least likely to change when a page is updated
+- Avoid purely positional XPath such as `/HTML/BODY/DIV[3]/INPUT[1]`. It breaks as soon as the page structure changes
+- Test a selector in the browser console with `document.querySelector('your-selector')` before you use it in VisualCron, to confirm it returns the element you expect
+- Use _By search_ when several similar elements exist and the one you want is set apart by its text or an attribute value rather than by its position in the document
+- If the element may be missing, check _Allow to ignore the element_ on the ***Source*** tab, so that the sequence is not stopped when the element is not found. See [Error Handling](error-handling)

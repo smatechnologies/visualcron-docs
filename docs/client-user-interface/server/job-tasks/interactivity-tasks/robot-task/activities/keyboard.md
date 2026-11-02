@@ -5,58 +5,54 @@ hide_title: 'true'
 
 ## Robot Task Activities - Keyboard
 
-The **Keyboard** category contains activities that simulate keyboard input.
+The Keyboard activities send key presses and key events to the window that has focus.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Keyboard/Keyboard.png)
+![The Keyboard category in the activity list, with Key Event and Press Key](../../../../../../../static/img/RPA/Robot%20Tasks/Keyboard/Keyboard.png)
 
 ---
 
 ### Key Event
 
-Sends a single key event, either pressing a key down or releasing it.
+Sends one key event: the key goes down or comes up.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Keyboard/Event.png)
+![The Key event activity with the Key and Status fields](../../../../../../../static/img/RPA/Robot%20Tasks/Keyboard/Event.png)
 
-| Setting | Description |
-|---|---|
-| Key | The key to send, for example `Control`, `Shift`, or `A`. |
-| Status | The key state to apply: **Down** or **Up**. |
+- _Key_: the key to send, chosen from the list, for example "Control", "Shift" or "A". Default: "None"
+- _Status_: the key state to send: "Down" or "Up". Default: "Down"
 
-Use Key Event when you need to hold a key down across several other activities. Send a Down event, perform the intervening activities, then send a matching Up event to release the key.
+Use Key Event to hold a key down across other activities: send "Down", run the activities, then send "Up" for the same key to release it.
 
 ---
 
-### Key Press
+### Press Key
 
-Simulates pressing a single key or multiple keys.
+Presses one key or several keys, either one after another or together as a combination.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Keyboard/Press.png)
+![The Press Key activity with the Keys field, the ... button and the Is combination check box](../../../../../../../static/img/RPA/Robot%20Tasks/Keyboard/Press.png)
 
-| Setting | Description |
-|---|---|
-| Keys | The keys to press, separated by commas, for example `Control,C`. |
-| Is combination | When enabled the keys are pressed together as a combination. When disabled they are pressed one after another in order. |
-| KeyPressDelay | Delay in milliseconds between pressing each key. |
+- _Keys_: the names of the keys to press, separated by commas, for example `Control,C`. Default: "None"
+- _Is combination_: when checked, the keys are pressed together. When cleared, they are pressed one after another, in order. Default: cleared
+- _KeyPressDelay_: in the Properties pane, the wait in milliseconds before each key when the keys are pressed one after another. Default: "100"
 
-**Is combination** is the difference between a shortcut and a sequence. With `Control,C` and Is combination enabled, the activity sends `Ctrl+C`. With Is combination disabled, it presses `Control` and then `C` as two separate keystrokes.
+With `Control,C` and _Is combination_ checked, the activity sends Ctrl+C. With _Is combination_ cleared, it presses Control and then C as two separate keys.
 
 **Selecting keys**
 
-Click the `...` button to open the virtual keyboard and choose keys visually rather than typing their names.
+Click the _..._ button to open the virtual keyboard and choose the keys there instead of typing their names.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Keyboard/Input.png)
+![The virtual keyboard window, with a button for each key](../../../../../../../static/img/RPA/Robot%20Tasks/Keyboard/Input.png)
 
-Click **Detect** to capture keys directly from your physical keyboard. Press the combination you want and the field is filled in for you.
+Click _Detect_ to capture keys from the physical keyboard. In the ***Press any key to detect*** window, press the keys, then click _Set_ to fill in _Keys_, or _Clear_ to start again.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Keyboard/Detect.png)
+![The Press any key to detect window, with the detected key names and the Clear and Set buttons](../../../../../../../static/img/RPA/Robot%20Tasks/Keyboard/Detect.png)
 
-> An error parsing the property listing the keys to press forces the sequence to stop and cannot be caught by a TryCatch activity. See [Error Handling](error-handling).
+If a name in _Keys_ is not a known key name, the activity fails without pressing any key. When _Keys_ is empty, the activity presses no key and does not fail.
 
 ---
 
 ### Tips
 
-- Keyboard activities send input to whatever window currently has focus. Use a [Windows](windows) activity such as **Attach Window** with **Set focus** enabled, or the [Controls](controls) **Set Focus** activity, before sending keystrokes.
-- To enter text into a field, use the [Text](text) **Send Text** activity rather than a chain of Key Press activities. Send Text can also target a specific element and control how existing content is handled.
-- Use **Detect** rather than typing key names by hand. It guarantees the names match what the activity expects.
-- Increase **KeyPressDelay** if an application misses keystrokes. Some applications cannot keep up with input sent at full speed.
+- Keyboard activities send input to the window that has focus. Before sending keys, give the target window focus with a [Windows](windows) activity such as _Attach Window_ with _SetFocus_ checked, or with the [Controls](controls) _Set Focus_ activity
+- To type text into a field, use the [Text](text) _Send Text_ activity rather than a chain of Press Key activities. Send Text can also find a specific element and decide what happens to existing text
+- Use _Detect_ or the virtual keyboard rather than typing key names. The names they fill in are names the activity accepts
+- Increase _KeyPressDelay_ if an application misses keys. Some applications cannot keep up with input sent at full speed

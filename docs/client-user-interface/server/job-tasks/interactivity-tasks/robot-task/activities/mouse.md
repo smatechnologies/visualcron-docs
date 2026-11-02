@@ -5,68 +5,75 @@ hide_title: 'true'
 
 ## Robot Task Activities - Mouse
 
-The **Mouse** category contains activities that simulate mouse input against a UI element or a fixed screen position.
+The Mouse activities click, double-click, move the mouse and press or release mouse buttons on a UI element or at a fixed screen position.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Mouse/Mouse.png)
+![The Mouse category in the activity list, with Click, Double Click, Mouse Move and Mouse Key](../../../../../../../static/img/RPA/Robot%20Tasks/Mouse/Mouse.png)
 
-All four activities locate the target element first. If the specified element is not found, the activity throws an exception.
+Unless set to use a fixed screen position, all four activities find the target element first and fail if it is not found within _WaitForElement_.
+
+### Finding the element
+
+Click _Click to select an element_ on the activity to pick the target in the UI and fill in the search properties: move the mouse over the element, hold down Ctrl and click. The search properties are in the Properties pane, under **Find Element**:
+
+- _ProcessName_: the name of the process that owns the window. Required
+- _WindowTitle_: the title of the window to search in. Supports the wildcards `*`, `?` and `#`. Default: `*` (any window)
+- _Name_, _ClassName_ and _AutomationId_: the element's name, class name and automation ID. At least one is required
+- _Text_: the element's text. Supports the wildcards `*`, `?` and `#`
+- _WindowHandle_: the handle of the window, when it is known. Default: "0"
+- _WaitForElement_ (under **Utils**): how long to wait for the element, in milliseconds. Default: "10000"
+
+Inside an _Attach Window_ or _Get Active Window_ activity, the element is searched for in that window.
 
 ---
 
 ### Click
 
-Finds the specified element and simulates a mouse click on it.
+Finds the element and clicks it.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Mouse/Click.png)
+![The Click activity with the Click to select an element link](../../../../../../../static/img/RPA/Robot%20Tasks/Mouse/Click.png)
 
-Use the **Click to select an element** link to pick the target in the UI and fill the search properties automatically. Move the mouse over the element, hold `CTRL`, and click.
+- _OffsetX_ and _OffsetY_: where to click, relative to the element. With "0", the activity clicks the center of the element. Default: "0"
+- _ClickManually_: click the screen position in _CursorPointX_ and _CursorPointY_ instead of the element. Default: cleared
+- _CursorPointX_ and _CursorPointY_: the screen position used when _ClickManually_ is checked. Default: "0"
+- _MouseButton_: the mouse button to use. Default: "Left"
+- _PressedKeys_: keys held down during the click, separated by commas, for example `LControl` or `Shift`
 
-| Property | Description |
-|---|---|
-| OffsetX / OffsetY | Click at a position relative to the element. By default the activity clicks the center of the element. |
-| ClickManually | Click a fixed screen position taken from CursorPointX and CursorPointY instead of locating an element. |
-| CursorPointX / CursorPointY | The screen coordinates used when ClickManually is enabled. |
-| MouseButton | The mouse button to use. Left is the default. |
-| PressedKeys | Modifier keys held down while clicking, for example `Control` or `Shift`. See the [Keys enumeration](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.keys?view=windowsdesktop-6.0). |
-
-> An error parsing the **PressedKeys** property forces the sequence to stop and cannot be caught by a TryCatch activity. See [Error Handling](error-handling).
+If the element is off screen, the activity gives its window and the element focus before clicking. If no click position can be calculated, it invokes the element instead, and fails if the element does not support that. If a name in _PressedKeys_ is not a known key name, the activity fails. Use the key names that the [Press Key](keyboard) virtual keyboard or _Detect_ fills in.
 
 ---
 
 ### Double Click
 
-Finds the specified element and simulates a mouse double click on it. Properties are the same as the **Click** activity.
+Finds the element and double-clicks it. The properties are the same as for _Click_.
 
 ---
 
 ### Mouse Move
 
-Finds the specified element and simulates a mouse move to it. Enable **UseManual** to move to a fixed screen position instead.
+Finds the element and moves the mouse to it.
 
-| Property | Description |
-|---|---|
-| HoverTime | Delay in milliseconds after the mouse has moved to the element. Use this to let hover menus and tooltips appear. |
+- _OffsetX_ and _OffsetY_: where to move to, relative to the element. With "0", the mouse moves to the center of the element
+- _UseManual_: move to the screen position in _CursorPointX_ and _CursorPointY_ instead of the element. Default: cleared
+- _HoverTime_: the wait in milliseconds after the mouse arrives, so that hover menus and tooltips can appear. Default: "300"
 
 ---
 
 ### Mouse Key
 
-Finds the specified element and simulates pressing or releasing a mouse button. Enable **ClickManually** to act on a fixed screen position instead.
+Finds the element and presses or releases a mouse button on it. Check _ClickManually_ to act on a fixed screen position instead.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Mouse/Key.png)
+![The Mouse Key activity with the Click to select an element link and the Key and Status fields](../../../../../../../static/img/RPA/Robot%20Tasks/Mouse/Key.png)
 
-| Setting | Description |
-|---|---|
-| Key | The mouse button, for example Left, Right, or Middle. |
-| Status | The button state to apply: **Down** or **Up**. |
+- _Key_: the mouse button, for example "Left", "Right" or "Middle". Default: "Left"
+- _Status_: the button state to send: "Down" or "Up". Default: "Down"
 
-Pair a Down and an Up activity to build interactions a single click cannot express, such as a drag and drop: press Down on the source element, use **Mouse Move** to travel to the target, then release with Up.
+Pair a "Down" and an "Up" activity to build actions a single click cannot, such as drag and drop: press "Down" on the source element, use _Mouse Move_ to move to the target, then release with "Up".
 
 ---
 
 ### Tips
 
-- Prefer element based clicking over **ClickManually**. Fixed coordinates break as soon as a window is moved or resized, or the task runs at a different screen resolution.
-- If a click needs to land somewhere other than the middle of a control, use **OffsetX** and **OffsetY** rather than switching to fixed coordinates.
-- For clickable items in a web page, use the [Web Macro](web-macro) **Click element** activity instead. It targets elements by CSS selector or XPath rather than by screen position.
-- If the target is a standard UI control such as a button or checkbox, the [Controls](controls) **Invoke** activity is often more reliable than a simulated click, because it does not depend on the element being visible on screen.
+- Prefer element-based clicks over _ClickManually_. Fixed positions stop working when a window is moved or resized, or when the Task runs at a different screen resolution
+- To click somewhere other than the center of a control, use _OffsetX_ and _OffsetY_ rather than fixed positions
+- For links and buttons on a web page, use the [Web Macro](web-macro) _Click Element_ activity instead. It finds elements by CSS selector or XPath rather than by screen position
+- For a standard control such as a button or check box, the [Controls](controls) _Invoke_ activity is often more reliable than a simulated click, because it does not depend on the element being visible on screen

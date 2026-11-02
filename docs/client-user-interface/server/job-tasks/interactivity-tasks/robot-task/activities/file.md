@@ -5,70 +5,88 @@ hide_title: 'true'
 
 ## Robot Task Activities - File
 
-The **File** category contains activities that read, write, copy, move, archive, and wait for files.
+The File activities write, read, copy, move, delete, archive and wait for files.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/File/File.png)
+![The File category in the activity list, from Write File to Empty Recycle Bin](../../../../../../../static/img/RPA/Robot%20Tasks/File/File.png)
 
-Several activities in this category write their outcome to a **Result** property. The value is an RPA variable available for the duration of the Robot Task execution, referenced in later activities as `{RPA(VariableName)}`.
+The activities run in the desktop session of the Robot Task, as the user logged on to that session, so that user needs permission on every path used. Variables are resolved in every path and text field.
+
+Several activities write their outcome to a _Result_ property, in the Properties pane under **Output**. The value is an RPA variable that exists while the Robot Task runs, used in later activities as `{RPA(VariableName)}`.
 
 ---
 
 ### Write File
 
-Creates a new file, writes the specified string to it, and closes the file. If the target file already exists, it is overwritten.
+Creates the file, writes the text to it, and closes it.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/File/Write.png)
+![The Write File activity, with the File path and Text fields](../../../../../../../static/img/RPA/Robot%20Tasks/File/Write.png)
 
-| Setting | Description |
-|---|---|
-| File path | The full path of the file to write. |
-| Text | The text written to the file. |
+- _File path_: the full path of the file
+- _Text_: the text written to the file
+
+:::warning
+
+If the file already exists, it is replaced without warning.
+
+:::
 
 ---
 
 ### Append File
 
-Opens a file, appends the specified string to it, and closes the file. If the file does not exist, the activity creates it, writes the string, and closes it.
+Opens the file, adds the text to its end, and closes it. If the file does not exist, it is created.
 
-Use Append File rather than Write File when logging progress inside a loop, so each iteration adds to the log instead of replacing it.
+- _File path_: the full path of the file
+- _Text_: the text added to the file
+
+No line break is added. To put each entry on its own line, end the text with a line break.
+
+Use Append File rather than Write File when you log progress inside a loop, so that each iteration adds to the log instead of replacing it.
 
 ---
 
 ### Delete File
 
-Permanently deletes a file.
+Deletes the file. A file that does not exist is not an error.
+
+- _File path_: the full path of the file
+
+:::warning
+
+The file is deleted permanently. It is not moved to the Recycle Bin and cannot be restored.
+
+:::
 
 ---
 
 ### Copy File
 
-Copies an existing file to a new file. Overwriting an existing file is not allowed.
+Copies a file to a new file. The copy fails if the destination file already exists.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/File/Copy.png)
+![The Copy File activity, with the Source file path and Destination file path fields](../../../../../../../static/img/RPA/Robot%20Tasks/File/Copy.png)
 
-| Setting | Description |
-|---|---|
-| Source file path | The full file name which will be copied. |
-| Destination file path | The full name of the file the source will be copied to. |
+- _Source file path_: the full path of the file to copy
+- _Destination file path_: the full path of the new file
 
 ---
 
 ### Move File
 
-Moves a specified file to a new location, with the option to specify a new file name.
+Moves a file to a new location, optionally with a new name. The move fails if the destination file already exists.
+
+- _Source file path_: the full path of the file to move
+- _Destination file path_: the full path, including the file name, to move it to
 
 ---
 
 ### File Exists
 
-Gets a value indicating whether a file exists and saves the result to a Result variable. The result is `True` if the file exists, and `False` if it does not exist or the path is a directory.
+Checks whether a file exists and writes the result to the _Result_ variable: "True" if the file exists, and "False" if it does not or the path is a folder.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/File/Exists.png)
+![The File Exists activity, with the File path field](../../../../../../../static/img/RPA/Robot%20Tasks/File/Exists.png)
 
-| Setting | Description |
-|---|---|
-| File path | The full file name which will be checked. |
-| Result | The result variable name the outcome is written to. The value is `True` or `False`. |
+- _File path_: the full path of the file to check
+- _Result_: in the Properties pane, the name of the variable the result is written to
 
 Read the result in a later activity with `{RPA(VariableName)}`.
 
@@ -76,24 +94,21 @@ Read the result in a later activity with `{RPA(VariableName)}`.
 
 ### Download File
 
-Downloads a file from the specified URL.
+Downloads a file from a URL.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/File/Download.png)
+![The Download File activity, with the Url address and File path fields](../../../../../../../static/img/RPA/Robot%20Tasks/File/Download.png)
 
-| Setting | Description |
-|---|---|
-| Url address | The URL address to download from. |
-| File path | The full file name to save to. |
+- _Url address_: the URL to download from
+- _File path_: the full path to save the file to; an existing file is replaced
 
 ---
 
 ### Read File
 
-Opens a text file, reads all lines, closes the file, and saves the content to a Result variable.
+Reads the whole content of a text file and writes it to the _Result_ variable.
 
-| Setting | Description |
-|---|---|
-| Result | The result variable name the file content is written to. |
+- _File path_: the full path of the file
+- _Result_: in the Properties pane, the name of the variable the content is written to
 
 Read the content in a later activity with `{RPA(VariableName)}`.
 
@@ -101,102 +116,129 @@ Read the content in a later activity with `{RPA(VariableName)}`.
 
 ### Open File
 
-Starts a process resource by specifying the name of a document or application file, and associates the resource with a new `System.Diagnostics.Process` component.
+Opens the file with the application registered for its file type, the same as double-clicking it in File Explorer.
 
-In practice this opens the file with whatever application is registered for its file type, the same as double clicking it in Explorer.
+- _File path_: the full path of the file
 
 ---
 
 ### Rename File
 
-Renames a file in the specified path.
+Gives a file a new name in the same folder.
+
+- _File path_: the full path of the file
+- _New name_: the new file name
 
 ---
 
 ### Touch File
 
-Creates a new file, or updates the last write time of an existing file.
+Creates the file if it does not exist, and sets its last access time to the current time. The last write time is not changed.
+
+- _File path_: the full path of the file
 
 ---
 
 ### Get Files
 
-Gets the full names of files matching a file filter and executes the body of the activity once for each one, providing the full file name. It behaves like a For Each loop over the list of full file names.
+Finds the files that match a file filter and runs the _Body_ once for each one, with the full file name. It works like a For Each loop over the matched files.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/File/Get.png)
+![The Get Files activity, with the File path variable name field, the File filter button and the Body](../../../../../../../static/img/RPA/Robot%20Tasks/File/Get.png)
 
-| Setting | Description |
-|---|---|
-| File path variable name | The output variable name the full file name is written to on each iteration. |
-| File filter | Opens the file filter window, used to choose which files to match. |
-| Body | The activities executed for each matched file. |
+- _File path variable name_: the name of the variable the full file name is written to on each iteration
+- _File filter_: opens the file filter window, used to choose which files match; see [File filter](../../../../job-tasks-file-filter)
+- _Body_: the activities that run for each matched file
 
-Use `{RPA(FileName)}` in the child activities to get the current file name, substituting the variable name you set.
+Use `{RPA(FileName)}` in the child activities to get the current file name, with the variable name you set in place of `FileName`.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/File/Get%20Settings.png)
+![A Get Files activity whose Body contains an Open File activity that uses the file name variable](../../../../../../../static/img/RPA/Robot%20Tasks/File/Get%20Settings.png)
 
-For example, a **Get Files** activity with a body containing an **Open File** activity whose File path is `{RPA(FileName)}` opens every matched file in turn.
+For example, a _Get Files_ activity whose _Body_ contains an _Open File_ activity with the _File path_ `{RPA(FileName)}` opens every matched file in turn.
 
 ---
 
 ### Archive - Compress
 
-Creates a compressed archive from the files matching a file filter. Open the file filter to select the files to compress.
+Creates a compressed archive of the files that match a file filter.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/File/Archive%20C.png)
+![The Archive - Compress activity, with the File filter button and the Compressed file path field](../../../../../../../static/img/RPA/Robot%20Tasks/File/Archive%20C.png)
 
-| Setting | Description |
-|---|---|
-| Select | Opens the file filter, used to choose the files to compress. |
-| Compressed file path | The path of the archive file to create. |
+- _File filter_: opens the file filter window, used to choose the files to compress; see [File filter](../../../../job-tasks-file-filter)
+- _Compressed file path_: the path of the archive file to create
+
+The archive is always written in 7z format, whatever the file extension.
+
+:::warning
+
+An existing file at _Compressed file path_ is replaced without warning.
+
+:::
 
 ---
 
 ### Archive - Extract
 
-Extracts all files from the specified archive.
+Extracts all files from an archive.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/File/Archive%20E.png)
+![The Archive - Extract activity, with the Source file path and Destination folder path fields](../../../../../../../static/img/RPA/Robot%20Tasks/File/Archive%20E.png)
 
-| Setting | Description |
-|---|---|
-| Source file path | The archive file to extract. |
-| Destination folder path | The folder the files are extracted to. |
+- _Source file path_: the archive file to extract
+- _Destination folder path_: the folder the files are extracted to
+
+:::warning
+
+Files that already exist in _Destination folder path_ are replaced without warning.
+
+:::
 
 ---
 
 ### Wait For File
 
-Waits for the specified file to exist and saves the result to a Result variable. The result is `True` if the file appears before the timeout expires, and `False` if the timeout expires first.
+Waits for a file to exist and writes the result to the _Result_ variable: "True" if the file appears before the time runs out, and "False" if it does not.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/File/Wait.png)
+![The Wait For File activity, with the File path and Wait for file fields and the Throw exception check box](../../../../../../../static/img/RPA/Robot%20Tasks/File/Wait.png)
 
-| Setting | Description |
-|---|---|
-| File path | The file to wait for. |
-| Wait for file | Timeout in milliseconds to wait for the file. |
-| Throw exception | When enabled, an exception is thrown if the file does not appear. |
-| Result | The result variable name the outcome is written to. The value is `True` or `False`. |
+- _File path_: the full path of the file to wait for
+- _Wait for file_: how long to wait, in milliseconds, "10000" by default
+- _Throw exception_: when checked, which is the default, the activity fails if the file does not appear in time
+- _Result_: in the Properties pane, the name of the variable the result is written to
+
+:::warning
+
+With _Throw exception_ cleared, a file that never appears is only written to the output, and the sequence continues. Unless a later activity tests the _Result_ variable, the Task reports success.
+
+:::
 
 ---
 
 ### Create Shortcut
 
-Creates a shortcut (`.lnk`) file at the specified location.
+Creates a shortcut (`.lnk`) file. If the destination name does not end in `.lnk`, the extension is added.
+
+- _Source file path_: the file the shortcut points to
+- _Destination file path_: the path of the shortcut file
+
+The Properties pane has further shortcut settings under **Additional**, such as the arguments, working directory, icon location and window style.
 
 ---
 
 ### Empty Recycle Bin
 
-Empties the recycle bin.
+Empties the Recycle Bin, without asking for confirmation.
+
+:::warning
+
+This permanently deletes everything in the Recycle Bin on every drive, for the user the Robot Task runs as. Deleted files cannot be restored afterward. If emptying fails, the activity does not report it.
+
+:::
 
 ---
 
 ### Tips
 
-- Use **Wait For File** rather than a fixed [Wait](other) activity when a file is produced by another system. It continues as soon as the file appears, instead of always waiting the full timeout.
-- Leave **Throw exception** disabled on Wait For File and test the Result variable with an [If](conditions) activity when a missing file is a case you want to handle rather than an error.
-- **Copy File** does not overwrite. If the destination may already exist, use **Delete File** first, or check with **File Exists** and branch on the result.
-- Use **Append File** for progress logs inside a loop. **Write File** overwrites, so each iteration would discard the previous entries.
-- Combine **File Exists** with an [If](conditions) activity to make a task safely re-runnable, for example skipping records whose output file has already been produced.
-- The account the VisualCron service runs as needs permission on every path used. Think of the RPA user as a human user: if a person would need access to a folder, so does the service account.
+- Use _Wait For File_ rather than a fixed [Wait](other) activity when another system produces the file. It continues as soon as the file appears, instead of always waiting the full time
+- Leave _Throw exception_ cleared on Wait For File and test the _Result_ variable with an [If (simple)](conditions) activity when a missing file is a case you want to handle rather than an error
+- _Copy File_ and _Move File_ do not overwrite. If the destination may already exist, use _Delete File_ first, or check with _File Exists_ and branch on the result
+- Use _Append File_ for progress logs inside a loop. _Write File_ replaces the file, so each iteration would discard the earlier entries
+- Combine _File Exists_ with an [If (simple)](conditions) activity to make a Task safe to run again, for example by skipping records whose output file has already been produced
