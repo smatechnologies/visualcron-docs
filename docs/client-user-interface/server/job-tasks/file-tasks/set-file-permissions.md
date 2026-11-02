@@ -7,9 +7,16 @@ hide_title: 'true'
 
 The File - Set file permissions Task lets you apply security permissions for one or more  files.
 
+:::warning
+A successful run does not confirm that the permissions were set. If Windows refuses the change, for
+example because the Credential on the **_File filter_** sub tab is not allowed to change permissions
+on the file, the Task still finishes without an error. After the Task runs, check the permissions on
+the file, for example on the **_Security_** tab of the file's properties in Windows.
+:::
+
 **Set file permissions > Main settings** sub tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Set%20File%20Permissions.png)
+![Add Task dialog for the Set file permissions Task, Main settings sub tab](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Set%20File%20Permissions.png)
 
 **Windows User or Group**
 
@@ -21,7 +28,7 @@ Select an access right and access type, then click Apply to add a rule to the li
 
 **Access right**
 
-The file system permission to apply. Options: FullControl, Modify, ReadAndExecute, Read, Write, AppendData, ChangePermissions, CreateDirectories, CreateFiles, Delete, DeleteSubdirectoriesAndFiles, ExecuteFile, ListDirectory, ReadAttributes, ReadData, ReadExtendedAttributes, ReadPermissions, Synchronize, TakeOwnership, Traverse, WriteAttributes, WriteData, WriteExtendedAttributes.
+The file system permission to apply. Options: Full Control, Modify, Read And Execute, Read, Write, Append Data, Change Permissions, Create Directories, Create Files, Delete, Delete Subdirectories And Files, Execute File, List Directory, Read Attributes, Read Data, Read Extended Attributes, Read Permissions, Synchronize, Take Ownership, Traverse, Write Attributes, Write Data, Write Extended Attributes.
 
 **Access type**
 

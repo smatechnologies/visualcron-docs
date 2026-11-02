@@ -5,11 +5,11 @@ hide_title: 'true'
 
 ## Task File - Copy Files
 
-The Copy/Move file(s) Task lets you copy files easily based on file filters. Together with Credentials you are able to to copy/move from/to network drives.
+The Copy/Move file(s) Task lets you copy files easily based on file filters. Together with Credentials you are able to copy/move from/to network drives.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Copy%20File.png)
+![Add Task dialog for the Copy files Task, with the list of copy items](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Copy%20File.png)
 
-In the Copy files dialog you add, edit, clone or delete copy items and change order of copy items. Changes may be done either by the toolbar buttons or mouse right click on the grid.
+Use the toolbar buttons to add, edit, clone and delete copy items and to change their order. You can also right-click the grid and select *Add*, *Edit*, *Clone* or *Delete*.
  
 One Copy files Task may contain several copy items. For each copy item a source folder, a file mask and a destination folders is defined.
  
@@ -17,23 +17,23 @@ Clicking on the Add option opens the File filter > Location tab.
  
 **File filter > Location** sub tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Copy%20File%20Location.png)
+![Copy files Task with the Add/Edit copy file item dialog open on the file filter Location tab](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Copy%20File%20Location.png)
 
 The [file filter](../../../server/job-tasks-file-filter) sub tab contains the standard [file filter](../../../server/job-tasks-file-filter). You use the file filter to "find" the files you want to copy.
  
 **Copy settings** sub tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Copy%20File%20Copy%20Settings.png)
+![Add/Edit copy file item dialog, Copy settings tab](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Copy%20File%20Copy%20Settings.png)
 
 In the copy settings sub tab you control destination folder, naming and what should happen if the file already exists.
  
 **Credential**
 
-To access a remote computer you may need to use a [Credential](../../../server/global-credentials). Normally that Credential is a remote or AD user with "Local logon" unchecked. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open *Manage credentials* in order to add or edit Credentials. This Credential is used to access the destination directory.
+To access a remote computer you may need to use a [Credential](../../../server/global-credentials). Normally that Credential is a remote or AD user with "Local logon" unchecked. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open *Manage Credentials* in order to add or edit Credentials. This Credential is used to access the destination directory.
  
 **Destination folder**
 
-Specify a absolute path to the directory you want to copy to.
+Specify an absolute path to the directory you want to copy to.
  
 :::info Note 1 
 
@@ -49,7 +49,7 @@ The folder path is not case-sensitive.
 
 :::info Note 3 
 
-To speed up copying it is recommended that you group the items that are using the same credential after each other. In this way, VisualCron does not need to switch between different (login) credentials.
+To speed up copying it is recommended that you group the items that are using the same Credential after each other. In this way, VisualCron does not need to switch between different (login) Credentials.
 
 :::
 
@@ -59,11 +59,11 @@ You can use a wild card to replace the original name. For example `*.pdf` keeps 
  
 **Post process mask with Variable**
 
-This property gives you more advanced ways to change the file name. We recommend that you use Destination file mask with value `*` when using this property. When checking this property the new name will be stored in a temporary variable `{NEWNAME()}`. You will be able to use this Variable for processing with other Variable functions. As an example we have provided the default value for this property: `{STRING(Replace|{NEWNAME()}|oldValue|newValue)}`. The example uses the String.Replace method from the Variables window. It uses the `{NEWNAME()}` as input Variable with options to set a value that you want to replace from original file name "oldValue" and the new value "newValue".
+This property gives you more advanced ways to change the file name. This option works best with *Destination file name mask* set to `"*"`. When checking this property the new name will be stored in a temporary Variable `{NEWNAME()}`. You will be able to use this Variable for processing with other Variable functions. The default value of this field is `"{STRING(Replace|{NEWNAME()}|oldValue|newValue)}"`, which uses the String.Replace function from the Variables window. It uses the `{NEWNAME()}` as input Variable with options to set a value that you want to replace from original file name "oldValue" and the new value "newValue".
  
 **Overwrite if existing**
 
-When this setting is checked, all matching files in the destination folder (older or never) will be replaced by the source files.
+When this setting is checked, all matching files in the destination folder (older or newer) will be replaced by the source files.
  
 **Overwrite if source file is newer**
 
@@ -75,11 +75,21 @@ When this setting is checked no files are overwritten if they exist.
  
 **Delete source file after copy**
 
-When this setting is checked, the source file (not the folder) will be deleted after a successful copy. Thus, the source file will be deleted even though it wasn't copied due to the settings of *Overwrite if existing* (if it was already existing) and *Overwrite if source file is newer* (if the source file was older than the destination).
+When this option is selected, a source file is removed only after it has been copied successfully. If
+the file does not exist in the destination folder, it is moved there. If it exists, the result depends
+on the overwrite option:
+
+| Overwrite option | Source file |
+|---|---|
+| *Overwrite if existing* (default) | Copied over the destination file, then deleted. |
+| *Overwrite if source file is newer* | Deleted only if it was newer and was copied. Otherwise both files are kept. |
+| *Don't overwrite if existing* | Kept. The destination file is not changed. |
+
+A source file that is not copied is never deleted.
 
 **Delete source empty sub folders**
 
-When checked, any empty sub folders left in the source after copying are deleted. Only active when *Delete source file after copy* is checked.
+When checked, any empty sub folders left in the source after copying are deleted. Only active when *Delete source file after copy* is checked. When the source is a single folder, that folder itself is not deleted.
 
 **Create empty sub folders**
 
@@ -93,13 +103,11 @@ When checked, sub folders that exist in the source but contain no matching files
  
 **Log copy result to output**
 
-When this setting is checked, the result, source and destination file is added to the Task output. All files that are copied is added to the output.
- 
-The output has the following format: Source file path TAB -> TAB Destination file path TAB OK/FAILED
- 
-Both OK and FAILED files are added to the Task output. To the Task std. error only the failed items are added.
- 
-This setting is not default as it adds some extra information to send between the server and the client. Use this option only if you have a high speed connection, connecting locally or have a small amount of files.
+Selected by default. The destination path of each copied file is written to the Task's standard output,
+one path per line. When a copy error is raised under the Task's **_On error_** settings, the file is written to standard
+error with its source path, destination path and the error message. The list is also shown in a Client
+that is watching the Task's output as it runs; when the Task copies many files over a slow connection,
+you can clear this option.
  
 ### Troubleshooting
 
