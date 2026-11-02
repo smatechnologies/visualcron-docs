@@ -158,7 +158,7 @@ When a Credential is used to reach a network resource, address the resource with
  
 ### Execution and impersonation options
 
-Two additional groups of settings appear in the window when *Extended debugging* is enabled for the Server, under Server settings > Log.
+Two additional groups of settings appear in the window when *Extended debug logging* is selected on the **_Log settings_** tab of the Server settings.
 
 ![](../../../static/img/manage_credentials_edit_extended_debugging.png)
 

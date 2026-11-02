@@ -7,37 +7,37 @@ hide_title: 'true'
 
 Executes a method with parameters on an unmanaged dll.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Unmanaged%20dll%20Call.png)
+![Add Task window, Unmanaged dll call tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Unmanaged%20dll%20Call.png)
 
 **Credentials**
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
+The function call runs as the user of the selected [Credential](global-credentials). Select a Credential in the combo box, or click the *Settings* icon to open *Manage credentials* and add or edit one. With *No Credential*, the Task runs as the account the VisualCron service runs under. This applies with *Load user profile* selected on the Credential (the default); without it, the Credential is used only for network access (see [Local login and Load user profile](global-credentials#local-login-and-load-user-profile)).
  
 **Select dll/exe file**
 
-This is the full path to the assembly file. If you move this Task to another place you need to move the assembly file as well. The file selection button open the explorer to select the file.
+The full path to the native DLL. If you move this Task to another Server, move the DLL as well. The browse button opens a file browser.
  
-**Force 32-bit execution**
+**Force 32 bit execution**
 
-Check this if you want your dll to execute in 32 bit mode. Otherwise it will be default of the system (most likely 64 bit).
+Select for a 32-bit DLL; a 64-bit process cannot load it. Applies on a 64-bit operating system.
  
 **Function name**
 
-Type the name of a public function.
+The exact name of a function the DLL exports.
  
 **Return type**
 
-Select return type of the method.
+Select the return type of the function. The default is *Int32*.
  
 **Calling convention**
 
 Set the calling convention used to invoke the function. Options are:
 
-* *Cdecl* — C-style convention; the caller cleans up the stack. Required for variadic (variable-argument) functions.
-* *FastCall* — passes the first arguments in registers; rarely needed outside low-level or compiler-generated code.
-* *StdCall* — the callee cleans up the stack. Standard for most Win32 API functions (default).
-* *ThisCall* — passes the `this` pointer in the ECX register; used for non-static C++ member functions.
-* *Winapi* — maps to the platform-default convention (StdCall on x86/x64 Windows).
+* *Cdecl* — C-style convention; the caller cleans up the stack. Required for variadic (variable-argument) functions
+* *FastCall* — not supported by .NET interop; do not use it
+* *StdCall* — the callee cleans up the stack. Standard for most Win32 API functions (default)
+* *ThisCall* — for non-static C++ member functions; the object pointer would have to be the first parameter, and parameters have no pointer type, so this is rarely usable
+* *Winapi* — maps to the platform-default convention (StdCall on x86/x64 Windows)
  
 **Output format**
 
@@ -48,4 +48,4 @@ Select how the function's return value is serialized:
  
 **Parameters**
 
-Lists the parameters of the selected function. Double-click a row to edit its value. Right-click the grid to access Add, Edit, and Delete options.
+Add each parameter the function takes: right-click the grid and select *Add*. Parameters are passed in grid order. Double-click a row to edit its value. String parameters are passed as ANSI strings.
