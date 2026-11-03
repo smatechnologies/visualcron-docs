@@ -812,13 +812,8 @@
       "mdFile": "docs/client-user-interface/server/job-tasks-folder-filter.md",
       "label": "Folder Filter"
     },
-    "client-user-interface/server/job-tasks-task-main-settings-overview": {
-      "chmFile": "task_-_main_settings.htm",
-      "mdFile": "docs/client-user-interface/server/job-tasks-task-main-settings-overview.md",
-      "label": "Task - Main Settings"
-    },
     "client-user-interface/server/job-tasks-task-main-settings": {
-      "chmFile": "execution_context.htm",
+      "chmFile": "task_-_main_settings.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks-task-main-settings.md",
       "label": "Task - Main Settings",
       "helpKeywordSources": [
@@ -3699,11 +3694,6 @@
       "helpKeywordSources": [
         "frmEditTaskEC.Designer.vb"
       ]
-    },
-    "client-user-interface/server/task-conditions-overview": {
-      "chmFile": "task_-_conditions.htm",
-      "mdFile": "docs/client-user-interface/server/task-conditions-overview.md",
-      "label": "Task - Conditions"
     },
     "client-user-interface/server/task-conditions": {
       "chmFile": "the_condition_set_window.htm",

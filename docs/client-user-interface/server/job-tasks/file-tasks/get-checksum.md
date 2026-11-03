@@ -7,12 +7,12 @@ hide_title: 'true'
 
 The File - Get checksum generates a hash (checksum) value for a file and outputs it to standard output. While CRC (Cyclical Redundancy Checking) is the default algorithm, this Task also supports MD5 and several SHA (Secure Hash Algorithm) variants.
  
-**Get checksum > File filter > Location **sub tab
+**Get checksum > File filter > Location** sub tab
 The standard VisualCron [File filter](../../../server/job-tasks-file-filter) is used to specify one or more files you want to retrieve the checksum for.
  
 **Get Checksum > Output settings** sub tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Get%20Checksum.png)
+![Add Task dialog for the Get checksum Task, Output settings sub tab, with the Checksum algorithm list open](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Get%20Checksum.png)
 
 **Checksum algorithm**
 

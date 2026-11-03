@@ -15,7 +15,7 @@ The List file(s) Task uses the standard VisualCron [File filter](../../../server
  
 **List file(s) > Output settings** sub tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/List%20file(s).png)
+![Add Task dialog for the List file(s) Task, Output settings sub tab](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/List%20file(s).png)
 
 **Full path to file**
 
