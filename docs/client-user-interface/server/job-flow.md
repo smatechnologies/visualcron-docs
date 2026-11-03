@@ -88,6 +88,8 @@ Stops the Job immediately. No further Tasks will be run.
 **Wait and retry**
 
 Waits a specified time and then try to run the Job again. You can choose how many times VisualCron will try to do this before stopping the Job completely.
+
+While the Job waits to retry, resetting the Job's status or stopping the Job cancels the retry. If you edit and save the Job during the wait, the retry uses the saved Job, and it does not run if you removed the Wait and retry flow or changed its event or action. If the Job is deleted during the wait, the retry does not run. A wait time below zero is logged as an error, and the Job is not retried.
  
 **Run Job**
 
