@@ -178,6 +178,15 @@ The dropdown selects which underlying Windows mechanism is used when starting a 
 
 Changing this also sets a matching logon type. *Use Win32 API CreateProcessWithLogonW* sets the logon type to LOGON32_LOGON_NEW_CREDENTIALS and *Use Win32 API CreateProcessAsUserW* sets it to LOGON32_LOGON_BATCH. *Use managed API* leaves the logon type as it is.
 
+With *Use Win32 API CreateProcessAsUserW*, the Credential's account needs the **Log on as a batch job** right on the VisualCron server, unless you override the logon type. If the logon fails, the Task fails with the Windows error code and message, and VisualCron does not start the Task's program. For example, error 1385 means the account has not been granted the logon type.
+
+To grant the right, complete the following steps:
+
+1. Open **Local Security Policy** (`secpol.msc`) on the VisualCron server.
+2. Go to **Local Policies** > **User Rights Assignment**.
+3. Open **Log on as a batch job**.
+4. Add the Credential's account and select **OK**.
+
 **Reset to default** restores every option in both groups to the values listed further down.
 
 **Impersonation options**
