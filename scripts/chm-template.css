@@ -134,3 +134,42 @@ hr {
   padding: 10px 14px;
   margin: 12px 0;
 }
+
+.tip {
+  background: #e8f5e9;
+  border-left: 4px solid #4caf50;
+  padding: 10px 14px;
+  margin: 12px 0;
+}
+
+.info {
+  background: #e0f7fa;
+  border-left: 4px solid #00acc1;
+  padding: 10px 14px;
+  margin: 12px 0;
+}
+
+.caution {
+  background: #fff3e0;
+  border-left: 4px solid #ff9800;
+  padding: 10px 14px;
+  margin: 12px 0;
+}
+
+.danger {
+  background: #ffebee;
+  border-left: 4px solid #e53935;
+  padding: 10px 14px;
+  margin: 12px 0;
+}
+
+.admonition p {
+  margin: 6px 0;
+}
+
+.admonition .admonition-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 0;
+}
