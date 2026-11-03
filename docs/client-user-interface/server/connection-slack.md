@@ -115,3 +115,14 @@ Make sure the following oauth scopes are setup:
 * chat:write
 * chat:write.public
 * incoming-webhook
+
+*"Error retrieving data" when refreshing the User list*
+
+In the [Slack - Send message Task](../../client-user-interface/server/job-tasks/messaging-tasks/slack-send-message), selecting **To user** and clicking the refresh button on the **To user** row needs the `im:read` OAuth scope. Connections that were authenticated before this scope was added do not have it, and Slack refuses the request. To fix it:
+
+1. Open **Manage Connections** and edit the Slack connection.
+2. Go to the **Connection settings** tab.
+3. Click *Authenticate*, sign in to Slack, and approve the permissions VisualCron asks for.
+4. Click OK to save, then refresh the user list again.
+
+The task also loads its lists when you open it, and that automatic load shows no error. If the User list is empty after you open the task, click the refresh button to see the message.

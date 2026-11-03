@@ -5,6 +5,20 @@ hide_title: 'true'
 
 ## Change Log
 
+### Unreleased
+
+#### Notes
+
+:memo: Client/Server: Slack Send Message now posts every message under the Slack app's own name. The Send as user box is removed, and a Send as user name saved on an existing To channel task is no longer sent. Opening and saving such a task clears the old value (VCPCM-4073).
+
+:memo: Client: Slack Send Message in To user mode needs the `im:read` scope to load the user list. Slack connections authorized before this release need to run Authenticate again (VCPCM-4073).
+
+
+#### Bug Fixes
+
+:white_check_mark: Client/Server: Slack Send Message To User Mode No Longer Requires a Channel and Now Checks the User Field (VCPCM-4073)
+
+
 ### 13.4.2 [2026-09-12]
 
 #### Features
