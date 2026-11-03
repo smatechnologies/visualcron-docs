@@ -169,6 +169,7 @@ module.exports = {
                 'client-user-interface/server/settings-folders',
                 'client-user-interface/server/settings-web-api',
                 'client-user-interface/server/settings-web-client',
+                'client-user-interface/server/settings-password-rules',
               ],
             },
             {
@@ -1003,11 +1004,11 @@ module.exports = {
                   'client-user-interface/server/job-flow',
                   'client-user-interface/server/job-result',
                   'client-user-interface/server/job-agent-distribution',
-                  'client-user-interface/server/roi-return-on-investment',
                 ],
               },
               'client-user-interface/server/jobs-failed-jobs',
               'client-user-interface/server/jobs-running-jobs',
+              'client-user-interface/server/roi-return-on-investment',
               'client-user-interface/server/global-certificates',
               {
                 type: 'category',
