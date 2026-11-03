@@ -5,64 +5,78 @@ hide_title: 'true'
 
 ## Time Triggers
 
-For Time trigger select one of _Interval_ or _Custom_ types.
- 
-**Job > Triggers > Add > Time trigger > Interval/Custom**
+A Time Trigger starts a Job on a schedule. This page describes the Time Trigger window. On the ***Settings*** tab you describe the Trigger and choose its type. The ***Interval***, ***Custom*** and ***Expire*** tabs each have their own page.
 
-**Settings tab**
+To open the window, go to the Job's ***Triggers*** tab and click _Add_ -> _Time Trigger_ -> _Interval_ or _Add_ -> _Time Trigger_ -> _Custom_. The _Add_ menu is on the toolbar and on the shortcut menu of the Trigger list (right-click the list). The item you click preselects the Time trigger type.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Time%20Triggers/Interval%20Time%20Trigger%20Settings.png)
+### Settings tab
 
-The Settings tab contains the **Main settings** group with the following fields:
+![Time Trigger window, Settings tab: the Main settings group with an empty Description box, Auto description and Auto refresh description checked, and Time trigger type set to Interval time trigger. The Custom tab is unavailable and the status bar shows Next run.](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Time%20Triggers/Interval%20Time%20Trigger%20Settings.png)
+
+The ***Settings*** tab contains the _Main settings_ group with the following fields:
 
 **Description**
 
-Enter a description that distinguishes the Trigger from others in the trigger list.
+Enter a description that distinguishes the Trigger from others in the Trigger list. With the default settings, VisualCron replaces what you type here when you click _Ok_. To keep your own text, clear _Auto refresh description_.
 
 **Auto description**
 
-When checked, the _Description_ field is generated automatically from the Trigger type and its current settings. Enabled by default.
+When checked, VisualCron fills _Description_ from the Trigger's settings when you click _Ok_, if _Description_ is empty. Checked by default.
 
 **Auto refresh description**
 
-When checked, the auto‑generated description is refreshed whenever the Trigger settings change, even if the _Description_ field already contains text. Only effective when _Auto description_ is checked.
+When checked, VisualCron regenerates the description every time you click _Ok_ and replaces any text in _Description_. Available only when _Auto description_ is checked. Checked by default.
 
 **Time trigger type**
 
-A pair of mutually exclusive radio buttons that select which type of time schedule is applied:
+Two options select the type of schedule:
 
-* **Interval time trigger** — use the schedule configured on the [Interval Time Trigger](interval-time-trigger) tab (default)
-* **Custom time trigger** — use the schedule configured on the [Custom Time Trigger](custom-time-trigger) tab
+* _Interval time trigger_ (default): use the schedule on the ***Interval*** tab. See [Interval Time Triggers](interval-time-trigger).
+* _Custom time trigger_: use the schedule on the ***Custom*** tab. See [Custom Time Triggers](custom-time-trigger).
 
-Only the selected type is used. Switching between them does not discard the settings on the other tab, so a schedule can be built on both tabs and swapped between while testing.
+Only the selected type's tab is available. Selecting _Interval time trigger_ makes the ***Custom*** tab unavailable, and selecting _Custom time trigger_ makes the ***Interval*** tab unavailable. While the window is open, you can switch between the types without losing what you entered on either tab. When you click _Ok_, only the selected type's schedule is used, and it is what you see when you reopen the Trigger. Settings you entered on the other tab are not kept.
 
-**Choosing between Interval and Custom**
+### Choosing between Interval and Custom
 
-Both types use the same underlying scheduling engine, and the Interval type is a simplified front end to it.
+Interval and Custom are two different ways to describe a schedule. Neither type can express everything the other can.
 
-* Use **Interval** for a schedule that repeats on one unit, such as every 15 minutes, every other hour, weekdays only, or the last working day of the month
-* Use **Custom** when different time units need different rules at the same time, for example "every 30 minutes, but only between 08:00 and 18:00, and only Monday to Friday". That combination cannot be expressed with a single interval
+* An _Interval time trigger_ counts from a start time. It runs every N days, hours, minutes or seconds, on chosen days of the week (every week, or every N weeks for a single day), or on chosen days of the month every N months. The days of the month can include the last day, a numbered weekday (for example, the second Tuesday) and a numbered workday. Use it for "every 3 days", "every 15 minutes" or "the second Tuesday of the month". See [Interval Time Triggers](interval-time-trigger) for the settings that need care.
+* A _Custom time trigger_ matches calendar values. The Job runs at every moment whose year, month, day, hour, minute and second all match your choices. Use it to limit a schedule to certain hours or weekdays, for example "every 30 minutes from 08:00 to 17:30, Monday to Friday". An Interval time trigger cannot express that combination.
 
-:::note
+### Interval tab
 
-A Time Trigger fires on the Server's clock, not the clock of the machine running the Client. The _Next run_ value shown at the bottom of the Job window is always calculated using Server time.
+![Time Trigger window, Interval tab: Interval set to Daily, Every set to 1 Day(s), and a Start time date and time at the bottom. The Custom tab is unavailable and the status bar shows Next run.](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Time%20Triggers/Interval%20Time%20Trigger.png)
 
-:::
- 
-**Interval tab**
+Sets a schedule that is counted from a start time. Available when _Interval time trigger_ is selected. See [Interval Time Triggers](interval-time-trigger).
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Time%20Triggers/Interval%20Time%20Trigger.png)
+### Custom tab
 
-This time trigger is a simplified Custom time trigger. Different Interval options are available.
- 
-**Custom tab**
+![Time Trigger window, Custom tab, Year sub-tab: Every year selected. The Choose year(s) list of twenty years, all checked, its Deselect all button and the Between years lists are unavailable. The Interval tab is unavailable.](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Time%20Triggers/Custom%20Time%20Trigger.png)
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Time%20Triggers/Custom%20Time%20Trigger.png)
+Sets a schedule by matching year, month, day, hour, minute and second values. Available when _Custom time trigger_ is selected. See [Custom Time Triggers](custom-time-trigger).
 
-The Custom time trigger also allows setting of time details when a Job should be triggered.
- 
-**Expire tab**
+### Expire tab
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Time%20Triggers/Time%20Trigger%20Expire.png)
+![Time Trigger window, Expire tab: the Time expiration group with Use trigger expiration cleared, and the Expiration date and time, Deactivate trigger (selected) and Delete trigger unavailable.](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Time%20Triggers/Time%20Trigger%20Expire.png)
 
-The expiration date/time for the time trigger may be set. Also the handling (Deactivate/Delete trigger) of the expired trigger is selected.
+Check _Use trigger expiration_ to set an _Expiration_ date and time. Then choose what happens to the Trigger at that moment: _Deactivate trigger_ (default) or _Delete trigger_. Before you turn expiration on, read the warning about the default date on [Time Trigger - Expiration](time-trigger-expiration).
+
+### Next run
+
+The status bar at the bottom of the Time Trigger window shows _Next run_ for this Trigger. It updates automatically as you change the settings and is calculated in Server time. The status bar of the Job window also shows a _Next run_ value: that one is for the Job as a whole, based on its active Time Triggers.
+
+_Next run_ is a preview. The Trigger takes effect after you click _Ok_ in the Time Trigger window and then _Ok_ in the Job window.
+
+_Next run_ can show:
+
+* A date and time: the next run that matches the current settings
+* "Never": the settings do not produce a run (a Custom Time Trigger looks no more than 20 years ahead)
+* "Server off": the Server is turned off, so it does not run schedules or activate Triggers
+
+### Server time and missed runs
+
+Time Triggers use the Server's local time and time zone. A Trigger has no time zone setting, and the times you enter in the Time Trigger window are Server times.
+
+If the VisualCron service was stopped when a Job was due, the Job runs once when the service starts. This happens only if the Job is active, _Run missed Job once at start_ is checked on the Job's ***Main settings*** tab, and the Server is not turned off. See [Job - Main Settings](job-main-settings). The missed run starts the Job directly: it does not wait for a [Trigger dependency](job-triggers#how-a-trigger-dependency-works).
+
+Time exceptions are applied when a run is due, not in _Next run_. _Next run_ can show a time that falls inside one of the Job's time exceptions, and that run is skipped. A missed run at start that falls inside a time exception is skipped too. See [Job - Time Exceptions](job-time-exceptions).

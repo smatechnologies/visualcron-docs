@@ -5,38 +5,38 @@ hide_title: 'true'
 
 ## Job - Flow
 
-The Flow can be set both at Job and Task level, for Task level see [Task - Flow](task-flow) for more information.
+The Flow can be set both at Job and Task level. Job flows react to the Job as a whole; to react to one Task's result, use [Task - Flow](task-flow).
  
 ### History
 
-"Flow" was introduced from VisualCron version 7.0.0. Basically we took parts from **On error** handling, added specific **Condition** handling and then merged handling of Notifications in it. The goal was to make it easier to control flow of Job and Tasks and adding more basic Condition functionality.
+Flow was introduced in version 7.0.1. It combines the earlier **On error** handling, basic **Condition** handling and Notifications, to control what happens at each stage of a Job or Task.
  
 ### Job Flow
 
 Job Flow has its own tab in the Job window. Job Flow adds controls what happens at different events:
-* Job start
-* Job complete
-* Job fails
-* Job success
-* Job runs longer than
+* *On start*
+* *On error*
+* *On success*
+* *On complete*
+* *On running longer than*
  
-For example, upon failure you can choose to wait a couple of seconds and the retry the Job. Another thing you can do is to send you a Notification when the Job has failed. Besides the event you can add a condition that needs to be matched before continuing with the action in the flow.
+For example, upon failure you can choose to wait a couple of seconds and then retry the Job. Another thing you can do is to send you a Notification when the Job has failed. Besides the event you can add a condition that needs to be matched before continuing with the action in the flow.
  
 **Add/Edit Job > Flow** tab
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Job%20Flow.png)
+![Job Flow window opened with Add on the Job's Flow tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Job%20Flow.png)
 
-The list of "flows" are shown in the **Flow** tab. You can see the event, in this case "On error" and the action "Wait and retry Job". You can Add, Edit, Clone and Delete Flows in this tab.
+The list of flows is shown on the **_Flow_** tab, with each flow's event, condition and action. Use *Add*, *Edit*, *Clone* and *Delete* to manage the flows.
  
-If a new default flow is also desired for a previously defined Job, you need to click the _Get default flows_ icon for each Job flow you want the default flow for. For more information about Default flows, see [Server > Settings > Default flows](settings-default-flows).
+New Jobs created in the *Add Job* window get the [default flows](settings-default-flows) automatically. For other Jobs, click *Get default flows* to add all default Job flows; a default flow the Job already has is replaced by the current default, so changes you made to it are lost.
  
 **Add/Edit Job > Flow > Add/Edit** window
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Edit%20Job%20Flow.png)
+![Job Flow window with the Job Condition and Job flow control groups](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Edit%20Job%20Flow.png)
 
-The Job Flow window are divided in two parts:
+The Job Flow window is divided in two parts:
 * Job Condition
-* Job flow control  /action
+* Job flow control
  
 ### Job Condition
 
@@ -44,7 +44,7 @@ The Job Condition controls when and with what conditions the flow should be star
  
 **Event type**
 
-* On start - performs the action at start (before Job is running)
+* On start - performs the action after the Job's Conditions are met, before the first Task runs
 * On error - performs the action when the Job has failed
 * On success - performs the action when the Job returns success result
 * On complete - performs the action when the Job completes - regardless of result
@@ -52,14 +52,20 @@ The Job Condition controls when and with what conditions the flow should be star
  
 **On running longer than**
 
-This option lets you control what happens if the Job run longer than a specified time. Click on the Edit timeout button to specify the time.
+This option lets you control what happens if the Job runs longer than a specified time. Click *Edit timeout* to open the *Timeout* window and enter *Hours*, *Minutes* and *Seconds*; each can be a Variable. *Validate Variables when saving* checks that each value is a whole number. A time entered as numbers cannot be 0.
  
 **Event condition**
 
-Event conditions contains some basic conditions that are optionally evaluated when the event type is matched. If you do not want to use any conditions you set it to the "Always" which means that the flow will continue whenever the event has been raised.
+Event conditions contain some basic conditions that are optionally evaluated when the event type is matched. If you do not want to use any conditions you set it to the "Always" which means that the flow will continue whenever the event has been raised.
 * Always - will continue without evaluating any condition
-* If other value/Variable - matches any two values - could be two Variables or a mix. Click the Variables icon to open the Variables list.
-* If exit code - matches a value with the exit code of the Job
+* If other value - matches any two values, which can be Variables or a mix; click the Variables icon to open the Variables list
+* If exit code - matches a value with the exit code of the last Task that finished in the Job (for *Run Notification* on *On running longer than*, the Task that is running)
+
+:::warning
+
+This is a Task's exit code, not the Job's result. To act on one Task's exit code, add the flow to that Task ([Task - Flow](task-flow)).
+
+:::
 
 The *If exit code* condition is not available for the *On start* event, since no exit code exists yet at that point.
  
@@ -83,11 +89,11 @@ The flow control group controls what happens when the Job Condition has been mat
 
 **Stop Job**
 
-Stops the Job immediately. No further Tasks will be run.
+Available only with *On running longer than*. Stops the running Tasks and the Job. The Job ends as failed, with the exit code of a failed Task (which can be the Task that was stopped) or 77777, and its *On error* and *On complete* flows then run. The Job stays active, so its Triggers start it again as usual.
  
-**Wait and retry**
+**Wait ... and retry Job**
 
-Waits a specified time and then try to run the Job again. You can choose how many times VisualCron will try to do this before stopping the Job completely.
+Waits the time you set and then runs the Job again, up to the number of times you set. Each retry is a new run, with its own result. Used with *On success* or *On complete*, it runs a Job that succeeded again.
  
 **Run Job**
 
@@ -95,8 +101,14 @@ Runs another Job. Check *Run asynchronous* to start the other Job without waitin
  
 **Run Notification**
 
-Runs the specified Notification (this replaces previous Notifications).  Click the Settings icon to populate the drop-down list of existing Notifications.
+Runs the specified Notification. Select it in the list; the *Settings* icon opens the *Manage Notifications* window.
  
 **Deactivate Job**
 
-Deactivates the current Job. This option is not available for the *On start* event.
+Select to also deactivate the Job after the selected action. With *Wait* ... *and retry Job*, the Job is deactivated only when the retries are used up. It is not available for the *On start* event. See [Activate/Deactivate Job](../server-group-job-task-area/job-list/activate-deactivate-job).
+
+:::warning
+
+*Deactivate Job* has no effect with *Stop Job*, although it can be selected. The Job stays active and runs again on its next Trigger.
+
+:::

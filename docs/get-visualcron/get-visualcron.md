@@ -5,10 +5,18 @@ hide_title: 'true'
 
 ## Get VisualCron
 
-To be sure to get the latest version, we encourage you to download VisualCron from this [web page](https://visualcron.com/download/).
+Download VisualCron from the [VisualCron download page](https://visualcron.com/download/). Sign in to your visualcron.com account first. The download options appear after you sign in.
 
-You can also download the latest version once you have signed into your account, 
+The download page offers:
 
-![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/Download%20Latest.png)
+- *Download Latest*: the setup program (.exe) for the latest version, for a normal installation
+- *Customize Latest*: the custom installation package (.zip) for the latest version, for silent and scripted installations
+- *Download Older Versions*: the setup program and the custom installation package for earlier versions
 
-The older supported versions of the client can be found towards the bottom of the page. If the version you are looking for is not listed, please reach out to support@visualcron.com
+![The VisualCron download page after sign-in, with Download Latest, Customize Latest and the Download Older Versions table](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/Download%20Latest.png)
+
+If the version you need is not listed, contact support@visualcron.com.
+
+Use the setup program unless you need an unattended or scripted installation. The setup program runs the same MSI package for you, and it also starts VisualCron and handles an upgrade over an installed version.
+
+To install with the setup program, see [Download, Install, Upgrade, and Uninstall](download-install-upgrade-uninstall.md). To install with the MSI package from the custom installation package, see [Remote, Silent, and Customized Installation](remote-silent-customized-installation.md).

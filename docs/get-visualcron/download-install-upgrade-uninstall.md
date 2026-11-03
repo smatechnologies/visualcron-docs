@@ -5,103 +5,261 @@ hide_title: 'true'
 
 ## Download, Install, Upgrade, and Uninstall
 
-**Download**
+This page explains how to install VisualCron with the setup program, what to do right after you install, what happens when you upgrade, and how to uninstall. For silent and scripted installations with the MSI package, see [Remote, Silent, and Customized Installation](remote-silent-customized-installation).
 
-VisualCron utilizes functions and features in the .NET Framework 4.8. The .NET runtime, typically Version 4.8 Redistributable Package, can be downloaded from [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48).
- 
-Download the latest VisualCron version from [VisualCron](https://visualcron.com/download/). Download older versions [here](https://visualcron.com/download/).
- 
-To create "silent package" (non exe package) follow these steps:
- 
-1. download old version [here](https://visualcron.com/download/)
-2. install 7-Zip File Manager
-3. right click on exe and choose extract to folder
- 
-**Backup**
+### Before you start
 
-Always make a backup of existing settings to a safe location before upgrading. This way you can rollback to any previous version if needed. You backup existing settings by connecting with Client to Server. Choose **File > Import/Export > Export settings** tab.
- 
-**Install/Upgrade**
+You need:
 
-The below steps cover how to install VisualCron. Please note that the installer uninstalls the current installation. No manual uninstall needed first.
- 
-1.Double click on the VisualCron.exe install executable and the below window will appear. This is the pre-installer that is preparing installation files for the msi package - for example, stopping existing applications and uninstalling VisualCron.
+- A local administrator account on the computer
+- .NET Framework 4.8, available from [Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)
+- The setup program, `VisualCron<version>.exe`, from the download page (see [Get VisualCron](get-visualcron.md))
 
-![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/1.png)
+If .NET Framework 4.8 is missing, the setup program offers to open the Microsoft download page.
 
-2. When the pre-installer is complete it starts the msi-package
+For the full requirements, see [Requirements](../requirements).
 
-![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/2.png)
+If VisualCron is already installed, back up your settings first, as described in the next section.
 
-3. Select I Agree in the License Agreement page and click Next
+### Back up the settings
 
-![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/3.png)
+Before you upgrade, export the Server settings to a file outside the VisualCron installation folder. For the steps, see [Back up before you upgrade](upgrading%20versions#back-up-before-you-upgrade). To go back to the previous version later, see [Return to the previous version](upgrading%20versions#return-to-the-previous-version).
 
-4. The VisualCron installation executable contains installation files both for the VisualCron Client and the Server. You may choose to install both by selecting the first item or just the Client by selecting the second item. When installing just the client the service for the Server will still be installed but "Disabled". If you later need to run the Server on this computer, you can change the service to "Automatic" in Control Panel > Administrative tools > Services > VisualCron and then mark and "Start" the service. Click Next to continue.
+### Install VisualCron
 
-![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/4.png)
+The setup program runs the VisualCron pre-installer, which prepares the computer and then starts the setup wizard. If VisualCron is already installed, the pre-installer first removes the installed version. [Upgrade VisualCron](#upgrade-visualcron) describes what that changes.
 
-5. Now it is time to choose the installation folder. If you have no objections of the suggested choice just leave it as it is. Click Next to continue.
+To install VisualCron, complete the following steps:
 
-![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/5.png)
+1. Double-click `VisualCron<version>.exe`.
 
-6. This window shows that VisualCron is ready to copy the files and perform the installation. Click *Next* to continue.
+   If Windows Defender SmartScreen shows a warning, see [Windows Defender SmartScreen](#windows-defender-smartscreen).
 
-![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/6.png)
+   The *VisualCron pre-installer* window opens and stops any running Tray Client and Client.
 
-7. The installation has been started and the progress bar shows the current status. Please be patient. The installation may take some minutes depending on the speed of your computer.
+   ![VisualCron pre-installer window listing its steps, with the first two checked](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/1.png)
 
-![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/7.png)
+2. On the welcome page of the setup wizard, click *Next*.
 
-8. The install is now finished. If you have a previous VisualCron installation, it will be uninstalled in the background. Click *Close* to continue. When you have closed the msi-installtion the pre-installer asks you if you want to start the VisualCron Client. Click Yes to start it.
+   ![Welcome page of the VisualCron Setup Wizard in front of the pre-installer window](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/2.png)
 
-![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/8.png)
+3. On the *License Agreement* page, select *I Agree*.
 
-9. The Client is starting. If you get a connection error at startup then wait 60 seconds and click Yes to reconnect. There is a lot of configuration and loading during startup which might affect first time startup time for the Server.
+   ![License Agreement page with I Agree selected](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/3.png)
 
-![](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/9.png)
+4. Click *Next*.
 
-**Firewall**
+5. Under *What do you want to install?*, select one of the following:
 
-If you have some kind of firewall activated, this application might require user interaction during installation and the initial start of VisualCron. A firewall should detect both that VisualCron is trying to act as a server and that VisualCron is trying to access internet. Normally, you shall respond with something like "allow all connections on all ports" for VisualCron initiated requests.
- 
-**Upgrade**
+   - *VisualCron Client and Server*: for the computer that runs your Jobs
+   - *VisualCron Client only*: for a computer that only connects to a Server elsewhere
 
-If you already have VisualCron installed, you will get an upgrade message when trying to install. This message informs about the current version and what version you are about to install. Click OK to this message to upgrade.
- 
-**Uninstall/Remove**
+   With *VisualCron Client only*, the VisualCron service is still installed, but disabled. To run the Server on that computer later, set the startup type of the VisualCron service to "Automatic" in Windows *Services*, and then start the service.
 
-VisualCron can be uninstalled by opening the Control Panel -> Add/Remove programs. Browse down to "VisualCron x.x.x", select and click on the Remove button. If you can't find the "VisualCron 5.x.x" entry in Add/Remove programs list, you may have to run the VisualCron installation program again which will open a window with a remove option.
- 
+   ![Setup page asking What do you want to install, with VisualCron Client and Server selected](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/4.png)
+
+6. Click *Next*.
+
+7. On the *Select Installation Folder* page, keep the folder in *Folder*, or enter another one.
+
+   The default is "C:\Program Files (x86)\VisualCron" on 64-bit Windows.
+
+   ![Select Installation Folder page with the default folder and Everyone selected](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/5.png)
+
+8. Keep *Everyone* selected.
+
+   With *Just me*, the Start menu shortcuts and the entry in the Windows list of installed apps are created only for the user who installs VisualCron.
+
+9. Click *Next*.
+
+10. On the *Confirm Installation* page, click *Next*.
+
+    ![Confirm Installation page of the setup wizard](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/6.png)
+
+    A page titled *Installing VisualCron*, followed by the version number, shows the progress. The installation can take a few minutes.
+
+    ![Installing page of the setup wizard with a progress bar](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/7.png)
+
+11. When the wizard reports that the installation is complete, click *Close*.
+
+    Unless you selected *VisualCron Client only*, the pre-installer starts the VisualCron service and the Tray Client. It then asks whether to start the Client.
+
+    ![Pre-installer with all steps checked, asking Do you want to start the Client](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/8.png)
+
+12. Click *Yes*.
+
+    The Client starts if *Start VisualCron Client after install* is selected in the pre-installer window, which is the default. If the Client shows "Do you want to try reconnecting?", wait a minute and click *Yes*. The Server can take a while to start the first time.
+
+    ![VisualCron Client splash screen in front of the pre-installer window](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/9.png)
+
+Before you do anything else, secure the "admin" user, as described in the next section.
+
+### After you install
+
+#### Secure the admin user
+
+:::warning
+
+A new Server has one user, "admin", with an empty password. Until you set a password, anyone who can connect to the Server can sign in as "admin", including users who are signed in to the Server computer itself. This applies however VisualCron was installed: with the setup program, with the MSI package, silently, or on a remote computer. The Server creates "admin" with an empty password again only when no users remain.
+
+:::
+
+Secure "admin" before you allow inbound TCP 16444 from other computers. Connect from a Client on the Server computer itself. After a remote or silent installation, connect from a Client on the Server computer, or from a computer on a network that the firewall already allows.
+
+To secure the admin user, complete the following steps:
+
+1. In the Client, connect to the Server as "admin" with an empty password.
+2. Go to _Server_ -> _Main settings_ -> _User permissions_.
+
+   The *Manage user permissions* window opens.
+
+3. On the ***Users*** tab, select "admin".
+4. Click *Edit*.
+
+   The *Add/Edit user* window opens.
+
+5. On the ***Credentials*** tab, enter a password in *Password*.
+6. Click *OK*.
+
+   The next sign-in as "admin" needs the password.
+
+7. Optional: after you create your own administrator user, delete "admin" with *Delete* on the ***Users*** tab.
+
+For the user settings, see [Main - User Permissions](../client-user-interface/server/main-user-permissions).
+
+#### Firewall
+
+The installer does not create a firewall rule. After you secure "admin", allow inbound TCP 16444 only from the computers that run a Client, as described in [Firewall and network](antivirus-exclusions#firewall-and-network).
+
+#### Tray Client and service start time
+
+Setup registers the Tray Client to start whenever a user signs in to Windows, for all users of the computer. See [VisualCron Tray Client](../using-visualcron/visualcron-tray-client).
+
+The setup program also lengthens the time that Windows waits for a service to start. The change takes effect after the next restart of Windows. The MSI package does not change it.
+
+### Upgrade VisualCron
+
+To upgrade, run the setup program of the new version on the computer. You do not need to uninstall first.
+
+To upgrade VisualCron, complete the following steps:
+
+1. Export your settings, as described in [Back up the settings](#back-up-the-settings).
+2. In Windows *Services*, check the startup type of the VisualCron service.
+
+   If it is "Disabled", the computer has *VisualCron Client only*.
+
+3. Double-click the new `VisualCron<version>.exe`.
+
+   The pre-installer shows a message that it will stop the VisualCron service and uninstall the current version, and that your settings will remain.
+
+4. Click *OK*.
+
+   The pre-installer stops the Tray Client, the Client and the VisualCron service, copies the Server settings files to a backup folder, and removes the installed version. The backup folder is named VisualCron followed by the date and time, in the Windows temporary folder of the user who runs the setup program. The *Open backup folder* link opens it.
+
+5. Complete the setup wizard as for a new installation. On the *What do you want to install?* page, select the same option as before.
+
+   The wizard proposes the current installation folder.
+
+6. If the *Run VisualCron Windows service as* window opens, complete these steps:
+
+   This window opens when the VisualCron service ran under a Windows account other than Local System. If you select *Run with the default LocalSystem account*, or close the window, the service runs as Local System.
+
+   1. In *Password*, enter the password of the account shown in *Username*.
+   2. Click *OK*.
+
+7. When the pre-installer asks whether to start the Client, click *Yes*.
+
+   The new version is installed, and your settings are kept.
+
+An upgrade keeps:
+
+- Your Server settings: Jobs, Tasks, connections, credentials, users and other objects
+- The installation folder
+- The logs
+
+An upgrade changes:
+
+- The startup type of the VisualCron service, which is set to "Automatic", and the service is started, unless you selected *VisualCron Client only*
+- The account that the service runs as, which is Local System unless you enter the previous account in step 6
+
+:::warning
+
+The setup program starts the VisualCron service as soon as the upgrade is done. On a computer where the service must not run, for example a passive failover cluster node where the cluster controls the service, upgrade with the MSI package instead, and run the sample script in [Upgrade silently](remote-silent-customized-installation#upgrade-silently) with `-NoStart`. Then set the startup type of the VisualCron service back to the value the cluster needs. On a computer with only the Client, select *VisualCron Client only* again; otherwise the service is enabled and started.
+
+:::
+
+### Uninstall VisualCron
+
+To uninstall VisualCron, use one of the following:
+
+- Windows *Settings* -> *Apps* -> *Installed apps*, or *Control Panel* -> *Programs and Features*: select `VisualCron <version>`, and then *Uninstall*
+- The Start menu: in the `VisualCron <major version>` folder, select *Uninstall VisualCron*
+- The MSI package of the installed version: run "VisualCron.msi" from the custom installation package of that same version, and select the option that starts with *Remove VisualCron*
+- A command line, for scripts: see [Uninstall silently](remote-silent-customized-installation#uninstall-silently)
+
+The MSI package of a different version cannot remove the installed version. Running the setup program (.exe) again does not offer to remove VisualCron: it uninstalls the installed version and installs again.
+
+If VisualCron was installed with *Just me*, only the user who installed it sees it in the list of installed apps.
+
+Uninstalling removes the files that the installer installed, the VisualCron service and the Tray Client autostart. It keeps:
+
+- The settings files in the settings folder, by default the settings subfolder of the installation folder
+- The log files, and the backup folder with any exported settings files
+- Files that VisualCron added to the installation folder while it ran, for example downloaded components and the Web Client folder
+- The output cache and the internal log database, by default in "C:\ProgramData\VisualCron\output"
+- The registry key "HKLM\Software\V-C", which tells the Server where its settings folder is
+
+If you install VisualCron again on the computer, the Server uses these settings again.
+
+:::warning
+
+The settings folder holds your users, Credentials and connection settings. When you take the computer out of service, delete the installation folder, "C:\ProgramData\VisualCron" and the registry key "HKLM\Software\V-C" after you uninstall.
+
+:::
+
 ### Installation troubleshooting
- 
-**MSI errors**
 
-1. Download  the silent package from the VisualCron download page.
-2. Extract it
-3. Open command prompt
-4. Write something like to log the installation file: msiexec /i "C:\MyPackage\Example.msi" /L*V "C:\log\example.log"
-5. Send the log file to support@visualcron.com
- 
-**Antivirus**
+#### Log an MSI installation
 
-For the full list of folders, processes, and ports to consider excluding on a VisualCron server, see [Antivirus and Endpoint Protection Exclusions](antivirus-exclusions). The two install time detections below are the ones most people hit first.
- 
-**Antivirus and problems with psexec.exe**
+If the installation fails with an MSI error, run the MSI package with logging and send the log to support.
 
-Your antivirus may block installation of a file called psexec.exe included in our package:
+:::note
 
-![](../../static/img/antiviruspsexec.png)
+If a different version of VisualCron is installed, `msiexec /i` stops with error 1638 and installs nothing. Uninstall VisualCron first. If the same version is installed, the MSI package opens with the options to repair or remove it instead.
 
-PsExec is a tool from Microsoft used for remote execution 
+:::
 
-[https://docs.microsoft.com/en-us/sysinternals/downloads/psexec](https://docs.microsoft.com/en-us/sysinternals/downloads/psexec). 
+To log an MSI installation, complete the following steps:
 
-We use it for optional remote VisualCron installation (from the Client). You can safely allow this file for installation.
- 
- 
-**Windows Defender SmartScreen**
+1. Download the custom installation package (.zip) for your version, as described in [Get VisualCron](get-visualcron.md).
+2. Extract the .zip file to a folder.
 
-Sometimes our application need to validate and gain reputation (when new version). Then you might get a popup like below when trying to install. As long as you see publisher "NetCart AB" the file is safe.
+   "VisualCron.msi" is in the version folder inside the extracted package.
 
-![](../../static/img/windowsdefendersmartscreen.png)
+3. Open Command Prompt as administrator.
+4. Run the following command, with your own folders:
+
+   ```cmd
+   msiexec /i "<version folder>\VisualCron.msi" /L*V "<log folder>\VisualCron-install.log"
+   ```
+
+5. Send the log file to support@visualcron.com.
+
+If the installation with the MSI package succeeds, it behaves like a silent installation: the VisualCron service is not started, it runs as Local System, and the "admin" user has no password. Complete the steps in [After a silent installation](remote-silent-customized-installation#after-a-silent-installation). You can also run the setup program again after you have the log.
+
+#### Antivirus
+
+For the folders, processes and ports to consider on a VisualCron Server, see [Antivirus and Endpoint Protection Exclusions](antivirus-exclusions).
+
+Some antivirus products flag PsExec. The Client writes PsExec to its installation folder only when you use *Install VisualCron*, *Upgrade VisualCron* or *Uninstall VisualCron* in _File_ -> _Servers_ -> _Manage Servers_. See [PsExec](antivirus-exclusions#psexec).
+
+![Antivirus event list with a PsExec detection](../../static/img/antiviruspsexec.png)
+
+#### Windows Defender SmartScreen
+
+A newly released VisualCron version may not yet have a reputation with Windows Defender SmartScreen, so Windows can show a warning when you start the setup program.
+
+- If the publisher shown is "NetCart AB", the setup program comes from VisualCron. Click *More info*, and then *Run anyway*
+- If any other publisher is shown, or no publisher, do not run the file. Download it again from the download page, or contact support@visualcron.com
+
+![Windows Defender SmartScreen warning for a VisualCron setup program, with Publisher NetCart AB](../../static/img/windowsdefendersmartscreen.png)

@@ -5,6 +5,6 @@ hide_title: 'true'
 
 ## Why Is the Installation File So Big?
 
-The installation package may be quite big if you download the package with the .NET Framework included. This is because the .NET Framework package is about 24 MB by itself.
- 
-The .NET Framework package is included in XP SP2 and can be found as a separate update at Windows Update.
+This page is about an earlier version of VisualCron. It does not apply to current versions. The VisualCron setup program does not include the .NET Framework: VisualCron requires .NET Framework 4.8, and if it is missing, the setup program offers to open the Microsoft download page.
+
+For the full requirements, see [Requirements](../requirements).

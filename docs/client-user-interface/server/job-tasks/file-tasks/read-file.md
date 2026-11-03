@@ -7,11 +7,11 @@ hide_title: 'true'
 
 The Read file Task reads a specified file for use in standard output. This output can later be used in other Tasks. For example, you can use this Task to read a file that contains a message, this message can later be used in the text field of the Email Task. The content/output can be reached from the Variables.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Read%20file.png)
+![Add Task dialog for the Read file Task](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Read%20file.png)
 
 **Credentials**
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
+To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open *Manage Credentials* in order to add or edit Credentials.
  
 **File path**
 

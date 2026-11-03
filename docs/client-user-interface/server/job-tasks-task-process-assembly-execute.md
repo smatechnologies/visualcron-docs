@@ -18,15 +18,15 @@ Select how the method's return value is serialized:
 * *ToString representation of output* — calls `.ToString()` on the return value (default). Arrays are comma-separated.
 * *XML representation of output* — serializes the return value as XML.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Assembly%20Execute.png)
+![Add Task window, Assembly execute tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Assembly%20Execute.png)
 
 **Credentials**
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
+The assembly runs as the user of the selected [Credential](global-credentials). Select a Credential in the combo box, or click the *Settings* icon to open *Manage credentials* and add or edit one. With *No Credential*, the Task runs as the account the VisualCron service runs under. This applies with *Load user profile* selected on the Credential (the default); without it, the Credential is used only for network access (see [Local login and Load user profile](global-credentials#local-login-and-load-user-profile)).
  
 **Select dll/exe file**
 
-This is the full path to the assembly file. If you move this Task to another place you need to move the assembly file as well. The file selection button open the explorer to select the file. The Refresh button reloads the class/method information.
+This is the full path to the assembly file. If you move this Task to another place you need to move the assembly file as well. The browse button opens a file browser. The Refresh button reloads the class/method information.
  
 **Execute in x86 mode**
 
@@ -34,11 +34,17 @@ Executes the assembly in a x86 process.
  
 **Local execution**
 
-Hosts the assembly in VisualCron instead of external process. Should only be used for simple assemblies without dependencies. Please note that you need to restart the VisualCron service to reload any assembly into memory with this option checked.
+Hosts the assembly in the VisualCron Server instead of a separate process. Use it only for simple assemblies without dependencies.
+
+:::warning
+
+With *Local execution*, the assembly runs inside the VisualCron Server as the account the service runs under; the Credential, *Execute in x86 mode* and *Load app.config if existing* are not used. A changed assembly is not reloaded until the VisualCron service restarts. A Task timeout, or stopping the Task, does not end a method that is running; it keeps running inside the VisualCron Server until it returns. Do not use *Local execution* for a method that can hang.
+
+:::
  
 **Load app.config if existing**
 
-Tries to load the app.config of your dll if it exists.
+Selected by default. Loads the `<assembly file name>.config` file next to the assembly, for example `MyLibrary.dll.config`.
  
 **Class**
 
@@ -46,7 +52,7 @@ This is the name of the Class.
  
 **Show only Public types**
 
-When selecting a file or clicking refresh class information is loaded from the assembly. By default, only public classes are loaded. If you want to load class with other modifiers/visibility you must uncheck this.
+Only public classes are listed. Clearing this option has no effect.
  
 **Method**
 
@@ -54,7 +60,7 @@ When you change the Class all methods within that Class will be populated into t
  
 **Show only Public methods**
 
-When selecting a file or clicking refresh method information is loaded from the assembly. By default, only public methods are loaded. If you want to load method with other modifiers/visibility you must uncheck this.
+Only public methods are listed. Clearing this option has no effect.
  
 **Return type**
 
@@ -62,10 +68,10 @@ This label shows the return type of the selected method. This is the type that w
 
 **Nesting level**
 
-Controls how many levels deep VisualCron reflects into complex types when loading class and method information. Default is 3. Increase this value if nested parameter types are not fully resolved; lower it if loading is slow for assemblies with deeply nested types.
+Controls how many levels deep VisualCron reflects into complex types when loading class and method information. Default is 3. Increase this value if nested parameter types are not fully resolved; lower it if loading is slow for assemblies with deeply nested types. The level is applied when you click *Refresh*; click it after changing the level or selecting a file.
  
 **Parameters**
 
 Double click on parameter rows to set values. Depending on the value type different input forms will be used.
 
-![](../../../static/img/clip0009.png)
+![Edit Array of System.String window for a parameter value](../../../static/img/clip0009.png)
