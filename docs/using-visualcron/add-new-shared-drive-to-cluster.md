@@ -3,37 +3,40 @@ sidebar_label: 'Add New Drive as Shared Drive to Cluster Nodes'
 hide_title: 'true'
 ---
 
-## Add New Drive as Shared Drive to Cluster Nodes
+## Prepare the VisualCron disk on the nodes
 
-At now on both nodes new iSCSI shared drive is unallocated and offline
+This is Part 2, step 2 of 8 in [Install and set up VisualCron on the failover cluster](install-and-setup-visualcron-on-failover-cluster). In this step every node picks up the disk from [Part 2, step 1](create-iscsi-drive-with-existing-target), and you create its volume on one node. Part 2, step 3 then adds the disk to the cluster.
 
-On both nodes you need to go to *iSCSI Initiator Properties*, to the *Volumes and Drives* tab.
+### Pick up the disk on every node
 
-And click to *Auto Configure* button. Current node will update information about shared drive.
+To pick up the disk on a node, complete the following steps:
 
-After that you need to close this window by pressing *OK* button.
- 
-When you are connected on the first machine, click **Start > WIndows Administrative tools > Computer Management > Disk Management**.
+1. Click *Start* -> *Windows Administrative Tools* -> *iSCSI Initiator*.
+2. On the ***Volumes and Devices*** tab, click *Auto Configure*.
+3. Click *OK*.
 
-Your disks appear as Unknown and Offline. They also display the size you configured on the SAN (eg: 10GB). You need to bring the disks online by *Right-clicking* the disk number  and selecting Online.
+Repeat this procedure on every node.
 
-Initialize the disks:
+### Create the volume on one node
 
-*Right-click* the disk number next to one of the new drives. Select Initialize disk.
+:::warning
 
-In the box that appears, ensure that your new disk have a tick mark next to them.
+Bring the disk online, initialize it and create its volume on one node only. Initializing writes a new partition table and erases the volume, including any VisualCron installation and settings on it. On the other nodes, leave the disk offline; the cluster brings it online on the node that owns it.
 
-Set as *MBR*.
+In Part 2, step 4, after the disk is in the cluster, each node installs VisualCron in turn to the same drive letter and folder on this disk. Keep the default settings folder, which is inside the installation folder.
 
-Click *OK*.
-Configure the new drive. Right-click on the drive.
+Assign the drive letter once, here. Choose a letter that is not in use on any node. After you add the disk to the cluster, the cluster keeps that drive letter on whichever node owns the disk.
 
-Select *Create New Simple Volume*. Leave the defaults in place. Choose a drive letter to assign.
+:::
 
-Label your drive f.ex. as *VisualCronStorage*
+To create the volume, complete the following steps on one node only:
 
-Click *Next*.
- 
-Once this is done for your first node, repeat these steps on your additional nodes. you must connect the iSCSI drives on both systems before they will be available for your cluster.
- 
-As the simple volume is now configured, you only need to *initialise* the disks on the other Nodes, *not recreate the Volume*. *Shared drive* should have the same *disk letters* on *both nodes*.
+1. Click *Start* -> *Windows Administrative Tools* -> *Computer Management*.
+2. Select *Storage* -> *Disk Management*.
+3. If the new disk is not listed, click *Action* -> *Rescan Disks*.
+4. Bring the disk online and initialize it, as in steps 3 to 7 of [Bring the disk online on the first node](connecting-to-iscsi-network-drives#bring-the-disk-online-on-the-first-node).
+5. Create its volume with the volume label "VisualCronStorage", as in [Create the volume on the first node](connecting-to-iscsi-network-drives#create-the-volume-on-the-first-node). The VisualCron disk has a volume and a drive letter.
+
+### Next step
+
+[Add the VisualCron disk to the cluster](add-shared-drive-to-cluster)
