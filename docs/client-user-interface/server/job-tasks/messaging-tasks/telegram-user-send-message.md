@@ -5,18 +5,28 @@ hide_title: 'true'
 
 ## Task Messaging - Telegram - User Send Message
 
-The Telegram - User Send Message Task sends a Telegram message from one of your user accounts to another Telegram user.
+The Telegram - User Send message Task sends a Telegram message from a Telegram user account to another Telegram user, using a Telegram Connection.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Telegram%20-%20user%20send%20message.png)
+![Telegram - User Send message tab, Message tab with the Connection, Phone number and Message fields](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Telegram%20-%20user%20send%20message.png)
 
-**Connection**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-Select an existing [Telegram Connection](../../../server/connection-telegram). The Connection holds the credentials for the user account that the message is sent from.
+### Telegram - User Send message: Message tab
 
-**Phone number**
+- _Connection_: the Telegram Connection of the user account that sends the message; see [Connection - Telegram](../../connection-telegram)
 
-The phone number of the recipient, including the country code (for example `+1888555222`).
+  Required. The Task uses the proxy set on the Connection.
 
-**Message**
+- _Phone number_: the phone number of the recipient
 
-The message text to send.
+  Enter it with the country code, as in `+<country code><phone number>`. The Task window does not check this value.
+
+- _Message_: the text to send
+
+  Required: the Task cannot be saved while it is empty.
+
+Variables are resolved in _Phone number_ and _Message_.
+
+### Output and errors
+
+The output of the Task is the response from Telegram. If the Connection cannot sign in, or Telegram rejects the message, the Task fails.

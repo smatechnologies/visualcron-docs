@@ -5,30 +5,40 @@ hide_title: 'true'
 
 ## Task Net - WebDAV - Copy Files
 
-The WebDAV - Copy/Move files lets you copy or move files that are located on one remote folder to another remote folder. Web-based Distributed Authoring and Versioning (WebDAV) is a set of methods based on the Hypertext Transfer Protocol (HTTP) that facilitates collaboration between users in editing and managing documents and files stored on World Wide Web servers.
+The WebDAV - Copy files Task copies or moves files and folders from one folder to another folder on the same WebDAV server.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/WebDAV%20-%20Copy%20Files.png)
+![WebDAV - Copy files Task settings, with the Connection group and the Copy settings group](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/WebDAV%20-%20Copy%20Files.png)
 
-**Connection**
+:::warning
 
-All WebDAV Tasks use connection settings from a Connection. In Connections you can create a new WebDAV connection with all other details like Proxy. In the combo box you select the Connection after creation.
+This Task uses a WebDAV Connection; see [Connection - WebDAV](../../connection-webdav). Any server certificate is accepted, so the Server cannot tell the real server from another server that answers at the same address. _Port_ is the local port, not the port of the server.
 
-**Source relative file/folder**
+A new WebDAV Connection has _Authentication type_ "Basic", which sends the user name and password in a form that anyone who can see the traffic can read, unless the address starts with "https://"; see [Connection - WebDAV](../../connection-webdav).
 
-The relative path (within the WebDAV server) to the source file or folder to copy or move. Use the folder browse button to select a folder, or the file browse button to populate the file/folder mask from a selected file.
- 
-**File/folder mask**
+:::
 
-Filters which files or folders to copy/move. Use the exact name or a wildcard pattern (e.g. `*` for all, `*.csv` for CSV files only). Default is `*`.
- 
-**Filter**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-Controls what type of items to copy/move. Options: Files (default), Folders, All.
+- _Connection_: the WebDAV Connection with the server address, sign-in and proxy settings
+- _Source relative file/folder_: the folder to copy from, relative to the address of the Connection
 
-**Destination relative file/folder**
+  Use the folder browse button to select a folder, or the file browse button to fill _File/folder mask_ from a file. Enter a folder: a path to a single file copies nothing, and the Task does not fail.
 
-The relative path (within the WebDAV server) to the destination file or folder. Use the folder browse button to select a destination folder.
+- _File/folder mask_: the items to copy, `*` by default
 
-**Delete (move)**
+  Enter an exact name, which is matched without regard to case, or a wildcard pattern such as `*` for all items or `*.csv` for CSV files. Only the items directly in the source folder are matched. A matching folder is copied with its contents.
 
-When checked, the source file or folder is deleted after a successful copy, effectively performing a move operation. Default is unchecked.
+- _Filter_: the type of items to copy: "Files" (default), "Folders" or "All"
+- _Destination relative file/folder_: the folder to copy to, relative to the address of the Connection
+
+  Each item keeps its name. Use the folder browse button to select the folder.
+
+- _Delete (move)_: when selected, each item is deleted from the source folder after it is copied, which moves it
+
+  Cleared by default.
+
+:::warning
+
+Items that already exist in the destination folder are overwritten, and the Task has no option to keep them. With _Delete (move)_, the source items are then deleted. To keep existing items, check for them in an earlier step.
+
+:::

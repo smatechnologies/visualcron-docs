@@ -5,54 +5,40 @@ hide_title: 'true'
 
 ## Connection - IIS
 
-The IIS Connection stores connect and logon properties for local or remote Internet Information Services (IIS) servers.
+The IIS Connection stores the account settings that these Tasks use when they manage Internet Information Services (IIS) on the VisualCron Server computer:
 
-The IIS Connection is used in the following Tasks:
+- [IIS - Add Website](job-tasks/iis-tasks/add-website)
+- [IIS - Add Application Pool](job-tasks/iis-tasks/add-application-pool)
+- [IIS - Add Website Application](job-tasks/iis-tasks/add-website-application)
+- [IIS - Add App Virtual Directory](job-tasks/iis-tasks/add-app-virtual-directory)
+- [IIS - Change Website State](job-tasks/iis-tasks/change-website-state)
+- [IIS - Change Application Pool State](job-tasks/iis-tasks/change-application-pool-state)
+- [IIS - Delete Website](job-tasks/iis-tasks/delete-website)
+- [IIS - Delete Application Pool](job-tasks/iis-tasks/delete-application-pool)
+- [IIS - Delete Website Application](job-tasks/iis-tasks/delete-website-application)
+- [IIS - Delete App Virtual Directory](job-tasks/iis-tasks/delete-app-virtual-directory)
+- [IIS - Is Application Pool Exists](job-tasks/iis-tasks/is-application-pool-exists)
 
-* [IIS - Add Website](../../client-user-interface/server/job-tasks/iis-tasks/add-website)
-* [IIS - Add Application Pool](../../client-user-interface/server/job-tasks/iis-tasks/add-application-pool)
-* [IIS - Add Website Application](../../client-user-interface/server/job-tasks/iis-tasks/add-website-application)
-* [IIS - Add App Virtual Directory](../../client-user-interface/server/job-tasks/iis-tasks/add-app-virtual-directory)
-* [IIS - Change Website State](../../client-user-interface/server/job-tasks/iis-tasks/change-website-state)
-* [IIS - Change Application Pool State](../../client-user-interface/server/job-tasks/iis-tasks/change-application-pool-state)
-* [IIS - Delete Website](../../client-user-interface/server/job-tasks/iis-tasks/delete-website)
-* [IIS - Delete Application Pool](../../client-user-interface/server/job-tasks/iis-tasks/delete-application-pool)
-* [IIS - Delete Website Application](../../client-user-interface/server/job-tasks/iis-tasks/delete-website-application)
-* [IIS - Delete App Virtual Directory](../../client-user-interface/server/job-tasks/iis-tasks/delete-app-virtual-directory)
-* [IIS - Is Application Pool Exists](../../client-user-interface/server/job-tasks/iis-tasks/is-application-pool-exists)
+:::warning
 
-**Manage Connections > Add > IIS > Common settings** tab
+The IIS Tasks manage the IIS on the VisualCron Server computer, whatever *Address* contains. A Connection with the address of another computer still changes the websites and application pools on the Server computer. To manage IIS on another computer, run the Tasks on a VisualCron Server installed on that computer.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/IIS/IIS.png)
+The Tasks make their changes to IIS as the account that the VisualCron Server service runs as, not as the _Username_ account; see [Main settings](#main-settings).
 
-**Name**
+:::
 
-The name of the Connection to uniquely identify it.
+### Common settings
 
-**Group**
+![IIS Connection, Common settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/IIS/IIS.png)
 
-The group that the connection is a part of.
+The ***Common settings*** tab is the same for every Connection type that has it; see [Common settings](global-connections#common-settings). IIS Connections have no *Test*, and the IIS Tasks do not use *Timeout* or *Code page*.
 
-**Timeout**
+### Main settings
 
-The connection timeout in seconds. Connection will fail after this time period.
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-**Code page**
+![IIS Connection, Main settings tab, with Address, Username and Password](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/IIS/Settings.png)
 
-Code page being used.
-
-**Manage Connections > Add > IIS > Connection settings** tab
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/IIS/Settings.png)
-
-**Address**
-
-The host name or IP address of the IIS server. Use *localhost* to manage the local IIS instance.
-
-**Username**
-
-The user name used to authenticate against the IIS server. Required when connecting to a remote IIS server.
-
-**Password**
-
-The password used to authenticate against the IIS server. Required when connecting to a remote IIS server.
+- _Address_: required, but the IIS Tasks do not use it. Enter "localhost"
+- _Username_: required. The Windows account that an IIS Task signs in with while it runs. Windows applies this account only to access over the network, so the changes to IIS on the Server computer are made as the account that the VisualCron Server service runs as. That service account must be allowed to manage IIS on the Server computer
+- _Password_: the password of the _Username_ account

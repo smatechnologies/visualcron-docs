@@ -5,30 +5,42 @@ hide_title: 'true'
 
 ## Task Net - WebDAV - Upload
 
-The WebDAV - Upload Task lets you upload documents based on a file filter. Web-based Distributed Authoring and Versioning (WebDAV) is a set of methods based on the Hypertext Transfer Protocol (HTTP) that facilitates collaboration between users in editing and managing documents and files stored on World Wide Web servers.
+The WebDAV - Upload Task uploads local files, selected with a file filter, to a folder on a WebDAV server.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/WebDAV%20-%20Upload%20.png)
+![File filter tab of the WebDAV - Upload Task](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/WebDAV%20-%20Upload%20.png)
 
-**File filter** tab
+:::warning
 
-The WebDAV - Upload Task uses the [standard file filter](client-user-interface/server/job-tasks-file-filter.md) to select which local files to upload.
+This Task uses a WebDAV Connection; see [Connection - WebDAV](../../connection-webdav). Any server certificate is accepted, so the Server cannot tell the real server from another server that answers at the same address. _Port_ is the local port, not the port of the server.
 
-**Upload settings** tab
+A new WebDAV Connection has _Authentication type_ "Basic", which sends the user name and password in a form that anyone who can see the traffic can read, unless the address starts with "https://"; see [Connection - WebDAV](../../connection-webdav).
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/WebDAV%20-%20Upload%20Settings.png)
+:::
 
-**Connection**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-All WebDAV Tasks use connection settings from a Connection. In Connections you can create a new WebDAV connection with all other details like Proxy. In the combo box you select the Connection after creation.
+### File filter tab
 
-**Target URL folder**
+The Task uses the standard [File Filter](../../job-tasks-file-filter) to select the local files to upload.
 
-The URL of the remote folder to upload files to. Use the folder browse button to select a folder from the server (a Connection must be selected first).
+### Upload settings tab
 
-**Save files to destination folder**
+![Upload settings tab of the WebDAV - Upload Task, with the Connection group and the Upload settings group](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/WebDAV%20-%20Upload%20Settings.png)
 
-When selected, all matched files are uploaded directly into the target URL folder, regardless of their original folder structure. This is the default.
+- _Connection_: the WebDAV Connection with the server address, sign-in and proxy settings
+- _Target URL folder_: the remote folder to upload the files to
 
-**Save files to destination relative to source path**
+  Use the folder browse button to select a folder from the server; select a Connection first.
 
-When selected, the relative path of each source file is preserved under the target URL folder.
+- _Save files to destination folder_ (default): every file is uploaded directly into _Target URL folder_, whatever folder it came from
+- _Save files to destination relative to source path_: the path of each file below the source folder is kept under _Target URL folder_
+
+Folders that do not exist under _Target URL folder_ are created before the files are uploaded.
+
+:::warning
+
+Files that already exist in the target folder are overwritten. The Task has no option to skip or rename them. To keep existing files, check for them in an earlier step.
+
+If the server rejects a file, the error is written to the standard error output, and the Task can still end as successful. To catch it, check the standard error output, for example with the output conditions on the ***On error*** tab (see [Task - On Error](../../task-on-error)).
+
+:::

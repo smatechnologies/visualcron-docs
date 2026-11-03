@@ -5,137 +5,136 @@ hide_title: 'true'
 
 ## Task Net - TCP
 
-The Task type TCP creates a TCP client which then connects to a remote TCP listener. If the connection is successfully established, the client communicates with the server based on the logic configured using some messaging rules.
- 
-**TCP > Connection** group and **Interaction rules** inner tab
+The TCP Task connects to a TCP server (listener) as a client and exchanges plain-text messages with it, following a tree of messaging rules: what to send, what to wait for, and what to check in a reply.
 
-![](../../../../../static/img/tasknettcpinteractionrules.png)
+This Task uses a TCP Connection; see [Connection - TCP](../../connection-tcp). In the Connection, enter only a host name or an IPv4 address in _Address_: the Client splits the text at each ":", "/" or "\\" and keeps one part, so an IPv6 address, a port or a path there does not work.
 
-**Connection**
+:::warning
 
-Before configuring any interaction rules you must create a Connection. Click on Manage Connections to add a new Connection. Select TCP connection and alter connection settings.
- 
-**Interaction rules** tab
+The messages are sent and received as plain text, without encryption, so anyone who can see the network traffic can read them.
 
-The tab contains a toolbar with commands to configure a tree-like structure, which, in turn, is used for setting up the messaging logic between the TCP server (listener) and the TCP client (see “[TCP messaging rules](#tcp-messaging-rules)” below).
- 
-Available commands:
+:::
 
-*Append rule*: append a rule of some type (send a message, receive a message, or check the received message body).
-*Delete*: delete a rule with all child rules.
-*Demo*: automatically create a set of rules with an example of a simple communication algorithm between a client and a server.
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
+
+### Interaction rules tab
+
+![Interaction rules tab of the TCP Task, with the Connection group, the rules tree and its toolbar, and the Rule properties panel](../../../../../static/img/tasknettcpinteractionrules.png)
+
+Select the TCP Connection with the server's address and port in the _Connection_ group.
+
+The tab holds the tree of rules that controls the exchange (see [TCP messaging rules](#tcp-messaging-rules)). The toolbar has these commands:
+
+- _Append rule_: adds a child rule to the selected rule: "Send", "Receive" or "Check"
+- _Delete_: deletes the selected rule and all its child rules
+- _Demo_: replaces the current rules with an example of a simple exchange between a client and a server
+
+  If the tree has rules, the Client asks before it deletes them.
  
 #### TCP messaging rules
 
-Messaging rules are used to set up communication logic between the TCP server (listener) and the TCP client. The same rules are used in both the TCP Trigger and the TCP Task. The only difference is that in the case of the TCP Trigger, a checkbox “*Fire trigger*” is available (see below).
+Messaging rules set up the exchange between the TCP server (listener) and the TCP client. The TCP Task and the [Event Trigger - TCP](../../event-trigger-tcp) use the same rules. The only difference is _Fire trigger_, which only the Trigger uses.
+
+There are three types of rule:
+
+- _Send_: sends a message
+- _Receive_: waits for a message
+- _Check_: checks the message of its parent rule
+
+The rules form a tree, so that the exchange can take different paths depending on the content of a message. The rules at one level run in order. A rule runs its child rules before the next rule at its own level. Select a rule to set its properties in _Rule properties_.
+
+![Base tab of the Rule properties panel](../../../../../static/img/tasknettcpinteractionrulesbase.png)
+
+The ***Base*** subtab, for every rule:
+
+- _Custom rule name_: optional, stored encrypted
+
+  Without a name, the rule gets a generated name.
+
+- _Result message key_: optional. When it is set, the message of the rule is added to the result list under this key
+
+  For each key, only the last message is kept.
+
+- _Use key as format string_: uses _Result message key_ as a number format for a message counter, so that each message gets its own key
+
+  For example, "D2" gives the keys "01", "02" and so on.
+
+- _Fire trigger_: TCP Trigger only. Fires the Trigger with the current message, and then clears the result list
+- _Force exit_: whether the exchange stops and the connection closes after this rule and its child rules:
+  - blank (default): no forced exit; the exchange continues
+  - "Success": ends the exchange as successful
+  - "Failure": ends the exchange with an error, so the Task fails
+
+_Force exit_ is useful to end rules that repeat without limit.
+
+![Send tab of the Rule properties panel](../../../../../static/img/tasknettcpinteractionrulessend.png)
+
+The ***Send*** subtab:
+
+- _Number of iterations_: how many times the rule and its child rules run before the next rule at the same level
+
+  "1" by default. "0" skips the rule, and "-1" repeats it without limit.
+
+- _Text body_: the message to send, stored encrypted. It can contain Variables
+- _Delay before send_: optional wait before the message is sent, in milliseconds
+- _Delay after send_: optional wait after the message is sent, in milliseconds
+
+![Receive tab of the Rule properties panel](../../../../../static/img/tasknettcpinteractionrulesreceive.png)
+
+The ***Receive*** subtab:
+
+- _Number of iterations_: as on ***Send***
+- _Receive timeout_: how long, in seconds, to wait for a message
+
+  "-1" (default) uses the _Timeout_ of the TCP Connection, or "30" seconds when that is "0". "0" waits for a message without a time limit. If the server closes the connection before a message arrives, the rule fails.
+
+![Check tab of the Rule properties panel](../../../../../static/img/tasknettcpinteractionrulescheck.png)
+
+The ***Check*** subtab:
+
+- _Exclusive group index_: optional. Groups Check rules that are children of the same rule
+
+  Check rules that are children of the same rule and have the same index other than "0" form a group: once one of them matches, the others are skipped.
+
+- _Match condition_: how the message of the parent rule is compared with _Match value_
+
+  The values are "Don't check" (default; always matches), "Equal (=)", "Contains (=%)", "Not contains (!=%)", "Not equal (!=)", "Regex - match" and "Regex - no match". The comparisons are case sensitive.
+
+- _Match value_: the value to compare with, stored encrypted. It can contain Variables
+
+:::warning
+
+When a Check rule does not match, its child rules are skipped, and the Task still succeeds. A reply that matches no Check therefore does not make the Task fail. To fail on an unexpected reply, add a Check that matches it, with _Force exit_ set to "Failure".
+
+:::
  
-There are three types of rules:
+### Test console tab
 
-* Send rule, used to send a message;
-* Receive rule, used to receive a message;
-* Check rule, used to check some condition regarding the message from the parent rule.
- 
-All rules are organized in a tree-like structure. This can be very useful when it needs to run different scenarios depending on the content of an incoming (or outgoing) message. Listed below are all of the rule properties that can be configured.
- 
-**Base** rule properties (for all types of rules)
+![Test console tab of the TCP Task, with the Control panel and the Log window](../../../../../static/img/tasknettcptestconsoleclient.png)
 
-![](../../../../../static/img/tasknettcpinteractionrulesbase.png)
+Use the ***Test console*** tab to try the rules without saving the Task. The test runs on the VisualCron Server with the selected Connection, and the messages are shown in the _Log window_. As the server side of the test, you can run a similar test in the [Event Trigger - TCP](../../event-trigger-tcp) window, or build and run the sample listener below.
 
-**Custom rule name**
+- _Setup maximum number of iterations_: for the test only, rules with more iterations, or with "-1", run at most this many times
 
-Optional user specified rule name. Stored encrypted. If not specified, the rule name is generated automatically.
- 
-**Result message key**
+  The default is "10", from "1" to "999".
 
-Optional unique outgoing message key. If specified, the processed message is added to the result list; only the last message with the same key is persisted in the result list.
- 
-**Use key as format string**
+- _Test_: runs the test
 
-If the flag is set, the value of “Result message key” property is used as the format string for the current result message number to create the final key.
-For example, a value of "D2" will cause outgoing messages to automatically receive a message key value of "01", then "02", and so on.
- 
-**Fire trigger**
+:::note
 
-Causes the TCP Trigger to fire with the current message; a list of result messages is cleared after triggering.
- 
-**Force exit**
+The limit applies only to the test. When the Task runs, a rule with "-1" iterations repeats until a rule with _Force exit_ ends the exchange, the connection closes, or the Task times out (see [Task - Timeout](../../task-timeout)).
 
-Controls whether the negotiation stops and the TCP connection closes after processing the current rule, including existing child rules. Options:
+:::
 
-* *(blank)* — no forced exit (default); negotiation continues normally.
-* *Success* — forces the negotiation to end successfully after this rule.
-* *Failure* — forces the negotiation to abort with an exception after this rule.
+### Output and result
 
-Might be useful in scenarios with infinite loops.
- 
-**Send** rule properties
+Only the messages of rules with a _Result message key_ are written to the output of the Task, and only when the TCP Connection has _Log sent messages to task output_ or _Log received messages to task output_ selected. A rule without a key is not logged.
 
-![](../../../../../static/img/tasknettcpinteractionrulessend.png)
+The Task has one result Variable:
 
-**Number of iterations**
+- _Messages_: the list of result messages, as `{ Key, TextBody }` pairs, so that a Variable can read the text of a message by its _Result message key_
 
-The number of times the same rule (including existing child rules) is processed before moving on to the next rule at the same level of the rules hierarchy. A value of “-1” means repeat indefinitely.
- 
-**Text body**
-
-A message content to send. Stored encrypted, supports variable templates.
- 
-**Delay before send (ms)**
-
-Optional delay before sending a message, in milliseconds.
- 
-**Delay after send (ms)**
-
-Optional delay after sending a message, in milliseconds.
- 
-**Receive** rule properties
-
-![](../../../../../static/img/tasknettcpinteractionrulesreceive.png)
-
-**Number of iterations**
-
-The number of times the same rule (including existing child rules), is processed before moving on to the next rule at the same level of the rules hierarchy. A value of “-1” means repeat indefinitely.
- 
-**Receive timeout (seconds)**
-
-An incoming message timeout. A value of “-1” (default) - use timeout specified in the TCP Connection. A value of “0” - wait indefinitely until socket closes.
- 
-**Check** rule properties
-
-![](../../../../../static/img/tasknettcpinteractionrulescheck.png)
-
-**Exclusive group index**
-
-An optional index of a group of mutually exclusive condition rules (except for the zero).
-If one rule in the group is processed, other rules are automatically skipped.
-Each group is formed from the rules that are in the same list of child nodes in the rules tree.
- 
-**Match condition**
-
-The type of checking the message content for compliance with the value of “Match value” property.
- 
-**Match value**
-
-The value to be checked against the message content.
- 
-**TCP > Test console** inner tab
-
-![](../../../../../static/img/tasknettcptestconsoleclient.png)
-
-You are able to test the configured messaging rules without saving the settings.
-As a remote TCP server (listener), a similar test scenario can be launched in the [TCP Trigger](../../../server/event-trigger-tcp) UI form, or a test application can be compiled and launched (see sample TCP Listener application code below).
- 
-**Setup maximum number of iterations**
-
-All rules with a large or infinite number of repetitions automatically terminate after the specified maximum number of iterations. Default is 10 (minimum 1, maximum 999).
- 
-### TCP Task Result Variables
- 
-**Messages**
-
-A list of processed messages in the form `{ Key, TextBody }`, so that the text of a particular message is available by specifying Key in a variable template.
- 
-**Sample TCP Listener application code (C#)**
+### Sample TCP listener (C#)
 
 ```csharp
 
