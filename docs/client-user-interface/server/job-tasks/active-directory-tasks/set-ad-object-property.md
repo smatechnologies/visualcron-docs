@@ -5,24 +5,30 @@ hide_title: 'true'
 
 ## Task Active Directory - Set AD Object Property
 
-Sets the specified property of the selected Active Directory object to the specified name.
+The Set AD Object Property Task sets one property of an Active Directory object to a value.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Set%20AD%20Object%20Property.png)
+![Set AD Object property tab with the Credentials list, Parent path, Property name, Property value, and the Select object and Select container buttons](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Set%20AD%20Object%20Property.png)
 
-**Credentials**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
+### Set AD Object property tab
 
-**Set object property**
- 
-**Parent path**
+- _Credentials_: the Credential that the Task uses to connect to Active Directory; see [Global - Credentials](../../global-credentials). Click the _Settings_ icon to open _Manage credentials_
 
-The Lightweight Directory Access Protocol (LDAP) path of the parent Active Directory container. This is usually the top most container or the root of the directory data tree on a directory server. Click the *Select object* button to select an existing Active Directory object. Click the *Select container* button to select an existing Active Directory container.
- 
-**Property name**
+  With "No Credential", the Task connects as the account that the VisualCron Server service runs as. The account that is used needs permission in Active Directory for what the Task does.
 
-The Active Directory object's property name.
- 
-**Property value**
+  When the selected Credential has been deleted, the Task fails, but it may already have carried out the change as the account of the VisualCron Server service.
 
-The Active Directory object's property value.
+- _Parent path_: despite its label, the LDAP path of the object to change itself, not of its container, for example `LDAP://CN=<name>,OU=<unit>,DC=<domain>,DC=<suffix>`. Click _Select object_ to pick the object. _Select container_ puts the path of a container in the field instead
+- _Property name_: the LDAP name of the property, for example `description` or `telephoneNumber`
+- _Property value_: the new value. It replaces every value that the property has. When it is empty, the property is cleared
+
+:::warning
+
+The Task overwrites the property: every existing value is replaced, and an empty _Property value_ clears the property. VisualCron keeps no copy of the old value.
+
+:::
+
+### Output and errors
+
+The Task writes no output. When Active Directory rejects the request, for example because the account does not have permission or the object does not exist, the Task fails with the error that Active Directory returns.

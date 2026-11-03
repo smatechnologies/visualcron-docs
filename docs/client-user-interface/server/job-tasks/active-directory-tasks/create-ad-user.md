@@ -5,72 +5,58 @@ hide_title: 'true'
 
 ## Task Active Directory - Create AD User
 
-Creates a new user at the specified Active Directory location.
- 
-**Create AD User > General** sub tab
+The Create AD User Task creates a user in an Active Directory container and sets the user's password and account options.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Create%20AD%20User.png)
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-**Credentials**
+### Create AD User tab
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
- 
-**Parent path**
+The _Credentials_ list is above the ***General*** and ***Login details*** sub tabs.
 
-The Lightweight Directory Access Protocol (LDAP) path of the parent Active Directory container. This is usually the top most container or the root of the directory data tree on a directory server. Click the *Select container* button to select an existing Active Directory container.
- 
-**First name**
+#### General sub tab
 
-The user's first name.
+![Create AD User tab, General sub tab with the Credentials list, Parent path, First name, Initials, Middle name, Last name and Full name](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Create%20AD%20User.png)
 
-**Initials**
+- _Credentials_: the Credential that the Task uses to connect to Active Directory; see [Global - Credentials](../../global-credentials). Click the _Settings_ icon to open _Manage credentials_
 
-The user's initials.
+  With "No Credential", the Task connects as the account that the VisualCron Server service runs as. The account that is used needs permission in Active Directory for what the Task does.
 
-**Middle name**
+  When the selected Credential has been deleted, the Task fails, but it may already have carried out the change as the account of the VisualCron Server service.
 
-The user's middle name.
+- _Parent path_: the LDAP path of the container to create the user in, for example `LDAP://OU=<unit>,DC=<domain>,DC=<suffix>`. Click _Select container_ to pick it
+- _First name_: the user's first name
+- _Initials_: the user's initials
+- _Middle name_: the user's middle name
+- _Last name_: the user's last name
+- _Full name_: the user's display name. It is required. The Client does not fill it in from the other names, so type it
 
-**Last name**
+:::warning
 
-The user's last name.
- 
-**Full name**
+Check the new user in Active Directory after the Task runs: the first, middle and last name, initials, full name, e-mail address and user logon name may not be set.
 
-First, Middle/Initial and Last Name parameters combined.
+:::
 
-**Create AD User > Login details** sub tab
+#### Login details sub tab
 
-![](../../../../../static/img/taskactivedirectorycreateaduserlogin.png)
+![Create AD User tab, Login details sub tab with the logon names, Password, Email and the four account check boxes](../../../../../static/img/taskactivedirectorycreateaduserlogin.png)
 
-**User logon name (@domain is allowed)**
+- _User logon name (@domain is allowed)_: the user's logon name, for example `<name>@<domain>`. It is required. The Task also uses this value, as typed, as the name (CN) of the new user object
+- _User logon name (pre-windows 2000)_: the pre-Windows 2000 logon name. The Client does not fill it in from _User logon name_, so enter it
+- _Password_: the initial password. The box shows the password as it is typed; the Task stores it encrypted
+- _Email_: the user's e-mail address. It is required
+- _User must change password at next logon_: the user must change the password at the next logon
+- _User cannot change password_: the user cannot change the password. Do not combine it with _User must change password at next logon_
+- _Password Never Expires_: the password does not expire
+- _Account is disabled_: the account is created disabled
 
-The logon name of the Active Directory user to be created.
- 
-**User logon name (pre-Windows 2000)**
+### Output and errors
 
-The Pre-Windows 2000 logon name of the Active Directory user to be created. This defaults to the data entered in the User Logon Name property minus the @domain parameter (if applicable).
- 
-**Password**
+The Task writes no output. When Active Directory rejects the request, for example because the account does not have permission or the object does not exist, the Task fails with the error that Active Directory returns.
 
-The logon password of the Active Directory user to be created.
- 
-**Email**
+### Troubleshooting
 
-The e-mail address of the Active Directory user to be created.
- 
-**User must change password at next logon**
+**Error 0x80072035**
 
-If checked the user must modify the assigned password at next logon.
- 
-**User cannot change password**
+Active Directory returns error 0x80072035 ("The server is unwilling to process the request") when the password does not meet the domain's password policy, for example its length, complexity or password history rules. Use a password that meets the policy.
 
-If checked the user cannot change the assigned password. Only applicable only if the *User must change password at next logon* parameter is unchecked.
- 
-**Password Never Expires**
-
-If checked the assigned password never expires.
- 
-**Account is disabled**
-
-If checked the account to be created is in a disabled state.
+When this error occurs, the user has already been created without the password. Delete the user, or reset the password with [Task Active Directory - Modify AD User](modify-ad-user), before you run the Task again.

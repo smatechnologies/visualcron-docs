@@ -5,16 +5,23 @@ hide_title: 'true'
 
 ## Task Azure - Restart Web Site
 
-he Azure - Restart Web Site Task restarts an existing web instance in the Azure cloud. This Task is using the [Microsoft Azure Connection](../../connection-microsoft-azure).
+The Azure - Restart Web Site Task restarts an existing web site in Azure, using a Microsoft Azure Connection.
 
-**Azure - Restart web site** tab
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Azure%20Tasks/Restart%20Web%20Site.png)
+### Azure - Restart web site tab
 
-**Connection**
+![Azure - Restart web site tab with the Connection list and the Web site list with its Refresh button](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Azure%20Tasks/Restart%20Web%20Site.png)
 
-To use the Azure Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+- _Connection_: the Microsoft Azure Connection to use; see [Connection - Microsoft Azure](../../connection-microsoft-azure). Click the _Settings_ icon to open _Manage Connections_
+- _Web site_: the name of the Azure web site. Click _Refresh_ to fill the list
 
-**Web site**
+### Output and errors
 
-The Azure web instance name. Click the *Refresh* icon to populate the drop-down list.
+The Task writes no output. When Azure returns an error, the Task fails.
+
+:::warning
+
+When the selected Connection no longer exists, the Task does nothing, writes no output, and the Task reports success.
+
+:::
