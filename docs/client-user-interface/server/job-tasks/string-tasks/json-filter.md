@@ -39,6 +39,12 @@ Applies formatting to the JSON input before filtering. Options are:
 - *Single line* — collapses the JSON to a single line before filtering
 - *Indented* — expands the JSON with indentation before filtering
 
+:::note
+A bare JSON value (a single number, string, or boolean with no enclosing object or array)
+can now be opened in the JSON Browser with *Single line* or *Indented* selected. Previously
+this combination failed with "Error loading the JSONPath browser."
+:::
+
 **Output settings** tab
 
 ![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/String%20Tasks/JSON%20Filter%20Output.png)

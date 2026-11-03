@@ -5,6 +5,13 @@ hide_title: 'true'
 
 ## Change Log
 
+### Unreleased
+
+#### Bug Fixes
+
+:white_check_mark: Client: JSON Browser Slow to Open on Large Documents (VCPCM-3857)
+
+
 ### 13.4.2 [2026-09-12]
 
 #### Features
