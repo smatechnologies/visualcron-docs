@@ -5,94 +5,146 @@ hide_title: 'true'
 
 ## Global - Network Drives
 
-VisualCron is by default running as the SYSTEM account. One problem you may face is that you can't see/access your network drives. This is a restriction in Windows - that network drives are not shared between accounts.
- 
-To handle this, a way to control network drives from the system account is implemented. This enables map/disconnect network drives directly from VisualCron.
- 
-In the main menu, click on **Server > Global objects > Network drives** to access the interface for mapping/disconnecting.
+The _Manage network drives_ window maps network shares to drive letters for the account that the VisualCron Server service runs under. By default that is the SYSTEM account. Windows keeps mapped drives per logon session, so the Server does not see the drives you map in your own Windows session. Map drives here when a Task that runs as the Server service account, without a Credential, needs a drive letter.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Network%20Drives/Network%20Drives.png)
+When a Task can use a UNC path such as `\\<server>\<share>\<folder>`, use the UNC path together with a [Credential](../server/global-credentials) instead. A UNC path does not depend on a drive mapping being in place.
 
-The Network Drives window displays the configured drives in a grid with the following columns:
+To open the window, go to _Server_ -> _Global objects_ -> _Network drives_.
 
-* **Drive** — the assigned drive letter (A: – Z:)
-* **Path** — the UNC path the drive is mapped to
-* **Connection status** — an icon indicating whether the drive is currently connected
-* **Controlled** — whether the drive is managed by VisualCron (re‑mapped automatically on startup)
-* **Credential** — the [Credential](../server/global-credentials) used to authenticate when mapping the drive
+![Manage network drives window with the Map drive, Unmap drive, Reconnect and Audit log buttons above an empty list with the columns Drive, Path, Credential and Controlled](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Network%20Drives/Network%20Drives.png)
 
-The toolbar above the grid provides the following buttons:
+### Manage network drives window
 
-* **Map drive** — opens the Map drive dialog described below
-* **Unmap drive** — disconnects the selected drive
-* **Refresh** — reloads the list of network drives from the Server
-* **Reconnect** — reconnects all drives that have been disconnected during the current VisualCron session
-* **Audit log** — opens the [Audit log](../tools/objects-audit-log) for network drives
+The list has the following columns:
 
-Right‑clicking a row opens a context menu with **Map drive**, **Unmap drive**, **Audit log**, and **Versions** (view the version history of the network drive entry).
+- A status icon without a heading: connected or disconnected, see below
+- _Drive_: the drive letter
+- _Path_: the UNC path the letter is mapped to
+- _Credential_: the [Credential](../server/global-credentials) used for the mapping. "No Credential id specified" means none. "Could not find Credential" means the Credential has been deleted, or you do not have permission to see it
+- _Controlled_: "True" for a drive mapped from this window, which the Server maps again each time it starts. "False" for a drive that the Server found already mapped for its service account, at this start or an earlier one, for example by a script that ran as that account. The Server lists such a drive but does not map it at startup, and the entry can stay in the list after the mapping is gone
 
-**Map drive**
+For a drive with _Controlled_ "True", the status icon shows the result of the mapping at Server startup, or of the last _Map drive_ or _Reconnect_ that succeeded. A failed attempt shows only until the Client connects to the Server again, see [Map a drive](#map-a-drive) and [Reconnect a drive](#reconnect-a-drive). For a drive with _Controlled_ "False", it shows whether the drive could be reached when the Server first listed it. The Server does not check the drives again in between, so a drive whose share has become unavailable can still show as connected.
 
-When mapping a drive you need to specify a Credential, a user that has access to the network drives, that is either a domain user or a user on the remote server. Specify a wanted drive name and path.
-Path should be entered in UNC format like this: ```"\\servernameORip\folder\"```
+The toolbar has the following buttons:
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Network%20Drives/Map%20Network%20Drives.png)
+- _Map drive_: opens the _Map Network Drive_ window, see [Map a drive](#map-a-drive)
+- _Unmap drive_: removes the selected drive from the list and disconnects it, see [Unmap a drive](#unmap-a-drive)
+- _Reconnect_: maps the selected drive again, see [Reconnect a drive](#reconnect-a-drive)
+- _Audit log_: opens the [Audit log](../tools/objects-audit-log) for network drives
 
-The Map drive dialog contains the following fields:
+Right-click a row to open a shortcut menu with _Map drive_, _Audit log_ and _Versions.._. _Versions.._ shows the [version history](../tools/audit-log-versions) of the selected drive entry. To unmap a drive, use the _Unmap drive_ button or press Delete.
 
-* **Credential** — pick the [Credential](../server/global-credentials) used to authenticate against the network share
-* **Drive** — a dropdown of drive letters (A: – Z:) to assign to the mapped path
-* **Path** — the UNC path that the drive letter should be mapped to. Click the browse button next to the field to pick a folder
+### Map a drive
 
-Click on *Map drive* at the bottom of the dialog to map it. It is now controlled by VisualCron and each time VisualCron is started it tries to re-map the drives so these can be accessed after a server reboot.
- 
-**Reconnect**
+1. Click _Map drive_. The _Map Network Drive_ window opens.
 
-If a drive has been disconnected during a VisualCron session you can reconnect it here.
+   ![Map Network Drive window with No Credential selected in the Credentials group, Z: in the Drive list and an empty Path box](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Network%20Drives/Map%20Network%20Drives.png)
+
+2. In the _Credentials_ group, select the Credential of an account that can access the share: a domain account, or a local account on the file server. Type in the _Filter.._ box to shorten the list. If the account is not in the list, add it first in [Credentials](../server/global-credentials). You can also select _No Credential_ to connect with the identity of the Server service account; see [Which account authenticates the mapping](#which-account-authenticates-the-mapping), including the _Credential not found_ warning there.
+3. In the _Drive info_ group, select the letter in the _Drive_ list. The default is the highest letter, from "Z:" down, that no entry in the _Manage network drives_ window uses. Letters in use on the Server computer are not taken into account, so choose a letter that is free there (see the warning below).
+4. In _Path_, enter the UNC path of the share, for example `\\<server>\<share>`. The folder button opens a folder browser if your user has the _Remote file explorer_ permission with _Read_; without it, the Client shows a permission message. When the Client is connected to a remote Server, the browser shows the folders of the Server computer. In all cases, check that _Path_ is a UNC path that the Server computer can reach.
+5. Click _Map drive_ at the bottom of the _Map Network Drive_ window.
+
+:::warning
+
+If the selected letter is already mapped on the Server, VisualCron disconnects the existing mapping first, without asking. If the letter is already in the list and the new mapping succeeds, the new path and Credential replace that entry. If the new mapping fails, the old mapping has in most cases been disconnected as well. Only if Windows refuses to disconnect it does the old mapping stay; the new mapping then fails with a message from Windows.
+
+:::
+
+If the mapping succeeds, the window closes and the drive appears in the list with _Controlled_ "True".
+
+If the mapping fails, the window stays open. In most cases the Server shows a message that starts with "Could not map drive", followed by the message from Windows; see [Troubleshooting](#troubleshooting). If the selected Credential has been deleted, no message appears, and the Server log shows "Could not find Credential when mapping drive."
+
+After a failed mapping, the list shows the drive as disconnected, but the Server has not saved the attempt:
+
+- For a letter that was not in the list, the row stays until the Client connects to the Server again. _Unmap drive_ cannot remove it; disconnect the Client from the Server and connect again to clear it.
+- For a letter that was already in the list, the row shows the new path until the Client connects to the Server again. It then shows the earlier entry again, with its earlier path, Credential and status. That status can be connected although the earlier mapping was disconnected (see the warning above).
+
+### When the Server starts
+
+Each time the VisualCron Server service starts, it tries once to map every drive whose _Controlled_ value is "True". If a drive cannot be mapped, for example because the file server is not yet available, the Server logs an error that the drive "could not be mounted" (see [Log](../server/information-log)) and shows the drive as disconnected. The Server does not retry on its own. The drive is mapped again when you click _Reconnect_. Importing network drive settings with [Import settings](../file/import-settings) can also map the Controlled drives again.
+
+:::warning
+
+Jobs that use the drive letter fail until the drive is mapped again.
+
+- After the Server computer restarts, open the _Manage network drives_ window, select each drive that is shown as disconnected and click _Reconnect_.
+- After the file server restarts, the icon can still show the drive as connected. If a Job cannot reach the drive, select the drive and click _Reconnect_.
+
+For Tasks that do not need a drive letter, use a UNC path with a [Credential](../server/global-credentials).
+
+:::
+
+### Reconnect a drive
+
+Select a drive in the list and click _Reconnect_. VisualCron disconnects the drive and maps it again with the Credential stored for it. If this succeeds, the status icon shows the drive as connected and _Controlled_ is set to "True", so the Server also maps the drive each time it starts. If it fails, the Server shows a message that starts with "Could not map drive", see [Troubleshooting](#troubleshooting). The drive is then no longer mapped, unless Windows refused to disconnect it. The list shows the drive as disconnected until the Client connects to the Server again, and then shows the status from before the attempt, which can be connected. If the Credential of the drive has been deleted, no message appears, and the Server log shows "Could not find Credential when mapping drive."
+
+:::warning
+
+A drive with no Credential stored, which includes every drive listed with _Controlled_ "False", is mapped again with the identity of the Server service account. Most shares do not accept that identity, so _Reconnect_ can turn a working mapping into a failed one. To have the Server map such a drive at startup with an account that has access, click _Map drive_, select the same letter and path, and select a Credential.
+
+:::
+
+### Unmap a drive
+
+Select a drive and click _Unmap drive_, or press Delete. The drive is removed from the list and disconnected on the Server right away, without a confirmation. The Server no longer maps it at startup. If Windows cannot disconnect the drive, the entry is still removed, and the Server shows a message that starts with "Could not unmap drive".
 
 ### Which account authenticates the mapping
 
-The mapping is performed by the VisualCron Server service itself. It is not performed inside a Task's execution context, so the account that the service runs under matters:
+The VisualCron Server service maps the drive itself. The mapping does not run in the execution context of a Task, so the account that the service runs under matters:
 
-* When a Credential is selected on the drive entry, those credentials are used to authenticate against the share.
-* When the Credential field is left empty, no credentials are sent and the connection is made using the service's own identity. Under the default SYSTEM account that is the computer account of the VisualCron host, which most file shares do not grant any access to.
+- With a Credential: the user name and password of the Credential are used to connect to the share. If the Credential stores the domain separately and the user name does not already include one, the user name is sent as `<domain>\<user>`
+- With _No Credential_: no user name or password is sent, and the connection uses the identity of the service account. Under the default SYSTEM account that is the computer account of the VisualCron Server computer, which most file shares do not grant access to
 
-Because Windows keeps mapped drive letters per logon session, a drive mapped by one account is not visible to another. If a drive mapping fails while a Task using the same Credential can reach the same share through a UNC path, running the VisualCron service under a domain account that has access to the share has resolved this in practice. See [Credentials](../server/global-credentials) for the available account options.
+As described at the top of this page, a drive mapped by one account is not visible to another. If you prefer not to store a Credential for the drive, you can run the VisualCron service under a domain account that has access to the share and map the drive with _No Credential_; the mapping then uses that account's identity. See [Credentials](../server/global-credentials) for the account options, and note the warning below.
+
+:::warning
+
+When the running Server maps a drive with _No Credential_, or a drive whose Credential has been deleted, it raises the VisualCron event _Credential not found_. This happens, for example, when you click _Map drive_ or _Reconnect_. A Job with a [VisualCron Event Trigger](../server/event-trigger-visualcron) on that event can start. To avoid this, select an existing Credential for the drive.
+
+:::
 
 ### Authentication protocol
 
-VisualCron does not select an authentication protocol for network shares. The credentials are passed to Windows, and Windows negotiates Kerberos or NTLM on its own. There is no setting in VisualCron that prefers, forces, or falls back to either protocol, and VisualCron does not record which protocol was used. It logs only whether the mapping or file access succeeded.
+VisualCron does not choose an authentication protocol for network shares. It passes the user name and password to Windows, and Windows negotiates Kerberos or NTLM on its own. VisualCron has no setting that prefers, forces or falls back to either protocol, and it does not record which protocol was used. It logs only whether the mapping succeeded.
 
-To confirm which protocol Windows used, check the Windows event logs:
+To find out which protocol Windows used, check the Windows event logs:
 
-* On the file server, Security event ID **4624**. The *Authentication Package* field names the protocol, and the *Package Name (NTLM only)* field is populated only when NTLM was used.
-* On a domain controller, event IDs **4768** and **4769** indicate Kerberos, while event ID **4776** indicates NTLM.
+- On the file server, Security event ID 4624. The _Authentication Package_ field names the protocol, and the _Package Name (NTLM only)_ field is filled in only when NTLM was used
+- On a domain controller, event IDs 4768 and 4769 indicate Kerberos, and event ID 4776 indicates NTLM
 
-If NTLM has been disabled at the operating system or domain level, VisualCron cannot use NTLM on its own, as it has no separate NTLM implementation for network drives. Windows will either use Kerberos or the connection will fail.
- 
+If NTLM is disabled at operating system or domain level, VisualCron cannot use NTLM on its own, because it has no separate NTLM implementation for network drives. Windows then uses Kerberos, or the connection fails.
+
 ### Troubleshooting
 
-*A specified logon session does not exist*
- 
-Try disabling this policy:
+Most headings below are Windows messages that follow "Could not map drive" in the message from the Server.
 
-![](../../../static/img/clipsdfgdfsggfd0069.png)
+#### A specified logon session does not exist
 
-![](../../../static/img/clip00dfgdfg69.png)
+On the VisualCron Server computer, open the Local Group Policy Editor and go to _Computer Configuration_ -> _Windows Settings_ -> _Security Settings_ -> _Local Policies_ -> _Security Options_. Set _Network access: Do not allow storage of passwords and credentials for network authentication_ to _Disabled_. Then map the drive again.
 
-*The specified network password is not correct*
+![Local Group Policy Editor with Security Options selected and the policy Network access: Do not allow storage of passwords and credentials for network authentication highlighted](../../../static/img/clipsdfgdfsggfd0069.png)
 
-Double check so that date and time is matching (synced) between VisualCron and server of remote share.
+![Properties of the policy Network access: Do not allow storage of passwords and credentials for network authentication, set to Disabled](../../../static/img/clip00dfgdfg69.png)
 
-*The network path was not found* / *The network name cannot be found*
+#### The specified network password is not correct
 
-These are name resolution or share name errors rather than authentication failures. A rejected logon reports incorrect credentials or access denied instead. Confirm from the VisualCron host that the server name resolves and that the share is reachable. Also check that the Path is a plain UNC path with no scheme prefix such as ```http://``` in front of it, and that the share name is spelled correctly.
- 
-*Multiple connections to a server or shared resource by the same user, using more than one user name, are not allowed. Disconnect all previous connections to the server or shared resource and try again.*
+Check the password of the Credential, and check that its user name and domain are those of an account that can access the share. If they are correct, also check that the clocks of the VisualCron Server computer and the file server are in sync.
 
-Windows allows only one set of credentials per remote server per logon session. A connection to that server already exists under a different user. Disconnect it on the VisualCron host before mapping again.
- 
-*Access denied trying to connect to IFS (AS400) share*
+#### The network path was not found / The network name cannot be found
 
-Local Security Policy -> Local Policies –> Security Options -> Change Network security: LAN Manager authentication level to NTLMv2 session security if negotiated
-[http://e1tips.com/2010/05/18/windows-vista-windows-7-ibm-iseries-ifs-mapped-drive/](http://e1tips.com/2010/05/18/windows-vista-windows-7-ibm-iseries-ifs-mapped-drive/)
+These messages point to the server name or the share name. From the VisualCron Server computer, check that the server name resolves and that the share can be reached. Also check that _Path_ is a plain UNC path, without a prefix such as `http://`, and that the share name is spelled correctly.
+
+#### Multiple connections to a server or shared resource by the same user, using more than one user name, are not allowed
+
+The Server service account already has a connection to that server under another user name, for example another drive in the list that uses a different Credential. Give every drive on that server the same Credential, or unmap the other drive, and map the drive again.
+
+#### Access is denied
+
+If the share is an IFS share on an IBM i (AS400) server and the Credential is correct, the IFS server may not accept the LAN Manager authentication level of the VisualCron Server computer. In the Local Group Policy Editor, under _Computer Configuration_ -> _Windows Settings_ -> _Security Settings_ -> _Local Policies_ -> _Security Options_, the setting is _Network security: LAN Manager authentication level_.
+
+:::warning
+
+This policy applies to every outgoing connection of the computer, not only to VisualCron, and a lower level allows weaker authentication. Get approval from your security team before you change it.
+
+:::

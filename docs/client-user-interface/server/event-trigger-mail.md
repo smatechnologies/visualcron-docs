@@ -5,206 +5,271 @@ hide_title: 'true'
 
 ## Event Trigger - Mail
 
-The Email event trigger is able to monitor a mailbox through the POP3 or the IMAP4 protocol. The actual connection properties are defined in the [Connections](../server/global-connections) window. Based on subject, sender and content different actions can be performed with the email.
- 
-**Triggers > Add > Event Trigger > Email > Main settings** tab
+The Mail Trigger watches a mailbox folder and starts the Job once for each new email that meets its conditions. It can also delete, move, copy, mark, save or forward the emails that fire it. The mailbox is reached through an IMAP4, Exchange EWS, Exchange WebDAV or Microsoft Graph API Connection, defined in the [Connections](global-connections) window.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Mail.png)
+This Trigger fires once per email and can delete each email before the Job starts. See [Event Triggers](event-triggers#triggers-that-fire-once-per-item) for how to keep a skipped run from losing an email.
 
-**Description**
+The general settings are on the ***Main settings*** tab.
 
-Description or name of your Trigger.
- 
-**Active**
+![The Main settings tab of the Add/Edit event window for a Mail Trigger: Description, Active, Run delay, Polling interval set to 60 seconds, the Credentials list, Extended Trigger debug logging and Ignore Server Off (always run)](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Mail.png)
 
-If the Trigger is active (watching) or not.
- 
+*Description*, *Active*, *Run delay* and *Ignore Server Off (always run)* work as for every Event Trigger: see [Event Triggers](event-triggers).
+
 **Polling interval**
 
-How often the mailbox is to be checked.
- 
+How often, in seconds, the mailbox is checked. The default is 60. The first check is made as soon as the Trigger starts, for example when you click *OK*. The box is unavailable while *Keep connection* is checked, so set it before you check *Keep connection*.
+
 **Credential**
 
-To control a remote computer you may need to use a [Credential](../server/global-credentials). The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
- 
-**Ignore Server Off (always run)**
+The [Credential](global-credentials) that the Trigger uses to write saved emails and attachments to disk (***Save mail*** sub tab). The connection to the mailbox uses the Connection's own settings. Select a Credential in the combo box, or click the icon next to it to open *Manage credentials*.
 
-The Trigger will run even though Server is set to off.
- 
-**Triggers > Add > Event Trigger > Email > Email > Main settings** tab
+The mailbox settings are on the ***Email*** tab, ***Main settings*** sub tab.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Mail%20Settings.png)
+![The Main settings sub tab of the Email tab: the Connection list, Mail folder with Use default folder and Use specified folder, Is public folder, Error handling with Connection timeout 180 and Number of retries 3, Reset checked emails when modified and Keep connection](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Mail%20Settings.png)
 
 **Connection**
 
-Select an existing [POP3](../server/connection-pop3)/[IMAP4](../server/connection-imap4) connection, if not existing you need to create one first. Click the Settings icon to open the Manage Connections dialog. Once a connection is added you can select it in the combo box.
- 
+Select an existing IMAP4, Exchange EWS, Exchange WebDAV or Microsoft Graph API Connection. If none exists, click the icon next to the list to open the Connections window and add one; it can then be selected in the combo box.
+
 **Mail folder**
 
-When VisualCron connects it uses the default folder retrieved from the mail server. If you want to change the folder you monitor you select **Use specified folder** and write the folder name in the text box. Click the **Select folder** button to browse for a folder on the mail server. Check **Is public** when the folder is a shared/public mailbox folder.
- 
+By default (*Use default folder*), the Trigger checks the default folder of the mailbox. To check another folder, select *Use specified folder* and enter the full path of the folder as the server names it, for example `Inbox/Processed`, or click the folder icon to browse the folders on the server. The folder name accepts Variables. Check *Is public folder* when the folder is a public folder. Browsing for a folder sets *Is public folder* to match the folder you select. With an Exchange WebDAV Connection, public folders are not offered when you browse, and *Is public folder* currently has no effect: the Trigger looks for the folder, and for the folder of *Copy message to folder (not POP3)*, among the mailbox's own folders.
+
 **Reset checked emails when modified**
 
-VisualCron keeps tracks on which emails that have been checked or not. When an email has been checked it is added to an internal list. In the next polling interval VisualCron will check if that email has been parsed or not. To keep this list and efficiency to a minimum it is recommended that you either delete or move the email once the email has been parsed. This is controlled in the Actions tab. If you, for some reason, wants VisualCron to reset that list you check this box and VisualCron will consider all emails found in the mail folder as new.
+VisualCron remembers each email that fired the Trigger and was not deleted, and does not fire for it again. The list is kept with the Job, so it survives a Server restart and saving the Job. Emails that did not fire the Trigger are not remembered: they are checked again at every poll.
+
+Check this box and click *OK* to clear the list. At the next poll, every email in the folder that the Trigger reads is checked as new. The box is not saved checked: it clears the list once, when you save the Trigger.
 
 **Error handling**
 
-**Timeout**
+**Connection timeout**
 
-The number of seconds to wait for a response from the mail server before considering the operation as failed.
+How many seconds to wait for the mail server before an operation fails (up to 1000; default 180). It is also how long the Trigger waits after a failed check before it continues.
 
 **Number of retries**
 
-The number of times VisualCron will retry the mail operation when the server does not respond before giving up.
+How many times the Trigger tries again after failed checks in a row (up to 9999; default 3). If the check after the last retry also fails, the Trigger is deactivated and the error is written to the log. A successful check resets the count.
+
+Only errors while connecting, selecting the folder or closing the connection count as failed checks. An error while reading the list of emails, or one email, is only written to the log. An email that cannot be read ends that check; the emails after it are read at the next check.
+
+If the folder in *Use specified folder* is not found, the Trigger stops checking at once, without retries. With *Keep connection* cleared, it can then still show as active: correct the folder name, then deactivate and activate the Trigger, or save the Job.
 
 **Keep connection**
 
-When checked, VisualCron keeps the connection to the mail server open between polling intervals (IMAP IDLE), rather than reconnecting every time. This reduces overhead and allows the trigger to react more quickly to new messages on servers that support it.
- 
-**Triggers > Add > Event Trigger > Email > Email > S/MIME** tab
+When checked, VisualCron keeps the connection to the mail server open and checks the folder every *Connection timeout* seconds, instead of connecting at every *Polling interval*; the *Polling interval* box is unavailable. When the Trigger starts, VisualCron tests whether the server supports this. If it does not, the Trigger connects at every *Polling interval* instead, using the value saved in that box. *Keep connection* is not supported for Microsoft Graph API Connections: leave it cleared for them.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Mail%20Key.png)
+:::warning
+
+With *Keep connection*, the Job's time exceptions are checked only when the Trigger starts. If a time exception begins later, emails are still read and their actions still run, for example *Delete message on Server*, but the Job does not start for them. If the Trigger starts during a time exception, it stops checking the mailbox but still shows as active. If the Job uses time exceptions, clear *Keep connection*.
+
+:::
+
+The decryption settings are on the ***Email*** tab, ***S/MIME*** sub tab.
+
+![The S/MIME sub tab of the Email tab: the Decryption list of certificates with Key, Bits and User columns](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Mail%20Key.png)
 
 VisualCron is able to decrypt S/MIME emails and verify signatures.
- 
+
 **Decryption**
 
-If the email is encrypted you need a Certificate to decrypt it. A certificate is often retrieved from the sender of the Certificate and is in the X509 certificate standard. Once you have created or imported a certificate you need to check it in the list. If an email is encrypted VisualCron will try to use that certificate for decryption.
- 
+To read encrypted emails, check the certificate to decrypt them with in the *Decryption* list. Only one certificate can be checked. The list shows the certificates in [Manage Certificates](global-certificates) that can be used for encryption. If an encrypted email cannot be decrypted, for example because no certificate is checked, the error is written to the log and the email does not fire the Trigger; it is checked again at the next poll.
+
+When an email is signed, VisualCron checks the signature. The result is in the result Variables `Mail.Result.Mail.IsSigned` and `Mail.Result.Mail.ValidSignature`.
+
 **Manage Certificates**
 
-You can create/import your certificates defined in the [Manage Certificates](../server/global-certificates) window.
- 
-**Triggers > Add > Event Trigger > Email > Email > Conditions** tab
+Click *Manage Certificates* to open the *Manage certificates* window, where you create or import certificates. See [Manage Certificates](global-certificates).
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Mail%20Conditions.png)
+The conditions are on the ***Email*** tab, ***Conditions*** sub tab.
 
-The Email Trigger has some Conditions. The Conditions are there to evaluate certain values from the parsed email. Each evaluation returns a result. The following results exist: All match, Any match and No match. If all match the evaluation then it will return All match. If at least one is matching it will return Any match. If none are matching it will return No match. The actual evaluation of the Condition is different depending on what part of the email is evaluated. For example, when evaluating a subject you can choose among the following checks:
- 
-* "**Equal**" - the subject must match the string in the text box exactly
-* "**Not equal**" - the subject must not match the string in the text box
-* "**Contains**" - if any of the letters in the text box matches the subject it is returning a match
-* "**Don't contain**" - if not any of the letters in the text box matches the subject it is returning a match
-* "**Don't check**" - this Condition is not checked at all which is returning a match
- 
+![The Conditions sub tab of the Email tab: From address, Subject, Body and Received date, each set to Don't check; Subject and Body have Case sensitive checked; Received date shows {DATENOWADD(Minutes,10,T)}](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Mail%20Conditions.png)
+
+Each condition compares one part of the email with the text you enter. The text accepts Variables. A condition set to *Don't check* is left out. The Trigger then counts the conditions that are checked and gives one result:
+
+* *All match*: every checked condition matches. This is also the result when every condition is *Don't check*
+* *Any match*: at least one checked condition matches, but not all
+* *No match*: no checked condition matches
+
+The result decides which actions run (***Actions*** sub tab). For *From address*, *Subject* and *Body* the checks are:
+
+* *Equal (=)*: the value is exactly the text
+* *Not equal (!=)*: the value is not exactly the text
+* *Contains (=%)*: the text appears anywhere in the value, as one piece
+* *Not contains (!=%)*: the text does not appear in the value
+* *Don't check*: the condition is not used. This is the default for every condition
+
 **From address**
 
-This Condition checks the actual address part of the message (not name of sender).
- 
+Checks the sender's email address, not the display name. The comparison is never case-sensitive.
+
 **Subject**
 
-This Condition checks the subject of the email. Check **Case sensitive** to make the comparison case‑sensitive.
- 
+Checks the subject of the email. *Case sensitive* is checked by default; clear it to ignore case.
+
 **Body**
 
-his Condition checks the body of the email. Check **Case sensitive** to make the comparison case‑sensitive.
- 
+Checks the body of the email. When the email has both a text body and an HTML body, they are checked together as one text, the text body first. *Case sensitive* is checked by default; clear it to ignore case.
+
 **Received date**
 
-This Condition compares the date and time the message was received against a Variable. Please note that you can only use date Variables and that it does not matter what kind of formatting of the Variable you use. Click the variables button to insert a date variable.
+Compares the date and time the email was received with a date. Enter a date Variable, or click the icon to insert one; the default is `{DATENOWADD(Minutes,10,T)}`. Seconds are compared; fractions of a second are ignored.
 
-The following comparison operators are available for _Received date_:
+* *Equal (=)* / *Not equal (!=)*: the email was (or was not) received at that date and time
+* *Larger than (>)* / *Larger than or equal (>=)*: the email was received after (or at) that date and time
+* *Smaller than (<)* / *Smaller than or equal (<=)*: the email was received before (or at) that date and time
+* *Don't check*: the condition is not used
 
-* **Equal** / **Not equal** — the received date must (or must not) match the supplied date exactly
-* **Larger** / **Larger or equal** — the received date must be later than (or equal to) the supplied date
-* **Smaller** / **Smaller or equal** — the received date must be earlier than (or equal to) the supplied date
-* **Don't check** — this Condition is not checked
+:::warning
 
-**Triggers > Add > Event Trigger > Email > Email > Actions** tab
+If the value cannot be read as a date, for example because a Variable is misspelled, the condition counts as a match for every email. Check the value with the *Variables* window before you activate the Trigger.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Mail%20Actions.png)
+:::
 
-Actions are controlling what happens when the Conditions has been evaluated - depending on collective result. Most actions can be set to run for one of the following condition results:
+The actions are on the ***Email*** tab, ***Actions*** sub tab.
 
-* **All match** — every Condition matched
-* **Any match** — at least one Condition matched
-* **No match** — none of the Conditions matched
-* **Always** — run regardless of Condition result
-* **Never** — do not run the action
- 
+![The Actions sub tab of the Email tab with the default settings: Trigger All match; Message on Server Always with Delete message on Server selected; Copy message to folder (not POP3) Never; Forward email cleared](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Mail%20Actions.png)
+
+Actions run only for an email that fires the Trigger, and they run before the Job starts, even when *Run delay* holds the Job back. No action is applied to an email that does not fire the Trigger; it is checked again at the next poll. For each action, choose the condition result it runs for:
+
+* *All match*
+* *Any match*: also runs for an email whose result is *All match*
+* *No match*
+* *Always*: whatever the result
+* *Never*: the action does not run. Not offered for *Trigger* and *Message on Server*
+
 **Trigger**
 
-This action controls if the Job should be triggered or not depending on result. Use the _Trigger when result is_ dropdown to choose which Condition result causes the Job to fire.
- 
+Choose which condition result starts the Job. The default is *All match*. With the default conditions (all *Don't check*), every email fires the Trigger.
+
 **Message on Server**
 
-This controls what happens with the message on the mail server. It is recommended that you delete or move the mail or VisualCron will check that email again in the next polling interval.
+Controls what happens to the email on the mail server. Choose the condition result it applies to, then select:
 
-Use the Condition‑result dropdown to choose when the action applies, then select one of the following radio options:
+* *Delete message on Server*: the email is deleted from the server
+* *Leave message on Server*: the email stays on the server. Check *Mark as read (not POP3)* under *Message on Server* to mark it as read
 
-* **Delete from server** — remove the message from the mail server
-* **Leave message on server** — keep the message on the server
+:::warning
 
-When _Leave message on server_ is selected, the **Mark as read** checkbox becomes available. Checking it marks the message as read on the server (IMAP4 only; the POP3 protocol does not support this). Note that VisualCron does not care if it is read or not — VisualCron has its internal list to check if an email has been processed.
- 
-**Copy message to folder (_not POP3_)**
+With the default settings, the first check, made as soon as you click *OK*, fires the Trigger for every unread email in the folder and deletes each one from the server (*Always* and *Delete message on Server*). Set the conditions and *Message on Server* first, or clear *Active* until the Trigger is ready.
 
-This option copies a mail to another folder. It does not delete it unless you set Delete message on Server in previous setting. This option is only available when using IMAP4 as protocol mode.
+:::
 
-Choose when the copy is performed using the Condition‑result dropdown, then enter the target folder or click the Select folder button to browse. Check **Mark as read** to also mark the copied message as read.
+Which emails the Trigger reads depends on this setting. With *Delete message on Server*, or with *Leave message on Server* and its *Mark as read (not POP3)* checked, the Trigger reads only unread emails: an email that is already read never fires it. With *Leave message on Server* and its *Mark as read (not POP3)* cleared, the Trigger reads read and unread emails; an email that fired the Trigger once does not fire it again (see *Reset checked emails when modified*).
+
+**Copy message to folder (not POP3)**
+
+Copies the email to another folder on the mail server, for IMAP4, Exchange EWS, Exchange WebDAV and Microsoft Graph API Connections. Choose the condition result it applies to (default *Never*), then enter the full path of the folder, for example `Inbox/Processed`, or click the folder icon to browse. The folder name accepts Variables. Browsing for a folder also sets *Is public folder* on the ***Main settings*** sub tab to match the folder you select.
+
+If *Message on Server* also applies to the email with *Delete message on Server*, the email is moved to the folder instead of copied.
+
+:::warning
+
+If the folder is not found, or the copy or move fails, the email is not copied, and with *Delete message on Server* it is still deleted. The log shows that the folder could not be found only with *Extended Trigger debug logging* checked. After each copy or move, the log currently also shows the error "Destination mail folder … not found.", even when the copy succeeded. Check the folder name with the folder icon before you activate the Trigger.
+
+:::
+
+*Mark as read (not POP3)* in this group, checked by default, marks the original email as read whenever this action runs, also when the folder is not found.
 
 **Forward email**
 
-Open the **Forward Email** sub‑tab and check **Forward email** to enable forwarding of the matched email through an SMTP connection.
+Check *Forward email* to forward each email that fires the Trigger; then set it up on the ***Forward email*** sub tab. The forwarded email has the original body and attachments, and is sent from the first address in the original email's To field.
 
-* **Connection** — the SMTP [Connection](../server/global-connections) used to send the forwarded email
-* **Subject prefix** — text prepended to the original subject when forwarding
-* **Recipient separator** — the character used to separate multiple recipients in the To/Cc/Bcc fields
-* **Send separate emails** — when checked, a separate email is sent to each recipient instead of one email with multiple recipients
-* **To / Cc / Bcc** — for each recipient group, choose the **Source** (_Not used_, _Manual_, or _File_), then either type recipients in the textbox or pick a file containing recipients. When _File_ is selected, a [Credential](../server/global-credentials) can be supplied for accessing the file
+* *Connection*: the SMTP, Exchange EWS, Exchange WebDAV or Microsoft Graph API [Connection](global-connections) used to send it
+* *Subject*: the subject of the forwarded email. An asterisk (`*`) inserts the original subject; the default is `FW: *`
+* *Recipient separator*: the character between recipients in the *To..*, *Cc..* and *Bcc..* boxes or files: *Semicolon*, *Comma* or *Newline*
+* *Send separate emails*: checked by default. Each recipient in *To..*, *Cc..* and *Bcc..* gets a separate email, with that recipient as the only To address
+* *To..*, *Cc..*, *Bcc..*: for each, choose *Not used*, *Manual* (type the recipients) or *File* (a file that lists the recipients). For *File*, you can select a *Credential* to read the file. Values accept Variables
 
-**Triggers > Add > Event Trigger > Email > Email > Save mail** tab
+:::warning
 
-Both the actual mail and/or attachment can be saved to a file. By default the content is saved in ```"C:\Program Files\VisualCron\data\triggers\mail"```. Attachments of an email are by default stored in the attachments folder; ```"C:\Program Files\VisualCron\data\triggers\mail"```.
+Forwarding currently has these limits:
 
-**Email save action**
+* The body of the forwarded email is passed through the Variable replacer, so Variables (text in braces) in an incoming email are replaced in the forwarded copy. Forward only emails from senders you trust, for example by setting a *From address* condition
+* With *Send separate emails* cleared, the email is forwarded only when *To..* holds exactly one address. With more than one To address, nothing is sent and nothing is logged. To forward to several recipients, keep *Send separate emails* checked
+* An email that has no To address is not forwarded; the error is written to the log
+* After the first forward, the Trigger uses the forward *Connection* in place of the mailbox Connection until the Trigger restarts, for example when the Job is saved. Copying, moving and marking later emails as read can then fail, and an email set to be moved is deleted instead. With a Microsoft Graph API mailbox, the Trigger also stops renewing its sign-in, so later checks fail and the Trigger is deactivated after the retries. Use the mailbox Connection as the forward *Connection*, or do not use *Forward email*
 
-Choose when the email itself should be saved to disk based on the Condition result (_Never_, _Always_, _All match_, _Any match_, _No match_).
+:::
+
+The save settings are on the ***Email*** tab, ***Save mail*** sub tab.
+
+The email (as an `.eml` file) and its attachments can be saved to disk. Each email gets its own folder, named after the email's unique ID on the server. By default (*Save to default folder*) the email is saved in `data\triggers\mail\<ID>` in the VisualCron installation folder, and its attachments in `data\triggers\mail\<ID>\attachments`. The Trigger writes the files as the account the VisualCron service runs as, or as the *Credential* on the ***Main settings*** tab.
+
+**Email**
+
+Choose the condition result for which the email is saved (*Never*, the default, *Always*, *All match*, *Any match* or *No match*).
 
 **Save location**
 
-Choose between:
+* *Save to default folder*: the default folders above
+* *Save to folder:*: the folder you enter, or select with the folder icon. Accepts Variables
 
-* **Save to default folder** — store the email in the default VisualCron mail data folder
-* **Save to custom folder** — pick a destination folder. Use the browse button to select a folder on disk
+The email and its attachments use the same location.
 
-**Create folder tree for each email**
+**Create folder tree based on each email**
 
-When checked, VisualCron creates a separate folder tree for each saved email so that the email and its attachments are grouped together.
+Applies to *Save to folder:*. When checked (the default), the email is saved in a subfolder named after its unique ID and the attachments in an `attachments` folder below it. When cleared, the email and its attachments are saved directly in the folder you entered. The default folders always use a folder per email.
 
-**Attachment save action**
+**Save attachment(s)**
 
-Choose when attachments should be saved to disk, using the same Condition‑result options as _Email save action_.
+Choose the condition result for which attachments are saved, with the same options as *Email*. The default is *Never*; the ***Attachment filter*** sub tab is available only when this is not *Never*.
 
-**Triggers > Add > Event Trigger > Email > Email > Attachment filter** tab
+The attachment filter is on the ***Email*** tab, ***Attachment filter*** sub tab.
 
-Use this tab to limit which attachments are saved when _Attachment save action_ is enabled.
+Use this tab to limit which attachments are saved when *Save attachment(s)* is set to save them.
 
 **File mask**
 
-A file mask used to match attachment names (for example `*.pdf`). Use the browse button to select a sample file, check **Is regex** to treat the mask as a regular expression, and check **Case sensitive** to make matching case‑sensitive.
+Only attachments whose name matches the mask are saved. The default `*` saves all. Separate several masks with `;`, for example `*.pdf;*.xlsx`. Check *Is regex* to use a regular expression instead. The mask accepts Variables. Click the icon to pick a sample file and use its name.
 
-**File size**
+:::note
 
-Optionally filter attachments by size:
+The *Case sensitive* checkbox on this sub tab is currently not saved. The file mask is always matched without regard to case.
 
-* **Smaller than** — only save attachments smaller than the given size
-* **Larger than** — only save attachments larger than the given size
+:::
 
-Each size has its own numeric value and a unit dropdown (B, kB, mB, gB, tB). When both checks are enabled, use the operator dropdown to combine them with **AND** or **OR**.
+**Size**
 
-**Overwrite existing files**
+Check *Check if file is smaller than x size* or *Check if file is larger than x size* to save only attachments below or above a size. Each size has a value and a unit, from *byte(s)* to *terabyte(s)*; the default is *kilobyte(s)*. When both are checked, both must be true.
 
-When checked, an attachment with the same file name as an existing file is overwritten.
+:::warning
+
+The list that combines the two sizes offers *AND* and *OR*, but it currently always shows *AND* when you open the Trigger, so *OR* is lost unless you select it again each time you save the Trigger.
+
+:::
+
+**Overwrite existing file(s)**
+
+Checked by default. When an attachment with the same name already exists in the folder, it is overwritten. When cleared, the existing file is kept and the attachment is not saved.
 
 **Add number to existing file**
 
-When checked, a numeric suffix is added to the file name to avoid overwriting an existing file.
- 
-:::tip Note 
+When checked, an attachment whose name already exists is saved with a number added to its name (for example `report1.pdf`), so no file is overwritten.
 
-when forming the folder name and file name, all incorrect characters in _MailId_ are replaced with the � symbol.
-The final folder and file path are stored in the trigger execution result variables: ```Mail.Result.Mail.MailFolder``` and ```Mail.Result.Mail.MailPath```, respectively.
-Moreover, this folder and/or file name can also be calculated by applying the built-in variable function "_File variables / Encode FileName_" to _MailID_ as follows: ```{PATH(EncodeFileName|{TRIGGER(Active|LastTrigger|Mail.Result.Mail.MessageId)}|MASK)}```.
+:::note
+
+In the folder and file names, characters that are not allowed in Windows file names are replaced with `�` (U+FFFD). The full folder and file path are in the result Variables `Mail.Result.Mail.MailFolder` and `Mail.Result.Mail.MailPath`. To build the same name yourself from the email ID, use `{PATH(EncodeFileName|{TRIGGER(Active|LastTrigger|Mail.Result.Mail.MessageId)}|MASK)}`.
 
 :::
+
+### Result Variables
+
+When the Trigger fires, it sets these result Variables for the email that fired it:
+
+* `Mail.Result.Mail.MessageId`: the email's unique ID on the server
+* `Mail.Result.Mail.Identifier`: a 32-character hexadecimal value calculated from the message ID
+* `Mail.Result.Mail.FromAddress`: the sender's address
+* `Mail.Result.Mail.ToAddresses` and `Mail.Result.Mail.CCAddresses`: the recipients, separated by `;`
+* `Mail.Result.Mail.Subject`
+* `Mail.Result.Mail.BodyText` and `Mail.Result.Mail.BodyHTML`: the text body and the HTML body
+* `Mail.Result.Mail.Received`: the date received. For another format, use `Mail.Result.Mail.Received|<date format>`, for example `{TRIGGER(Active|LastTrigger|Mail.Result.Mail.Received|yyyy-MM-dd)}`
+* `Mail.Result.Mail.IsEncrypted`, `Mail.Result.Mail.IsSigned`, `Mail.Result.Mail.ValidSignature`: `True` or `False`
+* `Mail.Result.Mail.MailFolder`: the folder of the saved email; also set when only the attachments are saved. Empty when nothing is saved
+* `Mail.Result.Mail.MailPath`: the file of the saved email; empty when the email is not saved
+* `Mail.Result.Mail.AttachmentFolder`: the folder of the saved attachments
+* `Mail.Result.Mail.NoAttachments`: the number of attachments
+* `Mail.Result.Mail.AttachmentNames`: the names of all attachments, comma separated, including attachments that the ***Attachment filter*** leaves out. Set only when *Save attachment(s)* applies to the email; otherwise empty. Add an index for one name, for example `Mail.Result.Mail.AttachmentNames|0` for the first
+* `Mail.Result.Mail.AttachmentPaths`: the paths of the saved attachments, comma separated; add an index for one path, for example `Mail.Result.Mail.AttachmentPaths|0`
+
+For example, `{TRIGGER(Active|LastTrigger|Mail.Result.Mail.Subject)}` returns the subject of the email that fired the Trigger that started the run. *Last run*, `{TRIGGER(Active|LastTrigger|LastRun)}`, returns the time the Trigger fired. The *Variables* window also offers *Get local attachment name of a specific attachment*, which currently returns no value; use `Mail.Result.Mail.AttachmentNames|0` instead. See [Variables](global-variables) for how *Last trigger* and the other keys work.

@@ -5,40 +5,87 @@ hide_title: 'true'
 
 ## Event Trigger - AMQP
 
-The Advanced Message Queuing Protocol (AMQP) is an open standard application layer protocol for message-oriented middleware. The defining features of AMQP are message orientation, queuing, routing (including point-to-point and publish-and-subscribe), reliability and security. AMQP defines a self-describing encoding scheme allowing interoperable representation of a wide range of commonly used types. It also allows typed data to be annotated with additional meaning,[17] for example a particular string value might be annotated so that it could be understood as a URL. Likewise a map value containing key-value pairs for 'name', 'address' etc., might be annotated as being a representation of a 'customer' type.
- 
-The AMQP Trigger is using the [AMQP Connection](../server/connection-amqp).
+The AMQP Trigger receives messages from a queue on an AMQP 1.0 message broker, through an [AMQP Connection](../server/connection-amqp). The Connection offers the broker types RabbitMQ and Azure Service Bus. Each message fires the Trigger once. Right after the Trigger fires, it accepts the message, which removes it from the queue, so other consumers of the queue do not get it.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20AMQP.png)
+The *Polling interval* on the ***Main settings*** tab is how many seconds the Trigger waits for a message in one receive call. A message that arrives during the wait is received right away.
+
+This Trigger fires once per message and removes the message. If the run of the Job is skipped, for example because *Do not start if job is already running* is selected (the default), that message is lost. See *Triggers that fire once per item* in [Event Triggers](event-triggers#triggers-that-fire-once-per-item).
+
+:::warning
+
+A message is also accepted, and so removed, when the Job does not start because of a time exception of the Job, or because *Run after the trigger has been triggered* in the *Run delay* group on the ***Main settings*** tab is above 1 and the message does not complete the count. Do not use a time exception or a run delay above 1 with this Trigger when every message must be processed.
+
+:::
+
+With *Expire after being triggered* on the ***Expires*** tab, the message that makes the Trigger expire starts the Job but is not accepted, so the broker can deliver it again.
+
+The settings are on the ***AMQP*** tab.
+
+![AMQP tab of the Add/Edit event window with the Connection list, the Queue group (Name, Durable, Timeout, Dynamic) and the Re-connect option group](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20AMQP.png)
 
 **Connection**
 
-Select the AMQP Connection that the trigger should use to subscribe to messages.
+Select the AMQP Connection the Trigger uses to connect to the broker. A Connection is required.
+
+If the Connection is deleted:
+
+* When the Trigger starts without its Connection, it stops without an entry in the log but still shows as active
+* While the Trigger runs, it keeps receiving until the link to the broker closes; it then tries to reconnect without a pause and writes "AMQP Trigger reconnect.." to the log on each attempt
+
+In both cases, select another Connection, then deactivate and activate the Trigger.
 
 **Queue**
 
 **Name**
 
-Name of the queue. Click refresh to get all once you have selected a Connection.
- 
+The name (address) of the queue to receive from. Click the refresh button to list the queues of the broker and select one, or type the name. For RabbitMQ, the list is read from the broker's management HTTP API at the *Connection string* of the Connection; when that is empty, the Connection's address and port are used. You can use Variables. A queue name is required.
+
 **Durable**
 
-Indicates what state of the terminus will be retained durably: the state of durable messages, only existence and configuration of the terminus, or no state at all.
- 
+The terminus durability to request for the receiving link, as a whole number. AMQP 1.0 defines "0" (none), "1" (configuration) and "2" (unsettled state). You can use Variables.
+
 **Timeout**
 
-Timeout duration that an expiring source will be retained. The source starts expiring as indicated by the expiry-policy.
- 
+How many seconds the broker keeps an expiring source (AMQP 1.0 source timeout), as a whole number. A value that is not a whole number is ignored. You can use Variables.
+
 **Dynamic**
 
-Dynamic request dynamic creation of a remote node. When set to true by the receiving link endpoint, this field constitutes a request for the sending peer to dynamically create a node at the source. In this case the address field MUST NOT be set. When set to true by the sending link endpoint this field indicates creation of a dynamically created node. In this case the address field will contain the address of the created node. The generated address SHOULD include the link name and other available information on the initiator of the request (such as the remote container-id) in some recognizable form for ease of traceability.
+Check to ask the broker to create the source node dynamically (AMQP 1.0 dynamic source). The queue name is still sent and still required.
+
+Leave *Durable* and *Timeout* empty and *Dynamic* cleared to use the broker's defaults.
+
+:::warning
+
+If you enter a *Timeout* or check *Dynamic*, *Durable* must also contain a whole number. Otherwise the Trigger fails when it starts, with the error `Durable: '' is not unsigned number`, and is deactivated.
+
+:::
 
 **Re-connect option**
 
 **On error reconnect attempts**
 
-The number of times the trigger will try to re-establish the connection to the AMQP broker after a connection error.
+Attempts in a row to re-establish the link to the broker after it was closed (1 to 500; default 5). Each attempt is written to the log. After that the Trigger stops receiving messages. If it still shows as active, deactivate and activate it.
+
+The Trigger reconnects when the broker closes the link, including a forced close (`amqp:connection:forced`). Any other error while receiving stops the Trigger and deactivates it.
+
+When the Trigger starts and the broker refuses the connection (an error that contains "No connection"), the Trigger keeps trying every *On error reconnect interval* seconds until the connection succeeds, and writes the error to the log on each attempt. These attempts continue after you deactivate the Trigger, until the connection succeeds. Any other error at start, for example a wrong user name or password, stops the Trigger and deactivates it.
 
 **On error reconnect interval (seconds)**
 
-The number of seconds to wait between re-connect attempts when the trigger is recovering from a connection error.
+The number of seconds to wait after a failed attempt before the next one (1 to 500; default 5).
+
+### Result Variables
+
+In the *Variables* window, the result Variables are under the Job's Trigger, *Result*. In a run that this Trigger started, `{TRIGGER(Active|LastTrigger|AMQP.Result.Message)}` returns the text of the message that started the run. See [Variables](global-variables).
+
+When the Trigger fires, it sets these result Variables:
+
+* `AMQP.Result.Message`: for a text body, the text; for a binary body, an encoded (Base64) form, not the raw bytes
+* `AMQP.Result.MessageString`: for a binary body, the body decoded as text (with the character set of the content type or encoding, otherwise UTF-8); for a text body, the body in an XML form
+* `AMQP.Result.MessageId`, `AMQP.Result.CorrelationId`, `AMQP.Result.Subject`, `AMQP.Result.To`, `AMQP.Result.ReplyTo`, `AMQP.Result.ReplyToGroupId`, `AMQP.Result.GroupId`, `AMQP.Result.GroupSequence`, `AMQP.Result.UserId`, `AMQP.Result.ContentType`, `AMQP.Result.ContentEncoding`: the message properties
+* `AMQP.Result.CreationTime|<date format>`, `AMQP.Result.AbsoluteExpiryTime|<date format>`: the creation and expiry time
+* `AMQP.Result.Durable`, `AMQP.Result.Priority`, `AMQP.Result.Ttl`, `AMQP.Result.FirstAcquirer`, `AMQP.Result.DeliveryCount`: the message header
+* `AMQP.Result.BodySection.Type`: the type of the body section
+* `AMQP.Result.ApplicationProperties|<name>`, `AMQP.Result.DeliveryAnnotations|<name>`, `AMQP.Result.MessageAnnotations|<name>`, `AMQP.Result.Footer|<name>`: the value of the entry with that name; without a name, the names of all entries, one per line
+
+The date format is optional, for example `{TRIGGER(Active|LastTrigger|AMQP.Result.CreationTime|yyyy-MM-dd HH:mm:ss)}`.
