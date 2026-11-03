@@ -141,6 +141,8 @@ If you use 8.1.2 or later:
 1. Turn on Extended debugging in Server settings.
 2. Edit the Credential that you use
 3. Change Execution options to Use Win32  API CreateProcessAsUser
+
+With *Use Win32 API CreateProcessAsUserW*, the Credential's account needs the **Log on as a batch job** right on the VisualCron server. See [Credentials](../server/global-credentials).
  
 Workaround 1
 Turn of UAC in the Server settings in VisualCron window and reboot
@@ -157,6 +159,8 @@ Please try any of the following:
 If this does not work you can change to Credential option "CreateProcessAsUserW" and then add the ```SE_ASSIGNPRIMARYTOKEN_NAME (SeAssignPrimaryTokenPrivilege)``` permission on the user that runs the VIsualCron service. You do this in the Local Security Policy:
 
 ![](../../../static/img/se_assign.png)
+
+The Credential's account also needs the **Log on as a batch job** right. If it is missing, the Task fails with error 1385.
 
 **No output is captured**
 
