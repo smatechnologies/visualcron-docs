@@ -2,9 +2,8 @@
 sidebar_label: 'External - Forum'
 hide_title: 'true'
 ---
-
 ## External - Forum
 
-The main menu **Help > External > Forum** option opens a new web browser window to the VisualCron users/tutorials/support/development [discussion forum](https://www.visualcron.com/forum/) web page. We encourage you to use this forum e.g. for testimonials, problem solving or feature requests.
+The ***Help*** -> ***External*** -> ***Forum*** option opens the [VisualCron forum](https://www.visualcron.com/forum/) in your web browser. Use the forum for questions, problem solving, feature requests and reviews.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Help/Forum.png)
+![The Forum button on the Help tab and the VisualCron forum in a web browser](../../../static/img/Client%20User%20Interface/Main%20Menu/Help/Forum.png)

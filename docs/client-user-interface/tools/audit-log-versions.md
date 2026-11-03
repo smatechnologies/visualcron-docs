@@ -5,45 +5,53 @@ hide_title: 'true'
 
 ## Versions
 
-The main menu **Tools > Objects > Audit log > Versions** window shows all changes related to a specific object. It is also possible, in detail, to compare the actual changes. You can also revert back to a specific version - let say you made a change and then want to go back to a previous version.
- 
-**Tools > Objects > Audit log > Versions**
+The ***Versions..*** window lists the stored versions of one object, shows what changed between versions, and can revert the object to a selected version.
 
-![](../../../static/img/toolsobjectsauditlogversions.png)
+To open it, do one of the following:
 
-The window is divided in two parts. A list that contains all changes with search functionality and tabs containing info about the selected version.
-When clicking on a row the information in the lower part is updated with details about the actual stored object.
- 
-By default, the versions window only shows the changes of today, to alter this, select another date. The number of days or rows stored is controlled by the same settings for Audit [Log Settings](../server/settings-log-settings).
- 
-**Revert to selected**
+- In the ***Audit log*** window, double-click a row, or right-click it and click ***Versions and details***; see [Objects - Audit Log](objects-audit-log)
+- Right-click a Job, Task or other object, such as a Connection or Credential, and click ***Versions..***
 
-This means that the object that you clicked on (right clicked or selected) will be updated (or re-created if no longer existing). The Revert functionality only updates the object itself - not any relations to it. This means, that if you for example revert a Task that used a Credential (that is no longer existing) that Task may not work until you recreate and reselect that Credential. Reverts are currently logged as Add or Update depending on if they exist from the beginning or not.
- 
-**Object info** tab
+![Versions window with the version list, Revert to selected button and the Object info tab](../../../static/img/toolsobjectsauditlogversions.png)
 
-This tab contains basic information like:
+The upper part lists the stored versions with _Event date_, _User_, _Event type_ and _Summary_. When the window opens, the date range is set to the period that holds versions of the object and the list is filled. To change the period, set the dates and click ***Search***. How long versions are kept is set by the audit log settings in [Settings - Log Settings](../server/settings-log-settings).
 
-* Name/Description
-* Id of object
-* Created by and created date
-* Modified by and modified date
-* Object size
- 
-There is also a [Object relations](object-relations) button so you can see where this object is used.
- 
-**Summary tab**
+Click a row to show the stored object in the tabs below.
 
-This is the same information as in the Summary column but might be easier to read if there are a lot of changes.
- 
-**Diff (previous version) tab**
+### Revert to selected
 
-This shows, in detail, the property changes between the selected object and the previous version.
- 
-**Diff (current version) tab**
+:::warning
 
-This shows, in detail, the property changes between the selected object and the current existing object.
- 
-**Object XML tab**
+If the object exists, revert overwrites it with the selected version as soon as you confirm. A deleted object can be re-created only while its audit log entries are kept. Revert restores only the object itself, not the objects it refers to. For example, if a reverted Task uses a Credential that no longer exists, the Task may fail until you re-create the Credential and select it in the Task again.
 
-This shows the XML specification details for the selected object.
+:::
+
+1. Click a row in the version list.
+2. Click ***Revert to selected***, or right-click the row and click ***Revert to selected version***.
+3. Click ***Yes*** in the ***Revert object*** confirmation.
+
+The object is updated to the selected version, or re-created if it no longer exists. The revert is logged as an add or an update.
+
+### Object info tab
+
+- _Name/Description_: the name of the object
+- _Id_: the identifier of the object
+- _Created by_ and _Modified by_: who created and last changed the object, with the dates
+- _Object size_: the size of the stored object
+- ***Object relations***: opens [Objects - Object Relations](object-relations) for the object
+
+### Summary tab
+
+The same text as the _Summary_ column, easier to read when there are many changes.
+
+### Diff (previous version) tab
+
+The property changes between the selected version and the version before it.
+
+### Diff (current version) tab
+
+The property changes between the selected version and the object as it is now.
+
+### Object XML tab
+
+The stored object as XML.

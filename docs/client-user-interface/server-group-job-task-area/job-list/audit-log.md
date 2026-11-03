@@ -5,11 +5,11 @@ hide_title: 'true'
 
 ## Audit Log
 
-When a Job is defined, right-click on the Job or Task in the Server/Group/Job/Task grid and select *Audit log* to open the audit log window.
- 
-This window uses the same structure as the main menu **Tools > Objects > Audit log** option. See [here](../../tools/objects-audit-log) for more information.
- 
-**Job > Audit log**
+The ***Audit log*** item opens the ***Audit log*** window filtered on the selected Job or Task.
 
-![](../../../../static/img/Client%20User%20Interface/Toolbar/Audit%20Log.png)
+1. Right-click the Job or Task in the Server/Group/Job/Task grid.
+2. Click ***Audit log***.
 
+For a Job, the window shows the changes to that Job. For a Task, it shows the changes to that Task. The window is the same as ***Tools*** -> ***Objects*** -> ***Audit log***; see [Objects - Audit Log](../../tools/objects-audit-log).
+
+![Audit log window filtered on one Job, listing its run, activate, deactivate and delete events](../../../../static/img/Client%20User%20Interface/Toolbar/Audit%20Log.png)

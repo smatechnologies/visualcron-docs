@@ -5,14 +5,19 @@ hide_title: 'true'
 
 ## Stop Job
 
-When a Job is defined, right-click on the Job or Task in the Server/Group/Job/Task grid and select *Stop Job '`<Job name>`'* to stop a Job that is currently executing.
+The `Stop Job '<Job name>'` item stops a Job that is running.
 
-![](../../../../static/img/Client%20User%20Interface/Toolbar/Stop%20Job.png)
- 
-:::info Note
+1. Right-click the running Job in the Server/Group/Job/Task grid.
+2. Click `Stop Job '<Job name>'`.
 
-In case of such a forced stop, the Job receives the final result status "Failure".
+On a Task row, the item is `Stop Task '<Task name>'` and stops that Task. Stopping requires the Delete permission for processes.
 
-If, at the same time, the executed or interrupted Tasks inside the Job did not set their own error exit code, then the exit code for the Job will be set to 77777.
+![Job right-click menu with the Stop Job item highlighted](../../../../static/img/Client%20User%20Interface/Toolbar/Stop%20Job.png)
+
+:::note
+
+A stopped Job gets the result "Failure".
+
+If none of the Tasks that ran or were stopped set their own error exit code, the exit code of the Job is set to 77777.
 
 :::

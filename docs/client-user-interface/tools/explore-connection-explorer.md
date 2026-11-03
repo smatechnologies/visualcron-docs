@@ -5,31 +5,38 @@ hide_title: 'true'
 
 ## Explore - Connection Explorer
 
-With the main menu **Tools > Explore > Connection Explorer** option, there is one way to view your remote files, delete and transfer files - on your existing Connections. It is also a way of testing existing Connections and retrieve correct path for download or upload folders.
- 
-**Tools > Explore > Connection Explorer**
+The ***Connection Explorer*** window browses the remote files of your existing Connections. Use it to test a Connection, find the right remote path for a Task, and view, rename, delete and transfer files.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Connection%20Explorer.png)
+To open it, click ***Tools*** -> ***Explore*** -> ***Connection Explorer***.
 
-**The Connections list**
+![Connection Explorer window with the Connections list, a remote folder listing and the event log](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Connection%20Explorer.png)
 
-The Connection list shows all Connection types that are viewable by this Explorer. You can view FTP and SFTP Connections, as well as cloud storage Connections such as Windows Azure, Amazon S3, Dropbox, Google Drive, Google Cloud Storage, OneDrive, Box, WinSCP and SharePoint. You can right click on any connection and choose to set Properties or Connect.
+The Connection Explorer connects with the settings of the Connection itself, including how it checks certificates and host keys. See the Connection pages, for example [Connection - FTP](../server/connection-ftp) and [Connection - SFTP](../server/connection-sftp).
 
-**Drag and drop support**
+### Connections tab
 
-When connecting through FTP or SFTP you are able to drag and drop folders or files between source and destination.
- 
-**Right click menu**
+The ***Connections*** tab lists the Connections that the explorer can open: FTP and FTPS, SFTP, SCP, WebDAV, WinSCP and SharePoint Connections, and the cloud storage Connections Amazon S3, Microsoft Azure, Box, Dropbox, Google Drive and OneDrive. Right-click a Connection to connect to it or to open its properties. The ***Server files*** tab shows the files on the VisualCron Server.
 
-Right click on a file or folder to:
+### File list
 
-* create a new folder
-* delete a file or folder
-* view (download and show with default application)
-* rename a file or folder
-* cut/copy/paste file or folder
-* get properties of file or folder
- 
-**Limitations**
+When a Connection is open, its files are shown on the right, with a log of the connection events below them. Right-click a file or folder for these items:
 
-Some FTP servers require special parsing due to non-standard output. These may not work in the Client but work in the Tasks.
+- ***Refresh***
+- ***Select All*** and ***Select***
+- ***New Folder***
+- ***Delete***
+- ***View***: downloads the file and opens it with the default application
+- ***Rename***
+- ***Properties***
+
+For FTP and SFTP Connections, you can drag files and folders between source and destination. The ***Transfer log*** tab at the bottom lists the transfers, and the ***Terminal log*** tab shows the terminal output.
+
+:::warning
+
+***Delete*** deletes the file or folder on the remote server.
+
+:::
+
+### Limitations
+
+Some FTP servers return listings in a non-standard format. These may not list in the Connection Explorer but still work in Tasks.

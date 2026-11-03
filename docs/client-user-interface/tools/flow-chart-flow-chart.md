@@ -5,51 +5,15 @@ hide_title: 'true'
 
 ## Flow Chart - Flow Chart
 
-The main menu T**ools > Flow chart > Flow char**t option lets you view the internal steps within a Job. There are many ways to control the flow between Tasks. The Flow charts shows Triggers, Conditions, Tasks and Notifications.
- 
-**Tools > Flow chart > Flow chart**
+The ***Flow chart*** window draws the steps of one Job: its Triggers, its Tasks and the flow between them.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Flow%20Chart.png)
+To open it, do one of the following:
 
-**Job selection**
+- Click ***Tools*** -> ***Flow chart*** -> ***Flow chart***. The window opens for the first Job on the Server
+- Right-click a Job in the Server/Group/Job/Task grid and click ***Show flow chart***. The window opens for that Job; see [Show Flow Chart](../server-group-job-task-area/job-list/show-flow-chart)
 
-In the Jobs selection drop-down list shows you select which Job you would like to explore.
- 
-**Refresh button**
+The window title is `Flow chart - <Job name>`.
 
-Refreshes the current view.
- 
-**Show/Hide objects**
+![Flow chart window for one Job with its Triggers and Tasks sections and flow arrows](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Flow%20Chart.png)
 
-In this menu you can check/uncheck which objects (Triggers, Conditions, Notifications, On error and Legend) the chart will show.
- 
-**Show grid**
-
-Enables or disables the background grid.
- 
-**Print preview**
-
-Opens the print preview window.
- 
-**Page setup**
-
-Shows the printer page setup window.
- 
-**Select printer**
-
-Opens the printer selection window.
- 
-**Flow chart**
-
-The flow chart window includes the objects that is displayed in the top left area. A flow chart is drawn from top to bottom.
-
-The following action can be performed:
-
-* open an object for edit by double clicking on it
-* hide a specific object type by right clicking on it and choose hide
-* hover over each object (and arrows) to see details
- 
-**Permission**
-
-To block a user from viewing the Job report you need to disable the Jobs Read property in [User permissions > Groups](../server/main-user-permissions).
-
+The chart has a heading for the Job, a _Triggers_ section and a _Tasks_ section. Click the arrow at the right of a section to expand or collapse it. Each Task is shown as a box with its current state. Arrows show where the flow goes after each Task, for example to the next Task or to _Stop Job_.
