@@ -602,6 +602,21 @@
       "mdFile": "docs/client-user-interface/server/event-trigger-file.md",
       "label": "Event Trigger - File"
     },
+    "client-user-interface/server/event-trigger-folder": {
+      "chmFile": "event_trigger_-_folder.htm",
+      "mdFile": "docs/client-user-interface/server/event-trigger-folder.md",
+      "label": "Event Trigger - Folder"
+    },
+    "client-user-interface/server/event-trigger-sharepoint-file": {
+      "chmFile": "event_trigger_-_sharepoint_file.htm",
+      "mdFile": "docs/client-user-interface/server/event-trigger-sharepoint-file.md",
+      "label": "Event Trigger - SharePoint File"
+    },
+    "client-user-interface/server/event-trigger-http": {
+      "chmFile": "event_trigger_-_http.htm",
+      "mdFile": "docs/client-user-interface/server/event-trigger-http.md",
+      "label": "Event Trigger - HTTP"
+    },
     "client-user-interface/server/event-trigger-remote-file": {
       "chmFile": "event_trigger_-_remote_file.htm",
       "mdFile": "docs/client-user-interface/server/event-trigger-remote-file.md",
