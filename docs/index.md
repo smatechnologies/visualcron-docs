@@ -9,11 +9,11 @@ hide_title: 'true'
 
 ## VisualCron - Automation Tool For Windows
 
-VisualCron is an advanced Job/Task scheduler for Windows.
+VisualCron is an automation tool and Job scheduler for Windows.
 
 ### About VisualCron
 
-VisualCron is a tool/utility that runs other commands/programs/tools/utilities at predefined time(s), interval(s) or events. VisualCron is designed for Windows with the intention to simplify scheduling of Windows Tasks.
+VisualCron runs Jobs. Each Job holds one or more Tasks, and VisualCron runs them when one of the Job's Triggers fires: at a set time, at an interval or when an event occurs, such as a new file or an incoming e-mail. VisualCron runs on Windows and makes it simpler to schedule and automate work on Windows computers.
  
 VisualCron is provided by the NetCart AB, Continuous. Continuous is a company that develops applications and web services. Don't hesitate to use [contact web page](https://www.visualcron.com/contact.aspx) for improvement suggestions, problem reports or business proposals.
 
@@ -21,4 +21,6 @@ VisualCron is provided by the NetCart AB, Continuous. Continuous is a company th
 
 This is the VisualCron documentation. The most current version is always published online at [help.visualcron.com](https://help.visualcron.com).
  
-This documentation is provided as is, please check [visualcron.com](https://www.visualcron.com) for latest documentation and support information. For a quick introduction to VisualCron, see the [video tutorials](https://www.visualcron.com/tutorials). The goal is to have a tool tip to every enter field, label and combo box in the VisualCron Client application. Hovering the mouse over a field is an easy way to get quick information and what to enter.
+This documentation is provided as is, please check [visualcron.com](https://www.visualcron.com) for latest documentation and support information. For a quick introduction to VisualCron, see the [video tutorials](videotutorials).
+
+Many fields in the VisualCron Client show a tooltip. Hover the mouse over a field or its label to see what to enter.
