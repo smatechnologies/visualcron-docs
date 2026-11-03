@@ -84,6 +84,8 @@ If the file exists you can choose different overwrite options. The first dropdow
 **Resume if transfer failed**
 
 If an error occurs while downloading the file you can choose to retry X times and wait Y seconds between each retry.
+
+For SFTP connections, a download that ends before the whole file arrives is treated as an error and retried. Each retry continues from where the local file ends, and only when the download overwrites the local file. When the retries run out, or this option is unchecked, VisualCron logs the error and removes the partial download.
  
 **Keep modified/created date**
 
