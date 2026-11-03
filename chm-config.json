@@ -1883,6 +1883,61 @@
         "Definitions/Tasks/clsTask.vb"
       ]
     },
+    "client-user-interface/server/job-tasks/office-tasks/excel-add-worksheet": {
+      "chmFile": "task_excel_-_add_worksheet.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-add-worksheet.md",
+      "label": "Task Office - Excel - Add Worksheet"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-rename-worksheet": {
+      "chmFile": "task_excel_-_rename_worksheet.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-rename-worksheet.md",
+      "label": "Task Office - Excel - Rename Worksheet"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-move-worksheet": {
+      "chmFile": "task_excel_-_move_worksheet.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-move-worksheet.md",
+      "label": "Task Office - Excel - Move Worksheet"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-copy-worksheet": {
+      "chmFile": "task_excel_-_copy_worksheet.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-copy-worksheet.md",
+      "label": "Task Office - Excel - Copy Worksheet"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-remove-worksheet": {
+      "chmFile": "task_excel_-_remove_worksheet.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-remove-worksheet.md",
+      "label": "Task Office - Excel - Remove Worksheet"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-hide-unhide-worksheet": {
+      "chmFile": "task_excel_-_hide_unhide_worksheet.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-hide-unhide-worksheet.md",
+      "label": "Task Office - Excel - Hide/Unhide Worksheet"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-activate-worksheet": {
+      "chmFile": "task_excel_-_activate_worksheet.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-activate-worksheet.md",
+      "label": "Task Office - Excel - Activate Worksheet"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-get-active-worksheet": {
+      "chmFile": "task_excel_-_get_active_worksheet.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-get-active-worksheet.md",
+      "label": "Task Office - Excel - Get Active Worksheet"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-list-worksheets": {
+      "chmFile": "task_excel_-_list_worksheets.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-list-worksheets.md",
+      "label": "Task Office - Excel - List Worksheets"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-search-worksheets": {
+      "chmFile": "task_excel_-_search_worksheets.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-search-worksheets.md",
+      "label": "Task Office - Excel - Search Worksheets"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-delete-cell": {
+      "chmFile": "task_excel_-_delete_cell.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-delete-cell.md",
+      "label": "Task Office - Excel - Delete Cell"
+    },
     "client-user-interface/server/job-tasks/reporting-tasks/overview": {
       "chmFile": "reporting-tasks.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/reporting-tasks/overview.md",
