@@ -5,24 +5,31 @@ hide_title: 'true'
 
 ## Task Service - Restart Service
 
-With VisualCron you can control local or remote Windows services. The Restart service Task tries to stop a service (for 3 minutes) then, when service has stopped, it starts the service again.
+The Restart service Task stops a running Windows service on the Server computer or on a remote computer, waits up to 3 minutes for it to stop, and then starts it again. A service that is not running is started.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Service%20Tasks/Restart%20Service.png)
+![Restart service tab, with the Credential and the service settings](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Service%20Tasks/Restart%20Service.png)
+
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
+
+### Restart service tab
 
 **Credentials**
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
- 
+The Credential the Task runs as to control a service on a remote computer. It is used only with _Remote_. Click the settings button to open _Manage credentials_; see [Credentials](../../global-credentials).
+
 **Service**
 
-**Local** / **Remote**
+- _Local_ (default): the service runs on the Server computer
+- _Remote_: the service runs on another computer
+- _Hostname_: the name of the remote computer. Available with _Remote_
+- _Service name_: the name of the service to restart. Type it, or click the refresh button to fill the list with the services of the computer. Host name and service name may contain Variables
 
-Select the **Local** radio button if you want to restart a service on the local computer, select the **Remote** radio button if you want to restart a service on a remote computer.
+### Output and errors
 
-**Hostname**
+The output says the service was successfully started. If the service does not stop within 3 minutes, the Task fails.
 
-The name of the remote computer. Only available when **Remote** is selected.
+:::warning
 
-**Service name**
+After starting the service, the Task waits until it runs, without a time limit of its own. Set a time limit on the ***TimeOut*** tab.
 
-The name of the service to restart. Type a service name or click the Refresh button to populate the list with available services from the selected local or remote computer.
+:::

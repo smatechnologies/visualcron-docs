@@ -5,59 +5,50 @@ hide_title: 'true'
 
 ## Task Interactivity - Desktop Macro
 
-This Task is obsolete. Please use the [Robot Task](/client-user-interface/server/job-tasks/interactivity-tasks/robot-task/overview.md).
- 
-The Desktop macro Task lets you automate in a visual way. Desktop macro Task *records* your mouse moves and keystrokes and can *play them back* for you any time. The Task is advanced in many ways. It can interact with any program and restore windows to their original place if they are misplaced before playback.
- 
-There are many uses for the Desktop macro Task, for example:
+The Desktop macro Task records mouse moves and keystrokes on a desktop and plays them back when the Task runs.
 
-* web automation
-* testing
-* automate manual Tasks
-* excel interaction
- 
-The Desktop macro Task is dependent on access to the desktop. Mouse moves and keystrokes must have a desktop to playback onto. To accomplish this, as the [VisualCron Server](../../../../using-visualcron/visualcron-server) is running as a service the [VisualCron Tray Client](../../../../using-visualcron/visualcron-tray-client) is used for playback. This means also that the Task can only be run as a [foreground Task](../../../server/task-main-settings-execution-context).
+:::note
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Desktop%20Macro.png)
+The Desktop macro Task is obsolete. Use the [Robot Task](robot-task/overview) for new automation.
 
-**Macro info**
+:::
 
-**Edit**
+Typical uses are:
 
-This feature is currently unavailable but will let you edit mouse moves, key strokes in detail. Please let us know if you find this an important feature and we will prioritize it.
- 
-**Length**
+- web automation
+- testing
+- automating manual work
+- working with Excel
 
-Displays the playback length of the macro when played back with *normal speed*.
- 
-**Record**
+The Task needs a desktop to play back onto. The [VisualCron Server](../../../../using-visualcron/visualcron-server) runs as a service, so playback runs in the [VisualCron Tray Client](../../../../using-visualcron/visualcron-tray-client) on a logged-on desktop, and the Task must run in the foreground; see [Task Main Settings - Execution Context](../../task-main-settings-execution-context). If the Server finds no Tray Client connection for the Task, the Task fails with "Could not find the specified Connection for execution."
 
-**Start Recording**
+![Desktop macro tab with the Macro info, Record and Playback groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Desktop%20Macro.png)
 
-Minimizes the VisualCron windows and starts the recording. You can interrupt this any time by clicking CTRL + ALT + S or if you click on Stop button on Record dialog. During record you perform the steps which you want VisualCron to do later. One tip could be to take things slowly as the time it may take to open a program/window may vary.
- 
-**Show record stop dialog**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-If this property is unchecked you will not see the window with the Stop button. To stop recording you must press CTRL + ALT + S.
+### Desktop macro tab
 
-**Playback**
+#### Macro info
 
-**Show playback window**
+- _Edit_: Opens _Desktop macro - steps_, the list of recorded steps, where you can open a keyboard or mouse step and change it. Available when the macro has steps
+- _Length_: The playback length of the macro at "Normal" speed
 
-If this property is unchecked the playback popup will not be shown.
- 
-**Suppress error message boxes**
+#### Record
 
-If this property is checked no message boxes will halt the application if a certain window is not found during playback.
- 
-**Abort if no window is found**
+- _Start Recording_: Minimizes the VisualCron windows and starts recording. Perform the steps you want the Task to repeat. Press CTRL + ALT + S, or click the stop button in the record stop window, to stop recording. Work slowly: the time a program or window takes to open can vary from run to run
+- _Show record stop dialog_: When cleared, the record stop window is not shown, and CTRL + ALT + S is the only way to stop recording
 
-If this property is checked it forces the Task to abort when a certain window is not found.
- 
-**Playback speed**
+#### Playback
 
-The Desktop macro Task has 3 playback speeds:
+- _Show playback window_: When selected, the Tray Client shows a notification that the macro is playing and that holding ESC stops it
+- _Suppress error message boxes_: When selected, a playback error is not shown in a message box on the desktop. The error is written to standard error in either case
+- _Abort if no window is found_: Saved with the Task, but playback does not use it: when a window from the recording is not found, playback continues with the next step
+- _Playback speed_: How fast the macro plays back:
+  - "Normal": the pauses between steps are the recorded pauses
+  - "High": the pauses are half the recorded pauses
+  - "Ultra": the pauses are a quarter of the recorded pauses
 
-1. **Normal** - plays back with the same speed as you recorded it
-2. **High** - plays back with the double speed
-3. **Ultra** - plays back with zero waiting time on mouse moves
+### Output and errors
+
+- When a playback error occurs, the Task fails, and the error is written to standard error
+- Holding ESC during playback stops the macro, and the Task reports success

@@ -5,95 +5,49 @@ hide_title: 'true'
 
 ## Task Office365 - Add Calendar Event
 
-The Office365 - Add Calendar Event Task lets you add a Calendar event in the Office365 cloud. The Task uses the [Office365 Connection](../../connection-office365).
- 
-**Office365 - Add calendar event** tab
+The Office365 - Add calendar event(s) Task adds an event, or a recurring series, to a calendar of a Microsoft 365 user, using an [Office365 Connection](../../connection-office365).
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office365%20Tasks/O365%20Add%20Calendar%20events.png)
+![Office365 - Add calendar event(s) tab with the Connection, Event parameters and Event recurrence groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office365%20Tasks/O365%20Add%20Calendar%20events.png)
 
-**Connection**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To use the Office365 Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+### Office365 - Add calendar event(s) tab
 
-**Calendar name**
+#### Connection
 
-The name of the calendar in which the event should be created. Leave empty to use the default calendar.
+- _Connection_: The [Office365 Connection](../../connection-office365) to use. The Task works on the calendars of the Microsoft 365 user the Connection signs in as. Click the _Settings_ icon to open _Manage Connections_
 
-**Event subject**
+#### Event parameters
 
-The subject (title) of the calendar event. Required.
+- _Calendar name_: A calendar to check before the event is added, matched exactly. If the named calendar cannot be edited, the event is not added. The event is created in the user's default calendar
+- _Event start date/time_: When the event starts, in the Server computer's time zone. Required unless _Is all day_ is selected. A value that cannot be read as a date makes the event start at the next full hour
+- _Event end date/time_: When the event ends, in the Server computer's time zone. Required unless _Is all day_ is selected. A value that cannot be read as a date makes the event end two full hours after the hour the Task runs
+- _Is all day_: When selected, the event is an all-day event on the day the Task runs; the start and end values are not used
+- _Event subject_: The subject of the event. Required
+- _Event location_: The name of the location. Text after a `;` is read as the location's e-mail address and address, so do not use `;` in a plain location name
+- _Reminder minutes_: The number of minutes before the start that the reminder appears. A value that is not a whole number is ignored
+- _Importance_: "Low", "Normal" or "High". With none selected, the importance is not set
+- _Event body_: The text of the event, sent as plain text
+- _Response requested_: Selected or cleared sets whether responses are requested; the indeterminate state leaves it unset
 
-**Event start date/time**
+[Variables](../../global-variables) are resolved in the text and date fields.
 
-The start date and time of the event. Required when *All day* is unchecked.
+#### Event recurrence
 
-**Event end date/time**
+- _Range start date/time_: The first date of the series. Empty: the day the Task runs
+- _Range end date/time_: The last date of the series. Used only when _Range start date/time_ is set. Empty: the series has no end
+- _Type_: Empty for a single event, or "Daily", "Weekly", "Monthly" or "Yearly". The controls next to it change with the type:
+  - "Daily": _Every_ with a number of days, from "1" to "5", or _Every workday_, Monday to Friday
+  - "Weekly": _Interval_ every "1" to "5" weeks, and the days of the week
+  - "Monthly": _Interval_ every "1" to "5" months, and either _Day_ with the day of the month, or _Every_ with the week, "First" to "Last", and the day of the week
+  - "Yearly": _Interval_ every "1" to "5" years, _Month_, and either _Day_ with the day of the month, or _Every_ with the week and the day of the week
 
-The end date and time of the event. Required when *All day* is unchecked.
+### Output and errors
 
-**All day**
+The output is "Success:" followed by the ID of the new event.
 
-When checked, the event is created as an all-day event and the start and end date/time fields are disabled.
+:::warning
 
-**Event body**
+If Microsoft 365 rejects the request, or a calendar cannot be read, the error is written to standard error, and the Task reports success.
 
-The body text of the event.
-
-**Event location**
-
-The location of the event.
-
-**Reminder minutes before start**
-
-The number of minutes before the start time at which a reminder should be raised.
-
-**Importance**
-
-The importance flag stored on the event. Available options:
-
-* _Low_
-* _Normal_
-* _High_
-
-**Response requested**
-
-Sets whether responses are requested from invited attendees. Use the indeterminate (greyed) state to leave the value unset.
-
-**Recurrence range start / end**
-
-The first and last date on which the recurring event should occur. Leave empty for a non-recurring event.
-
-**Recurrence pattern type**
-
-How often the event repeats. Available options:
-
-* _Daily_
-* _Weekly_
-* _Monthly_
-* _Yearly_
-
-The recurrence sub-fields below show or hide automatically based on the selected *Type*.
-
-**Interval**
-
-The interval between recurrences (for example, "every 2 weeks"). Hidden for *Daily*.
-
-**Month**
-
-The month in which the event recurs. Used only for *Yearly*.
-
-**Day / Every**
-
-The day-of-the-month or recurrence anchor for the event. The label and behavior change with the selected *Type*.
-
-**Day of month**
-
-The numeric day of the month on which the event recurs.
-
-**Index**
-
-For relative monthly or yearly recurrence, selects the occurrence within the month (First, Second, Third, Fourth, Last).
-
-**Days of week**
-
-The days of the week on which the event recurs. Multiple days can be selected.
+:::

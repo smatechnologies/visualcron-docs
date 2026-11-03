@@ -5,98 +5,111 @@ hide_title: 'true'
 
 ## Task Office - Excel - Create
 
-The Excel - Create Task can create an Excel file from a CSV file or Variable.
- 
-**Excel - Create > Source** sub tab
+The Excel - Create Task creates an Excel workbook from delimited text, such as a CSV file, or from a value or Variable. Each line of the source becomes a row and each field a cell.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Create.png)
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
+
+The Task settings are on the ***Excel - Create*** tab, which has the sub tabs ***Source***, ***File filter***, ***Columns*** and ***Output***.
+
+### Source tab
+
+![Source tab of the Excel - Create Task, with the Source and Format groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Create.png)
 
 **Source**
 
-**File** / **Value/Variable**
+- _File_: Creates one workbook from each file that the ***File filter*** tab finds
+- _Value/Variable_: Creates one workbook from the text in the box, which can be a value or a Variable, for example the output of a previous Task
 
-Select **File** if the source for conversion is one or more files. Select **Value/Variable** if the source comes from a Variable or a previous Task output.
+  Click the Variable button to insert a Variable.
 
-**Value/Variable**
-
-Enter the value or Variable to use as the source. Only available when **Value/Variable** is selected. Click the Variable selector button to insert a Variable.
- 
 **Format**
 
-Adjust the format controls to match the format of the incoming file or value.
+Set these to match the source text:
 
-**Field separator**
+- _Field separator_: The character between fields, "Tab" by default
+- _Text qualifier_: The character around field values, if any; none by default
+- _Line break_: The character between rows, "CrLf" by default
 
-Select the character used to separate fields in the input.
+### File filter tab
 
-**Text qualifier**
+With _File_ as the source, the ***File filter*** tab selects the source files; see [Task - File filter](../../job-tasks-file-filter). The Credential on its ***Location*** tab is used to read the source files. The tab is not available with _Value/Variable_.
 
-Select the character used to surround field values in the input.
+When no file matches the filter, the Task raises a "file not found" error, which you can handle on the ***On error*** tab (see [Task - On Error](../../task-on-error)).
 
-**Line break**
+### Columns tab
 
-Select the character used to indicate a new row in the input.
- 
-**Excel - Create > File filter** sub tab
+![Columns tab of the Excel - Create Task, with the column list, the Column header source group and Include column headers in destination file](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Create%20Columns.png)
 
-If you have selected File as source you are able to set the standard VisualCron [File filter](../../../server/job-tasks-file-filter) values.
- 
-**Excel - Create > Columns** sub tab
+The column list sets the header, width, format and type of each column, in order. Click _Add_, _Edit_ or _Delete_ to change the list, or _Import headers_ to paste the first line of the source and create one column for each header, using the separators from the ***Source*** tab.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Create%20Columns.png)
+The _Add/Edit column_ window has these settings:
 
-In the columns tab you can override existing columns or set columns if they do not exist. It is possible to override name and also format of column. Default format is `@` which is a string. You can see different format options when editing or adding a column.
- 
-For faster addition of new columns we recommend using *Import headers*. This lets you import any existing first row of the document (in the same format you specified in the **Source** tab).
- 
+- _Header caption_: The column header
+- _Width_ and _Auto fit_: The column width
+- _Format_: The Excel number format of the cells, "@" (text) by default
+
+  For the format codes, see [http://www.ozgrid.com/Excel/CustomFormats.htm](http://www.ozgrid.com/Excel/CustomFormats.htm).
+
+- _Horizontal alignment_: The alignment of the cells
+- _Type_: How the field is written: "Text", "Number", "Date" or "Formula"
+
+  A "Number" or "Date" field that cannot be converted is written as text. A "Formula" field gets a leading "=" if it has none.
+
+When the list has columns, their type, format and alignment apply to the fields in that order, whichever header source is selected.
+
 **Column header source**
 
-You can choose to use the existing columns in the file but then it is not possible to apply formatting. If you add columns manually and select "Use columns from definition above" you are able to control name, width, format and order.
- 
+- _Use columns from file/Variable_: The first line of the source is the header row
+- _Use columns from definition above_: The headers come from the column list
+
 **Include column headers in destination file**
 
-You can deselect this option if you do not want to include any existing headers in file.
- 
-**Add->Format**
+- With _Use columns from definition above_, writes the headers from the column list as a bold first row
+- With _Use columns from file/Variable_, writes the first line of the source in bold
 
-[http://www.ozgrid.com/Excel/CustomFormats.htm](http://www.ozgrid.com/Excel/CustomFormats.htm)
- 
-**Excel - Create > Output** sub tab
+When it is cleared, no header row is added, and the first line of the source is still written as an ordinary row.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Create%20Output.png)
+### Output tab
 
-**Sheet**
+![Output tab of the Excel - Create Task, with the Sheet, Save to.., Credentials, Password protection and Sheet name settings](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Create%20Output.png)
 
-Select the Excel file format for the output file.
+- _Sheet_: The format of the new workbook
+
+  "Excel97To2003" and "Excel97To2003Template" create an Excel 97-2003 workbook. All other choices currently create a standard Excel 2007 workbook (".xlsx").
 
 **Save to..**
 
-When the source is **File**, all three options are available. When the source is **Value/Variable**, only **Different folder and use file mask** is available.
+With _Value/Variable_ as the source, only _Different folder and use file mask_ is available.
 
-* **Same folder but change extension** — Saves to the same folder with the same file name but changes the file extension to match the selected format.
-* **Same folder but use file mask** — Saves to the same folder with a new file name specified in File mask.
-* **Different folder and use file mask** — Saves to a different folder with a new file name. When using Value/Variable as source, the file mask must be the full name of the file.
+- _Same folder but change extension_: Saves to the source folder with the source file name and the extension ".xls" for the Excel 97-2003 formats or ".xlsx" for the others
+- _Same folder but use file mask_: Saves to the source folder with the name from _File mask_
+- _Different folder and use file mask_: Saves to _Folder_ with the name from _File mask_
 
-**Folder**
+  With _Value/Variable_ as the source, _File mask_ must be the full file name, for example `report.xlsx`.
 
-The destination folder path. Only available when **Different folder and use file mask** is selected.
+- _Folder_: The destination folder
+- _File mask_: The name of the new file, "*.xlsx" by default
 
-**File mask**
+_Folder_ and _File mask_ can contain Variables.
 
-The file name to use for the saved file. Available when **Same folder but use file mask** or **Different folder and use file mask** is selected.
+:::warning
 
-**Credentials**
+An existing file with the destination name is replaced without warning.
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
- 
+:::
+
+- _Credentials_: The Credential used to save the new workbook; see [Credentials](../../global-credentials)
+
+  Select a Credential in the combo box, or click the _Settings_ icon to add or edit Credentials.
+
 **Password protection**
 
-**Password protect file with password**
-
-When checked, the output Excel file will be protected with a password. Enter the password in the field below.
+- _Password protect file with password_: Protects the new workbook with the password you enter below it
 
 **Sheet**
 
-**Sheet name**
+- _Sheet name_: The name of the worksheet in the new workbook, "VisualCron" by default; it can contain Variables
 
-The name of the worksheet in the created Excel file.
+### Output and errors
+
+The output of the Task is the path of each workbook it created, one per line.

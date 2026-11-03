@@ -5,60 +5,45 @@ hide_title: 'true'
 
 ## Task Office365 - Get Calendar Events
 
-The Office365 - Get Calendar event(s) Task lets you retrieve calendar events from the Office365 cloud. The values entered below act as filter criteria — only fields that you fill in are used to narrow the result. The Task uses the [Office365 Connection](../../connection-office365).
+The Office365 - Get calendar event(s) Task writes information about the calendars of a Microsoft 365 user, and their events, to the Task output, using an [Office365 Connection](../../connection-office365). The fields work as filters: a field left empty is not used.
 
-**Office365 - Get calendar events** tab
+![Office365 - Get calendar event(s) tab with the Connection and Event parameters pattern groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office365%20Tasks/O365%20Get%20calendar%20events.png)
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office365%20Tasks/O365%20Get%20calendar%20events.png)
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks). This Task also has its own ***Output*** tab.
 
-**Connection**
+### Office365 - Get calendar event(s) tab
 
-To use the Office365 Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+#### Connection
 
-**Calendar name**
+- _Connection_: The [Office365 Connection](../../connection-office365) to use. The Task works on the calendars of the Microsoft 365 user the Connection signs in as. Click the _Settings_ icon to open _Manage Connections_
 
-The name of the calendar to read from. Leave empty to use the default calendar.
+#### Event parameters pattern
 
-**Event start date/time**
+Text fields take a value or a pattern: `*` matches any characters, `?` one character, `#` one digit, and `[` starts a character list.
 
-Restrict the result to events starting on or after this date and time.
+- _Calendar name pattern_: The calendars to read; not case-sensitive
+- _Event start date/time from_: Only events that start at or after this time
+- _Event start date/time to_: Only events that start at or before this time
+- _Is all day_: Selected for all-day events only, cleared for other events only, indeterminate for both
+- _Event subject pattern_: Only events whose subject matches
+- _Event location pattern_: Only events whose location name matches
+- _Event body pattern_: Only events whose body preview, the start of the body text, matches
+- _Reminder minutes pattern_: Only events whose reminder time, in minutes, matches
+- _Importance_: "None" for any importance, or "Low", "Normal" or "High"
+- _Response requested_: Selected or cleared to filter on whether responses are requested; indeterminate for both
 
-**Event end date/time**
+[Variables](../../global-variables) are resolved in the text and date fields. For a recurring event, the Task lists its occurrences within the start dates set, or around the series dates when none are set.
 
-Restrict the result to events ending on or before this date and time.
+### Output tab
 
-**All day**
+- _Show information_: The values to write. Calendar values: "Id", "Name", "Color", "CanShare", "CanViewPrivateItems", "CanEdit" and "Owner"; "Events" adds the events of each calendar, with the event values "EventId", "EventSubject", "EventStartDate", "EventEndDate", "EventBody", "EventLocation", "EventImportance", "EventAttendee", "EventRecurrence" and "IsAllDay". The calendar values and "Events" are selected by default
+- _Include field names_: Puts the name of each value in front of it
+- _Field separator_, _Text qualifier_ and _Line break_: The characters used between and around the values
 
-Filter on the all-day flag. Check to include only all-day events, uncheck to exclude them, or use the indeterminate (greyed) state to ignore this filter.
+### Output and errors
 
-**Event subject**
+:::warning
 
-Restrict the result to events whose subject matches the value entered.
+If Microsoft 365 rejects the request, or a calendar cannot be read, the error is written to standard error, and the Task reports success.
 
-**Event location**
-
-Restrict the result to events whose location matches the value entered.
-
-**Event body**
-
-Restrict the result to events whose body matches the value entered.
-
-**Reminder minutes before start**
-
-Restrict the result to events whose reminder is set to the specified number of minutes before start.
-
-**Importance**
-
-Restrict the result to events with the selected importance level. Available options:
-
-* _Low_
-* _Normal_
-* _High_
-
-**Response requested**
-
-Filter on the response-requested flag. Use the indeterminate (greyed) state to ignore this filter.
-
-**Output**
-
-Configure how the matching events are written to standard output, including which calendar information columns to include, whether to include column names, the field separator, the text qualifier and the line break style.
+:::
