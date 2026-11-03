@@ -72,9 +72,13 @@ This setting is for first time authentication only. Slack requires an HTTPS redi
 
 When you have created a workspace or have an existing you click on Authenticate. See images below about authentication.
  
-**Application token**
+**App-Level Token**
 
-More details..
+Required for the [Slack Trigger](../../client-user-interface/server/event-trigger-slack); not used
+by the Send message task. Slack triggers connect over Socket Mode, which authenticates with an
+app-level token (`xapp-...`) separate from the Client Id/Client secret above. In your Slack app's
+settings, generate one under **Basic Information > App-Level Tokens** with the `connections:write`
+scope, then paste it here.
  
 ### Setting up Slack -> Create workspace
 
@@ -110,8 +114,19 @@ The Redirect URL configured in the Slack app must use HTTPS (for example `https:
  
 *"Missing scope" error*
 
-Make sure the following oauth scopes are setup:
+Make sure your Slack app has the following OAuth scopes:
 
+* commands
 * chat:write
-* chat:write.public
-* incoming-webhook
+* channels:read
+* files:write
+* users:read
+* groups:read
+* channels:history
+* groups:history
+* im:history
+* mpim:history
+* chat:write.customize
+
+If the connection was authenticated before upgrading, re-run **Authenticate** after adding any new
+scopes - Slack only applies scope changes the next time you go through consent.
