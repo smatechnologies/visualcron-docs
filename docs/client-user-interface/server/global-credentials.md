@@ -180,6 +180,8 @@ Changing this also sets a matching logon type. *Use Win32 API CreateProcessWithL
 
 With *Use Win32 API CreateProcessAsUserW*, the Credential's account needs the **Log on as a batch job** right on the VisualCron server, unless you override the logon type. If the logon fails, the Task fails with the Windows error code and message, and VisualCron does not start the Task's program. For example, error 1385 means the account has not been granted the logon type.
 
+The failed Task's exit code is that Windows error code, for example 1326 (unknown user name or bad password) or 1385. If a Job condition, On error setting or notification matches on the Task's exit code, check that it handles these codes.
+
 To grant the right, complete the following steps:
 
 1. Open **Local Security Policy** (`secpol.msc`) on the VisualCron server.
