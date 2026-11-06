@@ -5,7 +5,7 @@ hide_title: 'true'
 
 ## License renewal coverage dates and deadlines
 
-Effective November 8, we plan to update how license coverage dates are calculated to keep renewal terms more consistent and predictable. This article explains how your license coverage dates are calculated and how long you have to renew after a license expires.
+This article explains how your license coverage dates are calculated and how long you have to renew after a license expires.
 
 | Situation | Result |
 | --- | --- |
