@@ -45,7 +45,7 @@ The toolbar has these buttons:
 - _Edit_: with a key ring selected, opens the _Edit Key Ring_ window to rename it. Click _Copy PGP Key Ring Id_ there to copy the key ring's identifier. To change the identifier, right-click the link and enter a new identifier in GUID format that no other key ring uses. The objects that use the key ring are updated
 - _Delete_: deletes the key ring that contains the selection, after you confirm, even when a key inside it is selected. If other objects use the key ring, the question says how many
 - _Import key(s)_: with a key ring selected, imports a key file into it (see [Import keys](#import-keys))
-- _Export public key_: with a key selected, saves its public key in an ".asc" file on the computer running the Client
+- _Export public key_: with a key selected, saves its public key in an ".asc" file on the computer running the Client. The proposed file name is the key's user ID, with each character that a file name can't contain replaced by "_"
 - _Export private key_: with a key that has a private key selected, saves the private key in an ".asc" file on the computer running the Client. The proposed file name ends with "-private". For a key without a private key, VisualCron shows an error
 - _Create key_: with a key ring selected, opens the _Generate PGP key_ window (see [Create a key](#create-a-key))
 - _Delete key_: deletes the selected key at once. Deleting a subkey on its own may not work. If the Server can't delete it, the subkey stays in the list, and no message is shown
