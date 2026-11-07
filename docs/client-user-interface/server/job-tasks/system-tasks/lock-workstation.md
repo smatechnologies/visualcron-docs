@@ -5,14 +5,16 @@ hide_title: 'true'
 
 ## Task System - Lock Workstation
 
-The Lock workstation Task locks the local computer. No settings are required.
+The Lock workstation Task locks the desktop of a user who is logged on to the VisualCron Server computer.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Lock%20Workstation.png)
+![Lock workstation Task settings, with the Credentials group and an empty Lock settings group](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Lock%20Workstation.png)
 
-**Credentials**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
- 
-**Lock settings**
+### Lock workstation tab
 
-No additional settings are required. The task locks the local workstation where VisualCron is running.
+- _Credentials_: not used by this Task
+
+The _Lock settings_ group has no settings. By default, the Task locks the active desktop session of the VisualCron Server computer. With foreground execution in the Task's execution context, it locks the session selected there; see [Task Main Settings - Execution Context](../../task-main-settings-execution-context).
+
+When no user is logged on, the Task fails. On success, the Task writes no output.

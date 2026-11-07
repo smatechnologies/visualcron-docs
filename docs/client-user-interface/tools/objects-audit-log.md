@@ -3,29 +3,33 @@ sidebar_label: 'Objects - Audit Log'
 hide_title: 'true'
 ---
 
-## Objects - Objects - Audit Log
+## Objects - Audit Log
 
-The main menu **Tools > Objects > Audit log** option is used to track changes among objects within VisualCron. These type of changes are logged an internal database - the same database where Job and Task logs are stored.
- 
-**Tools > Objects > Audit log**
+The ***Audit log*** window lists the changes made to VisualCron objects: who changed what, and when.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Objects/Audit%20Log.png)
+To open it, click ***Tools*** -> ***Objects*** -> ***Audit log***. It also opens from other places with a filter already set. For example, right-click a Job and click ***Audit log*** to see only the changes to that Job, or open it from the Credentials window to see the changes to all Credentials.
 
-The audit log is displaying the following information:
+![Audit log window with filters at the top and a list of change events](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Objects/Audit%20Log.png)
 
-* Event date - when did the change ocur
-* User - who did the change
-* Type - what kind of object that was changed
-* Job - the related Job name, if available
-* Object - the name of the object
-* Event type - what kind of event type (add/update/delete etc)
-* Diff - if the object contains any changes to previous object
-* Summary - a short, description of what was changed
- 
-The amount of data stored (history) is controlled by the [Server > Settings > Log > Database](../server/settings-log-settings).
- 
-By default, if you open the audit log from the Tools menu, the audit log is opened with no filters, displaying the events of today.  The audit log can be opened from various places and use different filters by default. For example, if you right click on a Job, it will show you events for this specific Job only. If you open the audit log from the Credentials window (and do not click on a specific Credential) changes to all Credentials are listed.
- 
-You can refine the result with the filter controls at the top of the window: **User**, **Object type**, **Timespan** (a date range), **Event type**, **Object** and **Job**. Click *Search* to apply the filters. The *Export* button lets you export the listed events.
- 
-Double clicking on a row opens the Versions window, see [Audit log > Versions](audit-log-versions) for details. You can also right click a row and choose *Versions and details* or *Revert to selected*.
+The grid shows:
+
+- _Event date_: when the change was made
+- _User_: who made the change
+- _Type_: the type of object that was changed
+- _Job_: the Job that the object belongs to, if any
+- _Object_: the name of the object
+- _Event type_: the kind of change, such as add, update, delete, run, activate or deactivate
+- _Diff_: whether the change has differences from the previous version
+- _Summary_: a short description of the change
+
+### Filters
+
+Refine the list with _User_, _Object type_, _Job_ (with a _Filter.._ field), _Event type_, _Objects_ and _Timespan_, then click ***Search***. ***Export..*** exports the listed events.
+
+When the window opens, _Timespan_ is set to the period that holds events for the current filter. The list is filled at once when there are at most 100 events; otherwise click ***Search***.
+
+How long audit data is kept is set in [Settings - Log Settings](../server/settings-log-settings).
+
+### Versions and revert
+
+Double-click a row to open the ***Versions..*** window, see [Versions](audit-log-versions). You can also right-click a row and click ***Versions and details*** or ***Revert to selected***.

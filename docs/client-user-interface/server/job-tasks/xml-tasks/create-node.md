@@ -5,52 +5,53 @@ hide_title: 'true'
 
 ## Task XML - Create Node
 
-The Create Node Task lets you insert a node in an already existing XML file.
+The Create Node Task adds a node to an existing XML file. An XPath expression selects the parent nodes, and the Task adds the new node, with its value and attributes, to each parent node it selects.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Create%20Node.png)
+![Create Node tab, General sub tab, with the Credentials, File name, XPath expression, Name, Value and If node already exists fields](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Create%20Node.png)
 
-**Credentials**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
- 
-**File name**
+:::warning
 
-The full path to the XML file.
- 
-**XPath expression**
+The Task saves its changes to the XML file itself and keeps no copy of the original file.
 
-XPath is a query language used for finding a specific object within XML. Enter the query manually or use the XPath browser by clicking the button.
- 
-**Name**
+The Task reads and saves the file under the account of the VisualCron Server. A Credential selected in _Credentials_ is not used.
 
-The name of the node.
- 
-**Value**
+With "Skip" in _If node already exists_, the new node is still added to a parent that already has a child node with the same name, so that parent then has two nodes with that name.
 
-The value in the node.
- 
-Controls what happens if the node already exists in the document. Options:
+:::
 
-* **Ignore** — Create the node even if it already exists.
-* **Skip** — Do not create the node if it already exists.
-* **Overwrite** — Overwrite the existing node.
-* **Fail** — Fail the Task if the node already exists.
- 
-**Namespace (optional)**
+### General tab
 
-If the node is in a specific namespace you enter the name here.
- 
-**Prefix**
+- _Credentials_: A Credential can be selected, but the Task does not use it. The account of the VisualCron Server needs read and write access to the file
+- _File name_: The full path of the XML file. The file must exist
+- _XPath expression_: The XPath expression that selects the parent nodes. The new node is added to every node that the expression selects. To build the expression, click the button next to the field and select a node in the XML Browser; the button is available when _File name_ is set
+- _Name_: The name of the new node
+- _Value_: The text of the new node
+- _If node already exists_: What the Task does when a parent node already has a child node with the same name. The default is "Fail"
+    - "Ignore": The new node is added
+    - "Skip": The new node is currently added, as with "Ignore"
+    - "Overwrite": The existing child nodes with that name are removed, and the new node is added
+    - "Fail": The Task fails, and the file is not saved
+- _Namespace (optional)_: The namespace URI of the new node
+- _Prefix_: The namespace prefix of the new node
+- _Insert as first child node_: When selected, the new node is added before the existing child nodes of the parent. When cleared, the default, it is added after them
 
-If a prefix is needed for finding the node then enter it here.
- 
-**Insert as first child node**
+Variables can be used in all of these fields and in the attribute names and values.
 
-If one or more nodes already exist the new node will, by default, be added in the end of the list. If you want it to appear in the beginning then check this check box.
- 
-**Create Node > Attributes** sub tab
+The XPath expression is run without a namespace list, so it cannot use namespace prefixes. To select nodes in a namespace, use `local-name()`, for example:
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Create%20Node%20Attributes.png)
+```text
+/*[local-name()='catalog']/*[local-name()='book']
+```
 
-If you want to add attributes to the specific node you can enter name and value in the **Attributes** sub tab. Click **Add** to add a new attribute row. Select a row and click **Remove** to delete it.
+### Attributes tab
 
+![Create Node tab, Attributes sub tab, with the Name and Value grid and the Add and Remove buttons](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Create%20Node%20Attributes.png)
+
+The attributes in this list are added to the new node. Click _Add_ to add a row, then enter the _Name_ and _Value_ of the attribute. To delete a row, select it and click _Remove_.
+
+### Output and errors
+
+- The output of the Task is the whole XML document after the change. When the Task fails, the output can show changes that were not saved to the file
+- When the XPath expression selects no node, the Task fails with the error "Node does not exist.", and the file is not changed

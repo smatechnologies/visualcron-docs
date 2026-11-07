@@ -5,23 +5,26 @@ hide_title: 'true'
 
 ## Task IIS - Change Application Pool State
 
-The IIS - Change Application Pool State Task starts, stops, or recycles an existing application pool in Internet Information Services (IIS). Recycling an application pool restarts the worker process, which can resolve memory leaks or hung processes without a full stop and start.
+The IIS - Change Application Pool State Task starts, stops or recycles an existing application pool in the IIS of the VisualCron Server computer, using an IIS Connection. Recycling an application pool restarts its worker process, which can clear memory leaks or hung processes without a full stop and start.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/IIS%20Tasks/Change%20state%20of%20the%20app%20pool.png)
+![IIS - Change state of the app pool Task settings, with the Connection field and the Name and Operation fields](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/IIS%20Tasks/Change%20state%20of%20the%20app%20pool.png)
 
-**Connection**
+:::warning
 
-To use IIS Tasks you need to create an [IIS Connection](../../connection-iis) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+This Task uses an IIS Connection; see [Connection - IIS](../../connection-iis). The Task always works on the IIS of the VisualCron Server computer: the Connection's _Address_ is not used, and the changes are made as the account of the VisualCron Server service, which must be allowed to change IIS. The Connection's _Username_ and _Password_ are used only for network access.
 
-**Application pool parameters**
+:::
 
-**Application pool name**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-The name of the application pool to manage. Click the *Refresh* icon to populate the drop-down list with available application pools.
+### IIS - Change state of the app pool tab
 
-**Operation**
+- _Connection_: the IIS Connection. Required. Click the _Settings_ icon to open _Manage Connections_
+- _Name_ (_Application pool parameters_ group): the name of the application pool, matched exactly, including case. Required. Click the _Refresh_ icon to list the application pools of the VisualCron Server computer
+- _Operation_: "Nothing" (default), "Start", "Stop" or "Recycle". With "Nothing", the application pool is not changed
 
-The operation to perform on the application pool. Available options are:
-- *Start* – Starts the application pool
-- *Stop* – Stops the application pool and terminates its worker process
-- *Recycle* – Gracefully restarts the application pool worker process without dropping active connections
+### Output and errors
+
+The output is the state that IIS reports after the operation, for example "Started" or "Stopped". With "Nothing", the output is "Starting", although the application pool is not changed. When the application pool is not found, the Task does nothing and writes no output, and the Task reports success.
+
+The ***TimeOut*** tab does not stop this Task.

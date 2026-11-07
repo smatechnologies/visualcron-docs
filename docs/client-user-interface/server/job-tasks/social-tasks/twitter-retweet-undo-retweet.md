@@ -13,18 +13,14 @@ Twitter integration described on this page is deprecated from **VisualCron v13.2
 
 ## Task Social - Twitter - Retweet/Undo Retweet
 
-The Twitter - Retweet/Undo retweet Task retweets an existing tweet or undo a retweet in Twitter.
+The Twitter - Retweet/Undo retweet Task retweets an existing tweet, or undoes a retweet, in Twitter.
 
-![](../../../../../static/img/tasksocialtwitterretweetundoretweet.png)
+![Twitter - Retweet/Undo retweet tab with the Connection, the Retweet and UnRetweet options and the Tweet Id box](../../../../../static/img/tasksocialtwitterretweetundoretweet.png)
 
-**Connection**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To use Twitter Tasks you need to create a Connection first. You do that in the [Twitter Connection](../../../server/connection-twitter) dialog.
- 
-**Undo retweet**
+### Twitter - Retweet/Undo retweet tab
 
-Deletes a previous retweet by all Twitter account accounts following the used account.
- 
-**Tweet Id**
-
-Number part in link to tweet.
+- _Connection_: the Twitter Connection to use; see [Twitter Connection](../../../server/connection-twitter)
+- _Retweet_ (default) or _UnRetweet_: whether to retweet the tweet or undo a previous retweet by the account of the Connection
+- _Tweet Id_: the ID of the tweet, the number at the end of the link to the tweet

@@ -1,137 +1,112 @@
-1---
+---
 sidebar_label: 'Connection - Office365'
 hide_title: 'true'
 ---
 
 ## Connection - Office365
 
-The Office 365 Connection stores connect and authentication properties for Microsoft Office 365 services. It uses OAuth authentication via an Azure Active Directory registered application.
+The Office365 Connection stores the sign-in and security settings that these Tasks and Triggers use to connect to Office 365 calendars and Microsoft Teams:
 
-The Office 365 Connection is used in the following places:
- 
-* Office Tasks
-* Microsoft Teams Trigger
-* Microsoft Teams Task
+- [Office365 - Add calendar event(s)](job-tasks/office365-tasks/add-calendar-event)
+- [Office365 - Delete calendar event(s)](job-tasks/office365-tasks/delete-calendar-event)
+- [Office365 - Get calendar event(s)](job-tasks/office365-tasks/get-calendar-events)
+- [Office365 - Update calendar event(s)](job-tasks/office365-tasks/update-calendar-event)
+- Microsoft Teams - Add channel message
+- The MSTeams Trigger
 
-**Manage Connections > Add > Office365 > Common settings** tab
+It signs in with OAuth through an application registered in Microsoft Entra ID.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Office365/Office365.png)
+### Common settings
 
-**Name**
+![Office365 Connection, Common settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Office365/Office365.png)
 
-The name of the Connection to uniquely identify it.
+The ***Common settings*** and ***Proxy*** tabs are the same for every Connection type that has them; see [Common settings](global-connections#common-settings) and [Proxy](global-connections#proxy).
 
-**Group**
+An Office365 Connection has no _Test_ button; _Authenticate_ shows whether the sign-in works.
 
-The group that the connection is a part of.
+### Main settings
 
-**Timeout**
+![Office365 Connection, Main settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Office365/Settings.png)
 
-The connection timeout in seconds. Connection will fail after this time period.
- 
-**Code page**
+These fields are on ***Connection settings*** -> ***Main settings***, in two groups: _Credentials_ and _App settings_.
 
-Code page being used.
+#### Credentials
 
-**Manage Connections > Add > Office365 > Connection settings** tab
+_Client ID_
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Office365/Settings.png)
+The _Application (client) ID_ of the application, from its _Overview_ page in the Azure portal.
 
-The Connection settings tab contains two sections: **Credentials** and **App settings**.
+![The Overview page of an app registration](../../../static/img/clip00ddd85.png)
 
-### Credentials
+_Client Secret_
 
-**Client ID**
+A client secret of the application.
 
-The Application (client) ID obtained when registering your application in Azure Active Directory. This value is displayed in the Azure portal under your registered app's overview.
+![The Certificates & secrets page of an app registration](../../../static/img/azureclientsecret.png)
 
-![](../../../static/img/clip00ddd85.png)
+_Redirect URI_
 
-**Client Secret**
+The address that Microsoft sends the sign-in result to. It is the same setting as _Redirect Url_ under _App settings_; see _Redirect Url_. Add the address as a redirect URI of the application.
 
-The client secret created for the registered Azure Active Directory application.
+![The redirect URI of an app registration](../../../static/img/azureredirecturi.png)
 
-![](../../../static/img/azureclientsecret.png)
- 
-**Redirect URI**
+_Auto-accept server certificates_
 
-The redirect URI used during OAuth authentication. This value must match exactly the redirect URI configured for your registered app in the Azure portal.
+The same setting as the box under _App settings_.
 
-![](../../../static/img/azureredirecturi.png)
+_Create an account_
 
-**Auto-accept server certificates**
+Opens the App registrations page of the Azure portal.
 
-When checked, VisualCron automatically accepts server certificates without prompting. Enabled by default.
+The sign-in asks for these delegated Microsoft Graph permissions: _Calendars.ReadWrite_, _Group.ReadWrite.All_ and _User.ReadWrite.All_. Add them to the application under _API permissions_. _Group.ReadWrite.All_ and _User.ReadWrite.All_ need admin consent and apply to the whole tenant.
 
-**Create an account**
+![The API permissions page of an app registration](../../../static/img/apipermissions.png)
 
-Click this link to open the Azure portal to register or manage your Azure Active Directory application.
+_Authenticate_
 
-When setting up your application, ensure the following API permissions are granted:
+Starts the Microsoft sign-in. The browser opens on the computer where the Client runs, and the Client listens for the result on the port of the redirect address. After the sign-in, the Connection stores the sign-in, and the Tasks refresh it at run time.
 
-![](../../../static/img/apipermissions.png)
+#### App settings
 
-**Authenticate**
- 
-Click this link to initiate the OAuth authentication flow. A browser window will open for you to sign in with your Microsoft account and grant VisualCron access to your Office 365 services. Once authentication is complete, the refresh token is stored in the connection.
+![Office365 Connection, Main settings tab, App settings group](../../../static/img/connectionoffice365extrasettings.png)
 
-### App settings
+_Redirect Url_
 
-![](../../../static/img/connectionoffice365extrasettings.png)
+The redirect address of the Connection. _Redirect URI_ under _Credentials_ and _Redirect Url_ are one setting: when they differ, the value in _Redirect Url_ is saved. Enter the same address in both, for example "http://localhost:9999".
 
-**Redirect Url**
+_Tenant Id_
 
-The redirect URL used during OAuth authentication. Must match the redirect URI registered in the Azure portal.
+Filled in with the tenant of the signed-in account after _Authenticate_.
 
-**Tenant Id**
+_Tenant Name_
 
-The Directory (tenant) ID of the Azure Active Directory tenant where the application is registered.
+Not used by the Tasks.
 
-**Tenant Name**
+_Tenant Primary Domain_
 
-The display name of the Azure Active Directory tenant.
+The primary domain of the tenant, for example `<tenant>.onmicrosoft.com`. The sign-in and the Tasks use it to find the tenant. When it is empty, they use the multi-tenant sign-in address, which an application registered for a single tenant does not accept. Fill it in for a single-tenant application.
 
-**Tenant Primary Domain**
+_Auto-accept server certificates_
 
-The primary domain of the Azure Active Directory tenant (e.g. `yourdomain.onmicrosoft.com`).
+The Office365 Tasks, the Microsoft Teams Task and the MSTeams Trigger do not use this setting.
 
-**Manage Connections > Add > Office365 > Proxy** tab
+### Proxy
 
-![](../../../static/img/connectionoffice365proxy.png)
+![Office365 Connection, Proxy tab](../../../static/img/connectionoffice365proxy.png)
 
-**Proxy type**
+:::warning
 
-Select the proxy type to be used.
+The Office365 Tasks, the Microsoft Teams Task and the MSTeams Trigger do not use the ***Proxy*** tab. Make sure that the Server can reach Microsoft 365 without the proxy on this tab.
 
-**Address**
+:::
 
-The host name or IP address of the proxy server.
+### Troubleshooting
 
-**Port**
+#### Token null / empty
 
-The port of the proxy server.
+Possible causes:
 
-**Use credentials**
-
-The credentials that are associated with the account.
-
-**Domain**
-
-The name of the domain to be created.
-
-**Username**
-
-The user name to access the proxy server.
-
-**Password**
-
-The password to access the proxy server.
-
-**Token null / empty**
-
-Possible reasons for this error:
-
-1. The Redirect URI in the App settings tab does not match the redirect URI configured in the Azure portal.
-2. There is another application already listening on the redirect URL (for example, `http://localhost` on port 80 may be taken by a local web server).
-3. A firewall on the VisualCron server is blocking the incoming redirect from the web browser.
-4. The authentication failed — wrong password, aborted authentication window, or a crash in the Office 365 web page.
+- The redirect address in the Connection does not match a redirect URI of the application in the Azure portal
+- Another program already listens on the port of the redirect address on the Client computer, for example a local web server on port 80
+- A firewall on the computer that runs the Client blocks the redirect from the browser
+- The sign-in failed, for example because of a wrong password or a closed sign-in window

@@ -5,4 +5,4 @@ hide_title: 'true'
 
 ## I Cannot Download VisualCron
 
-Please use the VisualCron support [contact web page](chttps://www.visualcron.com/contact.aspx).
+To download VisualCron, see [Get VisualCron](../get-visualcron/get-visualcron.md). If the download does not start or does not complete, contact VisualCron support at [support@visualcron.com](mailto:support@visualcron.com).

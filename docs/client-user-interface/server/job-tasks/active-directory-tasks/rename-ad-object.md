@@ -5,20 +5,23 @@ hide_title: 'true'
 
 ## Task Active Directory - Rename AD Object
 
-Renames the Active Directory object at the specified path to the provided name.
+The Rename AD Object Task renames an Active Directory object.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Rename%20AD%20Object.png)
+![Rename AD Object tab with the Credentials list, Parent path, the Select object and Select container buttons, and New name](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Rename%20AD%20Object.png)
 
-**Credentials**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
- 
-**Rename object**
+### Rename AD Object tab
 
-**Parent path**
+- _Credentials_: the Credential that the Task uses to connect to Active Directory; see [Global - Credentials](../../global-credentials). Click the _Settings_ icon to open _Manage credentials_
 
-The Lightweight Directory Access Protocol (LDAP) path of the parent Active Directory container. This is usually the top most container or the root of the directory data tree on a directory server. Click the *Select object* button to select an existing Active Directory object. Click the *Select container* button to select an existing Active Directory container.
- 
-**New name**
+  With "No Credential", the Task connects as the account that the VisualCron Server service runs as. The account that is used needs permission in Active Directory for what the Task does.
 
-The desired new name of the Active Directory object.
+  When the selected Credential has been deleted, the Task fails, but it may already have carried out the change as the account of the VisualCron Server service.
+
+- _Parent path_: despite its label, the LDAP path of the object to rename itself, not of its container, for example `LDAP://CN=<name>,OU=<unit>,DC=<domain>,DC=<suffix>`. Click _Select object_ to pick the object. _Select container_ puts the path of a container in the field instead
+- _New name_: the new name, without a prefix. The object keeps the type of its name, for example `CN=` or `OU=`. For a user, only the common name (CN) changes, not the logon names
+
+### Output and errors
+
+The Task writes no output. When Active Directory rejects the request, for example because the account does not have permission or the object does not exist, the Task fails with the error that Active Directory returns.

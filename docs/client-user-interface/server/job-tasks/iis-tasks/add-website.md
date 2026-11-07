@@ -5,137 +5,83 @@ hide_title: 'true'
 
 ## Task IIS - Add Website
 
-The IIS - Add Website Task creates a new website in Internet Information Services (IIS) with configurable bindings, limits, logging, virtual directory, and failed request tracing settings.
+The IIS - Add Website Task creates a website in the IIS of the VisualCron Server computer, using an IIS Connection, with its binding, limits, logging, root folder and failed request tracing settings.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/IIS%20Tasks/Add%20a%20new%20web%20site.png)
+![IIS - Add a new web site Task settings, with the Connection, Web site parameters, Binding parameters, Log file parameters, Limits, Virtual directory parameters and Trace failed requests logging parameters groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/IIS%20Tasks/Add%20a%20new%20web%20site.png)
 
-**Connection**
+:::warning
 
-To use IIS Tasks you need to create an [IIS Connection](../../connection-iis) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+This Task uses an IIS Connection; see [Connection - IIS](../../connection-iis). The Task always works on the IIS of the VisualCron Server computer: the Connection's _Address_ is not used, and the changes are made as the account of the VisualCron Server service, which must be allowed to change IIS. The Connection's _Username_ and _Password_ are used only for network access.
 
-**Web site parameters**
+:::
 
-**Name**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-The name of the website to be created.
+For every setting below that is left empty, or that is a check box in its third state (neither selected nor cleared), the IIS default for new websites is used. A number field that does not hold a whole number also gets the IIS default.
 
-**App pool name**
+### IIS - Add a new web site tab
 
-The name of the application pool to associate with the website. Click the *Refresh* icon to populate the drop-down list with available application pools.
+- _Connection_: the IIS Connection. Required. Click the _Settings_ icon to open _Manage Connections_
 
-**Binding parameters**
+#### Web site parameters
 
-**Binding protocol**
+- _Name_: the name of the new website. Required
+- _App pool name_: the application pool of the website and its applications. Click the _Refresh_ icon to list the application pools of the VisualCron Server computer
 
-The protocol used for the site binding (e.g., http, https, net.tcp).
+#### Binding parameters
 
-**Binding IP address**
+The Task builds the binding as `IP address:port:host name`.
 
-The IP address that the binding listens on. Enter a specific IP address or leave blank to bind to all unassigned IP addresses.
+- _Binding protocol_: the protocol of the binding, for example "http" or "https"
+- _Binding IP address_: the IP address the website listens on, or "*" for all unassigned addresses. Fill in this field: when it is empty, the binding is not built correctly and _Binding port_ is not used
+- _Binding host name_: the host name of the binding, to host several websites on the same IP address and port
+- _Binding port_: the port the website listens on, for example "80" for HTTP or "443" for HTTPS. Required
+- _Certificate_: available only when _Binding protocol_ is "https"
 
-**Binding host name**
+:::warning
 
-The host name for the binding. Used to host multiple websites on the same IP address and port using host header routing.
+The Task does not assign the selected _Certificate_ to the binding, so an "https" website created by this Task has no certificate. Assign the certificate to the binding in IIS Manager after the Task runs.
 
-**Binding port**
+:::
 
-The port number the binding listens on (e.g., 80 for HTTP, 443 for HTTPS).
+#### Log file parameters
 
-**Certificate**
+- _Log file enabled_: when selected, request logging is turned on for the website
+- _Log path_: the folder for the log files. Click the _Browse_ icon to select a folder
+- _Log file format_: "Iis", "Ncsa", "W3c" or "Custom"
+- _Ext file flags_: the fields in W3C log entries. Select any of "Date", "Time", "Client IP", "User name", "Site name", "Computer name", "Server IP", "Method", "Uri Stem", "Uri Query", "Http Status", "Win32 Status", "Bytes Sent", "Bytes Recv", "Time Taken", "Server Port", "User Agent", "Cookie", "Referer", "Protocol Version", "Host" and "Http SubStatus"
+- _Target W3C_: where W3C log entries go: "File", "ETW" (Event Tracing for Windows), or both
+- _Log File Local Time Rollover_: when selected, a new log file is started based on the local time of the computer instead of UTC
+- _RolloverPeriod_: when a new log file is started: "Max Size", "Daily", "Weekly", "Monthly" or "Hourly"
+- _LogFileTruncateSize_: the log file size in bytes at which a new file is started, with "Max Size"
 
-The SSL certificate to use for HTTPS bindings. Click the *Settings* icon to select or manage certificates.
+#### Limits
 
-**Limits**
+- _Connection timeout_: the number of seconds before IIS closes an inactive connection
+- _Max connections_: the maximum number of simultaneous connections to the website
+- _Max bandwidth_: the maximum network bandwidth of the website, in bytes per second
+- _Max url segments_: the maximum number of path segments in a request URL
 
-**Connection timeout**
+#### Virtual directory parameters
 
-The time in seconds before IIS disconnects an inactive connection.
+- _Path_: the physical folder of the website root. Required. Click the _Browse_ icon to select a folder
+- _Logon method_: how IIS logs on with the user in _Credential_ to reach the folder: "Interactive", "Batch", "Network" or "Clear text"
+- _Credential_: the user that IIS uses to reach the folder. The Task writes the Credential's user name and password into the IIS configuration of the website. Click the _Settings_ icon to open _Manage credentials_; see [Global - Credentials](../../global-credentials)
 
-**Max bandwidth**
+:::warning
 
-The maximum network bandwidth in bytes per second allocated to the website.
+The Task copies the user name and password of the selected _Credential_ into the IIS configuration of the website. IIS keeps its own copy: changing or deleting the Credential in VisualCron later does not change IIS.
 
-**Max connections**
+:::
 
-The maximum number of simultaneous connections allowed to the website.
+#### Trace failed requests logging parameters
 
-**Max URL segments**
+- _Trace log file enabled_: when selected, failed request tracing is turned on for the website
+- _Trace log path_: the folder for the trace log files. Click the _Browse_ icon to select a folder. Variables are not resolved in this field
+- _Max log files_: the maximum number of trace log files kept for the website
 
-The maximum number of path segments allowed in a request URL.
+### Output and errors
 
-**Log file parameters**
+On success, the output is `Site index=` followed by the ID of the new website. When a website with that name already exists, the Task does not change it and writes no output, and the Task reports success. When a step fails, the Task fails; the error names the last step reached.
 
-**Log file enabled**
-
-When checked, request logging is enabled for the website.
-
-**Log file format**
-
-The format used for log files. Available options are:
-- *IIS* – Microsoft IIS log format
-- *NCSA* – NCSA Common Log format
-- *W3C* – W3C Extended log format
-- *Custom* – Custom log format
-
-**Rollover period**
-
-Determines how often a new log file is created. Available options are:
-- *MaxSize* – Create a new log file when the current file reaches the truncate size
-- *Daily* – Create a new log file each day
-- *Weekly* – Create a new log file each week
-- *Monthly* – Create a new log file each month
-- *Hourly* – Create a new log file each hour
-
-**Log file truncate size**
-
-The maximum log file size in bytes before rolling over to a new file. Only used when the rollover period is set to *MaxSize*.
-
-**Ext file flags**
-
-The fields to include in W3C format log entries. Multiple fields can be selected, including Date, Time, Client IP, Username, Site Name, Server IP, Method, URI Stem, URI Query, HTTP Status, Win32 Status, Bytes Sent, Bytes Received, Time Taken, Server Port, User Agent, Cookie, Referrer, Protocol Version, Host, and HTTP Substatus.
-
-**Target W3C**
-
-The destination for W3C log output. Options are:
-- *File* – Write log entries to a log file
-- *ETW* – Write log entries to Event Tracing for Windows
-
-**Log file local time rollover**
-
-When checked, log file rollover is based on local server time rather than UTC time.
-
-**Log path**
-
-The directory where log files are stored. Click the *Browse* button to select a folder.
-
-**Virtual directory parameters**
-
-**Path**
-
-The physical file system path of the website's root directory. Click the *Browse* button to select a folder.
-
-**Logon method**
-
-The authentication method IIS uses when accessing the physical path with the specified credential. Available options are:
-- *Interactive* – Interactive logon session
-- *Batch* – Batch logon session
-- *Network* – Network logon (credentials passed over the network)
-- *ClearText* – Clear text logon
-
-**Credential**
-
-The credential used to access the physical path. Select a Credential in the drop-down or click the *Settings* icon to open *Manage credentials* to add or edit Credentials.
-
-**Trace failed requests logging parameters**
-
-**Trace log file enabled**
-
-When checked, failed request tracing is enabled for the website.
-
-**Trace log path**
-
-The directory where failed request trace log files are stored. Click the *Browse* button to select a folder.
-
-**Max log files**
-
-The maximum number of failed request trace log files to retain per site.
+The ***TimeOut*** tab does not stop this Task.

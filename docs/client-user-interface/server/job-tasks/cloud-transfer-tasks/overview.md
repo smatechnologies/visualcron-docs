@@ -5,9 +5,9 @@ hide_title: 'true'
 
 ## Overview
 
-Cloud storage is a model of data storage in which the digital data is stored in logical pools, the physical storage spans multiple servers (and often locations), and the physical environment is typically owned and managed by a hosting company.
+Cloud storage keeps data in pools that a hosting company runs, often spread over several servers and locations.
 
-The Cloud Tasks in VisualCron currently support the following cloud services:
+The Cloud Tasks work with these cloud services:
 
 * [Amazon S3](../../connection-amazon)
 * [Box](../../connection-box)
@@ -17,19 +17,25 @@ The Cloud Tasks in VisualCron currently support the following cloud services:
 * [Microsoft Azure](../../connection-microsoft-azure) (Block blob, Page blob, File Shares, Data Lake Gen V1, Data Lake Gen V2)
 * [OneDrive](../../connection-onedrive)
 
-Different [Connections](../../global-connections) are used depending on the cloud service provider. The same task interface is shared across all of them — the controls adapt to the selected connection (for example, the *Bucket/Container* field is labelled *Bucket* for Amazon S3, *Container* for Azure block/page blobs, *Share* for Azure File Shares, *File system* for Azure Data Lake Gen V2 and *Drive* for Google Drive).
+Each cloud service has its own [Connection](../../global-connections) type. All the Cloud Tasks share one set of controls, which adapt to the selected Connection: for example, the _Bucket/Container_ field is labeled _Bucket_ for Amazon S3, _Container_ for Azure Block and Page blobs, _Share_ for Azure File Shares, _File system_ for Azure Data Lake Gen V2 and _Drive_ for Google Drive.
+
+:::warning
+
+The Amazon S3, Azure, Google Drive, Dropbox, Box and OneDrive Connections accept any server certificate, whatever _Auto-accept server certificates_ says. With Amazon S3, when a request fails with a particular secure-connection error, the Server repeats it without SSL, so that request and its data travel unencrypted.
+
+:::
 
 **Available Cloud Tasks**
 
-Tasks that work on remote items via the standard [Cloud Remote file filter](../../job-tasks-cloud-remote-file-filter):
+Tasks that work on cloud items through the standard [Cloud Remote file filter](../../job-tasks-cloud-remote-file-filter):
 
-* [List item(s)](list-item) - list files and/or folders matching a filter
-* [Download file(s)](download-file) - download files to the local file system
-* [Delete item(s)](delete-item) - delete files and/or folders
-* [Copy/Move item(s)](copy-move) - copy or move items to another folder *within the same connection* (server-side where supported)
+* [List item(s)](list-item): list files or folders that match the filter
+* [Download file(s)](download-file): download files to the Server computer or a network share
+* [Delete item(s)](delete-item): delete files or folders
+* [Copy/Move item(s)](copy-move): copy or move items to another folder within the same Connection
 
-Tasks that use other filter / configuration models:
+Tasks that use other filters or settings:
 
-* [Upload file(s)](upload-file) - upload files from the local file system using the standard [File filter](../../job-tasks-file-filter)
-* [Create folder](create-folder) - create a folder at a specific cloud path (no filter)
-* [Sync](sync) - synchronize a source and a target location; either side can be a cloud connection, an FTP / SFTP / WinSCP connection or the local file system, and the matching filter is shown automatically
+* [Upload file(s)](upload-file): upload files from the Server computer or a network share, chosen with the standard [File filter](../../job-tasks-file-filter)
+* [Create folder](create-folder): create a folder at a cloud path
+* [Sync](sync): synchronize a source and a target; each side can be a cloud Connection, an FTP, SFTP or WinSCP Connection, or local files, and the matching filter is shown for each side

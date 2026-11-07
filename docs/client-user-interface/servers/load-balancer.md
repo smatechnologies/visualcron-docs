@@ -40,7 +40,7 @@ This means the default behavior is failover, not load spreading. Adding Servers 
 
 Work is spread across Servers in two ways, and both are configured explicitly:
 
-* **Per Job** — set an execution mode other than *Execute locally only* on the Job's *Agent distribution* tab. See [Execution Distribution](execution-distribution).
-* **Per Server** — use [Load balancing Flows](load-balancing-flows) to change what a Server does when it comes under load, for example queueing new Jobs while CPU is high.
+* **Per Job**: set an execution mode other than _Execute locally only_ on the Job's _Agent distribution_ tab. See [Execution Distribution](execution-distribution).
+* **Per Server**: use [Load balancing Flows](load-balancing-flows) to change what a Server does when it comes under load, for example queueing new Jobs while CPU is high.
 
 If the goal is to reduce CPU or memory usage on a single Server, review the Job and Task settings on that Server first. Load Balancing distributes work between Servers; it does not reduce the amount of work a Job performs.

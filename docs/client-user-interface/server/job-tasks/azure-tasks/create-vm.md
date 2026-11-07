@@ -5,15 +5,21 @@ hide_title: 'true'
 
 ## Task Azure - Create VM
 
-The Azure - Create VM Task creates a new virtual machine in the Azure cloud. This Task is using the [Microsoft Azure Connection](../../connection-microsoft-azure).
+The Azure - Create VM Task creates a virtual machine in Azure, using a Microsoft Azure Connection.
 
-**Azure - Create VM** tab
+:::warning
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Azure%20Tasks/Create%20VM.png)
+The two _Password_ boxes show the passwords as they are typed, and the Task stores them without encryption in its settings.
 
-**Connection**
+:::
 
-To use the Azure Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
+
+### Azure - Create VM tab
+
+![Azure - Create VM tab with the Connection list, the Classic and Resource manager options, and the virtual machine settings from VM name to Resized size in GB](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Azure%20Tasks/Create%20VM.png)
+
+- _Connection_: the Microsoft Azure Connection to use; see [Connection - Microsoft Azure](../../connection-microsoft-azure). Click the _Settings_ icon to open _Manage Connections_. With "Resource manager", the Connection must use the "Application" authentication type. When the Connection does not suit the selected option, the Task window shows a warning and the Task stops with an error
 
 **Type**
 
@@ -24,9 +30,7 @@ Select the deployment model to use for the new virtual machine. Available option
 
 The labels of several fields below change to match the selected *Type*.
 
-**VM name**
-
-The name to assign to the new virtual machine.
+- _VM name_: the name to give the new virtual machine
 
 **Service name / Resource group**
 
@@ -36,13 +40,8 @@ The Azure service name (when *Type* is set to _Classic_) or the resource group (
 
 The Azure storage account that will host the virtual machine's disks (when *Type* is set to _Classic_) or the availability set the virtual machine should join (when *Type* is set to _Resource Manager_). Click the *Refresh* icon to populate the drop-down list.
 
-**Region**
-
-The Azure region in which to create the virtual machine. Click the *Refresh* icon to populate the drop-down list.
-
-**Role size**
-
-The size of the virtual machine to create. Click the *Refresh* icon to populate the drop-down list with sizes available in the selected *Region*.
+- _Region_: the Azure region to create the virtual machine in. Click _Refresh_ to fill the list
+- _Role size_: the size of the virtual machine. Click _Refresh_ to list the sizes available in the selected _Region_
 
 **OS image**
 
@@ -52,26 +51,19 @@ The operating system image to deploy. Click the *Refresh* icon to populate the d
 
 The deployment slot for the virtual machine (when *Type* is set to _Classic_) or the disk type (when *Type* is set to _Resource Manager_). Click the *Refresh* icon to populate the drop-down list.
 
-**Admin name**
+- _Admin name_: the administrator user name for the new virtual machine
+- _Password_ (below _Admin name_): the administrator password
+- _User name_: the standard user to create on the new virtual machine
+- _Password_ (below _User name_): the password of the standard user
+- _Host_: the host name to give the new virtual machine
+- _Resized size in GB_: the size of the virtual machine's disk, in gigabytes. It must be a whole number, or the Task fails
 
-The administrator user name for the new virtual machine.
+### Output and errors
 
-**Admin password**
+When Azure reports that the virtual machine was created, the output is "Succeeded". When the Connection is missing, or Azure returns an error, the Task fails.
 
-The administrator password for the new virtual machine.
+:::warning
 
-**User name**
+When Azure reports another status, the status is written to standard error and the Task reports success. When Azure returns no status, the output is empty and the Task reports success.
 
-The standard user name to create on the new virtual machine.
-
-**User password**
-
-The standard user password to create on the new virtual machine.
-
-**Host**
-
-The host name to assign to the new virtual machine.
-
-**Size**
-
-The size of the virtual machine's disk, in gigabytes. Must be an integer.
+:::

@@ -5,12 +5,11 @@ hide_title: 'true'
 
 ## Versions
 
-When a Job is defined, right-click on the Job or Task in the Server/Group/Job/Task grid and select *Versions..* to open the versions window.
- 
-This window uses the same structure as the main menu **Tools > Objects > Audit log > Versions** option. See [here](../../tools/audit-log-versions) for more information.
- 
-Job > Versions
+The ***Versions..*** item opens the ***Versions..*** window for the selected Job or Task.
 
-![](../../../../static/img/Client%20User%20Interface/Toolbar/Versions.png)
+1. Right-click the Job or Task in the Server/Group/Job/Task grid.
+2. Click ***Versions..***.
 
+The window is described in [Versions](../../tools/audit-log-versions).
 
+![Job right-click menu with the Versions item highlighted](../../../../static/img/Client%20User%20Interface/Toolbar/Versions.png)

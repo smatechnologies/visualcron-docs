@@ -5,45 +5,49 @@ hide_title: 'true'
 
 ## Task Messaging - SysLog
 
-The SysLog Task sends a message to a remote SysLog server. SysLog is widely used for computer system management, security auditing and general informational, analysis and debugging messages, and is supported by a wide range of devices (printers, routers, firewalls, etc.) and receivers across multiple platforms — making it a common way to integrate log data from different systems into a central repository.
+The SysLog Task sends a message to a SysLog server over UDP or TCP. SysLog is a standard way to collect log messages from many kinds of systems and devices, such as printers, routers and firewalls, in one central place.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Syslog.png)
+![SysLog tab with the Connection, Message properties and Message groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Syslog.png)
 
-### Connection
+:::warning
 
-**Host**
+The Task sends the message in RFC 3164 format over plain UDP or TCP, without encryption, so anyone who can see the network traffic can read it.
 
-The host name or IP address of the SysLog server to send the message to.
+:::
 
-**Protocol**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-Select the transport protocol to use. Available options:
+### SysLog tab
 
-* _UDP_ - send the message over UDP using the *UDP port*
-* _TCP_ - send the message over TCP using the *TCP port*
+#### Connection
 
-**UDP port**
+- _Host_: the host name or IP address of the SysLog server
 
-The UDP port the SysLog server is listening on. Used when *Protocol* is set to _UDP_.
+  The Task window does not require a value.
 
-**TCP port**
+- _UDP_: sends the message over UDP to the _Port_ next to it, "514" by default; selected on a new Task
+- _TCP_: sends the message over TCP to the _Port_ next to it, "1468" by default
 
-The TCP port the SysLog server is listening on. Used when *Protocol* is set to _TCP_.
+Variables are resolved in _Host_ and in both _Port_ fields.
 
-### Message properties
+#### Message properties
 
-**Facility**
+- _Facility_: the SysLog facility of the message: "Kernel", "User", "Mail", "Daemon", "Auth", "Syslog", "Lpr", "News", "UUCP", "ClockDaemon", "SecurityAuthorization", "FTP", "NTP", "LogAudit", "LogAlert", "Cron", or "Local0" to "Local7"
+- _Level_: the severity of the message: "Emergency", "Alert", "Critical", "Error", "Warning", "Notice", "Information" or "Debug"
+- _Application_: the application name sent with the message, "VisualCron" by default; Variables are resolved
 
-The SysLog facility used for the message (for example *Kernel*, *User*, *Mail*, *Daemon*, *Auth*, *Syslog*, *LPR*, *News*, *UUCP*, *Cron*, *Local0*–*Local7*).
+A new Task has _Facility_ "Auth" and _Level_ "Alert".
 
-**Level**
+#### Message
 
-The SysLog severity level used for the message (for example *Emergency*, *Alert*, *Critical*, *Error*, *Warning*, *Notice*, *Information*, *Debug*).
+The text of the message. Variables are resolved.
 
-**Application**
+### Output and errors
 
-A free-text application name included in the SysLog message.
+The Task writes no output. When the message is sent, the Task reports success.
 
-**Message**
+:::warning
 
-The body of the SysLog message to send.
+Over UDP, the Task gets no confirmation that the message arrived. If the message cannot be sent, for example because the host is unknown, a _Port_ is not a number, or the server refuses the TCP connection, the error is written to the Server log, and the Task reports success.
+
+:::
