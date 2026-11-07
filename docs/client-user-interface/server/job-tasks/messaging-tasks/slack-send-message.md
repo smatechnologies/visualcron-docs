@@ -34,6 +34,8 @@ The Slack - Send message Task is part of the Advanced messaging feature of the l
 
   Required. A value that starts with "#", as in `#<channel name>`, is looked up by name among the first 200 public and private channels that the Connection can see. Any other value is passed to Slack as it is, for example a channel ID. The refresh button next to the field fills the list. With _To channel_, it lists the public channels as `#<channel name>`, followed by the private channels without "#". A private channel chosen from the list is therefore passed to Slack as it is, and is not looked up by name; type "#" in front of the name to have it looked up. With _To user_, it lists the user names that have a direct message conversation with the Connection.
 
+  The lookup of a private channel by name needs the "groups:read" scope on the Slack app; see [Connection - Slack](../../connection-slack).
+
   With _To user_, the Task does not use _Channel name_, but the Task window still requires a value.
 
 - _Send as user_: with _To user_, the Slack user name of the person who receives the message; with _To channel_, the user name sent to Slack for the post

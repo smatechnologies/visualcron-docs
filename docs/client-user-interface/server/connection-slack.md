@@ -105,3 +105,5 @@ The Redirect URL configured in the Slack app must use HTTPS (for example `https:
 #### "Missing scope" error
 
 _Authenticate_ requests these Bot Token Scopes: "commands", "chat:write", "channels:read", "files:write", "users:read" and "groups:read". Add all six to the Slack app, then click _Authenticate_ again.
+
+The Connection keeps the scopes that the Slack app granted at the last _Authenticate_. Adding a scope to the Slack app has no effect until you click _Authenticate_ again. Without "files:write", "users:read" or "groups:read", file uploads, the user list or private channel lookups fail.
