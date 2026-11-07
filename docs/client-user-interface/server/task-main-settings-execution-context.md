@@ -11,13 +11,13 @@ The execution context sets in what environment/context the Task should be run. V
 
 Background execution is default. When a Task executes in the background it is run from the VisualCron Server service. This allows execution when no one is logged on to the computer. This option is the most efficient way of executing in VisualCron. The problems you may face with this option are that some Tasks require certain Credentials, access environment variables, drive mappings or desktop access (can't access or wrong desktop).
  
-Credentials. To solve the problem where a certain user is needed to run a Task, we use [Credentials](../server/global-credentials) in VisualCron. Almost anywhere you can use Credentials for accessing a file or executing a Task as a certain user.
+Credentials. To solve the problem where a certain user is needed to run a Task, use [Credentials](../server/global-credentials) in VisualCron. Almost anywhere you can use Credentials for accessing a file or executing a Task as a certain user.
  
-Environment variables. Environment variables are loaded when you load a user profile. If you want to access those you need to specify a Credential in an [Execute Task](../server/job-tasks-task-process-execute) and then select option Load profile.
+Environment variables. Environment variables are loaded with a user profile. To use a user's environment variables, run the Task with a Credential that has *Load user profile* selected (in the Credential's settings in *Manage Credentials*), for example on an [Execute Task](../server/job-tasks-task-process-execute).
  
 Network drives. Normally, you should use UNC (`\\servername\path\file`) paths together with Credentials instead of mapping network drives. Network drives are not shared across users and since VisualCron is running as SYSTEM it can't see the drives mapped by a certain user. By specifying a UNC path instead you are sure that a logical drive is not removed etc. If you really need to work with Network drives you should use the [mapping utility](../server/global-network-drives) within VisualCron. It allows you to map the same network drives in SYSTEM context that you have in your USER context.
  
-Desktop access. Starting with Windows Vista, security has changed. For example, services are no longer allowed to launch applications with Interactive content (a window). The reason for this is that you can break the application anytime and get Administrator access. This is correct from a security perspective and to handle this you can launch your applications in hidden mode (hidden property in Execute Task). If you for some reason need to interact with other windows you can use the Foreground execution.
+Desktop access. Starting with Windows Vista, security has changed. For example, services are no longer allowed to launch applications with Interactive content (a window). The reason for this is that you can break the application anytime and get Administrator access. This is correct from a security perspective and to handle this you can launch your applications in hidden mode (the *Run in hidden window* option of the Execute Task). If you for some reason need to interact with other windows you can use the Foreground execution.
  
 **Foreground execution**
 
@@ -32,8 +32,14 @@ This feature is implemented in the following Task(s):
 * [Interactivity - Desktop macro](../server/job-tasks/interactivity-tasks/desktop-macro)
 * [Interactivity - Robot](../server/job-tasks/interactivity-tasks/robot-task/overview.md)
 * [Interactivity - Send keys](../server/job-tasks/interactivity-tasks/send-keys)
+* [Office - Macro](../server/job-tasks/office-tasks/office-macro)
+
+When you select or open a Desktop macro, Send keys, Control monitor or Robot Task, the Client sets
+Foreground execution, so these Tasks need a connected Tray Client session (see **Before execution**).
+Execute and Office macro can use either. For all other Task types the execution context is always
+Background and cannot be changed.
  
-Instead of executing a file from the Windows service VisualCronService.exe we are executing through the VisualCron Tray Client. This requires that the proper Tray Client session that you specify in the Execution Context window is connected to the VisualCron service. The Tray Client is automatically started when a user logs in.
+With foreground execution, the process is started by the VisualCron Tray Client instead of the `"VisualCronService.exe"` Windows service. This requires that the proper Tray Client session that you specify in the Execution Context window is connected to the VisualCron service. The Tray Client is automatically started when a user logs in.
  
 If a specified Tray Client session is logged in, the VisualCron Server sends a command to the Tray Client. The Tray Client then executes and reports back to the Service which in turn reports back to all connected VisualCron clients.
  
@@ -41,7 +47,7 @@ In the Execution context window (which you reach from [main Task window](../serv
  
 **Task > Main settings > Execution** context
 
-![](../../../static/img/taskmainexcutioncontext.png)
+![Execution context window](../../../static/img/taskmainexcutioncontext.png)
 
 **VisualCron Server location**
 
@@ -53,7 +59,7 @@ Background execution is default and requires no logged in Tray Client. When choo
  
 **Execution target**
 
-You can choose to *Execute on any desktop session* - this executes on the first available session. By default you can *Execute on same user session as unlock Credential* - this means that VisualCron will launch the process on the same user that is set in Before execution.
+You can choose to *Execute on any desktop session* - this executes on the first available session. *Execute on same user session as unlock Credential* (the default) launches the process as the user of the Credential set under **Before execution**. With this option you must also select *Logon/Unlock using Credential* and a Credential; otherwise you cannot save the Execution context settings.
  
 You can also choose to Execute on specified desktop session. You can  choose from the list of connected sessions and click *Select*. If you are locally connected you can also click on *Select current* which retrieves information about your session.
  
@@ -73,13 +79,18 @@ If you are not executing on the same user and session as you have selected you w
 
 :::info Note 
 
-For Windows 2008 you must enable a setting in [Local Security Policy](../../security)
+For Windows 2008 you must enable a setting in [Local Security Policy](../../security/archived-security#interactive-logon)
 
 :::
 
 **Before execution**
 
 The [VisualCron Tray Client](../../using-visualcron/visualcron-tray-client) needs to be running in order to execute a foreground Task. If no one is logged in the desktop is not active and no Tray Client is started. There is also a scenario when the computer may be locked. This prevents Tasks that need access to desktop (for example the [Desktop Macro Task](../server/job-tasks/interactivity-tasks/desktop-macro)) to be able to run. The solution to that is to tell VisualCron to perform a logon/unlock. If the computer is locked VisualCron will try to unlock. If no user is logged in VisualCron will logon. You need to check Logon/Unlock using Credential and specify a Credential. Note that the Credential must match the desktop session (if you are not using Execute on any desktop session).
+
+:::note
+For Execute and Office macro Tasks, the unlock Credential must be a different Credential from the one
+the Task itself uses, and you need Execute permission on it. Otherwise the Task cannot be saved.
+:::
  
 If multiple users are logged in at the same time you need to handle this as only one user can be active. Under *If other user has an active session:* there are 4 options:
 
@@ -105,10 +116,10 @@ Failed to connect to Credential Provider. Pipe result: 0
 
 1. Make sure you have tried rebooting after the VisualCron install - this installs the the Credential provider properly
 
-2. Make sure you have enabled [this setting](../../security#interactive-logon) in the Local Security Policy
+2. Make sure you have enabled [this setting](../../security/archived-security#interactive-logon) in the Local Security Policy
 
-3. Test with recommended settings "Execute on same user as unlock Credential" and check "Logon/Unlock using Credential". Select the Credential you want to logon as (recommended is that it is same user as you normally is logged in as)
+3. Test with recommended settings *Execute on same user session as unlock Credential* and check "Logon/Unlock using Credential". Select the Credential you want to logon as (recommended is that it is same user as you normally is logged in as)
 
-4. Test the Credential in Manage Credentials->Edit->Test. Make sure that Local login and Load profile is checked before testing. If it does not work it might be something with password or username.
+4. Test the Credential in _Manage Credentials_ -> _Edit_ -> _Test_. Make sure that *Local login* and *Load user profile* are selected before testing. If it does not work it might be something with password or username.
 
-5. If it still does not work then enable Extended debugging in Server settings->Log. Try to run the Job manually. Send the files server_startup.txt together with log_serverDATE.txt to support@visualcron.com
+5. If it still does not work, go to _Server_ -> _Main settings_ -> _Settings_ and, on the **_Log settings_** tab, select *Extended debug logging* (see [Settings - Log Settings](settings-log-settings)). Run the Job manually, then send `"server_startup.txt"` and `"log_serverDATE.txt"` to support@visualcron.com. Clear *Extended debug logging* again afterward.

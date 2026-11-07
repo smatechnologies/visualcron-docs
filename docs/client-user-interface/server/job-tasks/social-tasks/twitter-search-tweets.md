@@ -15,46 +15,22 @@ Twitter integration described on this page is deprecated from **VisualCron v13.2
 
 The Twitter - Search tweets Task searches tweets in Twitter.
 
-![](../../../../../static/img/tasksocialtwittersearchtweets.png)
+![Twitter - Search tweets tab with the Connection, the Search query box, the search parameters, the Geo Data group and the Custom query parameters grid](../../../../../static/img/tasksocialtwittersearchtweets.png)
 
-**Connection**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To use Twitter Tasks you need to create a Connection first. You do that in the [Twitter Connection](../../../server/connection-twitter) dialog.
- 
-**Search query**
+### Twitter - Search tweets tab
 
-A UTF-8, URL-encoded search query of 500 characters maximum, including operators. The only required search parameter.
- 
-**Locale**
+- _Connection_: the Twitter Connection to use; see [Twitter Connection](../../../server/connection-twitter)
+- _Search query_: a UTF-8, URL-encoded search query of up to 500 characters, including operators. Required
+- _Locale_: the language of the query, for language-specific consumers. The default works in most cases
+- _Max # of results_: the number of tweets to return per page, up to 100. The default is 15
+- _Since_ and _Until_: return tweets created after or before the given date, formatted as `YYYY-MM-DD`
+- _Since ID_: return results with an ID greater than (that is, more recent than) the specified ID
+- _Max ID_: return results with an ID less than (that is, older than) or equal to the specified ID
+- _Language_: return tweets in the language given by an [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) code
+- _Search type_, _Search tweet type_ and _Filters_: the kind of results and the tweet types to return. _Search tweet type_ is "All" by default
+- _Geo Data_: return tweets by users within _Geo Radius_, in the _Geo Radius measure_ unit ("Kilometers" by default), of _Geo Latitude_ and _Geo Longitude_. _Filter tweets not containing geo information_ leaves out tweets without location data
+- _Custom query parameters_: more parameters for the request, one row each with _Name_ and _Value_
 
-Intended for language-specific consumers and the default should work in the majority of cases.
- 
-**Max # of results**
-
-The number of tweets to return per page, up to a maximum of 100. Defaults to 15.
- 
-**Geo data**
-
-Returns tweets by users located within a given radius of the given latitude/longitude.
- 
-**Until**
-
-Returns tweets created before the given date. Date should be formatted as YYYY-MM-DD.
- 
-**Since ID**
-
-Returns results with an ID greater than (that is, more recent than) the specified ID.
- 
-**Max ID**
-
-Returns results with an ID less than (that is, older than) or equal to the specified ID.
- 
-**Language**
-
-Returns tweets by language, given by an [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) code.
- 
-**Geo data**
-
-Returns tweets by users located within a given radius of the given latitude/longitude.
- 
 See Twitter Developer Documentation for detailed [GET search/tweets](https://developer.twitter.com/en/docs/api-reference-index) information.

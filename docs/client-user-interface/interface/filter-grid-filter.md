@@ -2,20 +2,17 @@
 sidebar_label: 'Filter - Grid Filter'
 hide_title: 'true'
 ---
-
 ## Filter - Grid Filter
 
-With the main menu **Interface > Filter > Grid filter** option and the toolbar Grid filter button it is possible to show or hide the *grid filter*. When changing, the settings are saved and if checked when closing you will see the *grid filter* above the main grid when you start up the client again.
- 
-The *grid filter* lets you filter the list of Servers, Groups, Jobs and Tasks.
- 
-Press the *Clear filter* button to clear the filter field.
- 
-Select the Job attribute (in the drop down window starting with the "Job name" attribute) and then type characters in the filter field that shall match the selected attribute for the Job(s) you want to be shown in the Server/Jobs/Task grid. Filtering is dynamic, i.e.   matching rows are instantly removed.
- 
-All changes have immediate effect on what is shown in the Server/Group/Job/Task grid.
- 
-**Interface > Filter > Grid filter**
+The ***Interface*** -> ***Filter*** -> ***Grid filter*** option, or the ***Grid filter*** button in the toolbar, shows or hides the grid filter above the main grid. The Client remembers the setting the next time it starts.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Interface/Grid%20Filter.png)
+The grid filter limits the Servers, Jobs and Tasks shown in the main grid:
 
+- _Servers_: "All servers", or one Server
+- _Jobs_: select the Job column to match, such as "Name", "Group", "Description", "Status", "Result" or "Exit code", type the text to match, and select "All", "Active" or "Inactive"
+- _Tasks_: select the Task column to match, such as "Name", "Task type", "Status", "Result", "Output (standard)" or "Output (error)", type the text to match, and select the state
+- ***Clear***: clears all fields; see [Filter - Clear Filter](filter-clear-filter)
+
+Rows that do not match are hidden. With _Instant search on key down_ on the ***Grid*** tab of [Client settings](../file/client-settings), the grid updates as you type.
+
+![The Grid filter button on the Interface tab and in the toolbar, and the Servers, Jobs and Tasks fields of the grid filter](../../../static/img/Client%20User%20Interface/Main%20Menu/Interface/Grid%20Filter.png)

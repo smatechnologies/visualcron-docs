@@ -5,6 +5,12 @@ hide_title: 'true'
 
 ## Load Balancing Conditions
 
+:::info Availability
+
+Conditions used by the [Broker](broker-server) and by [Load balancing Flows](load-balancing-flows) require VisualCron **11.2.1** or later and a **Pro Subscription** license. Conditions used by [Server Health](../server/health-server-health) and the [Variable Trigger](../server/event-trigger-variable) follow the license requirements of those features.
+
+:::
+
 Load balancing Conditions can be used in several different VisualCron components:
  
 * Load balancing [Broker](broker-server) (Scheduler switch condition; Server Agents filter)
@@ -18,11 +24,11 @@ All Load balancing Conditions are created and edited using a single form consist
 
 On the first tab, the basic properties are configured: condition type and description.
 
-![](../../../static/img/lbconditionedit_main.png)
+![Main settings tab of the condition editor with the Condition type and Description fields](../../../static/img/lbconditionedit_main.png)
 
 On the second tab, properties specific to the chosen condition type are edited.
 
-![](../../../static/img/lbconditionedit_configure.png)
+![Configure tab of the condition editor with the Server, comparison, Duration and Event parameters groups](../../../static/img/lbconditionedit_configure.png)
 
 Depending on the condition type, the following property groups can be edited:
 
@@ -44,17 +50,17 @@ Depending on the condition type, the following property groups can be edited:
 
 All Conditions fall into two groups: conditions that check some state, and conditions that react to some event in the system.
 
-* State-check Condition example: the value of the Variable *TestNumber* is `42`.
-* Event-based Condition example: the value of the Variable *TestNumber* has been updated.
-* State-check Condition acting as an event: the value of the Variable *TestNumber* has been updated and became equal to `42`.
+* State-check Condition example: the value of the Variable _TestNumber_ is `42`.
+* Event-based Condition example: the value of the Variable _TestNumber_ has been updated.
+* State-check Condition acting as an event: the value of the Variable _TestNumber_ has been updated and became equal to `42`.
  
 **Configuring parameters of an event-based Condition**
 
-![](../../../static/img/lbconditionedit_eventbased.png)
+![Event parameters group for an event-based condition with Pause after triggering and the reset options](../../../static/img/lbconditionedit_eventbased.png)
 
 **Pause after triggering**
 
-The period after a previous trigger when event generation is suppressed. If an event occurs before the suppression period ends, the event is ignored (the behavior is different for state-check conditions — see below).
+The period after a previous trigger when event generation is suppressed. If an event occurs before the suppression period ends, the event is ignored (the behavior is different for state-check conditions; see below).
 
 **Force event reset after each condition set calculation** (the default)
 
@@ -66,7 +72,7 @@ The event remains in the signaled state until it is checked directly during cond
  
 **Configuring parameters of a state-check Condition acting as an event**
 
-![](../../../static/img/lbconditionedit_eventlike.png)
+![Event parameters group with Act as an event, Auto reset timeout and Pause after triggering](../../../static/img/lbconditionedit_eventlike.png)
 
 **Act as an event**
 
@@ -74,15 +80,42 @@ The next match of the state-check condition is possible only after an unmatched 
 
 **Auto reset timeout**
 
-If non-zero, the condition can trigger again after the specified timeout even if the state has matched the whole time. Takes precedence over the *Pause after triggering* period, so it can shorten the suppression period.
+If non-zero, the condition can trigger again after the specified timeout even if the state has matched the whole time. Takes precedence over the _Pause after triggering_ period, so it can shorten the suppression period.
 
 **Pause after triggering**
 
 The period after a previous trigger when event generation is suppressed. If, while waiting for the suppression period to end, the state changes to non-matching and then back to matching, the condition triggers again immediately after the suppression period ends.
+
+**Examples**
+
+_Move the Scheduler role off a Server that is struggling_
+
+Used as a Broker Scheduler switch condition:
+
+* Condition type: _Health status_
+* Value: _Very bad_
+* Duration: `5` minutes
+
+Adding a duration prevents a momentary spike from moving the Scheduler role.
+ 
+_Do not send Jobs to a Server that is already busy_
+
+Used as a Broker agent filter condition:
+
+* Condition type: _Total running Jobs_
+* Operand and value: over `0`
+
+_Act on sustained CPU load_
+
+Used in a Load balancing Flow:
+
+* Condition type: _OS CPU (%)_
+* Operand and value: over `90`
+* Duration: `5` minutes, with _Check average_ enabled
  
 **The list of supported Load balancing Conditions**
  
-*Abbreviations*:
+_Abbreviations_:
 
 * Flows - Load balancing Flows
 * Broker - Load balancing Broker
@@ -99,7 +132,7 @@ The period after a previous trigger when event generation is suppressed. If, whi
 | OS memory (%) | OSRAMStatus | state / event | duration, average | Flows, Broker, Health |
 | Used VC Server Drive space (%) | DiskSpaceStatus | state / event | duration | Flows, Broker, Health |
 | Daily Server uptime (%) | ServerUptimeStatus | state / event | | Flows, Broker |
-| Maximum [last minute] response time (ms) | MaxResponseTime | state / event | duration | Flows, Broker |  
+| Maximum response time (ms) | MaxResponseTime | state / event | duration | Flows, Broker |  
 | Total running Jobs | TotalRunningJobs | state / event | duration, average | Flows, Broker |
 
 ### Job statistics and states

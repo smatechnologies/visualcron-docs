@@ -5,12 +5,18 @@ hide_title: 'true'
 
 ## Broker Server
 
+:::info Availability
+
+Load Balancing requires VisualCron **11.2.1** or later and a **Pro Subscription** license. See [Load Balancer](load-balancer) for the full feature overview, and [Deploying Load Balancing](load-balancing-deployment) for the order in which to configure the components.
+
+:::
+
 **Broker Server** (Broker for short) - acts as a link between several VisualCron Servers, called Server Agents (hereinafter either Server or Agent for short).
  
 Broker collects statistics from all connected Agents, sends different actions to the Agents for execution (e.g. execution of a certain Job), and most importantly: the Broker determines which of the controlled Agents should have the Scheduler role, i.e. start and monitor events of different Triggers.
 Broker itself can run on any VisualCron Server, including a separate dedicated Server that does not additionally act as a Scheduler or Server Agent.
 
-![](../../../static/img/lb_settings_agents.png)
+![Agents tab of the Load balancer window listing connected Server Agents with their status, health and roles](../../../static/img/lb_settings_agents.png)
 
 There are three main functions of the Broker:
 
@@ -33,7 +39,7 @@ See the [Execution Distribution](execution-distribution) topic for more details.
  
 ### Managing status of connected Servers
 
-The essence of load balancing on the Broker's side is to choose among all connected Server Agents the one that will monitor the status of Triggers, and execute triggered Jobs – so called **Scheduler Agent**.
+The essence of load balancing on the Broker's side is to choose among all connected Server Agents the one that will monitor the status of Triggers, and run triggered Jobs. This Server is called the **Scheduler Agent**.
 Agents other than the Scheduler are in the Off state (Spare Agents), i.e. they do not run or monitor triggers, although they can perform any task from the Broker, including the execution of a specific Job.
  
 Note: the Broker controls the status only of those Agents that are connected in the appropriate mode (controlled by the Broker).
@@ -43,47 +49,47 @@ For more details, see the [Scheduler monitoring and controlling](#scheduler-moni
  
 ### Enabling Broker and connecting Server Agents
  
-Configuration of the Broker and Server Agents is performed in the Load balancer settings form, available from main menu: **Servers** tab > **Execution distribution** group > **Load balancer**.
+The Broker and the Server Agents are configured in the ***Load balancer*** window, opened from ***Servers*** -> ***Load balancer***.
 
-![](../../../static/img/lb_settings_main.png)
+![Main settings tab of the Load balancer window with the Broker Server and Server Agent groups](../../../static/img/lb_settings_main.png)
 
-Broker Server must be activated on one of the VisualCron Servers ("*Activate load balancing Broker on this Server*" checkbox in the "*Broker Server*" group).
-For other Servers, the connection to the Broker must be configured in the "*Server Agent*" group.
- 
-Note: it is recommended to set up object synchronization between the Servers in advance (menu: **Servers > Synchronization settings > Server object synchronization**).
+The Broker must be activated on one of the VisualCron Servers: check _Activate load balancing Broker on this Server_ in the ***Broker Server*** group.
+On each other Server, check _Connect as Server Agent to the Broker below_ in the ***Server Agent*** group and select the VisualCron Connection to the Broker.
+
+Set up object synchronization between the Servers first, from ***Servers*** -> ***Sync Server objects***. See [Sync Server Objects](sync-server-objects).
  
 ### Configuring Scheduler control mode
 
-For the Broker to control the status of the connected Servers, the "*Control the status of connected Server Agents*" checkbox must be activated in the Broker settings. It is also required to activate the "*Allow the Broker to control this Server status*" checkbox in the settings of each of the Servers that are to be controlled by the Broker.
+For the Broker to control the status of the connected Servers, check _Control the status (scheduler role) of connected Server Agents_ in the Broker settings. Also check _Allow the Broker to control this Server status_ in the settings of each Server that the Broker is to control.
 If among the currently connected and monitored Servers there are none with the Scheduler role, the Broker will automatically select the Server that will become the Scheduler Agent after the configured timeout expires.
  
 **Scheduler connection timeout**
 
-Timeout is configured in the field "*Connection timeout for the Server Agent with scheduler role*", the default value is 15 seconds.
+Timeout is configured in the field _Connection timeout for the Server Agent with scheduler role_, the default value is 15 seconds.
  
 ### Scheduler switch condition
 
-With the checkbox "*Transfer scheduler role to another Server Agent if the Scheduler switch condition is met*" the user can additionally configure the switching condition (on the "*Scheduler switch condition*" tab).
+Check _Transfer scheduler role to another Server Agent if the Scheduler switch condition is met_ to also configure a switch condition, on the ***Scheduler switch condition*** tab.
 Once the switching condition is met for the current Scheduler Agent, the Broker will try to switch the Scheduler role to another (spare) Agent.
  
-An example of a switch condition is “Server Health is [Very bad] for 5 minutes”:
+An example of a switch condition is "Server Health is [Very bad] for 5 minutes":
 
-![](../../../static/img/lb_settings_switchcondition.png)
+![Scheduler switch condition tab of the Load balancer window with one Health status condition](../../../static/img/lb_settings_switchcondition.png)
 
 See the [Load balancing Conditions](load-balancing-conditions) topic for information on configuring load balancing conditions, as well as supported scheduler switch conditions.
  
 ### Scheduler monitoring and controlling
  
-The user can monitor and control the status of connected Servers both on the “Agents” tab in the Load balancer settings form, and in the separate **Server Agents** form, accessible from the main menu (in the **Servers > Execution distribution** group).
+The status of the connected Servers can be monitored and controlled both on the ***Agents*** tab of the ***Load balancer*** window and in the ***Server Agents*** window, opened from ***Servers*** -> ***Agents***.
 
-![](../../../static/img/lb_agents.png)
+![Server Agents window listing connected Server Agents with their status, health and roles](../../../static/img/lb_agents.png)
 
-The Scheduler role can be pre-configured on one of the connected Servers. Actually, one Server (Scheduler Agent) should have status ON, the rest should be with the status OFF (Spare Agents).
+The Scheduler role can be pre-configured on one of the connected Servers. One Server (the Scheduler Agent) should have status ON, and the rest status OFF (Spare Agents).
 Further, the Broker controls the Scheduler role among the connected Servers in accordance with the established algorithm.
  
 ### Scheduler role control algorithm
  
-*Case 1. No Scheduler Agent is detected*
+_Case 1. No Scheduler Agent is detected_
 
 (corresponding Server was disconnected, or its status became OFF, or the "Allow the Broker to control this Server status" checkbox was cleared)
  
@@ -92,23 +98,23 @@ Further, the Broker controls the Scheduler role among the connected Servers in a
 * the Agent with the best Server Health is selected and, if possible, the switching condition should not be met for it;
 * if an Agent has been selected, the Broker sends a request to it to turn on the Scheduler role.
  
-*Case 2. Scheduler switch condition is met for the current Scheduler Agent* 
+_Case 2. Scheduler switch condition is met for the current Scheduler Agent_ 
 
 * the Broker attempts to select a new Scheduler Agent among the connected Spare Agents;
 * but it does not take into account Agents for which the Scheduler switch condition is also met;
 * if the new Scheduler Agent is selected, the Broker sends successive requests to turn off the old Agent and turn on the chosen one.
  
-*Case 3. Two Scheduler Agents are detected connected at the same time*
+_Case 3. Two Scheduler Agents are detected connected at the same time_
  
 * the Broker chooses among them the Agent for which the switching condition is not met, then the Agent with better Server Health;
 * the chosen Agent remains, and the Broker sends to the second Agent a request to turn off the Scheduler role.
  
-*Case 4. User sends a manual "Turn on" request from the "Server Agents" form*
+_Case 4. User sends a manual "Turn on" request from the "Server Agents" form_
  
 the Broker sends a request to the current Scheduler Agent (if any) to turn off the Scheduler role;
 then (after a successful response, or after a 5 second timeout) the Broker sends a “turn on” request to the Agent specified by the user.
  
-*Case 5. User sent a manual "Turn off" request from the "Server Agents" form*
+_Case 5. User sent a manual "Turn off" request from the "Server Agents" form_
  
 * the Broker sends a request to the Agent specified by the user, to turn off the Scheduler role;
 * at the same time, the Broker checks if there is another connected Scheduler Agent, and if not, the Broker tries to select a new Scheduler Agent;

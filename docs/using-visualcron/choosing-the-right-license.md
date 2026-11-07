@@ -3,65 +3,49 @@ sidebar_label: 'Choosing the Right License'
 hide_title: 'true'
 ---
 
-## Choosing the Right License
+## Choosing the right license
 
-### Test the license guide
+This page helps you decide how many VisualCron Server licenses you need and which edition fits your needs. Use it before you buy or add licenses.
 
-Our license guide estimates number and type of licenses needed.
+### Estimate your licenses with the license guide
 
-We have created a quiz to help you estimate the license type that fits best according to your needs. It is an approximation based on basic requirements. The final result might differ from your full needs. You can test our new license guide [here](https://www.visualcron.com/licenseguide.aspx).
+The [license guide](https://www.visualcron.com/choosing-license) on the VisualCron website asks a few questions and suggests a license type and quantity. The result is an estimate based on basic requirements, so your full needs might differ.
 
+### When you need more than one Server license
 
-### Which license type / quantity is right for me?
+Whether you need more than one VisualCron Server license depends on your infrastructure and on what you want to automate. These are the most common reasons.
 
-When do I need more than one VisualCron Server license?
+#### Spreading the load
 
-Often, we get the question "When do I need more than one VisualCron Server license?". The answer depends on your infrastructure and what you want to accomplish. Below is a list of common reasons for our customers purchasing more than one server license:
- 
-1. **Server bottlenecks**
-
-The CPU footprint of the VisualCron engine is very small but the processes you launch might consume a lot of CPU power.
+The VisualCron Server itself uses little CPU, but the processes your Jobs start can use a lot.
 
 To balance the load, some users purchase multiple or unlimited licenses to spread the load over several servers.
- 
-2. **Local execution**
 
-We have two types of Execute Tasks; Local and Remote. The Remote Execute Task is limited by Windows in many ways. For example, you cannot retrieve output from a Remote Execute Task or run it with the same privileges as the Local Task. The normal, Local Execute Task has many more features and because of this, users choose to install a VisualCron Server on each Windows machine they want to perform local execution on.
+#### Running processes locally
 
-You will face similar issues with the **PowerShell Task** - while this Task can perform remote execute you cannot control the user it runs as and get 100% control of that remote execution (with output etc.). These are limitations in Windows.
-
-For these reasons users choose to purchase multiple or unlimited licenses.
- 
-3. **Machine roles development/test**
-
-The acronym DTAP is short for Development, Testing, Acceptance and Production and the DR is short for Disaster Recovery. For various reasons you have or may want to have an environment like the production environment to test and configure Jobs before they go into production.
+The *Remote Execute* Task starts a process on another computer. It reports whether the process started, or, with *Wait for completion* selected, whether the process completed and its exit code. It does not return the process output. To get the output, and the full set of options of the *Execute* Task, install a VisualCron Server on that computer and run the *Execute* Task there.
 
 For these reasons users choose to purchase multiple or unlimited licenses.
 
-### Choosing between Basic and Pro license
+#### Separate environments
 
-*Two different editions of VisualCron with different features*
+Many organizations keep separate environments for development, testing, acceptance and production (DTAP), and for disaster recovery (DR). The extra environments let you build and test Jobs before they go into production.
 
-* VisualCron is released in two editions with different features
-* A full comparison of features can be found here
-* It is possible to later upgrade from Basic to Pro - however that may cost more than purchasing the Pro version from the beginning
-* You can see if you have a Basic or Pro license on the My licenses page and also upgrade from Basic to Pro there.
+For these reasons users choose to purchase multiple or unlimited licenses.
 
+### Choosing the right edition
 
-### Choosing between Site license, Country license and World license
+*VisualCron is available in three editions with different features*
 
-*Different licensing for unlimited Server installations*
+Choose the edition that matches the level of functionality you need:
 
-* Choose a Site license if you have all Servers within one physical location i.e. a data center.
-* Choose a Country license if you have more than one data center, one cloud service with more than 2 regions or more than one cloud service.
-* Chose a World license if you operate with installations in more than one country.
+* **Essentials** - Entry-level edition with the core scheduling and automation features. A good fit for small teams and straightforward automation.
+* **Advanced** - Adds capabilities for growing environments, including Master/Slave synchronization, Managed File Transfer (MFT) server support, the Task Repository, and additional messaging triggers.
+* **Pro** - The full edition for enterprise automation and RPA, adding load balancing, desktop and web browser automation, document scanning, and the complete set of triggers and tasks.
 
-The need for limitless storage space, high availability, low latency and scalable infrastructures has increased the number of available cloud services for file storage. Data backup, synchronization of files, redundancy and cross platform support are some reasons for using cloud services.
-
+For a full, side-by-side breakdown of the features in each edition, see the [Compare Licenses](https://www.visualcron.com/compare-licenses) page. Not sure which edition is right for you? Use our [license guide](https://www.visualcron.com/choosing-license) to help you choose.
 
 ### FAQ
-
-*Frequently asked questions*
 
 **Is a license required for Development/Test/Backup/Production machines?**
 
@@ -73,7 +57,7 @@ A Server license is required for each machine independent of the role of the mac
 
 **Can we upgrade our license to x type of license later?**
 
-We do not offer upgrade from single server license to 5-server license pack but we offer upgrade from 5-server license pack to greater. Please contact Sales for a personal offer based on your situation.
+We do not offer upgrades for existing licenses, but we offer the ability to convert a perpetual to subscription to access all new features your tier has access to. 
 
 **May I resell VisualCron licenses of type Site, Cloud, Country and World?**
 
@@ -81,11 +65,11 @@ No, but if you want to act as reseller we can give you discount on all purchases
 
 **How does renewal work?**
 
-For more information of the Subscription / Maintenance & Support Pack please check here.
+You can find the current pricing on new license keys at [here](https://admin.visualcron.com/order.aspx), and your renewal price through emails or at: https://admin.visualcron.com/MyLicenses.aspx by selecting renew selected. 
 
 **How much are the different licenses and renewals?**
 
-You can find the current pricing [here](https://www.visualcron.com/order.aspx).
+You can find the current pricing [here](https://www.visualcron.com/order.aspx) and your renewal price through emails or at: https://admin.visualcron.com/MyLicenses.aspx by selecting renew selected. 
 
 **Is the Client application free / not requiring a license?**
 

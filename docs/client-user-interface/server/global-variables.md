@@ -7,46 +7,99 @@ hide_title: 'true'
 
 ### Introduction
 
-From VisualCron version 4, the handling of variables has been changed. In previous versions, variable handling was only reached from Notifications. Now, variables can be reached from almost any place in the client application at any time. Also, the new variable handling offers greater customization possibilities. For example, when presenting a date variable, the format of the date can be totally customized.
+Variables pass information between Jobs, Triggers, Tasks and Notifications. Almost every field in the Client can use a Variable; when the Job, Task or Notification uses the field, the Variable is replaced with its value. To request a Variable that does not exist, contact VisualCron support.
  
 ### Using variables
 
-The variables are accessed from the main menu **Server > Global objects >Variables** window or at the status bar of each window that is able to use variables. Those windows have a *Variables* button in the status bar.
+The *Variables* window opens from the main menu _Server_ -> _Global objects_ -> _Variables_, or from the *Variables* button in the status bar of each window that can use Variables.
  
-Almost all fields in the windows that have the *Variables* button can use variables. You can check if a field is able to receive variables if you try to drag and drop a variable to that field. If yes, the text field will go light blue while hovering over the field and a drop will be possible. If no, no drop will be possible.
+Almost all fields in a window with the *Variables* button can use Variables. To check a field, drag a Variable to it: if the field can use it, the field turns pale blue while you hover over it; if not, you cannot drop it there.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Variables/Variables.png)
+![Variables window with the Variable tree, Variable Key and Value Preview](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Variables/Variables.png)
 
-The tree view is a hierarchy of variables. When opening at the (bottom) **VisualCron variables -> Jobs** item, you will see that your current Job is noted with a green arrow and its Tasks are reflected in the tree. Each Job can be browsed to show the Triggers, Tasks and variables connected to it.
+The tree view is a hierarchy of Variables. When you open _VisualCron variables_ -> _Jobs_, the Job you are editing is marked with a blue arrow to the right of its name and its Tasks are shown in the tree. Each Job can be browsed to show the Triggers, Tasks and Variables connected to it.
+
+The toolbar has *Add*, *Edit*, *Clone*, *Delete*, *Go to active Job*, a search box with *Search*, and *Audit log*.
  
-**The Variable Key** text box
-When a variable is selected in the tree view, the key name is automatically added to the *Variable Key* text box. At the same time, VisualCron tries to show the current value in the *Value Preview* text box. The *Variable Key* text box can be manually changed by you. For example, you may want to control the format of a date. The preview is updated in real time.
-** 
-Hierarchy of variables**
+**Variable Key**
 
-VisualCron is presenting different kind of variables. The tree, especially for the VisualCron variables root is built up as a hierarchy. In the root there are Jobs. When entering a Job, you can reach its triggers, Tasks etc. A trigger in turn may have a result object which can be browsed.
+When you select a Variable in the tree, its key is shown in *Variable Key*, where you can also edit it, for example to change a date format. For a Job or Task Variable, select how the key points to it: *Direct Id (direct pointing Id of Job or Task)*, *Active (current context sensitive Job or Task)* or *PrevTask (previous or last context sensitive Task)*. *Copy to clipboard* copies the key; *Select* puts it in the field you opened the window from.
+
+**Value Preview**
+
+With *Preview Variable value* selected, the current value of the selected Variable is shown in *Value Preview* and updated as you edit the key (see **Local previewing** under Limitations).
+
+**Hierarchy of variables**
+
+VisualCron has several kinds of Variables. The tree, especially the _VisualCron variables_ root, is a hierarchy: the root holds _Jobs_, which lists the Jobs; each Job holds its Job Variables, Loop, Triggers and Tasks Variables as well as its own, and a Trigger may have result Variables that you can browse.
  
 **Parameter delimiters**
 
-By default, the parameters supplied to a Variables is using pipe (|) or comma (,). If you have these in the string already you might want to use an alternate parameter delimiter. You can do this by starting the parameters with the character you want to split with. For example, if you want to use @ as parameter delimiter you can create a Variable like this: ```{FILE(@Content@c:\textfile.txt)}```
+Separate arguments with a pipe (`|`). If the arguments contain no pipe, a comma (`,`) separates them instead. The check includes the text of Variables nested in the arguments, so use pipes throughout when you nest Variables. Commas and pipes in the value of a nested Variable do not split the arguments.
+
+To use another delimiter, for example when an argument must contain a pipe, start the arguments with it. For example, with @ as the delimiter: ```{FILE(@Content@c:\textfile.txt)}```
+
+Any first character other than a letter, a digit, white space or one of `-` `.` `{` `(` `[` is read as the delimiter. An argument list that starts with another character, such as `+`, `\`, `'` or `%`, is therefore split on that character. `{DATEFORMAT(...)}` is not affected: it always uses the whole text as the format.
  
 ### Root variables
 
 **Functions**
 
-Functions contains a set of string and path functions that can be useful for editing/changing text.
+Functions has string, regular expression and JSON functions, and conversions between value types, such as the number conversions described below. Path functions are under *File variables* and *Folder variables*.
 
+**Number conversion**
+
+Convert a value to a specific numeric type inside a Variable. There are four families: *{INTEGER}* (32-bit integer), *{LONG}* (64-bit integer), *{DECIMAL}* and *{DOUBLE}*. Each family accepts two forms:
+
+```{INTEGER(value|defaultValue)}```
+
+```{INTEGER(value|format|defaultValue)}```
+
+The first argument is the value to convert. The last argument is the default value. The optional middle argument is a standard or custom .NET numeric format string that is applied to the converted result. *{INTEGER}* and *{LONG}* truncate any fractional part toward zero, while *{DECIMAL}* and *{DOUBLE}* keep it.
+
+Values are parsed using the invariant culture, so a period is always the decimal separator and thousand separators are not accepted in the value. Leading zeros are removed, scientific notation such as 1e3 is accepted, and any space before or after the value is ignored.
+
+The default value is returned, exactly as you typed it, when the value is not a number, when it is only spaces, when it is outside the range of the target type, when *{DOUBLE}* would result in an infinite or non numeric value, and when the format cannot be applied. In the three argument form the default value is returned without the format applied.
+
+A format is rejected when it is longer than 64 characters, and a standard format is rejected when its precision is above 99, so a format such as F100000000 returns the default value instead of building a very large string.
+
+An empty value has to reach the function through another Variable, for example ```{INTEGER({STRING(Null)}|0)}```, which returns 0. Writing an empty first argument directly, as in ```{INTEGER(|0)}```, is read as a single argument and reports an invalid number of arguments instead of returning the default value.
+
+Examples:
+
+```{INTEGER(5.9|0)}``` returns 5
+
+```{INTEGER(5.9|000|0)}``` returns 005
+
+```{LONG(9999999999|0)}``` returns 9999999999
+
+```{DECIMAL(5.5|0.00|0)}``` returns 5.50
+
+```{DOUBLE(abc|-1)}``` returns -1, the default value, because the value is not a number
+
+```{INTEGER(2147483648|-1)}``` returns -1, the default value, because 2147483648 is outside the 32-bit integer range (use ```{LONG}``` for larger whole numbers)
+
+```{LONG(2147483648|0)}``` returns 2147483648, which is within the 64-bit integer range
+
+```{DECIMAL(1e3|0)}``` returns 1000, because scientific notation is accepted
+
+```{INTEGER(abc|000|-1)}``` returns -1, the default value, without the 000 format applied to it
+
+```{DOUBLE(1e400|-1)}``` returns -1, the default value, because the value is too large to be a valid number
+ 
 **Logic**
 
-Conditional functions. A *{LOGIC(If|...)}* variable compares two values and returns one of two results depending on whether the comparison matches.
+Conditional functions. `{LOGIC(If|<type>|<value 1>|<operator>|<value 2>|<result if true>|<result if false>)}` compares two values and returns one of two results. `<type>` is `String`, `Integer`, `Double` or `Boolean`. For `String`, the operators are `==`, `!=`, `=%` (contains) and `!=%` (does not contain), and the comparison is case-sensitive. For `Integer` and `Double`, they are `==`, `!=`, `<`, `<=`, `>` and `>=`. For `Boolean`, they are `==` and `!=`. For example, `{LOGIC(If|Integer|{TASK(PrevTask|ExitCode)}|==|0|OK|Failed)}` returns `OK` when the previous Task's exit code is 0.
  
 **Math**
 
-Math functions such as Add, Subtract, Multiply, Divide, Abs, Round, Ceiling, Floor and Pow, with an optional output format.
+Math functions. `Add`, `Subtract`, `Multiply` and `Divide` take five arguments: the function, the number type (`Integer` or `Double`), the two values and a .NET numeric output format. The format can be empty, but its delimiter must be there: `{MATH(Add|Integer|5|6|)}` returns `11`, and `{MATH(Add|Integer|5|6|#0.00)}` returns `11.00`. An empty value counts as 0. `Divide` can return a fraction even with `Integer`: `{MATH(Divide|Integer|7|2|)}` returns `3.5`. With `Integer`, each value is rounded to a whole number (halves to the even number, so `2.5` becomes `2`) and must fit in a 32-bit integer; use `Double` for decimals.
+
+The other functions take no output format. `Abs`, `Ceiling`, `Floor`, `Sqrt` and `Exp` take one value, for example `{MATH(Sqrt|16)}` returns `4`. `Pow`, `Max` and `Min` take two, for example `{MATH(Pow|2|10)}` returns `1024`. `Round` takes the value and the number of decimals and rounds halves away from zero: `{MATH(Round|2.5|0)}` returns `3`. `PI` and `E` take none, for example `{MATH(PI)}`. Unlike the number conversions, values are read, and results written, with the regional settings of the VisualCron Server, so on a Server with German settings `{MATH(Divide|Integer|7|2|)}` returns `3,5`.
  
 **System variables**
 
-These are values collected from the current computer/server, such as Environment and Memory variables and system uptime.
+The current user, the computer's name, operating system and start time, memory use, and environment variables.
 
 **Server variables**
 
@@ -54,7 +107,7 @@ Values that describe the VisualCron Server, such as its IP, port, version and ac
  
 **Date variables**
 
-The current date, can be formatted in your way. There are also some preformatted variables. See [here](global-date-time-variables) for more date/time variable details.
+The current date and time in any format, and date calculations. See [Date/Time Variables](global-date-time-variables).
  
 **File variables**
 
@@ -62,85 +115,81 @@ Variables related to files. For example, the Content argument gives the text con
  
 **Folder variables**
 
-Variables concerning folders. Currently this group contains paths to the current and system folder.
+Paths of the current, system and temp folders, the directory, path and volume separator characters, and path functions (directory name, root and whether a path is rooted).
  
 **VisualCron variables**
 
-These are the most powerful variables which let you access a large part of your VisualCron Job and Task data.
+Variables for the settings and run data of your Jobs, Tasks and Triggers.
  
 **User defined variables**
 
-You are able to create your own static or dynamic Variables - with different value types. To Add/Edit/Remove a Variable you ca either click at the *Add/Edit/Delete* buttons or create Tasks ([Set Variable](../../client-user-interface/server/job-tasks/internal-tasks/set-job-variable), [Remove Variable](../../client-user-interface/server/job-tasks/internal-tasks/remove-variable), [Calculate Variable](../../client-user-interface/server/job-tasks/internal-tasks/calculate-variable)) that does this.
+Create your own Variables, each with a name, a description, a type (`String`, `Int32`, `Double`, `Boolean` or `List`) and a value. Use a User Variable with `{USERVAR(<name>)}`. Add, edit and delete User Variables with the toolbar, or in a Job with the [Set User Variable](job-tasks/internal-tasks/set-user-variable), [Remove Variable](job-tasks/internal-tasks/remove-variable) and [Calculate Variable](job-tasks/internal-tasks/calculate-variable) Tasks.
+
+![Edit Variable window for a User Variable](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Variables/Edit%20variables.png)
 
 **Task repository variables**
 
 Variables for accessing items stored in the Task repository.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Variables/Edit%20variables.png)
-
 **The format of a variable**
 
-The below text is an example of a variable key. The first part begins with an "`{`" and the following text what kind of root variable to look for. In this case a Task. In the Manage variables window you can see, once you have selected a variable, the format of the variable in the status bar. In this case: ```{TASK (TaskId,Name)}```. The parts within the parenthesis are the arguments. The first argument is the id of the Task. This id is generated by VisualCron once the Task has been created. The second argument "Name" tells us that once we have found the Task from it's id, we want to get its name.
- 
-Variable Key example: ```{TASK(7b9a0b42-ec36-482e-bd04-93ef8b655108,Name)}```
- 
-**Drag'n drop**
+The text below is an example of a Variable key. It starts with `{`, followed by the kind of root Variable, here a Task. In the *Variables* window, once you select a Variable, its format is shown in the status bar, in this case `{TASK(<taskId>|Name)}`. The parts inside the parentheses are the arguments. The first is the ID of the Task, which VisualCron generates when the Task is created. The second, `Name`, returns the name of that Task.
 
-By holding down your left mouse button on a variable a drag and drop action will start. While holding it down you can drag the variable to a field where you want to use it. Not all fields can receive variables. You can see if a field supports variables by moving it over a field. If a drop symbol becomes visible and the color of the field turns light blue you are able to release the mouse and the variable will be placed into the field.
+The function name is 3 to 16 uppercase letters, and there is no space before the parenthesis: with a space, as in `{TASK (…)}`, the text is not replaced.
  
-**Value preview**
+Variable Key example: ```{TASK(7b9a0b42-ec36-482e-bd04-93ef8b655108|Name)}```
+ 
+### Job, Task and Trigger variables
 
-When clicking on a variable, VisualCron will try to obtain the value of the variable in real time. This value will be shown in the yellow *Value Preview* text box.
- 
 **Active Job/Task vs specific Job/Task**
 
-In the Job list you will see a Job listed as "Active Job" with a red Job icon. An active Job could be any Job or Task that VisualCron currently is processing. All Jobs you have created are listed below the active Job. The Jobs that are listed below that active Job points to a specific Job or Task. For example, when using the Job.Name variable you will always get the same name (unless the name is changed) for that particular Job. When using the Active Job you will get the name of the Job that is currently processed when the variable is replaced.
+In the Job list you will see a Job listed as *Active job*, the first entry under _Jobs_. *Active job* stands for the Job that VisualCron is processing when the Variable is replaced, and the Tasks under it for the Task being processed. The Jobs listed below *Active job* each point to one specific Job. For example, when using the Job name Variable (`{JOB(<jobId>|Name)}`) you will always get the same name (unless the name is changed) for that particular Job. With *Active job* (`{JOB(Active|Name)}`) you get the name of the Job being processed when the Variable is replaced.
  
-The advantage of using "Active Job" is that you can prepare a Notification for example with Active Job or Task parameters. In the report from the Notification you will get different results, depending on the Job or Task that is being run. In that way Notifications can be reused.
+The advantage of using *Active job* is that you can prepare a Notification for example with *Active* Job or Task Variables. In the report from the Notification you will get different results, depending on the Job or Task that is being run. In that way Notifications can be reused.
  
-The advantage of using a variable from a Job defined by you is that you know exactly which variable you get. You will always get that variable from that particular Job or Task.
+The advantage of using a Variable that points to a specific Job is that you always get the value from that Job or Task.
  
 **Current Job/Task**
 
-The current Job or Task is the Job or Task that you currently are editing. It is marked by a green arrow to the right of the Job or Task name. It is there to help you find the Job or Task currently being edited. Note that the Job or Task is not available in the tree view until you have added it.
+The current Job or Task is the Job or Task that you currently are editing. It is marked by a blue arrow to the right of the Job or Task name. It is there to help you find the Job or Task currently being edited. A Job that has not been saved does not appear under _Jobs_. When you open the window from a Job you are editing, *Active job* shows that Job, including unsaved changes.
  
 **Previous Task**
  
-You can always refer to the last run Task by using the PrevTask Identifier, like this:
+Use the `PrevTask` identifier for the Task that ran before the current one in the same run. If there is none, as in the first Task of a Job, `PrevTask` refers to the current Task:
  
-```{TASK(PrevTask,Name)}```
+```{TASK(PrevTask|Name)}```
 
-**StandardOutput / StandardError with concurrent Job instances**
+**Output and error output with concurrent Job instances**
  
-The Task output variables StandardOutput and StandardError (for example ```{TASK(PrevTask,StdOut)}``` or ```{TASK(PrevTask,StdErr)}```) are stored per Job and Task, not per running instance. If more than one instance of the same Job runs at the same time, these variables share a single value across those instances. As a result a Task may read the output produced by a parallel instance instead of its own.
+The Task output Variables (*Output* and *Output (stderr)* in the *Variables* window, for example ```{TASK(PrevTask|StdOut)}``` and ```{TASK(PrevTask|StdErr)}```) are stored per Job and Task, not per running instance. If more than one instance of the same Job runs at the same time, these Variables share a single value across those instances. As a result a Task may read the output produced by a parallel instance instead of its own.
  
-For example, if a Job containing an Execute Task followed by a second Task that reads ```{TASK(PrevTask,StdOut)}``` is started twice and both instances run simultaneously, the second Task in one instance may pick up the StandardOutput written by the other instance.
+For example, if a Job containing an Execute Task followed by a second Task that reads ```{TASK(PrevTask|StdOut)}``` is started twice and both instances run simultaneously, the second Task in one instance may pick up the *Output* written by the other instance.
  
-Avoid relying on StandardOutput and StandardError in Jobs that can run concurrently, especially where a later Task depends on the value. If you need instance-safe output, capture it to a file or to a Job variable scoped to that run, or prevent the Job from running multiple instances at the same time.
+Avoid relying on *Output* and *Output (stderr)* in Jobs that can run concurrently, especially where a later Task depends on the value. If you need output that belongs to one run, write it to a file whose name is unique to the run, or keep *Do not start if job is already running* selected on the Job's **_Main settings_** tab (see [Job main settings](job-main-settings)), so that a second run is skipped or, with *Put Job in queue (does not skip Job - runs Job when running Job is finished)*, queued.
  
 **Triggers**
 
-The trigger is the part of the Job that makes a Job run. You are able to get information from that trigger.
+A Trigger starts a Job. Its Variables give information about it.
  
-**Last Trigger and Specific trigger**
+**Last trigger and specific Trigger**
 
-The last trigger always exist as a part of the trigger tree. It represents the last trigger that executed your Job. Remember that you may have several triggers for one Job. By using the last trigger you can automatically get information about the last trigger without explicitly pointing to a specific trigger.
+*Last trigger* is always in a Job's Trigger tree. It stands for the Trigger that fired last, so that a Job with several Triggers can use one Variable for all of them, without pointing to a specific Trigger.
  
-There are some things to consider about Last Trigger. If you use different kinds of triggers, for example one Event trigger and one Time trigger you can reach the generic variables like name, last run etc. What you can't always get is specific variables, like if you are pointing to a file name of the File event. That variable will not exist in the Last Trigger if the last trigger was a time trigger.
+When a Trigger starts a run, the *Last trigger* result Variables read the result of that firing for the whole run. Other *Last trigger* values, such as the description, follow the Trigger that fired most recently, and so does the Trigger type used to read results: if another Trigger of the Job fires during the run, even one whose run is skipped or queued, they change. In a run that no Trigger started, for example a manual run, *Last trigger* reads the result of whichever of the Job's Triggers fired last. A Variable that points to a specific Trigger always reads that Trigger's latest result, which a later firing can replace while the Job is still running.
  
-If you want to be sure that you always get specific trigger information you must point out a specific trigger in the tree view.
+Values that every Trigger has, such as the description, work with any Trigger. A result Variable of one Trigger type, for example the file name of a File Trigger, returns an error message in square brackets instead of a value when the Trigger that fired last is of another type.
  
 **Trigger result variables**
 
-Some variables exist when a trigger has been added, for example a trigger name. Other variables are result variables and are created/updated when a trigger has been run. For example, when using a File event trigger you are watching a folder. You have a folder name and a file mask. These variables are available instantly.
+Some Variables exist when a Trigger has been added, for example a Trigger description, or the folder and file mask of a File Trigger. Other Variables are result Variables, which are set each time the Trigger fires.
  
-Now, let's say you are monitoring for changes in ```*.txt``` files. Since you are using a file mask you may not know exactly which file that was changed. Now, with trigger result variables you are able to get that information. This information is stored after the trigger has been run and is instantly available for usage before the actual Job has been started.
+Now, suppose you are monitoring for changes in ```*.txt``` files. Because of the file mask, you may not know which file changed; the result Variables tell you. They are kept in memory when the Trigger fires and are available before the Job starts.
  
-Especially Event triggers have many variables that are available for usage when they have been triggered. Below is a description of what those variables contain.
+Event Triggers in particular have many result Variables. The result Variables of the main Event Triggers are described below.
  
-Note that result variables are stored and always available once created. If your Job was triggered once you have the result variables. If you now go and change the actual trigger, the field values of the trigger will be changed but the actual result will remain until the trigger is being triggered again.
+Result Variables are not saved. A Trigger's result is replaced each time the Trigger fires and is lost when the VisualCron service restarts.
  
-### File event result variables:
+### File event result variables
 
 **Folder path**
 
@@ -152,19 +201,19 @@ The file mask that was used when watching.
  
 **Type of change**
 
-Gets the type of folder event that occurred.
+The kind of change: "Created", "Changed", "Deleted" or "Renamed".
  
 **Path**
 
-Gets the fully qualified path of the affected file or folder.
+Full path of the affected file or folder.
  
 **Name**
 
-Gets the name of the affected file or folder.
+Name of the affected file or folder.
 
 **Path of triggered folder**
 
-The path of the watched folder that triggered the event.
+The folder that contains the affected file. When *Include subfolders* is selected, this can be a subfolder of the watched folder.
  
 **Old Name**
 
@@ -176,81 +225,60 @@ The previous full path of the affected file or folder (available on rename).
  
 **New text**
 
-The new text content of the affected file (available when watching for content changes).
+Available only for a change event with *Trailing Trigger* selected (see [File Trigger](event-trigger-file)). The text added to the file since the previous change. For the first change the Trigger sees in a file, or when the file became shorter, it is the whole content. A change that does not change the file's length does not fire the Trigger.
  
 More information:
-[Microsoft file system event arguments](https://learn.microsoft.com/en-us/dotnet/api/system.io.filesystemeventargs?view=net-8.0&redirectedfrom=MSDN)
+[Microsoft file system event arguments](https://learn.microsoft.com/en-us/dotnet/api/system.io.filesystemeventargs)
  
-### EventLog event result variables:
+### EventLog event result variables
 
 **Host**
 
-Name of the computer that generated this event.
+Name of the computer that logged the event.
  
 **Category**
 
-Translation of the subcategory, the translation is source specific.
+The event's task category number.
  
 **Event code**
 
-Value of the lower 16-bits of the EventIdentifier property. It is present to match the value displayed in the Windows NT Event Viewer. Note that two events from the same source may have the same value for this property, but may have different severity and EventIdentifier values.
+The event's task category number (the same as *Category*). For the event ID shown in Event Viewer, use *Event id*.
  
 **Event id**
 
-Identifier of the event. This is specific to the source that generated the event log entry and is used together with SourceName, to uniquely identify a Windows NT event type.
+The event ID shown in Event Viewer.
  
 **Event type**
 
-Modern Windows Event Logs (Security, System, Application, etc.) uses Level instead of the old numeric “Type” field. The mapping is effectively the same conceptually, but the OS no longer exposes the 1–5 numeric codes.
-
-**Current Event Levels**
-
-| **Modern Level (String)**| **Meaning**                                     | **Notes**          |
-|--------------------------|-------------------------------------------------|--------------------|
-| Error                    | A significant problem that caused a failure     | Previously Type 1  |
-| Warning                  | A condition that may cause future issues        | Previously Type 2  |
-| Information              | Successful operations or informational messages | Previously Type 3  |
-| Audit Success            | A security-related action succeeded             | Previously Type 4  |
-| Audit Failure            | A security-related action failed                | Previously Type 5  |
+The event's level as a number: 0 (Log always), 1 (Critical), 2 (Error), 3 (Warning), 4 (Information) or 5 (Verbose). Many events that Event Viewer shows as Information, such as security audit events, have level 0.
  
 **Date created**
 
-The time the Source generated the event.
+When the event was logged.
  
 **Log file**
 
-Name of Windows NT event log file. This is used together with RecordNumber to uniquely identify an instance of this class.
+Name of the event log, for example "Application".
  
 **Message**
 
-Event message as it appears in the Windows NT event log. This is a standard message with zero or more insertion strings supplied by the source of the Windows NT event. The insertion strings are inserted into the standard message in a predefined format. If there are no insertion strings or there is a problem inserting the insertion strings, only the standard message will be present in this field.
+The first data value of the event, not the full message text. Use *XML* for all of the event's data.
  
 **Record number**
 
-Identifies the event within the Windows NT event log file. This is specific to the log file and is used together with the log file name to uniquely identify an instance of this class.
+The event's record number in the log.
  
 **Source**
 
-Name of the source (application, service, driver or subsystem) that generated the entry. It is used, together with EventIdentifier to uniquely identify an Windows NT event type.
+The provider that logged the event.
  
-**User name**
+**Username**
 
-User name of the logged-on user when the event occurred. If the user name cannot be determined, this value will be NULL.
+Currently always empty.
  
 **Type**
 
-Type of event. This is an enumerated string. It is preferable to use the EventType property rather than the Type property.
-Value Meaning
-
-1        Error
-
-2        Warning
-
-4        Information
-
-8        Security audit success
-
-16        Security audit failure
+The event's opcode name, for example "Info", "Start" or "Stop".
 
 **XML**
 
@@ -258,12 +286,12 @@ The raw XML representation of the event.
  
 **Keywords**
 
-The keywords associated with the event.
+The event's keyword names, one per line, for example "Audit Success" or "Audit Failure".
  
 More information:
-[Microsoft log events](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/eventlogprov/win32-ntlogevent?redirectedfrom=MSDN)
+[Microsoft: EventRecord properties](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.eventing.reader.eventrecord)
  
-### Process event result variables:
+### Process event result variables
 
 **Process name**
 
@@ -271,7 +299,7 @@ Name of the process that was started/stopped.
  
 **Description**
 
-Description of an object.
+Description of the process, usually the executable name.
  
 **Created date**
 
@@ -283,20 +311,22 @@ Full path to the executable file of the process. Example: ```C:\WINDOWS\explorer
  
 **Command line**
 
-The command line that started a specific process, if applicable.
+The command line that started the process.
  
 **Process id**
 
 Global process identifier that you can use to identify a process.
+
+If Windows does not report the name, command line, description or path of a new process, the Job still runs, but for that run the Process result Variables return an error message in square brackets instead of a value.
  
 More information:
-[Microsoft process info](https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-process?redirectedfrom=MSDN)
+[Microsoft process info](https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-process)
  
-### Service event result variables:
+### Service event result variables
 
 **Name**
 
-Unique identifier of the service that provides an indication of the functionality that is managed.
+The service name, for example "Spooler" (not the display name).
  
 **Display name**
 
@@ -304,28 +334,23 @@ Display name of the service.
  
 **Path**
 
-Full path to the service binary file that implements the service.
+Path of the service executable as registered in Windows; it can include arguments.
  
 **State**
 
-Current state of the base service.
+Current state of the base service: "Stopped", "Running" or "Paused".
 
-Values are:
+:::warning
 
-* "Stopped"
-* "Start Pending"
-* "Stop Pending"
-* "Running"
-* "Continue Pending"
-* "Pause Pending"
-* "Paused"
-* "Unknown"
+The Service Trigger fires only for the Stopped, Running and Paused states. It does not fire for Start pending, Stop pending, Continue pending or Pause pending, even if they are selected in the Trigger.
+
+:::
  
 **Status**
 
-Current status of the object. Various operational and non-operational statuses can be defined. Operational statuses include: "OK", "Degraded", and "Pred Fail" (an element, such as a SMART-enabled hard drive, may be functioning properly but predicting a failure in the near future). Non-operational statuses include: "Error", "Starting", "Stopping", and "Service". The latter, "Service", could apply during mirror-resilvering of a disk, reload of a user permissions list, or other administrative work. Not all such work is on-line, yet the managed element is neither "OK" nor in one of the other states.
+The status Windows reports for the service, for example "OK", "Degraded" or "Error". This is not the same as *State*.
  
-Values are the following:
+Values include the following:
 
 * "OK"
 * "Error"
@@ -338,24 +363,24 @@ Values are the following:
  
 **Exit code**
 
-Windows error code that defines errors encountered in starting or stopping the service. This property is set to ERROR_SERVICE_SPECIFIC_ERROR (1066) when the error is unique to the service represented by this class, and information about the error is available in the ServiceSpecificExitCode property. The service sets this value to NO_ERROR when running, and again upon normal termination.
+The Windows error code for a problem starting or stopping the service, or 0 if there was none. 1066 means the service reported its own error code; see *Service specific exit code*.
  
 **Service specific exit code**
 
-Service specific error code for errors that occur while the service is either starting or stopping. The exit codes are defined by the service represented by this class. This value is only set when the ExitCode property value is ERROR_SERVICE_SPECIFIC_ERROR (1066).
+The service's own error code. Set only when *Exit code* is 1066.
 
 **Process Id**
 
-Process identifier of the service.
+Process ID of the service, or 0 when the service is stopped.
  
 **Description**
 
 Description of the service.
  
 More information:
-[Microsoft service info](https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-service?redirectedfrom=MSDN)
+[Microsoft service info](https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-service)
  
-### Registry event result variables:
+### Registry event result variables
 
 **Hive**
 
@@ -371,39 +396,33 @@ Name of the value in the registry key. For example, in the registry key ```HKEY_
  
 **Value**
 
-Value of the specific specific key. Only available when using Registry Value Change event.
+The data of the changed value, read when VisualCron processes the event. Available only for the *Registry Value Change* event when the Trigger's computer is `.` (the default). For binary and multi-string values it returns the .NET type name, such as `System.Byte[]`; if the value cannot be read, it returns the error message.
  
 More information:
-[Microsoft registry info](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/regprov/registryevent?redirectedfrom=MSDN)
+[Microsoft registry info](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/regprov/registryevent)
  
-**Special characters**
+### Custom event result variables
 
-You can write special characters like new line etc using this format: [https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-escapes-in-regular-expressions](https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-escapes-in-regular-expressions) inside the String.Print Variable: ```{STRING(Print|\n)}```
+Currently no result Variables exist for this event type.
  
-**Custom event result variables**
+### Other Event Triggers
 
-Currently no result variables exist for this event type.
+Most other Event Triggers also have result Variables. They are listed in the *Variables* window under the Job's Triggers and described on each Trigger's page.
  
-Missing a variable or field where you want to use a variable?  If you feel that you could have usage of a certain variable in a certain place that currently not exists, please contact VisualCron support. We will try to extend this functionality in the way you want it.
+### Special characters
+
+`{STRING(Print|<text>)}` replaces `\r`, `\n`, `\t` and `\f` in the text with a carriage return, a line break, a tab and a form feed, for example `{STRING(Print|line1\nline2)}`. `\n` already produces a Windows line break (carriage return and line feed), so write `\n`, not `\r\n`. With the pipe as delimiter, the text cannot contain a pipe; to include one, use another delimiter (see **Parameter delimiters**), for example `{STRING(~Print~a|b\nc)}`. Other Variables and fields do not replace these characters.
  
 ### Limitations
 
 **Current state of tree view**
 
-The tree view shows the current state. The available variables are those that exist by the time you open the variables window. Variables added after this are not added to the tree view until you open it the next time. Also, a Job is not available until it has been added to the server.
+The tree view shows the current state. It shows the Variables that exist when you open the *Variables* window. Jobs and Tasks added after you open the window appear the next time you open it.
  
 **Local previewing**
 
-When previewing the variables at the client, File variables like content, are based on files in the client. If you get a message that a file does not exist, the file may exist in the server hosted at another location.
+*Value Preview* is computed in the Client, not on the VisualCron Server. Date and time, computer, user, environment, memory and file Variables show the values of the computer the Client runs on. When the Job runs, they have the Server's values. If the preview says a file does not exist, the file may still exist on the Server.
  
-**2 levels of variable replacing**
+**Nested and chained Variables**
 
-There is a limitation how deep VisualCron will go when searching for variables to replace. The reason for this is performance and also that there must be an end in searching for variables sometime. For example, let say you have a variable in your Name field of your first Job. The text in the Name field is: ```"Job {DATE (Week)}"```. When using the name variable of this first Job you will get the text "Job" and the current week number. Now, suppose you have a second Job. For some reason you want to use the value of the Name field of the first Job in the Name of your second Job. Now you add a specific variable pointing to the first Job in the Name field, for example ```"{JOB(id,Name)}"```. When executing the second Job, VisualCron will first try to reach the name of the first Job (level 1) and then when reaching that Job it finds that it contains the variable week. It will replace that variable too (level 2). This is the end of the search and VisualCron would not have continued if the first Job pointed to another Job that used another variable.
- 
-**Old variables supported for a limited time**
-
-Variables created in VisualCron 4 may exist in your Notifications. Currently, VisualCron interprets those variables, but the support for those variables will be withdrawn for two reasons; 1 - the less flexibility in those variables and 2 - for performance reasons. Support for those variables will be withdrawn during the end of this year (2006) so please replace those with newer variables.
- 
-**It is not possible to use a variable as argument**
-
-You can not enter a variable in another variables argument.
+Variables can be nested in another Variable's arguments, for example ```{INTEGER({STRING(Null)}|0)}```; the inner Variables are resolved first. A value that contains another Variable is resolved again. After 1,000 levels of nesting and re-resolution, the Variable is replaced with an error message in square brackets that says a possible infinite loop was detected.

@@ -5,62 +5,94 @@ hide_title: 'true'
 
 ## ROI - Return On Investment
 
-VisualCron is able to perform ROI - Return On Investments on the Jobs that are scheduled.
- 
-In VisualCron you can set a time value - how much time that Job saves you each time it runs - for example an hour. In combination you set an hourly rate - let's say $50. This means that for each hour this Job returns $50 of the initial investment.
- 
-Currency, default time per Job and hourly rate per Job can be set generally in the Settings tab of the ROI window. It is possible to update all or selected Jobs with certain specific settings. It is also possible, on Job level, to [override this](job-main-settings).
+The _Return On Investment (ROI)_ window shows how much time and money your Jobs save. Each Job run counts the time the Job saves and the hourly rate that time is worth. For example, a Job that saves 1 hour at a rate of "50" returns 50 each time it runs.
+
+To open it, click the main menu _Server_ -> _Jobs_ -> _ROI_. Not every edition includes this window.
+
+The window has three tabs: **_Chart_** shows the combined ROI of all Jobs over time, **_Jobs_** lists the total per Job, and **_Settings_** holds the currency and the values new Jobs start with.
+
+### How ROI is calculated
+
+- Each Job has its own ROI settings: the time it saves per run and an hourly rate (see the ROI settings in [Job - Main Settings](job-main-settings))
+- When a Job run ends, the Server stores that run's time and rate in the Job log of the log database; ROI is recorded only when _Log to database_ is on in [Settings - Log Settings](settings-log-settings), and it is kept as long as the Job log is kept
+- The amount of a run is the time saved, in hours, multiplied by the hourly rate; a run that saves 15 minutes at a rate of "50" returns 12.5
+- The time and rate are stored with each run, so changing them later does not change runs that are already recorded
+- If _Only store successful executions_ is checked in a Job's ROI settings, a failed run of that Job is recorded with no time and no amount
+
+:::note
+
+The Server uses the time and rate stored in each Job. When _Use default Job time_ or _Use default Job rate_ is checked for a Job, the Job takes the default value from the **_Settings_** tab at the moment you click _OK_ in its ROI settings. Later changes to the defaults reach that Job only when you open and confirm its ROI settings again, or use _Update Jobs_. A new Job whose ROI settings are never opened uses a time of 15 minutes and a rate of "50".
+
+:::
  
 ### Chart tab
 
-The chart time shows the combined ROI on all Jobs (that are have enabled ROI).
- 
-**Date range**
+The **_Chart_** tab shows the combined ROI of all Jobs for a date range.
 
-The default settings this window opens up with is current date minus 3 months.
- 
-**Grouping**
+- _Date range_: the period to show; by default the last three months up to today
+- _Grouping_: how runs are grouped on the chart: "None", "Day", "Week", "Month" or "Year"; "Week" is selected when the window opens
+- _Accumulate_: when checked, each point adds to the previous ones, so the chart shows a running total
+- **_Amount_** and **_Time_**: show the chart in money or in time saved
 
-It is possible to group the chart in different intervals like Day, Week, Month, Year or no grouping at all.
- 
-**Accumulate**
+Above the chart, the window shows the total for the range and the statistics _Executions_, _Average_, _Median_, _Min_ and _Max_. When _Grouping_ is "None", these count and compare single runs. With any other grouping they count and compare the groups: for example, with "Week", _Executions_ is the number of weeks in the range that have runs, and _Average_ is the average per week. The chart counts every logged run, including runs of deleted Jobs and runs with no ROI, so its totals can differ from the **_Jobs_** tab.
 
-Checking the Accumulate checkbox aggregates the data over time.
+:::note
 
-![](../../../static/img/roimain.png)
+"Week" groups runs by week number only, so the same week number from different years is combined into one point. Keep the date range under one year when you use "Week".
 
-## Jobs tab
+:::
 
-The Jobs tab shows a top list of total ROI per Job, default sorted on amount.
+_Server_ -> _Jobs_ -> _ROI_ -> **_Chart_**
 
-![](../../../static/img/roijobs.png)
+![ROI window, Chart tab: a date range, Grouping set to Week with Accumulate checked, the Amount tab with range totals and statistics, and a line chart and a bar chart of the amount per week](../../../static/img/roimain.png)
+
+### Jobs tab
+
+The **_Jobs_** tab lists the total ROI per Job for its own date range, by default the last three months up to today. The list loads the first time you open the tab. Click _Get_ to load it again after you change the dates.
+
+- _Job name_: the Job
+- _Amount_ (with the currency): the total amount for the range
+- _Time_: the total time saved for the range
+
+The list is sorted by amount, highest first, and shows only existing Jobs with an amount above zero. The status bar shows _Total time_ and _Total amount_ for the list.
+
+_Server_ -> _Jobs_ -> _ROI_ -> **_Jobs_**
+
+![ROI window, Jobs tab: a date range with the Get button and one Job listed with its Amount (USD) and Time, and totals in the status bar](../../../static/img/roijobs.png)
 
 ### Settings tab
 
-In this tab you can set the default settings for all Jobs. It is possible to update all or selected Jobs with certain specific settings. It is also possible, on Job level, to [override this](job-main-settings).
- 
-**Currency**
+The **_Settings_** tab holds the currency and the values that new Jobs start with. A Job takes these values when its ROI settings are confirmed (see the note under [How ROI is calculated](#how-roi-is-calculated)).
 
-The currency to be displayed in the application related to ROI.
- 
-**Default time saved for new Jobs**
+- _Currency_: the currency the window shows amounts in; default "USD"
+- _Default time saved for new Jobs_: the time a Job saves per run when it uses the default time; default "00:01:00"
+- _Default rate saved for new Jobs_: the hourly rate, as a whole number, when a Job uses the default rate; default "1"
+- _Only store succesful executions_: the starting value of the same option in each new Job; default unchecked; each Job keeps its own setting
 
-Default time that will be used for new Jobs and existing one using default settings.
- 
-**Default rate saved for new Jobs**
+_Save_ saves the settings to the Server and closes the window. It is available only after you change a setting. Saving requires the "Server settings" permission with "Edit" (see [Main - User Permissions](main-user-permissions)).
 
-Default hourly rate that will be used for new Jobs and existing Jobs using default settings.
+:::warning
 
-**Only store successful executions**
+Without the "Server settings" permission with "Edit", _Save_ closes the window but the Server does not store the change, and no message is shown.
 
-If checked, only successful executions are counted towards the ROI.
- 
-**Update Jobs**
+:::
 
-Updates selected Jobs with the default settings unless it has been overridden before.
- 
-**Save**
+#### Update Jobs
 
-Saves the default server settings for ROI.
+Use _Update Jobs_ to give several Jobs the same ROI settings.
 
-![](../../../static/img/roimainsettings.png)
+1. In the Job list below the settings, select the Jobs to update
+2. Click _Update Jobs_; the _Job ROI settings_ window opens with the values from this tab, and with _Use default Job time_ and _Use default Job rate_ cleared
+3. Change the settings if needed, then click _OK_
+
+The settings are written to every selected Job, and a message confirms when the update is complete. You can cancel while the update runs; Jobs that were already updated keep the new settings.
+
+:::warning
+
+_Update Jobs_ replaces the ROI settings of every selected Job, including Jobs that had their own time or rate. Check the Job selection before you click _OK_.
+
+:::
+
+_Server_ -> _Jobs_ -> _ROI_ -> **_Settings_**
+
+![ROI window, Settings tab: Currency set to USD, Default time saved for new Jobs, Default rate saved for new Jobs, the Only store succesful executions checkbox, the Job list with a filter, and the Update Jobs and Save buttons](../../../static/img/roimainsettings.png)

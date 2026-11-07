@@ -5,160 +5,114 @@ hide_title: 'true'
 
 ## Connection - Amazon
 
-The Amazon Connection stores connect and logon properties for Amazon cloud services including Amazon S3, EC2, SNS, SQS, and DynamoDB.
+The Amazon Connection stores the address, sign-in and security settings that these Tasks and Triggers use to connect to Amazon S3, other Amazon Web Services and S3-compatible storage services:
 
-The Amazon Connection is used in the following Tasks:
+- [Cloud - Upload file(s)](job-tasks/cloud-transfer-tasks/upload-file)
+- [Cloud - Download file(s)](job-tasks/cloud-transfer-tasks/download-file)
+- [Cloud - List item(s)](job-tasks/cloud-transfer-tasks/list-item)
+- Cloud - List folder(s)
+- [Cloud - Create folder](job-tasks/cloud-transfer-tasks/create-folder)
+- [Cloud - Delete item(s)](job-tasks/cloud-transfer-tasks/delete-item)
+- [Cloud - Copy/move item(s)](job-tasks/cloud-transfer-tasks/copy-move)
+- [Cloud - Sync file(s)](job-tasks/cloud-transfer-tasks/sync)
+- [Amazon SNS - Publish message](job-tasks/messaging-tasks/sns-publish-message)
+- [The Amazon EC2 Tasks](job-tasks/amazon-ec2-tasks/overview)
+- The Amazon DynamoDB Tasks
+- The Amazon SimpleDB Tasks
+- [The Cloud file Trigger](event-trigger-cloud-file)
+- [The Amazon SQS Trigger](event-trigger-sqs)
 
-* [Cloud - Upload file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/upload-file)
-* [Cloud - List item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/list-item)
-* [Cloud - Download file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/download-file)
-* [Cloud - Create folder](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/create-folder)
-* [Cloud - Delete item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/delete-item)
-* [Messaging - SNS - Publish message](../../client-user-interface/server/job-tasks/messaging-tasks/sns-publish-message)
-* All Amazon EC2 Tasks
-* All Amazon DynamoDB Tasks
- 
-And the following Triggers
+### Common settings
 
-* [Amazon SQS Trigger](event-trigger-sqs)
- 
-**Manage Connections > Add > Amazon > Common settings** tab
+![Amazon Connection, Common settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Amazon/Amazon.png)
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Amazon/Amazon.png)
+The ***Common settings*** and ***Proxy*** tabs are the same for every Connection type that has them; see [Common settings](global-connections#common-settings) and [Proxy](global-connections#proxy).
 
-**Name**
+_Test_ asks the Server to connect with the current settings. For an Amazon Connection, the Server lists the objects in _Default bucket_. When _Default bucket_ is empty, it lists the buckets of the account instead, so the AWS user needs permission to list buckets for the test to pass. When the test fails, the message refers to the Server log for details.
 
-The unique name for the Connection
+### Main settings
 
-**Group**
+![Amazon Connection, Main settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Amazon/Settings.png)
 
-The group that the connection is a part of.
- 
-**Timeout**
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-The connection timeout in seconds. Connection will fail after this time period.
- 
-**Code page**
+_Address_
 
-Code page being used.
- 
-**Manage Connections > Add > Amazon > Connection settings** tab
+The endpoint address of an S3-compatible storage service. Leave it empty to connect to Amazon S3.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Amazon/Settings.png)
+_Authentication type_
 
-**Address**
+- "Password": signs requests with _Access Key ID_ and _Secret Access Key_
+- "Public key": hides _Access Key ID_ and _Secret Access Key_ and shows a certificate selector instead. The Server presents the selected [Certificate](global-certificates) as a TLS client certificate
 
-The endpoint address for S3-compatible storage services. Leave empty when connecting to standard Amazon S3.
+_Access Key ID_ and _Secret Access Key_
 
-**Authentication type**
+The access key of the AWS user. Shown for "Password".
 
-The authentication method to use. Available options:
+_Region_
 
-* _Password_ - authenticate using an Access Key ID and Secret Access Key
-* _Public key_ - authenticate using a certificate; the Access Key ID and Secret Access Key fields are hidden and a certificate selector is shown instead
- 
-**Access Key ID** _(Password authentication only)_
+The region of the buckets, for example `us-east-1`. When _Region_ is empty, the default region is used. When _Address_ is set, the region is sent to the S3-compatible service as a custom region.
 
-The AWS Access Key ID for the account.
+_Use version 4 signatures_
 
-**Secret Access Key** _(Password authentication only)_
+Selected by default. Requests are signed with AWS Signature Version 4. Leave it selected for Amazon S3. Clear it only for an S3-compatible service that requires Signature Version 2.
 
-The AWS Secret Access Key for the account.
- 
-**Certificate** _(Public key authentication only)_
+_Use HEAD requests_
 
-Select the certificate to use for authentication.
+Selected by default. The Server requests only the headers of an object when it reads object details. The Server uses HEAD requests whether or not the box is selected.
 
-**Region**
+_Auto-accept server certificates_
 
-The AWS region endpoint to connect to. Select from the list of available regions (e.g. `us-east-1`, `eu-west-1`).
+Selected by default.
 
-**Default bucket**
+:::warning
 
-The default S3 bucket to use when no bucket is specified in a Task.
+Amazon Connections accept any server certificate, whether or not _Auto-accept server certificates_ is selected. The Server does not check the server certificate when it connects, so it cannot tell the real server from another server that answers at the same address. In addition, when a list, download or upload request fails with a connection-shutdown error whose message contains "75782", the Server repeats that request once without SSL, so the repeated request and its data travel unencrypted; requests that create folders are not repeated this way. Connect to Amazon S3, or to the S3-compatible service, only over a network path that you trust.
 
-**Multipart upload threshold**
+:::
 
-The file size threshold in bytes above which uploads are performed using multipart upload. Default: 104857600 (100 MB).
- 
-**Use version 4 signatures**
+_Use URL encoding_
 
-When checked, uses AWS Signature Version 4 to sign requests. This is required by most AWS regions. Uncheck only if connecting to a region or S3-compatible service that requires Signature Version 2.
+Selected by default. URL-encodes object keys. It applies only when _Address_ is set, that is, to S3-compatible services.
 
-**Use HEAD requests**
+_Default bucket_
 
-When checked, VisualCron uses HTTP HEAD requests to retrieve object metadata. Enable this if the S3-compatible service requires it.
+The bucket that Tasks use when they name no bucket. _Test_ also uses it.
 
-**Auto-accept server certificates**
+_Multipart upload threshold_
 
-When checked, VisualCron automatically accepts server certificates without prompting. Enabled by default.
+The file size in bytes above which uploads use multipart upload. Default: "104857600" (100 MB).
 
-**Use URL encoding**
-
-When checked, VisualCron applies URL encoding to object keys. Enabled by default.
-
-**Manage Connections > Add > Amazon > Proxy** tab
-
-**Proxy type**
-
-Select the proxy type to be used.
-
-**Address**
-
-The host name or IP address of the proxy server.
-
-**Port**
-
-The port of the proxy server.
-
-**Use credentials**
-
-Enable to provide credentials for authenticating with the proxy server.
-
-**Domain**
-
-The domain of the proxy server.
-
-**Username**
-
-The user name to access the proxy server.
-
-**Password**
-
-The password to access the proxy server.
- 
 ### Amazon SQS
 
-![](../../../static/img/createsqsqueue.png)
+The [Amazon SQS Trigger](event-trigger-sqs) uses this Connection to read messages from an SQS queue. Create the queue in the Amazon SQS console. The two images show the console when a queue is created and when queues are listed.
 
-#### Create SQS queue
+![The Amazon SQS console while a queue is created](../../../static/img/createsqsqueue.png)
 
-![](../../../static/img/listsqsqueues.png)
+![The Amazon SQS console with a list of queues](../../../static/img/listsqsqueues.png)
 
-#### List SQS queus
- 
 ### Troubleshooting
 
-**General**
+#### General
 
-Test the S3 explorer if it is working there.
- 
-**HTTP request failed with code 403 (Forbidden)**
+Click _Test_ and check the Server log, or open the Connection in the Connection Explorer, to see the error that Amazon returns.
 
-Test with the S3 Connection Explorer and look for the error message. This error typically occurs when the AWS user does not have listing permissions on S3 buckets. Add the required bucket listing permission — Tasks will not work properly without it.
+#### HTTP request failed with code 403 (Forbidden)
 
-**SignatureDoesNotMatch**
+The AWS user does not have permission to list the buckets, or the objects in the bucket. Add the missing permission to the user. Tasks do not work without it.
 
-Uncheck or check **Use version 4 signatures** to toggle the signature version used.
+#### SignatureDoesNotMatch
 
-**Connection lost (error code is 100353)**
+Select or clear _Use version 4 signatures_ to change the signature version.
 
-Most likely a proxy error. Define a proxy in the **Proxy** tab of the Connection.
+#### Connection lost (error code is 100353)
 
-**The hostname could not be parsed**
+This is most likely a proxy error. Set the proxy on the ***Proxy*** tab of the Connection.
 
-Ensure that an Amazon region has been selected in the **Region** field.
+#### The hostname could not be parsed
 
-**HTTP request failed with code 400 (Bad Request). Error code: AuthorizationHeaderMalformed.**
+Select an Amazon region in _Region_.
 
-The AWS user is missing the "List buckets" permission.
+#### HTTP request failed with code 400 (Bad Request). Error code: AuthorizationHeaderMalformed
+
+The selected region does not match the region of the bucket. Select the bucket's region in _Region_.

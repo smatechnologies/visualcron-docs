@@ -5,86 +5,95 @@ hide_title: 'true'
 
 ## Task SNMP - SNMP Walk
 
-Issues a Walk message to an SNMP agent in order to inspect a group of variables. SNMP (Simple Network Management Protocol) is a UDP-based protocol used mostly in network management systems to monitor network-attached devices for conditions that warrant administrative attention.
+The SNMP Walk Task reads all variables in a subtree of an SNMP agent, by sending GETNEXT requests from the root OID you enter until the agent returns a variable outside the subtree. SNMP (Simple Network Management Protocol) is a UDP-based protocol used mostly by network management systems to monitor network-attached devices.
 
-**SNMP Walk > General** tab
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Walk.png)
+The Task settings are on the ***SNMP Walk*** tab, which has the sub tabs ***General***, ***Advanced***, ***Data*** and ***Security***.
 
-**Agent IP Address**
+### SNMP Walk: General tab
 
-The IP address of the SNMP agent (device or host) to query.
+![General tab of the SNMP Walk Task, with the Agent IP Address, Variable Name and Community fields](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Walk.png)
 
-**Variable Name**
+- _Agent IP Address_: The IPv4 address or host name of the SNMP agent; it can contain Variables
 
-The root OID from which the walk begins, traversing all variables in the subtree. You can enter the OID in numeric format (e.g., `1.3.6.1.1`) or string notation (e.g., `system`). Use the Translate button to convert between formats.
+  For a host name, the Task uses its first IPv4 address. A host name that cannot be resolved stops the Task with an error.
 
-**Community**
+- _Variable Name_: The root OID of the subtree to read, as a number such as `1.3.6.1.2.1.1` or a name such as `system`
 
-The SNMP community string used for authentication. The default value is `public`.
+  Names are case-sensitive. Click _Translate_ to show the other form of the OID you entered.
 
-**SNMP Walk > Advanced** tab
+- _Community_: The community string, "public" by default
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Walk%20Advanced.png)
+  With "SNMPv3" this field is labeled _User_ and holds the SNMPv3 user name.
 
-**Remote Port**
+Variables are resolved only in _Agent IP Address_.
 
-The UDP port number on the remote SNMP agent to send requests to. The default port is 161.
+### SNMP Walk: Advanced tab
 
-**Time out after**
+![Advanced tab of the SNMP Walk Task, with the Remote Port, Time out after, Broadcast delay and SNMP version settings](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Walk%20Advanced.png)
 
-The amount of time to wait for a response from the SNMP agent before the request times out. The default is 30 seconds.
+- _Remote Port_: The UDP port of the SNMP agent
 
-**Broadcast delay**
+  A new Task shows "162", the port for SNMP traps. SNMP agents normally listen on port "161", so enter the port of your agent.
 
-The delay to apply when sending broadcast requests, allowing agents time to respond. The default is 3 seconds.
+- _Time out after_: How long to wait for the response, in "milliseconds", "seconds", "minutes" or "hours"
 
-**SNMP version**
+  The default is "30" with the unit "seconds". When no response arrives in time, the Task fails with an error.
 
-The SNMP protocol version to use for the request. The default is SNMPv1.
+- _Broadcast delay_: When _Agent IP Address_ is the broadcast address "255.255.255.255", how long to wait for a response instead of _Time out after_
 
-**SNMP Walk > Data** tab
+  The default is "3" with the unit "seconds".
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Walk%20Data.png)
+- _SNMP version_: "SNMPv1" (the default), "SNMPv2c" or "SNMPv3"
 
-**Use string notation for OIDs**
+  With "SNMPv3", the _Community_ label changes to _User_ and the ***Security*** tab appears.
 
-When checked, OID values in the response are displayed using human-readable string notation instead of numeric dot notation.
+:::warning
 
-**Use string notation for timetick values**
+With "SNMPv3", the walk does not move past the first variable of the subtree, so the Task does not finish by itself. Use "SNMPv1" or "SNMPv2c" for a walk.
 
-When checked, timetick values in the response are displayed as formatted time strings rather than raw numeric values.
+:::
 
-**SNMP Walk > Security** tab
+### SNMP Walk: Data tab
 
-**Security Level**
+![Data tab of the SNMP Walk Task, with the two string notation check boxes](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Walk%20Data.png)
 
-The SNMPv3 security level to use. Select from the dropdown.
+- _Use string notation for OIDs_: Selected by default; writes the OIDs in the output as names instead of numbers
+- _Use string notation for timetick values_: Selected by default; writes TimeTicks values as a duration instead of a number
 
-**Authentication Protocol**
+### SNMP Walk: Security tab
 
-The authentication protocol to use for SNMPv3. Select from the dropdown.
+The ***Security*** tab appears only with "SNMPv3" on the ***Advanced*** tab.
 
-**Authentication Passphrase**
+- _Security Level_: "None" (the default), "Authenticate" or "Authenticate and Encrypt"
+- _Authentication Protocol_: "MD5" (the default) or "SHA-1", for "Authenticate" and "Authenticate and Encrypt"
+- _Authentication Passphrase_: The authentication passphrase, at least 8 characters
+- _Encryption Protocol_: "DES", the only choice, for "Authenticate and Encrypt"
+- _Encryption Passphrase_: The encryption passphrase, at least 8 characters
+- _Specify Context_: Enables _Context Name_ and _Context Engine ID_
+- _Context Name_ and _Context Engine ID_: The SNMPv3 context
 
-The passphrase used for SNMPv3 authentication.
+  This Task sends _Context Name_; _Context Engine ID_ is not used.
 
-**Encryption Protocol**
+### Output and errors
 
-The encryption protocol to use for SNMPv3. Select from the dropdown.
+The output of the Task lists the SNMP version, the community or user name, and the error status and error index of the response, then one line for each variable in this form:
 
-**Encryption Passphrase**
+```text
+<OID> = <type> : <value>
+```
 
-The passphrase used for SNMPv3 encryption.
+With SNMPv3, the output also lists the security parameters and the context of the response.
 
-**Specify Context**
+:::warning
 
-When checked, allows you to specify an SNMPv3 context name and context engine ID.
+The walk ends at the end of the subtree or at the first response with an error status. In both cases the output holds the variables read until then, and the Task reports success. When _Agent IP Address_ is a host name with no IPv4 address, or a variable binding cannot be converted, nothing is sent, the output stays empty, and the Task reports success. To catch this, check the output on the ***On error*** tab; see [Task - On Error](../../task-on-error).
 
-**Context Name**
+:::
 
-The SNMPv3 context name to use. Available when Specify Context is checked.
+:::warning
 
-**Context Engine ID**
+The output of the Task contains the community string (SNMPv1 and SNMPv2c) or the user name (SNMPv3) in plain text, so anyone who can see the Task output can read it. SNMPv1 and SNMPv2c also send the community string over the network unencrypted.
 
-The SNMPv3 context engine ID to use. Available when Specify Context is checked.
+:::

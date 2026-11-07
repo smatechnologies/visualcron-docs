@@ -5,36 +5,22 @@ hide_title: 'true'
 
 ## Run Job With Options
 
-By right-click on a Job, the Run Job with options menu item lets you start the Job with certain parameters.
- 
-In the window that opens you can control the following:
+The `Run Job '<Job name>' with options` item opens the ***Run Job - with options*** window, where you choose how one run of the Job is started.
 
-* If it should start with or without Conditions
-* If it should override Variables or use new ones
-* If it should update current Job Variables with new ones or not
-* If it should start from a certain Task on complete with a certain Task
-* If it should raise Trigger events
- 
-**Run Job with options**
+![Job right-click menu with the Run Job with options item highlighted](../../../../static/img/Client%20User%20Interface/Toolbar/Run%20Job%20with%20Options.png)
 
-![](../../../../static/img/Client%20User%20Interface/Toolbar/Run%20Job%20with%20Options.png)
+The window has these settings:
 
-**With Conditions**
+- _Job_: the Job to run. The selected Job is filled in
+- _With Conditions_: when checked, the Job's Condition Set is applied as on a scheduled run. When unchecked, which is the default, the Server still checks the Job's Condition Set, so its conditions run, but it does not apply the set's action. The log then shows "Skipping Condition check because the Job was run manually." The Condition Sets of the Job's Tasks are applied either way. See [Job - Conditions](../../server/job-conditions#manual-runs)
+- _Raise Trigger events_: when checked, the Job raises Trigger events for this run, so that Jobs triggered by it can start. Unchecked by default
+- _Variables_: the Job Variables for this run. You can add, delete or change values
+- _Update Job Variables_: when checked, the values you set here are saved to the Job Variables. When unchecked, they are used for this run only. Unchecked by default
+- _Tasks_: _From first Task_ (default) or _From Task:_ with a Task, and _To last Task_ (default) or _To Task:_ with a Task
 
-This controls if the Job should be started by checking Conditions before or not. Default is false.
- 
-**Variables**
+1. Right-click the Job in the Server/Group/Job/Task grid.
+2. Click `Run Job '<Job name>' with options`.
+3. Set the options.
+4. Click ***Run***.
 
-Existing Job Variables will be listed here. It is possible to add new, delete or update Job Variables.
- 
-**Update Job Variables**
-
-When checked, it will update existing Job Variables. If unchecked it will use the once specified when clicking Run but never update existing.
- 
-**Tasks**
-
-You can choose to start from first Task or a certain Task and run to last Task or a certain Task.
-
-**Raise Trigger events**
-
-When checked, the Job's Triggers raise their events for this run. When unchecked the Job is run without raising Trigger events.
+If the Job does not start, a message shows the reason. Running a Job requires the Execute permission for the Job.

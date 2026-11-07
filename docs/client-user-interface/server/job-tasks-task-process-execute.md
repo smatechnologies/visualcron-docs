@@ -7,27 +7,21 @@ hide_title: 'true'
 
 The Execute Task lets you start a command or executable with arguments. Optionally, you can run the process as a certain user with the help of Credentials.
 
-![](../../../static/img/clip333444123.png)
+![Edit Task window, Execute tab, Main setting sub tab](../../../static/img/clip333444123.png)
 
 **Miscellaneous**
  
 **Working directory**
 
-This option may be used if you for example want to execute a PHP script which has no absolute links. Let say that the PHP script tries to write a file "test.txt". If you specify a working directory, you also specify where PHP will write the file. If not specified in this case, PHP will write the file where php.exe is stored, not where the script is stored (that is because the Working Directory by default will be where the command is located, in this case php.exe is the Task and the script is the argument).
+Select the check box and enter the folder the process starts in. When it is cleared, the process starts in the command's folder if the Task uses a Credential with the default execution options, and otherwise in the VisualCron service's current folder (for a Windows service, normally `"System32"`). Set a working directory when the command reads or writes files with relative paths. Saving is refused when the box is selected and the field is empty.
  
 **Run in hidden window**
 
-When checked, VisualCron will hide the window that is normally displayed when you run your command. If you want to hide a GUI application you must also check Use shell execute.
+Selected by default. Hides the window the process would normally show. With a Credential and the default execution options, this hides any application. Otherwise a GUI application is hidden only if *Use shell execute* is also selected.
  
 **Use shell execute**
 
-False is unchecked and true refers to checked.
- 
-This setting concerns whether or not to use the operating system shell to start the process. Default is unchecked which means that the process is created directly from the executable file instead of (checked) use the shell when starting the process.
- 
-The *Working Directory* property behaves differently when *Use shell execute* is true than when *Use shell execute* is false. When *Use shell execute* is true, *Working Directory* specifies the location of the executable. If *Working Directory* is an empty string, the current directory is understood to contain the executable. When *Use shell execute* is false, the *Working Directory* property is not used to find the executable. Instead, it is used by the process that is launched and only has meaning within the context of the new process.
- 
-Together with *Run in hidden window*, this option can be used to hide GUI applications. Note that no Task output can be captured when *Use shell execute* is enabled.
+Cleared by default. Without a Credential, or with the *Use managed API* execution option, it starts the process through the Windows shell. With either Win32 API execution option, it only turns off output capture and standard input. With it selected, no Task output is captured and standard input is not passed to the process.
  
 **Command and parameters**
  
@@ -39,11 +33,17 @@ Batch - ability to create batch files inside the Batch tab of this Task. The adv
 * VisualCron will store changes to batch files so you can track that
 * You will be able to use VisualCron Variables in the batch script
 * The batch script will, among the other objects in VisualCron, be part of backup
+
+:::warning
+
+All Execute Tasks on the Server whose *Batch type* is *Batch* use the same temporary batch file. If two run at the same time, in one Job or in different Jobs, one can overwrite or delete the other's file and run the wrong commands. Where such Tasks can overlap, save the commands as a .bat file and run it with *Batch type* *Command*.
+
+:::
  
 **Command**
 
 This is the path to the executable - always enter full path and name to the executable file. UNC paths to network drives are supported.
-The rightmost button opens a file browser for selection. The only mandatory parameter in the Execute window.
+The rightmost button opens a file browser for selection. Required when *Batch type* is *Command*. With *Batch*, *Command* shows `"cmd.exe"` and cannot be edited; the text on the **_Batch_** tab is required and is run as a temporary .bat file.
  
 **Arguments**
 
@@ -53,20 +53,24 @@ Arguments don't have to start with a space key, look at the Add Task view for an
 
 You can pass standard input (stdin) to the process either from a file or as inline text.
 
-* *File* - specify the path to a file whose contents will be passed as standard input to the process.
-* *Text* - enter the text directly to be passed as standard input to the process.
+* *StdIn file* - the path to a file whose contents are passed to the process
+* *StdIn text* - text passed to the process
+
+Standard input is not passed when *Use shell execute* is selected.
  
 **Run Task as**
 
-This functionality currently only works for the Task type "Execute". Select appropriate Credentials in the select box. You can add new credentials by clicking on the Manage credentials button.
- 
-**Logon type**
+Select a [Credential](global-credentials) in the combo box to run the process as that user, or click the *Settings* icon to open *Manage credentials*. With *No Credential*, and Background execution on this Server, the process runs as the account the VisualCron service runs under. This applies with *Load user profile* selected on the Credential (the default); without it, the Credential is used only for network access (see [Local login and Load user profile](global-credentials#local-login-and-load-user-profile)).
 
-Logon type has been moved and settings for logging in with profile or not is located in the Credential now.
+:::warning
+
+If the selected Credential has been deleted, or a VisualCron user without permission to use it starts the run (for example from the Client), the command runs with Background execution as the account the VisualCron service runs under, and by default the Task does not fail. To make the Task fail instead, on the **_On error_** tab, select *All errors* in the *Error causes* group; every error the Task can raise then fails it.
+
+:::
  
 :::tip Note about domain
 
-If the user belongs to a domain you must specify that domain. If the computer is not connected to a domain you should use the exact computer name. This can be found when opening "My computer".
+If the user belongs to a domain you must specify that domain. If the computer is not connected to a domain you should use the exact computer name. This can be found when opening "This PC".
 
 :::
 
@@ -76,26 +80,36 @@ Use "" around arguments.
 
 :::
  
-**Process priority**
+**Priority**
 
-VisualCron Tasks can be run with any standard process priority. The following priorities are available:
-* "Idle" - Indicates a process whose threads run only when the system is idle and is preempted by the threads of any process running in a higher priority class. An example is a screen saver. The idle priority class is inherited by child processes.
-* "Below Normal" - Indicates a process that has priority higher than Idle but lower than Normal.
-* "Normal" - Default value, indicates a normal process with no special scheduling needs.
-* "Above Normal" - Indicates a process that has priority higher than Normal but lower than High.
-* "High" - Indicates a process that performs time-critical Tasks that must be executed immediately for it to run correctly. The threads of a high-priority class process preempt the threads of normal or idle priority class processes. An example is the Task List, which must respond quickly when called by the user, regardless of the load on the operating system. Use extreme care when using the high-priority class, because a high-priority class CPU-bound application can use nearly all available cycles.
-* "RealTime" - Indicates a process that has the highest possible priority. The threads of a real-time priority class process preempt the threads of all other processes, including operating system processes performing important Tasks. For example, a real-time process that executes for more than a very brief interval can cause disk caches not to flush or cause the mouse to be unresponsive.
+In the *Task process* group, select the priority the process runs with. The default is *Normal*. The priority is ignored when the Credential uses the *Use Win32 API CreateProcessAsUserW* execution option (see [Execution and impersonation options](global-credentials#execution-and-impersonation-options)).
+
+* *Idle* - runs only when the system is idle
+* *Below Normal*
+* *Normal*
+* *Above Normal*
+* *High* - takes precedence over normal processes
+* *RealTime* - the highest priority, above operating system processes
+
+*High* and *RealTime* can starve other processes, including VisualCron; use them with care.
  
-**Don't start Task if Task process is already running**
+**Don't start task if task process is already running**
 
-If you want VisualCron to start a Task only if a process is NOT running, then check this box and enter the name of the process. The process name must be an existing process, for convenience use the Select button and pick that process (ensure that it is running before you open the window).
+Select this option and enter a name in *Process name* (with or without `".exe"`), or click *Select* to pick a running process. Before the command starts, VisualCron counts the processes with that name on the Server, whoever started them. If at least one is running and the count reaches *# instances*, the command does not start (see *Queue process start*).
  
 **Queue process start**
 
-If Don't start Task if process is already running is checked you can choose to queue the process (wait for it to complete before starting new). The # Instances value controls how many we allow before starting a new process. If value is 0 the current process need to finish. If value is 10 and we execute 30 times we will allow 10 first, then add one by one as the processes terminate.
+When selected, the Task waits and checks again every 3 seconds until the count is below *# instances*. When cleared, the command is not started and the Task fails with exit code 77778.
+
+:::warning
+
+With *Queue process start*, the Task waits with no time limit, and its timeout does not count the wait. If the process never ends, the Task and its Job wait indefinitely.
+
+:::
  
 **# instances**
-See Queue process start.
+
+The number of running processes with that name at which the command is stopped or delayed. With the default 0, or 1, any running instance stops or delays it.
 
 :::tip Remote execution
 
@@ -108,24 +122,24 @@ If you want to execute on a remote Server, change the Execution context in Main 
 **Error: The service cannot be started, either because it is disabled or because it has not enabled services associated with it**
 
 Always use the full path to the file. Also, make sure that you split up command and argument. For example, if your command is normally:
-```netsh DHCP server \\silvercreek dump```
+```netsh DHCP server \\servername dump```
  
 Then use:
 Command: ```c:\windows\system32\netsh.exe```
 Argument: ```DHCP server \\servername dump```
  
-**Error: You want do redirect output to file but it does not work or causes errors**
+**Error: Redirecting output to a file does not work**
 
-By default VisualCron captures all output. The advantages with that is that you can reuse the data in other Tasks. For example, in the body of an Email Task.
+By default VisualCron captures all output, so you can reuse it in other Tasks, for example in the body of an Email Task. To redirect output to a file, run the command through `cmd /c` (see *Redirecting output*).
  
-**Error: I get a UAC popup warning**
+**Error: A UAC prompt is shown**
 
-Set the Execute Task to run "Hidden". From Vista and forward, a process started by a background process (in this case a service), must not interact with desktop.
+Select *Run in hidden window* (without a Credential, also *Use shell execute*). A process started by a Windows service cannot interact with the desktop.
  
 **Error: The process cannot be started because the file cannot be found**
 
 A couple of reasons:
-1. If there is a dependency between ENVIRONMENT Variables for a new runtime or anything like that then you have to restart the VisualCron service to reload those variables. You can verify ENVIRONMENT Variables by creating a batch file that just "```print %PATH%```". You will then see existing Variables in
+1. If the command depends on environment variables, for example a new runtime's PATH, restart the VisualCron service after changing them. To see the PATH the Task sees, run an Execute Task with the same Credential, *Command* `"C:\Windows\System32\cmd.exe"` and *Arguments* `"/c echo %PATH%"`; the Task output shows it.
 2. Make sure you use the full path to the file.
 3. Do not mix arguments and path to executable in command. Divide them - see first error.
  
@@ -134,29 +148,28 @@ A couple of reasons:
 There is a permissions problem, either on user level (the Credential you use) or the Local Security Policy settings on the server that prevents the SYSTEM account from running a process as another user. While the problem might be unknown there are some alternatives and workarounds:
  
 Alternative 1
-Make sure that the *serviceuser* account is a local administrator and member of the group ```BUILTIN/Administrators```.
+Make sure that the *serviceuser* account is a local administrator and member of the group ```BUILTIN\Administrators```.
  
 Alternative 2
-If you use 8.1.2 or later:
-1. Turn on Extended debugging in Server settings.
-2. Edit the Credential that you use
-3. Change Execution options to Use Win32  API CreateProcessAsUser
+1. Select *Extended debug logging* (see the error 1314 entry below).
+2. Edit the Credential you use.
+3. Under *Execution options*, select *Use Win32 API CreateProcessAsUserW* (*Priority* is then ignored).
  
 Workaround 1
-Turn of UAC in the Server settings in VisualCron window and reboot
+Turn off UAC: on the **_Main settings_** tab of the Server settings, click the button in the *UAC - set UAC status* group, and reboot. This lowers the security of the whole computer; turn UAC back on if it does not help.
  
-**Error: Unhandled error when trying to start process:  A required privilege is not held by the client. (1314)  If the credential is removed, the job runs successfully.**
+**Error: Unhandled error when trying to start process:  A required privilege is not held by the client. (1314)  If the Credential is removed, the Job runs successfully.**
 
-Go to Server settings->Log and uncheck "Extended debug logging". Edit the Credential you use and change to option "CreateProcessWithLogonW".
+Go to _Server_ -> _Main settings_ -> _Settings_ and, on the **_Log settings_** tab, select *Extended debug logging*; the Credential's execution options are shown only while it is selected. Edit the Credential you use and select *Use Win32 API CreateProcessWithLogonW* (see [Execution and impersonation options](global-credentials#execution-and-impersonation-options)). The Credential keeps the option when you clear *Extended debug logging* again afterward.
  
 Please try any of the following:
-1. turn off UAC and reboot from [Server settings](../server/main-settings)
-2. Open Services->Find VisualCron and right click and select Properties. Uncheck "Allow service to interact with desktop". Restart the service.
-3. Run the VisualCron service as SYSTEM account.
+1. Open Services->Find VisualCron and right click and select Properties. Uncheck "Allow service to interact with desktop". Restart the service.
+2. Run the VisualCron service as SYSTEM account.
+3. Turn off UAC: on the **_Main settings_** tab of the Server settings, click the button in the *UAC - set UAC status* group, and reboot. This lowers the security of the whole computer; turn UAC back on if it does not help.
  
-If this does not work you can change to Credential option "CreateProcessAsUserW" and then add the ```SE_ASSIGNPRIMARYTOKEN_NAME (SeAssignPrimaryTokenPrivilege)``` permission on the user that runs the VIsualCron service. You do this in the Local Security Policy:
+If this does not work you can select the Credential option *Use Win32 API CreateProcessAsUserW* and then add the ```SE_ASSIGNPRIMARYTOKEN_NAME (SeAssignPrimaryTokenPrivilege)``` permission on the user that runs the VisualCron service. You do this in the Local Security Policy:
 
-![](../../../static/img/se_assign.png)
+![Local Security Policy, User Rights Assignment, with Replace a process level token highlighted](../../../static/img/se_assign.png)
 
 **No output is captured**
 
@@ -166,5 +179,5 @@ Try unchecking Use shell execute.
 
 Pipe commands are implemented by cmd.exe. So you need to run ```cmd /c``` and add your executable path as argument.
 
-![](../../../static/img/executeredirect.png)
+![Execute tab with cmd /c and a redirect in Arguments](../../../static/img/executeredirect.png)
 

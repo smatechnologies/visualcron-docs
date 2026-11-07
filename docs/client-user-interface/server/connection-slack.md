@@ -5,76 +5,70 @@ hide_title: 'true'
 
 ## Connection - Slack
 
-**Slack** is a cloud-based set of proprietary team collaboration tools and services. The Slack Connection is used in:
+The Slack Connection stores the sign-in and security settings that the [Slack - Send message](job-tasks/messaging-tasks/slack-send-message) Task and the [Slack Trigger](event-trigger-slack) use to connect to a Slack workspace.
  
-* [Slack - Trigger](../../client-user-interface/server/event-trigger-slack)
-* [Slack - Send message Task](../../client-user-interface/server/job-tasks/messaging-tasks/slack-send-message)
- 
-**Teams**
+### Common settings
 
-Slack teams allow communities, groups, or teams to join through a specific URL or invitation sent by a team admin or owner. Although Slack was meant for organizational communication, it has been slowly turning into a community platform, a function for which users had previously used message boards or social media such as Facebook or LinkedIn groups. Many of these communities are categorized by topics which a group of people may be interested in discussing.
- 
-**Messaging**
+![Slack Connection, Common settings tab with the Protocol and Information groups](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Slack/Slack.png)
 
-Public channels allow team members to communicate without the use of email or group SMS (texting). They are open to everyone in the chat, provided they have first been invited to join the client. Private channels allow for private conversation between smaller sects of the overall group. These can be used to break up large teams into their own respective projects. Direct messages allow users to send private messages to a specific user rather than a group of people.[26] Direct messages can include up to nine people (the originator plus eight people). Once started this direct message group can be converted to a private channel.
- 
-**Manage Connections > Add > Slack > Common settings** tab
+The ***Common settings*** and ***Proxy*** tabs are the same for every Connection type that has them; see [Common settings](global-connections#common-settings) and [Proxy](global-connections#proxy). The Slack Connection has no _Test_ button.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Slack/Slack.png)
+### Main settings
 
-**Protocol Type**
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-**Name**
+The ***Connection settings*** tab holds two tabs: ***Main settings*** and ***Proxy***.
 
-The name of the Connection to uniquely identifying it.
+![Slack Connection, Main settings tab with the Credentials group](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Slack/Settings.png)
 
-**Group**
+_Client ID_
 
-The group that the connection is a part of.
+The Client ID of your Slack app. Required.
 
-**Timeout**
+_Client Secret_
 
-The connection timeout in seconds. Connection will fail after this time period.
- 
-**Code page**
+The Client Secret of your Slack app.
 
-Code page being used.
+_Redirect Url_
 
-**Manage Connections > Add > Slack > Connection settings** tab
+The HTTPS address that receives the reply from Slack after sign-in, on the computer that runs the Client. The default is "https://localhost:9999". It must start with "https://" and must match a redirect URL of the Slack app.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Slack/Settings.png)
+_Auto-accept server certificates_
 
-**Client Id**
+Selected by default. The Slack sign-in, the Slack Task and the Slack Trigger do not use this setting.
 
-This needs to match the Client Id in online Slack settings.
- 
-**Client secret**
+_Certificate_
 
-This needs to match the Client secret settings in online Slack settings.
- 
-**Setup application**
+Required. The certificate that _Authenticate_ uses for its HTTPS listener at _Redirect Url_. Select a certificate with a private key from [Certificates](global-certificates). Slack accepts only HTTPS redirect URLs, so a certificate is needed even for "localhost".
 
-Setup application links opens Slack workspace creation link. See images below how to create a workspace
- 
-**Certificate**
+_Setup application_
 
-Required. The certificate used to terminate the HTTPS OAuth redirect listener during authentication. Pick a certificate that contains a usable private key from **Certificates**. Slack only accepts HTTPS redirect URLs, so the certificate must be present even when redirecting to `localhost`.
+Opens the Slack app management page in the web browser, where you create and manage Slack apps.
 
-**Accept all server certificates**
+_Authenticate_
 
-When enabled, certificate validation errors on the OAuth redirect listener are ignored. Useful with self-signed certificates against `localhost`.
+Opens the Slack authorization page in the web browser. After you allow access, the Slack token is saved in the Connection. The Slack Task and the Slack Trigger use this token.
 
-**Redirect Url**
+### Proxy
 
-This setting is for first time authentication only. Slack requires an HTTPS redirect URL; the default is [https://localhost:9999](https://localhost:9999) and it must match the Redirect URL configured in the Slack app. See images below.
+The Slack Task, the Slack Trigger and _Authenticate_ do not use the settings on this tab. They connect to Slack directly.
 
-**Authenticate**
+### Set up the Slack app
 
-When you have created a workspace or have an existing you click on Authenticate. See images below about authentication.
- 
-**Application token**
+To connect VisualCron to Slack, complete the following steps:
 
-More details..
+1. On ***Main settings***, click _Setup application_. The Slack app management page opens.
+2. Create a Slack app in the workspace that VisualCron works with.
+3. Add the _Redirect Url_ value of the Connection, for example "https://localhost:9999", to the redirect URLs of the app.
+4. Add these Bot Token Scopes to the app: "commands", "chat:write", "channels:read", "files:write", "users:read" and "groups:read".
+5. Copy the Client ID of the app into _Client ID_.
+6. Copy the Client Secret of the app into _Client Secret_.
+7. In _Certificate_, select a certificate with a private key.
+8. Click _Authenticate_.
+9. In the web browser, allow the app access to the workspace.
+10. Click _OK_.
+
+The Connection is ready for the Slack Task and the Slack Trigger. The screenshots below show these steps on the Slack site.
  
 ### Setting up Slack -> Create workspace
 
@@ -106,29 +100,10 @@ The Redirect URL configured in the Slack app must use HTTPS (for example `https:
 
 ![](../../../static/img/slack_visualcronpermissions.png)
 
-### Required OAuth scopes
-
-The Slack app used for this connection must be authorized with the following scopes:
-
-* commands
-* chat:write
-* channels:read
-* files:write
-* users:read
-* groups:read
-
-| Scope | Required for |
-|---|---|
-| `files:write` | Uploading files (e.g. Take Screenshot &rarr; Slack, attachments) |
-| `users:read` | "Send to User" resolution by username/email |
-| `groups:read` | Resolving private channels by name |
-
-:::note
-Existing Slack connections created before this update were authenticated with a reduced scope set. If tasks fail with `missing_scope`, re-run **Authenticate** on the connection to request the additional scopes (`files:write`, `users:read`, `groups:read`).
-:::
-
 ### Troubleshooting
- 
-*"Missing scope" error*
 
-Make sure the [Required OAuth scopes](#required-oauth-scopes) above are set up, then re-run **Authenticate** on the connection.
+#### "Missing scope" error
+
+_Authenticate_ requests these Bot Token Scopes: "commands", "chat:write", "channels:read", "files:write", "users:read" and "groups:read". Add all six to the Slack app, then click _Authenticate_ again.
+
+Before VisualCron 13.4.2, _Authenticate_ requested only "commands", "chat:write" and "channels:read". A Connection authenticated with an earlier version keeps that token after the upgrade. Until you add "files:write", "users:read" and "groups:read" to the Slack app and click _Authenticate_ again, file uploads, the user list and private channel lookups fail.

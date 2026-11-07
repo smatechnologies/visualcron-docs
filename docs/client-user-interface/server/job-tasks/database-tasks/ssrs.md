@@ -4,74 +4,66 @@ sidebar_label: 'Task Database - SSRS'
 
 ## Task Database - SSRS
 
-The Database - SSRS Task lets you execute reports in SQL Server Reporting Services and return the result in various formats.
- 
-**SSRS > Main settings** sub tab
+The SSRS Task runs a report in SQL Server Reporting Services and saves the result as a file in the format you select, using an SSRS Connection.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/SSRS.png)
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-**Connection**
+:::warning
 
-This Task type uses the global [SSRS Connection](../../../server/connection-ssrs) type. Define username, password, host name and proxy in the [Connection](../../../server/global-connections).
- 
-**Report**
+The report file is written with the name that _File mask_ gives. An existing file with that name is replaced without a warning. With the default _File mask_ `*`, each run replaces the file of the previous run.
 
-Click Refresh to show the paths to all reports in the Reporting server. Select the path to an existing Report. You can find it in the *Reporting Services Configuration Manage*r under *Virtual Directory* here:
+:::
 
-![](../../../../../static/img/ssrs.png)
+### SSRS: Main settings tab
 
-**Is SharePoint report**
+![SSRS tab, Main settings sub tab, with the Connection, Folder path, Report and Service type settings](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/SSRS.png)
 
-This defines that the execution is related to a SharePoint report.
- 
-**Service type**
+- _Connection_: The SSRS Connection, which holds the user name, password, host name and proxy of the report server; see [Connection - SSRS](../../connection-ssrs) and [Global - Connections](../../global-connections)
+- _Use default folder (hostname/reportserver/)_: When selected, the default, the virtual directory "reportserver" of the report server is used. Clear it to enter another virtual directory name in the field below. The name is set in the _Reporting Services Configuration Manager_ under _Virtual Directory_:
 
-Select the service type matching your Reporting Services version. Use *SSRS 2005* for SQL Server 2005, or *SSRS 2010* for SQL Server 2008 R2 and later.
+![Reporting Services Configuration Manager with the Virtual Directory field](../../../../../static/img/ssrs.png)
 
-**Use default folder**
+- _Report_: The path of the report on the report server. Click the icon next to the list to load the paths of all reports
+- _Is SharePoint report_: Select it when the report is a SharePoint report
+- _Service type_: "SSRS 2005" for SQL Server 2005 Reporting Services, or "SSRS 2010" for SQL Server 2008 R2 and later
 
-When checked, uses the default report server virtual directory (`hostname/reportserver/`). Uncheck to specify a custom folder name in the field below.
+### SSRS: Parameters tab
 
-**Report folder**
+![SSRS tab, Parameters sub tab, with the parameter grid and the Add/Edit parameter window](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/SSRS%20Parameters.png)
 
-The virtual directory name for the report server. Defaults to `reportserver`. Only active when *Use default folder* is unchecked.
- 
-**SSRS > Parameters** tab
+Click _Refresh_ to load the parameters of the selected report. Use _Add_, _Edit_ and _Delete_ to change the list. In the _Add/Edit parameter_ window:
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/SSRS%20Parameters.png)
+- _Name_: The name of the parameter
+- _Data type_: The data type of the parameter
+- _Value_: The value of the parameter
+- _Is null_: When selected, NULL is sent for the parameter
+- _CSV_: When selected, _Value_ is a comma-separated list that is split into several values
+- _Add Multi-Value_: Click to enter several values for one parameter
 
-Click *Refresh* to load all parameters for the selected Report path. Use the *Add*, *Edit*, and *Delete* buttons to manage parameter values. Each parameter has a Name, Data type, and Value. Check *Is null* to pass a null value for a parameter. Click *Add Multi-Value* to supply a range of values for a single parameter, or use a comma-separated list and click *CSV* to split it into multiple values.
+### SSRS: Destination tab
 
-**SSRS > Destination** tab
+![SSRS tab, Destination sub tab, with the File format list and the Save to settings](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/SSRS%20Destination.png)
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/SSRS%20Destination.png)
+- _File format_: The format of the report file: "XML", "CSV", "Image", "PDF", "Excel", "ExcelOpenXML", "Word", "MHTML" or "HTML4"
+- _Credential_: The Credential used to write the file, for example to a network share. See [Global - Credentials](../../global-credentials)
+- _Folder_: The destination folder of the report file
+- _File mask_: The name of the report file. `*`, the default, gives the report name and the extension of the format
 
-**File format**
+### Output and errors
 
-The output format for the rendered report. Available formats are: XML, CSV, Image, PDF, Excel, ExcelOpenXML, Word, MHTML, and HTML4.
- 
-**Credential**
+- The output of the Task is the path of the saved report file
+- When the report cannot be run or saved, the Task fails
 
-If you need to save to a network share you should use a Credential. Click the Settings icon to open the Manage credentials dialog.
- 
-**Folder**
-
-Destination folder for the output file.
- 
-**File mask**
-
-Any file mask (compared to the actual report name). Using * uses the report name + extension.
- 
 ### Troubleshooting
 
 **Exception in Task: System.Web.Services.Protocols.SoapException: You have attempted to use a rendering extension that is either not registered for this report server or it is not supported in this edition of Reporting Services**
 
 Check the file rsreportserver.config in  ```c:\Program Files\Microsoft SQL Server\MSRS10_50.MSSQLSERVER_RS\Reporting Services\ReportServer```
- 
-The problem in our case is that via API we were requesting a report and attempting to convert the report from HTML to a different rendering extension. And, unfortunately, the specific Reporting Services instance’s configuration file has not been configured\extended to support the requested rendering format.
+
+The Task requests the report in the selected format, and the configuration file of the Reporting Services instance does not include a rendering extension for that format.
 In MS SQL Server 2008-R2, the configuration file is located in a directory structure resembling the following:
  
-```
+```text
 
  E:
    \Program Files
@@ -82,9 +74,9 @@ In MS SQL Server 2008-R2, the configuration file is located in a directory struc
 
 ```
 
-In the configuration file, find the “Render” section:
+In the configuration file, find the "Render" section:
 
-```
+```xml
 
 < Configuration >
 < Extensions >
@@ -92,6 +84,4 @@ In the configuration file, find the “Render” section:
 
 ```
 
-Within the Render section, find the corresponding “Extension” entry.
- 
-If your file format is HTML4 and you see the section try changing from name HTML4.0 to HTML4.
+Within the Render section, find the matching "Extension" entry. If the file format is "HTML4" and the entry is named "HTML4.0", change the name to "HTML4".

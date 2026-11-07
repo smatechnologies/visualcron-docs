@@ -15,6 +15,12 @@ hide_title: 'true'
 During a loop you are able to access loop runtime Variables. For example, where you are in the current iteration and all related values.
  
 ### Architecture
+
+:::warning
+Loops run only in Jobs that have *Run Tasks in order* selected (see
+[Job - Main Settings](job-main-settings)).
+:::
+
 Loops are objects that are stored in a Job. On Job can contain a maximum number of loops equal to the maximum number of Tasks. Loops are defined by a start Task and end Task. Anything in between will be looped in Task order. Loops cannot cross each other - you cannot create a loop in a loop.
  
 Task Conditions are checked each time before a Task is run, independent of if Task is in loop or not.
@@ -41,13 +47,10 @@ A loop type that iterates through an existing y value. A list of some sort.
 
 If one or more Tasks belong to a loop you can see that in the loop column. You will see how the loop stretches over itself or more Tasks.
 
-*Purple loop*: For loop
+In the *Loop* column, every loop type is shown with the same blue connector. The screenshot below is
+from an earlier version, which showed each loop type in a different color.
 
-*Green loop*: While loop
-
-*Blue loop*: For Each loop
-
-![](../../../static/img/image00.png)
+![Loop column in a Job's Task list, showing loop connectors next to the Tasks each loop covers](../../../static/img/image00.png)
 
 **Add/Edit loop**
 
@@ -55,7 +58,7 @@ In the Task list, in main window or Task list of add/edit Job you can double cli
 
 **Add loop option**
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20Main%20Settings.png)
+![Add Task Loop window, Main settings tab, opened with Add loop on the Job's Tasks tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20Main%20Settings.png)
 
 **Add loop > Main settings**
 
@@ -66,53 +69,63 @@ In the main settings you enter the descriptive name of the Loop. You also set wh
 In the loop settings you control the loop type by clicking on one of the three radio buttons.
 You can click on the Variable button next to each text field to find and insert a Variable that can be used in the field.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20Settings.png)
+![Add Task Loop window, Loop settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20Settings.png)
 
 **For x to y**
 
 Enter two numerical values or Variables that contain numerical values.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20For.png)
+![Loop settings tab with For x to y selected](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20For.png)
  
 **While x**
 
 Depending on type comparison you enter different kind of values/Variables.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20While.png)
+![Loop settings tab with While x selected](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20While.png)
  
 **For each x in y**
 
-Enter a Variable that contains a list. You may need to alter *Use column*, *Field separator*, *Text qualifier*, *Line break* or *Start row* depending on the format of the Variable list. *Use column* selects which column the x value is picked up from, and *Start row* lets you skip a number of leading rows.
+Enter a Variable that contains a list. You may need to alter *Use column*, *Field separator*, *Text qualifier*, *Line break* or *Start row* depending on the format of the Variable list. *Use column* is the number of the column that the x value is taken from; the first column is 0 (the
+default). *Start row* is the number of the first row to use (default 1); enter `"2"` to skip one header
+row. Rows are counted from 1 and columns from 0. Empty lines in the list are ignored.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20For%20each%20x%20in%20y.png)
+![Loop settings tab with For each x in y selected](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20For%20each%20x%20in%20y.png)
 
-**Referencing columns in For Each loops**
+#### Referencing columns in For Each loops
 
-When a For Each loop iterates over multi-column data (such as a CSV file), each row is available as an array. You can reference individual columns from the current row in two ways:
+When a For Each loop goes through multi-column data, such as a CSV file, you can read a column of the
+current row by number or by name.
 
-*By numeric index:*
-
-```
-{LOOP(CurrentValueXArray|0)}    — first column
-{LOOP(CurrentValueXArray|8)}    — ninth column
-```
-
-*By column name:*
+By column number (the first column is 0):
 
 ```
-{LOOP(CurrentValueXArray|Email)}
-{LOOP(CurrentValueXArray|CustomerID)}
+{LOOP(CurrentValueXArray|0)}    first column
+{LOOP(CurrentValueXArray|8)}    ninth column
 ```
 
-Column name references require that the data has a header row. VisualCron reads the first row as the column name map. Name matching is case-insensitive.
+By column name (available in VisualCron 13.3.1 and later):
 
-Using column names makes workflows resilient to column reordering — if a CSV gains a new column or the order changes, name-based references continue to resolve correctly. Numeric index references will silently return the wrong value if the column order shifts.
+```
+{LOOP(CurrentValueByColumnName|Email)}
+{LOOP(CurrentValueByColumnName|CustomerID)}
+```
 
-| Index syntax (fragile) | Name syntax (resilient) |
+VisualCron uses the row just above *Start row* as the header row. If your data has one header row, set
+*Start row* to `"2"`. Column names are not case sensitive.
+
+:::warning
+With *Start row* at `"1"` (the default) there is no row above it, so every column-name reference returns
+an empty value.
+:::
+
+A name reference keeps working when the columns are reordered. A number reference returns whatever column
+is now in that position, without an error. These references are equivalent:
+
+| Column number | Column name |
 |---|---|
-| `{LOOP(CurrentValueXArray\|0)}` | `{LOOP(CurrentValueXArray\|CustomerID)}` |
-| `{LOOP(CurrentValueXArray\|3)}` | `{LOOP(CurrentValueXArray\|Email)}` |
-| `{LOOP(CurrentValueXArray\|7)}` | `{LOOP(CurrentValueXArray\|Department)}` |
+| `{LOOP(CurrentValueXArray\|0)}` | `{LOOP(CurrentValueByColumnName\|CustomerID)}` |
+| `{LOOP(CurrentValueXArray\|3)}` | `{LOOP(CurrentValueByColumnName\|Email)}` |
+| `{LOOP(CurrentValueXArray\|7)}` | `{LOOP(CurrentValueByColumnName\|Department)}` |
 
 **Sleep/Wait in each iteration**
 
@@ -120,7 +133,13 @@ Sets the wait time between each iteration. This is especially interesting if you
  
 **Limitations**
 
-Set the maximum number of iterations. If your y value is less than 1000 then lower or keep value to prevent never ending loops.
+Sets the maximum number of iterations (default 1000).
+
+:::warning
+When the loop reaches the limit, it stops: the remaining iterations are not run, an error is logged, and
+the Job continues with the Task after the loop. Set the limit higher than the number of iterations you
+expect.
+:::
 
 **Validate values when saving**
 
@@ -130,7 +149,7 @@ When checked, the loop values are validated when the loop settings are saved.
 
 Any Variable can be used in the settings of the actual loop to provide dynamic x and y values. Also, a set of dynamic, loop context sensitive Variables exist. You find them in the Variables browser:
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20Variables.png)
+![Loop settings tab with the Variables window opened from a Variable button](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Loop%20Variables.png)
 
 **Loop Id**
 
@@ -142,7 +161,7 @@ You are able to set a name of a loop which can be accessed through this Variable
  
 **Loop type**
 
-If it is a For, For Each or While loop.
+Returns the loop type: `ForLoop`, `ForEachLoop` or `WhileLoop`.
  
 **Preset X value**
 
@@ -160,13 +179,19 @@ The value of the position in the loop. This value is interesting when using For 
 
 The current line of the X value when using a For Each loop.
  
-**Current line in X - specify column**
+**Current line in X - specify column index**
 
-The value of a specific column in the current X line. Specify the column index in the Variable.
+The value of a column in the current X line, by column number (the first column is 0).
+ 
+**Current line in X - specify column name**
+
+The value of a column in the current X line, by column name, for example
+`{LOOP(CurrentValueByColumnName|Email)}`. See
+[Referencing columns in For Each loops](#referencing-columns-in-for-each-loops).
  
 **Current Y value**
 
-The current value of the right hand value. Should be the same as Preset Y value in most scenarios.
+The current right hand value in a For or While loop. It is not used in For Each loops.
  
 **Current Y position in list**
 
@@ -186,7 +211,9 @@ Task Id for the selected end Task in the loop.
  
 **Column position that is used in For Each loop**
 
-The column position where the x value is picked up in a For Each loop. This can be a numeric index (e.g. `0` for the first column) or a column header name (e.g. `Email`). See [Referencing columns in For Each loops](#referencing-columns-in-for-each-loops) for details and examples.
+The *Use column* number: the column that the x value is taken from in a For Each loop (the first column is
+0). To read a column by name, see
+[Referencing columns in For Each loops](#referencing-columns-in-for-each-loops).
 
 **Field separator**
 
@@ -204,7 +231,7 @@ The line break character that is used in each column.
 
 Number of loop “laps”/iterations that has been done so far.
  
-**Maximum allowed iterations before exiting a loop**
+**Maximum allowed iterations before exiting loop**
 
 A limit that prevents loop for going on forever. Default 1000. This value is showed here.
  
@@ -212,7 +239,7 @@ A limit that prevents loop for going on forever. Default 1000. This value is sho
 
 To delete a loop you open the Add/Edit Job window and go to Tasks tab. Right click/select a Task row that contains a loop and click on Delete loop. This will only delete the related loop - not the Tasks in it.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Delete%20Loop.png)
+![Delete loop button on the Job's Tasks tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/Delete%20Loop.png)
 
 **Changing Task order**
 

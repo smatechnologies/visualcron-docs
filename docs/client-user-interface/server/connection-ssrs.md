@@ -5,72 +5,26 @@ hide_title: 'true'
 
 ## Connection - SSRS
 
-he SSRS Connection stores connect and logon properties for SQL Server Reporting Services (SSRS).
-
-The SSRS Connection is used in the [Database - SSRS](../../client-user-interface/server/job-tasks/database-tasks/ssrs) Task, which executes and exports reports through SQL Server Reporting Services.
+The SSRS Connection stores the address, sign-in and security settings that the [Database - SSRS](job-tasks/database-tasks/ssrs) Task uses to connect to SQL Server Reporting Services (SSRS). The Task runs and exports reports through it.
  
-**Manage Connections > Add > SSRS > Common settings** tab
+### Common settings
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSRS/SSRS.png)
+![SSRS Connection, Common settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSRS/SSRS.png)
 
-**Name**
+The ***Common settings*** and ***Proxy*** tabs are the same for every Connection type that has them; see [Common settings](global-connections#common-settings) and [Proxy](global-connections#proxy).
 
-The name of the Connection to uniquely identify it.
+For an SSRS Connection, no _Test_ button is shown, and _Timeout_ and _Code page_ are not used. The SSRS Task uses the Task timeout for its calls to the report server. When the Task has no timeout set, the calls do not time out.
  
-**Group**
+### Main settings
 
-The group that the connection is a part of.
- 
-**Timeout**
+![SSRS Connection, Main settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSRS/Settings.png)
 
-The connection timeout in seconds. Connection will fail after this time is passed.
- 
-**Code page**
+These fields are on ***Connection settings*** -> ***Main settings***. _Address_ and _Username_ are required.
 
-The table of values that describes the desired character set.
- 
-**Manage Connections > Add > SSRS > Connection settings** tab
+- _Address_: the host name or IP address of the report server. Do not include `http://` or a folder path. VisualCron adds the report server folder, which is "reportserver" unless the Task sets another folder, and the path of the Reporting Services web service
+- _Username_: the user name for the report server
+- _Password_: the password for the report server
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSRS/Settings.png)
+### Proxy
 
-**Address**
-
-The IP address or DNS name of the SSRS server. Do not include the `http://` prefix or a full folder path.
-
-**Username**
-
-The user name for the SSRS server.
- 
-**Password**
-
-The password for the SSRS server.
-
-**Manage Connections > Add > SSRS > Proxy** tab
-
-**Proxy type**
-
-Select the proxy type to be used.
-
-**Address**
-
-The host name or IP address of the proxy server.
-
-**Port**
-
-The port of the proxy server.
-
-**Use credentials**
-
-Enable to provide credentials for authenticating with the proxy server.
-
-**Domain**
-
-The domain of the proxy server.
-
-**Username**
-
-The user name to access the proxy server.
-
-**Password**
-
-The password to access the proxy server.
+The ***Proxy*** tab is on the ***Connection settings*** tab. The SSRS Task sends its calls to the report server through the proxy set here. With any _Proxy type_ other than "No proxy", the Task uses the proxy as an HTTP proxy.

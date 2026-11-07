@@ -188,6 +188,49 @@ function replaceEmojiShortcodes(html) {
   });
 }
 
+// ─── Docusaurus admonitions (:::type [title] ... :::) ───────────────────────
+
+const ADMONITION_TITLES = {
+  note: 'Note',
+  tip: 'Tip',
+  info: 'Info',
+  warning: 'Warning',
+  caution: 'Caution',
+  danger: 'Danger',
+};
+
+const ADMONITION_PATTERN = /^ {0,3}:::(note|tip|info|warning|caution|danger)[ \t]*([^\n]*)\n([\s\S]*?)^ {0,3}:::[ \t]*(?:\n|$)/m;
+
+marked.use({
+  extensions: [{
+    name: 'admonition',
+    level: 'block',
+    start(src) {
+      const match = src.match(/^ {0,3}:::[a-z]/m);
+      return match ? match.index : undefined;
+    },
+    tokenizer(src) {
+      const match = ADMONITION_PATTERN.exec(src);
+      if (!match || match.index !== 0) {
+        return undefined;
+      }
+      const token = {
+        type: 'admonition',
+        raw: match[0],
+        kind: match[1],
+        title: match[2].trim() || ADMONITION_TITLES[match[1]],
+        tokens: [],
+      };
+      this.lexer.blockTokens(match[3], token.tokens);
+      return token;
+    },
+    renderer(token) {
+      const body = this.parser.parse(token.tokens);
+      return `<div class="admonition ${token.kind}">\n<p class="admonition-title">${escapeHtml(token.title)}</p>\n${body}</div>\n`;
+    },
+  }],
+});
+
 // ─── HTML template ──────────────────────────────────────────────────────────
 
 function wrapInTemplate(title, content) {

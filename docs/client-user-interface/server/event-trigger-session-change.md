@@ -5,37 +5,55 @@ hide_title: 'true'
 
 ## Event Trigger - Session Change
 
-The Session Change event trigger monitors Windows session change events such as console and remote session connects and disconnects, user logon and logoff, session lock and unlock, and changes in the remote-control status of a session. The Trigger can optionally be limited to a specific user account.
+The Session Change Trigger fires on Windows session events, such as console and remote session connects and disconnects, user logon and logoff, session lock and unlock, and changes in the remote control status of a session. It watches the sessions on the computer that runs the VisualCron Server. The settings are on the ***Session change*** tab.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Session%20Change.png)
+![The Session change tab of the Add/Edit event window: the Event type list with nine session events, none checked; All users selected; Username and Domain unavailable under Specific user](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Session%20Change.png)
 
 **Session change**
 
 **Event type**
 
-A multi-select checkbox list. Tick one or more of the following session change events to listen for:
+Check one or more events:
 
-* **Console connect** — a console session has connected
-* **Console disconnect** — a console session has disconnected
-* **Remote connect** — a remote session has connected
-* **Remote disconnect** — a remote session has disconnected
-* **Session logon** — a user has logged on to a session
-* **Session logoff** — a user has logged off from a session
-* **Session lock** — a session has been locked
-* **Session unlock** — a session has been unlocked
-* **Session remote control** — the remote control status of a session has changed
- 
+* *A console session has connected*
+* *A console session has disconnected*
+* *A remote session has connected*
+* *A remote session has disconnected*
+* *A user has logged on to a session*
+* *A user has logged off from a session*
+* *A session has been locked*
+* *A session has been unlocked*
+* *The remote control status of a session has changed*
+
+The Client does not require an event. With *All users* and no event checked, the Trigger never fires.
+
 **All users / Specific user**
 
-Choose between the two radio options to control which user account the Trigger reacts to:
+* *All users*: the default. The Trigger fires for each checked event, for any user
+* *Specific user*: enter *Username* and *Domain*
 
-* **All users** — fire for session change events involving any user (default)
-* **Specific user** — fire only for session change events involving the user specified below. When selected, the **Username** and **Domain** fields below become editable
+:::warning
+
+*Specific user* currently does not narrow the Trigger. It fires for a checked event of any user, and also for any session event of the specified user, even one that is not checked. To react to one user only, select *All users* and check the user in the Job, for example with a [Job condition](job-conditions) on the result Variable `SessionChange.Result.UserName`.
+
+:::
 
 **Username**
 
-The Windows user name to match. Enabled only when **Specific user** is selected.
+The Windows user name. Required for *Specific user*. It must match exactly, including case. Accepts Variables.
 
 **Domain**
 
-The Windows domain (or local computer name) for the user. Enabled only when **Specific user** is selected.
+The user's short domain name, for example `CONTOSO`, or the computer name for a local user. Required for *Specific user*; it must match exactly, including case. Accepts Variables.
+
+With *Specific user*, each session event that Windows reports without a user writes the error "Could not match on User/Domain because user info could not be retrieved" to the log. You can ignore these entries.
+
+### Result Variables
+
+When the Trigger fires, it sets these result Variables:
+
+* `SessionChange.Result.UserName` and `SessionChange.Result.Domain`: the user of the session; empty when Windows reports no user
+* `SessionChange.Result.SessionChangeType`: the event, for example `SessionLogon` or `SessionLock`
+* `SessionChange.Result.UserTargetType`: `AllUsers` or `SpecificUser`, as set in the Trigger
+
+For example, `{TRIGGER(Active|LastTrigger|SessionChange.Result.UserName)}` returns the user of the session event that started the run. *Last run*, `{TRIGGER(Active|LastTrigger|LastRun)}`, returns the time the Trigger fired. See [Variables](global-variables) for how *Last trigger* and the other keys work.

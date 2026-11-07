@@ -5,42 +5,36 @@ hide_title: 'true'
 
 ## Task Net - Serial Send
 
-The Serial send Task lets you communicate with a wide range of devices that uses COM port interface.
+The Serial Send Task writes text to a device on a serial (COM) port of the VisualCron Server computer. It only sends: it does not read a reply from the device.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Serial%20-%20Send.png)
+![Serial Send Task settings, with the Connection group and the Send text group](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Serial%20-%20Send.png)
 
-**Connection** group
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-**Serial port**
+In the _Connection_ group:
 
-The COM port to connect to (e.g. COM1, COM2). The dropdown lists all COM ports detected on the VisualCron server. Default is COM1.
+- _Serial port_: the COM port, "COM1" by default
 
-**Baud rate**
+  The list shows the COM ports of the VisualCron Server.
 
-The communication speed in bits per second. Available options: 150, 300, 600, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200. Default is 9600.
+- _Baud rate_: the speed in bits per second: "150", "300", "600", "1200", "2400", "4800", "9600", "19200", "38400", "57600" or "115200"
 
-**Data bits**
+  The default is "9600".
 
-The number of data bits per byte. Valid range is 5–8. Default is 8.
+- _Data bits_: the Task always uses 8 data bits
 
-**Handshake**
+  A value you choose here is not saved.
 
-The flow-control protocol for serial port transmission. Options: None (default), XOnXOff, RequestToSend, RequestToSendXOnXOff.
+- _Handshake_: the flow control: "None" (default), "XOnXOff", "RequestToSend" or "RequestToSendXOnXOff"
+- _Parity_: "None" (default), "Odd", "Even", "Mark" or "Space"
+- _Stop bits_: "One" (default), "Two" or "OnePointFive"
 
-**Parity**
+  "None" is also listed, but the serial port does not accept it, and the Task fails.
 
-The parity-checking protocol. Options: None (default), Odd, Even, Mark, Space.
+In the _Send text_ group:
 
-**Stop bits**
+- _New line_: what is added after the text: "None" (default), "Cr" (a carriage return) or "CrLf" (a carriage return and a line feed)
 
-The number of stop bits per byte. Options: None, One (default), Two, OnePointFive.
+  Choose the one the device expects.
 
-**Send text** group
-
-**New line**
-
-An optional newline character appended to the text before sending. Options: None (default), Cr (carriage return, used on Unix/Linux), CrLf (carriage return + line feed, used on Windows).
-
-**String to write**
-
-The text to send to the device over the serial connection.
+- _String to write_: the text to send to the device. The field is required.

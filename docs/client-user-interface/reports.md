@@ -2,100 +2,45 @@
 sidebar_label: 'Reports'
 hide_title: 'true'
 ---
-
 ## Reports
 
-The **Reports** tab is a part of the main menu.
+The ***Reports*** tab of the main menu opens reports about the connected Server.
 
-![](../../static/img/Client%20User%20Interface/Main%20Menu/Reports/Reports.png)
+![The Reports tab of the main menu with the Jobs, Tasks, Logs, Notifications, Connections and Server groups](../../static/img/Client%20User%20Interface/Main%20Menu/Reports/Reports.png)
 
-Below is the list of supported reports:
- 
 ### Jobs
- 
-**Overview**
 
-Jobs: Overview report contains a summary report of all existing Jobs and Groups.
- 
-**List**
+- ***Overview***: a summary of all Jobs and Job groups
+- ***List***: all Jobs, with filter and column selection
+- ***Result***: a summary of the results of Job executions
+- ***Execution***: the number of executions and the average run time
+- ***ROI***: the return on investment, as a summary and per Job: how much time or money the Jobs save
+- ***Time distribution***: the busy hours, with a heat map of Job executions
+- ***Next Execution***: a list of upcoming executions
 
-Jobs: List report contains all Jobs with filter and column selection.
- 
-**Result**
-
-Jobs: Result report summarizes the result of Job executions.
- 
-**Execution**
-
-Jobs: Executions report contains a summary of number of executions and average runtime.
- 
-**ROI**
-
-Jobs: Return On Investment report shows a summary on high level and per Job - how much money is saved/earned.
- 
-**Time distribution**
-
-Jobs: Time distribution report summarizes busy hours together with a heatmap of current Job executions.
- 
-**Next execution**
-
-Jobs: Next execution report contains a list of upcoming executions.
- 
 ### Tasks
- 
-**Overview**
 
-Tasks: Overview report contains a summary of all Tasks being used.
- 
- ### Logs
- 
-**Event log**
+- ***Overview***: a summary of all Tasks in use
 
-Logs: Event log report contains a summary and list of all Server events.
- 
-**Server log**
+### Logs
 
-Logs: Server log report contains a summary and a list of all Server logs.
- 
-**Transfer log**
+- ***Event log***: a summary and a list of all Server events
+- ***Server log***: a summary and a list of the Server log
+- ***Transfer log***: a summary and a list of downloads, uploads and other file actions performed by Tasks, Triggers and MFT servers
 
-Logs: Transfer log report contains a summary and a list of downloads, uploads, and other actions with files performed in various Tasks, Triggers, as well as in MFT Servers.
- 
- 
 ### Notifications
- 
-**Overview**
 
-Notifications: Overview report contains a list and summary of all Notifications.
- 
+- ***Overview***: a summary and a list of all Notifications
+
 ### Connections
- 
-**Overview**
 
-Connections: Overview report contains a summary of all existing Connections.
- 
-**Executions**
+- ***Overview***: a summary of all Connections
+- ***Executions***: statistics and a summary of all Connection use
 
-Connections: Executions reports contains statistics and summary of all Connections made.
- 
 ### Server
- 
-**Overview**
 
-Server: Overview report shows information about objects that are used in the system and existing roles on the server.
- 
-**Computer**
-
-Server: Computer report shows summary information about OS and VisualCron server, as well as the history of memory and CPU consumption.
- 
-**Health**
-
-Server: Health report contains an overview of the VisualCron Server health.
- 
-**SLA**
-
-Server: SLA report shows Server uptime time statistics and other related metrics.
- 
-**Optimization**
-
-Server: Optimization report warns about bad settings and recommends good practices based on the settings.
+- ***Overview***: the objects in use on the Server and the roles on the Server
+- ***Computer***: the operating system and Server, with the history of memory and CPU use
+- ***Health***: an overview of the Server health
+- ***SLA***: the Server uptime and related figures
+- ***Optimization***: warnings about settings that could be better, with recommended practices

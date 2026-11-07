@@ -38,6 +38,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/smatechnologies/visualcron-docs/blob/main',
         },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -50,6 +51,8 @@ module.exports = {
       {
         redirects: [
           { from: '/license', to: '/terms-and-conditions' },
+          { from: '/notice-of-updated-terms', to: '/terms-and-conditions' },
+          { from: '/using-visualcron/basic-vs-pro-edition', to: '/using-visualcron/choosing-the-right-license' },
         ],
       },
     ],

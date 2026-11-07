@@ -5,48 +5,35 @@ hide_title: 'true'
 
 ## Connection - Dynamics CRM
 
-The Dynamics CRM Connection stores connect and logon properties for a Microsoft Dynamics CRM instance.
+The Dynamics CRM Connection stores the address, sign-in and security settings that the following Dynamics CRM Tasks use to connect to a Microsoft Dynamics CRM organization:
 
-The Dynamics CRM Connection is used in the following Dynamics CRM Tasks:
-
-* [Dynamics CRM - Get entity](../../client-user-interface/server/job-tasks/dynamics-crm-tasks/get-entity)
-* [Dynamics CRM - Create entity](../../client-user-interface/server/job-tasks/dynamics-crm-tasks/create-entity)
-* [Dynamics CRM - Update entity](../../client-user-interface/server/job-tasks/dynamics-crm-tasks/update-entity)
-* [Dynamics CRM - Delete entity](../../client-user-interface/server/job-tasks/dynamics-crm-tasks/delete-entity)
-* [Dynamics CRM - List entity](../../client-user-interface/server/job-tasks/dynamics-crm-tasks/list-entity)
-* [Dynamics CRM - Get audit data](../../client-user-interface/server/job-tasks/dynamics-crm-tasks/get-audit-data)
-* [Dynamics CRM - Set audit status](../../client-user-interface/server/job-tasks/dynamics-crm-tasks/set-audit-status)
-* [Dynamics CRM - Start work flow](../../client-user-interface/server/job-tasks/dynamics-crm-tasks/start-work-flow)
-* [Dynamics CRM - Download attachment](../../client-user-interface/server/job-tasks/dynamics-crm-tasks/download-attachments)
-* [Dynamics CRM - Upload attachment](../../client-user-interface/server/job-tasks/dynamics-crm-tasks/upload-attachment)
+- [Dynamics CRM - Get entity](job-tasks/dynamics-crm-tasks/get-entity)
+- [Dynamics CRM - Create entity](job-tasks/dynamics-crm-tasks/create-entity)
+- [Dynamics CRM - Update entity](job-tasks/dynamics-crm-tasks/update-entity)
+- [Dynamics CRM - Delete entity](job-tasks/dynamics-crm-tasks/delete-entity)
+- [Dynamics CRM - List entity](job-tasks/dynamics-crm-tasks/list-entity)
+- [Dynamics CRM - Get audit data](job-tasks/dynamics-crm-tasks/get-audit-data)
+- [Dynamics CRM - Set audit status](job-tasks/dynamics-crm-tasks/set-audit-status)
+- [Dynamics CRM - Start work flow](job-tasks/dynamics-crm-tasks/start-work-flow)
+- [Dynamics CRM - Download attachment](job-tasks/dynamics-crm-tasks/download-attachments)
+- [Dynamics CRM - Upload attachment](job-tasks/dynamics-crm-tasks/upload-attachment)
+- [Dynamics CRM - Delete attachment](job-tasks/dynamics-crm-tasks/delete-attachment)
  
-**Manage Connections > Add > Dynamics CRM > Common settings** tab
+### Common settings
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dynamics%20CRM/Dynamics%20CRM.png)
+![Dynamics CRM Connection, Common settings tab with the Test button](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dynamics%20CRM/Dynamics%20CRM.png)
 
-**Name**
+The ***Common settings*** tab is the same for every Connection type that has it; see [Common settings](global-connections#common-settings).
 
-The name of the Connection to uniquely identify it.
-
-**Group**
-
-The group that the connection is a part of.
+For a Dynamics CRM Connection, _Timeout_ and _Code page_ are not used. _Test_ runs on the Server. It connects with _Address_, _Username_ and _Password_ and reads the list of entities. If the test fails, the message shows the error and a suggested address format.
  
-**Timeout**
+### Main settings
 
-The connection timeout in seconds. Connection will fail after this time period.
- 
-**Code page**
+![Dynamics CRM Connection, Main settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dynamics%20CRM/Settings.png)
 
-Code page being used.
- 
-**Manage Connections > Add > Dynamics CRM > Connection settings** tab
+These fields are on ***Connection settings*** -> ***Main settings***. _Address_ and _Username_ are required.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dynamics%20CRM/Settings.png)
-
-**Address**
-
-The host name or URL of the Dynamics CRM server.
+- _Address_: the full URL of the Dynamics CRM organization, including `https://` or `http://`. For an on-premises server, include the port if it is not the default, and the organization name, for example `http://<server>:<port>/<orgname>`
 
 **Username**
 
