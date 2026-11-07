@@ -23,7 +23,7 @@ The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***Tim
   - "Single line": the JSON on one line
   - "Indented": the JSON indented
 - _JSONPath_ (default) or _JQ_: the filter engine
-- The filter expression field below the engine: the JSONPath expression or the JQ program. Click the button next to it to open the JSON browser, which shows the input as a tree and lets you select a path. The button is available once a file or a value is entered
+- The filter expression field below the engine: the JSONPath expression or the JQ program. Click the button next to it to open the JSON browser, which shows the input as a tree and lets you select a path. The button is available once a file or a value is entered. The JSON browser also opens a bare JSON value, such as a single number, string or boolean, with every _PreFormatting_ option
 
 ### Output tab
 
