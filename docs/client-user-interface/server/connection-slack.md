@@ -106,4 +106,4 @@ The Redirect URL configured in the Slack app must use HTTPS (for example `https:
 
 _Authenticate_ requests these Bot Token Scopes: "commands", "chat:write", "channels:read", "files:write", "users:read" and "groups:read". Add all six to the Slack app, then click _Authenticate_ again.
 
-Before VisualCron 13.4.2, _Authenticate_ requested only "commands", "chat:write" and "channels:read". A Connection authenticated with an earlier version keeps that token after the upgrade. Until you add "files:write", "users:read" and "groups:read" to the Slack app and click _Authenticate_ again, file uploads, the user list and private channel lookups fail.
+The Connection keeps the scopes that the Slack app granted at the last _Authenticate_. Adding a scope to the Slack app has no effect until you click _Authenticate_ again. Without "files:write", "users:read" or "groups:read", file uploads, the user list or private channel lookups fail.
