@@ -5,105 +5,89 @@ hide_title: 'true'
 
 ## Connection - OneDrive
 
-The OneDrive Connection stores connect and login properties for the Microsoft cloud service OneDrive.
+The OneDrive Connection stores the sign-in and security settings that these Tasks and Triggers use to connect to Microsoft OneDrive:
 
-You can use VisualCron to sync files between the OneDrive service and a local folder, or to transfer files between OneDrive and other cloud services.
+- [Cloud - Upload file(s)](job-tasks/cloud-transfer-tasks/upload-file)
+- [Cloud - Download file(s)](job-tasks/cloud-transfer-tasks/download-file)
+- [Cloud - List item(s)](job-tasks/cloud-transfer-tasks/list-item)
+- Cloud - List folder(s)
+- [Cloud - Create folder](job-tasks/cloud-transfer-tasks/create-folder)
+- [Cloud - Delete item(s)](job-tasks/cloud-transfer-tasks/delete-item)
+- [Cloud - Copy/move item(s)](job-tasks/cloud-transfer-tasks/copy-move)
+- [Cloud - Sync file(s)](job-tasks/cloud-transfer-tasks/sync)
+- The [Cloud file Trigger](event-trigger-cloud-file)
 
-The OneDrive Connection is used in the following Cloud Tasks:
+Use it to transfer or sync files between OneDrive and a local folder, or between OneDrive and another cloud service.
 
-* [Cloud - Upload file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/upload-file)
-* [Cloud - List item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/list-item)
-* [Cloud - Download file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/download-file)
-* [Cloud - Create folder](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/create-folder)
-* [Cloud - Delete item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/delete-item)
- 
-**Manage Connections > Add > OneDrive > Common settings** tab
+### Common settings
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/OneDrive/OneDrive.png)
+![OneDrive Connection, Common settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/OneDrive/OneDrive.png)
 
-**Name**
+The ***Common settings*** and ***Proxy*** tabs are the same for every Connection type that has them; see [Common settings](global-connections#common-settings) and [Proxy](global-connections#proxy).
 
-The name of the Connection to uniquely identify it.
+_Test_ asks the Server to connect with the stored sign-in and read the root folder of the OneDrive.
 
-**Group**
+### Main settings
 
-he group that the connection is a part of.
- 
-**Timeout**
+![OneDrive Connection, Main settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/OneDrive/Settings.png)
 
-The connection timeout in seconds. Connection will fail after this time period.
- 
-**Code page**
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-Code page being used.
- 
-**Manage Connections > Add > OneDrive > Connection settings** tab
+_App Key_
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/OneDrive/Settings.png)
+The Application (client) ID of the app that you register in Microsoft Entra ID. Required.
 
-**App Key**
+_App Secret_
 
-The Application (client) ID obtained when registering your application in Azure Active Directory. See **How to create a OneDrive connection** below.
+A client secret of that app.
 
-**App Secret**
+_Redirect Url_
 
-The client secret obtained when registering your application in Azure Active Directory.
+The address that Microsoft sends the sign-in result to. Default: "http://localhost:9999". Add the same address as a redirect URI of the app.
 
-**Redirect Url**
+_Auto-accept server certificates_
 
-The OAuth redirect URL used during authentication. This value must match the redirect URI configured for your app in the Azure portal. The default value is `http://localhost:9999`.
+Selected by default.
 
-**Auto-accept server certificates**
+:::warning
 
-When checked, VisualCron automatically accepts server certificates without prompting. Enabled by default.
+OneDrive Connections accept any server certificate, whether or not _Auto-accept server certificates_ is selected. The Server does not check the server certificate when it connects to OneDrive, so it cannot tell the real server from another server that answers at the same address. Connect to OneDrive only over a network path that you trust.
 
-**Create an account**
+:::
 
-Click this link to open the Azure portal to register or manage your Azure Active Directory application: [https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
+_Create an account_
 
-**Authenticate**
+Opens the App registrations page of the Azure portal.
 
-Click this link to initiate the OAuth authentication flow. A browser window will open for you to sign in with your Microsoft account and grant VisualCron access to your OneDrive. Once authentication is complete, click OK to save the connection.
+_Authenticate_
 
-![](../../../static/img/connectiononedrivelogin.png)
+Starts the Microsoft sign-in.
 
-**How to create a OneDrive connection**
+### How to create a OneDrive Connection
 
-To use OneDrive with VisualCron, you must register an application in the Azure Active Directory and authenticate it with your Microsoft account.
+To create a OneDrive Connection, complete the following steps:
 
-1. Click the *Create an account* link or go to: [https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
-2. Register a new application and copy the **Application (client) ID** into the **App Key** field.
-3. Under **Certificates & secrets**, create a new client secret and copy the value into the **App Secret** field.
-4. Under **Authentication**, add a redirect URI and ensure it matches the **Redirect Url** field value (default: `http://localhost:9999`).
-5. Click the *Authenticate* link and sign in with your Microsoft account to grant VisualCron access to your OneDrive.
-6. Once authentication is complete, click OK to save the connection.
+1. Click _Create an account_ to open App registrations in the Azure portal.
+2. Click _New registration_.
+3. Under _Supported account types_, select a type that includes the accounts that own the OneDrive: personal Microsoft accounts for a personal OneDrive, or your organization's accounts for OneDrive for work or school.
+4. Click _Register_.
+5. Copy the _Application (client) ID_ into _App Key_.
+6. Under _Certificates & secrets_, create a client secret.
+7. Copy the value of the client secret into _App Secret_.
+8. Under _Authentication_, add the value of _Redirect Url_, by default "http://localhost:9999", as a redirect URI.
+9. Click _Authenticate_.
+10. Sign in with the Microsoft account.
 
-**Manage Connections > Add > OneDrive > Proxy** tab
+    ![The Microsoft sign-in page](../../../static/img/connectiononedrivelogin.png)
 
-**Proxy type**
+11. Accept the permissions that VisualCron requests.
+12. Click _OK_ to save the Connection.
+13. Click _Test_ on the ***Common settings*** tab.
 
-Select the proxy type to be used.
+The test reports that it was successful.
 
-**Address**
+### Authentication and token expiry
 
-The host name or IP address of the proxy server.
-
-**Port**
-
-The port of the proxy server.
-
-**Use credentials**
-
-The credentials that are associated with the account.
-
-**Domain**
-
-The name of the domain to be created.
-
-**Username**
-
-The user name to access the proxy server.
-
-**Password**
-
-The password to access the proxy server.
+- _Authenticate_ runs on the computer where the Client runs. The browser opens there, and the Client listens for the sign-in result on the port of _Redirect Url_, so that port must be free on that computer
+- After the sign-in, the Connection stores the refresh token encrypted, and the Server uses it at run time
+- When Microsoft no longer accepts the refresh token, the Server marks the Connection as expired, and the Client shows the message "Connection session expired". Open the Connection and click _Authenticate_ again

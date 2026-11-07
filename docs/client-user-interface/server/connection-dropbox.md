@@ -5,111 +5,113 @@ hide_title: 'true'
 
 ## Connection - Dropbox
 
-The Dropbox Connection stores connect and login properties for the Dropbox cloud services. VisualCron supports Personal and Business service of Dropbox.
- 
-Dropbox is a [file hosting service](https://en.wikipedia.org/wiki/File_hosting_service). Dropbox allows users to create a special folder on their computers, which Dropbox then synchronizes so that it appears to be the same folder (with the same contents) regardless of which device is used to view it. Files placed in this folder are also accessible via the Dropbox website and mobile apps. Dropbox uses a [freemium](https://en.wikipedia.org/wiki/Freemium) business model, wherein users are offered a free account with a set storage size and paid subscriptions for accounts with more capacity
- 
-The Dropbox Connection is used in the following Cloud Tasks:
+The Dropbox Connection stores the sign-in and security settings that these Tasks and Triggers use to connect to Dropbox:
 
-* [Cloud - Upload file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/upload-file)
-* [Cloud - List item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/list-item)
-* [Cloud - Download file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/download-file)
-* [Cloud - Create folder](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/create-folder)
-* [Cloud - Delete item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/delete-item)
- 
-**Manage Connections > Add > Dropbox > Common settings** tab
+- [Cloud - Upload file(s)](job-tasks/cloud-transfer-tasks/upload-file)
+- [Cloud - Download file(s)](job-tasks/cloud-transfer-tasks/download-file)
+- [Cloud - List item(s)](job-tasks/cloud-transfer-tasks/list-item)
+- Cloud - List folder(s)
+- [Cloud - Create folder](job-tasks/cloud-transfer-tasks/create-folder)
+- [Cloud - Delete item(s)](job-tasks/cloud-transfer-tasks/delete-item)
+- [Cloud - Copy/move item(s)](job-tasks/cloud-transfer-tasks/copy-move)
+- [Cloud - Sync file(s)](job-tasks/cloud-transfer-tasks/sync)
+- The [Cloud file Trigger](event-trigger-cloud-file)
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dropbox/Dropbox.png)
+A Dropbox Connection needs a Dropbox app that you create.
 
-**Name**
+### Common settings
 
-The name of the Connection to uniquely identifying it.
+![Dropbox Connection, Common settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dropbox/Dropbox.png)
 
-**Group**
+The ***Common settings*** and ***Proxy*** tabs are the same for every Connection type that has them; see [Common settings](global-connections#common-settings) and [Proxy](global-connections#proxy).
 
-The group that the connection is a part of
+_Test_ asks the Server to connect with the stored sign-in and list the root folder of the Dropbox.
 
-**Timeout**
+### Main settings
 
-The connection timeout in seconds. Connection will fail after this time period.
- 
-**Code page**
+![Dropbox Connection, Main settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dropbox/dropbox_new.png)
 
-Code page being used.
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-**Manage Connections > Add > Dropbox > Connection Settings** tab
+_App Key_
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dropbox/dropbox_new.png)
+The app key of your Dropbox app. Required.
 
-**Use VisualCron registered app**
+_App Secret_
 
-If you use your own application, you need to uncheck the Use VisualCron registered app box (checked as default). If you want to use your own app, then click the Setup account link to create or enter in your own App key and App secret information.
- 
-**App key**
+The app secret of your Dropbox app.
 
-App key which you gets when registering application at [Dropbox](https://www.dropbox.com/login?cont=https%3A%2F%2Fwww.dropbox.com%2Fdevelopers%2Fapps).
- 
-**App secret**
+_Redirect Url_
 
-App secret which you gets when registering application at [Dropbox](https://www.dropbox.com/login?cont=https%3A%2F%2Fwww.dropbox.com%2Fdevelopers%2Fapps).
- 
-**How to create a connection using the VisualCron app**
+The address that Dropbox sends the sign-in result to. Default: "http://localhost:9999". Add the same address as a redirect URI of the Dropbox app.
 
-Check the *Use VisualCron registered app* box. Proceed to the **How to connect your account to an app (Authentication)** chapter below.
- 
-**How to create a connection using your own Dropbox app**
+_Auto-accept server certificates_
 
-If you e.g. want your own logo and/or use your own permissions, you may choose to use your own app.
+Selected by default.
 
-1. If you have not yet created your own app then click *Setup account* or go to: [https://www.dropbox.com/developers/apps](https://www.dropbox.com/developers/apps)
-2. Set and verify Redirect URI. When setting up Redirect URI you also need to match the Redirect URL in the **Extra settings** tab. The Redirect URI is used for authentication.
+:::warning
 
-![](../../../static/img/dropboxredirect.png)
+Dropbox Connections accept any server certificate, whether or not _Auto-accept server certificates_ is selected. The Server does not check the server certificate when it connects to Dropbox, so it cannot tell the real server from another server that answers at the same address. Connect to Dropbox only over a network path that you trust.
 
-3. Insert the App key and App secret data in the **Authentication** tab.
- 
-**How to connect your account to an app (Authentication)**
+Each time the Server refreshes the Dropbox sign-in, for example when a Task runs, it also sets the whole Server process to accept any server certificate and to allow SSL 3.0. After that, other HTTPS connections from the Server, not only those to Dropbox, accept any server certificate.
 
-1. Click on the Authenticate link.
+:::
 
-![](../../../static/img/connectiondropboxdropboxsignin.png)
+_Create an account_
 
-2. Enter your Dropbox login credentials in order to allow the use of the VisualCron application to handle files in your Dropbox account.
- 
-**Manage Connections > Add > Dropbox > Proxy** tab
+Opens the Dropbox App Console.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dropbox/Proxy.png)
+_Authenticate_
 
-**Proxy type**
+Starts the Dropbox sign-in. See [Authentication and token expiry](#authentication-and-token-expiry).
 
-Select the proxy type to be used.
- 
-**Address**
+### How to create a Dropbox Connection
 
-The host name or IP address of the proxy server.
- 
-**Port**
+To create a Dropbox Connection, complete the following steps:
 
-The port of the proxy server.
- 
-**Use credentials**
+1. Open the Dropbox App Console at [https://www.dropbox.com/developers/apps](https://www.dropbox.com/developers/apps), or click _Create an account_.
+2. Create an app.
+3. On the _Permissions_ tab of the app, enable the permissions to read and write file content and file metadata.
+4. Submit the permission change.
+5. On the _Settings_ tab of the app, add the value of _Redirect Url_, by default "http://localhost:9999", as a redirect URI.
 
-The credentials that are associated with the account.
- 
-**Domain**
+   ![The redirect URIs of a Dropbox app](../../../static/img/dropboxredirect.png)
 
-The name of the domain to be created.
- 
-**Username**
+6. Copy the app key into _App Key_.
+7. Copy the app secret into _App Secret_.
+8. Click _Authenticate_.
+9. Sign in to Dropbox.
 
-The user name to access the proxy server.
- 
-**Password**
+   ![The Dropbox sign-in page](../../../static/img/connectiondropboxdropboxsignin.png)
 
-The password to access the proxy server.
+10. Allow the app to access the Dropbox account.
+11. Click _OK_ to save the Connection.
+12. Click _Test_ on the ***Common settings*** tab.
+
+The test reports that it was successful.
+
+### Authentication and token expiry
+
+- _Authenticate_ runs on the computer where the Client runs. The browser opens there, and the Client listens for the sign-in result on the port of _Redirect Url_, so that port must be free on that computer
+- After the sign-in, the Connection stores the refresh token encrypted. At run time, the Server uses it to get a short-lived access token
+- When Dropbox no longer accepts the refresh token, the Server marks the Connection as expired, and the Client shows the message "Connection session expired". Open the Connection and click _Authenticate_ again
+
+### Proxy
+
+![Dropbox Connection, Proxy tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dropbox/Proxy.png)
+
+:::warning
+
+Cloud Tasks and the Cloud file Trigger do not use the ***Proxy*** tab of a Dropbox Connection. Only _Authenticate_ in the Client uses it. On a network where the Server reaches the Internet only through a proxy, Jobs that use a Dropbox Connection fail.
+
+:::
 
 ### Troubleshooting
 
-**400 Invalid Redirect URI**
+#### 400 Invalid Redirect URI
 
-Please use [http://localhost](http://localhost) and [http://localhost:9999](http://localhost:9999) for your redirect URI in your app on Dropbox.
+The redirect URI is not registered on the Dropbox app. Add the exact value of _Redirect Url_, by default "http://localhost:9999", as a redirect URI of the app.
+
+#### Token is empty, please check your connection details. Wrong redirect url?
+
+The sign-in did not return a token. Check _App Key_, _App Secret_ and _Redirect Url_, and check that no other program uses the port of _Redirect Url_ on the Client computer.

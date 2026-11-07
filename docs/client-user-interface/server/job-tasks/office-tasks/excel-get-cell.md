@@ -5,71 +5,56 @@ hide_title: 'true'
 
 ## Task Office - Excel - Get Cell
 
-The Excel - Get cell Task lets you extract data from certain worksheets, rows and colums.
+The Excel - Get cell Task reads the value of one cell, a range of cells or whole columns from a worksheet of an Excel workbook and writes the values to the output of the Task.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Get%20Cell.png)
+![Excel - Get cell Task settings, with the Credentials, Select Excel file, Worksheet and Cell coordinates groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Get%20Cell.png)
 
-**Credentials**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
- 
-**Select Excel file**
+The Task settings are on the ***Excel - Get cell*** tab and on the ***Output*** tab of the Task window.
 
-Select the full path to the Excel file.
+### Excel - Get cell tab
 
-**Password**
+- _Credentials_: The Credential used to read the workbook, for example on a network share; see [Credentials](../../global-credentials)
 
-Enter the password for the Excel file, if it is password protected.
+  Select a Credential in the combo box, or click the _Settings_ icon to add or edit Credentials.
+
+- _Select Excel file_: The full path of the workbook; it can contain Variables
+- _Password_: The password that opens a protected workbook, used only when the workbook is encrypted
 
 **Worksheet**
 
-**Use first worksheet** / **Use specific worksheet**
+- _Use first worksheet_: Reads the first worksheet
+- _Use specific worksheet_: Reads the worksheet with the name you enter or select
 
-Select **Use first worksheet** to use the first worksheet in the workbook. Select **Use specific worksheet** to choose a specific worksheet.
- 
-**Worksheet**
+  Click _Get_ to list the worksheets of the workbook in _Select Excel file_. The Client reads that file, so the path must be reachable from the computer that runs the Client. The name can contain Variables.
 
-Select the worksheet to access. Only available when **Use specific worksheet** is selected. Click the **Get** button to populate the list with worksheets from the selected file.
- 
 **Cell coordinates**
 
-**Cell by position**
+Row and column numbers start at "1".
 
-Returns the value of a single cell identified by its row and column position.
+- _Cell by position_: One cell, by _Row_ and _Column_
+- _Cell by reference (i.e. A3)_: One cell, by _Cell reference_, for example "A3"
+- _Cells by position range_: The cells from _Row_ and _Column_ to _End row_ and _End column_
+- _Cell by reference range (i.e. B2)_: The cells from _Cell reference_ to _End cell reference_, for example "B2" to "D10"
+- _Get all cells_: Every row of the worksheet, for the first columns up to _Number of columns_
+- _Get by column numbers_: Every row of the worksheet, for the columns in _Column numbers_
 
-* **Row** — The row number of the cell.
-* **Column** — The column number of the cell.
+  Separate column numbers with commas and give ranges with a hyphen, for example `1,3,5-7`.
 
-**Cell by reference (i.e. A3)**
+All coordinate fields can contain Variables.
 
-Returns the value of a single cell identified by its reference.
+### Output tab
 
-* **Cell reference** — The cell reference (for example, A3).
+These settings shape the output of the Task:
 
-**Cells by position range**
+- _Field separator_: The character between cells of a row, "Tab" by default
+- _Text qualifier_: None (the default), `"` or `'`, written around every cell value of a range
+- _Line break_: The character between rows, "CrLf" by default
+- _Include column names_: Adds a first line with the column letters ("A", "B" and so on)
 
-Returns the values of a range of cells identified by row and column positions.
+  It has no effect with _Get by column numbers_.
 
-* **Row** — The starting row of the range.
-* **End row** — The ending row of the range.
-* **Column** — The starting column of the range.
-* **End column** — The ending column of the range.
+### Output and errors
 
-**Cell by reference range (i.e. B2)**
-
-Returns the values of a range of cells identified by cell references.
-
-* **Cell reference** — The starting cell reference of the range.
-* **End cell reference** — The ending cell reference of the range.
-
-**Get all cells**
-
-Returns all cell values up to a specified number of columns.
-
-* **Number of columns** — The number of columns to include in the result.
-
-**Get by column numbers**
-
-Returns cell values from specified column numbers.
-
-* **Column numbers** — The column numbers to retrieve.
+The output of the Task is the text of the cells as Excel displays it, with the rows separated by the _Line break_ character. A workbook, worksheet or cell that cannot be read stops the Task with an error.

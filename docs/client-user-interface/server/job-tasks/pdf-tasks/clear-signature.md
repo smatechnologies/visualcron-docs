@@ -5,44 +5,47 @@ hide_title: 'true'
 
 ## Task PDF - Clear Signature
 
-The PDF - Clear signature(s) Task removes all or specific signatures from a PDF document.
+The PDF - Clear signature(s) Task removes all signatures, or the signatures whose names match a filter, from PDF files.
 
-**Clear signature > Main settings** sub tab
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Clear%20Signature%20settings.png)
+### Clear signature(s): Main settings tab
 
-**All signatures**
+![Main settings tab of the Clear signature(s) Task, with the Remove signature(s) group and the Password for file(s) box](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Clear%20Signature%20settings.png)
 
-When checked, removes every signature in the document.
+- _All signatures_ (_Remove signature(s)_ group): removes every signature; this is the default
+- _Signature filters_: removes each signature whose name starts with one of the comma-separated words in the box
 
-**Signature filters**
+  Do not put a space after a comma: the space becomes part of the next word. Variables are supported.
 
-When *All signatures* is unchecked, only signatures whose names match this comma-separated filter are removed.
+- _Password for file(s)_: not used by this Task
 
-**Password for file(s)**
+  The Task cannot process an encrypted file; see [Output and errors](#output-and-errors).
 
-If any of the specified PDF files is password protected, enter the password here.
+### File filter tab
 
-**Clear signature > File filter > Location** sub tab
+The ***File filter*** tab selects the PDF files to remove signatures from; see [File Filter](../../job-tasks-file-filter). If the filter has a Credential, the Task uses it while it reads and writes the files. When the logon with the Credential fails, the Task continues as the account that runs the Server and writes the error to the Server log.
 
-This tab uses the common [file filter](../../job-tasks-file-filter.md) to choose which PDF files should be processed in this Task.
+### Destination tab
 
-**Clear signature > Destination** sub tab
+![Destination tab of the Clear signature(s) Task, with the Save to.. group and the Folder and File mask boxes](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Clear%20Signature%20destination.png)
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Clear%20Signature%20destination.png)
+- _Same file_ (_Save to.._ group): saves the changed file over the source file
+- _Same folder but use file mask_: saves the changed file in the folder set on the ***File filter*** tab, named by _File mask_
+- _Different folder and use file mask_: saves the changed file in _Folder_, named by _File mask_
+- _Folder_: the destination folder for _Different folder and use file mask_; click the folder button to browse
+- _File mask_: builds the new file name from the source file name, by the renaming standard set in [Main - Settings](../../main-settings)
 
-**Save to**
+  The default `*` keeps the source file name.
 
-Selects where the modified PDF is written. Available options:
+:::warning
 
-* _Save to same file_ - overwrite the source PDF in place
-* _Same folder with file mask_ - keep the original folder, but save under a different name (set the *File mask* below)
-* _Different folder with file mask_ - save under a different name in a different folder (set both *Folder* and *File mask* below)
+_Same file_ replaces the source file. With the default _File mask_ `*`, _Same folder but use file mask_ also replaces a source file that is in the File filter folder. A file that already has the new name is replaced without a prompt.
 
-**Folder**
+:::
 
-The destination folder. Enabled when *Save to* is set to _Different folder with file mask_. Click the *Folder* icon to browse for the folder.
+When _Include sub folders_ is checked on the File filter, _Same folder but use file mask_ saves every result in the File filter folder, not in the subfolder the source file came from.
 
-**File mask**
+### Output and errors
 
-The file mask used to name the output file. Enabled when *Save to* is set to _Same folder with file mask_ or _Different folder with file mask_.
+The Task output lists the path of each file it saves. A file that has no signature, or is encrypted, raises an error. With _Same folder but use file mask_ or _Different folder and use file mask_, the Task copies the source file to the destination before it checks it, so the copy stays there unchanged when the check fails.

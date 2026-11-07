@@ -5,59 +5,56 @@ hide_title: 'true'
 
 ## Task XML - Sign
 
-The XML - Sign Task signs an XML file with a specified key.
- 
-**XML Sign > File filter** sub tab
+The XML - Sign Task adds an XML digital signature to the XML files that its File filter selects, using a certificate from the VisualCron certificate store.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Sign.png)
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-The XML Sign Task uses the standard VisualCron [File filter](../../../server/job-tasks-file-filter) to define the properties of the listed files.
- 
-**XML Sign > Destination** sub tab
+:::warning
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Sign%20Destination.png)
+With the default **Save to..** option _Same folder but use file mask_ and the default _File mask_ `*`, the signed file gets the name of the source file in the same folder, so it replaces the source file. _Same file_ also replaces the source file. To keep the source files, set a different _File mask_, such as `*_signed.xml`, or save to a different folder.
+
+With "HMAC", the default _Signature method_, the signing key is made from the certificate itself and not from its private key, so anyone who has a copy of the certificate can create a signature that matches. To sign with the private key of the certificate, select "Signature".
+
+When the File filter finds no file, no error is raised, and the Task reports success. To have it fail the Task, select "All errors" on the ***On error*** tab; see [Task - On Error](../../task-on-error).
+
+:::
+
+### Sign: File filter tab
+
+![Sign tab, File filter sub tab, with the Location settings of the File filter](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Sign.png)
+
+The File filter selects the files to sign; see [File Filter](../../job-tasks-file-filter). The Credential of the File filter is used to read and save the files.
+
+### Sign: Destination tab
+
+![Sign tab, Destination sub tab, with the XML sign parameters, Certificate and Save to settings](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/XML%20Tasks/Sign%20Destination.png)
 
 **XML sign parameters**
 
-**Signature type**
+- _Signature type_: Where the signature is placed. The default is "Enveloped"
+    - "Enveloped": The signature is added inside the signed document
+    - "Enveloping": The signed document is placed inside the signature
+    - "Detached": The saved file contains only the signature
+- _Canonicalization method_: How the XML is converted to its canonical form before it is signed. The options are "Canonical" (the default), "Canonical with comments", "Canonical v1.1", "Canonical with comments v1.1", "Exclusive canonical", "Exclusive canonical with comments" and "Minimal canonical"
+- _Signature method_: Select "HMAC" (the default) or "Signature", then select the algorithm in the list next to it. The list next to the option that is not selected is not available
+    - "HMAC": "MD5", "SHA1" (the default), "SHA224", "SHA256", "SHA384", "SHA512" or "RIPEMD160"
+    - "Signature": "DSS", "RSA SHA1" (the default), "RSA MD5", "RSA SHA256", "RSA SHA384", "RSA SHA512" or "RSA RIPEMD160"
 
-Select the XML digital signature type to be used.
- 
-**Canonicalization method**
-
-Select method for converting data into a "standard", "normal", or canonical form.
- 
-**Signature method**
-
-Select the main signature method type and the desired sub type:
-
-* **HMAC** — Select this radio button to use an HMAC-based algorithm, then choose the specific HMAC method from the dropdown. The HMAC method dropdown is only enabled when HMAC is selected.
-* **Signature** — Select this radio button to use an asymmetric signature algorithm, then choose the specific signature method from the dropdown. The signature method dropdown is only enabled when Signature is selected.
- 
 **Certificate**
 
-In order to sign you need a certificate that includes a private key. Click the *Settings* icon to open the *Manage Certificates* dialog where a certificate is selected, imported or created.
- 
-**Include public key**
+- _Certificate_: The certificate to sign with. Select a certificate in the list, or click the icon next to it to open _Manage Certificates_, where a certificate is selected, imported or created; see [Global - Certificates](../../global-certificates). With "Signature", the certificate must include a private key
+- _Include public key_: When selected, the certificate is included in the signature, so that the receiver can check the signature without a copy of it
+- _Key name_: A text that identifies the key to the receiver, written to the `KeyName` element of the signature. It can be a key name, a key index, a distinguished name or an e-mail address. White space in the text is kept
 
-Specifies whether the key itself (its public part) must be included to the signature.
- 
-**Key name**
+**Save to..**
 
-Enter the public key name to be able to decrypt. The KeyName element contains a string value (in which white space is significant) which may be used by the signer to communicate a key identifier to the recipient. Typically, KeyName contains an identifier related to the key pair used to sign the message, but it may contain other protocol-related information that indirectly identifies a key pair. Common uses of KeyName include simple string names for keys, a key index, a distinguished name (DN), an email address, etc.
- 
-**Save to**
+- _Same file_: The signed file replaces the source file
+- _Same folder but use file mask_: The default. The signed file is saved in the folder of the File filter, with the name that _File mask_ gives
+- _Different folder and use file mask_: The signed file is saved in _Folder_, with the name that _File mask_ gives
+- _Folder_: The destination folder. Available with _Different folder and use file mask_
+- _File mask_: The name of the signed file. `*` keeps the name of the source file. Available with both file mask options
 
-Select where to save the signed output file:
+### Output and errors
 
-* **Same file** — Overwrites the original source file.
-* **Same folder but use file mask** — Saves to the same folder with a new file name specified in File mask.
-* **Different folder and use file mask** — Saves to a different folder with a new file name.
- 
-**Folder**
-
-The destination folder path. Only available when **Different folder and use file mask** is selected.
- 
-**File mask**
-
-The file name to use for the saved file. Available when **Same folder but use file mask** or **Different folder and use file mask** is selected.
+- The output of the Task contains the path of each signed file. When several files are signed, the paths follow each other without a separator
+- The files are signed one by one. When a file cannot be signed, for example because the certificate is not found, the Task fails, and the remaining files are not signed

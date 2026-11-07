@@ -13,14 +13,13 @@ Twitter integration described on this page is deprecated from **VisualCron v13.2
 
 ## Task Social - Twitter - Tweet
 
-The Twitter - Tweet Task publishes tweet in Twitter.
+The Twitter - Tweet Task publishes a tweet in Twitter.
 
-![](../../../../../static/img/tasksocialtwittertweet.png)
+![Twitter - Tweet tab, Message sub tab with the Connection and the Message box](../../../../../static/img/tasksocialtwittertweet.png)
 
-**Connection**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To use Twitter Tasks you need to create a Connection first. You do that in the [Twitter Connection](../../../server/connection-twitter) dialog.
- 
-**Message**
+### Twitter - Tweet: Message tab
 
-The tweet to be published.
+- _Connection_: the Twitter Connection to use; see [Twitter Connection](../../../server/connection-twitter)
+- _Message_: the tweet to publish

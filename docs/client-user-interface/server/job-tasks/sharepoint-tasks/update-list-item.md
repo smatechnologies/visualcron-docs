@@ -2,25 +2,30 @@
 sidebar_label: 'Task Sharepoint - Update List Item'
 hide_title: 'true'
 ---
+## Task SharePoint - Update List Item
 
-## Task Sharepoint - Update List Item
- 
-The SharePoint - Update List Item Task updates an item in a list in the SharePoint library.
+The SharePoint - Update list item Task changes the values of fields in one item of a list on a SharePoint site, using a SharePoint Connection.
 
-* SharePoint 2010
-* SharePoint 2013
-* SharePoint Online
+The SharePoint Tasks work with SharePoint 2010, 2013 and 2016 on premises, and with SharePoint Online.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Update%20List%20Item.png)
+![Update list item tab with the Connection, the List item Id (full path) box and the Field(s) grid](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Update%20List%20Item.png)
 
-**Connection**
+:::warning
 
-To use SharePoint Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
- 
-**List item Id (full path)**
+This Task uses a SharePoint Connection; see [Connection - SharePoint](../../connection-sharepoint). When a certificate is selected in the Connection, the Task accepts any server certificate, and each run of a SharePoint Task changes TLS handling for the whole Server process.
 
-The full path identifier of the list item to update. Click the *Folder* icon to browse a SharePoint site and select a specific item.
- 
-**Field(s)**
+:::
 
-The grid lists the available fields for the selected list item. Each row has a **Use** checkbox, a **Name** column showing the field name, and a **Value** column where you enter the updated value for that field. Check the **Use** checkbox for each field you want to update. Click the *Refresh fields* button to populate the grid with all available fields from the list associated with the selected item.
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
+
+### Update list item tab
+
+- _Connection_: the SharePoint Connection to use. The button next to the list manages Connections
+- _List item Id (full path)_: the item to update, as a path that ends with the title of the list and the ID of the item, as in `<list title>/<item ID>`. The button next to the box opens a browser of the site to select the item. The list is found by the next-to-last part of the path, so that part must be the title of the list
+- _Field(s)_: one row for each field of the list, with the columns _Use_, _Name_ and _Value_. Check _Use_ and enter a _Value_ for each field to change. Fields that are not checked keep their values. Click _Refresh fields_ to fill the grid with the fields of the list of the item
+
+Variables are resolved in _List item Id (full path)_, _Name_ and _Value_.
+
+### Output and errors
+
+The Task does not write output. When the list, the item or a field does not exist, the Task fails with the error from SharePoint.

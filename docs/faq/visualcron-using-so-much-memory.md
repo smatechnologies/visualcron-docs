@@ -5,6 +5,6 @@ hide_title: 'true'
 
 ## Why Is VisualCron Using So Much Memory?
 
-VisualCron is written in a .NET-language. Programs, which run under the .NET Framework have different memory handling. The memory handling is called Garbage Collection and it's handled automatically by the .NET Framework. When starting a .NET-application, the .NET-Framework allocates some memory, often more than needed. Memory is automatically freed when no longer needed by the application. Freeing memory takes system resources and is nothing that you want to do all the time.
- 
-Often only memory is freed when it's really needed. This may result in that the .NET application may appear to use more resources than it really does. The bottom line is that you don't have to worry about this as long as an application does not increase in memory in regular intervals - then it may be a problem (memory leak).
+VisualCron is written in a .NET language. Programs that run under the .NET Framework handle memory through garbage collection, which the .NET Framework manages automatically. When a .NET application starts, the .NET Framework reserves some memory, often more than the application needs. Memory that the application no longer needs is freed automatically. Freeing memory uses system resources, so it does not happen all the time.
+
+Memory is often freed only when it is needed elsewhere, so a .NET application can appear to use more memory than it really does. This is normal. It can be a problem only if the memory use keeps growing at regular intervals, which can point to a memory leak.

@@ -2,27 +2,42 @@
 sidebar_label: 'Job Folders'
 hide_title: 'true'
 ---
-
 ## Job Folders
 
-Job folders were introduced in version 8.3.5. With Job folders you can create a folder structure which you can reference Jobs to. When you click on that Job folder only the the Jobs, that belongs to that folder, will be filtered in the main grid.
- 
-Job folders are located in the left pane of the main window. You can right click in that window to create new folders. You can right click on a folder create a sub folder. Right click to Delete or Rename a folder.
- 
-In the right Job pane you can either right click on Add to folder and select a Job folder to add to. Once added you will have a selection mark next to the folder name in the popup menu. You can also drag one Job from the right pane into a Job folder in the left pane.
+Job folders let you sort Jobs into a folder structure of your own. A Job can be in several folders. When you click a folder, the main grid shows only the Jobs in that folder; ***All Jobs*** shows every Job. The ***Favorites*** folder is always there and cannot be deleted.
 
-![](../../static/img/Client%20User%20Interface/Status%20Bar/Folders.png)
+The Job folders pane is at the left of the main window. To show or hide it, use _Show Job folders_ on the ***Grid*** tab of [Client settings](file/client-settings), or right-click the pane and click ***Hide Job folders***.
 
-## Adding Jobs to a folder
+![The Job folders pane with the Favorites, All Jobs and user-created folders](../../static/img/Client%20User%20Interface/Status%20Bar/Folders.png)
 
-There are two ways to add Jobs to a folder, depending on whether you right click a single Job or a Job group in the main grid.
+### Manage folders
 
-To add a single Job, right click the Job in the right Job pane and choose Add to folder, then select a Job folder. Once added, a selection mark is shown next to the folder name in the popup menu, so you can see at a glance which folders the Job already belongs to. You can also drag a single Job from the right pane into a Job folder in the left pane.
+Right-click in the Job folders pane. The menu items name the folder you right-clicked:
 
-To add a whole group at once, right click the Job group header and choose Add to folder, then select a Job folder. Every Job in that group is added to the folder in one step. The group popup menu does not display a selection mark, because a group can contain many Jobs that each belong to different folders.
+- ***Add folder to root***, or `Add folder to folder '<folder name>'` on a folder: creates a folder, or a subfolder in that folder, on the current Server
+- `Rename folder '<folder name>'`: renames the folder
+- `Delete folder '<folder name>' and all sub folders`: deletes the folder and its subfolders at once, without a confirmation
+- ***Delete all folders***: deletes all Job folders, after a confirmation
 
-## Removing Jobs from a folder
+On ***Favorites*** and ***All Jobs***, rename and delete are unavailable.
 
-To remove a single Job from a folder, right click the Job and choose Add to folder. The folders the Job already belongs to are shown with a selection mark. Click a marked folder to remove the Job from it. Because the Favorites folder cannot be deleted, this is also how you remove a Job from Favorites.
+:::warning
 
-To remove all Jobs in a group from a folder, first right click the group header and choose Select all Jobs. Then right click one of the selected Jobs, choose Add to folder, and click the marked folder. The action applies to every selected Job, so the entire group is removed in a single step.
+Renaming or deleting a folder applies to every Server the Client is connected to, not only the current one. Deleting a folder does not delete its Jobs; they are only removed from the folder, and the folder assignments are lost.
+
+:::
+
+You need permission to edit the Server settings.
+
+### Add Jobs to a folder
+
+To add one Job, right-click it in the main grid, click ***Add to folder*** and select a folder. The folders the Job is already in are shown with a check mark. You can also drag a Job from the main grid onto a folder in the Job folders pane.
+
+To add a whole Job group, right-click the Job group row, click ***Add to folder*** and select a folder. Every Job in the group is added. The group menu shows no check marks, because the Jobs in a group can be in different folders.
+
+### Remove Jobs from a folder
+
+- While a folder is selected in the Job folders pane, right-click the Job, or several selected Jobs, and click `Remove from folder '<folder name>'`
+- Or right-click the Job, click ***Add to folder*** and click a checked folder to clear it. This is also how you remove a Job from ***Favorites***
+
+To remove all Jobs in a Job group from a folder, right-click the Job group row and click ***Select all Jobs***. Then right-click one of the selected Jobs, click ***Add to folder*** and click the checked folder.

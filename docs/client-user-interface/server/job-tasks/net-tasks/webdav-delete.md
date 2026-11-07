@@ -5,22 +5,38 @@ hide_title: 'true'
 
 ## Task Net - WebDAV - Delete
 
-The WebDAV - Delete lets you delete, one or more, files or folders. Web-based Distributed Authoring and Versioning (WebDAV) is a set of methods based on the Hypertext Transfer Protocol (HTTP) that facilitates collaboration between users in editing and managing documents and files stored on World Wide Web servers.
+The WebDAV - Delete Task deletes files or folders in a folder on a WebDAV server.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/WebDAV%20-%20Delete.png)
+![WebDAV - Delete Task settings, with the Connection group and the Delete settings group](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/WebDAV%20-%20Delete.png)
 
-**Connection**
+:::warning
 
-All WebDAV Tasks use connection settings from a Connection. In Connections you can create a new WebDAV connection with all other details like Proxy. In the combo box you select the Connection after creation.
+This Task uses a WebDAV Connection; see [Connection - WebDAV](../../connection-webdav). Any server certificate is accepted, so the Server cannot tell the real server from another server that answers at the same address. _Port_ is the local port, not the port of the server.
 
-**Relative folder/file URL**
+A new WebDAV Connection has _Authentication type_ "Basic", which sends the user name and password in a form that anyone who can see the traffic can read, unless the address starts with "https://"; see [Connection - WebDAV](../../connection-webdav).
 
-The relative path (within the WebDAV server) to the base folder or file to delete. Use the folder browse button to select a folder from the server (a Connection must be selected first).
+:::
 
-**File/folder mask**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-Filters which files or folders to delete. Use the exact name or a wildcard pattern (e.g. `*` for all, `*.csv` for CSV files only). Use the file browse button to populate this field from a selected file. Default is `*`.
+- _Connection_: the WebDAV Connection with the server address, sign-in and proxy settings
+- _Relative folder/file URL_: the base folder, relative to the address of the Connection
 
-**Delete filter**
+  Use the folder browse button to select a folder from the server; select a Connection first.
 
-Controls what type of items to delete. Options: Files (default), Folders, All.
+- _File/folder mask_: the items to delete, `*` by default
+
+  Enter an exact name, which is matched without regard to case, or a wildcard pattern such as `*` for all items or `*.csv` for CSV files. Use the file browse button to fill it from a file. Only the items directly in the base folder are matched.
+
+- _Delete filter_: what to delete:
+  - "Files" (default): the matching files
+  - "Folders": the matching folders, each with all its contents
+  - "All": the matching files and folders, and then the base folder itself, with everything left in it
+
+The output lists each item that was deleted. The base folder that "All" deletes is not listed.
+
+:::warning
+
+With _Delete filter_ "All", the Task deletes the base folder in _Relative folder/file URL_ and everything in it, including items that do not match _File/folder mask_. To keep the folder, use "Files" or "Folders". With "Folders" and the mask `*`, every folder in the base folder is deleted with its contents.
+
+:::

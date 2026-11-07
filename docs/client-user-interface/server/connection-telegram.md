@@ -5,88 +5,63 @@ hide_title: 'true'
 
 ## Connection - Telegram
 
-The Telegram Connection uses the free, cloud-based instant messaging service Telegram. Telegram client apps exist for Android, iOS, Windows Phone, Windows NT, macOS and Linux. Users can send messages and exchange photos, videos, stickers, audio and files of any type. Telegram also provides optional end-to-end encrypted messaging.
+The Telegram Connection stores the sign-in settings that the [Telegram - User Send message](job-tasks/messaging-tasks/telegram-user-send-message) Task uses to connect to Telegram.
+
+### Set up the Telegram Connection
+
+The Connection needs your own Telegram app and the phone number of the Telegram account. To set it up, complete the following steps:
+
+1. On ***Main settings***, click _Create an app in my.telegram.org_. The Telegram app registration page opens.
+2. Create a Telegram app.
+3. Enter the app_id of the app in _App app_id_.
+4. Enter the api_hash of the app in _App api_hash_.
+5. On ***Common settings***, enter the phone number of the Telegram account, with the country code, in _Number_.
+6. Click _Test_. VisualCron requests a login code, and the code is sent to the account.
+7. On ***Main settings***, enter the login code in _Code_.
+8. Click _OK_.
+
+The Connection is saved with the login code and is ready for the Task.
  
-The Telegram Connection is used in the following Task:
+### Common settings
 
-* [Telegram - User Send message](../../client-user-interface/server/job-tasks/messaging-tasks/telegram-user-send-message)
- 
-### Setting up a Telegram application
+![Telegram Connection, Common settings tab with the Protocol and Information groups](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Telegram/Telegram.png)
 
-To use the Telegram Connection you need your own Telegram app. Create one [here](https://my.telegram.org/auth?to=apps) and then enter the *App app_id* and *App api_hash* values from the app in the *Connection settings > Main settings* tab.
- 
-When you authenticate the Connection, a login code is requested and sent to you. Enter that code in the *Code* field and save the Connection.
- 
-**Manage Connections > Add > Telegram > Common settings** tab
+The ***Common settings*** and ***Proxy*** tabs are the same for every Connection type that has them; see [Common settings](global-connections#common-settings) and [Proxy](global-connections#proxy). On a Telegram Connection, the first field is _Number_ instead of _Name_.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Telegram/Telegram.png)
+_Number_
 
-**Name**
+The phone number of the Telegram account that sends the messages, with the country code. VisualCron logs on to Telegram with this number.
 
-A descriptive name for the connection to distinguish it from other connections.
+_Test_
 
-**Group**
+Requests a login code for the account in _Number_. When the request succeeds, a message asks you to enter the code in _Code_ and save the Connection.
 
-The group that the connection is a part of.
+### Main settings
 
-**Timeout**
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-The connection timeout in seconds. Connection will fail after this time period.
- 
-**Code page**
+The ***Connection settings*** tab holds two tabs: ***Main settings*** and ***Proxy***.
 
-Code page being used.
+![Telegram Connection, Main settings tab with the Credentials group](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Telegram/Settings.png)
 
-The **Connection settings** tab is divided into two sub-tabs: **Main settings** and **Proxy**.
+The screenshot shows a _Use VisualCron registered app_ box from an earlier version. The current Client does not have it, and the Connection always uses your own Telegram app.
 
-**Manage Connections > Add > Telegram > Connection settings > Main settings** tab
+_App app_id_
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Telegram/Settings.png)
+The app_id of your Telegram app.
 
-The **Credentials** group contains the following fields:
- 
-**App app_id**
+_App api_hash_
 
-Copy this value from the settings of your app online.
- 
-**App api_hash**
+The api_hash of your Telegram app.
 
-Copy this value from the settings of your app online.
- 
-**Code**
+_Code_
 
-The login code that is sent to you when you authenticate the Connection. Enter it here and save the Connection.
+The login code that _Test_ requests. Enter it, then click _OK_.
 
-**Create an app in my.telegram.org**
+_Create an app in my.telegram.org_
 
-A link that opens the Telegram app registration page where you can create your own Telegram app to obtain the App app_id and App api_hash values.
+Opens the Telegram app registration page in the web browser.
 
-**Manage Connections > Add > Telegram > Connection settings > Proxy** tab
+### Proxy
 
-**Proxy type**
-
-Select the proxy type to be used.
-
-**Address**
-
-The host name or IP address of the proxy server.
-
-**Port**
-
-The port of the proxy server.
-
-**Use credentials**
-
-The credentials that are associated with the account.
-
-**Domain**
-
-The domain of the proxy server.
-
-**Username**
-
-The user name to access the proxy server.
-
-**Password**
-
-The password to access the proxy server.
+The Telegram - User Send message Task uses the settings on this tab.

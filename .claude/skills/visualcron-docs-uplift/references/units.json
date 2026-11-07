@@ -1,0 +1,458 @@
+{
+  "_about": [
+    "The fixed partition of visualcron-docs/docs into assessment units.",
+    "Patterns are fnmatch globs relative to docs/. FIRST MATCH WINS, in the order listed, so put specific units before catch-alls.",
+    "scripts/units.py resolves these and refuses to report if any page is unmatched.",
+    "Changing a unit's patterns after its pre-assessment breaks pre/post comparability for that unit. If you must, bump 'version' and say so in the post report."
+  ],
+  "version": "1.0",
+  "units": [
+    {
+      "slug": "changelog",
+      "title": "Change log",
+      "scored": false,
+      "note": "Input signal for drift, not a page to grade. Historical entries are a release record and are never edited to satisfy style.",
+      "include": [
+        "changelog.md"
+      ]
+    },
+    {
+      "slug": "tasks-robot",
+      "title": "Robot Task and activities",
+      "include": [
+        "client-user-interface/server/job-tasks/interactivity-tasks/robot-task/*"
+      ]
+    },
+    {
+      "slug": "tasks-process",
+      "title": "Process Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks-task-process-*.md"
+      ]
+    },
+    {
+      "slug": "tasks-active-directory",
+      "title": "Active Directory Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/active-directory-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-amazon-ec2",
+      "title": "Amazon EC2 Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/amazon-ec2-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-azure",
+      "title": "Azure Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/azure-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-cloud-transfer",
+      "title": "Cloud transfer Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/cloud-transfer-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-database",
+      "title": "Database Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/database-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-dynamics-crm",
+      "title": "Dynamics CRM Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/dynamics-crm-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-encryption",
+      "title": "Encryption Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/encryption-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-event-log",
+      "title": "Event Log Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/event-log-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-exchange",
+      "title": "Exchange Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/exchange-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-file",
+      "title": "File Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/file-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-hyper-v",
+      "title": "Hyper-V Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/hyper-v-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-iis",
+      "title": "IIS Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/iis-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-image",
+      "title": "Image Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/image-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-informatica",
+      "title": "Informatica Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/informatica-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-interactivity",
+      "title": "Interactivity Tasks (excluding Robot)",
+      "include": [
+        "client-user-interface/server/job-tasks/interactivity-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-internal",
+      "title": "Internal Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/internal-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-messaging",
+      "title": "Messaging Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/messaging-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-msmq",
+      "title": "MSMQ Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/msmq-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-net",
+      "title": "Net Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/net-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-office",
+      "title": "Office Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/office-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-office365",
+      "title": "Office 365 Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/office365-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-pdf",
+      "title": "PDF Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/pdf-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-reporting",
+      "title": "Reporting Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/reporting-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-sap",
+      "title": "SAP Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/sap-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-service",
+      "title": "Service Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/service-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-sharepoint",
+      "title": "SharePoint Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/sharepoint-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-snmp",
+      "title": "SNMP Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/snmp-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-social",
+      "title": "Social Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/social-tasks/*"
+      ],
+      "note": "Mostly Twitter pages. The 13.2.1 changelog says the Twitter integration was removed; the pages are labeled deprecated. Removing published pages is an owner decision, not a finding to close by deletion."
+    },
+    {
+      "slug": "tasks-string",
+      "title": "String Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/string-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-system-restore",
+      "title": "System Restore Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/system-restore-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-system",
+      "title": "System Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/system-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-virtual-server",
+      "title": "Virtual Server Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/virtual-server-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-vmware",
+      "title": "VMware Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/vmware-tasks/*"
+      ]
+    },
+    {
+      "slug": "tasks-xml",
+      "title": "XML Tasks",
+      "include": [
+        "client-user-interface/server/job-tasks/xml-tasks/*"
+      ]
+    },
+    {
+      "slug": "task-framework",
+      "title": "Task settings shared by every Task type",
+      "include": [
+        "client-user-interface/server/job-tasks.md",
+        "client-user-interface/server/job-tasks-*.md",
+        "client-user-interface/server/task-*.md",
+        "client-user-interface/server/global-task-repository.md"
+      ]
+    },
+    {
+      "slug": "triggers-event",
+      "title": "Event Triggers",
+      "include": [
+        "client-user-interface/server/event-trigger*.md"
+      ]
+    },
+    {
+      "slug": "triggers-time",
+      "title": "Time Triggers",
+      "include": [
+        "client-user-interface/server/time-trigger*.md",
+        "client-user-interface/server/interval-time-trigger.md",
+        "client-user-interface/server/custom-time-trigger.md",
+        "client-user-interface/server/job-triggers.md"
+      ]
+    },
+    {
+      "slug": "connections",
+      "title": "Connections",
+      "include": [
+        "client-user-interface/server/connection-*.md",
+        "client-user-interface/server/global-connections.md"
+      ]
+    },
+    {
+      "slug": "conditions",
+      "title": "Conditions",
+      "include": [
+        "client-user-interface/server/condition-*.md",
+        "client-user-interface/server/conditions-*.md",
+        "client-user-interface/server/global-conditions.md",
+        "client-user-interface/server/job-conditions.md"
+      ]
+    },
+    {
+      "slug": "variables",
+      "title": "Variables",
+      "include": [
+        "client-user-interface/server/global-variables.md",
+        "client-user-interface/server/global-date-time-variables.md",
+        "client-user-interface/server/job-variables.md"
+      ]
+    },
+    {
+      "slug": "security-permissions",
+      "title": "Security, users, and permissions",
+      "include": [
+        "security.md",
+        "security/*",
+        "client-user-interface/server/main-user-permissions.md",
+        "client-user-interface/server/supported-permissions.md",
+        "client-user-interface/server/settings-users*.md",
+        "client-user-interface/server/global-credentials.md",
+        "client-user-interface/server/global-certificates.md",
+        "client-user-interface/server/global-pgp-key-rings.md",
+        "client-user-interface/server/global-ssh-keys.md"
+      ]
+    },
+    {
+      "slug": "job-properties",
+      "title": "Job settings",
+      "include": [
+        "client-user-interface/server/job-*.md",
+        "client-user-interface/server/jobs-jobs.md"
+      ]
+    },
+    {
+      "slug": "global-objects",
+      "title": "Other global objects",
+      "include": [
+        "client-user-interface/server/global-*.md"
+      ]
+    },
+    {
+      "slug": "server-settings",
+      "title": "Server settings and information",
+      "include": [
+        "client-user-interface/server/*"
+      ]
+    },
+    {
+      "slug": "client-job-list",
+      "title": "Client: Server/Group/Job/Task area",
+      "include": [
+        "client-user-interface/server-group-job-task-area/*"
+      ]
+    },
+    {
+      "slug": "client-servers",
+      "title": "Client: Servers (including MFT)",
+      "include": [
+        "client-user-interface/servers/*"
+      ]
+    },
+    {
+      "slug": "client-tools",
+      "title": "Client: Tools",
+      "include": [
+        "client-user-interface/tools/*"
+      ]
+    },
+    {
+      "slug": "client-shell",
+      "title": "Client: menus, toolbar, interface, help, about",
+      "include": [
+        "client-user-interface/*"
+      ]
+    },
+    {
+      "slug": "api-and-cli",
+      "title": ".NET API, Web API, PowerShell, and command line",
+      "include": [
+        "using-visualcron/visualcron-api.md",
+        "using-visualcron/visualcron-web-api.md",
+        "using-visualcron/powershell.md",
+        "using-visualcron/vccommand.md",
+        "using-visualcron/dot-net-csharp-vbnet.md",
+        "commands/*"
+      ]
+    },
+    {
+      "slug": "licensing",
+      "title": "Licensing and maintenance",
+      "include": [
+        "using-visualcron/*licens*",
+        "using-visualcron/maintenance*",
+        "using-visualcron/trial-time.md",
+        "using-visualcron/individual-node-activation.md"
+      ]
+    },
+    {
+      "slug": "clustering",
+      "title": "Clustered environments",
+      "include": [
+        "using-visualcron/*cluster*",
+        "using-visualcron/*iscsi*",
+        "using-visualcron/configure-roles-*",
+        "using-visualcron/*node*",
+        "using-visualcron/add-generic-service.md",
+        "using-visualcron/setup-failover-*"
+      ]
+    },
+    {
+      "slug": "using-visualcron",
+      "title": "Using VisualCron (general)",
+      "include": [
+        "using-visualcron/*"
+      ]
+    },
+    {
+      "slug": "install",
+      "title": "Get VisualCron and requirements",
+      "include": [
+        "get-visualcron/*",
+        "requirements.md"
+      ]
+    },
+    {
+      "slug": "support",
+      "title": "Troubleshooting, FAQ, logging",
+      "include": [
+        "troubleshooting/*",
+        "faq/*",
+        "debugging-and-logging.md"
+      ]
+    },
+    {
+      "slug": "site-root",
+      "title": "Landing, legal, definitions, examples",
+      "include": [
+        "*"
+      ],
+      "note": "Catch-all. Legal pages (terms-and-conditions.mdx, _eula.mdx, dora.md) are scored for links and front matter only; their wording is the legal owner's."
+    }
+  ]
+}

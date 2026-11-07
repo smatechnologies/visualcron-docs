@@ -5,20 +5,25 @@ hide_title: 'true'
 
 ## Task Amazon EC2 - List Snapshot
 
-The Amazon EC2 - List snapshots Task lists one or more of the Amazon EBS snapshots available to you. Snapshots available to you include public snapshots available for any AWS account to launch, private snapshots you own and private snapshots owned by another AWS account for which you've been given explicit create volume permissions.
+The Amazon EC2 - List snapshot(s) Task lists the Amazon EBS snapshots that are available to you and match a filter, using an Amazon Connection. Snapshots available to you include public snapshots, private snapshots that you own, and private snapshots owned by another AWS account that has given you explicit create volume permissions.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Amazon%20EC2%20Tasks/List%20Snapshot(s).png)
+![EC2 - List snapshot(s) Task settings, with the Connection and Filter fields](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Amazon%20EC2%20Tasks/List%20Snapshot(s).png)
 
-**Connection**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To use Amazon EC2 Tasks you need to create an Amazon [Connection](../../connection-amazon) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+### EC2 - List snapshot(s) tab
 
-**Filter**
-
-Filter for snapshots.
+- _Connection_: the Amazon Connection to use; see [Connection - Amazon](../../connection-amazon). Click the button next to the list to manage Connections. The Client asks you to select a Connection before it saves the Task
+- _Filter_: the filter for the snapshots, in the format of the example below. Variables are not resolved in this field
 
 :::tip Example
 
 `@{Name="owner-alias"; Values="self"}`
 
 :::
+
+### Output and errors
+
+The Task writes one line for each snapshot to the Task output, with these values separated by `|`: description, owner (AWS account) ID, progress, snapshot ID, start date, state, volume ID and volume size.
+
+When the Connection cannot be found, or Amazon returns an error, the Task fails. To change how the Task responds to errors, see [Task - On error](../../task-on-error).

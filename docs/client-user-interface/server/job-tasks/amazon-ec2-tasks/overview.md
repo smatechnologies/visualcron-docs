@@ -5,9 +5,17 @@ hide_title: 'true'
 
 ## Overview
 
-Amazon Elastic Compute Cloud (EC2) forms a central part of Amazon.com's cloud-computing platform, Amazon Web Services (AWS), by allowing users to rent virtual computers on which to run their own computer applications.
+Amazon Elastic Compute Cloud (EC2) is the part of Amazon Web Services (AWS) that rents out virtual computers, on which you run your own applications.
 
-The Amazon EC2 Tasks in VisualCron use an Amazon [Connection](../../connection-amazon) to supply the access key, secret access key and region. The same Amazon Connection is shared with the Amazon S3 cloud transfer Tasks.
+The Amazon EC2 Tasks manage EC2 instances, EBS snapshots and related resources. They use an Amazon [Connection](../../connection-amazon), the same Connection type that the Amazon S3 cloud transfer Tasks use.
+
+:::note
+
+The EC2 Tasks sign in with the _Access Key ID_ and _Secret Access Key_ of the Connection, connect to its _Region_, and use the settings on its ***Proxy*** tab. The other settings of the Connection, such as _Address_ and _Authentication type_, do not apply to them. Use "Password" authentication for a Connection that EC2 Tasks use, so that the Connection shows the _Access Key ID_ and _Secret Access Key_ fields.
+
+:::
+
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
 **Available EC2 Tasks**
 

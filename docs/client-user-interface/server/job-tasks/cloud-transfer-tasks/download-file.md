@@ -5,51 +5,56 @@ hide_title: 'true'
 
 ## Task Cloud Transfer - Download File
 
-The Cloud - Download file(s) Task downloads files from a cloud service such as Amazon S3, Box, Dropbox, Google Drive, Google Storage, Microsoft Azure or OneDrive to the local file system (or to a network path using a Credential).
+The Cloud - Download file(s) Task downloads files from a cloud service, Amazon S3, Box, Dropbox, Google Drive, Google Cloud Storage, Microsoft Azure or OneDrive, to a folder on the Server computer or a network share.
 
-**Download file(s) > Remote file filter** sub tab
+:::warning
 
-This Task uses the standard [Cloud Remote file filter](../../../server/job-tasks-cloud-remote-file-filter) to define the connection, bucket/container, source folder, item mask, date and size filters, sorting and result limit.
- 
-**Download file(s) > Destination** sub tab
+This Task uses a cloud Connection; see [Amazon S3](../../connection-amazon), [Box](../../connection-box), [Dropbox](../../connection-dropbox), [Google Drive](../../connection-google-drive), [Google Cloud Storage](../../connection-google-cloud), [Microsoft Azure](../../connection-microsoft-azure) or [OneDrive](../../connection-onedrive). The Amazon S3, Azure, Google Drive, Dropbox, Box and OneDrive Connections accept any server certificate, whatever _Auto-accept server certificates_ says. With Amazon S3, when a request fails with a particular secure-connection error, the Server repeats it without SSL, so that request and its data travel unencrypted.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Cloud%20Transfer%20Tasks/Download%20file(s).png)
+:::
 
-**Credential**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-When the destination is on a network share or any path that requires authentication, select a [Credential](../../global-credentials) here. The user name and password of the Credential are used to access the destination. Click *Manage credentials* to add or edit Credentials. Leave empty to use the VisualCron service account.
+### Download file(s) tab
 
-**Destination folder**
+#### Remote file filter sub tab
 
-The local folder where the downloaded files will be stored. Click the *Folder* icon to browse for the folder. This field is required.
+The Task uses the standard [Cloud Remote file filter](../../job-tasks-cloud-remote-file-filter) to choose the Connection, the bucket or container, the source folder, the item mask, the date and size filters, the sorting and the result limit. Every file the filter returns is downloaded; folders are not.
 
-**Download file mask**
+#### Destination sub tab
 
-A file mask applied to the downloaded files (default `*`). Used together with the source filter to control which of the matched items are actually written to the destination.
+The screenshot shows the ***Remote file filter*** sub tab.
 
-**Overwrite options**
+![Download file(s) tab with the Remote file filter Location sub tab](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Cloud%20Transfer%20Tasks/Download%20file(s).png)
 
-Controls how to handle files that already exist at the destination. Available options:
+- The Credential list: the [Credential](../../global-credentials) the Server uses to write to the destination, for example a network share. With "No Credential", the Server writes as its service account
+- _Destination folder_: The folder the files are written to. Required. Subfolders found by the filter are recreated under it. [Variables](../../global-variables) are resolved
+- _Download file mask_: Renames the downloaded files; `*` (the default) keeps each file's name. It does not select files: the filter does
+- _Overwrite options_: What to do when the file already exists at the destination:
+  - "Overwrite - always if existing": replace it. The default
+  - "Overwrite - if newer": replace it only if the source file is newer
+  - "Overwrite - if destination size is": replace it depending on the sizes, set in the list next to it
+  - "Do not overwrite if existing": skip the file
+- the list next to _Overwrite options_: with "Overwrite - if destination size is", when to replace the destination file:
+  - "Same": the destination has the same size as the source
+  - "Smaller": the destination is smaller than the source
+  - "Larger": the destination is larger than the source
+  - "Smaller or larger" or "Different": the sizes differ
+- _Keep modified/created date_: When selected, the created and modified dates of each downloaded file are set to the cloud file's modified date
+- _Delete source file after download_: When selected, each cloud file is deleted after it is downloaded. A file that is not downloaded, for example because _Overwrite options_ skips it, is not deleted
 
-* _Overwrite - always if existing_ - replace the destination file
-* _Overwrite - if newer_ - replace the destination file only if the source is newer
-* _Overwrite - if destination size is_ - replace the destination file based on a size comparison (enables the size comparison field below)
-* _Do not overwrite if existing_ - skip files that already exist at the destination
+:::warning
 
-**Size comparison**
+With the default, "Overwrite - always if existing", existing local files are replaced. When the Task replaces an existing local file, it empties that file before the download starts; if the download then fails, the local file is left empty or incomplete. With _Delete source file after download_ selected, the cloud files are deleted after they are downloaded.
 
-Only enabled when *Overwrite options* is set to _Overwrite - if destination size is_. Selects the size comparison criterion used to decide whether to overwrite:
+:::
 
-* _Same_
-* _Smaller_
-* _Larger_
-* _Smaller or larger_
-* _Different_
+### Output and errors
 
-**Keep modified/created date**
+The output lists the downloaded files.
 
-If checked, the modified and created dates from the source file in the cloud are preserved on the local copy.
+:::warning
 
-**Delete source file after download**
+If the source folder is not found, nothing is downloaded, and the Task reports success. With Google Drive, OneDrive and Box an error is written to standard error; with Amazon S3 and Google Cloud Storage nothing is written.
 
-When checked, the source file in the cloud is deleted after it has been successfully downloaded.
+:::

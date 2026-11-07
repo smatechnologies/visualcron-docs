@@ -5,24 +5,32 @@ hide_title: 'true'
 
 ## Explore - File Explorer
 
-With the main menu **Tools > Explore > File Explorer** option, you can view folders and files. The File Explorer behaves differently depending on if you are locally or remotely connected.
- 
-When you are remotely connected a different dialog will show that allows you to:
+The ***File Explorer*** browses the folders and files on the computer that runs the VisualCron Server.
 
-* Copy/Paste files and folders
-* Upload a local file or folder to a remote folder
-* Delete files and folders
-* Rename files and folders
-* Search for files remotely
- 
-**Tools > Explore > File Explorer**
+To open it, click ***Tools*** -> ***Explore*** -> ***File Explorer***.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/File%20Explorer.png)
+What opens depends on how the Client is connected:
 
-**Upload files and folders**
+- **Connected to a local Server**: the standard Windows Open window
+- **Connected to a remote Server**: the ***Remote explorer*** window, which lets you:
+  - copy and paste files and folders
+  - upload a local file or folder to a remote folder
+  - delete files and folders
+  - rename files and folders
+  - search for files on the Server
 
-Drag a file or a folder from a local folder into the File Explorer to copy a file/folder.
- 
-**Search files**
+![File Explorer opened as the Windows Open window on a locally connected Server](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/File%20Explorer.png)
 
-To search files use the field to the upper right and enter a value and press enter or search button. Press the search field X icon to clear a search result and revert back to original listing. Please note that we do not recommend searching a very large folder as it make take a long time and that the user interface will be blocked during that time.
+### Upload files and folders
+
+Drag a file or folder from a local folder into the remote explorer to copy it to the Server.
+
+### Search files
+
+Enter a value in the search field at the upper right and press Enter, or click the search button. Click the X in the search field to clear the result and return to the original listing.
+
+:::note
+
+Searching a very large folder can take a long time, and the Client does not respond while it searches.
+
+:::

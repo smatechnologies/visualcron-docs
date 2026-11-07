@@ -3,135 +3,124 @@ sidebar_label: 'Connection - SharePoint'
 hide_title: 'true'
 ---
 
-## Connection - Sharepoint
+## Connection - SharePoint
 
-The SharePoint Connection stores connect and logon properties for local SharePoint
-instances or the SharePoint online cloud service from Microsoft. 
+The SharePoint Connection stores the address, sign-in and security settings that these Tasks and Triggers use to connect to Microsoft SharePoint, on an on-premises server or in SharePoint Online:
 
-It is recommended for using On Prem server (Sharepoint 2016, etc), the "Sharepoint" connection.
+- [SharePoint - Create list](job-tasks/sharepoint-tasks/create-list)
+- [SharePoint - Delete list(s)](job-tasks/sharepoint-tasks/delete-list)
+- [SharePoint - Describe list](job-tasks/sharepoint-tasks/describe-list)
+- [SharePoint - Get list(s)](job-tasks/sharepoint-tasks/get-list)
+- [SharePoint - Update list](job-tasks/sharepoint-tasks/update-list)
+- [SharePoint - Add list item](job-tasks/sharepoint-tasks/add-list-item)
+- [SharePoint - Update list item](job-tasks/sharepoint-tasks/update-list-item)
+- [SharePoint - Delete list item(s)](job-tasks/sharepoint-tasks/delete-list-item)
+- [SharePoint - Get list item(s)](job-tasks/sharepoint-tasks/get-list-item)
+- [SharePoint - Upload file(s)](job-tasks/sharepoint-tasks/upload-file)
+- [SharePoint - Download file(s)](job-tasks/sharepoint-tasks/download-file)
+- [SharePoint - List file(s)](job-tasks/sharepoint-tasks/list-file)
+- [SharePoint - Delete file(s)](job-tasks/sharepoint-tasks/delete-file)
+- SharePoint - Create folder
+- The Sharepoint file Trigger
 
-It is recommended for using Sharepoint within the O365 environment, the "Sharepoint Online" connection. 
+The Client offers three types:
 
-Overall, the SharePoint Connection is used for the SharePoint Tasks:
+- _Sharepoint_: an on-premises server or SharePoint Online. Select the server with _Sharepoint version_
+- _Sharepoint Online_: SharePoint Online in Microsoft 365
+- _Sharepoint 2010_: the older on-premises editor. For an on-premises server, use the _Sharepoint_ type with _Sharepoint version_ "Sharepoint 2010/2013/2016" instead
 
-* [SharePoint - Create list](../../client-user-interface/server/job-tasks/sharepoint-tasks/create-list)
-* [SharePoint - Delete list(s)](../../client-user-interface/server/job-tasks/sharepoint-tasks/delete-list)
-* [SharePoint - Describe list](../../client-user-interface/server/job-tasks/sharepoint-tasks/describe-list)
-* [SharePoint - Get list(s)](../../client-user-interface/server/job-tasks/sharepoint-tasks/get-list)
-* [SharePoint - Update list](../../client-user-interface/server/job-tasks/sharepoint-tasks/update-list)
-* [SharePoint - Add list item](../../client-user-interface/server/job-tasks/sharepoint-tasks/add-list-item)
-* [SharePoint - Update list item](../../client-user-interface/server/job-tasks/sharepoint-tasks/update-list-item)
-* [SharePoint - Delete list item(s)](../../client-user-interface/server/job-tasks/sharepoint-tasks/delete-list-item)
-* [SharePoint - Get list item(s)](../../client-user-interface/server/job-tasks/sharepoint-tasks/get-list-item)
-* [SharePoint - Upload file(s)](../../client-user-interface/server/job-tasks/sharepoint-tasks/upload-file)
-* [SharePoint - Download file(s)](../../client-user-interface/server/job-tasks/sharepoint-tasks/download-file)
-* [SharePoint - List file(s)](../../client-user-interface/server/job-tasks/sharepoint-tasks/list-file)
-* [SharePoint - Delete file(s)](../../client-user-interface/server/job-tasks/sharepoint-tasks/delete-file)
+### Sharepoint type
 
-### SharePoint Instance
+#### Common settings
 
-**Manage Connections > Add > SharePoint > Common settings** tab
+![Sharepoint Connection, Common settings tab](../../../static/img/clip333444086.gif)
 
-![](../../../static/img/clip333444086.gif)
+The ***Common settings*** tab is the same for every Connection type that has it; see [Common settings](global-connections#common-settings).
 
-**Name**
+_Test_ asks the Server to sign in to the site in _Address_ with the current settings.
 
-The unique name for the Connection.
+#### Connection settings
 
-**Group**
+![Sharepoint Connection, Main settings tab](../../../static/img/clip333444087.gif)
 
-Connection's group name.
+_Sharepoint version_
 
-**Timeout**
+- "Sharepoint Online": SharePoint Online
+- "Sharepoint 2010/2013/2016": an on-premises SharePoint server
 
-The connection timeout in seconds. Connection will fail after this time period.
+_Address_
 
-**Code page**
+The address of the SharePoint site, for example `https://<tenant>.sharepoint.com/sites/<site>` for SharePoint Online. Use the site address, not the address of the SharePoint admin center.
 
-Code page being used.
+_Authentication type_
 
-**Manage Connections > Add > SharePoint > Connection settings** tab
-
-![](../../../static/img/clip333444087.gif)
-
-**SharePoint version**
-
-Select between SharePoint Online or a local installation (SharePoint 2010/2013/2016).
-
-**Address**
-
-SharePoint site's address (either on-premises or online). For SharePoint Online, use
-the site address from the SharePoint admin console — not the admin URL itself
-(e.g. `https://yourtenant.sharepoint.com/sites/yoursitename`).
-
-**Authentication type**
-
-Select the type of authentication on the SharePoint server:
-
-- **Default** — Windows authentication. Uses the running service account if the
-  username matches; otherwise uses the supplied credentials.
-- **Basic** — Standard username and password credentials.
-- **Form** — Forms-based authentication using a username and password login form.
-- **Anonymous** — No credentials required.
-- **ADFS** — Active Directory Federation Services authentication. Requires username,
-  password, and an STS URL (entered in the STS URL field).
+- "Default": with _Sharepoint version_ "Sharepoint 2010/2013/2016", Windows authentication. When _Username_ is the account that runs the Server, the Server's own credentials are used; otherwise _Username_ and _Password_ are used
+- "Basic": user name and password
+- "Form": forms-based sign-in with user name and password
+- "Anonymous": no credentials
+- "ADFS": Active Directory Federation Services, with _Username_, _Password_ and the address in _STS:_
 - **AppOnly** — App-only client credentials using an Azure AD-registered application.
   The **Username** field is the **Client Id** and the **Password** field is the
   **Client Secret**. Requires a Tenant Id.
-- **Azure AD Application (Certificate)** — Certificate-based Azure AD authentication.
-  The **Username** field is the **App ID**. Requires a certificate and a Tenant Id.
+- "Azure AD Application (Certificate)": a Microsoft Entra ID application that signs in with a certificate. _Username_ is relabeled _App ID_. Needs a certificate and _Tenant Id_
 
-**Username**
+"AppOnly" and "Azure AD Application (Certificate)" work only with _Sharepoint version_ "Sharepoint Online". With "Sharepoint 2010/2013/2016" they do not sign in. With "Sharepoint Online", "Default", "Basic", "Form", "Anonymous" and "ADFS" send _Username_ and _Password_ as SharePoint Online user credentials.
 
-The username for the server. When using **AppOnly**, enter the Client Id. When using
-**Azure AD Application (Certificate)**, enter the App ID.
+_Username_ and _Password_
 
-**Password**
+The account that signs in. For "AppOnly", enter the client ID in _Username_ and the client secret in _Password_. For "Azure AD Application (Certificate)", enter the application ID in _App ID_; _Password_ is not used.
 
-The password for the server. When using **AppOnly**, enter the Client Secret. Not
-used for **Azure AD Application (Certificate)**.
+_STS:_
 
-**STS URL**
-
-*(ADFS authentication only)* The URL to the ADFS Security Token Service endpoint.
+For "ADFS", the address of the ADFS Security Token Service.
 
 **Certificate**
 
-*(Azure AD Application (Certificate) authentication only)* Select a VisualCron
-[certificate](../server/global-certificates) whose public key has been uploaded to
-the Azure AD application's certificate credentials.
+For "Azure AD Application (Certificate)", a VisualCron [Certificate](global-certificates) whose public key is uploaded to the certificates of the Microsoft Entra ID application.
 
-**Tenant Id**
+_Tenant Id_
 
-*(AppOnly and Azure AD Application (Certificate) authentication only)* The Azure AD
-Tenant ID (GUID) for your Microsoft 365 organization. Found in Microsoft Entra under
-the application's Overview page as **Directory (tenant) ID**.
+In the _Azure shared settings_ group. For "AppOnly" and "Azure AD Application (Certificate)", the Directory (tenant) ID of your Microsoft 365 organization. It is on the _Overview_ page of the application in Microsoft Entra ID.
+
+_Allowed SSL/TLS versions_
+
+The TLS versions that SharePoint Tasks may use. By default, _SSL version 2_, _SSL version 3_, _TLS version 1_, _TLS version 1.1_ and _TLS version 1.2_ are selected, and _TLS version 1.3_ is cleared. _SSL version 2_ has no effect. The same group is on the Sharepoint Online and Sharepoint 2010 editors.
+
+:::warning
+
+When a certificate is selected in the Connection, SharePoint Tasks accept any server certificate. With the other authentication types, they accept any self-signed server certificate, whatever name it was issued to. In both cases they cannot tell the SharePoint server from another server that answers at the same address. Use the Connection only over a network path to the SharePoint server that you trust.
+
+Each SharePoint Task run applies the _Allowed SSL/TLS versions_ of its Connection to the whole Server process, not only to the SharePoint Task. It also changes how the Server process checks server certificates for its other HTTPS requests.
+
+:::
 
 ---
 
-### SharePoint Online Instance
+### Sharepoint Online type
 
-SharePoint Online (`Protocol type: SharePoint Online`) is a dedicated connection type
-for Microsoft 365 cloud environments. It always authenticates via Azure AD OAuth.
+The _Sharepoint Online_ type is for SharePoint Online in Microsoft 365.
 
-To register a new application or use an existing one, log into
-[Microsoft Entra](https://entra.microsoft.com) and navigate to **App registrations**.
-You can create a new registration or select an existing app. From the application's
-**Overview** page, note the **Application (client) ID** (Client Id) and
-**Directory (tenant) ID** (Tenant Id) — these are entered into the VisualCron
-connection settings.
+#### Common settings
 
-**Manage Connections > Add > SharePoint Online > Common settings** tab
+![Sharepoint Online Connection, Common settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Sharepoint%20Online/Sharepoint%20Online.png)
 
-**Address**
+_Test_ asks the Server to connect to the site in _Address_ with the current settings.
 
-Use the site address from the SharePoint admin console — not the admin URL itself (e.g. `https://yourtenant.sharepoint.com/sites/yoursitename`).
+#### Connection settings
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Sharepoint%20Online/Sharepoint%20Online.png)
+_Address_
 
-Select the appropriate authentication type from the **Authentication type** dropdown.
+The address of the SharePoint site, for example `https://<tenant>.sharepoint.com/sites/<site>`. Use the site address, not the address of the SharePoint admin center.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Sharepoint%20Online/Settings.png)
+_Authentication type_
+
+"Basic" (default), "AppOnly" or "Certificate". "Basic" sends _Username_ and _Password_ as SharePoint Online user credentials; see the Basic Authentication paragraph below. "Certificate" signs in with a Microsoft Entra ID application and a certificate.
+
+![Sharepoint Online Connection, Main settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Sharepoint%20Online/Settings.png)
+
+The ***Connection settings*** tab also has the _Allowed SSL/TLS versions_ group, described for the Sharepoint type above.
+
+To find the IDs for the Connection, sign in to [Microsoft Entra](https://entra.microsoft.com), open _App registrations_, and open the application. Its _Overview_ page shows the _Application (client) ID_ and the _Directory (tenant) ID_.
 
 Basic Authentication — Deprecated
 Microsoft has permanently disabled Basic Authentication across its services, including Exchange Online, SharePoint Online, and Microsoft Graph. Any connection configured to use Basic Authentication will fail with an authorization error and cannot be restored.
@@ -155,22 +144,19 @@ The Azure AD Tenant ID (GUID) for your Microsoft 365 organization.
 
 #### Certificate
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Sharepoint%20Online/Certificate.png)
+![Sharepoint Online Connection, Main settings tab, with Certificate selected](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Sharepoint%20Online/Certificate.png)
 
-**Client Id**
+_Client id_
 
-The Application (Client) ID of the Azure AD app registration. Found in Microsoft Entra
-under the application's Overview page as **Application (client) ID**.
+The _Application (client) ID_ of the Microsoft Entra ID application.
 
-**Tenant Id**
+_Tenant Id_
 
-The Azure AD Tenant ID (GUID) for your Microsoft 365 organization. Found in Microsoft
-Entra under the application's Overview page as **Directory (tenant) ID**.
+The _Directory (tenant) ID_ of your Microsoft 365 organization.
 
 **Certificate**
 
-Select a VisualCron [certificate](../server/global-certificates) whose public key
-(.cer file) has been uploaded to the Azure AD application's Certificates & Secrets.
+A VisualCron [Certificate](global-certificates) whose public key (".cer" file) is uploaded under _Certificates & secrets_ of the application.
 
 You can use an existing or new Azure AD application to access your SharePoint Online
 sites. Please note that certificate-only credentials are accepted. Create an application
@@ -178,96 +164,72 @@ on Azure AD and import the certificate to both the Azure AD application credenti
 VisualCron. Only Certificate applications will be granted access to the SharePoint site;
 otherwise you will receive an HTTP 401 error. 
 
-The application should be given proper API permissions. An example of full permissions
-is provided below:
+Grant the application the SharePoint application permissions that the Tasks need, and grant admin consent. Each of these permissions applies to every site in the tenant, and _Sites.FullControl.All_, shown below, includes the others.
 
 ![](../../../static/img/clip333444094.gif)
 
-#### Setting up a Certificate for SharePoint Online
+#### Setting up a certificate for SharePoint Online
 
-The following steps walk through creating a certificate, importing it into VisualCron,
-uploading it to Microsoft Entra, and configuring the connection.
+These steps create a certificate, import it into VisualCron, upload it to Microsoft Entra ID and set up the Connection.
 
-**Step 1 — Create the certificate**
+##### Create the certificate
 
-Open Windows PowerShell as Administrator and run the following to create a self-signed
-certificate:
+To create a self-signed certificate and its files, complete the following steps:
 
-```powershell
-$cert = New-SelfSignedCertificate `
-  -Subject "CN=YourCertName" `
-  -CertStoreLocation "Cert:\CurrentUser\My" `
-  -KeyExportPolicy Exportable `
-  -KeySpec Signature `
-  -KeyLength 2048 `
-  -NotAfter (Get-Date).AddYears(3) `
-  -FriendlyName "YourCertName"
-```
+1. Open Windows PowerShell as administrator.
+2. Run this command to create the certificate. Replace `<certificate name>` with a name for the certificate:
 
-This script can be adapted to any environment — it is provided as a sample for
-testing purposes.
+   ```powershell
+   $cert = New-SelfSignedCertificate `
+     -Subject "CN=<certificate name>" `
+     -CertStoreLocation "Cert:\CurrentUser\My" `
+     -KeyExportPolicy Exportable `
+     -KeySpec Signature `
+     -KeyLength 2048 `
+     -NotAfter (Get-Date).AddYears(3) `
+     -FriendlyName "<certificate name>"
+   ```
 
-**Step 2 — Export the certificate files**
+3. Run this command to export the certificate with its private key as a ".pfx" file. Replace `<folder>` with the folder to save the file in, and `<file name>` with a name for the file:
 
-Run the following to export the certificate as a .pfx file (you will be prompted
-for a password):
+   ```powershell
+   Export-PfxCertificate -Cert $cert -FilePath "<folder>\<file name>.pfx" `
+     -Password (Read-Host -AsSecureString "Enter password")
+   ```
 
-```powershell
-Export-PfxCertificate -Cert $cert -FilePath "C:\Temp\MySPOApp.pfx" `
-  -Password (Read-Host -AsSecureString "Enter password")
-```
+4. Enter a password for the ".pfx" file when PowerShell prompts for it.
+5. Run this command to export the public key as a ".cer" file, with the same `<folder>` and `<file name>`:
 
-To export the public key as a .cer file:
+   ```powershell
+   Export-Certificate -Cert $cert -FilePath "<folder>\<file name>.cer"
+   ```
 
-```powershell
-Export-Certificate -Cert $cert -FilePath "C:\Temp\MySPOApp.cer"
-```
+Both files are in the folder that you entered.
 
-Both files will be saved to the specified path (e.g. `C:\Temp\`).
+##### Set up the application and the Connection
 
-**Step 3 — Import the certificate into VisualCron**
+To set up the application and the Connection, complete the following steps:
 
-In the VisualCron client, navigate to **Global Objects > Certificates > Import Certificate** and select
-the .pfx file. VisualCron will prompt for the password set during export. Once
-entered, the certificate will appear in the VisualCron certificate list.
+1. In the Client, import the ".pfx" file as a Certificate. See [Global - Certificates](global-certificates).
+2. Enter the password that you set during the export.
+3. In Microsoft Entra, open _App registrations_.
+4. Open your SharePoint application.
+5. On the _Overview_ page, copy the _Application (client) ID_ and the _Directory (tenant) ID_.
+6. Open _Certificates & secrets_ -> _Certificates_.
+7. Click _Upload certificate_.
+8. Upload the ".cer" file.
+9. Open _API permissions_.
+10. Add the SharePoint application permissions that the Tasks need, for example _Sites.Read.All_, _Sites.ReadWrite.All_, _Sites.Manage.All_ or _Sites.FullControl.All_.
+11. Grant admin consent.
+12. In the Client, open the Sharepoint Online Connection.
+13. On the ***Connection settings*** tab, enter the site address in _Address_.
+14. Select "Certificate" in _Authentication type_.
+15. Enter the application ID in _Client id_.
+16. Enter the tenant ID in _Tenant Id_.
+17. Select the imported Certificate.
+18. Click _Test_ on the ***Common settings*** tab.
 
-**Step 4 — Collect Client ID and Tenant ID from Microsoft Entra**
-
-Log into Microsoft Entra, navigate to **App registrations**, and open your SharePoint
-application. From the Overview page, collect the following values:
-
-- **Application (client) ID** — used as the Client Id in VisualCron
-- **Directory (tenant) ID** — used as the Tenant Id in VisualCron
-
-**Step 5 — Upload the certificate to Microsoft Entra**
-
-In the same app registration, navigate to **Certificates & Secrets > Certificates**
-and click **Upload certificate**. Upload the .cer file created in Step 2.
-
-**Step 6 — Set API permissions**
-
-In the app registration, navigate to **API Permissions** and ensure the following
-SharePoint permissions are granted (Application type):
-
-- `Sites.FullControl.All`
-- `Sites.Manage.All`
-- `Sites.Read.All`
-- `Sites.ReadWrite.All`
-
-Grant admin consent for all required permissions.
-
-**Step 7 — Configure the connection in VisualCron**
-
-In the VisualCron client, open the SharePoint Online connection settings
-(**Connection settings** tab) and fill in:
-
-- **Address** — The SharePoint site URL from the SharePoint admin console (e.g. `https://yourtenant.sharepoint.com/sites/yoursitename`)
-- **Authentication type** — Certificate
-- **Client Id** — The Application (client) ID from Step 4
-- **Tenant Id** — The Directory (tenant) ID from Step 4
-- **Certificate** — The certificate imported in Step 3
-
-Click **Test** to verify the connection.
+The test reports that it was successful.
 
 ### Setting up a Secret for Sharepoint Online
 

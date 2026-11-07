@@ -5,18 +5,20 @@ hide_title: 'true'
 
 ## Task Amazon EC2 - Create Snapshot
 
-The Amazon EC2 - Create snapshot Task creates a snapshot of an Amazon EBS volume and stores it in Amazon S3. You can use snapshots for backups, to make copies of instance store volumes and to save data before shutting down an instance.
+The Amazon EC2 - Create snapshot Task creates a snapshot of an Amazon EBS volume, which Amazon stores in Amazon S3, using an Amazon Connection. Use snapshots for backups, to make copies of volumes, and to save data before you shut down an instance.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Amazon%20EC2%20Tasks/Create%20Snapshot.png)
+![EC2 - Create snapshot Task settings, with the Connection, Volume ID and Description fields](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Amazon%20EC2%20Tasks/Create%20Snapshot.png)
 
-**Connection**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To use Amazon EC2 Tasks you need to create an Amazon [Connection](../../connection-amazon) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+### EC2 - Create snapshot tab
 
-**Volume ID**
+- _Connection_: the Amazon Connection to use; see [Connection - Amazon](../../connection-amazon). Click the button next to the list to manage Connections. The Client asks you to select a Connection before it saves the Task
+- _Volume ID_: the ID of the EBS volume. Click the refresh button to fill the list with the volumes that the Server finds with the Connection. Variables are not resolved in this field
+- _Description_: a description of the snapshot and what it is used for. Variables are not resolved in this field
 
-The volume ID of the Amazon EBS volume. Click the *Refresh* icon to populate the drop-down volume list.
+### Output and errors
 
-**Description**
+When the snapshot is created, the Task writes the ID of the new snapshot to the Task output.
 
-Detailed description for the snapshot and what it is being used for.
+When the Connection cannot be found, or Amazon returns an error, the Task fails. To change how the Task responds to errors, see [Task - On error](../../task-on-error).

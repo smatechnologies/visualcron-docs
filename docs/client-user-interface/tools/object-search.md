@@ -5,47 +5,43 @@ hide_title: 'true'
 
 ## Objects - Object Search
 
-The main menu **Tools > Objects > Object search** option performs a search for a string within all internal objects of VisualCron. All properties that match this string will be listed in the result grid. Encrypted strings may not be found unless you choose to include them.
- 
-**Tools > Objects > Object search** tab
+The ***Object text search/replace*** tab of the ***Object finder*** window searches the properties of VisualCron objects for a text and can replace it.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Objects/Object%20text%20search-replace.png)
+To open it, click ***Tools*** -> ***Objects*** -> ***Object search***.
 
-**Search string**
+![Object finder window on the Object text search/replace tab with the object type list open and search results](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Objects/Object%20text%20search-replace.png)
 
-Enter the text string to search for and click *Search* (or press Enter).
+### Search
 
-**Object types**
+- _Object(s) type_: the object types to search. The list has Certificate, Condition, Connection, Credential, Job, Notification, PGPKeyRing, SSHKey, Task, TimeException and Variable
+- _Search text_: the text to search for
+- _Use exact search_: when checked, a property matches only when its whole value is the search text. When unchecked, a value that contains the text matches
+- _Case sensitive_: when checked, upper and lower case must match
+- _Search encrypted values_: when checked, encrypted values, such as passwords, are also searched. This takes longer
+- _Text is the name of the user variable_: when checked, the search text is treated as the name of a user Variable
 
-Select which object types the search should cover. The following types can be included, and all are selected by default:
+Click ***Search*** to start. ***Cancel*** stops a running search.
 
-* Jobs
-* Tasks
-* Conditions
-* Notifications
-* Connections
-* Variables
- 
-**Use exact search**
+### Search result
 
-Check if you want an exact search and not on wild cards around the Search text.
- 
-**Search encrypted values**
+The grid shows _Name/Description_, the object class, _Property Name_ and _Property Value_ for each match. Each row has a check box that marks it for replacement. Double-click a row to open the object. The _Filter:_ field narrows the list.
 
-Some values are encrypted in VisualCron. Searching these takes longer time. It is possible to optionally exclude these values.
- 
-**Search result**
+### Replace
 
-The search result grid shows the object **Name/Description**, the internal **Class** in VisualCron, the **Property Name** of the object in the class and the **Property Value** which is the string it was matched to. You can double click on a row to open and edit the object.
- 
-**Replace**
+:::warning
 
-Enter the text that you want to replace with. Clicking Replace will replace all selected values from *Search*. A good example can be found below: 
+Replace changes the objects on the Server as soon as you confirm, and cannot be undone here; use [Versions](audit-log-versions) to revert an object. Every row is marked by default, including rows hidden by the _Filter:_ field. Replace searches the Server again with the current search text and options; when most rows are marked, it changes every match except the unmarked rows, so a search text or option changed after the search changes values that are not in the list. If you click ***Replace*** before running a search, or when the list is empty, every value on the Server that matches the search text is replaced; the confirmation then says "all objects". With _Partial replacement_ unchecked, each marked value is replaced as a whole, so an empty replace text clears the whole value.
 
-Current String Value = This is a test
+:::
 
-We want to update "This is a test" to "This is a test example". To do that, we need to input the whole new string
+The _Replace text (in all marked entries in the list)_ group replaces values in the marked rows.
 
-New String Value = This is a test example
+- _Partial replacement_: when checked, only the matched text in each value is replaced, at its first occurrence. When unchecked (the default), the whole value is replaced by the new text
 
-This will convert every "This is a test" to "This is a test example". 
+1. Run a search.
+2. Clear the check box of each row that must not change.
+3. Enter the new text.
+4. Click ***Replace***.
+5. Click ***Ok*** in the confirmation.
+
+For example, a search for `test` with the new text `test example` changes `This is a test` to `test example` when _Partial replacement_ is unchecked. With _Partial replacement_ checked, `This is a test` becomes `This is a test example`.

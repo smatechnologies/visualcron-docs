@@ -5,54 +5,59 @@ hide_title: 'true'
 
 ## Task Cloud Transfer - Copy/Move
 
-The Cloud - Copy/Move item(s) Task copies or moves files between folders within a single cloud connection (Amazon S3, Box, Dropbox, Google Drive, Google Storage, Microsoft Azure or OneDrive).
+The Cloud - Copy/Move item(s) Task copies or moves files and folders to another folder within the same cloud Connection: Amazon S3, Box, Dropbox, Google Drive, Google Cloud Storage, Microsoft Azure or OneDrive.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Cloud%20Transfer%20Tasks/Copy%20Move%20Item(s).png)
+![Copy/move item(s) tab with the Remote file filter Location sub tab](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Cloud%20Transfer%20Tasks/Copy%20Move%20Item(s).png)
 
-:::tip Note
+:::warning
 
-Source and destination must be on the same Connection. The *Destination folder* is a path within the same bucket/container/drive selected on the *Remote file filter* sub tab. To move files between two different cloud accounts use the [Sync](sync) task or chain a [Download](download-file) and [Upload](upload-file) task together.
+This Task uses a cloud Connection; see [Amazon S3](../../connection-amazon), [Box](../../connection-box), [Dropbox](../../connection-dropbox), [Google Drive](../../connection-google-drive), [Google Cloud Storage](../../connection-google-cloud), [Microsoft Azure](../../connection-microsoft-azure) or [OneDrive](../../connection-onedrive). The Amazon S3, Azure, Google Drive, Dropbox, Box and OneDrive Connections accept any server certificate, whatever _Auto-accept server certificates_ says. With Amazon S3, when a request fails with a particular secure-connection error, the Server repeats it without SSL, so that request and its data travel unencrypted.
 
 :::
 
-**Copy/Move item(s) > Remote file filter** sub tab
+:::note
 
-This Task uses the standard [Cloud Remote file filter](../../../server/job-tasks-cloud-remote-file-filter) to define the connection, bucket/container, source folder, item mask, date and size filters, sorting and result limit. Every item returned by the filter is copied (or moved).
+Source and destination must be on the same Connection: the _Destination folder_ is a path in the bucket, container or drive selected on the ***Remote file filter*** sub tab. To move files between two cloud accounts, use the [Sync](sync) Task, or a [Download](download-file) Task followed by an [Upload](upload-file) Task.
 
-**Copy/Move item(s) > Destination** sub tab
+:::
 
-**Destination folder**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-The folder within the same Connection where the matched items will be copied or moved to. Click the *Folder* icon to browse the cloud and pick the destination.
+### Copy/move item(s) tab
 
-**Keep modified/created date**
+#### Remote file filter sub tab
 
-When checked, the modified and created dates from the source file are preserved on the destination file (where the cloud service supports it).
+The Task uses the standard [Cloud Remote file filter](../../job-tasks-cloud-remote-file-filter) to choose the Connection, the bucket or container, the source folder, the item mask, the date and size filters, the sorting and the result limit. Every item the filter returns is copied or moved.
 
-**Delete source file (move)**
+#### Destination sub tab
 
-When checked, the source file is deleted after a successful copy, effectively turning the operation into a move. When unchecked the operation is a copy and the source remains in place.
+- _Destination folder_: The folder, within the same Connection, that the items are copied or moved to. Click the folder icon to browse the Connection. [Variables](../../global-variables) are resolved
+- _Keep modified/created date_: Keeps the source file's modified date on the copy. Only Google Drive supports it; with the other services the option has no effect
+- _Delete source file (move)_: When selected, the Task deletes each source item after copying it, so the items are moved. When cleared, the items are copied
+- _Overwrite options_: What to do when an item already exists at the destination:
+  - "Overwrite - always if existing": replace it. The default
+  - "Overwrite - if newer": replace it only if the source is newer
+  - "Overwrite - if destination size is": replace it depending on the sizes, set in the list next to it
+  - "Append if destination is smaller - otherwise overwrite", "Append if destination is smaller - otherwise overwrite if newer", "Append if destination is smaller - otherwise skip", "Append if existing - otherwise create" and "Append if existing - otherwise skip": see the warning below
+  - "Do not overwrite if existing": skip the item
+- the list next to _Overwrite options_: with "Overwrite - if destination size is", when to replace the destination file:
+  - "Same": the destination has the same size as the source
+  - "Smaller": the destination is smaller than the source
+  - "Larger": the destination is larger than the source
+  - "Smaller or larger" or "Different": the sizes differ
 
-**Overwrite options**
+:::warning
 
-Select what to do if a file already exists at the destination. Available options:
+The Append options do not append. With any of them, the Task replaces the existing destination file, as with "Overwrite - always if existing", which is the default. With _Delete source file (move)_ selected, the source items are deleted after they are copied.
 
-* _Overwrite - always if existing_ - always overwrites the destination file
-* _Overwrite - if newer_ - overwrites only if the source file is newer than the destination
-* _Overwrite - if destination size is_ - overwrites based on a size comparison; enables the size comparison dropdown below
-* _Append if destination is smaller - otherwise overwrite_ - appends to the destination if it is smaller than the source, otherwise overwrites
-* _Append if destination is smaller - otherwise overwrite if newer_ - appends if smaller, otherwise overwrites only if newer
-* _Append if destination is smaller - otherwise skip_ - appends if smaller, otherwise skips
-* _Append if existing - otherwise create_ - appends to an existing file or creates a new one
-* _Append if existing - otherwise skip_ - appends to an existing file or skips if it does not exist
-* _Do not overwrite if existing_ - skips the file if it already exists at the destination
+:::
 
-**Size comparison**
+### Output and errors
 
-Only enabled when *Overwrite options* is set to _Overwrite - if destination size is_. Selects the size comparison criterion used to decide whether to overwrite:
+The output lists the items that were copied or moved.
 
-* _Same_ - overwrites if the destination is the same size as the source
-* _Smaller_ - overwrites if the destination is smaller than the source
-* _Larger_ - overwrites if the destination is larger than the source
-* _Smaller or larger_ - overwrites if the destination differs in size from the source
-* _Different_ - overwrites if the sizes differ
+:::warning
+
+If the source folder cannot be read, for example because it does not exist, nothing is copied, no error is written, and the Task reports success.
+
+:::
