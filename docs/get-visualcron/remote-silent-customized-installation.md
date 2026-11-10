@@ -28,7 +28,7 @@ A silent installation with the MSI package differs from the setup program (.exe)
 - If a different version of VisualCron is installed, `msiexec /i` stops with error 1638 and installs nothing. To upgrade, follow [Upgrade silently](#upgrade-silently)
 - The MSI package checks for .NET Framework 4.8 but does not install it. Without it, a silent installation stops with exit code 1603. See [Requirements](../requirements)
 - The setup program lengthens the time that Windows waits for a service to start, which takes effect after Windows restarts. The MSI package does not change it
-- The new Server has the user "admin" with an empty password, as after any installation
+- Without the `ADMINPASSWORD` property, the new Server has the user "admin" with an empty password. See [Set the admin password](#set-the-admin-password)
 
 :::
 
@@ -40,8 +40,27 @@ Run all commands from a Command Prompt or PowerShell window opened as administra
 |---|---|---|
 | `INSTALLMODE` | "1" installs the Client and the Server. "2" installs the Client only: the VisualCron service is installed, but disabled | "1" |
 | `TARGETDIR` | The installation folder | "C:\Program Files (x86)\VisualCron" on 64-bit Windows, "C:\Program Files\VisualCron" on 32-bit Windows |
+| `ADMINPASSWORD` | The password of the "admin" user of a new Server. See [Set the admin password](#set-the-admin-password) | None. The "admin" user has an empty password |
 
 The VisualCron service always runs as Local System after an MSI installation. To run it under a Windows account, change the account after the installation, as described in [After a silent installation](#after-a-silent-installation).
+
+#### Set the admin password
+
+Use `ADMINPASSWORD` to give the "admin" user a password when you install a new Server silently:
+
+```cmd
+start "" /wait msiexec /i VisualCron.msi /qn INSTALLMODE=1 ADMINPASSWORD="<temporary password>" /L*V "%TEMP%\VisualCron-install.log"
+```
+
+Put the password in quotation marks if it contains spaces.
+
+What the installation does with `ADMINPASSWORD`:
+
+- A new Server installation creates "users.xml" in the settings folder of the Server, with the user "admin" and the password from `ADMINPASSWORD`. The settings folder is the "Settings" folder in the installation folder. If the "ServerSettingsFolder" value under "HKLM\SOFTWARE\V-C" is set, it is that folder instead
+- Without `ADMINPASSWORD`, a silent installation (`/qn`, `/qb` or `/qr`) of a new Server also creates "users.xml", with the user "admin" and an empty password
+- `ADMINPASSWORD` is ignored, and nothing is written, for a Client only installation (`INSTALLMODE=2`) and when the settings folder already contains "users.xml", for example on a reinstallation or an upgrade. Existing users and passwords are not changed. The installation log, written with `/L*V`, says so with the lines "CreateUsersXml: INSTALLMODE=2 (client only), skipping" and "CreateUsersXml: ADMINPASSWORD was supplied but ignored because users.xml already exists", followed by the path of the file
+- msiexec returns 0 even when the password cannot be applied, for example when the settings folder cannot be written. The installation finishes, and the "admin" user has an empty password when the Server starts for the first time. The log contains a line that starts with "CreateUsersXml warning". Check the log after every installation with `ADMINPASSWORD`
+- The installer does not write the password to the log. The password is visible on the command line, in process lists, and in the command history of your shell or deployment tool. Use a temporary password, and replace it after the installation, as described in [Secure the admin user](download-install-upgrade-uninstall#secure-the-admin-user)
 
 ### Install on a computer without VisualCron
 
@@ -94,7 +113,7 @@ After every installation or upgrade with the MSI package, on the computer itself
    net start VisualCron
    ```
 
-2. Secure the "admin" user before you allow inbound TCP 16444 from other computers, as described in [Secure the admin user](download-install-upgrade-uninstall#secure-the-admin-user). Connect from a Client on the Server computer, or from a computer on a network that the firewall already allows.
+2. Secure the "admin" user before you allow inbound TCP 16444 from other computers, as described in [Secure the admin user](download-install-upgrade-uninstall#secure-the-admin-user). Without `ADMINPASSWORD`, "admin" has an empty password. With it, replace the temporary password. Connect from a Client on the Server computer, or from a computer on a network that the firewall already allows.
 3. Allow inbound TCP 16444 only from the computers that run a Client. The installer does not create a firewall rule; see [Firewall and network](antivirus-exclusions#firewall-and-network).
 4. If the service must run under a Windows account, complete these steps:
 
@@ -117,6 +136,7 @@ What the Client does on the remote computer:
 - *Upgrade VisualCron* installs the package without uninstalling first. If a different version is installed, it stops with error 1638 and installs nothing. To move a remote computer to a different version, use the upgrade in [With PsExec](#with-psexec)
 - Both install into the default installation folder, because the Client does not pass the current folder. To keep another folder, use the upgrade in [With PsExec](#with-psexec)
 - The VisualCron service runs as Local System
+- The Client cannot pass `ADMINPASSWORD`, so a new Server has the user "admin" with an empty password
 - With *Client and Server*, the Client starts the VisualCron service. With *Client only*, VisualCron is installed, and the Client then reports an error, because the service is disabled and cannot be started
 - The Client copies the package, and the 7-Zip files "7z.exe" and "7z.dll" from its installation folder, to the remote computer through the administrative share C$, and extracts the package there with them. The administrative share of the remote computer must be reachable
 - The Client passes the user name and password that you enter to PsExec on the command line of the Client computer. With *Download from official web site (latest version)*, the Client also supplies them as credentials for the download of the package from www.visualcron.com. To avoid that, download the custom installation package yourself, and use *Select installation file*

@@ -5,6 +5,16 @@ hide_title: 'true'
 
 ## Change Log
 
+### 13.6.1 [2026-12-21]
+
+#### Notes
+
+:memo: Client/Server: A silent installation without the ADMINPASSWORD property creates the admin account with a blank password. A later release will require a password for silent installations. (VCPCM-3148)
+
+#### Features
+
+:star: Client/Server: Installer Asks for the Admin Password on New Server Installations (VCPCM-3148)
+
 ### 13.5.1 [2026-11-08]
 
 #### Notes

@@ -72,7 +72,22 @@ To install VisualCron, complete the following steps:
 
 9. Click *Next*.
 
-10. On the *Confirm Installation* page, click *Next*.
+10. If the *Admin Password* page opens, enter a password in *Admin Password*, and click *Next*.
+
+    This page sets the password of the "admin" user, the default administrator account of a new Server. The wizard does not accept an empty password. If you click *Next* with *Admin Password* empty, a message says "Please enter a password before continuing." Click *OK*, and enter a password.
+
+11. On the *Confirm Password* page, enter the same password in *Confirm Password*, and click *Next*.
+
+    If *Confirm Password* is empty or differs from the password, a message says "Passwords do not match. Please try again." Click *OK*, and enter the password again. To change the first entry, click *Back*.
+
+    The two password pages do not open in these cases:
+
+    - You selected *VisualCron Client only*
+    - The folder where the Server keeps its settings already contains a "users.xml" file, for example from an earlier installation. The wizard does not change that file, so the users and passwords in it stay as they are
+
+    The Server keeps its settings in the "Settings" folder in the installation folder. If the "ServerSettingsFolder" value under "HKLM\SOFTWARE\V-C" is set, the Server uses that folder instead.
+
+12. On the *Confirm Installation* page, click *Next*.
 
     ![Confirm Installation page of the setup wizard](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/6.png)
 
@@ -80,19 +95,19 @@ To install VisualCron, complete the following steps:
 
     ![Installing page of the setup wizard with a progress bar](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/7.png)
 
-11. When the wizard reports that the installation is complete, click *Close*.
+13. When the wizard reports that the installation is complete, click *Close*.
 
     Unless you selected *VisualCron Client only*, the pre-installer starts the VisualCron service and the Tray Client. It then asks whether to start the Client.
 
     ![Pre-installer with all steps checked, asking Do you want to start the Client](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/8.png)
 
-12. Click *Yes*.
+14. Click *Yes*.
 
     The Client starts if *Start VisualCron Client after install* is selected in the pre-installer window, which is the default. If the Client shows "Do you want to try reconnecting?", wait a minute and click *Yes*. The Server can take a while to start the first time.
 
     ![VisualCron Client splash screen in front of the pre-installer window](../../static/img/Get%20VisualCron/Download%20Install%20Upgrade%20and%20Uninstall/9.png)
 
-Before you do anything else, secure the "admin" user, as described in the next section.
+The wizard sets the password of the "admin" user on a new Server. If "admin" has an empty password, for example after a silent installation, secure it before you do anything else, as described in the next section.
 
 ### After you install
 
@@ -100,15 +115,20 @@ Before you do anything else, secure the "admin" user, as described in the next s
 
 :::warning
 
-A new Server has one user, "admin", with an empty password. Until you set a password, anyone who can connect to the Server can sign in as "admin", including users who are signed in to the Server computer itself. This applies however VisualCron was installed: with the setup program, with the MSI package, silently, or on a remote computer. The Server creates "admin" with an empty password again only when no users remain.
+A new Server has one user, "admin". The setup wizard sets its password, but "admin" has an empty password in these cases:
+
+- You installed silently without the `ADMINPASSWORD` property, as described in [Set the admin password](remote-silent-customized-installation#set-the-admin-password). This includes *Install VisualCron* in the Client, which cannot pass the property
+- The installer could not apply the password and reported "VisualCron could not apply the administrator password you entered. The admin account will have a blank password until you set one in the VisualCron client." In a silent installation, the installation log contains this text instead
+
+Until you set a password, anyone who can connect to the Server can sign in as "admin", including users who are signed in to the Server computer itself. The Server creates "admin" with an empty password again only when no users remain.
 
 :::
 
 Secure "admin" before you allow inbound TCP 16444 from other computers. Connect from a Client on the Server computer itself. After a remote or silent installation, connect from a Client on the Server computer, or from a computer on a network that the firewall already allows.
 
-To secure the admin user, complete the following steps:
+To secure the admin user, or to replace a temporary password that you set with `ADMINPASSWORD`, complete the following steps:
 
-1. In the Client, connect to the Server as "admin" with an empty password.
+1. In the Client, connect to the Server as "admin". Use an empty password if "admin" has none, or the password that you set during the installation.
 2. Go to _Server_ -> _Main settings_ -> _User permissions_.
 
    The *Manage user permissions* window opens.
@@ -245,7 +265,7 @@ To log an MSI installation, complete the following steps:
 
 5. Send the log file to support@visualcron.com.
 
-If the installation with the MSI package succeeds, it behaves like a silent installation: the VisualCron service is not started, it runs as Local System, and the "admin" user has no password. Complete the steps in [After a silent installation](remote-silent-customized-installation#after-a-silent-installation). You can also run the setup program again after you have the log.
+If the installation with the MSI package succeeds, it behaves like a silent installation: the VisualCron service is not started, and it runs as Local System. The wizard asks for the password of the "admin" user, as described in [Install VisualCron](#install-visualcron). Complete the steps in [After a silent installation](remote-silent-customized-installation#after-a-silent-installation). You can also run the setup program again after you have the log.
 
 #### Antivirus
 
