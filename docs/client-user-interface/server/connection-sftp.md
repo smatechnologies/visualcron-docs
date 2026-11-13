@@ -58,6 +58,7 @@ The server must support at least one of the algorithms you allow in each list, o
 
 - _Transfer type_: "Binary", the default, or "ASCII"
 - _KeepAlive_: the Server sends a keepalive message every 90 seconds, whatever number this field contains. "0" on a new Connection. Keep a number in the field, because other text makes the connection fail
+- _Verify downloaded size_: selected on a new Connection, and on Connections saved before this setting existed. When it is selected, a download fails when the SFTP server sends fewer bytes than the size it reports for the file. A file that changed size after the file list was read is not an error when the SFTP server reports the size that was received. Clear it for an SFTP server that reports a larger size than the file it sends, such as a server that reports estimated sizes. It applies to downloads by Tasks, the Remote File Trigger, Cloud Sync Files and the Connection Explorer. A download that is cut off because the connection closed fails whatever this setting says
 - _Max packet size_: the largest SSH packet in bytes, up to "524288". "262144" on a new Connection
 - _Auto adjust transfer block_: selected on a new Connection, so that the Server sizes the transfer blocks itself. Clear it to set *Pipeline length*, *Download block size* and *Upload block size*
 - _Pipeline length_: how many requests the Server sends before it waits for the replies, from "1" to "32". "32" on a new Connection. Higher values are faster but use more memory
@@ -149,6 +150,14 @@ The key exchange or MAC algorithm does not match the server. See [Set the encryp
 #### SFTP error 10061
 
 The algorithms may not match the server. See [Set the encryption settings](#set-the-encryption-settings).
+
+#### Incomplete download
+
+A download fails with an error that contains "Incomplete download of", the remote path in quotes and a reason. The reason tells the cause:
+
+- "the connection closed after" a number of bytes: the connection to the SFTP server closed before the file ended. Run the Task again. If it keeps happening, check the SFTP server and the network between it and the VisualCron Server
+- "received" a number of bytes "of" a larger number of bytes: the SFTP server sent fewer bytes than the size it reports for the file. If the file on the SFTP server is complete, for example on a server that reports estimated sizes, clear *Verify downloaded size* on ***Extra settings***
+- the same text followed by "and the server did not report the size": the SFTP server did not answer when the Server asked for the file size again. Run the Task again
 
 #### Only part of a file is transferred, or an upload times out
 
