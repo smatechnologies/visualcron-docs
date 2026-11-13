@@ -5,138 +5,95 @@ hide_title: 'true'
 
 ## Task Reporting - Crystal Reports
 
-The Crystal Reports Task allows you to output Crystal reports in various formats like PDF, Excel and to printer. With this Task you can specify in-parameters and record filter. The record filter can further narrow down the report query.
- 
-This Task uses the [Crystal Reports Connection](../../../server/connection-crystalreports). It requires runtime files to be installed on the Server. You can find this in the Connection.
- 
-**Crystal reports > Main settings** sub tab
+The Crystal reports Task runs a Crystal Reports report and exports it to a file, in a format such as PDF or Excel, or sends it to a printer, using a Crystal Reports Connection for the database sign-in. Parameters and a record filter narrow down what the report shows.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Reporting%20Tasks/Reports%20settings.png)
+The Task needs the Crystal Reports runtime on the Server; use the _Required 32 bit runtime library_ or _Required 64 bit runtime library_ link on the ***Main settings*** tab of the Task. See also [Connection - Crystal Reports](../../connection-crystalreports).
+
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
+
+The ***Crystal reports*** tab has five sub tabs: ***Main settings***, ***Parameters***, ***Record filter***, ***Printer*** and ***Export settings***.
+
+### Crystal reports: Main settings tab
+
+![Main settings tab of the Crystal reports Task, with the report file, the Connection details and the destination and output settings](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Reporting%20Tasks/Reports%20settings.png)
 
 **Report file**
 
-This is the path to the report. If located on a network drive you need to specify the Source Credential)
+- The report file field: the full path of the Crystal Reports file. Click the file button to browse for it
+- The Credential below it: the Credential used to read the report file, for example on a network share. It is used only when a Connection is selected under **Connection details**
 
-**Report file**
-
-The full path to the Crystal Reports file.
- 
-**Source Credential**
-
-If the report file is on a network drive, select a Credential to authenticate access.
- 
 **Connection details**
 
-Select one or more Connections depending on how many database connections your report uses.
+- The Connection: one or more Crystal Reports Connections with the sign-in for the databases of the report
+- _Override default database in DSN_: uses the database entered in the field below instead of the default database of the DSN
+- _Refresh report's data_: refreshes the data of the report before it is exported or printed
 
-**Override default database in DSN**
+:::warning
 
-When checked, overrides the default database specified in the DSN. Enter the database name in the field below.
+The record filter and the report file Credential are applied only when at least one Connection is selected. Without a Connection, the report is exported or printed without the record filter, and the Task reports success.
 
-**Refresh report's data**
-
-When checked, refreshes the report's data before generating the output.
+:::
 
 **Destination and output**
 
-**Destination type**
+- _Destination type_: "File" (default) or "Printer". With "Printer", the ***Printer*** tab is available and the file settings are not
+- _Output format_: the export format, "PortableDocFormat" (PDF) by default. Other values include "Excel", "ExcelWorkbook", "WordForWindows", "RichText", "EditableRTF", "HTML32", "HTML40", "Text", "TabSeperatedText", "CharacterSeparatedValues" and "Xml"
+- _Destination file_: the full path of the exported file
+- The Credential below it: the Credential used to write the destination file
+- _Required 32 bit runtime library_ / _Required 64 bit runtime library_: download links for the Crystal Reports runtime. Install the one that matches the Server
 
-Select the output destination: file or printer.
- 
-**Output format**
+### Parameters tab
 
-Select the output file format. Available when the destination type is set to file.
+![Parameters tab of the Crystal reports Task, with the parameter list and the Add, Edit, Delete and Import parameters buttons](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Reporting%20Tasks/Parameters.png)
 
-**Destination file**
+The list shows the parameters passed to the report, with their field type, range kind, values and whether they are required.
 
-The full path to the output file.
- 
-**Destination Credential**
+- _Import parameters_: reads the parameters defined in the report. Select the report file and a Connection first
+- _Add_, _Edit_, _Delete_: change the list. Double-click a parameter to edit it
 
-If the output file is on a network drive, select a Credential to authenticate access.
+### Record filter tab
 
-**Required 32 bit runtime library** / **Required 64 bit runtime library**
-
-Links to download the Crystal Reports runtime library required by the server. Install the version that matches your VisualCron server's bitness.
- 
-**Crystal reports > Parameters** sub tab
-
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Reporting%20Tasks/Parameters.png)
-
-Your report might include required or optional parameters. Click **Import parameters** to automatically import the parameters defined in the report. You must configure the Connection settings in the Task before clicking Import parameters, otherwise VisualCron cannot query the report for parameters.
-
-Use **Add**, **Edit**, and **Delete** to manage parameters manually. You can also edit a parameter by double-clicking on it.
- 
-**Crystal reports > Record filter** sub tab
-
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Reporting%20Tasks/Record%20Filter.png)
+![Record filter tab of the Crystal reports Task, with the Add record filter group and the record filter expression](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Reporting%20Tasks/Record%20Filter.png)
 
 **Add record filter**
 
-Use the controls in this group to build and add filter conditions to the record filter expression.
-
-**Column**
-
-Select a report column to filter on. Click **Reload** to populate the list with columns from the connected report.
-
-**Condition**
-
-Select the comparison condition to apply to the selected column.
-
-**Value**
-
-Enter the value to compare against. Click **Add** to append the condition to the record filter.
+- _Column_: the report column to filter on. Click _Reload_ to fill the list from the report
+- _Condition_: the comparison, "Equal" by default
+- _Value_: the value to compare with. Click _Add_ to add the condition to the record filter
 
 **Record filter**
 
-Displays the current record filter expression, similar to a SQL WHERE clause. You can also type or edit the filter expression directly in this field.
- 
-**Crystal reports > Printer** sub tab
+The record selection formula of the report, built with **Add record filter** or typed directly. It may contain Variables.
 
-The Printer tab is available when **Printer** is selected as the destination type.
+### Printer tab
 
-**Select printer**
+Available when _Destination type_ is "Printer".
 
-Select the printer to use for output.
+- **Select printer**: the printer that prints the report
+- **Page range**: "All pages" (default) or "Pages"
+- _Number of copies_: "1" by default
+- _Collated_: checked by default. Prints the copies collated
+- **Orientation**: "Portrait" (default) or "Landscape"
 
-**Printer settings**
+:::note
 
-**Page range**
+The page numbers entered with "Pages" are not passed to the printer. To print part of a report, export it to a file and print the pages from there.
 
-**All pages** / **Pages**
+:::
 
-Select **All pages** to print the entire report. Select **Pages** to print a specific range and enter the page numbers or range in the field below (for example, `2-4`).
+### Export settings tab
 
-**Pages**
+Available when _Output format_ is "Text", "TabSeperatedText" or "RichText".
 
-**Number of copies**
+- _Characters per inch_: "16" by default
+- _Lines per page_: "50" by default
 
-The number of copies to print.
+### Output and errors
 
-**Collated**
+With "File", the output is the path of the exported file. With "Printer", the output names the printer the report was sent to.
 
-When checked, prints multiple copies in collated order.
-
-**Orientation**
-
-**Portrait** / **Landscape**
-
-Select the page orientation for printing. Defaults to **Portrait**.
-
-**Crystal reports > Export settings** sub tab
-
-**Text export settings**
-
-**Characters per inch**
-
-The number of characters per inch for text-format export output.
-
-**Lines per page**
-
-The number of lines per page for text-format export output.
- 
 ### Troubleshooting
- 
+
 *Could not load file or assembly 'CrystalDecisions.ReportAppServer.DataDefModel, Version=13.0.3500.0*
 
-Make sure you installed the Crystal Reports runtime 13.0.24.
+Install the Crystal Reports runtime 13.0.24 on the Server.

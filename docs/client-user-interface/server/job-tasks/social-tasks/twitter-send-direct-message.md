@@ -13,20 +13,20 @@ Twitter integration described on this page is deprecated from **VisualCron v13.2
 
 ## Task Social - Twitter - Send Direct Message
 
-The Social - Twitter Send direct message Task sends a direct message to a user in Twitter.
+The Twitter - Send direct message Task sends a direct message to a user in Twitter.
 
-![](../../../../../static/img/tasksocialtwittersenddirectmessage.png)
+![Twitter - Send direct message tab, Message sub tab with the Connection, the User name box and the Message box](../../../../../static/img/tasksocialtwittersenddirectmessage.png)
 
-**Connection**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To use Twitter Tasks you need to create a Connection first. You do that in the [Twitter Connection](../../../server/connection-twitter) dialog.
- 
-**User name**
+### Twitter - Send direct message: Message tab
 
-Twitter user to send message to.
- 
+- _Connection_: the Twitter Connection to use; see [Twitter Connection](../../../server/connection-twitter)
+- _User name_: the Twitter user to send the message to, without "@"
+- _Message_: the message to send
+
 :::info Note
 
-You cannot send a message to a user who are not following you.
+You cannot send a message to a user who does not follow you.
 
 :::

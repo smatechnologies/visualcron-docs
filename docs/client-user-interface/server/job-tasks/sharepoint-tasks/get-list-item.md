@@ -2,31 +2,41 @@
 sidebar_label: 'Task Sharepoint - Get List Item'
 hide_title: 'true'
 ---
+## Task SharePoint - Get List Item
 
-## Task Sharepoint - Get List Item
+The SharePoint - Get list item(s) Task returns the items of a list on a SharePoint site that match a CAML query, with the fields you choose, using a SharePoint Connection.
 
-The SharePoint - Get List item(s) Task retrieves a list of list items from a specific List in the SharePoint library.
- 
-The SharePoint Tasks supports the following versions:
+The SharePoint Tasks work with SharePoint 2010, 2013 and 2016 on premises, and with SharePoint Online.
 
-* SharePoint 2010
-* SharePoint 2013
-* SharePoint Online
+![Get list item(s) tab with the Connection, Title list, CAML Query box and the Field(s) grid](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Get%20list%20items.png)
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Get%20list%20items.png)
+:::warning
 
-**Connection**
+This Task uses a SharePoint Connection; see [Connection - SharePoint](../../connection-sharepoint). When a certificate is selected in the Connection, the Task accepts any server certificate, and each run of a SharePoint Task changes TLS handling for the whole Server process.
 
-To use SharePoint Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
- 
-**Title**
+:::
 
-The displayed title for the list. Click the refresh button to list all available titles.
- 
-**CAML Query**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-The query in CAML format to select one or more list items. Click the *CAML browser* button to open the CAML query builder dialog to help construct a valid query.
- 
-**Field(s)**
+### Get list item(s) tab
 
-The grid lists the available fields for the selected list. Each row has a **Use** checkbox and a **Name** column showing the field name. Check **Use** for each field you want included in the results. Click the *Refresh fields* button to populate the grid with all available fields from the selected list.
+- _Connection_: the SharePoint Connection to use. The button next to the list manages Connections
+- _Title_: the title of the list. Click the button next to the box to show the lists of the site
+- _CAML Query_: the query in CAML format that selects the items. The default, `<View><Query></Query></View>`, selects all items. The button next to the box opens the CAML query builder
+- _Field(s)_: one row for each field of the list, with the columns _Use_ and _Name_. Check _Use_ for each field to return. Click _Refresh fields_ to fill the grid with the fields of the list in _Title_
+
+Variables are resolved in _Title_, _CAML Query_ and the field names.
+
+### Get list item(s): Output tab
+
+The ***Output*** tab sets the format of the result:
+
+- _Output to standard output_ (default) or _Output to file_: where the result is written
+- _Include field names_: write the names of the checked fields as the first line
+- _Field separator_, _Text qualifier_ and _Line break_: the character between fields, the character around each value, and the line break between items
+- _Indent XML_: not used by this Task
+- _File output settings_: with _Output to file_, the Credential to write the file as, _File path_, _Append to file_ and _Include BOM (if UTF8)_
+
+### Output and errors
+
+The output of the Task is one line for each item, with the values of the checked fields in the order of the grid. A person or lookup field returns the display value; several people are separated by ";". When the list cannot be read or the query is not valid, the Task fails with the error from SharePoint.

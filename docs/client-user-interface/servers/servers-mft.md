@@ -5,526 +5,328 @@ hide_title: 'true'
 
 ## Servers - MFT Server
 
-In the main menu Servers > Managed File Transfer (MFT) the MFT Server settings are managed.
- 
-The MFT Server provides built in support for hosting, inside VisualCron, for the following server types:
+The ***MFT Settings*** window, opened from ***Servers*** -> ***Managed File Transfer***, is where the MFT Server is turned on and where its servers, endpoints and users are managed.
 
-* SFTP
-* SFTPAdvanced
-* FTP
- 
-The advantages of using VisualCron for this are:
+The MFT Server hosts file transfer servers inside the VisualCron Server. Three server types can be created:
 
-* You are not dependent on any second installation of a third party server.
-* VisualCron can react faster to any changes within the server through the MFT Trigger. The MFT Trigger can react on various events like file uploaded, download, folder created etc
-* Through the Web Client, VisualCron users can manage the files (delete, upload, download)
+* "SFTP": SSH File Transfer Protocol, with a fixed set of SSH algorithms
+* "SFTPAdvanced": SSH File Transfer Protocol, with a selectable list of SSH algorithms
+* "FTP": FTP, either unencrypted or FTPS (FTP over TLS or SSL)
+
+Each server listens on one or more endpoints. An endpoint is an IP address and a port.
+
+Hosting the servers in VisualCron means no separate file transfer server has to be installed, and the [MFT Server Trigger](../server/event-trigger-mft-server) can start a Job when something happens on a server, for example when a file is received or sent, or when a folder is created.
+
+:::warning Security defaults
+
+- A new endpoint listens on all IPv4 addresses of the Server computer ("0.0.0.0").
+- A new FTP endpoint uses port 21 and the security type "None", so user names, passwords and files are sent unencrypted. Select "TSL" or "SSL" and a certificate to encrypt the connection.
+- A new SFTP or SFTPAdvanced endpoint uses port 22 and allows password authentication only.
+- A new MFT server starts as soon as it is saved, and every server in the "Active" state starts again when the VisualCron Server starts, as long as _Allow MFT_ is checked.
+- Saving a permission can add a folder permission with every right checked; see [Permission window](#permission-window) below.
+- The _Firewall allows_ button does not change the rule for the endpoint port; see _Firewall allows_ under [Server Settings window: SFTP Endpoints tab](#server-settings-window-sftp-endpoints-tab) below.
+
+:::
 
 :::note Server type is selected when the server is created
 
-The Server type list can only be changed while the MFT server is being added. When you edit an existing MFT server the list is read only, and only the endpoint sub tab that matches the type is displayed.
+The _Server type_ can only be changed while the MFT server is being added. When an existing MFT server is edited, the list is read-only, and only the endpoint tab that matches the type is shown.
 
-Selection of encryption, key exchange, MAC and public key algorithms is only available on the SFTPAdvanced server type. If you need to control the algorithm list of an existing SFTP server, add a new MFT server of type SFTPAdvanced instead.
-
-:::
- 
-**Main > Servers > MFT Server**
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/MFT.png)
-
-**Allow MFT**
-
-Starts all predefined sub MFT servers (FTP, SFTP etc) at startup when this is checked.
- 
-**MFT settings**
-
-The MFT settings area is divided into two sub tabs. **Servers** lists the hosted MFT servers and **Users** lists the accounts that connect to them.
- 
-**MFT Servers list**
-
-This is the list of existing MFT servers (of any type). The grid displays the following columns: **Server name**, **Ports**, **Type**, **State**, **Connections**, and **Status**.
-
-The toolbar provides the following actions: **Add**, **Edit**, **Delete**, **Activate/Deactivate Server**, **Run/Stop Server**, and **Log history**. Right click a server in the list for the same log history action and for exporting the server definition.
-
-**Apply settings**
-
-Saves all changes made in the MFT Settings dialog. Closing with Cancel discards them.
- 
-Upon pressing the Add Servers icon, the Server settings dialog is opened.
- 
-**Main > Servers > MFT Server > Servers > Server settings** sub tab
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/MFT%20Settings.png)
-
-**Server name**
-
-The name of the MFT server.
- 
-**Server type**
-
-Select MFT server type. The available types are **SFTP**, **SFTPAdvanced** and **FTP**. The selection controls which endpoint sub tab is shown next to Server settings:
-
-* _SFTP_ - the **SFTP Endpoints** sub tab
-* _SFTPAdvanced_ - the **Advanced SFTP Endpoints** sub tab
-* _FTP_ - the **FTP Endpoints** sub tab
- 
-**Permissions**
-
-The permissions grid controls who can access the specific MFT server. Click add to add new permission or double click/Edit to edit a permission. The toolbar provides **Add**, **Edit** and **Delete** actions.
-
-**Permission dialog**
-
-**Server**
-
-The MFT server the permission applies to. Click the add icon next to the list to create a new MFT server.
-
-**User**
-
-The MFT user the permission applies to. Click the add icon next to the list to create a new MFT user. Both a server and a user must be selected before the permission can be saved.
-
-**Allow Access**
-
-When checked, the selected user is allowed to connect to the selected server. Uncheck to deny access without removing the permission.
-
-**Base folder**
-
-Startup folder for the user on this server. Use the folder browser button to select a folder.
-
-**Main > Servers > MFT Server > Servers > SFTP Endpoints** sub tab
-
-This sub tab is shown for MFT servers of type SFTP.
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/MFT%20Endpoint.png)
-
-**SFTP Endpoints list**
-
-An endpoint is a combination of IP and port the specific MFT server listens to. The grid displays the following columns: **Name**, **IP**, **Security type** and **Port**. The toolbar provides **Add**, **Edit**, **Delete** and **Log** actions. Click add to add a new endpoint.
- 
-**SFTP Endpoint > Main settings**
-
-**Name**
-
-Optional name for the Endpoint for easier identification. A name must be entered before the endpoint can be saved.
- 
-**IP**
-
-The IP the Endpoint should listen too. 0.0.0.0 are all IPs on the network card.
- 
-**Port**
-
-The port to use for the Endpoint. Default 22 for SFTP server. Next to the port the current state of the port is displayed, showing whether Windows Firewall allows the port and whether the port is already used by another process.
- 
-**Firewall allows**
-
-Click to allow or deny the entered port in Windows Firewall. The state next to the button changes between Allowed and Denied.
- 
-**Force compression**
-
-When checked, all data transfers must be compressed. The server does not offer uncompressed transfer, so connecting clients have to compress data. This lowers bandwidth usage but increases CPU usage on both server and client.
- 
-**Use UTF8**
-
-When checked, UTF-8 character encoding is used for file names and paths when communicating with connecting SFTP clients. Recommended when clients transfer files with non-ASCII characters in names.
- 
-**Root folder**
-
-Base folder for the Endpoint files. A root folder must be entered before the endpoint can be saved.
- 
-**Default Credential**
-
-The Credential that should be used for accessing root folder (is needed on network drives).
- 
-**Session timeout**
-
-Timeout for the session in milliseconds. If 0 is entered, 360000 milliseconds (6 minutes) is used when the endpoint is saved.
- 
-**SFTP Endpoint > Security options**
-
-**Allow password authentication**
-
-If the user should be allowed to authenticate with his/her password.
- 
-**Allow public-key authentication**
-
-If the user should be allowed to authenticate with his/her private key.
- 
-**Allow keyboard-interactive authentication**
-
-If the user should be allowed to authenticate with keyboard-interactive authentication.
- 
-**The user must authenticate using ANY of the above methods**
-
-Any of the allowed must be used for authentication.
- 
-**The user must authenticate using ALL of the above methods**
-
-All allowed must be used for authentication.
-
-**Private SSH key**
-
-The host key presented to connecting clients. The field is enabled when public-key authentication is allowed. Select a key from the [SSH keys](../server/global-ssh-keys) or click the add icon to add a new one.
-
-**Test key**
-
-Click to validate the selected SSH key. VisualCron attempts to load the key and displays a checkmark icon if the key is valid or an error icon if the key cannot be loaded.
-
-**Main > Servers > MFT Server > Servers > FTP Endpoints** sub tab
-
-This sub tab is shown for MFT servers of type FTP.
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/FTP%20Endpoint.png)
-
-**FTP Endpoints list**
-
-The grid displays the following columns: **Name**, **IP**, **Security type** and **Port**. The toolbar provides **Add**, **Edit**, **Delete** and **Log** actions.
-
-**FTP Endpoint > Main settings**
-
-**Name**
-
-Optional name for the Endpoint for easier identification. A name must be entered before the endpoint can be saved.
- 
-**IP**
-
-The IP the Endpoint should listen too. 0.0.0.0 are all IPs on the network card.
- 
-**Security type**
-
-Select the security type for the FTP endpoint. Available options:
-
-* _None_ - standard FTP with no encryption. The Additional settings are disabled.
-* _TSL_ - FTPS using TLS encryption
-* _SSL_ - FTPS using SSL encryption
-
-A certificate must be selected on the Additional settings tab for any option other than None.
-
-**Port**
-
-The port to use for the Endpoint. Default 21 for FTP server. Next to the port the current state of the port is displayed, showing whether Windows Firewall allows the port and whether the port is already used by another process.
- 
-**Firewall allows**
-
-Click to allow or deny the entered port in Windows Firewall. The state next to the button changes between Allowed and Denied.
-
-**Allow Anonymous**
-
-When checked, anonymous users can connect to this FTP endpoint without providing a username or password.
- 
-**Use UTF8**
-
-When checked UTF8 will be used for communication if available.
- 
-**Root folder**
-
-Base folder for the Endpoint files. A root folder must be entered before the endpoint can be saved.
- 
-**Default Credential**
-
-The Credential that should be used for accessing root folder (is needed on network drives).
- 
-**Session timeout**
-
-Timeout for the session in milliseconds. If 0 is entered, 360000 milliseconds (6 minutes) is used when the endpoint is saved.
- 
-**Outgoing speed limit**
-
-Speed in bytes per second for outgoing traffic. Default 0 is unlimited speed.
- 
-**Incoming speed limit**
-
-Speed in bytes per second for incoming traffic. Default 0 is unlimited speed.
- 
-**FTP Endpoint > Additional settings**
-
-The settings on this tab are only enabled when the Security type is TSL or SSL.
-
-**Certificate with private key file (required for TLS/SSL)**
-
-Select an X.509 certificate with a private key for encryption. This is required when the security type is TSL or SSL. Select a certificate from those defined in [Global Certificates](../server/global-certificates).
-
-**Implicit SSL**
-
-When checked, the connection is encrypted from the start. When unchecked, the connection starts unencrypted and upgrades to encrypted (explicit mode).
-
-**Require TLS for control channel**
-
-When checked, clients must establish TLS encryption on the command channel before logging in. Only available when the Security type is TSL.
-
-**Require TLS for data channel**
-
-When checked, clients must use TLS encryption on the data transfer channel. Only available when the Security type is TSL.
- 
-**Use Passive mode**
-
-FTP is a TCP based service exclusively. There is no UDP component to FTP. FTP is an unusual service in that it utilizes two ports, a 'data' port and a 'command' port (also known as the control port). Traditionally these are port 21 for the command port and port 20 for the data port. The confusion begins however, when we find that depending on the mode, the data port is not always on port 20. In order to resolve the issue of the server initiating the connection to the client a different method for FTP connections was developed. This was known as passive mode, or PASV, after the command used by the client to tell the server it is in passive mode.
- 
-**Passive mode host**
-
-Enter IP or DNS name for resolving IP for passive mode or check Use Default Host for using the current IP of the server.
- 
-**Use Default Host**
-
-Use the current IP of the server.
- 
-**Use custom port range**
-
-Enter any port range (1 - 65535) for incoming Passive connections. If not checked - random ports will be used. When checked, both the start and the end of the range must be entered before the endpoint can be saved.
- 
-**Main > Servers > MFT Server > Users** sub tab
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/Users.png)
-
-**Users list**
-
-This is the list of MFT users. A MFT user can be linked to an existing VC user or be specific for MFT server only. The grid displays the following columns: **Email**, **Username**, **Name** and **Last access**. The toolbar provides **Add**, **Edit** and **Delete** actions.
- 
-Upon pressing the Add Users icon, the User settings dialog is opened.
- 
-**Main > Servers > MFT Server > Users > Authentication** sub tab
-
-**Link to existing VC user**
-
-It is possible to link a VC user to a MFT user or use a specific user account just for MFT. When link is selected it will be using the username and password for the specific VC user, and the fields below are disabled.
- 
-**Username**
-
-Unless linked to VC user you enter the username here. A username must be entered before the user can be saved and before the Permissions tab becomes available.
- 
-**Password**
-
-Unless linked to VC user you enter the password here. The password is masked.
- 
-**Name**
-
-Unless linked to VC user you enter the name here.
- 
-**Email**
-
-Unless linked to VC user you enter the email here.
-
-**Optional custom SSH key (or public server key is used)**
-
-Controls the key used for this user when connecting to an SFTP endpoint. If no key is selected the public server key is used. Available options:
-
-* _None_ - no user specific key is used
-* _Use Private key_ - select a private key from the [SSH keys](../server/global-ssh-keys)
-* _Use Public key_ - select a public key from the [SSH keys](../server/global-ssh-keys)
-
-The key list of the selected option is enabled and a key must be selected before the user can be saved. Use the Filter field to narrow the list, the add icon to add a new key, and **Test key** to validate the selected key.
- 
-**Main > Servers > MFT Server > Users > Options** sub tab
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/User%20Options.png)
-
-**Set owner of files/folders uploaded to Credential below**
-
-To control a remote computer you may need to use a [Credential](../server/global-credentials). The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
- 
-**FTP options > Outgoing speed limit**
-
-These are the maximum number of bytes per second for outgoing transfer. 0 is unlimited.
- 
-**FTP options > Incoming speed limit**
-
-These are the maximum number of bytes per second for incoming transfer. 0 is unlimited.
- 
-**Main > Servers > MFT Server > Users > Used in servers** sub tab
-
-The grid lists the MFT servers this user has been given access to, with the server name, the server type and whether access is allowed. The toolbar provides **Add**, **Edit** and **Delete** actions, which open the same Permission dialog as the Permissions grid on the Server settings sub tab.
- 
-**Main > Servers > MFT Server > Users > Permissions** sub tab
-
-The permissions grid lists folder-level access permissions for this user. Select an MFT server from the **Server** selector to filter the list. Only servers the user is allowed to access are listed. The grid displays the following columns: **Folder**, **FR** (File Read), **FW** (File Write), **FD** (File Delete), **FA** (File Append), **DL** (Directory List), **DC** (Directory Create), **DD** (Directory Delete), **DS** (Directory + Subfolders).
-
-The toolbar provides **Add**, **Edit**, and **Delete** actions for managing permissions. Upon pressing Add, the User permissions dialog is opened with the following fields:
-
-**Server**
-
-The MFT server these permissions apply to. This is the server selected in the Server selector and cannot be changed in the dialog.
-
-**Folder**
-
-The folder path on the MFT server this permission entry controls. Use the folder browser button to select a folder. A folder must be entered before the permission can be saved.
-
-**File Read**
-
-When checked, the user can read/download files from the folder.
-
-**File Write**
-
-When checked, the user can write/upload files to the folder.
-
-**File Delete**
-
-When checked, the user can delete files in the folder.
-
-**File Append**
-
-When checked, the user can append to existing files in the folder.
-
-**Show File List**
-
-When checked, the user can list files in the folder.
-
-**Show Folder List**
-
-When checked, the user can list subfolders in the folder.
-
-**Folder + Subfolders**
-
-When checked, the permissions apply to this folder and all of its subfolders.
-
-**Folder Create**
-
-When checked, the user can create new folders within this folder.
-
-**Folder Delete**
-
-When checked, the user can delete folders within this folder.
-
-**Main > Servers > MFT Server > Servers > Advanced SFTP Endpoints** sub tab
-
-This sub tab is shown for MFT servers of type SFTPAdvanced. It is the only endpoint type where the SSH algorithm lists can be selected.
-
-**Advanced SFTP Endpoints list**
-
-The grid displays the following columns: **Name**, **IP**, **Security type** and **Port**. The toolbar provides **Add**, **Edit**, **Delete** and **Log** actions. Add or edit an endpoint to open the SFTP Endpoint dialog, which has the **Main settings** and **SSH Settings** tabs.
-
-**Main > Servers > MFT Server > Servers > Advanced SFTP Endpoints > Main settings** sub tab
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/SFTP%20Advanced%20Main.png)
-
-**Name**
-
-The endpoint identifier name. This is a required field used to distinguish this endpoint in the configuration interface.
-
-**IP**
-
-The IP the Endpoint should listen too. 0.0.0.0 are all IPs on the network card. Next to the field the current state of the port is displayed, showing whether Windows Firewall allows the port and whether the port is already used by another process.
-
-**Firewall allows**
-
-Click to allow or deny the entered port in Windows Firewall. The state next to the button changes between Allowed and Denied.
-
-**Port**
-
-The port number for the SFTP endpoint. Default is 22 for SFTP servers. This is a required field that specifies which TCP port the endpoint will listen on for incoming connections.
-
-**Force compression**
-
-When enabled, the server requires all data transfers to use compression. The server does not offer uncompressed transfer, so connecting clients have to compress data. This reduces bandwidth usage but increases CPU utilization on both server and clients.
-
-:::note Compatibility Note
-
-Some older SFTP clients may not support mandatory compression. Test with your client software before enabling this setting in production environments.
+Encryption, key exchange, MAC and public key algorithms can be selected only on the "SFTPAdvanced" server type. To control the algorithm list for an existing "SFTP" server, add a new MFT server of type "SFTPAdvanced" instead.
 
 :::
 
-**Treat Rename As Move**
+### MFT Settings window
 
-When enabled, SFTP rename operations are treated as move operations. This affects file operation behavior for certain SFTP clients and may be required for compatibility with specific client implementations. Enabled by default.
+![MFT Settings window opened from the Servers ribbon tab, showing the Allow MFT check box and the list of MFT servers](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/MFT.png)
 
-**Root folder**
+- _Allow MFT_: turns the MFT Server on for this VisualCron Server. While it is unchecked, the MFT settings area is unavailable. Unchecking it stops every running MFT server at once, before _Apply settings_ is clicked, and _Cancel_ does not start them again
+- _Apply settings_: saves the _Allow MFT_ setting and closes the window
+- _Cancel_: closes the window without saving the _Allow MFT_ setting
 
-The root folder path for SFTP operations. This is a required field that defines the base directory for file transfers on this endpoint. Use the folder browser button to select a directory on the server.
+:::warning
 
-**Default Credential**
+- Unchecking _Allow MFT_ stops every running MFT server at once; _Cancel_ does not start them again.
+- Changes to an MFT server or user are sent to the VisualCron Server when _Save_ is clicked in the ***Server Settings*** or ***User settings*** window. Endpoint and permission changes, including _Delete_, are sent only with that _Save_; _Cancel_ in that window discards them.
+- _Delete_ on the ***Servers*** and ***Users*** tabs takes effect at once, without confirmation. _Cancel_ in the ***MFT Settings*** window does not undo any of these.
 
-The Credential that should be used for accessing root folder (is needed on network drives).
+:::
 
-**Session timeout**
+The MFT settings area has two tabs: ***Servers*** lists the hosted MFT servers and ***Users*** lists the accounts that connect to them.
 
-Timeout for the session in milliseconds. If 0 is entered, 360000 milliseconds (6 minutes) is used when the endpoint is saved.
+#### Servers tab
 
-**Certificate with private key**
+The grid shows the _Server name_, _Ports_, _Type_, _State_, _Connections_ and _Status_ of each MFT server. The toolbar has the following buttons:
 
-The certificate used for SSH connection establishment and encryption. This is a required field. Select a certificate from those defined in [Global Certificates](../server/global-certificates). The certificate must have a private key available for session authentication.
+- _Add_: opens the ***Server Settings*** window for a new MFT server
+- _Edit_: opens the selected MFT server. Double-clicking a row does the same
+- _Delete_: stops the selected MFT servers if they are running, then deletes them. No confirmation is asked. Pressing the Delete key in the grid does the same
+- _Activate/Deactivate Server_: switches the selected servers between the "Active" and "Inactive" states. Only "Active" servers start when the VisualCron Server starts
+- _Run/Stop Server_: stops a running server, or starts a stopped or failed one
+- _Log history_: opens the transfer log
+
+Right-click a server for _Log history_, for _Export ..._, which exports the server definition, and for _Send to connection ..._, which copies the server, its permissions and their users to another VisualCron Server.
+
+The ***Users*** tab is described in [MFT Settings window: Users tab](#mft-settings-window-users-tab) below.
+
+### Server Settings window
+
+![Server Settings window with the Server settings tab and the Permission window opened from the Permissions grid](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/MFT%20Settings.png)
+
+#### Server settings tab
+
+- _Server name_: the name of the MFT server
+- _Server type_: "FTP", "SFTP" or "SFTPAdvanced". The type decides which endpoint tab is shown next to ***Server settings***: ***FTP Endpoints***, ***SFTP Endpoints*** or ***Advanced SFTP Endpoints***
+- _Permissions_: the users who can connect to this MFT server. Use _Add_, _Edit_ and _Delete_ on the toolbar
+
+At least one endpoint must be added before the server can be saved. A server can be saved without permissions, but no user can connect to it until one is added.
+
+#### Permission window
+
+- _Server_: the MFT server the permission applies to. Click the add icon next to the list to create a new MFT server
+- _User_: the MFT user the permission applies to. Click the add icon next to the list to create a new MFT user. Both a server and a user must be selected before the permission can be saved
+- _Allow Access_: checked by default. When checked, the user can connect to the server. Uncheck it to deny access without removing the permission
+- _Base folder_: the startup folder for the user on this server. Use the folder button to select a folder
+
+:::warning A new permission can grant full folder rights
+
+When the permission is saved and the user has no folder permission for this server and _Base folder_, one is added with every right checked, including _File Delete_, _Folder Delete_ and _Folder + Subfolders_. Review it on the ***Permissions*** tab of the ***User settings*** window.
+
+:::
+
+#### Server Settings window: SFTP Endpoints tab
+
+This tab is shown for MFT servers of type "SFTP".
+
+![SFTP Endpoints tab and the SFTP Endpoint window with its main settings and security options](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/MFT%20Endpoint.png)
+
+The grid shows the _Name_, _IP_, _Security type_ and _Port_ of each endpoint. The toolbar has _Add_, _Edit_, _Delete_ and _Log_. _Add_ and _Edit_ open the ***SFTP Endpoint*** window.
+
+**Main settings**
+
+- _Name_: a name for the endpoint. A name is required. A new endpoint is named after its port
+- _IP_: the address the endpoint listens on. "0.0.0.0", the default, means all IPv4 addresses of the Server computer. The list also offers the IPv4 addresses of the computer the Client runs on
+- _Port_: the port the endpoint listens on. The default is "22". Next to the port, the window shows whether a VisualCron firewall rule exists for the port ("Allowed" or "Denied") and whether another process already uses the port
+- _Firewall allows_: adds or removes a Windows Firewall rule created by VisualCron. The status next to it is checked for the endpoint port, but the rule the button adds or removes is for the VisualCron Server port that the Client connects to (by default "16444"), not for the endpoint port. Clicking it while the status shows "Allowed" removes the VisualCron firewall rule for the VisualCron Server port, which remote Clients may depend on. Open the endpoint port in Windows Firewall directly instead
+- _Force compression_: when checked, all transfers must be compressed. The server does not offer uncompressed transfer, so connecting clients must support compression. This lowers bandwidth use but raises CPU use on the server and the client
+- _Use UTF8_: when checked, file and folder names are exchanged with connecting SFTP clients in UTF-8. Use it when clients transfer files with non-ASCII characters in their names
+- _Root folder_: the base folder for the endpoint files. A root folder is required
+- _Default Credential_: the [Credential](../server/global-credentials) used to access the root folder. It is needed when the root folder is on a network drive
+- _Session timeout_: the session timeout in milliseconds. If "0" is entered, "360000" (6 minutes) is saved
 
 **Security options**
 
-The SFTP server supports three authentication methods that can be enabled individually or in combination:
+- _Allow password authentication_: checked by default. Users can sign in with their password
+- _Allow public-key authentication_: users can sign in with an SSH key pair
+- _Allow keyboard-interactive authentication_: users can sign in with keyboard-interactive authentication
+- _The user must authenticate using ANY of the above methods_: the default. One of the allowed methods is enough
+- _The user must authenticate using ALL of the above methods_: every allowed method must succeed
+- _Private SSH key_: a private key from [SSH keys](../server/global-ssh-keys). The list is available only when _Allow public-key authentication_ is checked, and the key is saved only in that case. Click the button next to the list to open [SSH keys](../server/global-ssh-keys) and add or edit keys
+- _Test key_: loads the selected key and shows a check mark if the key is valid, or an error icon if it cannot be loaded
 
-**Allow password authentication**
+#### Server Settings window: FTP Endpoints tab
 
-When checked, clients can authenticate using password credentials. The server will validate the provided password against the user's configured password. Enabled by default.
+This tab is shown for MFT servers of type "FTP".
 
-**Allow public-key authentication**
+![FTP Endpoints tab and the FTP Endpoint window with its Main settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/FTP%20Endpoint.png)
 
-When checked, clients can authenticate using private/public key pairs. The server validates the client's public key against the user's configured public key or authorized keys.
+The grid shows the _Name_, _IP_, _Security type_ and _Port_ of each endpoint. The toolbar has _Add_, _Edit_, _Delete_ and _Log_. _Add_ and _Edit_ open the ***FTP Endpoint*** window, which has the ***Main settings*** and ***Additional settings*** tabs.
 
-**Allow keyboard-interactive authentication**
+**FTP Endpoint: Main settings tab**
 
-When checked, clients can complete keyboard-interactive authentication challenges. This method supports complex authentication scenarios including one-time passwords, challenge-response systems, and multi-prompt authentication flows.
+- _Name_: a name for the endpoint. A name is required. A new endpoint is named after its port
+- _IP_: the address the endpoint listens on. "0.0.0.0", the default, means all IPv4 addresses of the Server computer. The list also offers the IPv4 addresses of the computer the Client runs on
+- _Security type_:
+  - "None": the default. Plain FTP with no encryption. User names, passwords and files are sent unencrypted, and the security settings on the ***Additional settings*** tab are unavailable
+  - "TSL": FTPS with TLS encryption. The Client spells this value "TSL"
+  - "SSL": FTPS with SSL encryption
 
-**The user must authenticate using ANY of the above methods**
+  A certificate must be selected on the ***Additional settings*** tab for "TSL" and "SSL"
+- _Port_: the port the endpoint listens on. The default is "21". Next to the port, the window shows whether a VisualCron firewall rule exists for the port and whether another process already uses the port
+- _Firewall allows_: behaves as on the SFTP endpoint; see [Server Settings window: SFTP Endpoints tab](#server-settings-window-sftp-endpoints-tab)
+- _Allow Anonymous_: unchecked by default. When checked, users can connect without a user name or password
+- _Use UTF8_: when checked, UTF-8 is used for communication when the client supports it
+- _Root folder_: the base folder for the endpoint files. A root folder is required
+- _Default Credential_: the [Credential](../server/global-credentials) used to access the root folder. It is needed when the root folder is on a network drive
+- _Session timeout_: the session timeout in milliseconds. If "0" is entered, "360000" (6 minutes) is saved
+- _Outgoing speed limit_: the maximum outgoing speed in bytes per second. "0", the default, means no limit
+- _Incoming speed limit_: the maximum incoming speed in bytes per second. "0", the default, means no limit
 
-The user needs to successfully complete at least one of the enabled authentication methods. This provides flexibility for clients supporting different authentication types. For example, if both password and public key are enabled, the client can choose to use either method.
+**FTP Endpoint: Additional settings tab**
 
-**The user must authenticate using ALL of the above methods**
+The ***Additional security settings*** group is available only when the _Security type_ is "TSL" or "SSL". The ***Passive mode*** group is available for every security type.
 
-The user must successfully complete all enabled authentication methods in sequence. This creates a multi-factor authentication requirement, significantly enhancing security by requiring multiple proof factors.
+- _Certificate with private key file (required for TLS/SSL)_: an X.509 certificate with a private key, selected from [Certificates](../server/global-certificates). It is required for "TSL" and "SSL"
+- _Implict SSL_: when checked, the connection is encrypted from the start (implicit FTPS). When unchecked, the connection starts unencrypted and the client upgrades it (explicit FTPS). The port is not changed when this is checked
+- _Require TLS for control channel_: when checked, clients must encrypt the command channel before they sign in. Available only for "TSL"
+- _Require TLS for data channel_: when checked, clients must encrypt the data channel. Available only for "TSL"
 
-:::tip Multi-Factor Authentication
+:::warning
 
-For high-security environments, enable multiple authentication methods and select "ALL of the above methods" to create true multi-factor authentication. For example, requiring both password AND public key authentication creates two-factor authentication (2FA) where users must provide both something they know (password) and something they have (private key). Ensure your SFTP clients support multi-method authentication before enabling this mode.
+With "TSL" selected and _Implict SSL_ unchecked, unchecking _Require TLS for control channel_ allows clients to connect without first switching the control channel to TLS, so their user name and password may be sent unencrypted.
 
 :::
 
-**Main > Servers > MFT Server > Servers > Advanced SFTP Endpoints > SSH Settings** sub tab
+- _Use Passive mode_: when checked, the server accepts passive mode (PASV) connections, where the client opens the data connection to a port on the server. This usually works better through client-side firewalls and NAT
+- _Passive mode host_: the IP address or DNS name the server gives clients for passive connections. Available when _Use Default Host_ is unchecked
+- _Use Default Host_: gives clients the current IP address of the server for passive connections
+- _Use custom port range_: limits passive connections to a port range (1 - 65535). When unchecked, random ports are used. When checked, both the start and the end of the range are required. Open the range in Windows Firewall
 
-The SSH Settings tab holds the **Algorithms** group, which is divided into the **Encryption algorithms**, **Key exchange algorithms**, **MAC algorithms** and **Public key algorithms** sub tabs.
+### MFT Settings window: Users tab
 
-Each sub tab lists the algorithms supported by the endpoint in a grid with a **Use** column. Check an algorithm to advertise it to connecting clients, uncheck it to withdraw it. **Select all** and **Deselect all** below the grid set every row at once. The client and the server negotiate which of the selected algorithms to use when the connection is established, so keep at least the algorithms your clients require selected.
+![Users tab of the MFT Settings window and the Authentication tab of the User settings window](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/Users.png)
 
-Manual selection is used to:
-- Enforce specific security policies or compliance requirements
-- Restrict algorithms for regulatory compliance (e.g., FIPS 140-2)
-- Limit available algorithms for compatibility with specific client software
-- Control encryption strength based on organizational security policies
+The grid lists the MFT users with their _Email_, _Username_, _Name_ and _Last access_. An MFT user can be linked to an existing VisualCron user or exist only for the MFT Server. The toolbar has _Add_, _Edit_ and _Delete_. _Add_ and _Edit_ open the ***User settings*** window. _Delete_ deletes the selected users at once, without confirmation. Pressing the Delete key in the grid does the same.
+
+:::warning
+
+Deleting a user, or deleting the VisualCron user an MFT user is linked to, removes the MFT user at once.
+
+:::
+
+#### User settings: Authentication tab
+
+- _Link to existing VC user_: when checked, the user signs in with the user name and password of the selected VisualCron user. _Username_, _Password_, _Name_ and _Email_ are cleared and become unavailable. When that VisualCron user is deleted, the linked MFT user is deleted too
+- _Username_: the user name for an MFT-only user. A user name is required before the user can be saved and before the ***Used in servers*** tab becomes available
+- _Password_: the password for an MFT-only user. The password is masked
+- _Name_: the name of an MFT-only user
+- _Email_: the e-mail address of an MFT-only user
+- _Optional custom SSH key (or public server key is used)_: the key used for this user on SFTP endpoints:
+  - "None": the default. No user-specific key
+  - "Use Private key": a private key from [SSH keys](../server/global-ssh-keys)
+  - "Use Public key": a public key from [SSH keys](../server/global-ssh-keys)
+
+  The key list of the selected option becomes available, and a key must be selected before the user can be saved. Use the filter field to narrow the list, the button next to the list to open [SSH keys](../server/global-ssh-keys), and _Test key_ to check the selected key
+
+#### User settings: Options tab
+
+![Options tab of the User settings window with the owner Credential and the FTP speed limits](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/User%20Options.png)
+
+- _Set owner of files/folders uploaded to Credential below_: the [Credential](../server/global-credentials) set as owner of files and folders this user uploads. Select a Credential in the combo box, or click the settings icon to open the Credential list
+- _Outgoing speed limit_: in the ***FTP options*** group. The maximum outgoing speed in bytes per second for this user. "0" means no limit
+- _Incoming speed limit_: in the ***FTP options*** group. The maximum incoming speed in bytes per second for this user. "0" means no limit
+
+#### User settings: Used in servers tab
+
+The grid lists the MFT servers this user has been given access to, with the server name, the server type and whether access is allowed. _Add_, _Edit_ and _Delete_ open the same ***Permission*** window as the Permissions grid on the ***Server settings*** tab.
+
+#### User settings: Permissions tab
+
+The grid lists the folder permissions of this user on one MFT server. Select the MFT server with the _Server_ selector. Only servers the user is allowed to access are listed. The grid has the columns _Folder_, _FR_ (File Read), _FW_ (File Write), _FD_ (File Delete), _FA_ (File Append), _DL_ (Directory List), _DC_ (Directory Create), _DD_ (Directory Delete) and _DS_ (Directory + Subfolders).
+
+_Add_ and _Edit_ open the ***User permissions*** window:
+
+- _Server_: the MFT server selected in the _Server_ selector. It cannot be changed here
+- _Folder_: the folder on the MFT server this entry controls. Use the folder button to select a folder. A folder is required
+- _File Read_: the user can read and download files in the folder
+- _File Write_: the user can write and upload files to the folder
+- _File Delete_: the user can delete files in the folder
+- _File Append_: the user can append to existing files in the folder
+- _Show File List_: the user can list the files in the folder
+- _Show Folder List_: the user can list the subfolders of the folder
+- _Folder + Subfolders_: the permissions apply to this folder and all its subfolders
+- _Folder Create_: the user can create folders in this folder
+- _Folder Delete_: the user can delete folders in this folder
+
+### Server Settings window: Advanced SFTP Endpoints tab
+
+This tab is shown for MFT servers of type "SFTPAdvanced". It is the only endpoint type where the SSH algorithms can be selected.
+
+The grid shows the _Name_, _IP_, _Security type_ and _Port_ of each endpoint. The toolbar has _Add_, _Edit_, _Delete_ and _Log_. _Add_ and _Edit_ open the ***SFTP Endpoint*** window, which has the ***Main settings*** and ***SSH Settings*** tabs.
+
+#### SFTP Endpoint: Main settings tab
+
+![Main settings tab of the advanced SFTP Endpoint window with the certificate and security options](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/SFTP%20Advanced%20Main.png)
+
+- _Name_: a name for the endpoint. A name is required. A new endpoint is named after its port
+- _IP_: the address the endpoint listens on. "0.0.0.0", the default, means all IPv4 addresses of the Server computer. The list also offers the IPv4 addresses of the computer the Client runs on
+- _Firewall allows_: behaves as on the SFTP endpoint; see [Server Settings window: SFTP Endpoints tab](#server-settings-window-sftp-endpoints-tab)
+- _Port_: the port the endpoint listens on. The default is "22". A port is required
+- _Force compression_: when checked, all transfers must be compressed. The server does not offer uncompressed transfer, so connecting clients must support compression. This lowers bandwidth use but raises CPU use on the server and the clients
+- _Treat Rename As Move_: checked by default. SFTP rename operations are handled as move operations, which some SFTP clients need
+- _Root folder_: the base folder for the endpoint files. A root folder is required
+- _Default Credential_: the [Credential](../server/global-credentials) used to access the root folder. It is needed when the root folder is on a network drive
+- _Session timeout_: the session timeout in milliseconds. If "0" is entered, "360000" (6 minutes) is saved
+- _Certificate with private key_: the certificate whose key the endpoint uses in the SSH connection, selected from [Certificates](../server/global-certificates). A certificate is required, and it must include its private key
+
+:::note Compatibility
+
+Some older SFTP clients do not support mandatory compression. Test with the client software before checking _Force compression_ on a production endpoint.
+
+:::
+
+**Security options**
+
+- _Allow password authentication_: checked by default. Users can sign in with their password
+- _Allow public-key authentication_: users can sign in with an SSH key pair
+- _Allow keyboard-interactive authentication_: users can sign in with keyboard-interactive authentication
+- _The user must authenticate using ANY of the above methods_: the default. One of the allowed methods is enough
+- _The user must authenticate using ALL of the above methods_: every allowed method must succeed
+
+:::tip Require more than one method
+
+To require both a password and a key, check _Allow password authentication_ and _Allow public-key authentication_, then select _The user must authenticate using ALL of the above methods_. Check that the SFTP clients support signing in with more than one method before using this setting.
+
+:::
+
+#### SFTP Endpoint: SSH Settings tab
+
+The ***Algorithms*** group has the ***Encryption algorithms***, ***Key exchange algorithms***, ***MAC algorithms*** and ***Public key algorithms*** tabs.
+
+Each tab lists the algorithms the endpoint supports, with a _Use_ column. Check an algorithm to offer it to connecting clients, or uncheck it to withdraw it. _Select all_ and _Deselect all_ below the grid set every row at once. The client and the server agree on one of the offered algorithms when the connection is made, so keep the algorithms the clients need checked.
+
+Unchecking algorithms is how a security policy is applied to the endpoint, for example to withdraw algorithms based on MD5, SHA-1, DSA or 3DES.
+
+:::warning Legacy algorithms are offered by default
+
+A new endpoint offers several algorithms that many security policies no longer allow, including `3des-ctr`, `diffie-hellman-group1-sha1` and the other SHA-1 key exchanges, `hmac-md5`, `hmac-sha1`, `ssh-rsa` and `ssh-dss`. Review each list and uncheck what the clients do not need.
+
+:::
 
 **Encryption algorithms**
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/SFTP%20Advanced%20Encryption.png)
+![Encryption algorithms tab with the Use column and the Select all and Deselect all buttons](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/SFTP%20Advanced%20Encryption.png)
 
-Symmetric encryption algorithms (ciphers) used for securing data transmission during SFTP sessions. New endpoints start with the following algorithms selected:
+The ciphers that protect the data in an SFTP session. A new endpoint has the following checked:
 
-* aes256-ctr
-* aes192-ctr
-* aes128-ctr
-* 3des-ctr
-* aes256-gcm@openssh.com
-* aes128-gcm@openssh.com
-* chacha20-poly1305@openssh.com
+* `aes256-ctr`
+* `aes192-ctr`
+* `aes128-ctr`
+* `3des-ctr`
+* `aes256-gcm@openssh.com`
+* `aes128-gcm@openssh.com`
+* `chacha20-poly1305@openssh.com`
+
+The CBC ciphers (including `3des-cbc`, `blowfish-cbc` and `cast128-cbc`) and `arcfour`, `arcfour128` and `arcfour256` are listed but unchecked.
 
 **Key exchange algorithms**
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/SFTP%20Advanced%20KeyExchange.png)
+![Key exchange algorithms tab with the Use Strict Key Exchange list and the algorithm grid](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/SFTP%20Advanced%20KeyExchange.png)
 
-Key exchange algorithms used during SSH connection establishment. They securely establish shared encryption keys between the server and client without transmitting the key material over the network. All listed algorithms are selected on new endpoints.
+The algorithms used to agree on session keys when the connection is made, without sending the keys over the network. Every listed algorithm is checked on a new endpoint, including `diffie-hellman-group1-sha1`, `diffie-hellman-group14-sha1`, `diffie-hellman-group-exchange-sha1` and the SHA-1 GSS algorithms.
 
-**Use Strict Key Exchange**
+- _Use Strict Key Exchange_: how strict key exchange is applied during the handshake:
+  - "Disabled": strict key exchange is off
+  - "Enabled, not enforced (default)": the default. Strict key exchange is on but not enforced
+  - "Enabled, reject affected algorithms": strict key exchange is on, and the affected algorithms are rejected
+  - "Required": every connection must use strict key exchange
 
-Controls strict key exchange validation during the SSH connection handshake. Available options:
-- **Disabled** - Strict key exchange validation is turned off
-- **Enabled, not enforced (default)** - Strict validation is enabled but not required
-- **Enabled, reject affected algorithms** - Strict validation is enabled and algorithms that do not support it are rejected
-- **Required** - Strict key exchange is mandatory for all connections
-
-Strict key exchange provides enhanced security against certain downgrade attacks but may affect compatibility with older SSH clients.
+Strict key exchange protects against some downgrade attacks, but can stop older SSH clients from connecting.
 
 **MAC algorithms**
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/SFTP%20Advanced%20MAC.png)
+![MAC algorithms tab with the Use column and the algorithm grid](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/SFTP%20Advanced%20MAC.png)
 
-Message Authentication Code (MAC) algorithms used for ensuring data integrity and authenticity during SFTP sessions. MAC algorithms verify that transmitted data has not been tampered with or corrupted during transmission. All listed algorithms except hmac-sha2-256-96-etm@openssh.com and hmac-sha2-512-96-etm@openssh.com are selected on new endpoints.
+The Message Authentication Code algorithms that check that data in an SFTP session has not been changed. Every listed algorithm except `hmac-sha2-256-96-etm@openssh.com` and `hmac-sha2-512-96-etm@openssh.com` is checked on a new endpoint, including `hmac-md5`, `hmac-md5-96`, `hmac-sha1` and `hmac-sha1-96`.
 
 **Public key algorithms**
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/SFTP%20Advanced%20PublicKey.png)
+![MAC algorithms tab of the SSH Settings tab, shown in place of the Public key algorithms tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/MFT/SFTP%20Advanced%20PublicKey.png)
 
-Public key algorithms used for server host key authentication and client public key authentication. These algorithms verify the identity of both the server and clients during SSH connections. All listed algorithms are selected on new endpoints.
+The algorithms used for the server host key and for client public-key authentication. Every listed algorithm is checked on a new endpoint, including `ssh-rsa`, which signs with SHA-1, and `ssh-dss`.
 
-:::note Key Size Requirements
+:::note Key size
 
-When using RSA-based public key algorithms, ensure that both server host keys and client keys meet minimum key size requirements. Modern security standards typically require at least 2048-bit RSA keys. For high-security environments, 3072-bit or 4096-bit RSA keys may be preferred. Consult your organization's security policies for specific requirements.
+For RSA keys, both the server key and the client keys must meet the key size the organization requires. Many security standards require at least 2048-bit RSA keys.
 
 :::

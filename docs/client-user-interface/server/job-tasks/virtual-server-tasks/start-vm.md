@@ -5,34 +5,28 @@ hide_title: 'true'
 
 ## Task Virtual Server - Start VM
 
-The Virtual Server - Start VM Task starts a specific virtual machine.
+The Virtual Server - Start VM Task starts a virtual machine on Microsoft Virtual Server, on the VisualCron Server computer or on a remote computer.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/Start%20VM.png)
+![Start VM tab of the Virtual Server Start VM Task, with the Server location options, Credential, Virtual Machine Name and the Options group](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/Start%20VM.png)
 
-**Remote VMWare server / Local VMWare workstation**
+:::warning
 
-Select _Remote VMWare server_ to connect to a remote VMWare server, or _Local VMWare workstation_ to use the local machine.
+If Virtual Server reports an error, the error is written to standard error, and the Task reports success. To catch it, check the standard error output, for example with the output conditions on the ***On error*** tab (see [Task - On Error](../../task-on-error)).
 
-**Connection**
+:::
 
-Select the VMWare connection to use. Only enabled when _Remote VMWare server_ is selected.
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-**Server VMX path**
+### Start VM tab
 
-The path to the virtual machine's VMX file on the remote server. Click the _Refresh_ button to populate the list from the selected connection. Only enabled when _Remote VMWare server_ is selected.
+- _Local server_: control Virtual Server on the VisualCron Server computer. Selected by default
+- _Remote server_: control Virtual Server on another computer
+- _Server name_: the DNS name or IP address of the remote computer. Variables are replaced in this field
+- _Credential_: the [Credential](../../global-credentials) to sign in to the remote computer, with its domain, user name and password. Required with _Remote server_. Click the _Settings_ icon to add or edit Credentials
+- _Virtual Machine Name_: the name of the virtual machine. Click _Refresh_ to list the virtual machines on the selected server. Variables are replaced in this field
+- _Wait for completion_: wait until the virtual machine has started before the Task ends. Checked by default
+- _Resume paused machine_: resume the virtual machine when it is paused. Checked by default
 
-**Local VMX path**
+### Output and errors
 
-The path to the virtual machine's VMX file on the local machine. Click the File icon to browse. Only enabled when _Local VMWare workstation_ is selected.
-
-**Timeout in seconds**
-
-The number of seconds to wait before timing out the operation. Minimum is 1, maximum is 36000, default is 180. Note that a Timeout tab setting on the task overrides this value.
-
-**Start VM > VM Task settings** tab
-
-**Start VM**
-
-**Launch GUI**
-
-When checked, the VMWare GUI is launched and displayed when the virtual machine starts.
+If the Credential is not found, or an unexpected error occurs, the Task fails.

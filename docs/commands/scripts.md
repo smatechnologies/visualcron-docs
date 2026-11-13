@@ -5,53 +5,59 @@ hide_title: 'true'
 
 ## Scripts
 
-By using scripts you can perform almost anything in Windows. There are several scripting languages that you can use, where the most common are:
-•VBScript
-•PHP
-•Perl
- 
-All these scripting languages are free to use. Look at the section for each scripting language about how to install and use it with VisualCron.
- 
-To execute external scripts on another web server, use the Job type "HTTP" to POST or GET to a script on a server. Read more about it [here](https://en.wikipedia.org/wiki/API).
+With a script you can automate almost anything in Windows. This page is for anyone who runs scripts from VisualCron. It shows which Task to use for each kind of script, and how to run PHP and VBScript scripts.
 
-### Using PHP for Scripting
+Use these Tasks:
 
-Using PHP to perform Tasks on the computer provides many options. With PHP you can for example connect to different databases, read and process files, send mail, print files etc. PHP is quite easy to learn and is free for download. To read more about PHP and download the package go here.
- 
-After installing and configuring PHP in your way, it is easy to call your scripts from VisualCron. In the Command field, enter the full path to the php.exe file, normally "C:\php\php.exe". In the Arguments field you can enter several parameters to php.exe, for example "-q yourscript.php". This executes the script in a quiet mode and no window is shown.
- 
-Watch out if you use relative links in your script, if you do that you may want to specify a Working directory so that script knows where to find the relative paths.
+- [PowerShell Task](../client-user-interface/server/job-tasks-task-process-powershell): PowerShell code typed in the Task, or a PowerShell file
+- [Execute Script Task](../client-user-interface/server/job-tasks-task-process-execute-script): VBScript and JScript files, or VBScript code typed in the Task
+- [.NET Code Execute Task](../client-user-interface/server/job-tasks-task-process-dot-net-code-execute): C# or VB.NET code
+- [Execute Task](../client-user-interface/server/job-tasks-task-process-execute): any other interpreter, such as PHP or Perl, started with its own program file
 
-![PHP-Script in VisualCron](../../static/img/Commands%20Scripts%20and%20Third%20Party%20Tools/Scripts.png)
+To run a script that is on a web server, use the [HTTP Task](../client-user-interface/server/job-tasks/net-tasks/http) to send a GET or POST request to it.
 
-### Using VBScript for Scripting
+### Using PHP for scripting
 
-#### What is VBScript?
+PHP is a free scripting language that can, for example, work with databases, read and process files, and send email. You can download it from [php.net](https://www.php.net/).
 
-Microsoft Visual Basic Scripting Edition brings active scripting to a wide variety of environments, including Web client scripting in Microsoft Internet Explorer and Web server scripting in Microsoft Internet Information Service.
+To run a PHP script, add an [Execute Task](../client-user-interface/server/job-tasks-task-process-execute) and set:
 
-#### Easy to Use and Learn
+- _Command_: the full path to "php.exe", for example "C:\php\php.exe"
+- _Arguments_: `-q` and then the full path to the script, for example `-q "C:\Scripts\report.php"`
 
-If you already know Visual Basic or Visual Basic for Applications (VBA), VBScript will be very familiar. Even if you do not know Visual Basic, once you learn VBScript, you are on your way to programming with the whole family of Visual Basic languages. Although you can learn about VBScript in just these few Web pages, they do not teach you how to write the code. To learn programming, take a look at Step by Step books available from Microsoft Press.
+`-q` suppresses HTTP header output when PHP runs as CGI. With the command-line "php.exe" it has no effect, but it does no harm. The console window is hidden because _Run in hidden window_ is selected, which is the default.
 
-#### Windows Script
+If the script uses relative paths, select _Working directory_ and enter the folder those paths start from. When _Working directory_ is not selected, the script does not run in its own folder, so its relative paths can point to the wrong place.
 
-VBScript talks to host applications using Windows Script. With Windows Script, browsers and other host applications do not require special integration code for each scripting component. Windows Script enables a host to compile scripts, obtain and call entry points, and manage the namespace available to the developer. With Windows Script, language vendors can create standard language run-time modules for scripting. Microsoft will provide run-time support for VBScript. Microsoft is working with various Internet groups to define the Windows Script standard in order to make scripting engines interchangeable. Windows Script is used in Microsoft® Internet Explorer and in Microsoft® Internet Information Service.
- 
-#### Using VBScript in VisualCron
+![Execute tab of an Execute Task, with Command set to c:\php\php.exe, Arguments set to -q c:\yourscript.php, Working directory selected with no folder, and Run in hidden window selected](../../static/img/Commands%20Scripts%20and%20Third%20Party%20Tools/Scripts.png)
 
-To execute VBScript from VisualCron you specify "wscript.exe" in the Command field. In the Arguments field you specify the full path to your script, for example "C:\myscripts\dosomething.vbs".
+### Using VBScript for scripting
 
-![VBScript in VisualCron](../../static/img/clip333444103.gif)
+VBScript is a Windows scripting language. Microsoft has deprecated it, so for new scripts consider the [PowerShell Task](../client-user-interface/server/job-tasks-task-process-powershell). VisualCron still runs existing VBScript scripts, as long as VBScript is available on the Server computer.
 
-### Third-Party Tools
+The easiest way is the [Execute Script Task](../client-user-interface/server/job-tasks-task-process-execute-script). It runs the script with "cscript.exe" in a hidden window. By default, it keeps what the script writes as the Task's output, and the Task fails if the script writes to standard error (see the **_On error_** tab). You have two ways to give it the script:
 
-You can use VisualCron to run and control any other program. For example can you start a backup program at a certain time. Another example is to use VisualCron to record radio shows at certain times.
- 
-If you have any good program/utility that you use with VisualCron then please use the [contact web page](https://www.visualcron.com/contact.aspx) and tell us about it!
+- Select _Script file_ and enter the full path to the script in _File path_. Put quotes around a path that contains spaces
+- Select _Script text_ and type the script
+
+![Execute script tab of an Execute Script Task, with No Credential selected, the Script file and File path fields, and Script text selected with an empty script editor](../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Execute%20Script.png)
+
+To use the Execute Task instead, set _Command_ to "C:\Windows\System32\cscript.exe" and _Arguments_ to `"C:\Scripts\dosomething.vbs" //NoLogo`.
+
+:::warning
+
+Use "cscript.exe", not "wscript.exe". The "wscript.exe" host shows the script's messages, such as `WScript.Echo`, in message boxes instead of writing them as output. The Task output then stays empty, and a message box that nobody closes keeps the Task running until it is stopped, or until its timeout if one is set.
+
+If you enter a ".vbs" or ".js" file in _Command_ of an Execute Task, the Client offers to move it to _Arguments_ and set _Command_ to "wscript.exe". If you accept, change _Command_ to "C:\Windows\System32\cscript.exe" afterwards.
+
+:::
+
+### Third-party tools
+
+You can use VisualCron to start other programs, for example a backup program at a set time. Use the [Execute Task](../client-user-interface/server/job-tasks-task-process-execute). By default it runs the program in a hidden window, under the account of the VisualCron service or the Credential selected in _Run Task as_. With the default settings, a program that waits for someone to type or click does not get that input. If a program behaves differently than when you start it yourself, see [Windows Command Does Not Execute Correctly](../troubleshooting/windows-command-does-not-execute).
+
+To suggest a tool, see [Commands, Scripts, and Third Party Tools](commands-scripts-third-party-tools).
 
 #### NirCmd
 
-NirCmd is a small command line utility that allows you to do some useful Tasks without displaying any user interface. By running NirCmd with a simple command line option, you can write and delete values and keys in the Registry, write values into a INI file, dial to your internet account or connect to a VPN network, restart windows or shut down the computer, create shortcut to a file, change the created/modified date of a file, change your display settings, turn off your monitor, open the door of your CD-ROM drive, and more.
- 
-NirCmd can be found [here](http://www.nirsoft.net/utils/nircmd.html).
+NirCmd is a free command-line utility from NirSoft. It performs many small Windows actions without showing a window, for example changing registry values, creating shortcuts or turning off the monitor. Download it from [nirsoft.net](https://www.nirsoft.net/utils/nircmd.html).

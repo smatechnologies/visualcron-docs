@@ -5,8 +5,15 @@ hide_title: 'true'
 
 ## Copy Job
 
-When a Job is defined, right-click on the Job or Task in the Server/Group/Job/Task grid and select *Copy Job '`<Job name>`'* to copy the Job.
- 
-The copy Job function copies the Job temporarily to the memory which makes is possible to paste the Job to another server than the one that is currently connected.
+The `Copy Job '<Job name>'` item copies a Job to the Client clipboard, so that it can be pasted on the same Server or on another connected Server with [Paste Job](paste-job).
 
-![](../../../../static/img/Client%20User%20Interface/Toolbar/Copy%20job.png)
+1. Right-click the Job in the Server/Group/Job/Task grid.
+2. Click `Copy Job '<Job name>'`.
+3. Right-click a Job in the target group, or the Server row of the target Server.
+4. Click `Paste Job '<Job name>'`.
+
+You can also press Ctrl+C to copy the selected Job and Ctrl+V to paste it.
+
+The original Job is not changed. A copy pasted on the same Server keeps the name of the original. On a Task row, the same item is `Copy Task '<Task name>'`.
+
+![Job right-click menu with the Copy Job item highlighted](../../../../static/img/Client%20User%20Interface/Toolbar/Copy%20job.png)

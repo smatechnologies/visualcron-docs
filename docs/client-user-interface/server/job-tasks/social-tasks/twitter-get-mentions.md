@@ -13,32 +13,21 @@ Twitter integration described on this page is deprecated from **VisualCron v13.2
 
 ## Task Social - Twitter - Get Mentions
 
-The Twitter - Get mentions Task retrieves of specified user in Twitter.
+The Twitter - Get mentions Task retrieves the tweets that mention the user of the Connection in Twitter.
 
-![](../../../../../static/img/tasksocialtwittergetmentions.png)
+![Twitter - Get mentions tab with the Connection, the optional parameters and the Custom query parameters grid](../../../../../static/img/tasksocialtwittergetmentions.png)
 
-**Connection**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To use Twitter Tasks you need to create a Connection first. You do that in the [Twitter Connection](../../../server/connection-twitter) dialog.
- 
-**Max count of tweets to retrieve**
+### Twitter - Get mentions tab
 
-Specifies the number of Tweets to try and retrieve, up to a maximum of 200 per distinct request.
- 
-**Since ID**
+- _Connection_: the Twitter Connection to use; see [Twitter Connection](../../../server/connection-twitter)
+- _Max count of tweets to retrieve_: the number of tweets to try to retrieve, up to 200 per request
+- _Since ID_: return results with an ID greater than (that is, more recent than) the specified ID
+- _Max ID_: return results with an ID less than (that is, older than) or equal to the specified ID
+- _Include entities_: when cleared, the entities node is not included
+- _Trim User_: when checked, each returned tweet includes a user object with only the numeric ID of the author
+- _Include contributor details_: include contributor details in the results
+- _Custom query parameters_: more parameters for the request, one row each with _Name_ and _Value_
 
-Returns results with an ID greater than (that is, more recent than) the specified ID.
- 
-**Max ID**
-
-Returns results with an ID less than (that is, older than) or equal to the specified ID.
- 
-**Include entities**
-
-The entities node will not be included when not checked.
- 
-**Trim user**
-
-When checked, each Tweet returned in a timeline will include a user object including only the status authors numerical ID.
- 
 See Twitter Developer Documentation for detailed [GET mentions](https://developer.twitter.com/en/docs/api-reference-index) information.

@@ -2,126 +2,75 @@
 sidebar_label: 'Settings - Client Settings'
 hide_title: 'true'
 ---
-
 ## Settings - Client Settings
 
-Some general settings are available for the Client. These are located in the main menu **File > Settings > Client settings.** The window is divided into a number of tabs: **Main settings**, **Log**, **Language**, **Proxy**, **Grid**, **Folders**, **Jobs**, **Forum Credential**, **Client events** and **Features**. Click *Apply settings* to save your changes.
- 
-**File > Settings > Client settings > Main settings** tab
+The ***File*** -> ***Settings*** -> ***Client settings*** window holds the settings of the Client on this computer. They do not change the Server; Server settings are in [Main - Settings](../server/main-settings).
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/File/Client%20Settings.png)
+The window has the tabs ***Main settings***, ***Log***, ***Language***, ***Proxy***, ***Grid***, ***Folders***, ***Jobs***, ***Forum Credential***, ***Client events*** and ***Features***. Click ***Apply settings*** to save your changes, or ***Cancel*** to close without saving.
 
-**Show tooltips**
+### Main settings tab
 
-If this option is selected, an "Info" window is opened when the mouse points to some settings. The displayed text provides additional information related to the specific setting.
- 
-**Check for updates at startup**
+![The Main settings tab of the Client settings window, opened from the Client settings button on the File tab](../../../static/img/Client%20User%20Interface/Main%20Menu/File/Client%20Settings.png)
 
-If this option is selected, a connection to [visualcron.com](https://www.visualcron.com) is performed at VisualCron client startup in order to check for and notify the user of possible later VisualCron versions.
- 
-**Auto translate to UNC path**
+- _Show tooltips_: shows a tip with more information when the mouse pointer rests on a setting
+- _Check for updates at startup_: checks the VisualCron web site for a newer version shortly after the Client starts; see [Updates - Check for Updates](check-for-updates)
+- _Auto translate to UNC path_: when you select a file on a mapped drive, for example `Z:`, the Client enters the UNC path, for example `\\servername\folder\file`
+- _Show Server message boxes_: shows alerts from the Server as message boxes; when cleared, they are written to the log window only
+- _Show Server Stop confirmation dialog_: asks for confirmation before the Server is stopped
+- _Start Tray Client on startup_: when checked, ***Apply settings*** sets the Tray Client to start each time any user logs on to this computer, and starts it if it is not running; when cleared, ***Apply settings*** removes it from startup. This is the same setting as _Start Tray Client on startup_ in the [Tray Client](../../using-visualcron/visualcron-tray-client) settings, and it applies to all users of the computer. The Client can show and change it only when it runs with administrator rights. Without them, the check box always shows as cleared, even when the Tray Client is set to start at logon, and changes are not saved
+- _Auto scan for new servers in Manage servers_: the ***Manage servers*** window scans the network for Servers when it opens
+- _Allow multiple Client instances at the same time_: lets more than one Client run on this computer
+- _Do not show Trial tutorial wizard on startup_: does not show the tutorial wizard when the Client starts during a trial
+- _Font_: the font used in the Client. Default "Roboto"
 
-When this is checked all logical drives (i.e. Z) is translated to the UNC path (\\servername\folder\file)
- 
-**Show Server message boxes**
+### Log tab
 
-If alerts should be displayed. Otherwise shown in log window.
+- _Filters in log window_: the event types shown in the log window: "Debug", "Information", "Error" and "Communication"
+- _Log to file_: _Client events_ writes the Client events to the Client log file, in the _Log folder_ on the ***Folders*** tab
 
-**Show Server Stop confirmation dialog**
+### Language tab
 
-If checked, a confirmation dialog is shown before the Server is stopped.
+![The Language tab of the Client settings window with the Choose client language list](../../../static/img/filesettingsclientlanguage.png)
 
-**Start Tray Client on startup**
+- _Choose client language_: the language of the Client. Restart the Client for the change to take effect
 
-Starts the VisualCron Tray Client when the Client starts.
+:::note
 
-**Auto scan for new servers in Manage servers**
-
-If checked, the Manage servers window automatically scans the network for servers.
-
-**Allow multiple Client instances at the same time**
-
-If checked, more than one VisualCron Client can run at the same time.
-
-**Do not show Trial tutorial wizard on startup**
-
-If checked, the start guide / tutorial wizard is not shown when the Client starts.
-
-**Font**
-
-Selects the font used in the Client.
-
-**File > Settings > Client settings > Log** tab
-
-The Log tab controls what is shown in the log window and what is written to file.
-
-* **Filters in log window** - choose which event types are shown in the log window: *Debug*, *Information*, *Error* and *Communication*.
-* **Log to file** - *Client events* writes the Client events to file.
- 
-**File > Settings > Client settings > Language tab**
-
-![](../../../static/img/filesettingsclientlanguage.png)
-
-**Choose client language**
-
-Select language to be used in VisualCron client. In order for the new language to take effect, the client have to be restarted.
- 
-:::note 
-
-The documentation, web, log and debug entries are in English, independently of the language setting. User entered texts, e.g. Job description, remains in the entered language.
+The documentation, the web site, and log and debug entries are in English whatever the language setting. Text that users enter, such as a Job description, stays in the language it was entered in.
 
 :::
 
-**File > Settings > Client settings > Proxy** tab
+### Proxy tab
 
-Enter specific proxy server data to be used for connection to a server. See description of Server proxy settings for more information.
- 
-**File > Settings > Client settings > Grid** tab
+This tab sets the proxy that the Client uses for its own web requests, such as [Check for updates](check-for-updates). Select the _Proxy type_, normally "HTTP Proxy", then enter the _Address_ and _Port_ and, if the proxy needs them, the credentials. The fields are the same as in the Server proxy settings; see [Settings - Proxy](../server/settings-proxy).
 
-![](../../../static/img/filesettingsclientgrid.png)
+### Grid tab
 
-**Show Job folders**
+![The Grid tab of the Client settings window with the search and main grid update options](../../../static/img/filesettingsclientgrid.png)
 
-If checked, Jobs are organized in folders in the grid.
+- _Show Job folders_: shows the Job folders pane next to the main grid; see [Job Folders](../job-folders)
+- _Group Connections_: groups the rows in the Connections grid
+- _Auto sort on update_: sorts all Jobs again each time an update is received. This slows the Client down. Default off
+- _Delay/Cache update_: delays row updates in the main grid by the number of seconds you set, to improve performance. Default off
+- _Update Task/Job progress in real time_: updates Task and Job progress in the grid as it happens
+- _Instant search on key down_: the grid filter applies as you type; see [Filter - Grid Filter](../interface/filter-grid-filter)
 
-**Group Connections**
+### Folders tab
 
-If checked, Connections are grouped in the Connections grid.
+The folders the Client uses on this computer: _Backup folder_, _Settings folder_ and _Log folder_. Each has a browse button to change it and an ***Open*** button to open it. ***Reset to default*** restores the default paths. The Server folders are set in the Server settings; see [Settings - Folders](../server/settings-folders).
 
-**Auto sort on update**
+### Jobs tab
 
-If VisualCron should sort all Jobs when updates are received. Checking this degrades Client performance. Default off.
- 
-**Delay/Cache update**
+- _Days to track failed Jobs_: the number of days for which failed Jobs are tracked
 
-To improve performance you can delay row updates. Default off. When checked, you can set the delay in seconds.
+### Forum Credential tab
 
-**Update Task/Job progress in real time**
+The VisualCron forum account the Client uses to access the Task repository. Enter your forum _Username_ and _Password_. The links ***Register an account here*** and ***Reset password here*** open the forum.
 
-If checked, Task and Job progress is updated in the grid in real time.
+### Client events tab
 
-**Instant search on key down**
+Check the Client events you want pop-ups for; see [Client Events](../client-events).
 
-If checked, the main grid filter searches as you type.
+### Features tab
 
-**File > Settings > Client settings > Folders** tab
-
-Shows the **Backup folder**, **Settings folder** and **Log folder** paths. Each path has a browse button to change it and an *Open* button to open the folder. The *Reset to default* button restores the default paths.
-
-**File > Settings > Client settings > Jobs** tab
-
-**Days to track failed Jobs**
-
-The number of days for which failed Jobs are tracked.
-
-**File > Settings > Client settings > Forum Credential** tab
-
-The VisualCron online forum Credential is used to access the Task repository. Enter your forum **Username** and **Password**. Links are provided to register an account and to reset your password.
-
-**File > Settings > Client settings > Client events** tab
-
-Configures the Client events that are recorded.
-
-**File > Settings > Client settings > Features** tab
-
-Lets you hide specific Client features from the user interface.
+Clear a feature to hide it from the Client user interface on this computer. This changes only what this Client shows; it does not change user permissions on the Server.

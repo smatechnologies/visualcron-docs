@@ -5,73 +5,85 @@ hide_title: 'true'
 
 ## Robot Task Activities
 
-A Robot Task is built by dragging **activities** from the activity list into the task's Sequence. Each activity performs one well defined operation, such as clicking an element, reading a file, or setting a cell value in Excel.
+The Robot Task activities are the building blocks of a Robot Task sequence: each activity performs one operation, such as clicking an element, reading a file or setting a cell value in Excel.
 
-Activities are organized into categories in the activity list. The pages below describe every activity in each category, along with its settings.
+To add an activity, drag it from the activity list into the Sequence of the Robot Task. The activity list groups the activities into categories, and the pages below describe the activities in each category and their settings. For the Robot Task itself, see [Task Interactivity - Robot Task](../overview).
 
-### Flow Control
+### Flow control
 
 | Category | Purpose |
 |---|---|
 | [Conditions](conditions) | Branch the sequence with If and Switch |
-| [Loops](loops) | Repeat activities with While, Do While, For, and For Each, and control iteration flow |
-| [Error Handling](error-handling) | Catch, throw, and rethrow exceptions |
-| [Other](other) | Assign, Sequence, and Wait |
+| [Loops](loops) | Repeat activities with While, Do While, For and For Each, jump with Flow, Label and Go to, and control iteration with End Loop and Continue Loop |
+| [Error Handling](error-handling) | Catch, throw and rethrow exceptions |
+| [Other](other) | Assign, Sequence and Wait |
 
-### UI Automation
+### UI automation
 
 | Category | Purpose |
 |---|---|
-| [Mouse](mouse) | Click, double click, move, and press mouse buttons |
-| [Keyboard](keyboard) | Send key events and key combinations |
+| [Mouse](mouse) | Click, double-click, move the mouse and press or release mouse buttons |
+| [Keyboard](keyboard) | Send key events and key presses |
 | [Text](text) | Type text into a window or element |
 | [Controls](controls) | Interact with UI elements through automation patterns |
-| [Windows](windows) | Attach to, show, hide, move, and resize windows |
-| [Image](image) | Capture screenshots of screens, windows, and elements |
-| [OCR](ocr) | Find and read on screen text that is not exposed as a UI element |
+| [Windows](windows) | Attach to, show, hide, close, maximize, minimize, restore, move and resize windows |
+| [Image](image) | Capture screenshots of screens, windows and elements |
+| [OCR](ocr) | Find and read on-screen text that is not exposed as a UI element |
 
-### Web Automation
+### Web automation
 
 | Category | Purpose |
 |---|---|
-| [Web Macro](web-macro) | Drive a web browser: navigate, click, populate fields, extract data, download and upload files |
+| [Web Macro](web-macro) | Drive a web browser: navigate, click, populate fields, extract data, and download and upload files |
 | [Element Path](element-path) | Reference for the three ways to identify an HTML element |
 
 ### Excel
 
 | Category | Purpose |
 |---|---|
-| [Excel](excel) | Start, attach to, and quit the Excel application |
-| [Excel Workbook](excel-workbook) | Create, open, save, protect, and inspect workbooks |
-| [Excel Sheet](excel-sheet) | Create, select, rename, protect, and reorder worksheets |
-| [Excel Cell](excel-cell) | Read, write, copy, merge, and clear cells |
-| [Excel Row](excel-row) | Select, set, insert, delete, and copy rows |
-| [Excel Column](excel-column) | Select, set, insert, delete, and copy columns |
+| [Excel](excel) | Start, attach to and quit the Excel application |
+| [Excel Workbook](excel-workbook) | Create, open, save, protect and inspect workbooks |
+| [Excel Sheet](excel-sheet) | Create, select, rename, protect and reorder worksheets |
+| [Excel Cell](excel-cell) | Read, write, copy, merge and clear cells |
+| [Excel Row](excel-row) | Select, set, insert, delete and copy rows |
+| [Excel Column](excel-column) | Select, set, insert, delete and copy columns |
 | [Excel Macros](excel-macros) | Run a macro in the open workbook |
 
-### Data and System
+### Data and system
 
 | Category | Purpose |
 |---|---|
-| [File](file) | Read, write, copy, move, archive, and wait for files |
-| [Folder](folder) | Create, copy, empty, enumerate, and wait for folders |
-| [List Variable](list-variable) | Build and manipulate tabular List Variables, including rows and columns |
-| [Variables](variables) | Set the value of a Job or User variable |
-| [Clipboard](clipboard) | Set, get, and clear the Windows clipboard |
-| [Process](process) | Start and close processes |
+| [File](file) | Read, write, copy, move, archive and wait for files |
+| [Folder](folder) | Create, copy, empty, enumerate and wait for folders |
+| [List Variable](list-variable) | Build and change List Variables, including their rows and columns |
+| [Variables](variables) | Set the value of a Job Variable or User Variable |
+| [Clipboard](clipboard) | Set, get and clear the Windows clipboard |
+| [Processes](process) | Start and close processes |
 
-### RPA Result Variables
+The activity list also has Outlook activities (start and close Outlook, and get, send, forward, reply to, save and display messages), a User input activity that asks for text while the Robot Task runs, and web browser extension activities that work with a third-party web browser. These activities are not described on these pages.
 
-Several activities write their outcome to a **Result** property rather than to a Job or User variable. The value is an RPA variable that exists only for the duration of the Robot Task execution, and is referenced in later activities with:
+### Properties every activity has
 
-```
+Each activity has these properties in the Properties pane, in addition to its own settings:
+
+- _Display name_: the name shown on the activity in the sequence and in the Task output. Give each activity a name that says what it does, such as `Populate The Address Field`, so a long sequence stays readable
+- _Error settings_: rules that raise or ignore an error from this activity. The rules have no effect on the condition, loop, Flow, Label, Go to and Wait activities, which show the property but do not use it. See [Error Handling](error-handling)
+- _Wait before_ and _Wait after_: the wait in milliseconds before and after the activity runs. When empty, the playback speed from the Robot Task settings is used. Not every activity has these two properties
+
+### Output and errors
+
+While a Robot Task runs, each activity writes its start, its result and its waits to the Task output.
+
+- An activity that fails raises an error. Unless a [Try Catch](error-handling) activity or the activity's _Error settings_ handles the error, the sequence stops and the Task fails
+- When _Error settings_ ignores an error, the sequence continues past the failing activity, the error is not written to standard error, and unless something else fails, the Task reports success
+- Some activities write a problem to standard error and carry on. The sequence continues, and the Task fails when the sequence ends
+
+### RPA result variables
+
+Several activities write their outcome to a _Result_ property rather than to a Job Variable or User Variable. The value is an RPA variable that exists only while the Robot Task runs, and later activities read it with:
+
+```text
 {RPA(VariableName)}
 ```
 
-For example, a **Folder Exists** activity with its Result set to `Exists` is read in a later If activity as `{RPA(Exists)}`, which resolves to `True` or `False`.
-
-Activities that produce a Result variable are noted on each category page.
-
-### Naming Activities
-
-Every activity has a **Display name** property in the Properties pane. Set it on each activity you add so the sequence reads clearly. A name such as `Populate The Address Field` makes a sequence far easier to maintain than a column of activities all named `Populate field`.
+For example, a _Folder Exists_ activity with its Result set to `Exists` is read in a later If activity as `{RPA(Exists)}`, which resolves to "True" or "False". Each category page says which of its activities have a Result property. To keep a value for a later Task in the Job, copy it into a Job Variable or User Variable with the [Set variable](variables) activity.

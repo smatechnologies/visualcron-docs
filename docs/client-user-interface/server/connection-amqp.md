@@ -5,109 +5,102 @@ hide_title: 'true'
 
 ## Connection - AMQP
 
-The Advanced Message Queuing Protocol (AMQP) is an open standard application layer protocol for message-oriented middleware. It provides message orientation, queuing, routing (including point-to-point and publish-and-subscribe), reliability, and security. VisualCron supports AMQP version 1.0 or later.
+The AMQP Connection stores the address, sign-in and security settings that the [AMQP - Send message](job-tasks/messaging-tasks/amqp-send-message) Task and the [AMQP Trigger](event-trigger-amqp) use to connect to a message broker over Advanced Message Queuing Protocol (AMQP) 1.0. The supported broker types are RabbitMQ and Azure Service Bus.
 
-The AMQP Connection stores connect and authentication properties for AMQP message brokers.
+### Common settings
 
-The AMQP Connection is used in:
+![AMQP Connection, Common settings tab with the Protocol and Information groups](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/AMQP/AMQP.png)
 
-* [AMQP - Send message Task](../../client-user-interface/server/job-tasks/messaging-tasks/amqp-send-message)
-* [AMQP - Trigger](../../client-user-interface/server/event-trigger-amqp)
- 
-Currently, the following broker types are supported:
+The ***Common settings*** tab is the same for every Connection type that has it; see [Common settings](global-connections#common-settings). The AMQP Connection has no _Test_ button and no ***Proxy*** tab.
 
-* RabbitMQ
-* Azure Service Bus
+### Main settings
 
-**Manage Connections > Add > AMQP > Common settings** tab
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/AMQP/AMQP.png)
+***Main settings*** is the only tab under ***Connection settings***.
 
-**Name**
+![AMQP Connection, Main settings tab with the Server, Credential and Additional parameter groups](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/AMQP/Settings.png)
 
-The name of the Connection to uniquely identify it.
+_Address_
 
-**Group**
+The host name or IP address of the broker. For Azure Service Bus, the host name of the namespace, for example `<namespace>.servicebus.windows.net`. Required.
 
-The group that the connection is a part of.
+_Port_
 
-**Timeout**
+The port of the broker: usually "5672" for AMQP and "5671" for AMQPS. A new Connection starts at "5672". When you select "Azure Service Bus" in _Broker type_, a port of "0" or "5672" changes to "5671". When you select "RabbitMQ", a port of "0", "5671" or "5672" changes to "5671" or "5672" to match _Schema_.
 
-The connection timeout in seconds. Connection will fail after this time period.
- 
-**Code page**
+_Broker type_
 
-Code page being used.
+- "RabbitMQ": a RabbitMQ broker; on a new Connection, _Schema_ is "AMQP" and _Path_ is "/"
+- "Azure Service Bus": an Azure Service Bus namespace; an empty _Schema_ or "AMQP" changes to "AMQPS"
 
-**Manage Connections > Add > AMQP > Connection settings** tab
+_Authentication type_
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/AMQP/Settings.png)
+- "Password": a user name and password, sent to the broker when the connection opens
+- "Certificate": a client certificate; the _Certificate_ field is shown; use it with _Schema_ "AMQPS"
 
-**Address**
+_Username_
 
-The host name or IP address of the AMQP broker.
+For RabbitMQ, the user name on the broker. For Azure Service Bus, the name of the shared access policy. With "Certificate" authentication on RabbitMQ, the user name for the Management HTTP API, which the queue list needs.
 
-**Port**
+_Password_
 
-The port of the AMQP broker. Default port is 5672 for AMQP and 5671 for AMQPS. When Azure Service Bus is selected as the broker type, the port is automatically set to 5671.
+For RabbitMQ, the password on the broker. For Azure Service Bus, the key of the shared access policy. The Server logs on with the policy name and key, and uses them to build the connection string for the queue list.
 
-**Broker Type**
+_Certificate_
 
-The message broker to connect to. Available options:
+Shown with "Certificate" authentication. The client certificate, from [Certificates](global-certificates). Required with "Certificate". With "Certificate" authentication, the AMQP connection allows SSL 3 and TLS 1.0 to TLS 1.3.
 
-* _RabbitMQ_ - connects to a RabbitMQ broker. Default port: 5672, default schema: AMQP.
-* _Azure Service Bus_ - connects to an Azure Service Bus namespace. Default port: 5671, schema is automatically set to AMQPS.
+_Schema_
 
-**Authentication type**
+"AMQP" for an unencrypted connection, or "AMQPS" for an encrypted one. Azure Service Bus needs "AMQPS". If _Schema_ holds any other value, the Server uses "AMQPS" when _Port_ is "5671", and "AMQP" otherwise.
 
-The authentication method to use. Available options:
+:::warning
 
-* _Password_ - authenticate using a username and password.
-* _Certificate_ - authenticate using a certificate; a certificate selector is shown. A username and password may still be required to access the Management HTTP API when listing queues.
- 
-**Username**
+A new Connection starts with _Schema_ "AMQP" on port "5672". With _Schema_ "AMQP", the connection to the broker is not encrypted, and _Username_ and _Password_ are sent without encryption. To list RabbitMQ queues, the Server also sends _Username_ and _Password_ to the address in _Connection string_, which the editor fills in with an "http" address unless _Port_ is "5671". Where the broker supports it, use "AMQPS" on port "5671" and an "https" address in _Connection string_.
 
-The user name for the AMQP broker.
- 
-**Password**
+:::
 
-The password for the AMQP broker.
+_Disable Server Certificate Validation_
 
-**Certificate** _(Certificate authentication only)_
+In the _Additional parameter_ group. When selected, the Server does not check the broker's certificate, on the AMQP connection and when it lists RabbitMQ queues.
 
-Select the certificate to use for authentication.
- 
-**Schema**
+:::warning
 
-The connection schema. Use `AMQP` for unencrypted connections (port 5672) or `AMQPS` for encrypted connections (port 5671). Azure Service Bus requires AMQPS.
- 
-**Path**
+_Disable Server Certificate Validation_ is selected by default on a new Connection. While it is selected, the Server accepts any broker certificate. Clear it so that the Server checks the certificate of an AMQPS broker. With "Certificate" authentication, the Server accepts any broker certificate on the AMQP connection, whether the box is selected or not.
 
-The virtual host path for RabbitMQ connections. The default value is `/`. For Azure Service Bus this field is not used.
- 
-**Connection string**
+The Server applies the value of this box to the whole Server process each time an AMQP Task or Trigger connects. While any AMQP Connection with the box selected is in use, other AMQP connections from the Server can also skip the certificate check. To have broker certificates checked, clear the box on every AMQP Connection.
 
-Used for administrative purposes such as retrieving a list of queues.
+:::
 
-* For RabbitMQ: the URL of the RabbitMQ Management HTTP API, for example `http://localhost:15672/api/queues`.
-* For Azure Service Bus: the connection string in the format `Endpoint=sb://xxx.servicebus.windows.net/;SharedAccessKeyName=yyy;SharedAccessKey=zzz`. This is automatically constructed from the Address, Username, and Password fields.
+_Path_
 
-**Disable Server Certificate Validation**
+The virtual host path for RabbitMQ. The default is "/". For Azure Service Bus this field is not used.
 
-When checked, VisualCron skips validation of the server's SSL/TLS certificate. Use this only when connecting to a broker with a self-signed or untrusted certificate.
+_Connection string_
 
-**RabbitMQ Address Format**
+Used to list queues, for example when you pick a queue in a Task or Trigger.
 
-RabbitMQ 4.x enforces AMQP 1.0 address syntax, which requires a typed prefix in the queue or exchange address field when configuring Send Message tasks or AMQP Triggers. If you're running RabbitMQ 3.x, this prefix is not required.
+- RabbitMQ: the base URL of the Management HTTP API, for example `http://<broker host>:15672/`; the editor fills it in from _Address_ and _Port_, with "https" on port "15671" when _Port_ is "5671", otherwise "http" on port "15672"; enter the base URL only, because VisualCron adds `api/queues` itself
+- Azure Service Bus: a connection string of the form `Endpoint=sb://<namespace host>/;SharedAccessKeyName=<policy name>;SharedAccessKey=<policy key>`; when the field is empty, VisualCron builds it from _Address_, _Username_ and _Password_
 
-If you see an error like Attach refused: {amqp_address_v1_not_permitted, ...} or your AMQP Trigger deactivates immediately after starting, check that your address matches the format below.
+Each time the Server lists RabbitMQ queues, it sets the SSL and TLS versions for the whole Server process to SSL 3 and TLS 1.0 to TLS 1.3.
 
-Intent	Address format:
+### RabbitMQ address format
 
-* Send to a queue (via default exchange) =	/queues/your-queue-name
-* Publish to an exchange with a routing key =	/exchanges/exchange-name/routing-key
-* Publish to an exchange with no routing key =	/exchanges/exchange-name
-* Receive/consume from a queue (Trigger) =	/queues/your-queue-name
+RabbitMQ 4.x enforces the AMQP 1.0 address syntax, which needs a typed prefix in the queue or exchange address of Send message Tasks and AMQP Triggers. RabbitMQ 3.x does not need the prefix.
 
-Note: Existing connections configured for RabbitMQ 3.x using plain queue names (e.g. my-queue) will need to be updated to the prefixed format when upgrading to RabbitMQ 4.x.
+If you see an error such as `Attach refused: {amqp_address_v1_not_permitted, ...}`, or the AMQP Trigger deactivates right after it starts, check that the address matches one of these formats:
 
+| Intent | Address format |
+|---|---|
+| Send to a queue (through the default exchange) | `/queues/<queue name>` |
+| Publish to an exchange with a routing key | `/exchanges/<exchange name>/<routing key>` |
+| Publish to an exchange without a routing key | `/exchanges/<exchange name>` |
+| Receive from a queue (Trigger) | `/queues/<queue name>` |
+
+:::note
+
+Tasks and Triggers set up for RabbitMQ 3.x with plain queue names, for example "my-queue", need the prefixed format after an upgrade to RabbitMQ 4.x.
+
+:::

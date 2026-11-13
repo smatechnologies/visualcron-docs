@@ -5,14 +5,29 @@ hide_title: 'true'
 
 ## Activate/Deactivate Job
 
-By default an added (new) Job is set to active. The "active" status for a Job is indicated by a green (green check icon) while the "deactive" status is indicated by a red (red cross icon) icon in the leftmost part for each specific Job in the Server/Group/Job/Task grid. It is possible to change status in the right-click menu for a Job by the *Activate/Deactivate Job '`<Job name>`'* option.
- 
-If you look at the Job list for status indication, please note that any Job list column, including the status column, can be set to invisible.
- 
-It is also possible to *Activate/Deactivate* a Task status by right-click on a Task and select the *Activate/Deactivate Task '`<Task name>`'* option.
+The activate and deactivate items in the right-click menu turn a Job or a Task on or off. The Triggers of an inactive Job do not start it.
 
-![](../../../../static/img/Client%20User%20Interface/Toolbar/Active%20jobs.png)
+The ***Status*** column in the Server/Group/Job/Task grid shows a green check icon for an active Job and a red cross icon for an inactive Job. Any grid column, including ***Status***, can be hidden; see [Set columns](../../interface/columns-set-columns).
 
-![](../../../../static/img/Client%20User%20Interface/Toolbar/Deactivating.png)
+To change the state of one Job:
 
-![](../../../../static/img/Client%20User%20Interface/Toolbar/Deactivated.png)
+1. Right-click the Job in the Server/Group/Job/Task grid.
+2. Click `Deactivate Job '<Job name>'` for an active Job, or `Activate Job '<Job name>'` for an inactive Job.
+
+To change the state of several Jobs, select them, right-click one of them and click ***Activate selected Jobs*** or ***Deactivate selected Jobs***. The same two items are in the right-click menu of a group heading, where they act on the Jobs of that group; right-clicking the heading changes the selection.
+
+For a Task, right-click the Task and click `Deactivate Task '<Task name>'` or `Activate Task '<Task name>'`. With several Tasks selected, use ***Activate selected Tasks*** or ***Deactivate selected Tasks***.
+
+Changing the state of a Job requires the Edit permission for Jobs.
+
+:::note
+
+An inactive Job can still be started manually with [Run Job](run-job).
+
+:::
+
+![Job grid with the Status column showing two active Jobs](../../../../static/img/Client%20User%20Interface/Toolbar/Active%20jobs.png)
+
+![Job right-click menu with the Deactivate Job item highlighted](../../../../static/img/Client%20User%20Interface/Toolbar/Deactivating.png)
+
+![Job grid with the Status column showing one inactive Job and one active Job](../../../../static/img/Client%20User%20Interface/Toolbar/Deactivated.png)

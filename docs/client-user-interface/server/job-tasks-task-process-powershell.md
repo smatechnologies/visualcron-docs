@@ -7,52 +7,72 @@ hide_title: 'true'
 
 The **PowerShell** Task lets you execute PowerShell code on the fly or an existing PowerShell file.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Powershell%20Main.png)
+![Add Task window, PowerShell tab, Main settings sub tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Powershell%20Main.png)
 
 ### Main settings tab
 
 **Credentials**
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
+With *Local* scope, the script runs as the user of the selected Credential, or as the account the VisualCron service runs under with *No Credential*. This applies with *Load user profile* selected on the Credential (the default); without it, the Credential is used only for network access (see [Local login and Load user profile](global-credentials#local-login-and-load-user-profile)). With *Remote* scope, select a Credential: it is the user that logs on to the remote computer, and the local PowerShell host also runs as that user. Select a Credential in the combo box, or click the *Settings* icon to open *Manage credentials* and add or edit one.
  
 **Scope**
 
-Select **Local** to execute the script on the same server that VisualCron is running on. Select **Remote** to execute on a different machine. When Remote is selected, the following fields become active:
+Select *Local* to execute the script on the same server that VisualCron is running on. Select *Remote* to execute on a different machine. When *Remote* is selected, the following fields become active:
 
-* **Hostname** - the hostname or IP address of the remote machine.
-* **Port** - the WinRM port on the remote machine. Default is 5985.
-* **Authentication mechanism** - the authentication protocol to use when connecting. Options are:
+* *Hostname* - the hostname or IP address of the remote machine
+* *Port* - the WinRM port on the remote machine; the default is 5985
+* *Authentication mechanism* - the authentication protocol to use when connecting. Options are:
   * *Basic* - transmits credentials as Base64-encoded text. Simple but less secure.
-  * *CredSSP* - delegates credentials to the remote machine, enabling "second hop" scenarios where the remote machine needs to connect to additional resources.
+  * *Credssp* - delegates credentials to the remote machine, enabling "second hop" scenarios where the remote machine needs to connect to additional resources.
   * *Default* - uses the transport default (Negotiate or Kerberos for WSMan).
   * *Digest* - transmits credentials as a hash value rather than clear text.
   * *Kerberos* - uses Kerberos authentication.
   * *Negotiate* - uses Kerberos for domain accounts or NTLM for local accounts. Specify the username as domain\username for domain users or servername\username for local users.
-  * *NegotiateWithImplicitCredential* - uses credentials cached on the PSSession computer.
+  * *NegotiateWithImplicitCredential* - meant to use the credentials of the current Windows account; the Task also passes the selected Credential
+
+The Task connects over HTTP (`http://<Hostname>:<Port>/wsman`); an HTTPS listener is not supported. Without a Credential, the connection fails. *Authentication mechanism* defaults to *Default*.
+
+:::warning
+
+Over HTTP, *Basic* works only if unencrypted WinRM traffic is allowed on both computers, and the password is then sent without encryption.
+
+:::
  
 ### Script tab
  
 **Execute in x86 mode**
 
 When checked, forces 32-bit execution of your PowerShell script.
+
+**Write warnings to Error output**
+
+Check this to keep the warnings your script writes with `Write-Warning`. Each warning is added to the Task's error output with `WARNING: ` in front of it. For example, `Write-Warning "Disk space is low"` shows up as `WARNING: Disk space is low`. Warnings are not added to the standard output.
+
+This option is unchecked by default. When it is unchecked, warnings are not saved anywhere. Tasks you already have stay unchecked after an upgrade.
+
+Things to know:
+
+* A warning on its own does not make the Task fail, even if **Contains error output** is checked on the On error tab. A script that uses `-WarningAction Stop` still fails the Task.
+* **Store standard error** must be checked in the **Output** group on the Task's **Main settings** tab. If it is not, there is no error output to write to, and the warnings are lost.
+* The option is on the PowerShell Task only. The PowerShell trigger does not have it.
  
 **PowerShell file**
 
-Select this option to execute an existing PowerShell script file. Enter the full path to the .ps1 file in the field below, or use the browse button to select it.
+Select this option to execute an existing PowerShell script file. Enter the full path to the .ps1 file in the field below, or use the browse button to select it. The file is read on the VisualCron Server and run as script text, also with *Remote* scope, so `$PSScriptRoot` is empty and paths relative to the script file do not resolve.
 
 **Working directory**
 
-The working directory for the PowerShell process when executing a file. Only active when **PowerShell file** is selected.
+The working directory for the PowerShell process when executing a file. The field can be edited only when *PowerShell file* is selected, but a saved value is also used for script text. If empty, a folder in the VisualCron installation folder is used; set it when the script uses relative paths. It has no effect with *Remote* scope.
  
 **PowerShell script text**
 
-Select this option to enter PowerShell code directly. Type or paste your script into the editor below. The code will be compiled and run in real time.
+Select this option to enter PowerShell code directly. Type or paste your script into the editor below. The code runs in a hosted Windows PowerShell session.
  
 ### Parameters tab
 
 The Parameters tab lets you define named parameters that are passed into your PowerShell script. Each parameter has a Name, Type, and Value. Use the Add, Edit, and Delete buttons to manage the list.
 
-You can also parse parameters inline in the PowerShell script using the `param` block:
+Each parameter is passed to the script by name, so declare it in a `param()` block at the start of the script:
 
 ```powershell
 param (
@@ -64,7 +84,7 @@ Write-Output $parameterkeyname1
 
 ### Commands tab
 
-The Commands tab lets you build a list of discrete PowerShell commands to execute in sequence, as an alternative to writing a full script. Each command entry has a Command name, Parameters, and Arguments. Use the Add, Edit, Delete, and Clear all buttons to manage the list.
+The Commands tab lets you build a list of discrete PowerShell commands to execute. The commands form one pipeline that runs before the script on the **_Script_** tab, and their output is passed to the script as pipeline input (`$input`). Each command entry has a Command name, Parameters, and Arguments. Use the Add, Edit, Delete, and Clear all buttons to manage the list.
 
 ### Script examples
 
@@ -73,15 +93,16 @@ More information about script blocks here: [https://www.sapien.com/blog/2019/05/
  
 ### Starting script
 
-In general you need to call the function after the script block. For example;
+In general you need to call the function after the script block. For example:
 
 ```powershell
 Function Test-ScriptBlock
 {
-  // function content
+  Param([int]$Number)
+  # function content
 } #END Function Test-ScriptBlock
  
-// the function call
+# the function call
 Test-ScriptBlock -Number 1
 ```
 
@@ -114,13 +135,17 @@ Test-ScriptBlock
 ```powershell
 Function Test-ScriptBlock
 {
+ Param
+ (
+     [int]$Number
+ )
     BEGIN
     {
         Write-Output "In Begin block"
     }
     PROCESS
     {
-        Write-Output "In Begin block"
+        Write-Output "In Process block"
         Write-Output "Number value: "         $Number
     }
     END
@@ -149,7 +174,7 @@ Function Test-ScriptBlock
     }
     PROCESS
     {
-        Write-Output "In Begin block"
+        Write-Output "In Process block"
         Write-Output "Number value: "         $Number
     }
     END
@@ -170,13 +195,17 @@ param (
 )
 Function Test-ScriptBlock
 {
+ Param
+ (
+     [int]$Number
+ )
     BEGIN
     {
         Write-Output "In Begin block"
     }
     PROCESS
     {
-        Write-Output "In Begin block"
+        Write-Output "In Process block"
         Write-Output "Number value: "         $Number
     }
     END
@@ -204,28 +233,28 @@ write-output "my output"
 ```powershell
 write-error "my error"
 ```
+
+**VisualCron warnings**
+
+```powershell
+write-warning "my warning"
+```
+
+By default, VisualCron does not keep warnings. To keep them, check **Write warnings to Error output** on the Script tab. The warning then appears in the error output as `WARNING: my warning`. A warning on its own does not fail the Task.
  
 **Raising/Throwing errors**
 
-Use the Powershell throw command to raise errors. By default we are considering the Task fail if it contains any text written to error output. When that happens the standard output is overwritten with debug information. To override this behavior go to On error tab of Task and uncheck Contains error output.
+Use the PowerShell `throw` command to raise errors; a `throw` fails the Task with exit code 77777, even when *Contains error output* is cleared. By default the Task also fails if anything is written to error output; to change this, clear *Contains error output* on the **_On error_** tab. With *Extended Task debug logging* selected on the Task's **_Main settings_** tab, diagnostic lines are added to the output. The PowerShell `exit` statement ends the script, but its value is not passed to VisualCron: the Task's exit code is 0, or 77777 when the script fails. (`[System.Environment]::Exit(<n>)`, used in the troubleshooting entry below, ends the host process with that code.)
  
 ### Troubleshooting
 
-**Access denied errors**
+**Scripts or modules blocked by execution policy**
 
-Ensure PowerShell's ExecutionPolicy = Unrestricted
-Start Windows PowerShell and type in the command below at the prompt and hit enter. It should return unrestricted.
-get-executionpolicy
+The script itself is run as text, so the PowerShell execution policy does not apply to it; it applies to modules and script files the script loads. If those are blocked, set the policy for the account that runs the Task (the Credential's user, or the account the VisualCron service runs under), or on the Server, for example `Set-ExecutionPolicy RemoteSigned -Scope LocalMachine` as an administrator. 32-bit PowerShell (*Execute in x86 mode*) has its own LocalMachine policy. With *Remote* scope, set the policy on the remote computer.
  
-If it returns restricted then enter the command below at the prompt and hit enter. 
-set-executionpolicy unrestricted
- 
-If you receive an Access Denied message, then open a ticket with your IT Team to update this for you. You may need to provide the steps below to them:
-Update the Registry Editor (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell) with a tag for ExecutionPolicy and set it to Unrestricted 
- 
-**System.TypeLoadException**
+**System.TypeLoadException, or Could not load file or assembly System.Management.Automation 3.0**
 
-If the ExecutionPolicy is setup correct and VisualCron returns the error below when running PowerShell, ask INFRA to upgrade PowerShell to the highest version available for the respective server. Recently we found that PowerShell v1 on a Windows 2008 SP2 servers will not execute PowerShell from VisualCron so we had to upgrade to PowerShell v2. 
+The Task needs Windows PowerShell 3.0 or later on the VisualCron Server. Upgrade PowerShell if an older version is installed.
  
 **AuthorizationManager check failed**
 
@@ -233,19 +262,15 @@ Please add/insert the share you are trying to access in the script to "trusted s
  
 **No output using Write-Host**
 
-Write-Host cannot be used in the VisualCron enviroment which is different from Powershell.exe. You need to use Write-Output or Write-Error instead.
- 
-**Unhandled Exception: System.IO.FileNotFoundException: Could not load file or assembly 'System.Management.Automation, Version=3.0.0.0**
-
-You need to install PowerShell 3.0. You can download it here: [https://www.microsoft.com/en-us/download/details.aspx?id=34595](https://www.microsoft.com/en-us/download/details.aspx?id=34595)
+Write-Host cannot be used in the VisualCron environment, which is different from PowerShell.exe. Use Write-Output or Write-Error instead. Write-Warning output is captured only with *Extended Task debug logging* selected.
  
 **How can I use PowerShell 7?**
 
-Currently you cannot use it in the PowerShell Task as PowerShell 7 is using .NET Core 3.1 and VisualCron is using .NET Standard 4.8. We might upgrade in the future to .NET Core and then it would be possible. A workaround is to use the Execute Task with the PowerShell 7 exe (pwsh.exe) full path in command field and the full path to PowerShell script in argument field.
+The PowerShell Task hosts Windows PowerShell (5.1 and earlier) on .NET Framework 4.8, so PowerShell 7 cannot be used in it. A workaround is to use the Execute Task with the PowerShell 7 exe (pwsh.exe) full path in command field and the full path to PowerShell script in argument field.
  
 **CmdletBinding - no processing of PROCESS block**
 
-Wrap the script into a fucntion (see example 1).
+Wrap the script into a function (see example 1 in [Passing parameters](#passing-parameters)).
  
 **PowerShell Task hangs**
 

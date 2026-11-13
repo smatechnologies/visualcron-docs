@@ -5,72 +5,84 @@ hide_title: 'true'
 
 ## Robot Task Activities - Conditions
 
-The **Conditions** category contains activities that control the flow of a sequence based on the result of an evaluation.
+The Conditions activities choose which activities run next, based on a comparison or a value.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Conditions/Conditions.png)
+![The Conditions category in the activity list, with the If (simple) and Switch activities](../../../../../../../static/img/RPA/Robot%20Tasks/Conditions/Conditions.png)
 
 ---
 
 ### If (simple)
 
-Compares a left operand and a right operand using the specified operator and value type, then executes either the **Then** body or the **Else** body based on the result.
+Compares a left operand with a right operand, using the selected operator and type, then runs either the _Then_ body or the _Else_ body.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Conditions/If.png)
+![The If (simple) activity, with the Left operand, Operator, Right operand and Type fields and the Then and Else bodies](../../../../../../../static/img/RPA/Robot%20Tasks/Conditions/If.png)
 
-| Setting | Description |
-|---|---|
-| Left operand | The first value to compare. Supports variables. |
-| Operator | The comparison to perform, for example Equal, NotEqual, Contains, GreaterThan, RegExMatch. |
-| Right operand | The second value to compare. Supports variables. |
-| Type | The data type used for the comparison, for example String, Int32, Double, DateTime, Boolean. |
-| Then | Activities executed when the condition evaluates to true. |
-| Else | Activities executed when the condition evaluates to false. |
+- _Left operand_: the first value to compare; Variables are resolved first
+- _Operator_: the comparison to make
+- _Right operand_: the second value to compare; Variables are resolved first
+- _Type_: the data type both operands are converted to before the comparison: "Boolean", "Decimal", "Double", "DateTime", "Int16", "Int32", "Int64" or "String"
+- _Then_: the activities that run when the comparison is true
+- _Else_: the activities that run when the comparison is false
 
-Either body may be left empty. Both operand fields accept VisualCron variables, so you can compare a value read from a list, a cell, or a previous activity's Result variable.
+Either body may be left empty. Both operand fields accept VisualCron Variables, so you can compare a value read from a list, a cell or an earlier activity's Result variable.
+
+The operators you can use depend on the _Type_:
+
+- "String": "Equal", "NotEqual", "Contains", "NotContains", "RegExMatch" and "RegExNoMatch"
+- "Decimal", "Double", "Int16", "Int32", "Int64" and "DateTime": "Equal", "NotEqual", "Larger", "LargerOrEqual", "Smaller" and "SmallerOrEqual"
+- "Boolean": "Equal" and "NotEqual"
+
+Any other combination, and the "NotCheck" operator, makes the activity fail with an error. With a type other than "String", at least one operand must have a value, and a value that cannot be converted to the type also makes the activity fail. "String" comparisons are case-sensitive.
 
 #### Using the RegExMatch operator
 
-The **RegExMatch** operator compares the left operand against a regular expression supplied as the right operand, so the Then and Else blocks act on a match or no match condition. This is useful for validating data before it is used.
+The "RegExMatch" operator tests the left operand against a regular expression given as the right operand, so the _Then_ and _Else_ bodies act on a match or no match. "RegExNoMatch" is the reverse. The expression matches if it is found anywhere in the value, so add `^` and `$` when the whole value must match. This is useful for validating data before it is used.
 
-For example, to confirm that a date read from a data file is in `MM-dd-yyyy` format before feeding it into an application that only accepts that format:
+For example, to confirm that a date read from a data file is in `MM-dd-yyyy` format before entering it in an application that only accepts that format:
 
-| Field | Value |
-|---|---|
-| Left operand | The date value, for example `{USERVAR(lvDateReformat\|GetCell\|{RPALOOP(a381\|Iterations)}\|Date\|false)}` |
-| Operator | `RegExMatch` |
-| Right operand | `(0[1-9]\|1[0,1,2])-(0[1-9]\|[12][0-9]\|3[01])-(19\|20)\d{2}` |
-| Type | `String` |
+- _Left operand_: the date value, for example `{USERVAR(lvDateReformat|GetCell|{RPALOOP(a381|Iterations)}|Date|false)}`
+- _Operator_: "RegExMatch"
+- _Right operand_: `^(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])-(19|20)\d{2}$`
+- _Type_: "String"
 
 That expression matches:
 
-- A two digit month from `01` to `12`
+- A two-digit month from `01` to `12`
 - A `-` separator
-- A two digit day from `01` to `31`
+- A two-digit day from `01` to `31`
 - A `-` separator
-- A four digit year beginning with `19` or `20`, giving a range of 1900 to 2099
+- A four-digit year beginning with `19` or `20`, giving a range of 1900 to 2099
 
-Records that match are processed in the **Then** block. Records that do not match fall through to the **Else** block, where they can be written to an exception log for manual correction. See [Data Processing & Logging](../data-processing-logging) for the logging pattern.
+The expression checks the format only. It does not reject a date that does not exist, such as `02-31-2024`.
+
+Records that match are processed in the _Then_ body. Records that do not match fall through to the _Else_ body, where they can be written to an exception log for manual correction. See [Data Processing & Logging](../data-processing-logging) for the logging pattern.
 
 ---
 
 ### Switch
 
-Evaluates a specified expression and executes the activity whose associated key matches the result of that evaluation. If no key matches, the **Default** activity is executed.
+Evaluates a value and runs the case whose key matches the result. If no key matches, the _Default_ activity runs.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Conditions/Switch.png)
+![The Switch activity, with the Expression field, the Default activity and the Add new case link](../../../../../../../static/img/RPA/Robot%20Tasks/Conditions/Switch.png)
 
-| Setting | Description |
-|---|---|
-| Expression | The value to evaluate. Each case is matched against this result. |
-| Default | The activity executed when no case key matches. |
-| Add new case | Adds a case with a key and an activity to execute when the key matches. |
+- _Expression_: the value to evaluate; Variables are resolved first, and each case key is compared with the result
+- _Default_: the activity that runs when no case key matches
+- _Add new case_: adds a case, with a key and the activity that runs when the key matches
 
-Switch is a cleaner alternative to a chain of nested If activities when you are branching on one value with several known outcomes, such as a status code or a record type.
+A key matches only when it is exactly the same text as the result, including upper and lower case.
+
+:::warning
+
+If no case key matches and no _Default_ activity is set, the Switch activity fails with an error. Set a _Default_ activity whenever the value can be something you did not plan for.
+
+:::
+
+Switch is a cleaner alternative to a chain of nested If activities when you branch on one value with several known outcomes, such as a status code or a record type.
 
 ---
 
 ### Tips
 
-- Set the **Type** field to match the data you are actually comparing. Comparing numbers as `String` produces unexpected results, for example `"10"` is less than `"9"`.
-- When comparing a Result variable from a previous activity, remember the value is the text `True` or `False`, so use `String` as the type and `True` as the right operand.
-- Use the **Display name** property to describe what the condition tests, for example `Check If Date Format Is Valid`, rather than leaving it as `If (simple)`.
+- Set the _Type_ to match the data you are comparing. To compare numbers or dates as larger or smaller, use a numeric type or "DateTime": the "String" type supports only equality, contains and regular expression operators
+- A Result variable written by an earlier activity, such as _File Exists_, holds the text "True" or "False". Comparing it with the "String" type and "True" as the right operand works
+- Use the _Display name_ property to describe what the condition tests, for example `Check If Date Format Is Valid`, rather than leaving the default name

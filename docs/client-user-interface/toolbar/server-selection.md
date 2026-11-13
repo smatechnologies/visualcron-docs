@@ -2,15 +2,14 @@
 sidebar_label: 'Server Selection'
 hide_title: 'true'
 ---
-
 ## Server Selection
 
-If you have added multiple servers in the main menu **File > Servers > Manage servers**, you can quickly switch between these in the leftmost drop down list in the VisualCron client toolbar. Select the desired server you want to switch to. If you don't want to enter password between switches, then add the password in Manage servers window. During the server switch, the main window is disabled.
- 
-You can see which server you are connected to in the toolbar item list or in the main menu `Server [<server name]` tab. The progress of the server switch is visible in the progress bar to the right in the status bar of the main window - when full, all values has been loaded to the client.
- 
-:::info Note 
+The Server selection combo box at the left of the toolbar lists the Server connections added in ***File*** -> ***Servers*** -> ***Manage Servers***. Select a Server to make it the current Server. If it is not connected yet, click ***Connect*** to the right of the combo box. While the Client connects, the combo box and ***Connect*** are unavailable. The login window opens only if the connection has _Prompt for login_ checked or, for an Active Directory logon, when the Server no longer accepts the saved logon; otherwise the user name and password saved in the connection are used, so you do not have to enter the password each time. See [Servers - Manage Servers](../file/manage-servers) and [Login](../../using-visualcron/login).
 
-The VisualCron client is for performance reasons only connected to one server at a time. The information you see (Jobs etc.) are only related to the current server connection.
+The connected Server is shown in the combo box and on the main menu ***Server*** tab, as `Server [<server name>]`. The progress bar on the right of the status bar shows the progress of the connection; when it is full, all data has been loaded.
+
+:::info
+
+The Client can be connected to several Servers at the same time. Each connected Server has its own row in the Job grid, with its Jobs below it. Commands and settings in the ribbon apply to the current Server: the one selected in the combo box and shown on the ***Server*** tab.
 
 :::

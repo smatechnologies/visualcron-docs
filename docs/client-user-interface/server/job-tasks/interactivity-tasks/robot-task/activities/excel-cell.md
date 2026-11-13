@@ -5,134 +5,136 @@ hide_title: 'true'
 
 ## Robot Task Activities - Excel Cell
 
-The **Excel Cell** category contains activities that read, write, copy, merge, and clear cells.
+The Excel Cell activities read, write, copy, merge and clear cells on the active worksheet.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Cell/Excel%20Cell.png)
+![The Excel Cell category in the activity list, from Activate Cell to Paste to Cell](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Cell/Excel%20Cell.png)
 
-All activities in this category must be nested inside a **New Excel** or **Attach to Excel** container activity. See [Excel](excel).
+All activities in this category must be inside a _New Excel_ or _Attach to Excel_ container activity. See [Excel](excel). They act on the active worksheet, so use an [Excel Sheet](excel-sheet) _Activate Sheet_ activity first when the workbook has more than one sheet.
 
-**Address** fields take a range value representing a cell or a range of cells, such as `A4` or `A1:B1`. See the [Excel Range reference](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel._application.range).
+_Address_ fields take a cell or a range of cells, such as `A4` or `A1:B1`. See the [Excel Range reference](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel._application.range). Variables are resolved in every field.
 
-**Selecting a cell:** click the **Click to select Excel element** link to pick a cell in Excel and fill the address automatically. Excel must already be running.
+:::warning
+
+With _DisplayAlerts_ cleared on the parent container, which is the default, Excel deletes and overwrites without asking. Save the workbook before you change its structure.
+
+:::
+
+**Selecting a cell:** click the _Click to select Excel element_ link to pick a cell in Excel and fill in the address automatically. Excel must already be running.
 
 ---
 
 ### Activate Cell
 
-Activates the specified cell.
+Activates the cell.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Cell/Activate.png)
+![The Activate Cell activity, with the Click to select Excel element link and the Address field](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Cell/Activate.png)
 
-| Setting | Description |
-|---|---|
-| Address | The range value that represents a cell or a range of cells. |
+- _Address_: the cell or range of cells
 
 ---
 
 ### Select Address
 
-Selects the specified address. Same properties and interface as **Activate Cell**.
+Selects the cell or range. Same field as _Activate Cell_.
 
 ---
 
 ### Select all Cells
 
-Selects all cells in the current worksheet.
+Selects all cells in the active worksheet.
 
 ---
 
 ### Set Cell value
 
-Sets a value at the specified address.
+Writes a value to the cell or range.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Cell/Set.png)
+![The Set Cell value activity, with the Address and Value fields](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Cell/Set.png)
 
-| Setting | Description |
-|---|---|
-| Address | The range value that represents a cell or a range of cells. |
-| Value | The value which will be set to the cell or range of cells. |
+- _Address_: the cell or range of cells
+- _Value_: the value written to the cell, or to every cell of the range
 
-Both fields accept variables, so both the target address and the value written can be driven at runtime. This is how a loop writes each record to the next free row.
+Both fields accept Variables, so the target address and the value can both be set at runtime. This is how a loop writes each record to the next free row.
 
 ---
 
 ### Get Cell value
 
-Gets the value of the specified cell or range of cells and saves it to a variable.
+Reads the value of the cell or range and saves it to a Job or User Variable.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Cell/Get.png)
+![The Get Cell value activity, with the Address, Variable type and Variable fields](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Cell/Get.png)
 
-| Setting | Description |
-|---|---|
-| Address | The range value that represents a cell or a range of cells. |
-| Variable type | The type of variable to save to: **Job** or **User**. |
-| Variable | The name of the variable that receives the value. |
+- _Address_: the cell or range of cells
+- _Variable type_: "Job" or "User"
+- _Variable_: the name of the Variable that receives the value
+
+For a range, the values are returned as one text value: the cells of a row are separated by tab characters, and each row is on a new line.
 
 ---
 
 ### Clear Cell
 
-Clears the specified cell.
+Clears the cell or range: its value, its formula and its formatting. Same field as _Activate Cell_.
 
 ---
 
 ### Delete Cell
 
-Deletes the specified cell.
+Deletes the cell or range, and shifts the surrounding cells to fill the gap. Same field as _Activate Cell_.
 
-The difference from **Clear Cell** is that Delete Cell removes the cell entirely and shifts the surrounding cells to fill the gap, whereas Clear Cell empties the cell and leaves the layout unchanged.
+The difference from _Clear Cell_ is that Delete Cell removes the cells and moves the cells around them, whereas Clear Cell empties the cells and leaves the others where they are.
 
 ---
 
 ### Insert Cell
 
-Inserts a cell at the specified address.
+Inserts a cell or range at the address, and shifts the existing cells to make room. Same field as _Activate Cell_.
 
 ---
 
 ### Copy Cell
 
-Copies the specified cell or range of cells.
+Copies the cell or range to another place.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Cell/Copy.png)
+![The Copy Cell activity, with the Source and Destination fields](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Cell/Copy.png)
 
-| Setting | Description |
-|---|---|
-| Source | The source cell address or range of cells to copy. |
-| Destination | The destination cell address or range of cells the source will be copied to. |
+- _Source_: the cell or range to copy
+- _Destination_: the cell or range the source is copied to; what was there is overwritten
 
 ---
 
 ### Cut Cell
 
-Cuts the specified cell. Same properties and interface as **Copy Cell**.
+Moves the cell or range to another place. Same fields as _Copy Cell_.
 
 ---
 
 ### Merge Cells
 
-Merges the specified cells. Same properties and interface as **Copy Cell**.
+Merges the cells of the block that runs from the _Source_ cell to the _Destination_ cell into one cell. Same fields as _Copy Cell_.
 
 ---
 
 ### Unmerge Cells
 
-Unmerges the specified cells. Same properties and interface as **Activate Cell**.
+Splits a merged cell back into separate cells.
+
+- _Source_: the merged cell or range
 
 ---
 
 ### Paste to Cell
 
-Pastes the value from the clipboard to the specified cell. Same properties and interface as **Activate Cell**.
+Pastes the clipboard content at the cell or range. Same field as _Activate Cell_.
 
-This activity reads from the Windows clipboard, so it pairs with the [Clipboard](clipboard) **Set Clipboard** activity and with Web Macro activities such as **Copy value**.
+This activity pastes what is on the Windows clipboard, so it pairs with an earlier copy, such as a copy made in Excel. Test it with your data before relying on it for text placed on the clipboard by the [Clipboard](clipboard) _Set Clipboard_ activity.
 
 ---
 
 ### Tips
 
-- Build the **Address** from a loop iteration variable to write successive rows, for example `A{RPALOOP(a381|Iterations)}`. See [Loops](loops).
-- Set the whole header row with individual **Set Cell value** activities at the start of a task, before the loop begins, so the exception log has column names. See [Data Processing & Logging](../data-processing-logging).
-- Prefer writing a range in one **Set Cell value** activity where the value is the same across the range, rather than one activity per cell.
-- **Get Cell value** on a range returns the range's contents as a single value. Read individual cells one at a time when you need separate variables.
-- Use **Clear Cell** rather than **Delete Cell** when resetting a template. Delete Cell shifts surrounding cells and will break the layout.
+- Build the _Address_ from a loop iteration variable to write successive rows, for example `A{RPALOOP(a381|Iterations)}`. See [Loops](loops)
+- Write the header row with individual _Set Cell value_ activities at the start of the Task, before the loop begins, so that the exception log has column names. See [Data Processing & Logging](../data-processing-logging)
+- Write a range in one _Set Cell value_ activity where the value is the same across the range, rather than one activity per cell
+- To put a range into separate Variables, read the cells one at a time with _Get Cell value_
+- _Clear Cell_ also removes formatting. To reset a formatted template, write empty values with _Set Cell value_ instead, and avoid _Delete Cell_, which moves the surrounding cells and breaks the layout

@@ -3,9 +3,9 @@ sidebar_label: 'License Renewal Coverage Dates and Deadlines'
 hide_title: 'true'
 ---
 
-## License Renewal Coverage Dates and Deadlines
+## License renewal coverage dates and deadlines
 
-Effective November 8, we plan to update how license coverage dates are calculated to keep renewal terms more consistent and predictable. This article explains how your license coverage dates are calculated and how long you have to renew after a license expires.
+This article explains how your license coverage dates are calculated and how long you have to renew after a license expires.
 
 | Situation | Result |
 | --- | --- |
@@ -52,3 +52,7 @@ Here are the steps to renew your license directly through the portal. You can al
 6. You'll receive a confirmation email from [sales@visualcron.com](mailto:sales@visualcron.com) with your order details and next steps.
 
 Questions about your specific account? Contact [sales@visualcron.com](mailto:sales@visualcron.com).
+
+### Expiration in the Client
+
+The Client shows the expiration date of each Server's license and warns you when 45 days or fewer remain. See [Maintenance and subscription expiration](maintenance-expiration). For what stops when a maintenance or subscription expires, see [Maintenance and subscription](maintenance).

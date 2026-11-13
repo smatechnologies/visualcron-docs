@@ -5,67 +5,35 @@ hide_title: 'true'
 
 ## Connection - SCP
 
-The SCP Connection stores connect and logon properties for the Secure Copy (SCP) protocol. The SCP protocol is a [network protocol](https://en.wikipedia.org/wiki/Communication_protocol), based on the [BSD](https://en.wikipedia.org/wiki/Berkeley_Software_Distribution) [RCP](https://en.wikipedia.org/wiki/Berkeley_r-commands) protocol, which supports [file transfers](https://en.wikipedia.org/wiki/File_transfer) between hosts on a network.
- 
-SCP uses [Secure Shell](https://en.wikipedia.org/wiki/Secure_Shell) (SSH) for data transfer and uses the same mechanisms for authentication, thereby ensuring the [authenticity](https://en.wikipedia.org/wiki/Information_security#Authenticity) and [confidentiality](https://en.wikipedia.org/wiki/Confidentiality) of the [data in transit](https://en.wikipedia.org/wiki/Data_in_transit). A client can send (upload) files to a server, optionally including their basic attributes (permissions, timestamps). Clients can also request files or directories from a server (download). SCP runs over [TCP port](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#TCP_ports) 22 by default. Like RCP, there is no [RFC](https://en.wikipedia.org/wiki/Request_for_Comments) that defines the specifics of the protocol.
- 
-In VisualCron, the SCP Connection is used in the [Net - FTP/FTPS/SFTP/SCP](../server/job-tasks/net-tasks/ftp) Task.
- 
-**Manage Connections > Add > SCP > Main settings** tab
+The SCP Connection stores the address and sign-in settings that the [Net - FTP/FTPS/SFTP/SCP](job-tasks/net-tasks/ftp) Task, the [Cloud - Sync file(s)](job-tasks/cloud-transfer-tasks/sync) Task and the [Event Trigger - Remote File](event-trigger-remote-file) Trigger use to connect to a server over SCP (Secure Copy). SCP copies files over an SSH connection. SCP Connections have no ***Proxy*** tab.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SCP/SCP.png)
+:::warning
 
-**Name**
+SCP Connections accept any server host key. The Server does not compare the key with a stored key, so it cannot tell the real server from another server that answers at the same address. Confirm the server's host key with its administrator before you use the Connection.
 
-This is a descriptive name of the connection to distinguish from other connections.
- 
-**Group**
+:::
 
-The group that the connection is a part of.
- 
-**Timeout**
+### Common settings
 
-The connection timeout in seconds. Connection will fail after this time is passed.
- 
-**Code page**
+![SCP Connection, Common settings tab, with the Test button](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SCP/SCP.png)
 
-The table of values that describes the desired character set. Currently this is overridden by the code page in the Task.
- 
-**Manage Connections > Add > SCP > Connection settings** tab
+The ***Common settings*** tab is the same for every Connection type that has it; see [Common settings](global-connections#common-settings). For SCP Connections:
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SCP/SCP%20Setting.png)
+- _Test_: the Server connects and logs on with the settings in the window, and lists the root folder of the server
+- _Timeout_: how long, in seconds, the Server waits for the server. With "0", it waits up to about 24 hours
+- _Code page_: not used for the connection. The SCP session always uses UTF-8
 
-**Address**
+### Main settings
 
-This is the host address to the server. It could be a DNS name or IP number.
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-**Port**
+![SCP Connection, Main settings tab, with the Server, Credentials and Log traffic groups](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SCP/SCP%20Setting.png)
 
-This is the remote connection port.
-
-**Authentication type**
-
-The method used to authenticate with the SCP server.
-
-* _Password_ - authenticate using a username and password
-* _Public key_ - authenticate using an SSH private key (password field is hidden and an SSH key selector is shown)
-
-**Username**
-
-The user name for the connection.
- 
-**Password**
-
-The password for the connection. Only visible when Authentication type is set to _Password_.
-
-**SSH key**
-
-The SSH private key used for authentication. Only visible when Authentication type is set to _Public key_.
-
-**Log sent messages to task output**
-
-When enabled, sent messages are logged to the task output.
-
-**Log received messages to task output**
-
-When enabled, received messages are logged to the task output.
+- _Address_: the host name or IP address of the server
+- _Port_: "22" on a new Connection
+- _Authentication type_: "Password" or "Public key". With "Public key", *Password* is hidden and *SSH key* is shown
+- _Username_: the account on the server. Enter it for both authentication types
+- _Password_: the account's password, for "Password"
+- _SSH key_: for "Public key", the key to log on with, chosen from the keys stored in [Global - SSH Keys](global-ssh-keys). The key's passphrase is stored with the key
+- _Log sent messages to task output_: writes the messages that the Server sends into the Task output
+- _Log received messages to task output_: writes the messages that the server returns into the Task output

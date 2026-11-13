@@ -2,9 +2,8 @@
 sidebar_label: 'Add Job'
 hide_title: 'true'
 ---
-
 ## Add Job
 
-A new Job can be created by clicking on the toolbar Add Job option. The new Job is added to the currently selected Job group. For more information, see the [Main - Jobs](../server/jobs-jobs) section.
+The ***Add Job*** button in the toolbar opens the ***Add Job*** window, where you create a Job on the connected Server. If a Job group row or a Job is selected in the main grid, the new Job gets that Job group. See [Add Job](../server-group-job-task-area/job-list/add-job) and [Jobs - Jobs](../server/jobs-jobs).
 
-![](../../../static/img/Client%20User%20Interface/Toolbar/Add%20Job.png)
+![The Add Job button in the toolbar and the Add Job window it opens](../../../static/img/Client%20User%20Interface/Toolbar/Add%20Job.png)

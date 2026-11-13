@@ -5,72 +5,89 @@ hide_title: 'true'
 
 ## Connection - Google Cloud
 
-The Google Cloud Connection stores connect and authentication properties for Google Cloud services. It uses a Google service account JSON key file for authentication rather than OAuth credentials.
+The Google Cloud Connection stores the project and sign-in settings that these Tasks and Triggers use to connect to Google BigQuery and Google Cloud Storage:
 
-Google Cloud is a suite of cloud computing services offered by Google. VisualCron uses this connection to interact with Google Cloud Storage buckets and Google BigQuery datasets.
+- [BigQuery - Run query](job-tasks/database-tasks/big-query-run-query)
+- [BigQuery - Fill table](job-tasks/database-tasks/big-query-fill-table)
+- The Cloud Tasks, for Google Cloud Storage:
+  - [Cloud - Upload file(s)](job-tasks/cloud-transfer-tasks/upload-file)
+  - [Cloud - Download file(s)](job-tasks/cloud-transfer-tasks/download-file)
+  - [Cloud - List item(s)](job-tasks/cloud-transfer-tasks/list-item)
+  - Cloud - List folder(s)
+  - [Cloud - Create folder](job-tasks/cloud-transfer-tasks/create-folder)
+  - [Cloud - Delete item(s)](job-tasks/cloud-transfer-tasks/delete-item)
+  - [Cloud - Copy/move item(s)](job-tasks/cloud-transfer-tasks/copy-move)
+  - [Cloud - Sync file(s)](job-tasks/cloud-transfer-tasks/sync)
+- The [Cloud file Trigger](event-trigger-cloud-file)
 
-The Google Cloud Connection is used in the following Tasks:
+It signs in with a service account JSON key file, not with a user sign-in.
 
-* BigQuery - Run query
-* BigQuery - Fill table
-* Google Storage Tasks
+![The editor of a Google Cloud Connection](../../../static/img/bigqueryconnection.png)
 
-![](../../../static/img/bigqueryconnection.png)
+### Common settings
 
-**Manage Connections > Add > Google Cloud > Common settings** tab
+The ***Common settings*** tab is the same for every Connection type that has it; see [Common settings](global-connections#common-settings). A Google Cloud Connection has no _Test_ button, and its Tasks do not use _Timeout_ or _Code page_.
 
-**Name**
+### Connection settings
 
-The name of the Connection to uniquely identify it.
+The ***Connection settings*** tab has no sub-tabs and no ***Proxy*** tab. Google Cloud Connections do not use a proxy.
 
-**Group**
+_Project ID_
 
-The group that the connection is a part of.
+The ID of the Google Cloud project. BigQuery Tasks run their queries as jobs in this project, so use a project in which the service account may run jobs, usually your own. To query a public dataset, keep your own project here and name the public tables in the query, for example tables in the "bigquery-public-data" project. The project ID is shown in the Google Cloud console and in BigQuery.
 
-**Timeout**
+![BigQuery with the project list](../../../static/img/googlebigqueryprojectid.png)
 
-The connection timeout in seconds. Connection will fail after this time period.
+_JSON key path_
 
-**Code page**
+The path of the service account JSON key file. The Server reads the file when the Connection is saved, and stores its content with the Connection on the Server. So:
 
-Code page being used.
+- Enter a path that exists on the computer that runs the VisualCron Server
+- After you replace the key file, open the Connection and save it again
 
-**Manage Connections > Add > Google Cloud > Connection settings** tab
+See [How to create a JSON key file](#how-to-create-a-json-key-file).
 
-**Project ID**
+:::warning
 
-The Google Cloud project identifier. This can be a public project such as `bigquery_public_data` (when working with public data in Google BigQuery) or your own project ID. The project ID can be found in the Google Cloud Console or BigQuery Console.
-
-![](../../../static/img/googlebigqueryprojectid.png)
-
-**JSON key path**
-
-The file path to the service account JSON key file used to authenticate with Google Cloud. This file is downloaded from Google Cloud IAM when a service account key is created. It must be in JSON format. See the **How to create a JSON key file** section below for instructions.
-
-:::tip Note
-
-There is no way to retrieve the JSON key file from the Google Cloud Console after initial creation. If the file is lost, you must disable the existing key and create a new one.
+Google Cloud does not let you download a key file again after it is created. If the file is lost, disable the key and create a new one.
 
 :::
- 
-**How to create a JSON key file**
 
-A service account JSON key file is required to authenticate VisualCron with Google Cloud services. Follow these steps to create one:
+:::warning
 
-1. Go to Google Cloud IAM & Admin for your specific project.
+The content of the service account key file is stored with the Connection on the Server. Protect access to the Server's settings folder, and give the service account only the roles that the Tasks need.
 
-![](../../../static/img/googleiam1.png)
+:::
 
-2. Click **+ Create Service Account** and fill in the account details.
+### How to create a JSON key file
 
-![](../../../static/img/googleiam2.png)
+An organization policy can block the creation of service account keys. If key creation is not offered, ask the administrator of the Google Cloud organization to allow key creation for the project.
 
-3. Select the appropriate role for the service account. For Google Cloud Storage access, select the relevant role under the **Cloud Storage** group.
+To create a JSON key file, complete the following steps:
 
-![](../../../static/img/googleiam3.png)
+1. In the Google Cloud console, open _IAM & Admin_ -> _Service Accounts_ for the project.
 
-4. Open the created service account, navigate to the **Keys** tab, and click **Add Key**. Select **JSON** as the key type.
+   ![The Service accounts page in IAM & Admin](../../../static/img/googleiam1.png)
 
-![](../../../static/img/googleiam4.png)
+2. Click _Create service account_.
+3. Fill in the account details.
 
-5. The JSON key file will be downloaded automatically as soon as it is created. Enter the path to this file in the **JSON key path** field of the Connection settings tab.
+   ![The service account details step](../../../static/img/googleiam2.png)
+
+4. Grant the service account a role that allows what the Tasks do. For Google Cloud Storage, select a role in the _Cloud Storage_ group.
+
+   ![The step that grants a role to the service account](../../../static/img/googleiam3.png)
+
+5. Open the service account.
+6. Open the _Keys_ tab.
+7. Click _Add key_ -> _Create new key_.
+
+   ![The service account details with the Add key button](../../../static/img/googleiam4.png)
+
+8. Select "JSON".
+9. Click _Create_.
+10. Save the JSON key file that downloads to a folder on the VisualCron Server computer.
+11. Enter the path of the file in _JSON key path_.
+12. Click _OK_ to save the Connection.
+
+The Connection now signs in with the service account.

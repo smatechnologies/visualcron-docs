@@ -5,15 +5,17 @@ hide_title: 'true'
 
 ## Robot Task Activities - Excel
 
-The **Excel** category contains the activities that start, attach to, and configure the Excel application. Every other Excel activity must be nested inside one of these container activities.
+The Excel activities start Microsoft Excel or attach to it, set how it behaves, and quit it. Every other Excel activity must be placed inside one of the two container activities, _New Excel_ or _Attach to Excel_.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel/Excel.png)
+![The Excel category in the activity list, with the New Excel, Attach to Excel, Quit Excel, Set Excel Visibility, Set Excel Interactivity, Set Display Alerts and Set Full Screen Mode activities](../../../../../../../static/img/RPA/Robot%20Tasks/Excel/Excel.png)
 
-### Required Nesting
+Excel must be installed in the desktop session the Robot Task runs in.
 
-Excel activities operate on an Excel application supplied by a parent container. That parent is either **New Excel** or **Attach to Excel**. Activities from the [Workbook](excel-workbook), [Sheet](excel-sheet), [Cell](excel-cell), [Row](excel-row), [Column](excel-column), and [Macros](excel-macros) categories all go inside the container's **Do** body.
+### Required nesting
 
-```
+The Excel activities work on an Excel application supplied by a parent container, either _New Excel_ or _Attach to Excel_. Activities from the [Excel Workbook](excel-workbook), [Excel Sheet](excel-sheet), [Excel Cell](excel-cell), [Excel Row](excel-row), [Excel Column](excel-column) and [Excel Macros](excel-macros) categories go inside the container's _Do_ body. Most Excel activities outside a container are reported as a validation error; _Run Macro_ fails when it runs.
+
+```text
 Sequence
   New Excel
     Do
@@ -28,28 +30,30 @@ Sequence
 
 ### New Excel
 
-Creates a new Excel application and sets it as the context of the body for the child Excel activities.
+Starts a new Excel application and makes it the one the child Excel activities in its _Do_ body work on.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel/New.png)
+![The New Excel activity with an empty Do body](../../../../../../../static/img/RPA/Robot%20Tasks/Excel/New.png)
 
 #### Properties
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel/New%20Settings.png)
+![The Properties pane of the New Excel activity, with the DisplayAlerts, IsInteractive, IsVisible and WaitForReady properties](../../../../../../../static/img/RPA/Robot%20Tasks/Excel/New%20Settings.png)
 
-| Property | Description |
-|---|---|
-| DisplayAlerts | Sets the display alerts property of the Excel application. True if Excel displays certain alerts and messages while a macro is running. |
-| IsInteractive | Sets the interactivity property of the Excel application. This property is usually True. If set to False, Excel blocks all input from the keyboard and mouse, except input to dialog boxes displayed by your code. |
-| IsVisible | Sets the visibility property of the Excel application. |
-| WaitForReady | Timeout in seconds to wait for Excel to be ready for use. |
+- _DisplayAlerts_: whether Excel shows alerts and messages, such as overwrite confirmations; cleared by default
+- _IsInteractive_: whether Excel accepts keyboard and mouse input; checked by default; when cleared, Excel blocks all input except input to windows opened by your code
+- _IsVisible_: whether the Excel window is visible; checked by default
+- _WaitForReady_: how many seconds to wait for Excel to be ready, "120" by default; if Excel is not ready in time, the activity fails
+
+When the _Do_ body ends, VisualCron releases its connection to Excel but does not close Excel. Add a _Quit Excel_ activity to close it.
 
 ---
 
 ### Attach to Excel
 
-Attaches to an existing Excel application and sets it as the context of the body for the child Excel activities. Same properties and interface as **New Excel**.
+Attaches to an Excel application that is already running in the session, and makes it the one the child Excel activities in its _Do_ body work on. It has the same properties as _New Excel_, and applies them to the running Excel when it attaches. If no Excel is running, the activity fails.
 
-Use Attach to Excel when a workbook was opened earlier in the task and you need to return to it, for example when writing to an exception log from inside a loop. See [Data Processing & Logging](../data-processing-logging).
+If more than one Excel application is running in the session, Windows decides which one Attach to Excel uses. Keep only one Excel running when a sequence attaches to it.
+
+Use Attach to Excel to return to a workbook that was opened earlier in the Task, for example to write to an exception log from inside a loop. See [Data Processing & Logging](../data-processing-logging).
 
 ---
 
@@ -57,54 +61,58 @@ Use Attach to Excel when a workbook was opened earlier in the task and you need 
 
 Quits the Excel application.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel/Quit.png)
+![The Quit Excel activity](../../../../../../../static/img/RPA/Robot%20Tasks/Excel/Quit.png)
 
-This activity must be located inside a parent Excel activity, either **New Excel** or **Attach to Excel**.
+This activity must be inside a parent Excel activity, either _New Excel_ or _Attach to Excel_.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel/Quit%20Excel.png)
+:::warning
+
+With _DisplayAlerts_ cleared, which is the default, Quit Excel closes every open workbook without saving it. Inside _Attach to Excel_ it quits the Excel that was already running, including workbooks a person has open. Save first with _Save Workbook_ or _Save as Workbook_.
+
+:::
+
+![A Quit Excel activity inside the Do body of a New Excel activity](../../../../../../../static/img/RPA/Robot%20Tasks/Excel/Quit%20Excel.png)
 
 ---
 
 ### Set Excel Visibility
 
-Sets the visibility property of the Excel application.
+Shows or hides the Excel application.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel/Set.png)
+![The Set Excel Visibility activity, with the Is Visible check box](../../../../../../../static/img/RPA/Robot%20Tasks/Excel/Set.png)
 
-| Setting | Description |
-|---|---|
-| Is Visible | Check to show the Excel application, clear to hide it. |
+- _Is Visible_: check to show Excel, clear to hide it
 
 ---
 
 ### Set Excel Interactivity
 
-Sets the interactivity property of the Excel application. This property is usually True. If set to False, Excel blocks all input from the keyboard and mouse, except input to dialog boxes displayed by your code.
+Sets whether Excel accepts keyboard and mouse input. When this is cleared, Excel blocks all input except input to windows opened by your code.
 
-Same settings and interface as **Set Excel Visibility**.
+- _Is Interactive_: check to accept input, clear to block it
 
 ---
 
 ### Set Display Alerts
 
-Sets the display alerts property of the Excel application. True if Excel displays certain alerts and messages while a macro is running.
+Sets whether Excel shows alerts and messages, such as overwrite confirmations.
 
-Same settings and interface as **Set Excel Visibility**.
+- _Display alerts_: check to show alerts, clear to suppress them
 
 ---
 
 ### Set Full Screen Mode
 
-Sets the full screen mode property of the Excel application.
+Turns Excel's full screen mode on or off.
 
-Same settings and interface as **Set Excel Visibility**.
+- _Full screen_: check for full screen mode, clear for the normal window
 
 ---
 
 ### Tips
 
-- Disable **DisplayAlerts** for unattended jobs. An Excel confirmation dialog such as "a file with this name already exists" will otherwise sit waiting for a response that never comes, and the task will hang until it times out.
-- Always end an Excel workflow with **Close Workbook** followed by **Quit Excel**. Excel processes left running accumulate on the server and eventually consume its memory.
-- Put the **Quit Excel** activity in the **Finally** block of a [TryCatch](error-handling) activity so Excel is closed even when the workflow fails partway through.
-- Set **IsVisible** to False for jobs running unattended. Excel runs faster and cannot be interfered with by anyone logged on to the server.
-- Set **WaitForReady** generously on servers under load. Excel can take several seconds to become responsive after starting.
+- _DisplayAlerts_ is cleared by default, so Excel does not stop an unattended Job with a confirmation such as "a file with this name already exists". The other side of this is that Excel then takes the default answer without asking: a _Save as Workbook_ to an existing path replaces that file
+- Always end an Excel workflow with _Close Workbook_ followed by _Quit Excel_. Excel processes left running accumulate in the session and eventually use up its memory
+- Put the _Quit Excel_ activity in the _Finally_ block of a [Try Catch](error-handling) activity so that Excel is closed even when the workflow fails partway through
+- Clear _IsVisible_ for Jobs that run unattended, so that someone using the session cannot interfere with Excel
+- Increase _WaitForReady_ on a busy machine. Excel can take several seconds to become responsive after it starts

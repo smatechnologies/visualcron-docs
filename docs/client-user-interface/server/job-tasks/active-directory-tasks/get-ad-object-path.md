@@ -5,24 +5,24 @@ hide_title: 'true'
 
 ## Task Active Directory - Get AD Object Path
 
-Populates the output with the LDAP (Lightweight Directory Access Protocol) path of the specified Active Directory object (i.e. user, computer, OU, etc.).
+The Get AD Object Path Task finds an Active Directory object by name and type and writes its LDAP path to the output.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Get%20AD%20Object%20Path.png)
+![Get AD Object path tab with the Credentials list, Parent path, Object type and Name](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Get%20AD%20Object%20Path.png)
 
-**Credentials**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
+### Get AD Object path tab
 
-**Get object path**
- 
-**Parent path**
+- _Credentials_: the Credential that the Task uses to connect to Active Directory; see [Global - Credentials](../../global-credentials). Click the _Settings_ icon to open _Manage credentials_
 
-The Lightweight Directory Access Protocol (LDAP) path of the parent Active Directory container. This is usually the top most container or the root of the directory data tree on a directory server. Click the *Select container* button to select an existing Active Directory container.
- 
-**Object type**
+  With "No Credential", the Task connects as the account that the VisualCron Server service runs as. The account that is used needs permission in Active Directory for what the Task does.
 
-The Active Directory object type in which to retrieve the path from. The options are: User, Computer, Group, Organizational unit and Printer.
- 
-**Name**
+  When the selected Credential has been deleted, the Task reads Active Directory as the account of the VisualCron Server service, and the Task reports success.
 
-The name of an existing variable to be populated with the first object's LDAP path found in the Active Directory matching the name.
+- _Parent path_: the LDAP path of the container to search. The Task searches the container and every container below it, for example `LDAP://OU=<unit>,DC=<domain>,DC=<suffix>`. Click _Select container_ to pick it
+- _Object type_: "User" (default), "Computer", "Organization Unit", "Group" or "Printer"
+- _Name_: the name of the object to find, for example a user's or computer's name. `*` matches any characters
+
+### Output and errors
+
+The output is the LDAP path of the first object found. When no object of that type and name exists, the Task fails.

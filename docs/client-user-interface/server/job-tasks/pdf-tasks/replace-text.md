@@ -5,52 +5,52 @@ hide_title: 'true'
 
 ## Task PDF - Replace Text
 
-The PDF - Replace text Task finds and replaces a text string with another text string from a single page or all pages of a pdf file.
- 
-**Replace text > Main settings** sub tab
+The PDF - Replace text Task finds a text or a regular expression in PDF files and replaces each match with another text.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Replace%20text%20settings.png)
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-**Find**
+### Replace text: Main settings tab
 
-Text string to search for (quotation marks shall not be added).
- 
-**Is regular expression**
+![Main settings tab of the Replace text Task, with the Find and Replace boxes, the Is regular expression check box, and the Password for file(s) and Page range groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Replace%20text%20settings.png)
 
-To be checked if the string in the *Find* field is a regular expression.
- 
-**Replace**
+- _Find_ (_Replace ..._ group): the text to find, without quotation marks; required
 
-The text string to replace the found string with.
- 
-**Password for file(s)**
+  Variables are supported.
 
-If the source pdf file is password protected, enter password here.
- 
-**Page range**
+- _Is regular expression_: treats _Find_ as a regular expression
+- _Replace_: the text that replaces each match
 
-Select *All pages* or a page range for text replacement.
- 
-**Replace text > File filter > Location** sub tab
+  Variables are supported.
 
-This tab uses the common [file filter](../../job-tasks-file-filter.md) to filter out the files that should be processed in this Task.
- 
-**Replace text > Destination** sub tab
+- _Password for file(s)_: the password that opens the source PDF files, if they are protected
+- _Page range_: _All pages_, or _Pages_ with page numbers and ranges separated by commas, for example `2-4` or `1,3,5-6`. An entry that is not a page number or a valid range is ignored
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Replace%20text%20destination.png)
+  A page number larger than the page count raises an error.
 
-**Save to**
+### File filter tab
 
-Selects where the modified PDF is written. Available options:
+The ***File filter*** tab selects the PDF files to change; see [File Filter](../../job-tasks-file-filter). If the filter has a Credential, the Task uses it while it reads and writes the files. When the logon with the Credential fails, the Task continues as the account that runs the Server and writes the error to the Server log.
 
-* _Save to same file_ - overwrite the source PDF in place
-* _Same folder with file mask_ - keep the original folder, but save under a different name (set the *File mask* below)
-* _Different folder with file mask_ - save under a different name in a different folder (set both *Folder* and *File mask* below)
+### Destination tab
 
-**Folder**
+![Destination tab of the Replace text Task, with the Save to.. group and the Folder and File mask boxes](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Replace%20text%20destination.png)
 
-The destination folder. Enabled when *Save to* is set to _Different folder with file mask_. Click the *Folder* icon to browse for the folder.
+- _Same file_ (_Save to.._ group): saves the changed file over the source file
+- _Same folder but use file mask_: saves the changed file in the folder set on the ***File filter*** tab, named by _File mask_
+- _Different folder and use file mask_: saves the changed file in _Folder_, named by _File mask_
+- _Folder_: the destination folder for _Different folder and use file mask_; click the folder button to browse
+- _File mask_: builds the new file name from the source file name, by the renaming standard set in [Main - Settings](../../main-settings)
 
-**File mask**
+  The default `*` keeps the source file name.
 
-The file mask used to name the output file. Enabled when *Save to* is set to _Same folder with file mask_ or _Different folder with file mask_.
+:::warning
+
+_Same file_ replaces the source file. With the default _File mask_ `*`, _Same folder but use file mask_ also replaces a source file that is in the File filter folder. A file that already has the new name is replaced without a prompt.
+
+:::
+
+When _Include sub folders_ is checked on the File filter, _Same folder but use file mask_ saves every result in the File filter folder, not in the subfolder the source file came from.
+
+### Output and errors
+
+The Task output contains "Success" for each file it saves. The file is saved even when nothing matches.

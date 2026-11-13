@@ -5,78 +5,34 @@ hide_title: 'true'
 
 ## Connection - Pushbullet
 
-The Pushbullet Connection is used with the free service from [Pushbullet](https://www.pushbullet.com/) to send messages, files or SMS to any device.
+The Pushbullet Connection stores the sign-in settings that the [Pushbullet - Send message](job-tasks/messaging-tasks/pushbullet-send-message), [Pushbullet - Send SMS](job-tasks/messaging-tasks/pushbullet-send-sms), [Pushbullet - Send link](job-tasks/messaging-tasks/pushbullet-send-link), [Pushbullet - Send file](job-tasks/messaging-tasks/pushbullet-send-file) and [Pushbullet - Upload file](job-tasks/messaging-tasks/pushbullet-upload-file) Tasks use to connect to Pushbullet.
  
-The Pushbullet Connection is used in the following Tasks:
+### Common settings
 
-* [Pushbullet - Send message](../../client-user-interface/server/job-tasks/messaging-tasks/pushbullet-send-message)
-* [Pushbullet - Send SMS](../../client-user-interface/server/job-tasks/messaging-tasks/pushbullet-send-sms)
-* [Pushbullet - Send link](../../client-user-interface/server/job-tasks/messaging-tasks/pushbullet-send-link)
-* [Pushbullet - Send file](../../client-user-interface/server/job-tasks/messaging-tasks/pushbullet-send-file)
-* [Pushbullet - Upload file](../../client-user-interface/server/job-tasks/messaging-tasks/pushbullet-upload-file)
+![Pushbullet Connection, Common settings tab with the Protocol and Information groups](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/PushBullet/Pushbullet.png)
+
+The ***Common settings*** and ***Proxy*** tabs are the same for every Connection type that has them; see [Common settings](global-connections#common-settings) and [Proxy](global-connections#proxy). The Pushbullet Connection has no _Test_ button.
  
-**Manage Connections > Add > Pushbullet > Main settings** tab
+### Main settings
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/PushBullet/Pushbullet.png)
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-**Name**
+The ***Connection settings*** tab holds two tabs: ***Main settings*** and ***Proxy***.
 
-The name of the Connection to uniquely identifying it.
+![Pushbullet Connection, Main settings tab with Username and Token](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/PushBullet/Settings.png)
 
-**Group**
+_Username_
 
-The group that the connection is a part of.
- 
-**Timeout**
+Required by the editor, but the Pushbullet Tasks do not use it. Enter a name that identifies the Pushbullet account.
 
-The connection timeout in seconds. Connection will fail after this time period.
- 
-**Code page**
+_Token_
 
-Code page being used.
- 
-**Manage Connections > Add > Pushbullet > Connection settings** tab
+The access token of your Pushbullet account. Create it in the account settings on the Pushbullet website. The Tasks send it to Pushbullet with each request.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/PushBullet/Settings.png)
+_Create an account at pushbullet.com_
 
-**Username**
+Opens the Pushbullet website in the web browser.
 
-Username for the service.
+### Proxy
 
-**Token**
-
-A string token you get when you create an account at [pushbullet.com](https://www.pushbullet.com/).
-
-**Create an account at pushbullet.com**
-
-A link that opens the Pushbullet website where you can create an account and obtain your access token.
-
-**Manage Connections > Add > Pushbullet > Proxy** tab
-
-**Proxy type**
-
-Select the proxy type to be used.
-
-**Address**
-
-The host name or IP address of the proxy server.
-
-**Port**
-
-The port of the proxy server.
-
-**Use credentials**
-
-The credentials that are associated with the account.
-
-**Domain**
-
-The domain of the proxy server.
-
-**Username**
-
-The user name to access the proxy server.
-
-**Password**
-
-The password to access the proxy server.
+The Pushbullet Tasks use the settings on this tab.
