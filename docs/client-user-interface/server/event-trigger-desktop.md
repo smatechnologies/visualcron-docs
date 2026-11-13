@@ -5,192 +5,185 @@ hide_title: 'true'
 
 ## Event Trigger - Desktop
 
-The **Desktop trigger** monitors changes in a UI via a locally or remotely runned VC tray. The Trigger reacts on UI events like as opened, closed, focused, appeared, clicked, checked, hovered, changed and many other UI, system, keyboard events. The trigger listens to events for a specific type of controls. It is possible to retrieve the username, hostname, process name, window name, control name, control content, pressed key, event type and other results so you can use it in your Tasks for example.
+The Desktop Trigger starts a Job when something happens on a Windows desktop: a process starts or exits, an
+application or window is opened, focused or clicked, a control changes, the session is locked or a key is pressed.
+A VisualCron Tray client on that desktop detects the events and reports them to the Server (see
+[Connection tab](#connection-tab)). The [Result Variables](#result-variables) tell the Job what happened.
 
-### Events tab
- 
-Configured events are listed in a grid showing the **Event type** and the **Watching value** (a summary of the parameters that the event is matching on). Use the toolbar above the grid to **Add**, **Edit**, or **Delete** events, or double‑click a row to edit it.
+:::note
 
-Events are divided into categories: Process, Application, Window, Control, System, Keyboard.
+The Server starts the Job on every event the Tray client reports for this Trigger. It does not apply *Run delay* on
+the ***Main settings*** tab or *Expire after being triggered* on the ***Expires*** tab, and it does not use *Computer
+name* and *Credentials*. To keep runs from overlapping, keep *Do not start if job is already running* selected on
+the Job's ***Main settings*** tab. *Expiration date* and the ***Timeout*** tab work as described in
+[Event Triggers](event-triggers).
 
-### Process category
+:::
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Process.png)
+### Desktop tab
 
-The Process category contains 2 events: 
-* Process started
-* Process ended
+The settings are on the ***Desktop*** tab, which has two tabs, ***Events*** and ***Connection***.
 
-The **Process started** event monitors the running of a specific process that matches the name of the process that the user-specified when adding an event.
+#### Events tab
 
-The **Process ended** event monitors the ending of a specific process that matches the name of the process that the user-specified when adding an event.
+*Trigger events:* lists the events the Trigger watches, with the *Event type* and the *Watching value* (the values the
+event matches). Use *Add*, *Edit* and *Delete* in the toolbar, or double-click a row to edit it. System events cannot
+be edited: delete the event and add it again.
 
-### Application category
+Events are in six categories: Process, Application, Window, Control, System and Keyboard.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Application.png)
+##### Process category
 
-The Application category contains 4 events: 
-* Application focused 
-* Application unfocused
-* Application clicked
-* Application double clicked
+![Add/Edit event window, Desktop tab with Add, Process open: Process started and Process exited](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Process.png)
 
-The **Application focused** event monitors the focusing to a specific application that matches the name of the application that the user-specified when adding an event.
+| Event | Fires when |
+|---|---|
+| *Process started* | A process with the name you enter starts |
+| *Process exited* | A process with the name you enter ends |
 
-The **Application unfocused** event monitors the focus leaving from a specific application that matches the name of the application that the user-specified when adding an event.
+The event from the Process category requires running the Tray client as administrator.
 
-The **Application clicked** event monitors the clicking to a specific application that matches the name of the application that the user-specified when adding an event.
+##### Application category
 
-The **Application double** clicked event monitors the double clicking to a specific application that matches the name of the application that the user-specified when adding an event.
+![Add/Edit event window, Desktop tab with Add, Application open: Application focused, unfocused, clicked and double clicked](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Application.png)
 
-### Window category
+| Event | Fires when |
+|---|---|
+| *Application focused* | The application with the process name you enter gets the focus |
+| *Application unfocused* | The focus leaves that application |
+| *Application clicked* | That application is clicked |
+| *Application double clicked* | That application is double-clicked |
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Window.png)
+##### Window category
 
-The Window category contains 6 events: 
-* Window opened
-* Window closed
-* Window focused
-* Window unfocused
-* Window clicked
-* Window double clicked
+![Add/Edit event window, Desktop tab with Add, Window open: Window opened, closed, focused, unfocused, clicked and double clicked](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Window.png)
 
-The **Window opened** event monitors the opening of a specific window that matches the name of the application and window that the user-specified when adding an event.
+| Event | Fires when |
+|---|---|
+| *Window opened* | A window with the process and window name you enter opens |
+| *Window closed* | That window closes |
+| *Window focused* | That window gets the focus |
+| *Window unfocused* | The focus leaves that window |
+| *Window clicked* | That window is clicked |
+| *Window double clicked* | That window is double-clicked |
 
-The **Window closed** event monitors the closing of a specific window that matches the name of the application and window that the user-specified when adding an event.
+##### Control category
 
-The **Window focused** event monitors the focusing to a specific window that matches the name of the application and window that the user-specified when adding an event.
+![Add/Edit event window, Desktop tab with Add, Control, Document open: the control types and the Document events](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Control.png)
 
-The **Window unfocused** event monitors the focus leaving from a specific window that matches the name of the application and window that the user-specified when adding an event.
+The Control category has seven control types: Button, Textbox, Label, Checkbox, Radio button, Combobox and Document.
+Each event watches a control with the process, window, control name and value you enter.
 
-The **Window clicked** event monitors the clicking to a specific window that matches the name of the application and window that the user-specified when adding an event.
+| Control type | Events |
+|---|---|
+| Button | *Button hovered*, *Button clicked*, *Button enabled*, *Button disabled*, *Button appeared*, *Button disappeared* |
+| Label | *Label hovered*, *Label clicked*, *Label enabled*, *Label disabled*, *Label appeared*, *Label disappeared* |
+| Textbox | The same six events, plus *Textbox value changed* |
+| Document | The same six events, plus *Document value changed* |
+| Checkbox | The same six events, plus *Checkbox checked* and *Checkbox unchecked* |
+| Radio button | The same six events, plus *Radio button checked* and *Radio button unchecked* |
+| Combobox | The same six events, plus *Combobox opened*, *Combobox closed* and *Combobox value changed* |
 
-The **Window double clicked** event monitors the double clicking to a specific window that matches the name of the application and window that the user-specified when adding an event.
+##### System category
 
-### Control category
+![Add/Edit event window, Desktop tab with Add, System open: System locked, System unlocked, RDP connected and RDP disconnected](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20System.png)
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Control.png)
+| Event | Fires when |
+|---|---|
+| *System locked* | The user locks the session |
+| *System unlocked* | The user unlocks the session |
+| *RDP connected* | A remote desktop connection is made |
+| *RDP disconnected* | A remote desktop connection ends |
 
-The Control category contains 7 child categories: 
-* Button 
-* Textbox
-* Label
-* Checkbox 
-* Radio button
-* Combobox
-* Document
+##### Keyboard category
 
-The Button, Label categories contains 6 events: 
-* Button hovered
-* Button clicked
-* Button enabled
-* Button disabled
-* Button appeared
-* Button disappeared
+![Add/Edit event window, Desktop tab with Add, Keyboard open: Key pressed, Hotkey pressed and Key sequence pressed](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Keyboard.png)
 
-The **Button hovered** event monitors the hovering of a specific button that matches the name of the application, window, button, content that the user-specified when adding an event.
+| Event | Fires when |
+|---|---|
+| *Key pressed* | The key you enter is pressed |
+| *Hotkey pressed* | The key combination you enter is pressed |
+| *Key sequence pressed* | The keys you enter are pressed one after the other |
 
-The **Button clicked** event monitors the clicking of a specific button that matches the name of the application, window, button, content that the user-specified when adding an event.
+##### Event settings
 
-The **Button enabled** event monitors the enabling of a specific button that matches the name of the application, window, button, content that the user-specified when adding an event.
+When you add or edit an event, a window opens with the fields for its category:
 
-The **Button disabled** event monitors the disabling of a specific button that matches the name of the application, window, button, content that the user-specified when adding an event.
+* Process and Application events: *Process name*
+* Window events: *Process name* and *Window name*
+* Control events: *Process name*, *Window name*, *Control name* and *Control value or text*
+* Keyboard events: *Key* (see below)
 
-The **Button appeared** event monitors the appearing of a specific button that matches the name of the application, window, button, content that the user-specified when adding an event.
+System events have no fields: you are asked to confirm, and the event is added.
 
-The **Button disappeared** event monitors the disappearing of a specific button that matches the name of the application, window, button, content that the user-specified when adding an event.
-
-The **Texbox, Document** category contains the same events, but has one more additional: **Textbox value changed**.
- 
-The **Value changed** event monitors the value changing of a specific textbox, document that matches the name of the application, window, button, content that the user-specified when adding an event.
-
-The** Checkbox**, Radio button category contains the same events, but has two more additional: **Checked**, **Unchecked**
-
-The **Checked** event monitors the checking of a specific checkbox or radio button that matches the name of the application, window, button, content that the user-specified when adding an event.
-
-The **Unchecked** event monitors the unchecking of a specific checkbox or radio button that matches the name of the application, window, button, content that the user-specified when adding an event.
-
-The **Combobox** category contains the same events, but has three more additional: 
-* Combobox value changed
-* Combobox opened
-* Combobox closed
-
-The **Combobox value changed** event monitors the value changing of a specific combobox that matches the name of the application, window, button, content that the user-specified when adding an event.
-
-The **Combobox opened** event monitors the opening of a specific combobox that matches the name of the application, window, button, content that the user-specified when adding an event.
-
-The **Combobox closed** event monitors the closing of a specific combobox that matches the name of the application, window, button, content that the user-specified when adding an event.
-
-### System category
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers//Event%20Trigger%20-%20Desktop%20System.png)
-
-The **System** category contains 4 events: 
-* System locked
-* System unlocked
-* RDP connected
-* RDP disconnected.
-
-The **System locked** event monitors the locking of the system. The event fires when the user locks the system session.
-
-The **System unlocked** event monitors the unlocking of the system. The event fires when the user unlocks the system session.
-
-The **RDP connected** event monitors the RDP connecting.The event fires on remote connecting.
-
-The **RDP disconnected** event monitors the RDP disconnecting.The event fires on remote disconnecting.
-
-### Keyboard category
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Keyboard.png)
-
-The Keyboard category contains 3 events: 
-* Key pressed
-* Hotkey pressed
-* Key sequence pressed
-
-The **Key pressed** event monitors the pressing to a specific key.
-
-The **Hotkey pressed** event monitors the pressing to a specific hotkey.
-
-The **Key sequence pressed** event monitors the pressing to a specific key sequence.
-
-### Control selector
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Desktop%20Control.png)
-
-Depending on the event category, the dialog exposes one or more of the following fields:
-
-* **Process name** — the name of the process to match
-* **Window name** — the title of the window to match
-* **Control name** — the name of the UI control to match
-* **Control value** — the content/value of the UI control to match
-
-All fields support wildcards such as: “?”, “*”
-“*” - any symbol and any count, “?” - one any symbol.
- 
-For example, if we enter ‘notep*’ to Process name field, trigger will listen for all processes whose name begins with ‘notep’.
+*Process name*, *Window name*, *Control name* and *Control value or text* support the wildcards "?" (any one
+character) and "\*" (any characters). For example, `notep*` in *Process name* matches every process whose name
+begins with "notep".
 
 **Match case**
 
-When checked, the values entered in the selector fields are matched case‑sensitively. When unchecked, matching is case‑insensitive.
- 
-If you don't know the details of the control, you can click on the search button.
+When checked, the values in the fields are matched case-sensitively. When unchecked, matching is case-insensitive.
 
-Then select the control you need. To select hold down the Ctrl button and click on the control.
+If you do not know the details of a window or control, click the select button next to its field, then hold down the
+Ctrl key and click the window or control. The fields are filled in. The button next to *Process name* opens the list
+of *Active processes*; double-click a process to select it.
 
-The fields will be filled in automatically.
+:::warning
 
-### Keyboard event configuration
+When you select a process from the list, letters "e" and "x" at the end of the process name are removed together with
+".exe": for example, "chrome.exe" becomes "chrom". Check *Process name* after you select a process, and correct it.
 
-For the **Key pressed**, **Hotkey pressed**, and **Key sequence pressed** events, the configuration dialog includes a key capture field that listens for keystrokes as you press them. Captured keys are stored as a comma‑separated list (for example, `ControlKey,L`). Use the **Clear** button to reset the captured keys.
+:::
 
-### Connections tab
+##### Keyboard event configuration
 
-In the Connections tab, select the **VisualCron Server location** that the trigger should listen on:
+For the *Key pressed*, *Hotkey pressed*, and *Key sequence pressed* events, the *Add Key event* window includes a key capture field that listens for keystrokes as you press them. Captured keys are stored as a comma-separated list (for example, `ControlKey,L`). Click the clear icon next to *Key* to start again.
 
-* **Local VisualCron Server** — listen for events on the same machine as the VisualCron Server (default)
-* **Remote VisualCron Server** — listen for events on a remote VisualCron Server. When selected, choose the [VisualCron Connection](../server/connection-visualcron) to use
+#### Connection tab
 
-Before initializing the trigger, make sure that you have a tray client running, depending on which connection you have selected.
+In *VisualCron Server location*, select where the Tray client runs:
 
-The event from the Process category requires running the tray client as administrator. 
+* *Local VisualCron Server* (default): the Trigger uses a Tray client connected to this Server
+* *Remote VisualCron Server*: the Trigger connects to another VisualCron Server through the
+  [VisualCron Connection](connection-visualcron) you select, and uses a Tray client connected to that Server
+
+With *Local VisualCron Server*, the Trigger uses the first Tray client it finds connected to the Server, whichever
+user runs it, so it watches one desktop session. Until a Tray client is connected, the Trigger tries again every
+second. This applies only until the first Tray client is found: if that Tray client later ends, for example when the
+user logs off, the Trigger stays active but receives no events. When the Tray client runs again, save the Job or
+restart the Server. If a Tray client reports an error, every active Desktop Trigger on this Server that uses *Local VisualCron
+Server* is deactivated, and the error is written to the Server log. Correct the cause and activate the Triggers again.
+
+With *Remote VisualCron Server*, the Trigger is deactivated if the remote Server cannot be reached when the Trigger
+starts. If the selected Connection has been deleted, the Trigger tries again every second without writing to the log:
+select an existing Connection.
+
+:::note
+
+Start the Tray client on the desktop you want to watch, and connect it to the Server, before you activate the
+Trigger. If several users run a Tray client connected to the Server, you cannot choose which session is watched.
+
+:::
+
+### Result Variables
+
+When the Trigger fires, these result Variables describe the event. In the Job, write them in the *Last trigger* form,
+for example `{TRIGGER(Active|LastTrigger|DesktopTrigger.Result.WindowName)}`, with the last part as listed below
+(see [Result Variables](event-triggers#result-variables) and [Variables](global-variables)).
+
+| Last part | Value |
+|---|---|
+| `DesktopTrigger.Result.EventType` | The event, for example `ProcessStarted` or `WindowOpened` |
+| `DesktopTrigger.Result.UserName` | User name |
+| `DesktopTrigger.Result.ComputerName` | Computer name |
+| `DesktopTrigger.Result.ProcessName` | Process name |
+| `DesktopTrigger.Result.ProcessId` | Process ID |
+| `DesktopTrigger.Result.WindowName` | Window name |
+| `DesktopTrigger.Result.ControlType` | Control type |
+| `DesktopTrigger.Result.ControlName` | Control name |
+| `DesktopTrigger.Result.ControlText` | Control text |
+| `DesktopTrigger.Result.ControlValue` | Control value |
+
+The *Variables* window does not list *Event type*, *Process Id*, *Control type*, *Control text* and *Control value*;
+type them as shown. It lists *Application name* and *Control content*, which return an error text for this Trigger:
+use *Process name* and *Control value* or *Control text* instead. The pressed key is not available as a Variable.

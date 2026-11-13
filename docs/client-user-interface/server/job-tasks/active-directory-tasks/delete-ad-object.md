@@ -5,16 +5,28 @@ hide_title: 'true'
 
 ## Task Active Directory - Delete AD Object
 
-Deletes an explicit Active Directory object (i.e. user, computer, printer, etc.) at the specified path.
+The Delete AD Object Task deletes an Active Directory object, for example a user, computer or printer.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Delete%20AD%20Object.png)
+![Delete AD Object tab with the Credentials list, Parent path, and the Select object and Select container buttons](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Delete%20AD%20Object.png)
 
-**Credentials**
+:::warning
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
+The Task deletes the object whose path is in _Parent path_. Despite its label, the field holds the path of the object to delete, not of its container: a container path in this field deletes that container. Check the path before you run the Task. VisualCron cannot undo the deletion.
 
-**Delete object**
- 
-**Parent path**
+:::
 
-The Lightweight Directory Access Protocol (LDAP) path of the parent Active Directory container. This is usually the top most container or the root of the directory data tree on a directory server. Click the *Select object* button to select an existing Active Directory object. Click the *Select container* button to select an existing Active Directory container.
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
+
+### Delete AD Object tab
+
+- _Credentials_: the Credential that the Task uses to connect to Active Directory; see [Global - Credentials](../../global-credentials). Click the _Settings_ icon to open _Manage credentials_
+
+  With "No Credential", the Task connects as the account that the VisualCron Server service runs as. The account that is used needs permission in Active Directory for what the Task does.
+
+  When the selected Credential has been deleted, the Task fails, but it may already have carried out the change as the account of the VisualCron Server service.
+
+- _Parent path_: despite its label, the LDAP path of the object to delete itself, not of its container, for example `LDAP://CN=<name>,OU=<unit>,DC=<domain>,DC=<suffix>`. Click _Select object_ to pick the object. _Select container_ puts the path of a container in the field instead
+
+### Output and errors
+
+The Task writes no output. An object that contains other objects is not deleted, and the Task fails. When Active Directory rejects the request, for example because the account does not have permission or the object does not exist, the Task fails with the error that Active Directory returns.

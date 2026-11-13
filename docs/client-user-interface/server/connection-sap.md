@@ -5,77 +5,53 @@ hide_title: 'true'
 
 ## Connection - SAP
 
-The SAP Connection stores connect and logon properties for SAP R/3 instances.
+The SAP Connection stores the address, sign-in and security settings that the [SAP - R/3 Job execute](job-tasks/sap-tasks/r3-job-execute) Task uses to connect to an SAP system.
  
-The SAP Connection is used in the SAP Task:
+### Common settings
 
-* [SAP - R/3 Job execute](../../client-user-interface/server/job-tasks/sap-tasks/r3-job-execute)
+![SAP Connection, Common settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SAP/SAP.png)
+
+The ***Common settings*** tab is the same for every Connection type that has it; see [Common settings](global-connections#common-settings).
+
+For an SAP Connection, no _Test_ button is shown, and _Timeout_ and _Code page_ are not used.
  
-**Manage Connections > Add > SAP > Common settings** tab
+### Main settings
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SAP/SAP.png)
+![SAP Connection, Main settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SAP/Settings.png)
 
-**Name**
+These fields are on ***Connection settings*** -> ***Main settings***. _Address_ and _Username_ are required.
 
-The name of the Connection to uniquely identify it.
+A new Connection is prefilled with _System number_ "00", _Client_ "200", _Language_ "EN", _Pool size_ "5" and a sample _System ID_. Replace _System ID_, _System number_ and _Client_ with the values of your SAP system.
 
-**Group**
+:::warning
 
-The group that the connection is a part of.
+The Connection connects directly to the SAP application server in _Address_. It has no settings for SNC or for a message server (load balancing), so the RFC traffic is not protected by SNC. Use this Connection only on a network that you trust.
 
-**Timeout**
+:::
 
-The connection timeout in seconds. Connection will fail after this time period.
+- _Address_: the host name or IP address of the SAP application server
+- _Username_: the SAP user name
+- _Password_: the password for that user
 
-**Code page**
+The following fields are in the _SAP Extra settings_ group:
 
-Code page being used.
- 
-**Manage Connections > Add > SAP > Connection settings** tab
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SAP/Settings.png)
-
-**Address**
-
-The IP address or DNS name of the SAP server.
-
-**Username**
-
-The user name for the SAP instance.
- 
-**Password**
-
-The password for the SAP instance.
-
-**System ID**
-
-The SAP System Identifier (SID) — a unique identifier for a SAP system instance within a SAP landscape.
- 
-**System number**
-
-The SAP server system number. This value is required to establish the connection.
- 
-**Client**
-
-The SAP client number to connect to. Within a single SAP instance, multiple clients can exist, each representing a separate organizational unit with isolated data.
- 
-**External user name**
-
-The name of the user in the external system that initiated the connection. This is for documentary purposes and identifies who made the call.
- 
-**Language**
-
-The ISO language code to be used for the SAP session. Defaults to English (`EN`).
- 
-**Pool size**
-
-The maximum number of simultaneous connections allowed in the connection pool.
+- _System ID_: the SAP system ID (SID) of the SAP system
+- _System number_: the system number of the SAP application server
+- _Client_: the SAP client to log on to. One SAP system can have several clients, each with its own data
+- _External user name_: the SAP Task does not use this field. As the external user name, the Task sends the SAP user set in the Task, or the Connection's _Username_ when the Task sets none
+- _Language_: the logon language, as a two-letter code. The default is "EN"
+- _Pool size_: the number of idle connections to the SAP system that are kept open for reuse. It does not limit how many connections are open at the same time. The default is "5"
  
 ### Troubleshooting
 
-**"Password logon no longer possible", "No RFC authorization for function module BAPI_XMI_LOGON", "You have no authorization to log on to interface XBP"**
+#### "Password logon no longer possible", "No RFC authorization for function module BAPI_XMI_LOGON" or "You have no authorization to log on to interface XBP"
 
-This is caused by incorrect user permissions in SAP.
+The SAP user account is locked or lacks authorizations.
 
-1. Check with the SAP Administrator to ensure the SAP user account is not locked and has no authorization issues.
-2. Verify that the SAP user has the minimum required authorizations as documented in the SAP Administrator Guide under "SAP Authorizations".
+To resolve the error, complete the following steps:
+
+1. Ask the SAP administrator to check that the SAP user is not locked and can log on with a password.
+2. Ask the SAP administrator to check that the SAP user has RFC authorization for "BAPI_XMI_LOGON" and authorization to log on to the XBP interface.
+3. Run the SAP Task again.
+
+When the account is unlocked and has these authorizations, the SAP Task logs on.

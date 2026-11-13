@@ -5,107 +5,74 @@ hide_title: 'true'
 
 ## Task Office365 - Update Calendar Event
 
-The Office365 - Update Calendar event Task lets you update a Calendar event in the Office365 cloud. The Task uses the [Office365 Connection](../../connection-office365).
+The Office365 - Update calendar event(s) Task changes events in the calendars of a Microsoft 365 user, using an [Office365 Connection](../../connection-office365).
 
-**Office365 - Update calendar events** tab
+![Office365 - Update calendar event(s) tab with the Selected calendar event, Event parameters and Recurrence groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office365%20Tasks/O365%20Update%20calendar%20events.png)
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office365%20Tasks/O365%20Update%20calendar%20events.png)
+:::warning
 
-**Connection**
+_Calendar name_ and _Event subject_ are patterns, and the Task acts on every event that matches. With _Calendar name_ empty, the Task searches every calendar the user can edit. An _Event subject_ of `*` matches every event it finds. Check the values with the [Get calendar event(s)](get-calendar-events) Task first.
 
-To use the Office365 Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+:::
 
-### Identify the event to update
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-**Calendar name**
+### Office365 - Update calendar event(s) tab
 
-The name of the calendar that contains the event. Leave empty to use the default calendar.
+#### Connection
 
-**Event subject**
+- _Connection_: The [Office365 Connection](../../connection-office365) to use. The Task works on the calendars of the Microsoft 365 user the Connection signs in as. Click the _Settings_ icon to open _Manage Connections_
 
-The current subject of the calendar event to update. Required.
+#### Selected calendar event
 
-**Event instance with date**
+The event or events to change:
 
-When checked, only the single occurrence of a recurring event on the specified date is updated; the rest of the series is preserved. Enter the date of the occurrence in the field next to the checkbox.
+- _Calendar name_: The name of the calendar, or a pattern: `*` matches any characters, `?` one character, `#` one digit, and `[` starts a character list. The match is not case-sensitive. Empty: every calendar the user can edit. A matching calendar the user cannot edit is skipped
+- _Event subject_: The subject of the event, or a pattern with the same characters as _Calendar name_. A subject that contains `#` or `[` is read as a pattern and can match other events. A `[` with no closing `]` stops the Task with an error, possibly after some events were already processed. The match is not case-sensitive. Required
+- _Event instance with date_: When selected, only the occurrence of a recurring event on the date entered in the field next to it is changed; the rest of the series stays. When cleared, a recurring event is changed for the whole series
 
-### New event values
+The Task checks only the first page of calendars, and the first page of events in each calendar, that Microsoft 365 returns, so a matching event that is not on those pages is not found.
 
-**Event start date/time**
+#### Event parameters
 
-The new start date and time of the event. Required when *All day* is unchecked.
+The new values. A field left empty keeps the event's current value.
 
-**Event end date/time**
+- _Event start date/time_: The new start, in the Server computer's time zone
+- _Event end date/time_: The new end, in the Server computer's time zone
+- _Is all day_: Selected makes the event an all-day event on the day the Task runs, and the start and end values are not used; cleared makes it a timed event; the indeterminate state leaves it unchanged
+- _Event subject_: The new subject
+- _Event location_: The new location name. Text after a `;` is read as the location's e-mail address and address
+- _Reminder minutes_: The new reminder time, in minutes. A value that is not a whole number is ignored
+- _Importance_: "Low", "Normal" or "High". With none selected, the importance is unchanged
+- _Event body_: The new text, sent as plain text
+- _Response requested_: Selected or cleared sets whether responses are requested; the indeterminate state leaves it unchanged
 
-The new end date and time of the event. Required when *All day* is unchecked.
+[Variables](../../global-variables) are resolved in the text and date fields.
 
-**All day**
+#### Recurrence
 
-When checked, the event is set as an all-day event and the start and end date/time fields are disabled. Use the indeterminate (greyed) state to leave the all-day flag unchanged.
+Applies to single events and whole series, not to a single occurrence.
 
-**Event subject (new)**
+:::warning
 
-The new subject (title) for the event.
+With _Type_ empty, a recurring event that is updated as a whole series loses its recurrence and becomes a single event. To keep a series, set _Type_ and the range again, or select _Event instance with date_ to change one occurrence.
 
-**Event body**
+:::
 
-The new body text for the event.
+- _Range start date/time_: The first date of the series. Empty: the day the Task runs
+- _Range end date/time_: The last date of the series. Used only when _Range start date/time_ is set. Empty: the series has no end
+- _Type_: "Daily", "Weekly", "Monthly" or "Yearly". The controls next to it change with the type:
+  - "Daily": _Every_ with a number of days, from "1" to "5", or _Every workday_, Monday to Friday
+  - "Weekly": _Interval_ every "1" to "5" weeks, and the days of the week
+  - "Monthly": _Interval_ every "1" to "5" months, and either _Day_ with the day of the month, or _Every_ with the week, "First" to "Last", and the day of the week
+  - "Yearly": _Interval_ every "1" to "5" years, _Month_, and either _Day_ with the day of the month, or _Every_ with the week and the day of the week
 
-**Event location**
+### Output and errors
 
-The new location for the event.
+The output has a line for each updated event.
 
-**Reminder minutes before start**
+:::warning
 
-The number of minutes before the start time at which a reminder should be raised.
+If Microsoft 365 rejects the request, or a calendar cannot be read, the error is written to standard error, and the Task reports success.
 
-**Importance**
-
-The importance flag stored on the event. Available options:
-
-* _Low_
-* _Normal_
-* _High_
-
-**Response requested**
-
-Sets whether responses are requested from invited attendees. Use the indeterminate (greyed) state to leave the value unchanged.
-
-**Recurrence range start / end**
-
-The first and last date on which the recurring event should occur. Leave empty for a non-recurring event.
-
-**Recurrence pattern type**
-
-How often the event repeats. Available options:
-
-* _Daily_
-* _Weekly_
-* _Monthly_
-* _Yearly_
-
-The recurrence sub-fields below show or hide automatically based on the selected *Type*.
-
-**Interval**
-
-The interval between recurrences (for example, "every 2 weeks"). Hidden for *Daily*.
-
-**Month**
-
-The month in which the event recurs. Used only for *Yearly*.
-
-**Day / Every**
-
-The day-of-the-month or recurrence anchor for the event. The label and behavior change with the selected *Type*.
-
-**Day of month**
-
-The numeric day of the month on which the event recurs.
-
-**Index**
-
-For relative monthly or yearly recurrence, selects the occurrence within the month (First, Second, Third, Fourth, Last).
-
-**Days of week**
-
-The days of the week on which the event recurs. Multiple days can be selected.
+:::

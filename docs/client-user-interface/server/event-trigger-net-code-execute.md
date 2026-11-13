@@ -5,54 +5,86 @@ hide_title: 'true'
 
 ## Event Trigger - .NET Code Execute
 
-![](../../../static/img/triggereventnetexecutecode.png)
+The .NET code execute Trigger runs a method of your C# or VB.NET code at an interval and starts the Job when the
+value it returns meets a condition.
 
-The composition and purpose of all the parameters that are available inside the Trigger sub tab fully corresponds to the description of the parameters from the topic, which describes the [.NET code execute Task](../server/job-tasks-task-process-dot-net-code-execute).
+**How the Trigger checks**
+
+The method runs when the Trigger starts, for example when the Server starts or the Job is saved, and then every
+*Polling interval* seconds (***Main settings*** tab, default 60). Checks are skipped while a Job time exception is
+active. The code runs as the Credential selected on the ***Trigger*** sub tab (with *No Credential*, as the account
+the VisualCron service runs under):
+
+* With *Execute in server process* cleared (default), the code runs in a separate process on the Server, and the
+  value it returns is compared as text
+* With *Execute in server process* checked, the code runs inside the VisualCron Server process, and the value it
+  returns is compared as the selected *Data type*
+
+There is no time limit: until the method returns, the next check does not start, and a method that never returns
+stops the Trigger from checking. If the code fails, the error is written to the Server log and the Trigger does not
+fire; it runs again at the next interval. If the value, or the *Value to compare with*, cannot be read as the
+selected *Data type*, the Trigger does not fire. If the selected Credential has been deleted, the checks do not
+stop: the error is written to the Server log at every check, and the code still runs at each interval, as the account
+the VisualCron service runs under, and can start the Job; select an existing Credential and save the Job. If another
+error occurs during a check, the Trigger is
+deactivated and the error is written to the Server log; correct the cause and activate the Trigger again.
+
+:::warning
+
+With *Execute in server process*, the code runs inside the VisualCron Server: an error that ends the process stops
+every Job on the Server, and code that never returns stops this Trigger from checking.
+
+:::
+
+***.NET code execute*** tab, ***Trigger*** sub tab
+
+![Add/Edit event window, .NET code execute tab, Trigger sub tab: Credentials, Language C#, Edit references, Execute in server process, the code, the method SayMyName with Compile, Refresh methods and Run, and its parameter](../../../static/img/triggereventnetexecutecode.png)
+
+The settings on the ***Trigger*** sub tab are the same as in the
+[.NET code execute Task](job-tasks-task-process-dot-net-code-execute), except that there is no ***Output*** tab.
  
-.**NET code execute** tab > **Condition** sub tab
+***.NET code execute*** tab, ***Condition*** sub tab
 
-![](../../../static/img/triggereventnetexecutecondition.png)
-
-**Output**
+![Add/Edit event window, .NET code execute tab, Condition sub tab: the trim option checked, Condition Contains (=%), Data type String, Value to compare with SUCCESS, and the If value is the same as last time options](../../../static/img/triggereventnetexecutecondition.png)
 
 **Remove all leading and trailing white-space characters from the result**
 
-All leading and trailing white-space characters are removed from the .NET code execution output before the condition is checked. This option is enabled by default.
- 
+Checked by default. For the *String* data type, when the returned value is text, the spaces and line breaks around
+it are removed before it is compared. For the other data types they are always removed.
+
 **Data type**
 
-Select the data type that the .NET code execution result should be interpreted as. The available comparison methods in the _Condition_ dropdown change depending on the selected data type:
-
-* **String**
-* **Boolean**
-* **Int32**
-* **Int64**
-* **Decimal**
-* **Double**
+How the returned value is read: *Boolean*, *Int32*, *Int64*, *Double*, *Decimal* or *String* (default). The entries
+in the *Condition* list depend on it. Numbers in text are read with the regional settings of the VisualCron Server.
+For *Boolean*, a text value must be `True` or `False`, in any letter case.
 
 **Condition**
 
-Select the comparison method that should be applied between the result and the _Value to compare with_. The list of available methods depends on the selected _Data type_:
+How the returned value is compared with *Value to compare with*. Text comparisons are case-sensitive.
 
-* **Boolean** — _Equal_, _Not equal_
-* **String** — _Equal_, _Not equal_, _Contains_, _Not contains_, _RegEx match_, _RegEx no match_
-* **Int32 / Int64 / Decimal / Double** — _Equal_, _Not equal_, _Larger_, _Larger or equal_, _Smaller_, _Smaller or equal_, _Contains_
- 
+* *Boolean*: *Equal (=)*, *Not equal (!=)*
+* *String*: *Equal (=)*, *Not equal (!=)*, *Contains (=%)*, *Not contains (!=%)*, *Regex - match*, *Regex - no match*
+* *Int32*, *Int64*, *Double* and *Decimal*: *Equal (=)*, *Not equal (!=)*, *Larger than (>)*, *Larger than or equal
+  (>=)*, *Smaller than (<)*, *Smaller than or equal (<=)* and *Contains (=%)*, which compares the numbers as text
+
 **Value to compare with**
 
-Enter a value/Variable to compare the result with. Click the Variables icon to open the the Variables list.
- 
+Enter a value or a Variable. Click the *Variables* icon to open the Variables list.
+
 **If value is the same as last time**
 
-Choose how the Trigger should behave when the new result matches the previous result:
+What happens when the condition is met and the value is the same as at the previous check. The previous check counts
+whether or not it met the condition.
 
-* **Fire Trigger** — fire the Trigger every time the Condition is met (default)
-* **Do not fire Trigger** — skip firing when the result is the same as last time
-* **Disable Trigger** — disable the Trigger after a repeated identical match
+* *Fire Trigger* (default): fire every time the condition is met
+* *Do not fire Trigger*: do not fire; the Trigger fires again when the value changes and meets the condition
+* *Disable Trigger*: deactivate the Trigger. Activate it again to use it
  
- 
-**.NET code execute Trigger Result Variables**
- 
-**MatchedValue**
+### Result Variables
 
-The string representation of the matched value from the .NET code execution output.
+When the Trigger fires, it sets this result Variable:
+
+**Matched value** (`{TRIGGER(Active|LastTrigger|DotNETExecute.Result.DotNETExecute.MatchedValue)}`)
+
+The returned value that met the condition, as read with the *Data type*. After a timeout fire it returns an error
+text. See [Result Variables](event-triggers#result-variables) and [Variables](global-variables).

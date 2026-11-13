@@ -2,79 +2,56 @@
 sidebar_label: 'Task Sharepoint - List File'
 hide_title: 'true'
 ---
+## Task SharePoint - List File
 
-## Task Sharepoint- List File
+The SharePoint - List file(s) Task returns the files, and optionally folders, on a SharePoint site that match a file filter, using a SharePoint Connection.
 
-The SharePoint - List file(s) Task retrieves a list of existing files from the SharePoint library using a file filter.
- 
-The SharePoint Tasks supports the following versions:
+The SharePoint Tasks work with SharePoint 2010, 2013 and 2016 on premises, and with SharePoint Online.
 
-* SharePoint 2010
-* SharePoint 2013
-* SharePoint Online
+![List file(s) tab, Location sub tab with the Connection, Source folder, Item mask and filter options](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/List%20files.png)
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/List%20files.png)
+:::warning
 
-**List file(s) > Location** tab
+This Task uses a SharePoint Connection; see [Connection - SharePoint](../../connection-sharepoint). When a certificate is selected in the Connection, the Task accepts any server certificate, and each run of a SharePoint Task changes TLS handling for the whole Server process.
 
-**Connection**
+:::
 
-To use SharePoint Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
- 
-**Source folder**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-The source folder path on the SharePoint site. Click the *Folder* icon to browse the SharePoint site and select a specific folder.
+### List file(s): Location tab
 
-**Item mask**
+- _Connection_: the SharePoint Connection to use. The button next to the list manages Connections
+- _Source folder_: the folder or document library on the SharePoint site, as a server-relative path. The folder button next to the field opens a browser of the site
+- _Item mask_: the names of the items to list. "*" matches any characters and "?" one character; separate several masks with ";". The default is "*"
+- _Filter_: "Files" (default), "Folders" or "All", the kind of item that matches
+- _Case sensitive_: match _Item mask_ with case
+- _Include sub folders_: also search the folders under _Source folder_
 
-A wildcard pattern used to match the files to list (e.g. `*` for all files, `*.txt` for text files only).
+Variables are resolved in _Source folder_ and _Item mask_.
 
-**Filter**
+### List file(s): Date tab
 
-Select the content filter type to apply when selecting files.
+- _Newer than_ and _Older than_: in each group, select "Don't check" (default), "Created date" or "Modified date", and enter a date or a Variable. An item matches _Newer than_ when it is newer than the date, and _Older than_ when it is older
+- The "AND" (default) or "OR" list between the groups: whether an item must match both groups or one of them
 
-**Case sensitive**
+Both "Created date" and "Modified date" compare the date with the modified date of the item. With "OR", set at least one of the groups; when neither is set, no item matches.
 
-When checked, the item mask matching is case sensitive.
+### List file(s): Size tab
 
-**Include sub folders**
+- _Check if file is smaller than x size_ and _Check if file is larger than x size_: match items smaller or larger than the size, in "byte(s)", "kilobyte(s)", "megabyte(s)", "gigabyte(s)" or "terabyte(s)"
+- The "AND" (default) or "OR" list between the groups: whether an item must match both checks or one of them
 
-When checked, files in sub folders of the source folder are also included.
+With "OR", every item matches unless _Check if file is smaller than x size_ is checked.
 
-**List file(s) > Date** tab
+### List file(s): Result tab
 
-**Newer than**
+- _Sort_ (in the _Sort result_ group): sort the matching items by "Full path", "File name", "Modified date", "Created date" or "File size", "Ascending" or "Descending". Sorting by "Full path" makes the Task fail with an error; use another column
+- _Limit_ (in the _Limit result_ group): use only the first number of matching items, after sorting. The value can be a Variable
 
-Select a check type and enter a date or variable. Only files newer than the specified date will be included.
+### List file(s): Test tab
 
-**Older than**
+Click _Show filtered files_ to ask the Server for the items that match the current settings. The number of items found and the time it took are shown.
 
-Select a check type and enter a date or variable. Only files older than the specified date will be included.
+### Output and errors
 
-Use the AND/OR operator between the two date conditions to control how they are combined.
-
-**List file(s) > Size** tab
-
-**Check if file is smaller than x size**
-
-When checked, only files smaller than the specified size are included. Select the size unit (bytes, KB, MB, etc.).
-
-**Check if file is larger than x size**
-
-When checked, only files larger than the specified size are included. Select the size unit (bytes, KB, MB, etc.).
-
-Use the AND/OR operator between the two size conditions to control how they are combined.
-
-**List file(s) > Result** tab
-
-**Sort**
-
-When checked, the matched file list is sorted before processing. Select the sort column and sort direction.
-
-**Limit**
-
-When checked, the number of matched files returned is limited to the specified value.
-
-**List file(s) > Test** tab
-
-Click the *Show filtered files* button to preview which files match the current filter settings before running the task. The number of matched files and elapsed time are displayed.
+The output of the Task is one line for each matching item: the name, a tab character and the path. When no item matches, the Task fails with a file-not-found error.

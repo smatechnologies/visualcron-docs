@@ -5,94 +5,95 @@ hide_title: 'true'
 
 ## Connection - Box
 
-TThe Box Connection stores connect and login properties for the Box cloud storage service. You can use VisualCron to transfer files between Box and a local folder, or between Box and other cloud services.
+The Box Connection stores the sign-in and security settings that these Tasks and Triggers use to connect to Box:
 
-The Box Connection is used in the following Cloud Tasks:
+- [Cloud - Upload file(s)](job-tasks/cloud-transfer-tasks/upload-file)
+- [Cloud - Download file(s)](job-tasks/cloud-transfer-tasks/download-file)
+- [Cloud - List item(s)](job-tasks/cloud-transfer-tasks/list-item)
+- Cloud - List folder(s)
+- [Cloud - Create folder](job-tasks/cloud-transfer-tasks/create-folder)
+- [Cloud - Delete item(s)](job-tasks/cloud-transfer-tasks/delete-item)
+- [Cloud - Copy/move item(s)](job-tasks/cloud-transfer-tasks/copy-move)
+- [Cloud - Sync file(s)](job-tasks/cloud-transfer-tasks/sync)
+- The [Cloud file Trigger](event-trigger-cloud-file)
 
-* [Cloud - Upload file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/upload-file)
-* [Cloud - List item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/list-item)
-* [Cloud - Download file(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/download-file)
-* [Cloud - Create folder](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/create-folder)
-* [Cloud - Delete item(s)](../../client-user-interface/server/job-tasks/cloud-transfer-tasks/delete-item)
- 
-**Manage Connections > Add > Box > Common settings** tab
+Use it to transfer files between Box and a local folder, or between Box and another cloud service.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Box/Box.png)
+### Common settings
 
-**Name**
+![Box Connection, Common settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Box/Box.png)
 
-The name of the Connection to uniquely identify it.
+The ***Common settings*** and ***Proxy*** tabs are the same for every Connection type that has them; see [Common settings](global-connections#common-settings) and [Proxy](global-connections#proxy).
 
-**Group**
+_Test_ asks the Server to refresh the stored sign-in and read the root folder of the Box account.
 
-The group that the connection is a part of.
- 
-**Timeout**
+### Main settings
 
-The connection timeout in seconds. Connection will fail after this time period.
- 
-**Code page**
+![Box Connection, Main settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Box/Settings.png)
 
-Code page being used.
- 
-**Manage Connections > Add > Box > Connection Settings** tab
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Box/Settings.png)
+_Client ID_
 
-**Client Id**
+The client ID of your Box app, from the _Configuration_ page of the app in the Box Developer Console. Required.
 
-Client Id which you gets when registering your application at the Box Developer Console - [Box](https://www.box.com/platform). See sample below:
+![The OAuth 2.0 credentials of a Box app](../../../static/img/boxoacredentials.png)
 
-![](../../../static/img/boxoacredentials.png)
+_Client Secret_
 
-**Client secret**
+The client secret of your Box app.
 
-The Client Secret obtained when registering your application at the Box Developer Console.
+_Redirect URI_
 
-**Redirect Url**
+The address that Box sends the sign-in result to. Default: "http://localhost:5050". Enter the same address as the redirect URI of the Box app.
 
-The OAuth redirect URI used during authentication. This value must match exactly the redirect URI configured for your app in the Box Developer Console.
+![The OAuth 2.0 redirect URI of a Box app](../../../static/img/boxredirecturi.png)
 
-![](../../../static/img/boxredirecturi.png)
+_Auto-accept server certificates_
 
-**Auto-accept server certificates**
+Selected by default.
 
-When checked, VisualCron automatically accepts server certificates without prompting. Enabled by default.
+:::warning
 
-**Create an account**
+Box Connections accept any server certificate, whether or not _Auto-accept server certificates_ is selected. The Server does not check the server certificate when it connects to Box, so it cannot tell the real server from another server that answers at the same address. Connect to Box only over a network path that you trust.
 
-Click this link to open the Box Developer Console to register or manage your Box application: [https://app.box.com/developers/services](https://app.box.com/developers/services)
+:::
 
-**Authenticate**
+_Create an account_
 
-Click this link to initiate the OAuth authentication flow. A browser window will open for you to sign in with your Box account and grant VisualCron access. Once authentication is complete, click OK to save the connection.
+Opens the Box developer pages. The Box Developer Console is at [https://app.box.com/developers/console](https://app.box.com/developers/console).
 
-**Manage Connections > Add > Box > Proxy** tab
+_Authenticate_
 
-**Proxy type**
+Starts the Box sign-in. See [How to create a Box Connection](#how-to-create-a-box-connection).
 
-Select the proxy type to be used.
+### Proxy
 
-**Address**
+:::warning
 
-The host name or IP address of the proxy server.
+Cloud Tasks and the Cloud file Trigger do not use the ***Proxy*** tab of a Box Connection. Only _Authenticate_ in the Client uses it. On a network where the Server reaches the Internet only through a proxy, Jobs that use a Box Connection fail.
 
-**Port**
+:::
 
-The port of the proxy server.
+### How to create a Box Connection
 
-**Use credentials**
+To create a Box Connection, complete the following steps:
 
-Enable to provide credentials for authenticating with the proxy server.
+1. Open the Box Developer Console.
+2. Create a Custom App that uses User Authentication (OAuth 2.0).
+3. On the _Configuration_ page of the app, enter the value of _Redirect URI_, by default "http://localhost:5050", as the redirect URI.
+4. Copy the client ID into _Client ID_.
+5. Copy the client secret into _Client Secret_.
+6. Click _Authenticate_.
+7. Sign in with the Box account.
+8. Grant access to VisualCron.
+9. Click _OK_ to save the Connection.
+10. Click _Test_ on the ***Common settings*** tab.
 
-**Domain**
+The test reports that it was successful.
 
-The domain of the proxy server.
+### Authentication and token expiry
 
-**Username**
-
-The user name to access the proxy server.
-
-**Password**
-
-The password to access the proxy server.
+- _Authenticate_ runs on the computer where the Client runs. The browser opens there, and the Client listens for the sign-in result on the port of _Redirect URI_, so that port must be free on that computer
+- At run time, the Server refreshes the sign-in and stores the new refresh token in the Connection
+- Box no longer accepts a refresh token that has not been used for 60 days. The Server then marks the Connection as expired, and the Client shows the message "Connection session expired". Open the Connection and click _Authenticate_ again

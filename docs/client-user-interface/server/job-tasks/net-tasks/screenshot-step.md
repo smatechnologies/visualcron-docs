@@ -5,51 +5,40 @@ hide_title: 'true'
 
 ## Screenshot Step
 
-The Screenshot step takes a screenshot of the current web browser and saves it to a file.
+The Screenshot action of the [Task Net - Web Macro](web-macro) takes a screenshot of the browser and saves it to a file. The action window is titled _Action - Screenshot_.
 
-![](../../../../../static/img/screenshotstep.png)
+![Screenshot action window with the save settings](../../../../../static/img/screenshotstep.png)
 
-**Screenshot tab**
+### Screenshot tab
 
-**Credential**
+The _Save as_ group holds the following settings:
 
-If the destination folder is on a network resource, select a credential to provide the necessary access rights. Use an existing or add [one](client-user-interface/server/global-credentials.md).
+- _Credential_: if the folder is on a network resource, the Credential with access to it; see [Global - Credentials](../../global-credentials)
+- _Folder_: the folder where the screenshot is saved; to select a folder, click the folder icon
 
-**Folder**
+  When the Task runs, the Server saves the file, so use a folder that exists on the Server. During _Test run_, the file is saved on the computer running the Client.
 
-The local destination folder where the screenshot file will be saved. Click the browse button to select a folder.
+- _File name_: the file name to save the screenshot as; to select an existing file name, click the file icon
 
-**File name**
+The action window does not check _Folder_ and _File name_ when you click _OK_. Make sure both are filled in.
 
-The destination file name. Click the browse button to select an existing file name.
+- _Overwrite options_: what happens when a file with the same name already exists in the folder
+  - "Overwrite - always if existing" (default): the existing file is replaced
+  - "Overwrite - if destination size is": the existing file is replaced when its size matches the condition in the list next to _Overwrite options_
+  - "Do not overwrite if existing": the file is not saved if one with the same name exists
+- The list next to _Overwrite options_: the size condition, active only with "Overwrite - if destination size is"; "Same", "Smaller" (default), "Larger", "Smaller or larger" or "Different"
+- _Screenshot type_: what is captured; "Window" (default) captures the visible part of the page, and "Page" captures the full page
+- _Screenshot size_: "Full" (default) captures the whole area set by _Screenshot type_, and "Part" captures the rectangle set in _Relative position and size of rectangle_
+- _Relative position and size of rectangle_: active only when _Screenshot size_ is "Part"
 
-**Overwrite options**
+  Enter _X_ and _Y_ for the top-left corner of the rectangle, and its _Width_ and _Height_, in pixels. All four must be whole numbers.
 
-Controls what happens when a file with the same name already exists at the destination. Options:
+:::warning
 
-* **Overwrite - always if existing** (default) — always replace the destination file
-* **Overwrite - if destination size is** — replace based on size comparison (activates the size dropdown)
-* **Do not overwrite if existing** — skip the file if it already exists
+By default, an existing file with the same name is replaced.
 
-**Overwrite size**
+:::
 
-Active only when **Overwrite options** is set to "Overwrite - if destination size is". Options: Same, Smaller, Larger, Smaller or larger, Different.
+### Wait tab
 
-**Screenshot type**
-
-Controls what area of the browser is captured. Options: Window (default), Page.
-
-**Screenshot size**
-
-Controls the capture area. Options:
-
-* **Full** (default) — captures the full screenshot type area
-* **Part** — captures a rectangular region defined by the fields below
-
-**Relative position and size of rectangle**
-
-Active only when **Screenshot size** is set to Part. Specify the X and Y coordinates of the top-left corner of the rectangle, and its Width and Height in pixels.
-
-**Wait tab**
-
-Controls how long the step waits before and after performing the action.
+Sets how long the action waits before it runs (_Wait before execute_) and after it runs (_Wait after execute_), in milliseconds. Both are "500" by default.

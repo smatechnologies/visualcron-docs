@@ -15,16 +15,12 @@ Twitter integration described on this page is deprecated from **VisualCron v13.2
 
 The Twitter - Reply tweet Task publishes a reply to a tweet in Twitter.
 
-![](../../../../../static/img/tasksocialtwitterreplytweet.png)
+![Twitter - Reply tweet tab, Message sub tab with the Connection, the In reply tweet Id box and the Message box](../../../../../static/img/tasksocialtwitterreplytweet.png)
 
-**Connection**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To use Twitter Tasks you need to create a Connection first. You do that in the [Twitter Connection](../../../server/connection-twitter) dialog.
- 
-**Id reply to tweet Id**
+### Twitter - Reply tweet: Message tab
 
-The tweet id to post a reply to
- 
-**Message**
-
-The reply message to be sent
+- _Connection_: the Twitter Connection to use; see [Twitter Connection](../../../server/connection-twitter)
+- _In reply tweet Id_: the ID of the tweet to reply to
+- _Message_: the reply to publish

@@ -5,28 +5,30 @@ hide_title: 'true'
 
 ## Task Internal - Set Job Variable
 
-The Set Variable Task allows you to create or update a Variable. Variables can be used and reached throughout the whole application. You can use this to store static or dynamic values.
- 
-A Job variable is related to a job, thus when that specific job is exported, the Job variable is included.
+The Set Job Variable Task creates or updates a Variable in a Job's [Job Variables](../../../server/job-variables). Job Variables belong to the Job and are exported with it.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Internal%20Tasks/Set%20job%20variable.png)
+![Set Job Variable Task settings](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Internal%20Tasks/Set%20job%20variable.png)
 
 **Job**
 
-**Job**
+Select the Job whose Variable to set. Defaults to the Job this Task belongs to; any Job can be selected. The icon next to the list opens the selected Job's Job Variables; for a Job that is already saved on the Server, changes made there are saved to that Job at once, even if you then cancel this Task.
 
-List of defined jobs.
- 
 **Variable**
 
 **Name/Unique key**
 
-The name you set on the Variable is also the unique key for the Variable. Wherever you want to use your defined Variable you use this Variable key: `{USERVAR(variablename)}`
- 
+Select one of the Job's keys, or type a new key to create it. Keys are case-sensitive, and the field is not checked when you save, so make sure it is not empty. Read the value with `{JOB(Active|Variable|<key>)}` in the same Job, or `{JOB(<jobId>|Variable|<key>)}` from another Job.
+
 **Value**
 
-Set the requested value of the Variable here
- 
+Set the value of the Variable.
+
 **Translate value to constant in Variable when running**
 
-Optional. If you, for example, use a Date Variable in the "Variable value" text box the Variable will be converted to a string when the Variable runs the first time - if not, the Variable keep the reference to the Variable. For example, if you use the current date as a Variable it will always show the current date when running in another Task (if unchecked). If this is checked, it will show the value of the date - from the last time the Variable was set.
+Cleared by default: the value is stored as written, including any Variables in it. When selected, the Variables are replaced each time the Task runs, and the result is stored.
+
+**Result**
+
+The output gives the key and its value. The Task fails if the Job does not exist. When a user starts the Job, from the Client or from another Job a user started, that user needs the *Edit* permission for *Variables* (set for the user's group, not per Job), or the Task fails (see [User permissions](../../../server/main-user-permissions)). Runs started by a Trigger are not checked.
+
+Whether a change is kept after the run depends on how the run started; see **When changes are kept** on the [Job Variables](../../../server/job-variables) page. In a run whose changes are set back, a key this Task adds to its own Job is removed when the run ends, so add the key in the Job's *Job Variables* window first.

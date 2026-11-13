@@ -3,28 +3,39 @@ sidebar_label: 'Job Does Not Run'
 hide_title: 'true'
 ---
 
-## Troubleshooting
+## Job Does Not Run
 
-### My Job does not run!
+### Symptom
 
-If your Job does not run then check this list, in the following order:
- 
-1. Is the Job active? If the icon for the Job in the Job list is red, then right click on the row and select Activate.
+A Job does not run when it should.
 
-2. Is the VisualCron Server "On"? If the Start/Stop toolbar icon shows Start, click on the icon/button to Start the server.
+### Cause
 
-3. Can you run the Job manually? Right click on the Job and select _Run Job_. If it does run then look at the time settings. What does next run say? Alter your time settings. If your Job does not run when you select Run Job then the command line or parameters might be wrong, please check.
+The most common causes are a Job that is not active, a Server that is off, a Trigger that is set wrongly, and an error in a Task.
 
-4. Log in the server log and the output column if the Task. Perhaps you can find the error there.
+### Fix
 
-5. Is your command and argument correct? You need to separate the argument from the command in the two fields. You can not write ```"C:\php\php.exe -q myscript.php"``` in the command line, in this case the command line must be ```"C:\php\php.exe"``` and the argument ```"-q myscript.php".```
- 
-You can turn on debug for the server, see [show log](../client-user-interface/server/information-log) and [log to file](../client-user-interface/server/main-settings) for more information. 
+Check the following, in this order:
 
-Run the Job manually again and the open the log file. 
+1. **The Job is active.** In the Job list, right-click the Job. If the menu shows *Activate Job* followed by the Job name, select it.
+2. **The Server is on.** If the ***Server*** tab shows *Server [Off]*, click it. It then shows *Server [On]*.
+3. **The Job runs manually.** Right-click the Job and select *Run Job* followed by the Job name. If it runs, the Trigger settings are the problem: check the next run time and correct the Trigger. If it does not run, check the Task settings.
+4. **The logs show an error.** Look in the Server log and in the *Output* of the Task.
+5. **The command and arguments are in separate fields.** In an Execute Task, put the program in *Command* and its arguments in *Arguments*, for example "C:\php\php.exe" and "-q myscript.php". If *Command* holds the path of an existing .exe, .bat or .cmd file followed by arguments, VisualCron splits them itself; other commands are not split.
 
-Open the log file with the corresponding date. This log file may say something about the error. 
+If you still cannot find the cause, collect a debug log. To collect a debug log, complete the following steps:
 
-If you believe that the error is in VisualCron itself then send the log file to [support@visualcron.com](mailto:support@visualcron.com). 
+1. On the ***Server*** tab, click *Settings*.
+2. Click the ***Log settings*** tab.
+3. Click the ***Settings*** tab.
+4. Select *Extended debug logging*. See [Settings - Log Settings](../client-user-interface/server/settings-log-settings).
+5. Click *Apply settings*.
+6. Run the Job manually again.
+7. Open today's `log_server<yyyyMMdd>.txt` in the log folder. You can also view the log in the Client; see [Information - Log](../client-user-interface/server/information-log).
+8. Look for the error.
 
-Remember to turn debug off after turning it on because an activated debug option slows down VisualCron.
+   The log shows why the Job did not run.
+
+When you have finished, clear *Extended debug logging* again, because it slows the Server.
+
+If you believe the error is in VisualCron itself, send the log file to [support@visualcron.com](mailto:support@visualcron.com). Review the log for user names, paths and server names before you send it.

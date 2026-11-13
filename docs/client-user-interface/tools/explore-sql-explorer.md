@@ -5,44 +5,33 @@ hide_title: 'true'
 
 ## Explore - SQL Explorer
 
-With the main menu **Tools > Explore > SQL Explorer** option, you can use your existing SQL Connection or create new SQL Connections with the wizard to browse databases, tables and perform queries.
- 
-**Tools > Explore > SQL Explorer**
+The ***SQL Explorer*** window uses your SQL Connections to browse databases and tables, edit rows and run queries.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/SQL.png)
+To open it, click ***Tools*** -> ***Explore*** -> ***SQL Explorer***.
 
-**Connections tree and connecting**
+![SQL Explorer window with a Connection tree expanded to databases, schemas and object folders](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/SQL.png)
 
-The connections tree shows the same Connections you see in the Connections window (if there is any SQL Connection).
- 
-There are 5 levels in the Connections tree:
+### Connections tree
 
-^ Connection name
+The tree shows the SQL Connections that are set up on the Server. To open a Connection, double-click it, or right-click it and click _Connect_. Under an open Connection, the tree shows:
 
-^ ^ Database name
+- the databases
+- under each database, its schemas
+- under each schema, _Tables_, _Views_, _Stored Procedures_ and _Functions_
 
-^ ^ ^ Tables
+### Working with data
 
-^ ^ ^ ^ list of tables
+When connected, you can:
 
-^ ^ ^ Views
+- open and edit a table by double-clicking it
+- edit rows in form and grid view
+- delete rows
+- scroll through and filter rows
+- click ***New query*** to run your own SQL query against an open Connection
+- run a stored procedure with parameters
 
-^ ^ ^ ^ list of vies
+:::warning
 
-^ ^ ^ Stored procedures
+Edits and deletes in the SQL Explorer change the database directly.
 
-^ ^ ^ ^  list of stored procedures
-
-^ ^ ^ ^ ^ Arguments to stored procedures
- 
-You will access these sub items by either double clicking on a Connection or right click and select Connect.
- 
-When connected you can:
-
-* Open and edit a table by double clicking on a table
-* Perform edit in form and grid view
-* Delete rows
-* Scroll through rows
-* Filter rows
-* Click on new query button to perform your own SQL query against any open connection
-* Execute any stored procedure with parameters
+:::

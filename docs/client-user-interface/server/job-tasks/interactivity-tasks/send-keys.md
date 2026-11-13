@@ -5,130 +5,79 @@ hide_title: 'true'
 
 ## Task Interactivity - Send Keys
 
-The Task type Send keys is a way to control another application that is already running. Most applications have shortcuts to perform different Tasks in that program. With "Send keys", VisualCron can put the focus on a running application and "send" a range of specified keystrokes to that program. It is possible to combine keystrokes, for example CTRL + SHIFT + A.
+The Send keys Task brings a window of a running application to the front and sends keystrokes to it, for example to use the application's keyboard shortcuts. Keystrokes can be combined, for example CTRL + SHIFT + A.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Send%20Keys.png)
+![Send keys tab with Application title, Class name, Process name, Case sensitive and Keys to send](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Send%20Keys.png)
 
-**Main settings**
+:::warning
 
-**Application title** / **Process name**
-
-Select the method used to identify the target window. Defaults to **Application title**.
-
-**Application title**
-
-To be able to send keys, VisualCron needs to have the application title or the process name. Enter title name or open Active *window titles* by clicking on the *select*. Note that this retrieves application titles from computer where the server reside. This function does not search child windows. This function does not perform a case-sensitive search. You can also hold drag the *arrow* button over a specific window. Release the button when you have selected the window.
- 
-**Class name**
-
-When dragging the *arrow* button you get more exact information on what window you want to reach - so use the drag functionality when you can. Class name is one of the properties used when sending keys to a window.
- 
-**Process name**
-
-Some programs change their application title and it would then be better to fetch the main window from the process name instead of the application title. Write the process name or click on button ... to retrieve a list from the server.
- 
-**Case sensitive**
-
-If you want your search of processes to be case sensitive the check this option.
- 
-**Keys to send**
-
-These are the keystrokes you want to send. Look below for more information.
-Most keyboard characters are represented by a single keystroke. Some keyboard characters are made up of combinations of keystrokes (CTRL+SHIFT+HOME, for example). To send a single keyboard character, send the character itself as the string argument. For example, to send the letter x, send the string argument "x".
- 
-:::tip Note 1 
-
-To send a space, send the string " ".
+The Task sends the keys to every visible window whose title matches _Application title_ (and _Class name_, if set), or to the main window of every process whose name matches _Process name_. Make the title or name specific enough to match only the window you mean.
 
 :::
 
-You can use Send keys to send more than one keystroke at a time. To do this, create a compound string argument that represents a sequence of keystrokes by appending each keystroke in the sequence to the one before it. For example, to send the keystrokes a, b, and c, you would send the string argument "abc".
- 
-The Send Keys method uses some characters as modifiers of characters (instead of using their face-values). This set of special characters consists of parentheses, brackets, braces, and the:
+The Task looks for the window in the session where it runs. To reach windows on a user's desktop, run the Task in the foreground, through the [VisualCron Tray Client](../../../../using-visualcron/visualcron-tray-client); see [Task Main Settings - Execution Context](../../task-main-settings-execution-context).
 
-* **plus** - "`+`"
-* **caret** - "`^`"
-* **percent** - "`%`"
-* **tilde** - "`~`".
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-Send these characters by enclosing them within braces "{}". For example, to send the plus character, send the string argument "`{+}`".
- 
-Brackets "`[ ]`" have no special meaning when used with SendKeys, but you must enclose them within braces to accommodate applications that do give them a special meaning (for dynamic data exchange (DDE) for example):
+### Send keys tab
 
-* To send bracket characters, send the string argument "`{[}`" (left bracket) and "`{]}`" (right bracket)
-* To send brace characters, send the string argument "`{{}`" (left brace) and "`{}}`" (right brace)
- 
-Some keystrokes do not generate characters (such as `ENTER` and `TAB`). Some keystrokes represent actions (such as `BACKSPACE` and `BREAK`). To send these kinds of keystrokes, send the arguments shown in the following table:
+- _Application title_: Find the window by its title. Enter the whole title, or a pattern with `*` for any characters and `?` for one character. Click the folder icon to choose from the window titles on the Server computer, or drag the arrow button onto a window and release it there, to fill in its title and class name. Child windows are not searched
+- _Class name_: Optional, with _Application title_; the window class the window must have, matched exactly
+- _Process name_: Find the window by the process that owns it, for applications whose title changes. Enter the process's file name, for example `notepad.exe`, or click the folder icon to choose from the processes on the Server computer. The keys go to the process's main window
+- _Case sensitive_: When selected, the name or title must match in case. You can change it only with _Process name_ selected; the setting also applies to _Application title_
+- _Keys to send_: The keystrokes to send; see [Keys to send](#keys-to-send). [Variables](../../global-variables) are resolved
 
-| Key | `{Argument}` |
+### Keys to send
+
+Most characters are sent by typing them. For example, to send the letter x, enter `x`; to send the keystrokes a, b and c, enter `abc`. To send a space, enter a space.
+
+The characters `+`, `^`, `%`, `~`, parentheses, brackets and braces have special meanings. To send one of them as a character, enclose it in braces: for example `{+}` sends a plus sign. Brackets have no special meaning, but enclose them in braces too, for applications that give them one: `{[}` and `{]}` send brackets, and `{{}` and `{}}` send braces.
+
+Keys that do not produce a character, such as ENTER and TAB, and keys that are actions, such as BACKSPACE and BREAK, are sent with these codes:
+
+| Key | Code |
 | --- | ---------- |
-| BACKSPACE | `{BACKSPACE}`, `{BS}`, or `{BKSP}` | 
-| BREAK | `{BREAK}` | 
-| CAPS LOCK | `{CAPSLOCK}` | 
-| DEL or DELETE | `{DELETE}` or `{DEL}` | 
-| DOWN ARROW | `{DOWN}` | 
-| END | `{END}` | 
+| BACKSPACE | `{BACKSPACE}`, `{BS}` or `{BKSP}` |
+| BREAK | `{BREAK}` |
+| CAPS LOCK | `{CAPSLOCK}` |
+| DEL or DELETE | `{DELETE}` or `{DEL}` |
+| DOWN ARROW | `{DOWN}` |
+| END | `{END}` |
 | ENTER | `{ENTER}` or `~` |
-| ESC | `{ESC}` | 
-| HELP | `{HELP}` | 
-| HOME | `{HOME}` | 
+| ESC | `{ESC}` |
+| HELP | `{HELP}` |
+| HOME | `{HOME}` |
 | INS or INSERT | `{INSERT}` or `{INS}` |
-| LEFT ARROW | `{LEFT}` | 
-| NUM LOCK | `{NUMLOCK}` | 
+| LEFT ARROW | `{LEFT}` |
+| NUM LOCK | `{NUMLOCK}` |
 | PAGE DOWN | `{PGDN}` |
-| PAGE UP | `{PGUP}` | 
+| PAGE UP | `{PGUP}` |
 | PRINT SCREEN | `{PRTSC}` |
-| RIGHT ARROW | `{RIGHT}` | 
+| RIGHT ARROW | `{RIGHT}` |
 | SCROLL LOCK | `{SCROLLLOCK}` |
 | TAB | `{TAB}` |
 | UP ARROW | `{UP}` |
-| F1 | `{F1}` |
-| F2 | `{F2}` | 
-| F3 | `{F3}` |
-| F4 | `{F4}` | 
-| F5 | `{F5}` | 
-| F6 | `{F6}` | 
-| F7 | `{F7}` | 
-| F8 | `{F8}` | 
-| F9 | `{F9}` | 
-| F10 | `{F10}` |
-| F11 | `{F11}` | 
-| F12 | `{F12}` | 
-| F13 | `{F13}` | 
-| F14 | `{F14}` | 
-| F15 | `{F15}` | 
-| F16 | `{F16}` |
- 
-To send keyboard characters that are comprised of a regular keystroke in combination with a SHIFT, CTRL, or ALT, create a compound string argument that represents the keystroke combination. You do this by preceding the regular keystroke with one or more of the following special characters:
+| F1 to F16 | `{F1}` to `{F16}` |
 
-| Key | Special Character |
+To press a key together with SHIFT, CTRL or ALT, put one or more of these characters, without braces, in front of it:
+
+| Key | Character |
 | --- | ----------------- |
-| SHIFT | `+` | 
+| SHIFT | `+` |
 | CTRL | `^` |
 | ALT | `%` |
- 
-:::tip Note 2 
 
-When used this way, these special characters are not enclosed within a set of braces.
+To hold SHIFT, CTRL or ALT down while several keys are pressed, put those keys in parentheses. For example, `+(ec)` holds SHIFT while e and c are pressed, and `+ec` holds SHIFT for e only.
 
-:::
+To press one key several times, put the key and the number of times in braces, with a space between them: `{x 10}` sends x ten times. This works for a single key only; a combination such as CTRL + X cannot be repeated this way.
 
-To specify that a combination of SHIFT, CTRL, and ALT should be held down while several other keys are pressed, create a compound string argument with the modified keystrokes enclosed in parentheses.
-For example, to send the keystroke combination that specifies that the SHIFT key is held down while:
+:::note
 
-* e and c are pressed, send the string argument "+(ec)"
-* e is pressed, followed by a lone c (with no SHIFT), send the string argument "+ec"
- 
-You can use the *SendKeys* method to send a pattern of keystrokes that consists of a single keystroke pressed several times in a row. To do this, create a compound string argument that specifies the keystroke you want to repeat, followed by the number of times you want it repeated. You do this using a compound string argument of the form `{keystroke number}`. For example, to send the letter "x" ten times, you would send the string argument "`{x 10}`". Be sure to include a space between keystroke and number.
- 
-:::tip Note 3 
-
-The only keystroke pattern you can send is the kind that is comprised of a single keystroke pressed several times. For example, you can send "x" ten times, but you cannot do the same for "Ctrl+x".
+PRINT SCREEN, `{PRTSC}`, cannot be sent to an application.
 
 :::
 
-:::tip Note 4 
+### Output and errors
 
-You cannot send the PRINT SCREEN key `{PRTSC}` to an application.
-
-:::
+- If no window is found, the Task fails with "Found no window. Please check Application Title." or "Found no window. Please check Process Name."
+- In the foreground, if the Server finds no Tray Client connection for the Task, the Task fails with "Could not find the specified Connection for execution."

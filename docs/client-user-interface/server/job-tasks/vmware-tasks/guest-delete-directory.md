@@ -5,18 +5,32 @@ hide_title: 'true'
 
 ## Task VMWare - [Guest] Delete Directory
 
-The VMWare - Delete directory Task deletes a directory in the guest operating system.
+The VMWare - [Guest] Delete Directory Task deletes a folder in the guest operating system.
 
-**[Guest] Delete directory > Connection** sub tab
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Guest%20Section/Guest%20Delete%20Directory.png)
+With _Remote VMWare server_, this Task needs a VMWare Connection with the _Authentication type_ "Vix"; "vSphere" and "vSphere 7" do not support it (see [Connection support](overview#connection-support)). See also [Connection - VMWare](../../connection-vmware).
 
-The Connection sub tab is the same for all VMWare Task types. See [Start VM](start-vm) for details.
+### Connection sub tab
 
-**[Guest] Delete directory > VM Task settings** sub tab
+![Connection sub tab of the VMWare Guest Delete directory Task, with the Remote VMWare server and Local VMWare workstation options, Guest OS Credentials and the timeout](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Guest%20Section/Guest%20Delete%20Directory.png)
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Guest%20Section/Guest%20Delete%20Directory%20Settings.png)
+The ***Connection*** sub tab is the same for every VMWare Task; see [Start VM](start-vm#connection-sub-tab) for each field.
 
-**Folder**
+_Guest OS Credentials_ is required: select the Credential of a user account inside the virtual machine. Before it signs in, the Task waits up to 60 seconds for VMware Tools to run in the guest, whatever the timeout says. It signs in with the VMware option that requires an interactive session, so that user must be signed in to the guest desktop.
 
-The path of the folder to delete in the guest operating system.
+### VM Task settings sub tab
+
+![VM Task settings sub tab of the VMWare Guest Delete directory Task, with the Folder field](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Guest%20Section/Guest%20Delete%20Directory%20Settings.png)
+
+- _Folder_: the full path of the folder to delete in the guest. Variables are replaced in this field
+
+:::warning
+
+The folder is deleted without asking for confirmation.
+
+:::
+
+### Output and errors
+
+When VMware reports an error, the Task fails.

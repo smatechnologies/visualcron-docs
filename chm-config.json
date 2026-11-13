@@ -485,6 +485,14 @@
         "frmServerSettings.vb"
       ]
     },
+    "client-user-interface/server/settings-password-rules": {
+      "chmFile": "settings_password-rules.htm",
+      "mdFile": "docs/client-user-interface/server/settings-password-rules.md",
+      "label": "Settings - Password Rules",
+      "helpKeywordSources": [
+        "frmServerSettings.vb"
+      ]
+    },
     "client-user-interface/server/main-user-permissions": {
       "chmFile": "user_permissions.htm",
       "mdFile": "docs/client-user-interface/server/main-user-permissions.md",
@@ -602,6 +610,21 @@
       "mdFile": "docs/client-user-interface/server/event-trigger-file.md",
       "label": "Event Trigger - File"
     },
+    "client-user-interface/server/event-trigger-folder": {
+      "chmFile": "event_trigger_-_folder.htm",
+      "mdFile": "docs/client-user-interface/server/event-trigger-folder.md",
+      "label": "Event Trigger - Folder"
+    },
+    "client-user-interface/server/event-trigger-sharepoint-file": {
+      "chmFile": "event_trigger_-_sharepoint_file.htm",
+      "mdFile": "docs/client-user-interface/server/event-trigger-sharepoint-file.md",
+      "label": "Event Trigger - SharePoint File"
+    },
+    "client-user-interface/server/event-trigger-http": {
+      "chmFile": "event_trigger_-_http.htm",
+      "mdFile": "docs/client-user-interface/server/event-trigger-http.md",
+      "label": "Event Trigger - HTTP"
+    },
     "client-user-interface/server/event-trigger-remote-file": {
       "chmFile": "event_trigger_-_remote_file.htm",
       "mdFile": "docs/client-user-interface/server/event-trigger-remote-file.md",
@@ -707,6 +730,11 @@
       "mdFile": "docs/client-user-interface/server/event-trigger-slack.md",
       "label": "Event Trigger - Slack"
     },
+    "client-user-interface/server/event-trigger-microsoft-teams": {
+      "chmFile": "event-trigger---ms-teams.htm",
+      "mdFile": "docs/client-user-interface/server/event-trigger-microsoft-teams.md",
+      "label": "Event Trigger - Microsoft Teams"
+    },
     "client-user-interface/server/event-trigger-amqp": {
       "chmFile": "event-trigger---amqp.htm",
       "mdFile": "docs/client-user-interface/server/event-trigger-amqp.md",
@@ -784,13 +812,8 @@
       "mdFile": "docs/client-user-interface/server/job-tasks-folder-filter.md",
       "label": "Folder Filter"
     },
-    "client-user-interface/server/job-tasks-task-main-settings-overview": {
-      "chmFile": "task_-_main_settings.htm",
-      "mdFile": "docs/client-user-interface/server/job-tasks-task-main-settings-overview.md",
-      "label": "Task - Main Settings"
-    },
     "client-user-interface/server/job-tasks-task-main-settings": {
-      "chmFile": "execution_context.htm",
+      "chmFile": "task_-_main_settings.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks-task-main-settings.md",
       "label": "Task - Main Settings",
       "helpKeywordSources": [
@@ -1218,6 +1241,11 @@
       "chmFile": "task-messaging---slack.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/messaging-tasks/slack-send-message.md",
       "label": "Task Messaging - Slack - Send Message"
+    },
+    "client-user-interface/server/job-tasks/messaging-tasks/microsoft-teams-add-channel-message": {
+      "chmFile": "task-messaging---ms-teams---ad.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/messaging-tasks/microsoft-teams-add-channel-message.md",
+      "label": "Task Messaging - Microsoft Teams - Add Channel Message"
     },
     "client-user-interface/server/job-tasks/messaging-tasks/amqp-send-message": {
       "chmFile": "task-messaging---amqp---send-m.htm",
@@ -1882,6 +1910,61 @@
       "helpKeywordSources": [
         "Definitions/Tasks/clsTask.vb"
       ]
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-add-worksheet": {
+      "chmFile": "task_excel_-_add_worksheet.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-add-worksheet.md",
+      "label": "Task Office - Excel - Add Worksheet"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-rename-worksheet": {
+      "chmFile": "task_excel_-_rename_worksheet.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-rename-worksheet.md",
+      "label": "Task Office - Excel - Rename Worksheet"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-move-worksheet": {
+      "chmFile": "task_excel_-_move_worksheet.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-move-worksheet.md",
+      "label": "Task Office - Excel - Move Worksheet"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-copy-worksheet": {
+      "chmFile": "task_excel_-_copy_worksheet.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-copy-worksheet.md",
+      "label": "Task Office - Excel - Copy Worksheet"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-remove-worksheet": {
+      "chmFile": "task_excel_-_remove_worksheet.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-remove-worksheet.md",
+      "label": "Task Office - Excel - Remove Worksheet"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-hide-unhide-worksheet": {
+      "chmFile": "task_excel_-_hide_unhide_worksheet.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-hide-unhide-worksheet.md",
+      "label": "Task Office - Excel - Hide/Unhide Worksheet"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-activate-worksheet": {
+      "chmFile": "task_excel_-_activate_worksheet.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-activate-worksheet.md",
+      "label": "Task Office - Excel - Activate Worksheet"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-get-active-worksheet": {
+      "chmFile": "task_excel_-_get_active_worksheet.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-get-active-worksheet.md",
+      "label": "Task Office - Excel - Get Active Worksheet"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-list-worksheets": {
+      "chmFile": "task_excel_-_list_worksheets.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-list-worksheets.md",
+      "label": "Task Office - Excel - List Worksheets"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-search-worksheets": {
+      "chmFile": "task_excel_-_search_worksheets.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-search-worksheets.md",
+      "label": "Task Office - Excel - Search Worksheets"
+    },
+    "client-user-interface/server/job-tasks/office-tasks/excel-delete-cell": {
+      "chmFile": "task_excel_-_delete_cell.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/office-tasks/excel-delete-cell.md",
+      "label": "Task Office - Excel - Delete Cell"
     },
     "client-user-interface/server/job-tasks/reporting-tasks/overview": {
       "chmFile": "reporting-tasks.htm",
@@ -2624,6 +2707,14 @@
       "chmFile": "task_sharepoint_-_list_files.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/sharepoint-tasks/list-file.md",
       "label": "Task Sharepoint - List File",
+      "helpKeywordSources": [
+        "Definitions/Tasks/clsTask.vb"
+      ]
+    },
+    "client-user-interface/server/job-tasks/sharepoint-tasks/create-folder": {
+      "chmFile": "task_sharepoint_-_create_folder.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/sharepoint-tasks/create-folder.md",
+      "label": "Task Sharepoint - Create Folder",
       "helpKeywordSources": [
         "Definitions/Tasks/clsTask.vb"
       ]
@@ -3604,11 +3695,6 @@
         "frmEditTaskEC.Designer.vb"
       ]
     },
-    "client-user-interface/server/task-conditions-overview": {
-      "chmFile": "task_-_conditions.htm",
-      "mdFile": "docs/client-user-interface/server/task-conditions-overview.md",
-      "label": "Task - Conditions"
-    },
     "client-user-interface/server/task-conditions": {
       "chmFile": "the_condition_set_window.htm",
       "mdFile": "docs/client-user-interface/server/task-conditions.md",
@@ -3763,6 +3849,11 @@
       "chmFile": "condition_type_-_process.htm",
       "mdFile": "docs/client-user-interface/server/condition-process.md",
       "label": "Condition - Process"
+    },
+    "client-user-interface/server/condition-service": {
+      "chmFile": "condition_type_-_service.htm",
+      "mdFile": "docs/client-user-interface/server/condition-service.md",
+      "label": "Condition - Service"
     },
     "client-user-interface/server/condition-variable": {
       "chmFile": "condition_-_variable.htm",

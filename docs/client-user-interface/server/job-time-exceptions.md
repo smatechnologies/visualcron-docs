@@ -5,6 +5,8 @@ hide_title: 'true'
 
 ## Job - Time Exceptions
 
-Time exceptions are "global", which means that once a [time exception](../server/global-time-exceptions) is defined it can be selected by one or more Jobs. The activated collections include time definitions when the Job will NOT run, i.e. blocking time(s) and interval(s) set in the other _Time settings_ sub tabs.
- 
-A time exception is a complement to the _Time_ trigger settings.
+A time exception blocks a Job from running during the periods it defines. Time exceptions are defined in collections under [Global - Time Exceptions](global-time-exceptions), and any Job can use a collection.
+
+On the Job's **_Time exceptions_** tab, select the check box beside each collection the Job should use.
+
+While a selected time exception is in effect, the Job's Time Triggers and Event Triggers do not start it, and a missed run that falls inside it is skipped. Time exceptions are checked only when a Trigger fires or a missed run is found: a run started manually, by another Job or a Task, or by *Trigger on existing files* on a File, Cloud File or SharePoint File Trigger, is not blocked.

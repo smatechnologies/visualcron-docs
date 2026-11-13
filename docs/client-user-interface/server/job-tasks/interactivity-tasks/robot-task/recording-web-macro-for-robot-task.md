@@ -5,45 +5,39 @@ hide_title: 'true'
 
 ## Recording Web Macro for Robot Task
 
-The Robot Task supports Web Macro actions natively, but building them action by action manually can be time consuming. A faster approach is to use the **Web Macro Recorder** to capture your browser interactions, then copy those recorded actions directly into your Robot Task sequence.
+This page shows how to record browser actions with the [Web Macro Task](../../net-tasks/web-macro) recorder and copy them into a Robot Task sequence, which is faster than building [Web Macro activities](activities/web-macro) one by one.
 
-### Why Use This Approach
+### Why use this approach
 
-- The recorder captures all browser interactions automatically, including element paths, timing, and navigation steps
+- The recorder captures the browser interactions for you, including element paths and navigation steps
 - Recorded actions can be reused and refined rather than built from scratch
-- The resulting actions inside the Robot Task behave the same as manually configured Web Macro actions
+- The pasted actions in the Robot Task work the same as Web Macro activities you configure yourself
 
-### Step-by-Step: Record and Copy into Robot Task
+### Record and copy into a Robot Task
 
-**1. Create a Web Macro Task**
+1. Add a Web Macro Task to a Job. It is only a workspace for recording.
 
-Add a new task to your job and select **Web Macro** as the task type. This is a temporary workspace for recording — it will not need to be scheduled or run on its own.
+   :::warning
 
-**2. Record Your Actions**
+   A Web Macro Task in an active Job runs whenever the Job runs. Record in a Job that is not active, or delete the Web Macro Task when you have copied the actions.
 
-Inside the Web Macro Task, open the **Recorder** and walk through the browser interactions you want to automate. Record all steps from opening the browser through the final action.
+   :::
 
-Once finished, click **Stop**, then click **Yes** when prompted to save the recorded actions.
+2. In the Web Macro Task, click _Record_ and go through the browser interactions you want to automate, from opening the browser to the last action.
+3. Stop the recording.
+4. When you are asked whether to save the recorded actions, click _Yes_.
+5. In the recorded action list, right-click the _Launch New Instance_ action and select _Copy_.
 
-**3. Copy the Launch New Instance Action**
+   Copy the _Launch New Instance_ action, not the top-level _Sequence_. Copying the _Sequence_ does not bring over the _Open Browser_ action correctly.
 
-In the recorded action list, right-click the **Launch New Instance** action and select **Copy**.
+6. Open the Robot Task and paste the action inside its existing _Sequence_. The _Open Browser_ action appears as the parent, with _Launch New Instance_ inside it.
+7. Add any further Robot Task activities after the pasted Web Macro block: mouse actions, keyboard input, file operations, loops or any other activity from the activity list.
 
-> **Important:** Copy the *Launch New Instance* action — not the top-level *Sequence*. Copying the Sequence will not bring over the *Open Browser* action correctly.
+### Structure reference
 
-**4. Paste into Your Robot Task**
+When Web Macro actions are placed correctly in a Robot Task, the hierarchy looks like this:
 
-Open your Robot Task and paste the copied action inside the existing **Sequence**. The *Open Browser* action will automatically appear as the parent, with *Launch New Instance* nested inside it as expected.
-
-**5. Continue Building**
-
-You can now continue adding additional Robot Task actions after the pasted Web Macro block — mouse actions, keyboard input, file operations, loops, or any other activity from the activity list.
-
-### Structure Reference
-
-When Web Macro actions are correctly placed in a Robot Task, the hierarchy should look like this:
-
-```
+```text
 Sequence
   └── Open Browser
         └── Launch New Instance
@@ -52,10 +46,10 @@ Sequence
               └── ...
 ```
 
-All Web Macro child actions must be inside the **Launch New Instance** action, which itself must be inside **Open Browser**.
+All Web Macro child actions must be inside the _Launch New Instance_ action, which itself must be inside _Open Browser_.
 
 ### Tips
 
-- After pasting, review each recorded action and rename it using the **Display Name** field so your sequence stays readable
-- If the target website changes after recording (redesign, updated elements), re-record the Web Macro and replace the pasted block — the element paths captured during recording may no longer be valid
-- You can record multiple Web Macro Tasks and copy blocks from each into a single Robot Task to combine workflows across different sites or applications
+- After pasting, review each recorded action and rename it with its _Display name_ property, so that the sequence stays readable
+- If the target website changes after recording (a redesign, or updated elements), record again and replace the pasted block, because the element paths captured during recording may no longer be valid; see [Element Path](activities/element-path)
+- You can record several Web Macro Tasks and copy blocks from each into one Robot Task, to combine workflows across different sites

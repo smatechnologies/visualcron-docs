@@ -5,34 +5,44 @@ hide_title: 'true'
 
 ## Task PDF - Get Attachment
 
-The PDF - Get attachment(s) Task extracts all or specific files attached to a PDF document and saves them to disk.
+The PDF - Get attachment(s) Task saves the files that are attached to PDF files.
 
-**Get attachment(s) > Main settings** sub tab
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Get%20Attachment%20settings.png)
+### Get attachment(s): Main settings tab
 
-In the *Main settings* dialog, add or delete the names of the attachments to extract. Only file names that already exist inside the source PDF can be selected.
+![Main settings tab of the Get attachment(s) Task, with the Attachment names grid, the Get attachment names button and the Password for file(s) box](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Get%20Attachment%20settings.png)
 
-**Get attachment(s) > File filter > Location** sub tab
+- _Name_ (_Attachment names ..._ grid): the names of the attachments to save
 
-This tab uses the common [file filter](../../job-tasks-file-filter.md) to choose which PDF files should be processed in this Task.
+  When the grid is empty, the Task saves every attachment. Click _Get attachment names_ to load the attachment names of the files that the File filter matches, and then select names in the _Name_ column. A name can contain wildcards, such as `*`, and Variables.
 
-**Get attachment(s) > Destination** sub tab
+- _Password for file(s)_: the password that opens the source PDF files, if they are protected
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Get%20Attachment%20destination.png)
+### File filter tab
 
-**Save to**
+The ***File filter*** tab selects the PDF files to take attachments from; see [File Filter](../../job-tasks-file-filter). If the filter has a Credential, the Task uses it while it reads and writes the files. When the logon with the Credential fails, the Task continues as the account that runs the Server and writes the error to the Server log.
 
-Selects where the extracted attachment files are written. Available options:
+### Destination tab
 
-* _Save to same file_ - extract to the same folder as the source PDF, using the original attachment names
-* _Same folder with file mask_ - extract to the same folder as the source PDF, using a custom file mask
-* _Different folder with file mask_ - extract to a different folder, using a custom file mask
+![Destination tab of the Get attachment(s) Task, with the Save to.. group and the Folder and File mask boxes](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Get%20Attachment%20destination.png)
 
-**Folder**
+- _Same file_ (_Save to.._ group): saves each attachment under its own name in the folder set on the ***File filter*** tab
+- _Same folder but use file mask_: saves each attachment in the folder set on the ***File filter*** tab, named by _File mask_
+- _Different folder and use file mask_: saves each attachment in _Folder_, named by _File mask_
+- _Folder_: the destination folder for _Different folder and use file mask_; click the folder button to browse
+- _File mask_: builds the file name from the attachment name, by the renaming standard set in [Main - Settings](../../main-settings)
 
-The destination folder. Enabled when *Save to* is set to _Different folder with file mask_. Click the *Folder* icon to browse for the folder.
+  The default `*` keeps the attachment name.
 
-**File mask**
+:::warning
 
-The file mask used to name the extracted file(s). Enabled when *Save to* is set to _Same folder with file mask_ or _Different folder with file mask_.
+A file that already has the name is replaced without a prompt.
+
+:::
+
+When _Include sub folders_ is checked on the File filter, the attachments are saved in the File filter folder, not in the subfolder the PDF file came from.
+
+### Output and errors
+
+The Task output lists the path of each attachment it saves.

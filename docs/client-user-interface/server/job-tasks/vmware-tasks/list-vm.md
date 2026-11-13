@@ -5,24 +5,34 @@ hide_title: 'true'
 
 ## Task VMWare - List VM
 
-The VMWare - List VM Task lists virtual machines on the VMWare server. This Task uses the *Remote VMWare server* connection type.
+The VMWare - List VM Task lists the virtual machines on a VMware server, using a VMWare Connection.
 
-**List VM > Connection** sub tab
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/List%20VM.png)
+With _Remote VMWare server_, this Task works with every _Authentication type_ of the VMWare Connection; see [Connection - VMWare](../../connection-vmware).
 
-The Connection sub tab is the same for all VMWare Task types. See [Start VM](start-vm) for details.
+### Connection sub tab
 
-**List VM > VM Task settings** sub tab
+![Connection sub tab of the VMWare List VM Task, with the Remote VMWare server and Local VMWare workstation options, Guest OS Credentials and the timeout](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/List%20VM.png)
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/List%20VM%20Settings.png)
+The ***Connection*** sub tab is the same for every VMWare Task; see [Start VM](start-vm#connection-sub-tab) for each field.
 
-**VM listing status filter**
+Only _Remote VMWare server_ can be used, and _Server VMX path_ is not used.
 
-Check the boxes for the virtual machine states you want included in the result. Available options:
+### VM Task settings sub tab
 
-* _Powered on_
-* _Powered off_
-* _Suspended_
-* _Stuck_
-* _Unknown_
+![VM Task settings sub tab of the VMWare List VM Task, with the VM listing status filter check boxes](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/List%20VM%20Settings.png)
+
+- _VM listing status filter_: the states to include. Check one or more of "Powered on", "Powered off", "Suspended", "Stuck" and "Unknown". None is checked by default, and with none checked the list is empty. With a "vSphere" or "vSphere 7" Connection, "Stuck" and "Unknown" match nothing
+
+### Output and errors
+
+The output is an XML list of the matching virtual machines, with each one's path and whether it is powered on.
+
+:::warning
+
+With a "vSphere 7" Connection, an error from vCenter after sign-in gives an empty list, and the Task reports success.
+
+:::
+
+Otherwise, when VMware reports an error, the Task fails.

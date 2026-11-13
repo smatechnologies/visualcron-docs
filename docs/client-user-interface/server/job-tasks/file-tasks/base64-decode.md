@@ -5,15 +5,22 @@ hide_title: 'true'
 
 ## Task File - Base64 - Decode
 
-The Decoding - Base 64 - decode Task decodes a file or value from Base64 format and outputs to standard output or file.
+The Decoding - Base 64 - decode Task decodes a file or value from Base64 format and writes the result to standard output or to a file.
 
 **Base64 - decode > Main settings** sub tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Base64%20-%20decode%20settings.png)
+![Add Task dialog for the Base64 - decode Task, Main settings sub tab](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Base64%20-%20decode%20settings.png)
 
 **Source**
 
 Select File if you want to decode an existing file. When selecting File, the standard VisualCron [File filter](../../../server/job-tasks-file-filter) will be enabled. Select Value/Variable to use an existing value or Variable.
+
+:::warning
+The Task turns the decoded content into text, using the *Encoding* setting on the Task's
+[Main settings](../../../server/job-tasks-task-main-settings) tab (UTF-8 by default), before it writes
+the result. Use it for Base64 that contains text. If the Base64 content is a binary file, such as an
+image, a PDF or a ZIP archive, the decoded result is not an exact copy of the original.
+:::
 
 **Remove non-supported characters**
 
@@ -25,7 +32,7 @@ This Task uses the standard VisualCron [File filter](../../../server/job-tasks-f
  
 **Base64 - decode > Destination** sub tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Base64%20-%20decode%20destination.png)
+![Base64 - decode Task, Destination sub tab](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Base64%20-%20decode%20destination.png)
 
 **Destination**
 
@@ -41,8 +48,14 @@ Select a Credential if you need specific permissions to write the destination fi
  
 **Destination file mask**
 
-Destination file mask is a quick way to change the file name to something else. By default it is using * which means that the same file name will be used for destination folder. If you are going to use `*` you need to use another destination folder. If you for example know it is a text file want to change the original extension from "`.enc`" instead you can change this destination file mask to "`*.txt`".
+Destination file mask is a quick way to change the file name to something else. By default it is using * which means that the same file name will be used for destination folder. If you are going to use `*` you need to use another destination folder. For example, to give decoded files a `".txt"` extension, set the mask to `"*.txt"`.
+
+:::warning
+The Task overwrites an existing destination file without asking. If *Use same folder as source* is
+selected and *Destination file mask* is `"*"`, the destination is the source file itself, and it is
+replaced by the result.
+:::
  
 **Post process mask with Variable**
 
-This property gives you more advanced ways to change the file name. We recommend that you use Destination file mask with value `*` when using this property. When checking this property the new name will be stored in a temporary variable `{NEWNAME()}`. You will be able to use this Variable for processing with other Variable functions. As an example we have provided the default value for this property: `{STRING(Replace|{NEWNAME()}|oldValue|newValue)}`. The example uses the String.Replace method from the Variables window. It uses the `{NEWNAME()}` as input Variable with options to set a value that you want to replace from original file name "oldValue" and the new value "newValue".
+This property gives you more advanced ways to change the file name. This option works best with *Destination file mask* set to `"*"`. When checking this property the new name will be stored in a temporary Variable `{NEWNAME()}`. You will be able to use this Variable for processing with other Variable functions. The default value of this field is `"{STRING(Replace|{NEWNAME()}|oldValue|newValue)}"`, which uses the String.Replace function from the Variables window. It uses the `{NEWNAME()}` as input Variable with options to set a value that you want to replace from original file name "oldValue" and the new value "newValue".

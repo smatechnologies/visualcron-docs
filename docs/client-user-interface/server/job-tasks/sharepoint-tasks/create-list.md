@@ -2,58 +2,47 @@
 sidebar_label: 'Task Sharepoint - Create List'
 hide_title: 'true'
 ---
+## Task SharePoint - Create List
 
-## Task Sharepoint- Create List
+The SharePoint - Create list Task creates a list on a SharePoint site, using a SharePoint Connection.
 
-The SharePoint - Create List Task creates a List in the SharePoint library.
- 
-The SharePoint Tasks supports the following versions:
+The SharePoint Tasks work with SharePoint 2010, 2013 and 2016 on premises, and with SharePoint Online.
 
-* SharePoint 2010
-* SharePoint 2013
-* SharePoint Online
+![Create list tab with the Connection, list settings and the Columns grid](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Create%20List.png)
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Create%20List.png)
+:::warning
 
-**Connection**
+This Task uses a SharePoint Connection; see [Connection - SharePoint](../../connection-sharepoint). When a certificate is selected in the Connection, the Task accepts any server certificate, and each run of a SharePoint Task changes TLS handling for the whole Server process.
 
-To use SharePoint Tasks you need to create a [Connection](../../global-connections) first. Click the Settings icon to open the Manage Connections dialog.
- 
-**Title**
+:::
 
-The title of the list to create.
- 
-**Description**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-A user defined description of the list to create.
- 
-**Template type**
+### Create list tab
 
-Specifies a list template. Click the drop-down list and select an item from the list of available templates.
- 
-**Quick launch**
+- _Connection_: the SharePoint Connection to use. The button next to the list manages Connections
+- _Title_: the title of the new list
+- _Description_: a description of the new list
+- _Template type_: the SharePoint list template to create the list from. The default is "DocumentLibrary"
+- _Quick launch_: "On" (default), "Off" or "DefaultValue", whether the list is shown in the Quick launch of the site
+- _Enable attachments_, _Enable versioning_ and _Enable folder creation_: whether items can have attachments, whether versions are kept, and whether folders can be added to the list. All are cleared by default. The Create list Task does not save these three settings to the new list; to set them, run a [SharePoint - Update list](update-list) Task after it
+- _Columns_: the columns to add to the list, one row each with _SchemaXML_ and _DefaultView_. Click _Add_, _Edit_ or _Remove_ to change the rows
 
-Specifies whether the list should be a quick launch item. The available options are:
+Variables are resolved in _Title_, _Description_ and the column schema.
 
-* On
-* Off
-* DefaultValue
- 
-**Enable attachments**
+_Add_ and _Edit_ open the _Add/Edit column_ window:
 
-If checked, specifies that list item attachments are enabled for the list. This parameter is unchecked by default.
- 
-**Enable versioning**
+![Add/Edit column window with the Schema XML box and the Default view check box](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Create%20List%20Schema.png)
 
-If checked. specifies that historical versions of list items and documents can be created in the list. This parameter is unchecked by default.
- 
-**Enable folder creation**
+- _Schema XML_: the definition of the column in the SharePoint field schema format. Read more here: [http://msdn.microsoft.com/en-us/library/office/ms457586.aspx](http://msdn.microsoft.com/en-us/library/office/ms457586.aspx)
+- _Default view_: add the column to the default view of the list
 
-If checked, specifies that new list folders can be added to the list. This parameter is unchecked by default.
- 
-**Columns**
+For example, a single line of text column:
 
-Columns are created by clicking the Add button using a Microsoft xml format.
-Read more here: [http://msdn.microsoft.com/en-us/library/office/ms457586.aspx](http://msdn.microsoft.com/en-us/library/office/ms457586.aspx)
+```xml
+<Field Type="Text" DisplayName="Customer" Name="Customer" />
+```
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Create%20List%20Schema.png)
+### Output and errors
+
+The Task does not write output. When the list cannot be created, for example because a list with the same title exists, the Task fails with the error from SharePoint.

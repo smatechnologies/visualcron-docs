@@ -5,73 +5,78 @@ hide_title: 'true'
 
 ## Connection - POP3
 
-The POP3 Connection stores connect and logon properties for the email server protocol POP3. POP3 (Post Office Protocol 3) is used to receive emails from a mail server. It has largely been superseded by IMAP4 but is still widely supported. The POP3 Connection is used in the Email Trigger.
+The POP3 Connection stores the address, sign-in and security settings that the [Email - Get Messages](job-tasks/messaging-tasks/email-get-messages), [Email - Get Single Message](job-tasks/messaging-tasks/email-get-single-message), [Email - Get Headers](job-tasks/messaging-tasks/email-get-headers), [Email - Delete Messages](job-tasks/messaging-tasks/email-delete-messages), [Email - Delete Single Message](job-tasks/messaging-tasks/email-delete-single-message) and Email - Move Messages Tasks use to connect to a mail server over Post Office Protocol 3 (POP3).
 
-**Manage Connections > Add > POP3 > Common settings** tab
+The [Email Trigger](event-trigger-mail) does not offer POP3 Connections. It offers IMAP4, Exchange EWS, Exchange WebDAV and Microsoft Graph API Connections.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/POP3/POP3.png)
+### Common settings
 
-**Name**
+![POP3 Connection, Common settings tab with the Protocol and Information groups](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/POP3/POP3.png)
 
-The name of the Connection to uniquely identify it.
+The ***Common settings*** and ***Proxy*** tabs are the same for every Connection type that has them; see [Common settings](global-connections#common-settings) and [Proxy](global-connections#proxy).
 
-**Group**
+_Test_
 
-The group that the connection is a part of.
+The Server connects to the mail server and logs on with the settings of this Connection, then disconnects. No email is read or changed.
 
-**Timeout**
+### Main settings
 
-The connection timeout in seconds. Connection will fail after this time period.
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-**Code page**
+The ***Connection settings*** tab holds two tabs: ***Main settings*** and ***Proxy***.
 
-Code page being used.
+![POP3 Connection, Main settings tab with the Server, Credentials and SSL/TLS groups](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/POP3/Settings.png)
 
-**Manage Connections > Add > POP3 > Connection settings** tab
+_Address_
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/POP3/Settings.png)
+The DNS name or IP address of the POP3 server.
 
-**Address**
+_Port_
 
-The DNS name or IP address of the POP3 mail server.
+The port of the POP3 server. On a new Connection, the port is "110". It changes to "995" when you select "SSL" or "TLS", and back to "110" when you select "No encryption". With "TLS", change the port to "110". Port "995" expects encryption from the start, so use it with "SSL".
 
-**Port**
+_Username_
 
-The port used by the mail server. The default port is 110 for unencrypted connections and 995 for SSL/TLS encrypted connections. The port is automatically updated when changing the cryptographic protocol on a new connection.
+The user name of the email account. Required.
 
-**Username**
+_Password_
 
-The user name for the email account.
+The password of the email account. The POP3 Connection logs on with a user name and password only. It has no OAuth authentication type.
 
-**Password**
+_Cryptographic protocol_
 
-The password for the email account.
+- "No encryption": the connection is not encrypted; the _Allowed SSL/TLS versions_ group is hidden
+- "SSL": SSL encryption; selects _SSL version 2_ and _SSL version 3_ in _Allowed SSL/TLS versions_
+- "TLS": TLS encryption; selects _TLS version 1_ to _TLS version 1.3_ in _Allowed SSL/TLS versions_
 
-**Cryptographic protocol**
+The email receiving Tasks use _Cryptographic protocol_ when they read email. With "SSL", they encrypt the connection from the start. With "TLS", they connect in plain text and then switch to encryption.
 
-The encryption protocol to use for the connection. Available options:
+_Allowed SSL/TLS versions_
 
-* _No encryption_ - connection is not encrypted; the Allowed SSL/TLS versions section is hidden
-* _SSL_ - use SSL encryption; the Allowed SSL/TLS versions section is shown
-* _TLS_ - use TLS encryption; the Allowed SSL/TLS versions section is shown
+Shown when "SSL" or "TLS" is selected. The available versions are:
 
-**Allowed SSL/TLS versions**
+- _SSL version 2_
+- _SSL version 3_
+- _TLS version 1_
+- _TLS version 1.1_
+- _TLS version 1.2_
+- _TLS version 1.3_
 
-Visible when a cryptographic protocol is selected. Check the SSL/TLS versions that the mail server allows. Available options:
+The email receiving Tasks do not read these boxes. When you click _Test_, the Server first sets the SSL and TLS versions for the whole Server process from them:
 
-* _SSL version 2_
-* _SSL version 3_
-* _TLS version 1_
-* _TLS version 1.1_
-* _TLS version 1.2_
-* _TLS version 1.3_
+- "TLS": the selected boxes among _TLS version 1_, _TLS version 1.1_ and _TLS version 1.2_, or all three when none of them is selected; never _TLS version 1.3_
+- "SSL" with _SSL version 3_ selected: the system default versions
+- "SSL" with _SSL version 3_ cleared: _SSL version 3_ only
+
+With "SSL" and _SSL version 3_ cleared, the whole Server process is limited to SSL 3, and other Tasks that connect over HTTPS can then fail.
+
+:::note
+
+Each time you open an existing POP3 Connection, the version boxes reset to the defaults of the selected protocol. Check them before you click _OK_.
+
+:::
 
 ### Default settings for some servers
-
-See [Connection > SMTP > Main settings](connection-smtp) for more details.
- 
-**Connection > POP3 > Authentication** tab
-See [Connection > SMTP > Authentication](connection-smtp) for more details.
 
 **Office 365**
 
@@ -81,32 +86,6 @@ See [Connection > SMTP > Authentication](connection-smtp) for more details.
 * Port: 995
 * Cryptographic protocol: SSL
 
-**Manage Connections > Add > POP3 > Proxy** tab
+### Proxy
 
-**Proxy type**
-
-Select the proxy type to be used.
-
-**Address**
-
-The host name or IP address of the proxy server.
-
-**Port**
-
-The port of the proxy server.
-
-**Use credentials**
-
-Enable to provide credentials for authenticating with the proxy server.
-
-**Domain**
-
-The domain of the proxy server.
-
-**Username**
-
-The user name to access the proxy server.
-
-**Password**
-
-The password to access the proxy server.
+When the Server reads email, it uses _Proxy type_, _Address_ and _Port_ and, when _Use credentials_ is selected, _Username_ and _Password_. It does not use _Authentication_ or _Domain_.

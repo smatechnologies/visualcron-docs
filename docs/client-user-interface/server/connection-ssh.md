@@ -5,166 +5,77 @@ hide_title: 'true'
 
 ## Connection - SSH
 
-The SSH Connection stores connect and logon properties for the Secure Shell (SSH) protocol. SSH provides a secure channel over an unsecured network in a client-server architecture, connecting a SSH client application with a SSH server. This connection allows you to connect and execute commands against Linux servers.
- 
-### About SSH
+The SSH Connection stores the address, sign-in and security settings that the [Net - SSH](job-tasks/net-tasks/ssh) Task uses to connect to an SSH server, for example to run commands on a Linux or Unix server. SSH (Secure Shell) encrypts the sign-in, the commands and their output between the VisualCron Server and the SSH server.
 
-Secure Shell (SSH) is a cryptographic network protocol for secure data communication, remote command-line login, remote command execution, and other secure network services between two networked computers that connects, via a secure channel over an insecure network, a server and a client (running SSH server and SSH client programs, respectively). The protocol specification distinguishes between two major versions that are referred to as SSH-1 and SSH-2.
- 
-The best-known application of the protocol is for access to shell accounts on Unix-like operating systems, but it can also be used in a similar fashion for accounts on Windows. It was designed as a replacement for Telnet and other insecure remote shell protocols such as the Berkeley rsh and rexec protocols, which send information, notably passwords, in plain text, rendering them susceptible to interception and disclosure using packet analysis. The encryption used by SSH is intended to provide confidentiality and integrity of data over an unsecured network, such as the Internet.
+:::warning
 
-**Manage Connections > Add > SSH - Secure Shell > Common settings** tab
+SSH Connections accept any server host key. The Server does not compare the key with a stored key, so it cannot tell the real server from another server that answers at the same address. Confirm the server's host key with its administrator before you use the Connection. With *Log received messages to task output* selected, the Task output shows the MD5 fingerprint of the key that the server sent, as pairs of hexadecimal digits separated by colons. Ask the administrator for the MD5 fingerprint of the key to compare with it.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSH/SSH.png)
+:::
 
-**Name**
+### Common settings
 
-The name of the Connection to uniquely identifying it.
+![SSH Connection, Common settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSH/SSH.png)
 
-**Group**
+The ***Common settings*** and ***Proxy*** tabs are the same for every Connection type that has them; see [Common settings](global-connections#common-settings) and [Proxy](global-connections#proxy). SSH Connections have no *Test*. *Timeout* is "0" on a new SSH Connection. It is how long, in seconds, the Server waits for the SSH server; with "0", commands have no time limit from the Connection, and the timeout settings of the Net - SSH Task apply.
 
-The group that the connection is a part of.
+### Main settings
 
-**Timeout**
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-The timeout setting in the SSH Connection refers to the max time the full connection is opened. Using a too low value may abort the command prematurely. Default is 0 which is infinite timeout which means it will finish when the command finishes (Command timeout in the Task).
+![SSH Connection, Main settings tab, with the Server and Credentials groups and the Override authentication options](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSH/SSH%20Setting.png)
 
-**Code page**
+- _Address_: the host name or IP address of the SSH server
+- _Port_: "22" on a new Connection
+- _Authentication type_: "Password" or "Public key". With "Public key", *Password* is hidden and *SSH key* is shown
+- _Username_: the account on the server
+- _Password_: the account's password, for password and keyboard logons
+- _SSH key_: for "Public key", the key to log on with, chosen from the keys stored in [Global - SSH Keys](global-ssh-keys). The key's passphrase is stored with the key
+- _Override authentication_: the logon methods the Server tries:
+  - _Auto authentication_: try password and keyboard-interactive logon. While it is selected, the two options below are unavailable. Cleared on a new Connection
+  - _Password authentication_: selected on a new Connection
+  - _Keyboard authentication_: keyboard-interactive logon. Cleared on a new Connection
 
-Code page being used.
+With "Public key", the Server also tries a public key logon with the *SSH key*.
 
-**Manage Connections > Add > SSH - Secure Shell > Connection settings** tab
+### Encryption
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSH/SSH%20Setting.png)
+![SSH Connection, Encryption tab, with the four algorithm lists](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSH/Encryption.png)
 
-*Address**
+The ***Encryption*** tab has one list each for *Encryption algorithms*, *Key exchange algorithms*, *MAC algorithms* and *Public key algorithms*, each with its own option to choose the algorithms automatically. They are selected on a new Connection. Clear one to choose the allowed algorithms in its list, with *Select all* and *Deselect all*. For SSH Connections:
 
-The host address of the server. This can be a DNS name or IP address.
+- _Auto adjust MAC algorithms_: while it is selected, the Server offers only "hmac-md5", "hmac-sha1" and "hmac-sha2-256". If the server needs another MAC algorithm, clear it and select that algorithm
+- _Auto adjust key exchange algorithms_: keep it selected. A manual selection in *Key exchange algorithms* is not applied as the list shows it
+- _Auto adjust by component_ and the *Public key algorithms* list: not used by SSH Connections
 
-**Port**
+The server must support at least one of the algorithms you allow, or the connection fails.
 
-The remote connection port. Default is 22.
+### Extra settings
 
-**Authentication type**
+![SSH Connection, Extra settings tab, with the shared settings, SSH version support, New line, Emulation and the log options](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSH/Extra%20Settings.png)
 
-The method used to authenticate with the SSH server.
+- _Transfer type_: not used by SSH Connections
+- _KeepAlive_: not used by SSH Connections. To send keepalives, use *SendKeepAlive every* in the [Net - SSH](job-tasks/net-tasks/ssh) Task
+- _SSH version support_: "1" and "2". Both are selected on a new Connection
+- _New line (server system)_: what the Server sends at the end of each line it types. "Cr (\*nix)" sends a carriage return and "CrLf (Windows)" sends a carriage return and a line feed. "Cr (\*nix)" on a new Connection
+- _Emulation_: the terminal type the Server asks for: "ANSI", "TTY", "VT100", "VT220", "VT320" or "VT52". "VT100" on a new Connection
+- _Log sent messages to task output_: writes the messages that the Server sends into the Task output
+- _Log received messages to task output_: writes the messages from the SSH server, including the MD5 fingerprint of the host key, into the Task output
 
-* _Password_ - authenticate using a username and password
-* _Public key_ - authenticate using an SSH private key (password field is hidden and an SSH key selector is shown)
+:::warning
 
-**Username**
+SSH version 1 is allowed by default. It is obsolete and not secure. Clear "1" in *SSH version support* unless the server supports only SSH version 1.
 
-User name for the SSH instance.
- 
-**Password**
+:::
 
-The password for the SSH connection. Only visible when Authentication type is set to _Password_.
+### Proxy
 
-**SSH key**
+![SSH Connection, Proxy tab, with the proxy type, address, port, test URL, authentication and credential fields and the Test button](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSH/Proxy.png)
 
-The SSH private key used for authentication. Only visible when Authentication type is set to _Public key_.
+SSH Connections can use "HTTP Proxy", "SOCKS4" and "SOCKS5" proxies, and use *Authentication*.
 
-**Override Authentication**
+:::warning
 
-Options to override the default authentication behavior.
+A new Connection has *Authentication* "Not set" and *Use credentials* selected. With "HTTP Proxy" and those settings, the Server sends the SSH *Username* and *Password* to the proxy instead of the proxy account. Set *Authentication* to "Basic", "Digest" or "NTLM" to send the proxy *Username* and *Password*.
 
-* _Auto authentication_ - when enabled, the Password authentication and Keyboard authentication options are disabled and authentication is handled automatically
-* _Password authentication_ - enables password-based authentication (disabled when Auto authentication is checked)
-* _Keyboard authentication_ - enables keyboard-interactive authentication (disabled when Auto authentication is checked)
-
-**Manage Connections > Add > SSH - Secure Shell > Encryption** tab
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSH/Encryption.png)
-
-**Cryptographic protocol**
-
-Select between No encryption, SSL or TLS.
- 
-**Security mode**
-
-Select between Explicit or Implicit mode type.
- 
-**Use data channel encryption (PROT P)**
-
-If this property value is True the channel used for data transfer (files, directory listings) will be encrypted, otherwise only command channel will be encrypted.
- 
-**Use command channel encryption**
-
-If this property value is True the command channel will be encrypted.
- 
-**Use SSL session resumption**
-
-Specifices if SSL session resumption should be used.
-
-**Manage Connections > Add > SSH - Secure Shell > Extra settings** tab
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSH/Extra%20Settings.png)
-
-**Transfer type**
-
-[FTP](connection-ftp)/[SFTP](connection-sftp) only. The method used to transfer data. Options are _ASCII_ or _Binary_ (default).
- 
-**SSH version support**
-
-Checkboxes to select which SSH protocol versions are supported: _1_ and/or _2_.
-
-**New line (server system)**
-
-The newline character format used by the remote server.
-
-* _Cr (*nix)_ - carriage return, used on Unix/Linux systems
-* _CrLf (Windows)_ - carriage return + line feed, used on Windows systems
-
-**Emulation**
-
-The terminal emulation type to use for the SSH session.
-
-**Log sent messages to task output**
-
-When enabled, sent messages are logged to the task output.
-
-**Log received messages to task output**
-
-When enabled, received messages are logged to the task output.
-
-**Manage Connections > Add > SSH - Secure Shell > Proxy** tab
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SSH/Proxy.png)
-
-**Proxy type**
-
-Select the proxy type to be used.
-
-**Address**
-
-The host name or IP address of the proxy server.
-
-**Port**
-
-The port of the proxy server.
-
-**Use credentials**
-
-The credentials that are associated with the account.
-
-**Domain**
-
-The name of the domain to be created.
-
-**Username**
-
-The user name to access the proxy server.
-
-**Password**
-
-The password to access the proxy server.
-
-**SFTP version support**
-
-[SFTP](connection-sftp) only.
- 
-### Troubleshooting
-
-**Other error codes**
-
-[https://www.eldos.com/documentation/sbb/documentation/ref_err_ssherrorcodes.html](https://www.eldos.com/documentation/sbb/documentation/ref_err_ssherrorcodes.html)
+:::

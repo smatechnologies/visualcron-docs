@@ -5,105 +5,98 @@ hide_title: 'true'
 
 ## Element Path
 
-The settings forms for many activities in the Web macro Task include a tab for specifying the path to HTML element. There are three ways to specify the path to the element:
- 
-* Relative
-* By position
-* By search
+The settings windows of many actions in the [Task Net - Web Macro](web-macro) include a tab that sets the path to an HTML element. There are three ways to set it:
 
-![](../../../../../static/img/taskwebmacropathsettings.png)
+- _Relative_
+- _By position_: available only on the Click, Download and Key Event actions
+- _By search_
 
-**Allow to ignore the element**
+![Element path settings with the Relative, By position and By search options](../../../../../static/img/taskwebmacropathsettings.png)
 
-When checked, a failure to locate the element does not cause the step to fail. The step is silently skipped instead. Default is unchecked.
+- _Allow to ignore the element_: cleared by default; when selected, a failure to find the element does not make the action fail, and the action is skipped instead
+- _Wait element_: selected by default; when selected, the action waits for the element to appear in the page before it uses it, up to the timeout in seconds in the field next to it ("60" by default)
 
-**Wait element**
+:::warning
 
-When checked, VisualCron waits for the element to appear in the DOM before interacting with it. Default is checked. Set the timeout in seconds in the adjacent field. Default timeout is 60 seconds.
+With _Allow to ignore the element_ selected, the Task can succeed without this action's result, for example without the downloaded file or the extracted value. Use it only for elements that may be missing for a good reason, such as a cookie banner.
+
+:::
 
 ### Relative mode
- 
-**Element path** is a field that specifies the path to the element to be detected. It is possible to use a **CSS selector** or an XPath expression as the path to the Element. It is enough to specify only a **CSS selector** in this field, but the full format of this path string is
- 
-```pathCss[%]pathHtml[%]pathXPath```
- 
-* **pathCss** is a CSS selector
-* **pathHtml** is an additional internal format for representing the path to the Element
-* **pathXPath** is a XPath expression
-* [**%]** is a separator
 
-![](../../../../../static/img/taskwebmacropathrelative.png)
+_Element path_ sets the path to the element. It can be a CSS selector or an XPath expression. A CSS selector alone is enough, but the full format of the path is:
 
-Full path format is used in recording mode for increased dependability. When configuring activities manually, the path does not need to be specified in its entirety. This path to the Element is split by the separator [%] during activity processing. The Element is first searched by the third part (**pathXPath**) if it exists after the split. If the Element was not found using XPath, then the element is searched using the second part (**pathHtml**). Finally, if the Element is still not found, the search will be using the CSS selector (pathCss). If the **[%]** separator is not specified, the path is interpreted as a **CSS selector**. To find an element using **XPath**, the Element path should be provided after two separators [%]. For example:
+```text
+pathCss[%]pathHtml[%]pathXPath
+```
+
+- `pathCss` is a CSS selector
+- `pathHtml` is an internal format for the path to the element
+- `pathXPath` is an XPath expression
+- `[%]` is the separator
+
+![Relative mode with the Element path and Frame path fields](../../../../../static/img/taskwebmacropathrelative.png)
+
+The full path format is used in recording mode, for dependability. When you set up an action manually, the path does not need to be complete. When the action runs, the path is split at each `[%]` separator. The element is searched for first by the third part (`pathXPath`), if there is one. If it is not found, the second part (`pathHtml`) is used, and then the CSS selector (`pathCss`). If the path has no `[%]` separator, it is read as a CSS selector. To find an element by XPath only, put the XPath after two separators, for example:
+
+```text
+[%][%]/HTML/BODY/DIV[2]/FORM[1]/INPUT[1]
+```
  
-[%][%]/HTML/BODY/APP-ROOT[1]/DIV[2]/APP-RPA1[1]/DIV[1]/DIV[2]/FORM[1]/INPUT[1]
- 
-CSS selector examples
+#### CSS selector examples
 
 ```html
-
 <html>
  <head>
-         <title>Title</title>
+  <title>Title</title>
  </head>
  <body>
-         <span id="rX8Qvb-cnt" class="toolbarbutton-content">Hello, World!</span>
+  <span id="rX8Qvb-cnt" class="toolbarbutton-content">Hello, World!</span>
  </body>
 </html>
+```
 
-``` 
+The example above has a `span` element. Each of these CSS selectors finds it:
 
-In the **html** example above there is a span element. Examples of different **CSS selectors** to find this span element:
- 
-Class selector:
+| Selector type | Example |
+|---|---|
+| Class | `.toolbarbutton-content` |
+| ID | `#rX8Qvb-cnt` |
+| Type | `span` |
+| Attribute | `span[id="rX8Qvb-cnt"]` |
+| Child | `html > body > span` |
 
-.toolbarbutton-content
+Each of these element paths finds it by XPath:
 
-ID selector:
-
-#rX8Qvb-cnt
-
-Type selector:
-
-span
-
-Attribute selector:
-
-span[id="rX8Qvb-cnt"]
-
-Child selector:
-
-html > body > span
-
- 
-Some examples of element path using **XPath**:
-
+```text
 [%][%]//*[@id="rX8Qvb-cnt"]
-
 [%][%]/HTML/BODY/SPAN[1]
-
 [%][%]//span[contains(., "Hello")]
+```
  
-Frame path is a field that specifies the path to the html tag Frame, where the path is represented as a valid CSS selector string. In most cases this field is optional. This field is only filled if the web page uses HTML inline frames (when the HTML web page contains an ```<iframe>``` tag).
+#### Frame path
 
-![](../../../../../static/img/taskwebmacropathrelativeframe.png)
+_Frame path_ sets the path to an inline frame, as a CSS selector. It is usually optional. Fill it in only when the element is inside an `<iframe>` tag.
+
+![Relative mode with a Frame path filled in](../../../../../static/img/taskwebmacropathrelativeframe.png)
 
 ### By position
- 
-Mode for locating an element by coordinates on the page. Currently out of date, upgrades are planned.
+
+Finds the element by its _X_ and _Y_ coordinates on the page. Available only on the Click, Download and Key Event actions. On the Download action, both coordinates are required when you click _OK_.
  
  
 ### By search
- 
-This mode is based on searching for elements using a **CSS selector** (**"Selector"** field), which is passed to the JavaScript function **querySelectorAll**. The first step is to define a list of HTML elements that match the **CSS selector**. Then the resulting list of elements is filtered: the value of the specified element attribute (or element property **innerHTML**, **outerHTML**, **innerText**, **outerText**) is matched using a regular expression (**"Regex value"** field). Finally, the searched element is determined by the ordinal position specified in the settings (**"Position"** field).
 
-![](../../../../../static/img/taskwebmacropathbysearch.png)
+This mode finds elements with a CSS selector in _Selector_, which is passed to the JavaScript function `querySelectorAll`. The matching elements are then filtered: the value of the attribute in _Attribute_ (or the element property `innerHTML`, `outerHTML`, `innerText` or `outerText`) is matched against the regular expression in _Regex value_. Finally, _Position_ picks one element from the list: "First" is 0, "Last" is -1, and "Specific" takes another index.
+
+On the Download action, _Selector_ is required when you click _OK_. Other actions save without it, so make sure it is filled in.
+
+![By search mode with the Selector, Attribute, Regex value and Position fields](../../../../../static/img/taskwebmacropathbysearch.png)
 
 ### Additional notes
  
-When manually setting click activity settings, the fastest way to determine the correct CSS selector or XPath expression is to use the web browser's Inspector mode. Below is an example of using the Google Chrome browser to inspect HTML elements. Some selectors include quotes, it is important to make sure that in paths they are specified as double quotes and not single quotes.
+When you set up a Click action manually, the fastest way to find the right CSS selector or XPath expression is the browser's inspector. The images below show the inspector in Google Chrome. Some selectors include quotes. In paths, use double quotes, not single quotes.
 
-![](../../../../../static/img/taskwebmacropathinspect.png)
+![Google Chrome inspector with an HTML element selected](../../../../../static/img/taskwebmacropathinspect.png)
 
-![](../../../../../static/img/taskwebmacropathinspectcopy.png)
-
+![Google Chrome inspector menu for copying a selector](../../../../../static/img/taskwebmacropathinspectcopy.png)

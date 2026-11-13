@@ -5,94 +5,62 @@ hide_title: 'true'
 
 ## Task Database - BigQuery - Fill Table
 
-The Google BigQuery - Fill Task loads data into Google BigQuery private dataset table.
- 
-The BigQuery Tasks require the [Google Cloud Connection](../../../server/connection-google-cloud).
+The Google BigQuery - Fill table Task loads rows from CSV or JSON data into a table of a private Google BigQuery dataset, using a Google Cloud Connection. The rows are added to the table; existing rows are kept.
 
-*Connection**
+:::warning
 
-Select the Google Cloud Connection to use for this Task.
+This Task uses a Google Cloud Connection; see [Connection - Google Cloud](../../connection-google-cloud).
 
-**Source** tab
+When _Input type_ is "File", _Input format_ is "CSV" and the file does not exist, the Task loads nothing, writes "No valid rows to insert." to the output, and reports success. With "JSON", the Task fails.
 
-![](../../../../../static/img/bigqueryfilltablenormal.png)
+With "CSV", the lines are split at the field separator before the text qualifier is considered, so a separator inside a qualified value splits the field, and the following columns shift.
 
-**Input type**
+When no Connection is selected or the Connection is not found, the Task writes "No Connection was selected" or "Connection not found", but with the default ***On error*** settings it reports success. To have it fail the Task, select "All errors" on the ***On error*** tab; see [Task - On Error](../../task-on-error).
 
-Select *File* to read input data from a file on disk, or *Input string* to provide data directly as a string value. Both support Variables.
+:::
 
-**File path**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-The full path to the input file. Only active when *Input type* is set to *File*. Click the browse button to select a file.
+### Google BigQuery - Fill table tab
 
-**String value**
+- _Connection_: The Google Cloud Connection to use
 
-The data to load into BigQuery. Only active when *Input type* is set to *Input string*.
+**Source**
 
-**Input format**
+![Google BigQuery - Fill table tab with the Source sub tab for CSV input: Input format, Data has header row, Field separator, Text qualifier, Line break, Input type and File path](../../../../../static/img/bigqueryfilltablenormal.png)
 
-Select *CSV* or *JSON*. When *CSV* is selected the following CSV-specific settings become active.
- 
-**Data has header row**
+- _Input format_: "CSV" or "JSON". With "CSV", the CSV settings below are available
+- _Data has header row_: When selected, the first line of the input holds the column names. A column is mapped when its header equals the name of the destination column; otherwise _Source column position_ is used. When cleared, the columns are mapped by position
+- _Field separator_: The character between the fields of a line
+- _Text qualifier_: The character around text values. It is removed from the start and end of values for STRING columns
+- _Line break_: The characters between the lines
+- _Input type_: "File" to read the data from a file, or "Input string" to enter the data in _String value_
+- _File path_: The full path of the input file. Used with "File". Variables can be used
+- _String value_: The data to load. Used with "Input string". Variables can be used
 
-When checked, the first line of the input is treated as a header row containing column names. Column name mapping will be used. When unchecked, positional mapping is applied instead.
- 
-**Field separator**
-
-The character that separates fields within a single line of CSV input.
-
-**Text qualifier**
-
-The character used to quote text fields in the CSV input. The qualifier character is stripped from the start and end of each text field value.
-
-**Line break**
-
-The character or sequence used as a line break between rows in the CSV input.
- 
 **When input format is JSON**
 
-![](../../../../../static/img/bigqueryfilltablejson.png)
+![Source sub tab with JSON input in the String value field](../../../../../static/img/bigqueryfilltablejson.png)
 
-A valid JSON array of JSON objects is expected as input. Column mapping is performed using the JSON object property names.
+The input must be a JSON array of objects. The columns are mapped by the property names of the objects.
 
-**Destination** tab
+**Destination**
 
-**Project**
+- _Project_: The Google Cloud project with the target dataset
+- _Dataset_: The dataset with the target table. Click the icon next to the list to load the datasets of the project
+- _Table_: The table to load the rows into. Click the icon next to the list to load the tables of the dataset
 
-The Google Cloud project containing the target dataset. Click the dropdown to select from available projects.
+**Mapping**
 
-**Dataset**
+The grid maps the source columns or JSON properties to the columns of the table, with the _Source Column_, _Position_, _Destination Column_, _Data type_ and _Mode_ of each entry. Click _Refresh mapping_ to fill the grid from the table. Use _Add_, _Edit_ and _Delete_ to change the entries. In the mapping window:
 
-The BigQuery dataset containing the target table. Click *Refresh* to populate the list from the selected project.
+- _Source column name_: The name of the JSON property in the input. With CSV, it only has to be set: the CSV header must have the name of the destination column
+- _Source column position_: The position of the column in the input, used when there is no header row
+- _Destination column name_: The column of the table. Select it in the list of the table columns
+- _Data type_: Read-only. The BigQuery data type of the destination column
+- _Column mode_: Read-only. The mode of the destination column: "NULLABLE", "REQUIRED" or "REPEATED"
 
-**Table**
+### Output and errors
 
-The BigQuery table to load data into. Click *Refresh* to populate the list from the selected dataset.
-
-**Mapping** tab
-
-The mapping grid defines how source columns or JSON properties map to destination BigQuery table columns. Columns shown are: Source Column, Position, Destination Column, Data type, and Mode.
-
-Click *Refresh mapping* to populate the grid from the selected destination table. Use *Add*, *Edit*, and *Delete* to manage mapping entries manually.
-
-When adding or editing a mapping entry:
-
-**Source column name**
-
-The name of the column or JSON property in the source data.
-
-**Source column position**
-
-The positional index of the column in the source data (used when there is no header row).
-
-**Destination column name**
-
-The column in the BigQuery table to map to. Select from the list populated by the destination table schema.
-
-**Data type**
-
-Read-only. Displays the BigQuery data type of the selected destination column.
-
-**Column mode**
-
-Read-only. Displays the mode of the selected destination column: NULLABLE, REQUIRED, or REPEATED.
+- The output of the Task is a line with the status of the insert and the number of lines processed and rows attempted
+- When the input cannot be parsed, a mapping has neither a source name nor a position, or BigQuery rejects rows, the errors are written to the error output, and the Task fails

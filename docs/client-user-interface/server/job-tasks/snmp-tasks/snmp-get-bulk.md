@@ -5,94 +5,94 @@ hide_title: 'true'
 
 ## Task SNMP - SNMP Get Bulk
 
-Issues a GETBULK message to an SNMP agent in order to inspect a group of variables in a single transaction. This action is particularly useful for retrieving large tables. The GETBULK operation performs a GETNEXT operation for the first number of variable bindings in the request and performs a GETNEXT operation (continuous) for each of the remaining variable bindings in the request list. Note that the SNMP GETBULK command is not supported on devices using SNMPv1.
+The SNMP Get Bulk Task sends a GETBULK request to an SNMP agent to read a group of variables in one request, which is useful for large tables. For the first variable bindings in the request it performs one GETNEXT each; for each of the other bindings it performs repeated GETNEXT operations. GETBULK is not available in SNMPv1.
 
-**SNMP Get Bulk > General** tab
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get%20Bulk.png)
+The Task settings are on the ***SNMP Get Bulk*** tab, which has the sub tabs ***General***, ***Advanced***, ***Data Bindings*** and ***Security***.
 
-**Agent IP Address**
+### SNMP Get Bulk: General tab
 
-The IP address of the SNMP agent (device or host) to query.
+![General tab of the SNMP Get Bulk Task, with the Agent IP Address, Return variable for the first, Max number of variables and Community fields](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get%20Bulk.png)
 
-**Return variable for the first**
+- _Agent IP Address_: The IPv4 address or host name of the SNMP agent; it can contain Variables
 
-Specifies the number of variable bindings for which a single GETNEXT operation is performed. The default value is 1.
+  For a host name, the Task uses its first IPv4 address. A host name that cannot be resolved stops the Task with an error.
 
-**Max number of variables to be returned for the rest of the variable bindings**
+- _Return variable for the first_: The number of variable bindings, counted from the top of the list on the ***Data Bindings*** tab, for which one GETNEXT is performed (non-repeaters); "1" by default
+- _Max number of variables to be returned for the rest of the variable bindings_: The maximum number of variables returned for each of the other bindings (max-repetitions); "1" by default
 
-The maximum number of variable instances to be returned for each of the remaining variable bindings in the request. The default value is 1.
+- _Community_: The community string, "public" by default
 
-**Community**
+  With "SNMPv3" this field is labeled _User_ and holds the SNMPv3 user name.
 
-The SNMP community string used for authentication. The default value is `public`.
+Variables are resolved only in _Agent IP Address_.
 
-**SNMP Get Bulk > Advanced** tab
+### SNMP Get Bulk: Advanced tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get%20Bulk%20Advanced.png)
+![Advanced tab of the SNMP Get Bulk Task, with the Remote Port, Time out after, Broadcast delay and SNMP version settings](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get%20Bulk%20Advanced.png)
 
-**Remote Port**
+- _Remote Port_: The UDP port of the SNMP agent
 
-The UDP port number on the remote SNMP agent to send requests to. The default port is 161.
+  A new Task shows "162", the port for SNMP traps. SNMP agents normally listen on port "161", so enter the port of your agent.
 
-**Time out after**
+- _Time out after_: How long to wait for the response, in "milliseconds", "seconds", "minutes" or "hours"
 
-The amount of time to wait for a response from the SNMP agent before the request times out. The default is 30 seconds.
+  The default is "30" with the unit "seconds". When no response arrives in time, the Task fails with an error.
 
-**Broadcast delay**
+- _Broadcast delay_: When _Agent IP Address_ is the broadcast address "255.255.255.255", how long to wait for a response instead of _Time out after_
 
-The delay to apply when sending broadcast requests, allowing agents time to respond. The default is 3 seconds.
+  The default is "3" with the unit "seconds".
 
-**SNMP version**
+- _SNMP version_: "SNMPv2c" or "SNMPv3"; GETBULK does not exist in SNMPv1
 
-The SNMP protocol version to use for the request (e.g., SNMPv2c or SNMPv3). Note that GETBULK is not supported on SNMPv1.
+  A new Task shows no version, and the request is then sent as "SNMPv2c". With "SNMPv3", the _Community_ label changes to _User_ and the ***Security*** tab appears.
 
-**SNMP Get Bulk > Data Bindings** tab
+### SNMP Get Bulk: Data Bindings tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get%20Bulk%20Data%20Bindings.png)
+![Data Bindings tab of the SNMP Get Bulk Task, with the variable list, the Add, Edit and Delete buttons and the two string notation check boxes](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get%20Bulk%20Data%20Bindings.png)
 
-**Variable name**
+- _Variable Name_: The list of OIDs in the request, at least one
 
-A list of OID variable bindings to include in the GETBULK request. Use the Add, Edit, and Delete buttons to manage the variables to retrieve from the SNMP agent.
+  Click _Add..._ or _Edit..._ to open the _Define variable binding_ window, enter the OID in _Variable name_ as a number or a name, and click _Translate_ to show the other form. Click _Delete_ to remove the selected OID.
 
-**Use string notation for OIDs**
+- _Use string notation for OIDs_: Selected by default; writes the OIDs in the output as names instead of numbers
+- _Use string notation for timetick values_: Selected by default; writes TimeTicks values as a duration instead of a number
 
-When checked, OID values in the response are displayed using human-readable string notation instead of numeric dot notation.
+### SNMP Get Bulk: Security tab
 
-**Use string notation for timetick values**
+The ***Security*** tab appears only with "SNMPv3" on the ***Advanced*** tab.
 
-When checked, timetick values in the response are displayed as formatted time strings rather than raw numeric values.
+- _Security Level_: "None" (the default), "Authenticate" or "Authenticate and Encrypt"
+- _Authentication Protocol_: "MD5" (the default) or "SHA-1", for "Authenticate" and "Authenticate and Encrypt"
+- _Authentication Passphrase_: The authentication passphrase, at least 8 characters
+- _Encryption Protocol_: "DES", the only choice, for "Authenticate and Encrypt"
+- _Encryption Passphrase_: The encryption passphrase, at least 8 characters
+- _Specify Context_: Enables _Context Name_ and _Context Engine ID_
+- _Context Name_ and _Context Engine ID_: The SNMPv3 context
 
-**SNMP Get Bulk > Security** tab
+  This Task does not use these values: it uses the context that the agent reports.
 
-**Security Level**
+### Output and errors
 
-The SNMPv3 security level to use. Select from the dropdown.
+The output of the Task lists the SNMP version, the community or user name, and the error status and error index of the response, then one line for each variable in this form:
 
-**Authentication Protocol**
+```text
+<OID> = <type> : <value>
+```
 
-The authentication protocol to use for SNMPv3. Select from the dropdown.
+With SNMPv3, the output also lists the security parameters and the context of the response.
 
-**Authentication Passphrase**
+When the agent answers with an error status, the Task fails with that status as the error.
 
-The passphrase used for SNMPv3 authentication.
+:::warning
 
-**Encryption Protocol**
+When _Agent IP Address_ is a host name with no IPv4 address, or a variable binding cannot be converted, nothing is sent, the output stays empty, and the Task reports success. To catch this, check on the ***On error*** tab whether the output is empty (see [Task - On Error](../../task-on-error)).
 
-The encryption protocol to use for SNMPv3. Select from the dropdown.
+:::
 
-**Encryption Passphrase**
+:::warning
 
-The passphrase used for SNMPv3 encryption.
+The output of the Task contains the community string (SNMPv1 and SNMPv2c) or the user name (SNMPv3) in plain text, so anyone who can see the Task output can read it. SNMPv1 and SNMPv2c also send the community string over the network unencrypted.
 
-**Specify Context**
-
-When checked, allows you to specify an SNMPv3 context name and context engine ID.
-
-**Context Name**
-
-The SNMPv3 context name to use. Available when Specify Context is checked.
-
-**Context Engine ID**
-
-The SNMPv3 context engine ID to use. Available when Specify Context is checked.
+:::

@@ -5,22 +5,33 @@ hide_title: 'true'
 
 ## Task VMWare - Stop VM
 
-The VMWare - Stop VM Task stops (powers off) a virtual machine.
+The VMWare - Stop VM Task stops (powers off) a virtual machine, using a VMWare Connection or VMware Workstation on the VisualCron Server computer.
 
-**Stop VM > Connection** sub tab
+:::warning
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Stop%20VM.png)
+With a "vSphere" or "vSphere 7" Connection, _Stop type_ is not used: the virtual machine is always powered off at once, as if the power were pulled, so unsaved work in the guest can be lost. For a clean shutdown of the guest, use a "Vix" Connection or _Local VMWare workstation_ with "Soft".
 
-The Connection sub tab is the same for all VMWare Task types. See [Start VM](start-vm) for details.
+:::
 
-**Stop VM > VM Task settings** sub tab
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Stop%20VM%20settings.png)
+With _Remote VMWare server_, this Task works with every _Authentication type_ of the VMWare Connection; see [Connection - VMWare](../../connection-vmware).
 
-**Stop type**
+### Connection sub tab
 
-Specifies how the virtual machine is powered off. Available options:
+![Connection sub tab of the VMWare Stop VM Task, with the Remote VMWare server and Local VMWare workstation options, Guest OS Credentials and the timeout](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Stop%20VM.png)
 
-* _Hard_ - powers off the virtual machine immediately, equivalent to pulling the power plug
-* _Soft_ - asks the guest operating system to shut down cleanly through VMWare Tools
-* _Trysoft_ - tries a soft shutdown first and falls back to a hard power off if the soft shutdown does not succeed
+The ***Connection*** sub tab is the same for every VMWare Task; see [Start VM](start-vm#connection-sub-tab) for each field.
+
+### VM Task settings sub tab
+
+![VM Task settings sub tab of the VMWare Stop VM Task, with the Stop type combo box](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/VMWare%20Tasks/Stop%20VM%20settings.png)
+
+- _Stop type_: how the virtual machine is powered off, "Soft" by default:
+  - "Hard": powers off the virtual machine at once, as if the power were pulled
+  - "Soft": asks the guest operating system to shut down through VMware Tools
+  - "TrySoft": works the same as "Soft"; there is no fallback to "Hard" when the guest does not shut down
+
+### Output and errors
+
+When VMware reports an error, the Task fails.

@@ -5,70 +5,53 @@ hide_title: 'true'
 
 ## Task PDF - Split
 
-The PDF - Split Task is able to split a PDF document in half, at a specific page or per specific pages or into even/odd pages.
- 
-**Split > Main settings** sub tab
+The PDF - Split Task splits PDF files into one file per page, into two halves, at a page, or into odd and even pages.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Split.png)
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-### Split type
+### Split: Main settings tab
 
-How the pages should be split. The available options are:
- 
-**Half**  
+![Main settings tab of the Split Task, with the Split type list, the Page number and Page name format boxes, and the Password for file(s) and Page range groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Split.png)
 
-The document will be split in half (or as close to half as possible) determined by the total number of pages in the document. The output files will consist of the original filename followed by the range of pages that were split enclosed in parenthesis (i.e. myDocument (1-4).pdf, myDocument (5-7).pdf)
- 
-**Page (default)**  
+- _Split type_ (_Split ..._ group): how the document is split; the examples are for a file named `report.pdf`
+  - "Page" (the default): one file for each page, named by _Page name format_, for example `report - Page 1.pdf`
+  - "Half": two files, split at about the middle of the document, for example `report 1-4.pdf` and `report 5-8.pdf`
+  - "At": two files, split after the page in _Page number_, for example `report 1-2.pdf` and `report 3-6.pdf`
+  - "EvenOdd": `report odd pages.pdf` and `report even pages.pdf`
+- _Page number_: the last page of the first file; used with "At". The default is "2"
+- _Page name format_: the text added to the file name for each page; used with "Page"
 
-The document will be split into individual pages. The output files will consist of the original filename followed by an underscore and page number (i.e. myDocument - Page 1.pdf,  myDocument - Page 2.pdf, myDocument - Page 3.pdf, etc).
- 
-**Even / Odd**  
+  `{#}` is replaced by the page number. The default is ` - Page {#}`. When the format has no `{#}`, the number is added at the end.
 
-The document will be split into even and odd pages. The output files will consist of the original filename followed by the page type, either even or odd (i.e. myDocument_Even_Pages.pdf and myDocument_Odd_Pages.pdf).
- 
-**At**  
+- _Password for file(s)_: the password that opens the source PDF files, if they are protected
+- _Page range_: _All pages_, or _Pages_ with page numbers and ranges separated by commas, for example `2-4` or `1,3,5-6`. An entry that is not a page number or a valid range is ignored
 
-The document will be split at the page specified. The output files will consist of the original filename followed by the range of pages that were split enclosed in parenthesis (i.e. myDocument (1-2).pdf, myDocument (3-6).pdf).
- 
-**Page number**
+  Only those pages go into the new files. With "Half", the split is at the middle of the selected pages.
 
-The page number the actual split should occur on. This property is only used if the Split type is of type Split at.
- 
-**Page name format**
+### File filter tab
 
-How the output files should be named. Variable `{#}` contains the page number.
- 
-**Password for file(s)**
+The ***File filter*** tab selects the PDF files to split; see [File Filter](../../job-tasks-file-filter). If the filter has a Credential, the Task uses it while it reads and writes the files. When the logon with the Credential fails, the Task continues as the account that runs the Server and writes the error to the Server log.
 
-If any of the specified PDF files contains a password it should be entered here.
- 
-**Page range**
+### Destination tab
 
-**All pages** - cover split functionality on all pages
+![Destination tab of the Split Task, with the Save to.. group and the Folder and File mask boxes](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Split%20Destination.png)
 
-**Pages** - cover split functionality on specified page
- 
-**Split > File filter > Location** sub tab
+The new file names are built from the destination path set here, with the split text added before the extension. The source file is not changed.
 
-This tab uses the common [file filter](../../job-tasks-file-filter) to filter out the files that should be processed in this Task.
- 
-**Split > Destination** sub tab
+- _Same file_ (_Save to.._ group): saves the new files in the source file's folder, named after the source file
+- _Same folder but use file mask_: saves the new files in the folder set on the ***File filter*** tab, named by _File mask_
+- _Different folder and use file mask_: saves the new files in _Folder_, named by _File mask_; the folder is created if it does not exist
+- _Folder_: the destination folder for _Different folder and use file mask_; click the folder button to browse
+- _File mask_: builds the base name from the source file name, by the renaming standard set in [Main - Settings](../../main-settings)
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Split%20Destination.png)
+  The default `*` keeps the source file name.
 
-**Save to**
+:::warning
 
-Selects where the split output files are written. Available options:
+A file that already has a new name is replaced without a prompt.
 
-* _Save to same file_ - write to the same folder as the source, using the default split naming
-* _Same folder with file mask_ - keep the original folder, but save with a custom file mask (set the *File mask* below)
-* _Different folder with file mask_ - save in a different folder with a custom file mask (set both *Folder* and *File mask* below)
+:::
 
-**Folder**
+### Output and errors
 
-The destination folder. Enabled when *Save to* is set to _Different folder with file mask_. Click the *Folder* icon to browse for the folder.
-
-**File mask**
-
-The file mask used to name the output files. Enabled when *Save to* is set to _Same folder with file mask_ or _Different folder with file mask_.
+The Task output contains "Success" for each file it splits.

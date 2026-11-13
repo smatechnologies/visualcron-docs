@@ -5,21 +5,28 @@ hide_title: 'true'
 
 ## Task System - Unlock Workstation
 
-The System Unlock workstation Task can auto-login or unlock a desktop. If a screen saver is running it will break free from that one too.
+The System Unlock workstation Task logs a user on to the desktop of the VisualCron Server computer, or unlocks the desktop when that user is already logged on. A running screen saver is also stopped.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Unlock%20workstation.png)
+![Unlock workstation Task settings, with the Credentials group and the Lock workstation after login check box](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Unlock%20workstation.png)
 
-**Credentials**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
+### Unlock workstation tab
 
-**Unlock/Login settings**
+- _Credentials_: required. The Windows user to log on or unlock. Select a Credential, or click the _Settings_ icon to open _Manage credentials_; see [Global - Credentials](../../global-credentials)
+- _Lock workstation after login_ (_Unlock/Login settings_ group): when selected, the desktop is locked again after the logon
 
-**Lock workstation after login**
+### Output and errors
 
-When checked, the workstation is automatically locked again after the login completes.
+The output says what the Task did: that the user was logged in, that the desktop was unlocked, that no action was needed, that the screen saver was stopped, or that the logon was canceled.
 
-:::info Note 
+:::warning
+
+When the logon is canceled, the output says so, and the Task reports success. When the selected Credential has been deleted, the Task does nothing and writes no output, and the Task reports success.
+
+:::
+
+:::info Note
 
 For Windows Server 2008 you must enable a setting in Local Security Policy.
 

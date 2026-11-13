@@ -9,44 +9,44 @@ The Job result window is similar to [Task output and result](task-output-and-res
  
 ### Accessing Job Result
  
-You can access the Job result window the following ways;
-* double click on the result (success/failure) icon in the Job row
-* double click on the result (success/failure) text in the Job row
-* right click on the Job->Result->Job result
+You can access the Job result window the following ways:
+* double-click the result (success/failure) icon in the Job row
+* double-click the result (success/failure) text in the Job row
+* right-click the Job and select *Result* -> *Job result*
 
 ### Execution
 
-**Date of execution**
+**Date**
 
-In the date picker you select which day you would like to view result from. The amount of data stored is determined by the database log settings in [server settings](settings-log-settings). In the date picker you can see available dates where you have at least one execution. Whenever you select a date the available times the Task has been executed is listed in the Time selection box under.
+Select the day to view. Only dates with at least one run can be selected. How long results are kept is set in [Settings - Log Settings](settings-log-settings).
+ 
+**Time**
+
+Select a run of that day. The icon in front of each time shows whether the run succeeded or failed.
  
 **Execution time**
 
-This is based on the Date of execution selection. In front of the time you see the result of the Task - if it was a success or failure.
- 
-**Time of execution**
-
-This is the total time the Job ran.
+How long the selected run took.
  
 **Success/Failure button**
 
-Clicking this button show charts and statistics related to execution result.It is possible to control the range of executions. Success is marked in green and Failure in red. It is possible to zoom in and out in chart holding CTRL+Scroll wheel.
+Shows the result of the selected run, for example *Success* or *Failed*, or *Running* or *Paused* while it is in progress. Click it to show charts and statistics of the results over a date range. Success is marked in green and Failure in red. Drag across a chart to zoom in on that area.
  
 ### Job results
  
 Job results panel has at least one tab, "Job". This tab contains general information when, how and who started the Job among other things.
  
-Depending on how it was started it might contain a Trigger tab. This will contain specific information about the Trigger, and what caused it to Trigger, at the moment of execution. Above you can see the File Trigger results tab. In that tab you can see, for example, which exact file caused the Trigger to trigger and in which folder it was created it. The information available depends on the Trigger type.
+Depending on how it was started it might contain a Trigger tab. This will contain specific information about the Trigger, and what caused it to Trigger, at the moment of execution. The second screenshot below shows the File Trigger results tab. In that tab you can see, for example, which exact file caused the Trigger to trigger and in which folder it was created. The information available depends on the Trigger type.
  
-By right clicking on any row in Job results you can copy the underlying [Variable](global-variables) which might be interesting if you want to use it in a Notification or similar.
+Right-click a row and select *Copy variable* to copy the [Variable](global-variables) for that value (for the active Job or by Job id), for example to use it in a Notification. *Copy selected* and *Copy all* copy the selected rows, or all rows, as name and value.
 
-![](../../../static/img/jobresultjob.png)
+![Job Result Output window, Job tab](../../../static/img/jobresultjob.png)
 
-![](../../../static/img/jobresultfiletrigger.png)
+![Job Result Output window, File Trigger tab](../../../static/img/jobresultfiletrigger.png)
 
 ### Performance->CPU
  
-The CPU chart displays the CPU usage for each execution. These are approximate values VisualCron calculate and log during execution to see the cost of the CPU usage during different operations. The information can be used to schedule Jobs and Tasks during different hours - to spread the CPU load.
+The CPU chart displays the CPU usage for each execution. These are approximate values VisualCron calculates and logs during execution to see the cost of the CPU usage during different operations. The information can be used to schedule Jobs and Tasks during different hours - to spread the CPU load.
  
 There are two main views:
  
@@ -66,24 +66,26 @@ The CPU Time view is separated into the following categories:
 * **Notifications** - how much CPU time is consumed by Notifications
 * **Triggers** - how much CPU time is consumed by Triggers
  
-There is a chart showing the latest value which is based on the selection Date + Time in the top left window. The data range defines the period being used for the line chart and the range values - this is controlled by the date range controls. It is possible to zoom with the mouse wheel and mark certain areas.
+There is a chart showing the latest value which is based on the selection Date + Time in the top left window. The data range defines the period being used for the line chart and the range values - this is controlled by the date range controls. *Grouping* (*None*, *Day*, *Week*, *Month* or *Year*) groups the runs in the chart by period. Drag across a chart to zoom in on that area. The screenshots below do not show *Grouping*, and they show two buttons, *Fill test task values* and *Fill test job values*, that do not appear in the window.
 
-![](../../../static/img/jobresultcpu.png)
+![Job Result Output window, CPU % chart](../../../static/img/jobresultcpu.png)
 
-![](../../../static/img/jobresultcputime.png)
+![Job Result Output window, CPU Time chart](../../../static/img/jobresultcputime.png)
 
 In the Job result->Performance CPU->CPU time you can see how much the CPU spent on Job, Task, Trigger and Notification. In general the footprint is low in VisualCron and you would see most work in the Task.
  
 ### Performance->Execution time
  
-The Execution time is how long it takes for a Job to complete. This is affected by the CPU load and the amount of data being processed and the delay in any external service. The charts help VisualCron users to get an overview, over time, how long time it takes for a specific operation.
+The Execution time is how long it takes for a Job to complete. This is affected by the CPU load and the amount of data being processed and the delay in any external service. The charts help VisualCron users to get an overview, over time, how long a specific operation takes.
  
 The date range controls the line chart and range values. The current value is controlled by the selected Date + Time in the top left window.
 
-![](../../../static/img/jobresultexecutiontime.png)
+![Job Result Output window, Execution time chart](../../../static/img/jobresultexecutiontime.png)
 
 ### Performance->ROI
  
-The stats in the ROI tab shows how much each execution of a Job, during a period, saved the company.
+Shows how much each run of the Job saved over a period. The amount is the time saved by a run, in hours, multiplied by the hourly rate, both as stored in the Job's ROI settings when it ran. See [ROI - Return On Investment](roi-return-on-investment).
 
-![](../../../static/img/jobresultroi.png)
+The *Amount* and *Time* tabs show the money and the time saved. Select *Accumulate* to show a running total.
+
+![Job Result Output window, ROI chart](../../../static/img/jobresultroi.png)

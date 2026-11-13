@@ -5,37 +5,17 @@ hide_title: 'true'
 
 ## Server Monitor
 
-The main menu **Tools > Server monitor** option shows some server performance parameters and Jobs information.
- 
-**Tools > Server monitor**
+The ***VisualCron Server monitor*** window shows real-time performance figures for the Server and its Jobs.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Server%20Monitor.png)
+To open it, click ***Tools*** -> ***Explore*** -> ***Server monitor***.
 
-The window displays the following realtime parameters:
+![Server monitor window on the Realtime tab with CPU gauges, Job counters and memory usage](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Server%20Monitor.png)
 
-**Server CPU usage**
+The ***Realtime*** tab shows:
 
-A gauge showing the total CPU usage of the server.
-
-**VisualCron Server CPU usage**
-
-A gauge showing the CPU usage of the VisualCron process.
-
-**Running**
-
-* Running Jobs - number of Jobs currently running
-* Running Tasks - number of Tasks currently running
-
-**Job failures**
-
-The number of Job failures per minute, per hour and per day.
-
-**Jobs started**
-
-The number of Jobs started per minute, per hour and per day.
-
-**Memory usage**
-
-* Total memory used
-* Total memory available
-* VisualCron memory usage
+- _VisualCron Server CPU usage_: a gauge with the CPU usage of the VisualCron Server process
+- _Server CPU usage_: a gauge with the total CPU usage of the computer
+- _Running_: _Running Jobs_ and _Running Tasks_, the number of Jobs and Tasks running now
+- _Job failures_: the number of failed Jobs per minute, per hour and per day
+- _Jobs started_: the number of Jobs started per minute, per hour and per day
+- _Memory usage_: _Total memory used_, _Total memory available_ and _VisualCron memory usage_

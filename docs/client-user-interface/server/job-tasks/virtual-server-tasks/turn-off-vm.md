@@ -5,40 +5,32 @@ hide_title: 'true'
 
 ## Task Virtual Server - Turn Off VM
 
-The Virtual Server - Turn off VM Task turns off a specific virtual machine.
+The Virtual Server - Turn Off VM Task turns off a virtual machine on Microsoft Virtual Server, on the VisualCron Server computer or on a remote computer.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/Turn%20Off%20VM.png)
+![Turn off VM tab of the Virtual Server Turn Off VM Task, with the Server location options, Credential, Virtual Machine Name and the Options group](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/Turn%20Off%20VM.png)
 
-**Turn Off VM > Connection** tab
+:::warning
 
-**Remote VMWare server / Local VMWare workstation**
+If Virtual Server reports an error, the error is written to standard error, and the Task reports success. To catch it, check the standard error output, for example with the output conditions on the ***On error*** tab (see [Task - On Error](../../task-on-error)).
 
-Select _Remote VMWare server_ to connect to a remote VMWare server, or _Local VMWare workstation_ to use the local machine.
+:::
 
-**Connection**
+:::warning
 
-Select the VMWare connection to use. Only enabled when _Remote VMWare server_ is selected.
+Turning off a virtual machine stops it without shutting down the guest operating system, so unsaved work in the guest can be lost.
 
-**Server VMX path**
+:::
 
-The path to the virtual machine's VMX file on the remote server. Click the _Refresh_ button to populate the list from the selected connection. Only enabled when _Remote VMWare server_ is selected.
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-**Local VMX path**
+### Turn off VM tab
 
-The path to the virtual machine's VMX file on the local machine. Click the File icon to browse. Only enabled when _Local VMWare workstation_ is selected.
+- _Local server_: control Virtual Server on the VisualCron Server computer. Selected by default
+- _Remote server_: control Virtual Server on another computer
+- _Server name_: the DNS name or IP address of the remote computer. Variables are replaced in this field
+- _Credential_: the [Credential](../../global-credentials) to sign in to the remote computer, with its domain, user name and password. Required with _Remote server_. Click the _Settings_ icon to add or edit Credentials
+- _Virtual Machine Name_: the name of the virtual machine. Click _Refresh_ to list the virtual machines on the selected server. Variables are replaced in this field
 
-**Timeout in seconds**
+### Output and errors
 
-The number of seconds to wait before timing out the operation. Minimum is 1, maximum is 36000, default is 180. Note that a Timeout tab setting on the task overrides this value.
-
-**Turn Off VM > VM Task settings** tab
-
-**Destination**
-
-**Stop type**
-
-The method used to turn off the virtual machine. Available options:
-
-* _Hard_ - immediately powers off the virtual machine (equivalent to pulling the power)
-* _Soft_ - requests the guest OS to perform a graceful shutdown (default)
-* _TrySoft_ - attempts a soft shutdown first; falls back to hard power off if unsuccessful
+If the Credential is not found, or an unexpected error occurs, the Task fails.

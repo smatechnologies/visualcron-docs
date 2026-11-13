@@ -5,128 +5,144 @@ hide_title: 'true'
 
 ## Robot Task Activities - Windows
 
-The **Windows** category contains activities that manipulate application windows.
+The Windows activities find application windows and attach to, show, hide, close, maximize, minimize, restore, move or resize them.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Windows.png)
+![The Windows category in the activity list, with Attach Window, Get Active Window, Close Window, Hide Window, Show Window, Maximize Window, Minimize Window, Restore Window, Resize Window and Move Window](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Windows.png)
 
-Every activity in this category throws an exception if the specified window cannot be found. Use the **Click to select** link to pick a window in the UI and fill the search properties automatically.
+Click _Click to select_ on an activity to pick a window in the UI and fill in the search properties. Every activity in this category fails if the window is not found within _WaitForWindow_.
 
-> The window handle changes every time a window is closed and reopened. Do not rely on a captured **WindowHandle** across runs. Use **Process name** and **Title** instead.
+:::note
+
+A window handle changes each time a window is closed and opened again. When the handle in _WindowHandle_ no longer finds the window, the activity searches by _ProcessName_ and _Title_ instead, so fill those in as well.
+
+:::
 
 ---
 
 ### Attach Window
 
-Finds the specified window and provides it to the body of the activity. Window activities placed inside the body then act on that window without having to search for it again.
+Finds a window and runs the activities in its _Do_ body against that window. Activities in the body that work on a window or an element use the attached window without searching for it again.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Attach.png)
+![The Attach Window activity with the Click to select link and the Do body](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Attach.png)
 
 #### Properties
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Attach%20Settings.png)
+The Windows activities share these properties. Attach Window also has _AttachedWindow_.
 
-| Property | Description |
-|---|---|
-| ProcessName | The owner process name of the window. |
-| Title | The window title. Supports the wildcard patterns `*`, `?`, and `#`. |
-| WindowHandle | A direct handle to the window. The activity gets the window from this handle. |
-| Window | Takes a Window object as an input parameter and uses it in the body. |
-| AttachedWindow | Returns the attached window as an output variable. |
-| SetFocus | Sets focus to the window before executing the body activities. |
-| WaitForWindow | Wait in milliseconds until the window appears and is ready to use. Throws an exception if the timeout elapses and the window has not appeared. |
-| Wait before | Wait in milliseconds before the activity executes. By default the playback speed from settings is used. |
-| Wait after | Wait in milliseconds after the activity executes. By default the playback speed from settings is used. |
+![The Properties pane of the Attach Window activity, with ProcessName, Title, WindowHandle, Window, Display name, AttachedWindow, SetFocus, Wait after, Wait before and WaitForWindow](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Attach%20Settings.png)
 
-#### How the window is resolved
+- _ProcessName_: the name of the process that owns the window
+- _Title_: the window title. Supports the wildcards `*`, `?` and `#`
+- _WindowHandle_: the handle of the window, when it is known. Default: "0"
+- _Window_: a window object, for example the _AttachedWindow_ of another activity, to use instead of searching
+- _AttachedWindow_: an output that receives the attached window, for use in a later activity's _Window_ property
+- _SetFocus_: give the window focus before the activity acts on it. Default: cleared
+- _WaitForWindow_: how long to wait for the window, in milliseconds. Default: "10000"
+- _Wait before_ and _Wait after_: the wait in milliseconds before and after the activity runs. When empty, the playback speed from the Robot Task settings is used
 
-The activity resolves the target window in this order:
+At least one of _ProcessName_, _WindowHandle_ and _Window_ must be filled in.
 
-1. If the **Window** input property is set, that window is used.
-2. If the activity is inside a parent window activity such as **Attach Window** or **Get Active Window**, the window from the parent is used.
-3. If **WindowHandle** is set, the activity gets the window from the handle. If no window is found from the handle, it falls back to searching by the other properties such as process name and title.
+#### How the window is found
 
-When searching, the activity gets all processes matching the specified process name, gets all windows from each of those processes, and compares each window title against the specified title. Every matching window is added to a result collection, and the body is then executed once for each matched window. This means a single Attach Window activity can be used to act on multiple windows at once.
+Attach Window uses the _Window_ property when it is set. Otherwise it searches: first by _WindowHandle_, then by _ProcessName_ and _Title_. When a _Title_ with wildcards matches several windows, Attach Window uses the first one, and runs its body once.
+
+The other Windows activities find their window in this order:
+
+1. The _Window_ property, when it is set
+2. The window of a parent _Attach Window_ or _Get Active Window_ activity
+3. A search by _WindowHandle_, then by _ProcessName_ and _Title_
+
+When a _Title_ with wildcards matches several windows, these activities act on every matched window.
 
 ---
 
 ### Get Active Window
 
-Gets the currently active window and provides it to the body of the activity, so activities in the body do not need to search for a window.
+Gets the window that is active and runs the activities in its _Do_ body against it, so the activities in the body do not need to search for a window. The _ActiveWindow_ output receives the window, and _SetFocus_ gives it focus first. The activity fails if no window is active.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Get%20Active.png)
+![The Get Active Window activity with the Do body](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Get%20Active.png)
 
 ---
 
 ### Close Window
 
-Finds the specified window or windows and closes them.
+Finds the window or windows and closes them. The activity fails if a window cannot be closed this way.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Close.png)
+![The Close Window activity with the Click to select link](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Close.png)
 
 ---
 
 ### Hide Window
 
-Finds the specified window or windows and hides them.
+Finds the window or windows and hides them.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Hide.png)
+![The Hide Window activity with the Click to select link](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Hide.png)
 
 ---
 
 ### Show Window
 
-Finds the specified window and shows it.
+Finds the window or windows and shows them.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Show.png)
+![The Show Window activity with the Click to select link](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Show.png)
 
 ---
 
 ### Maximize Window
 
-Finds the specified window and maximizes it.
+Finds the window or windows and maximizes them.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Maximize.png)
+![The Maximize Window activity with the Click to select link](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Maximize.png)
 
 ---
 
 ### Minimize Window
 
-Finds the specified window and minimizes it.
+Finds the window or windows and minimizes them.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Minimize.png)
+![The Minimize Window activity with the Click to select link](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Minimize.png)
+
+---
+
+### Restore Window
+
+Finds the window or windows and restores them to their normal size and position.
 
 ---
 
 ### Resize Window
 
-Finds the specified window and resizes it to the specified size.
+Finds the window or windows and resizes them.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Resize.png)
+![The Resize Window activity with the Click to select link and the Width and Height fields](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Resize.png)
 
-| Setting | Description |
-|---|---|
-| Width | The new window width. |
-| Height | The new window height. |
+- _Width_: the new window width, in pixels. Default: "0"
+- _Height_: the new window height, in pixels. Default: "0"
 
 ---
 
 ### Move Window
 
-Finds the specified window and moves it to the specified position.
+Finds the window or windows and moves them.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Move.png)
+![The Move Window activity with the Click to select link and the X and Y fields](../../../../../../../static/img/RPA/Robot%20Tasks/Windows/Move.png)
 
-| Setting | Description |
-|---|---|
-| X | The new horizontal screen position. |
-| Y | The new vertical screen position. |
+- _X_: the new horizontal screen position. Default: "0"
+- _Y_: the new vertical screen position. Default: "0"
+
+---
+
+### Output and errors
+
+- Close Window, Maximize Window, Minimize Window, Restore Window, Resize Window and Move Window fail if the window does not offer the action at all
+- When a window offers resizing or moving but its size or position is fixed, Resize Window and Move Window write a line to the Task output and leave the window as it is, and the Task reports success
 
 ---
 
 ### Tips
 
-- Wrap a group of window operations in a single **Attach Window** activity rather than repeating the search properties on each one. It is faster and there is only one place to update if the window title changes.
-- Set **WaitForWindow** rather than inserting a fixed [Wait](other) activity before interacting with a window that takes time to open. It continues as soon as the window is ready.
-- Use wildcards in **Title** for windows whose caption includes changing content, for example `*- Notepad` or `Invoice #* - Contoso`.
-- Enable **SetFocus** on Attach Window when the body contains [Keyboard](keyboard) activities, since those send input to whichever window currently has focus.
-- **Maximize Window** at the start of a workflow gives interactions a predictable window size, which makes element positions and screenshots consistent between runs.
+- Put a group of window activities inside one _Attach Window_ activity rather than repeating the search properties on each one. It is faster, and there is only one place to update if the window title changes
+- Set _WaitForWindow_ rather than adding a fixed [Wait](other) activity before working with a window that takes time to open. The activity continues as soon as the window is found
+- Use wildcards in _Title_ for windows whose title changes, for example `*- Notepad` or `Invoice * - Contoso`. Remember that a wildcard can match more than one window
+- Check _SetFocus_ on _Attach Window_ when the body has [Keyboard](keyboard) activities, because those send input to the window that has focus
+- Run _Maximize Window_ at the start of a sequence to give the window a known size, which keeps element positions and screenshots the same from run to run

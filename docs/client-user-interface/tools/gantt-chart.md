@@ -5,30 +5,28 @@ hide_title: 'true'
 
 ## GANTT Chart
 
-The GANTT chart lets you view a timeline view of current Jobs. When they will execute and how long time (based on previous execution).
+The ***Gantt Chart*** window shows your Jobs on a timeline: when they will run and how long they take, based on earlier runs.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Gantt%20Chart.png)
+To open it, click ***Tools*** -> ***Gantt chart*** -> ***Gantt chart***.
 
-**Time scale**
+![Gantt Chart window with the Jobs grid on the left and the timeline on the right](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Gantt%20Chart.png)
 
-You can change the timeline scale using the *Minute*, *Hour*, *Day*, *Week* and *Month* options. The *Today* button returns the view to the current date. A zoom slider in the status bar adjusts the width of the timeline.
+### Time scale
 
-**View**
+The ***Minute***, ***Hour***, ***Day***, ***Week*** and ***Month*** buttons set the scale of the timeline. ***Today*** on the toolbar returns the view to the current date, and the calendar at the left moves it to another date. A slider in the status bar adjusts the width of the timeline.
 
-The toolbar provides *Day*, *Week* and *Month* views, as well as *Show Time exceptions* and *Use Time exceptions* options.
+### Jobs filter
 
-**Display view**
+In the _Jobs_ group, select the column to filter on, such as _Name_, enter a value, and select "All", "Active" or "Inactive". ***Clear filter*** resets the filter.
 
-The *Display view* option lets you choose whether to show both the grid and the timeline, the grid only or the timeline only.
+### Display view
 
-**Filter**
+The _Display view_ setting shows both the grid and the timeline, only the grid or only the timeline. ***Hide*** collapses the left panel.
 
-It is possible to filter the GANTT grid on certain criterias like Job name, group name etc. Select the column to filter on and enter the value. The *Clear filter* button resets the filter.
+### Grid
 
-**Grid**
+The grid lists the Jobs with their Tasks under them, with _Name_, _Duration_, ***Start*** and _Finish_. The timeline bars are colored by status.
 
-The grid lists the Jobs together with their start and end date/time and duration. The timeline bars are colored according to status.
+### Print
 
-**Print**
-
-The *Print preview*, *Page setup* and *Select printer* options let you print the GANTT chart.
+***Print preview***, ***Page setup*** and ***Select printer*** on the toolbar print the chart.

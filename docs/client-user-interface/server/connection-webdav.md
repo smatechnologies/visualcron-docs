@@ -5,106 +5,55 @@ hide_title: 'true'
 
 ## Connection - WebDAV
 
-The WebDAV Connection stores connect and logon properties for HTTP servers supporting the WebDAV protocol.
- 
-The WebDAV Connection is used by the following WebDAV Tasks:
-* [Net - WebDAV - Download](../../client-user-interface/server/job-tasks/net-tasks/webdav-download)
-* [Net - WebDAV - Upload](../../client-user-interface/server/job-tasks/net-tasks/webdav-upload)
-* [Net - WebDAV - Copy files](../../client-user-interface/server/job-tasks/net-tasks/webdav-copy-files)
-* [Net - WebDAV - Delete](../../client-user-interface/server/job-tasks/net-tasks/webdav-delete)
-* [Net - WebDAV - Create folder](../../client-user-interface/server/job-tasks/net-tasks/webdav-create-folder)
- 
-Web Distributed Authoring and Versioning (WebDAV) is an extension of the Hypertext Transfer Protocol (HTTP) that allows clients to perform remote Web content authoring operations. A working group of the Internet Engineering Task Force (IETF) defined WebDAV in RFC 4918.
- 
-The WebDAV protocol makes the Web a readable and writable medium.[1] It provides a framework for users to create, change and move documents on a server, typically a web server or web share. The most important features of the WebDAV protocol include the maintenance of properties about an author or modification date, namespace management, collections, and overwrite protection. Maintenance of properties includes such things as the creation, removal, and querying of file information. Namespace management deals with the ability to copy and move web pages within a server’s namespace. Collections deal with the creation, removal, and listing of various resources. Lastly, overwrite protection handles aspects related to locking of files.
- 
-**Manage Connections > Add > WebDAV > Common settings** tab
+The WebDAV Connection stores the address, sign-in and security settings that these Tasks use to connect to a WebDAV server, a web server with the WebDAV extension of HTTP for working with files and folders:
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/WebDAV/WebDAV.png)
+- [Net - WebDAV - Download](job-tasks/net-tasks/webdav-download)
+- [Net - WebDAV - Upload](job-tasks/net-tasks/webdav-upload)
+- [Net - WebDAV - Copy files](job-tasks/net-tasks/webdav-copy-files)
+- [Net - WebDAV - Delete](job-tasks/net-tasks/webdav-delete)
+- [Net - WebDAV - Create folder](job-tasks/net-tasks/webdav-create-folder)
+- Net - WebDAV - List items
+- Net - WebDAV - List folders
 
-**Name**
+:::warning
 
-The unique name for the Connection
- 
-**Group**
+WebDAV Connections accept any server certificate for "https://" addresses. The Server does not check the certificate, so it cannot tell the real server from another server that answers at the same address. Use the Connection only where you trust the network path to the server.
 
-The group that the connection is a part of.
- 
-**Timeout**
+:::
 
-The connection timeout in seconds. Connection will fail after this time is passed.
- 
-**Code page**
+### Common settings
 
-The table of values that describes the desired character set. Currently this is overridden by the code page in the Task.
- 
-**Manage Connections > Add WebDAV > Connection settings** tab
+![WebDAV Connection, Common settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/WebDAV/WebDAV.png)
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/WebDAV/Settings.png)
+The ***Common settings*** and ***Proxy*** tabs are the same for every Connection type that has them; see [Common settings](global-connections#common-settings) and [Proxy](global-connections#proxy). WebDAV Connections have no *Test*, and the WebDAV Tasks do not use *Timeout* or *Code page*. To limit how long a WebDAV Task runs, use the Task's own timeout.
 
-**Address**
+### Main settings
 
-The DNS name or IP address of the server.
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-**Port**
+![WebDAV Connection, Main settings tab, with the Server, Credentials and Allowed SSL/TLS versions groups](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/WebDAV/Settings.png)
 
-The port used by the WebDAV server. Default is 80.
+- _Address_: the base URL of the WebDAV folder, including "http://" or "https://", for example `https://<server>/<folder>`. The Tasks add their paths to this URL. To use a port other than the default for the scheme, include it, as in `https://<server>:<port>/<folder>`
+- _Port_: the local port on the Server computer that the Server opens its connections to the WebDAV server from. "80" on a new Connection. The port of the WebDAV server comes from *Address*
+- _Authentication type_: "Basic", the default on a new Connection, "Digest" or "NTLM"
+- _Username_: required. The WebDAV account
+- _Password_: the password of the WebDAV account
+- _Allowed SSL/TLS versions_: the versions the Server may use with an "https://" address. A new Connection allows *SSL version 2*, *SSL version 3*, *TLS version 1*, *TLS version 1.1* and *TLS version 1.2*, and not *TLS version 1.3*. If you clear all of them, the Server does not use SSL or TLS
 
-**Authentication type**
+:::warning
 
-Select the authentication type required by the server. Available options:
+"Basic" sends the user name and password in a form that anyone who can see the traffic can read. With an "http://" address, nothing protects them. Because the Server does not check the server certificate, an "https://" address protects them only on a network path that you trust. Use an "https://" address, or choose "Digest" or "NTLM".
 
-* _Basic_ - standard HTTP Basic authentication (default)
-* _Digest_ - HTTP Digest authentication
-* _NTLM_ - Windows (NTLM) authentication
- 
-**Username**
+:::
 
-The user name for the WebDAV account.
- 
-**Password**
+:::tip
 
-The password for the WebDAV account.
+SSL version 2, SSL version 3, TLS version 1 and TLS version 1.1 are obsolete. Select only *TLS version 1.2* and *TLS version 1.3*, unless the server cannot use them.
 
-**Allowed SSL/TLS versions**
+:::
 
-Some servers require certain versions of SSL/TLS. Check the versions that are allowed:
+### Proxy
 
-* _SSL version 2_
-* _SSL version 3_
-* _TLS version 1_
-* _TLS version 1.1_
-* _TLS version 1.2_
-* _TLS version 1.3_
- 
-**Manage Connections > Add > WebDAV > Connection settings > Proxy** tab
+![WebDAV Connection, Proxy tab, with the proxy type, address, port, test URL, authentication and credential fields and the Test button](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/WebDAV/Proxy.png)
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/WebDAV/Proxy.png)
-
-**Proxy type**
-
-Select the proxy type to be used.
- 
-**Address**
-
-The host name or IP address of the proxy server.
- 
-**Port**
-
-The port of the proxy server.
- 
-**Use credentials**
-
-The credentials that are associated with the account.
- 
-**Domain**
-
-The name of the domain to be created.
- 
-**Username**
-
-The user name to access the proxy server.
- 
-**Password**
-
-The password to access the proxy server.
+WebDAV Connections can use "HTTP Proxy", "SOCKS4" and "SOCKS5" proxies, and use *Authentication*. They send the proxy *Username* and *Password* when *Use credentials* is selected, never the WebDAV account.

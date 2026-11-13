@@ -5,49 +5,53 @@ hide_title: 'true'
 
 ## Task PDF - Decrypt
 
-The PDF - Decrypt Task decrypts existing PDF files with a password or a Certificate.
+The PDF - Decrypt Task removes the password or Certificate encryption from PDF files.
 
-**Decrypt > Main settings** sub tab
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Decrypt%20settings.png)
+### Decrypt: Main settings tab
 
-**Decryption type**
+![Main settings tab of the Decrypt Task, with the Certificate list and the Owner password and User password boxes in the Decrypt by group](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Decrypt%20settings.png)
 
-Select how to decrypt the PDF. Available options:
+The Task finds out how each file is encrypted and uses the matching setting. Set at least one of them.
 
-* _Certificate_ - decrypt using a Certificate from the [Certificates manager](../../global-certificates)
-* _Password_ - decrypt using the owner and/or user password
+- _Certificate_ (_Decrypt by ..._ group): the Certificate for a file that is encrypted with a Certificate; see [Global - Certificates](../../global-certificates)
+- _Owner password_: the owner password of a password-encrypted file
 
-Select an existing Certificate you have created or imported in [Certificates manager](../../global-certificates). Used when *Decryption type* is set to _Certificate_.
+  The Task tries the owner password first.
 
-**Password > Owner password**
+- _User password_: the user password, tried when the owner password does not open the file
 
-The owner password. Used when *Decryption type* is set to _Password_.
+### File filter tab
 
-**Password > User password**
+The ***File filter*** tab selects the PDF files to decrypt; see [File Filter](../../job-tasks-file-filter). If the filter has a Credential, the Task uses it while it reads and writes the files. When the logon with the Credential fails, the Task continues as the account that runs the Server and writes the error to the Server log.
 
-The user password. Used when *Decryption type* is set to _Password_.
+### Destination tab
 
-**Decrypt > File filter > Location** sub tab
+![Destination tab of the Decrypt Task, with the Save to.. group and the Folder and File mask boxes](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Decrypt%20Destination.png)
 
-This tab uses the common [file filter](../../job-tasks-file-filter.md) to choose which PDF files should be processed in this Task.
+- _Same file_ (_Save to.._ group): saves the decrypted file over the source file
+- _Same folder but use file mask_: saves the decrypted file in the folder set on the ***File filter*** tab, named by _File mask_
+- _Different folder and use file mask_: saves the decrypted file in _Folder_, named by _File mask_
+- _Folder_: the destination folder for _Different folder and use file mask_; click the folder button to browse
+- _File mask_: builds the new file name from the source file name, by the renaming standard set in [Main - Settings](../../main-settings)
 
-**Decrypt > Destination** sub tab
+  The default `*` keeps the source file name.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Decrypt%20Destination.png)
+:::warning
 
-**Save to**
+_Same file_ replaces the source file. With the default _File mask_ `*`, _Same folder but use file mask_ also replaces a source file that is in the File filter folder. A file that already has the new name is replaced without a prompt.
 
-Selects where the decrypted PDF is written. Available options:
+:::
 
-* _Save to same file_ - overwrite the source PDF in place
-* _Same folder with file mask_ - keep the original folder, but save under a different name (set the *File mask* below)
-* _Different folder with file mask_ - save under a different name in a different folder (set both *Folder* and *File mask* below)
+When _Include sub folders_ is checked on the File filter, _Same folder but use file mask_ saves every result in the File filter folder, not in the subfolder the source file came from.
 
-**Folder**
+### Output and errors
 
-The destination folder. Enabled when *Save to* is set to _Different folder with file mask_. Click the *Folder* icon to browse for the folder.
+The Task output contains "Success" for each file it decrypts. A file that is neither encrypted nor signed raises an error, and so does a password that does not open the file. A signed file that is not encrypted, or a password-encrypted file with both password boxes empty, is left as it is, and the Task reports success.
 
-**File mask**
+:::warning
 
-The file mask used to name the output file. Enabled when *Save to* is set to _Same folder with file mask_ or _Different folder with file mask_.
+When the selected Certificate no longer exists and no password is set, the file is not decrypted, and the Task reports success. With _Same folder but use file mask_ or _Different folder and use file mask_, the Task copies the source file to the destination before it decrypts it, so a file that is not decrypted stays there encrypted.
+
+:::

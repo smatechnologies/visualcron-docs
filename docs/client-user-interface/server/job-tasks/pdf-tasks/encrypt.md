@@ -5,69 +5,68 @@ hide_title: 'true'
 
 ## Task PDF - Encrypt
 
-The PDF - Encrypt Task encrypts existing PDF files with a password or a Certificate.
+The PDF - Encrypt Task encrypts PDF files with a password or a Certificate.
 
-**Encrypt > Main settings** sub tab
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Encrypt%20Settings.png)
+### Encrypt: Main settings tab
 
-**Encryption type**
+![Main settings tab of the Encrypt Task, with the Certificate and Password options, the Permissions list, the Encrypt algorithm list and the Encrypt metadata check box](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Encrypt%20Settings.png)
 
-Select how to encrypt the PDF. Available options:
+- _Certificate_ (_Encrypt by ..._ group): encrypts the files for the Certificate selected in the _Certificate_ list; this is the default
 
-* _Certificate_ - encrypt using a Certificate from the [Certificates manager](../../global-certificates)
-* _Password_ - encrypt using an owner and user password
+  See [Global - Certificates](../../global-certificates).
 
-**Certificate**
+- _Password_: encrypts the files with the _Owner password_ and the _User password_
 
-Select an existing Certificate you have created or imported in [Certificates manager](../../global-certificates). Used when *Encryption type* is set to _Certificate_.
+  Both passwords are required. Variables are supported.
 
-**Password > Owner password**
+- _Permissions_: the actions that are allowed on the encrypted document: "Annotations", "Assemble", "Extract", "ExtractAcc", "FillInForms", "HighQualityPrint", "LowQualityPrint" and "Modify"
 
-The owner password. Used when *Encryption type* is set to _Password_.
+  All are checked by default. The list is available when _Password_ is selected.
 
-**Password > User password**
+- _Encrypt algorithm_: "RC4/40 bits (Acrobat 4)", "RC4/128 bits (Acrobat 5)", "AES/128 bits (Acrobat 6, 7)", "AES/256 bits (Acrobat 9)" or "AES/256 bits (Acrobat X)"
 
-The user password. Used when *Encryption type* is set to _Password_.
+  The default is "RC4/40 bits (Acrobat 4)".
 
-**Password > Permissions**
+- _Encrypt metadata_: also encrypts the document metadata; unchecked by default
 
-Specifies the user rights (permissions). User rights define what actions can be performed when the user password is used to open the document.
+:::tip
 
-**Encryption algorithm**
+The AES options give stronger encryption than the RC4 options. Choose the strongest option that the readers of the documents support.
 
-The encryption algorithm that will be used for encrypting the document. Available options:
+:::
 
-* AES/256 (Acrobat X)
-* AES/256 (Acrobat 9)
-* AES/128 (Acrobat 6,7)
-* RC4/128 (Acrobat 5)
-* RC4/40 (Acrobat 4)
+### File filter tab
 
-**Encrypt metadata**
+The ***File filter*** tab selects the PDF files to encrypt; see [File Filter](../../job-tasks-file-filter). If the filter has a Credential, the Task uses it while it reads and writes the files. When the logon with the Credential fails, the Task continues as the account that runs the Server and writes the error to the Server log.
 
-When checked, the document metadata (such as its name and author) is encrypted along with the content.
+### Destination tab
 
-**Encrypt > File filter > Location** sub tab
+![Destination tab of the Encrypt Task, with the Save to.. group and the Folder and File mask boxes](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Encrypt%20Destination.png)
 
-This tab uses the common [file filter](../../job-tasks-file-filter) to choose which PDF files should be processed in this Task.
+- _Same file_ (_Save to.._ group): saves the encrypted file over the source file
+- _Same folder but use file mask_: saves the encrypted file in the folder set on the ***File filter*** tab, named by _File mask_
+- _Different folder and use file mask_: saves the encrypted file in _Folder_, named by _File mask_
+- _Folder_: the destination folder for _Different folder and use file mask_; click the folder button to browse
+- _File mask_: builds the new file name from the source file name, by the renaming standard set in [Main - Settings](../../main-settings)
 
-**Encrypt > Destination** sub tab
+  The default `*` keeps the source file name.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Encrypt%20Destination.png)
+:::warning
 
-**Save to**
+_Same file_ replaces the source file. With the default _File mask_ `*`, _Same folder but use file mask_ also replaces a source file that is in the File filter folder. A file that already has the new name is replaced without a prompt.
 
-Selects where the encrypted PDF is written. Available options:
+:::
 
-* _Save to same file_ - overwrite the source PDF in place
-* _Same folder with file mask_ - keep the original folder, but save under a different name (set the *File mask* below)
-* _Different folder with file mask_ - save under a different name in a different folder (set both *Folder* and *File mask* below)
+When _Include sub folders_ is checked on the File filter, _Same folder but use file mask_ saves every result in the File filter folder, not in the subfolder the source file came from.
 
-**Folder**
+### Output and errors
 
-The destination folder. Enabled when *Save to* is set to _Different folder with file mask_. Click the *Folder* icon to browse for the folder.
+The Task output contains "Success" for each file it encrypts. A file that is already encrypted, or that has a digital signature, raises an error, and so does a Certificate that no longer exists.
 
-**File mask**
+:::warning
 
-The file mask used to name the output file. Enabled when *Save to* is set to _Same folder with file mask_ or _Different folder with file mask_.
+With _Same folder but use file mask_ or _Different folder and use file mask_, the Task copies the source file to the destination before it encrypts it. When encryption fails, that copy stays at the destination unencrypted.
+
+:::

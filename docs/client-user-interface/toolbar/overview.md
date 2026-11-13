@@ -2,22 +2,23 @@
 sidebar_label: 'Overview'
 hide_title: 'true'
 ---
-
 ## Overview
 
-The toolbar is located in the top of the VisualCron client screen, under the main menu but over the Grid filter (Servers/Jobs/Tasks list).
+The toolbar is at the top of the Client window, under the main menu and above the grid filter and the main grid.
 
-!![](../../../static/img/Client%20User%20Interface/Toolbar/Toolbar.png)
+![The toolbar with the Server selection combo box and the Server and Job buttons](../../../static/img/Client%20User%20Interface/Toolbar/Toolbar.png)
 
-From left to right, the toolbar provides the following options:
+From left to right, the toolbar has:
 
-- [Server Selection](server-selection) - drop down list for switching between the configured servers.
-- [Manage Servers](manage-servers) - opens the Manage servers dialog.
-- [Disconnect/Connect](disconnect-connect) - connects or disconnects the selected server.
-- [Add Job](add-job) - creates a new Job.
-- [Edit Job](edit-job) - opens the selected Job for editing.
-- [Clone Job](clone-job) - clones the selected Job.
-- [Delete Job](delete-job) - deletes the selected Job.
-- [Run Job](run-job) - runs (or stops) the selected Job.
+- [Server Selection](server-selection): a combo box to switch between the configured Servers
+- [Manage Servers](manage-servers): opens the ***Manage servers*** window
+- [Disconnect/Connect](disconnect-connect): disconnects from or connects to the selected Server
+- [Add Job](add-job): creates a Job
+- [Edit Job](edit-job): opens the selected Job
+- [Clone Job](clone-job): clones the selected Job
+- [Delete Job](delete-job): deletes the selected Job
+- [Run Job](run-job): runs the selected Job, or stops it while it runs
+- ***Pause Job*** or ***Resume Job***: pauses or resumes the selected running Job. Shown only while the Job runs
+- ***Grid filter***: shows or hides the grid filter; see [Filter - Grid Filter](../interface/filter-grid-filter)
 
-The Job options are only available when connected to a server, and the Edit, Clone, Delete and Run options require a Job to be selected in the grid.
+The Job buttons are available only while the Client is connected to a Server. ***Edit Job***, ***Clone Job***, ***Delete Job*** and ***Run Job*** need a Job, or a Task of the Job, to be selected in the main grid.

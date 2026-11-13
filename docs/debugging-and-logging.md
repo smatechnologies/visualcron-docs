@@ -5,34 +5,50 @@ hide_title: 'true'
 
 ## Debug and Logging
 
-Additional debug entries may be written into the client/server log files or sent by email.
- 
-See below for more information.
+VisualCron writes Server and Client events to log files. To troubleshoot a problem, you can turn on extra debug entries in the Server log. You can also have VisualCron send an email when a Job or Task finishes.
 
-### Debug
+### Turn on extended debug logging
 
- Settings for debug log entries are found in the main menu _Manage -> Manage server settings -> Log settings_ tab.
- 
-Additional debug and log information is available for the [server](../client-user-interface/server/main-settings) and [log function](../client-user-interface/server/information-log).
+To turn on extended debug logging, complete the following steps:
 
-### Send Email
+1. On the ***Server*** tab, click *Settings*.
 
-The main email settings are found in the main menu Manage -> Manage server settings -> Email settings. Additional [email setting](../client-user-interface/server/main-settings) information is available.
- 
-For each Job that shall use the Notification email feature, the Notification options are checked for the specific Job/Task in the Edit/Add Job -> Notifications or the Edit/Add Task -> Notifications tabs.
+   The *Settings* window opens.
 
-### Technical Information
+2. Click the ***Log settings*** tab.
+3. Click the ***Settings*** tab.
+4. Select *Extended debug logging*.
+5. Click *Apply settings*.
 
-#### Some Important VisualCron Related Folders and Their Usage
+   The Server writes extra debug entries to its log.
 
-| Folder Name | Usage |
-|-------------|-------|
-| C:\WINDOWS\system 32\ | See [Remote and Customized Installation](../get-visualcron/remote-silent-customized-installation) |
-| C:\Program Files\VisualCron\ | VisualCron Default Installation Folder |
-| C:\Program Files\VisualCron\backup\VC-Settings.zip | Default File Name For Exported Settings |
-| C:\Program Files\Program Files\VisualCron\data\triggers\mail\\`{MailId}`\\`{MailID}`.eml | Default File Name For a Saved Email |
-| C:\Program Files\VisualCron\log\ | Default Log File Folder, See [Settings](../client-user-interface/server/main-settings) For More Information |
-| C:\Program Files\VisualCron\settings\jobs.xml | Default Job Settings File |
-| C:\Program Files\VisualCron\settings\timeexceptions.xml | Default File Name For Time Exceptions|
-| C:\Program Files\VisualCron\settings\users.xml | Default Users File Name, See "[Forgot My Password](../troubleshooting/forgot-my-password)" for more information |
-| C:\php\php.exe | Normal PHP File Name, See [PHP Scripting](../commands/scripts) For More Information |
+:::tip
+
+Extended debug logging writes many more entries and adds load to the Server. Clear *Extended debug logging* when you have finished troubleshooting.
+
+:::
+
+### Log files
+
+When *Log to file* -> *Server events* is selected on the same tab, the Server writes one log file a day, `log_server<yyyyMMdd>.txt`, to its log folder.
+
+When *Log to file* -> *Client events* is selected on the ***Log*** tab of *File* -> *Settings* -> *Client settings*, the Client writes one log file a day, `log_client<yyyyMMdd>.txt`. The Client log folder is by default "%LOCALAPPDATA%\VisualCron\log".
+
+For all log options, see [Settings - Log Settings](../client-user-interface/server/settings-log-settings). To view the Server log in the Client, see [Information - Log](../client-user-interface/server/information-log).
+
+### Send email
+
+To let the Server send email, complete the following steps:
+
+1. On the ***Server*** tab, click *Settings*.
+2. Click the ***Email settings*** tab.
+3. Enter the details of your mail server. See [Settings - Email Settings](../client-user-interface/server/settings-email-settings).
+4. Click *Apply settings*.
+
+   The Server can now send email.
+
+To send an email when a Job or Task starts, completes, succeeds or fails, add a Notification to the Job or Task on its ***Flow*** tab. See [Job - Flow](../client-user-interface/server/job-flow), [Task - Flow](../client-user-interface/server/task-flow) and [Global - Notifications](../client-user-interface/server/global-notifications).
+
+### Folders
+
+The settings, log and data folders are under the VisualCron installation folder, by default "C:\Program Files (x86)\VisualCron" on 64-bit Windows. The output cache and the log database are in "C:\ProgramData\VisualCron\output". See [Settings - Folders](../client-user-interface/server/settings-folders).

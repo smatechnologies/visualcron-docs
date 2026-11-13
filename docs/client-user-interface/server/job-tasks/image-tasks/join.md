@@ -5,52 +5,52 @@ hide_title: 'true'
 
 ## Task Image - Join
 
-The Image join Task joins two images side by side horizontally or top to bottom vertically.
- 
-**Note about Image join:**
+The Image join Task joins two images, side by side horizontally or top to bottom vertically, and saves the result as a new image.
 
-There may be restrictions in image property deviations for files to be joined successfully.
- 
-**Image join > File filter for file 1** sub tab
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-In the File filter tab you define the first image to be joined. Read more about file filter [here](../../../server/job-tasks-file-filter).
+Images can fail to join when their properties differ too much.
 
-**Image join > File filter for file 2** sub tab
+### File filter for file 1 tab
 
-In the File filter tab you define the second image to be joined. Read more about file filter [here](../../../server/job-tasks-file-filter).
- 
-**Image join > Destination** sub tab
+Selects the first image; see [Job Tasks - File filter](../../job-tasks-file-filter). The Task uses only the first file that the filter finds.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20join.png)
+### File filter for file 2 tab
 
-**Join mode**
+Selects the second image, in the same way. The Task uses only the first file that the filter finds.
 
-Select the direction in which to join the two images. Options: Horizontal, Vertical.
+### Destination tab
 
-**Destination folder**
+![Image join Task, Destination tab, with Join mode, Destination folder, File name and Overwrite options](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20join.png)
 
-The folder path where the joined image will be saved.
+- _Join mode_: "Horizontal" (default) or "Vertical"
+- _Destination folder_: the folder to save the joined image in. Accepts Variables
+- _Use same folder as first file_: saves in the folder of the first image instead of _Destination folder_
+- _File name_: the file name of the joined image. Accepts Variables
+- _Use same file name as first file_: uses the file name of the first image instead of _File name_
+- _Overwrite options_: what to do when a file with the destination name already exists
+  - "Overwrite - always if existing" (default)
+  - "Overwrite - if newer"
+  - "Overwrite - if destination size is", with a size condition: "Same", "Smaller" (default), "Larger", "Smaller or larger" or "Different"
+  - "Append if destination is smaller - otherwise overwrite"
+  - "Append if destination is smaller - otherwise overwrite if newer"
+  - "Append if destination is smaller - otherwise skip"
+  - "Do not overwrite if existing"
 
-**Use same folder as first file**
+:::warning
 
-When enabled, the joined image is saved to the same folder as the first source file. Disables the **Destination folder** field.
+The overwrite options do not protect an existing file. Only "Overwrite - always if existing", "Append if destination is smaller - otherwise overwrite" and "Overwrite - if destination size is" with "Same" delete the existing file before the join. With every other option the Task does not delete the existing file before the join; whether the join then replaces it or fails is not controlled by the overwrite option. No option appends. To keep an existing file, use a destination name that is not in use, for example with a Variable in _File name_.
 
-**File name**
+:::
 
-The file name to use for the joined image.
+:::warning
 
-**Use same file name as first file**
+Do not select both _Use same folder as first file_ and _Use same file name as first file_. The destination is then the first image itself: with "Overwrite - always if existing", the Task deletes the first image before it joins the images, so the join fails and the first image is lost.
 
-When enabled, the joined image uses the same file name as the first source file. Disables the **File name** field.
+:::
 
-**Overwrite options**
+### Output and errors
 
-Select the behavior when a file with the same name already exists at the destination:
+When the join succeeds, the path of the joined image is the Task output.
 
-* **Overwrite - always if existing** — Always overwrite the existing file.
-* **Overwrite - if newer** — Overwrite only if the source file is newer.
-* **Overwrite - if destination size is** — Overwrite based on a size comparison. Enables the size condition dropdown (Same, Smaller, Larger, Smaller or larger, Different).
-* **Append if destination is smaller - otherwise overwrite** — Append content if destination is smaller; otherwise overwrite.
-* **Append if destination is smaller - otherwise overwrite if newer** — Append if destination is smaller; otherwise overwrite only if newer.
-* **Append if destination is smaller - otherwise skip** — Append if destination is smaller; otherwise skip.
-* **Do not overwrite if existing** — Skip the file if it already exists.
+When either File filter finds no file, the Task fails with a file-not-found error. When the images cannot be joined, the Task fails. To change how the Task responds to these errors, see [Task - On error](../../task-on-error).

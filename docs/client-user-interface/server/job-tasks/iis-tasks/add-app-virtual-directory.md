@@ -5,42 +5,36 @@ hide_title: 'true'
 
 ## Task IIS - Add App Virtual Directory
 
-The IIS - Add App Virtual Directory Task creates a new virtual directory within an existing application in Internet Information Services (IIS). A virtual directory maps a URL path segment to a physical folder on the server, allowing content from different locations to appear under a single application.
+The IIS - Add App Virtual Directory Task creates a virtual directory in an existing application of a website, in the IIS of the VisualCron Server computer, using an IIS Connection. A virtual directory maps a URL path to a physical folder, so that content from different locations appears under one application.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/IIS%20Tasks/Add%20a%20new%20app%20virtual%20dir.png)
+![IIS - Add a new app virtual dir Task settings, with the Connection, Application parameters and Virtual directory parameters groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/IIS%20Tasks/Add%20a%20new%20app%20virtual%20dir.png)
 
-**Connection**
+:::warning
 
-To use IIS Tasks you need to create an [IIS Connection](../../connection-iis) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+This Task uses an IIS Connection; see [Connection - IIS](../../connection-iis). The Task always works on the IIS of the VisualCron Server computer: the Connection's _Address_ is not used, and the changes are made as the account of the VisualCron Server service, which must be allowed to change IIS. The Connection's _Username_ and _Password_ are used only for network access.
 
-**Application parameters**
+:::
 
-**Web site name**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-The name of the parent website. Click the *Refresh* icon to populate the drop-down list with available websites.
+### IIS - Add a new app virtual dir tab
 
-**Application name**
+- _Connection_: the IIS Connection. Required. Click the _Settings_ icon to open _Manage Connections_
+- _Site name_ (_Application parameters_ group): the name of the website. Click the _Refresh_ icon to list the websites of the VisualCron Server computer. The name must match exactly, including case
+- _Application name_: the path of the application, for example "/" for the root application of the website or "/myapp". Required. Click the _Refresh_ icon to list the applications of the website. The path must match exactly, including case
+- _Virtual directory_: the virtual path of the new virtual directory in the application, for example "/images"
+- _Path_ (_Virtual directory parameters_ group): the physical folder that the virtual directory maps to. Click the _Browse_ icon to select a folder
+- _Logon method_: how IIS logs on with the user in _Credential_ to reach the folder: "Interactive", "Batch", "Network" or "Clear text". When empty, the IIS default is used
+- _Credential_: the user that IIS uses to reach the folder. The Task writes the Credential's user name and password into the IIS configuration of the virtual directory. When no Credential is selected, the IIS default is used. Click the _Settings_ icon to open _Manage credentials_; see [Global - Credentials](../../global-credentials)
 
-The name of the parent application under which the virtual directory will be created. Click the *Refresh* icon to populate the drop-down list with available applications for the selected website.
+:::warning
 
-**Virtual directory path**
+The Task copies the user name and password of the selected _Credential_ into the IIS configuration of the virtual directory. IIS keeps its own copy: changing or deleting the Credential in VisualCron later does not change IIS.
 
-The virtual path (alias) for the new virtual directory within the application (e.g., /images).
+:::
 
-**Virtual directory parameters**
+### Output and errors
 
-**Path**
+On success, the output is "Success". When the website or the application is not found, the Task does nothing and writes no output, and the Task reports success.
 
-The physical file system path that the virtual directory maps to. Click the *Browse* button to select a folder.
-
-**Logon method**
-
-The authentication method IIS uses when accessing the physical path with the specified credential. Available options are:
-- *Interactive* – Interactive logon session
-- *Batch* – Batch logon session
-- *Network* – Network logon (credentials passed over the network)
-- *ClearText* – Clear text logon
-
-**Credential**
-
-The credential used to access the physical path. Select a Credential in the drop-down or click the *Settings* icon to open *Manage credentials* to add or edit Credentials.
+The ***TimeOut*** tab does not stop this Task.

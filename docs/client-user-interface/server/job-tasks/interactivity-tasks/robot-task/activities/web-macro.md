@@ -5,18 +5,20 @@ hide_title: 'true'
 
 ## Robot Task Activities - Web Macro
 
-The **Web Macro** category contains activities that drive a web browser: navigating, clicking, filling in fields, extracting data, and transferring files.
+The Web Macro activities drive a web browser from a Robot Task: they navigate, click, fill in fields, extract data, and download and upload files.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Web%20Macro/Web%20Macro.png)
+![The Web Macro category in the activity list, with Checked Element, Click Element, Copy Link, Copy Value, Create Tab, Download File, Extract Data, Extract Table, Inject JS Script, Key Event, Launch New Instance, Navigate to URL, Open Browser, Populate Field, Print Page, Respond to JS Dialog, Save Page Source, Set Proxy, Take Screenshot and Upload File](../../../../../../../static/img/RPA/Robot%20Tasks/Web%20Macro/Web%20Macro.png)
 
-### Required Nesting
+These activities use the same browser and the same step settings as the Web Macro Task. See [Task Net - Web Macro](../../../net-tasks/web-macro).
 
-Web Macro activities must be nested correctly or they will not run:
+### Required nesting
 
-- All Web Macro activities must be inside a parent **Open browser** activity.
-- All child Web Macro activities must be inside a parent **Launch new instance** activity.
+Web Macro activities run only when they are nested correctly:
 
-```
+- Every Web Macro activity, including _Launch New Instance_, must be inside an _Open Browser_ activity
+- Every other Web Macro activity must also be inside a _Launch New Instance_ activity
+
+```text
 Sequence
   Open browser
     Do
@@ -28,238 +30,224 @@ Sequence
           ...
 ```
 
-Rather than building this by hand, you can record the actions in a Web Macro task and copy them into a Robot Task. See [Recording Web Macro for Robot Task](../recording-web-macro-for-robot-task).
+Rather than building this by hand, record the actions in a Web Macro Task and copy them into the Robot Task. See [Recording Web Macro for Robot Task](../recording-web-macro-for-robot-task).
+
+Each Web Macro activity has its own settings window, with a ***Wait*** tab:
+
+- _Wait before execute_: the wait in milliseconds before the activity runs
+- _Wait after execute_: the wait in milliseconds after the activity runs
 
 ---
 
-### Open browser
+### Open Browser
 
-Opens the browser window. This is the outermost Web Macro container.
+Opens the browser window. This is the outermost Web Macro activity.
 
-- Click **Edit action** in the context menu to record web macro actions.
-- Click **Browser settings** in the context menu to open the browser settings window, which offers the same options as the Web Macro task.
+- Click _Edit action_ in the shortcut menu to record Web Macro actions
+- Click _Browser settings_ in the shortcut menu to open the browser settings window, which has the same options as the Web Macro Task
 
-Browser settings include:
+The browser settings include:
 
-| Setting | Description |
-|---|---|
-| Load images | Load images on the page. Disabling this speeds up page loads. |
-| Store cookies | Persist cookies between runs. |
-| Block popups | Suppress popup windows. |
-| Lite mode | Reduced feature browser mode. |
-| Disable WebSecurity | Disable browser web security restrictions. |
-| Override User-Agent | Send a custom User-Agent string. |
-| Override referer | Send a custom referer value. |
-| Accept-Language | The Accept-Language header sent with requests, for example `en-US`. |
-| Google API | GoogleClientID, GoogleAPIKey, and GoogleClientSecret values. |
+- _Load images_: load the images on the page. Clearing it makes pages load faster
+- _Store cookies_: keep cookies between runs
+- _Block popups_: block popup windows
+- _Lite mode_: run the browser with fewer features
+- _Disable WebSecurity_: turn off the browser's web security restrictions
+- _Override User-Agent_: send a custom User-Agent string
+- _Override referer_: send a custom referer value
+- _Accept-Language_: the Accept-Language header sent with requests, for example `en-US`
+- _Google API_: the _GoogleClientID_, _GoogleAPIKey_ and _GoogleClientSecret_ values
 
 ---
 
-### Launch new instance
+### Launch New Instance
 
-Launches a new web instance. Every other Web Macro activity goes inside this activity's **Actions** body.
+Launches a new web instance. All other Web Macro activities go inside this activity's _Actions_ body.
 
-Click **Edit action** to open the settings window.
-
-Each Web Macro activity has its own settings window that includes a **Wait** tab:
-
-| Setting | Description |
-|---|---|
-| Wait before execute | Wait time in milliseconds before the activity executes. |
-| Wait after execute | Wait time in milliseconds after the activity executes. |
+Click _Edit action_ to open the settings window.
 
 ---
 
-### Click element
+### Click Element
 
-Clicks the specified web element.
+Clicks a web element.
 
-| Setting | Description |
-|---|---|
-| Allow to ignore the element | Continue the sequence if the element is not found by the given path, instead of throwing an exception. |
-| Wait element | Timeout in seconds the activity waits for the element to appear. |
-| Relative | Identify the element by its path. |
-| Frame path | The CSS selector for the frame containing the element, if the element is inside a frame. |
-| Element path | The path to the element. Supports CSS selectors and XPath. |
-| By position | Click the element by X and Y coordinates. |
-| By search | Find the element by searching. Useful when the element's path changes between runs. |
+- _Allow to ignore the element_: continue the sequence if no element is found at the path, instead of failing
+- _Wait element_: how long, in seconds, the activity waits for the element to appear
+- _Relative_: find the element by its path
+- _Frame path_: the CSS selector of the frame that holds the element, when the element is inside a frame
+- _Element path_: the path to the element, as a CSS selector or XPath
+- _By position_: click the element at its X and Y position
+- _By search_: find the element by searching, which helps when the element's path changes between runs
 
-**How By search works:** all elements matching the **Selector** are collected, the specified **Attribute** value is read from each one, each value is tested against the **Regex value**, and the element at the ordinal **Position** in the filtered results is returned.
+**How By search works:** all elements that match the _Selector_ are collected, the _Attribute_ value of each is read and tested against the _Regex value_, and the element at the _Position_ in the filtered results is used.
 
-For full detail on all three addressing modes, see [Element Path](element-path).
+For all three ways to find an element, see [Element Path](element-path).
 
-> **Allow to ignore the element** is the only reliable error handling option for Web Macro activities. A TryCatch activity cannot catch a Web Macro exception, because the sequence is forcibly stopped. See [Error Handling](error-handling).
+:::note
 
----
+_Allow to ignore the element_ is the error handling option for Web Macro activities. Web Macro activities do not have the _Error settings_ property. See [Error Handling](error-handling).
 
-### Checked element
-
-Checks or unchecks the specified web element. Same settings and interface as **Click element**, plus:
-
-| Setting | Description |
-|---|---|
-| State | The checkbox state to apply. |
+:::
 
 ---
 
-### Copy link
+### Checked Element
 
-Copies the link of the specified web element to the clipboard. The **Source** tab holds the same element addressing settings as **Click element**.
+Checks or clears a web element, such as a check box. The settings are the same as for _Click Element_, plus:
 
-Use the **Variable** tab to save the link to a variable instead:
-
-| Setting | Description |
-|---|---|
-| Job Variable | Save the link to the named Job variable. |
-| User Variable | Save the link to the named User variable. |
-| Variable type | The data type of the target variable, for example String. |
+- _State_: the state to set
 
 ---
 
-### Copy value
+### Copy Link
 
-Copies the value of the specified web element to the clipboard. Element addressing settings are the same as **Click element**.
+Copies the link of a web element to the clipboard. The ***Source*** tab has the same element settings as _Click Element_.
 
----
+To save the link to a variable instead, use the ***Variable*** tab:
 
-### Download file
-
-Forces a download from a specified URL, or clicks a web element to start a download.
-
-| Setting | Description |
-|---|---|
-| Force download | Download the file directly from a URL address. |
-| Original file/path | The URL address of the file. |
-| Credential | The credential used to access the save location. |
-| Folder | The folder the file is saved to. |
-| File mask | The file name to save as. |
-| Overwrite options | What to do if the target file already exists. |
-
-If you do not have a direct URL, uncheck **Force download** to enable the **Element** tab, then fill in the element properties for the link or button that starts the download.
+- _Job Variable_: save the link to this Job Variable
+- _User Variable_: save the link to this User Variable
+- _Variable type_: the data type of the variable, for example "String"
 
 ---
 
-### Extract data
+### Copy Value
 
-Extracts data from the specified web element.
-
-### Extract table
-
-Extracts an HTML table from the page. Use this to pull a table straight into a [List Variable](list-variable) for row by row processing.
+Copies the value of a web element to the clipboard. The element settings are the same as for _Click Element_.
 
 ---
 
-### Inject JS script
+### Download File
 
-Injects and executes JavaScript code in the page. Enter the JavaScript to run in the **Inject JS** tab.
+Downloads a file from a URL, or clicks a web element that starts a download.
 
-Use this for interactions that the standard activities cannot express, such as scrolling an element into view or reading a value computed by the page.
+- _Force download_: download the file straight from a URL
+- _Original file/path_: the URL of the file
+- _Credential_: the Credential used to reach the folder the file is saved to
+- _Folder_: the folder the file is saved to
+- _File mask_: the file name to save as
+- _Overwrite options_: what to do if the file already exists
 
----
-
-### Respond to JS dialog
-
-Responds to a JavaScript dialog box.
-
-| Setting | Description |
-|---|---|
-| Input dialog | The message entered when an input dialog box appears. |
-| Button dialog | The button invoked when a dialog box appears: **Yes/Ok** or **No/Cancel**. |
-
-Click **Mask value** to hide the input text, for example when entering a password.
+Without a direct URL, clear _Force download_ to turn on the ***Element*** tab, then fill in the element settings for the link or button that starts the download.
 
 ---
 
-### Populate field
+### Extract Data
 
-Populates the specified web element with the specified value. Element addressing is configured on the **Source** tab, the value on the **Populate** tab.
+Extracts data from a web element.
 
-| Setting | Description |
-|---|---|
-| Value | The value that will be populated. |
-| Mask value | Hides the value text, for example when entering a password. |
-| Milliseconds per character | Time in milliseconds between sending each character, simulating typing. |
-| Is Enter | Send the Enter key after populating the field. |
+### Extract Table
 
-For guidance on targeting form fields reliably when a page reorders them, see [Web Input - Element Path](../web-input-element-path).
+Extracts an HTML table from the page. Use this to put a table straight into a [List Variable](list-variable) for row-by-row processing.
 
 ---
 
-### Print page
+### Inject JS Script
+
+Runs JavaScript code in the page. Type the code on the ***Inject JS*** tab.
+
+Use this for actions the other activities cannot do, such as scrolling an element into view or reading a value the page calculates.
+
+---
+
+### Key Event
+
+Sends a key event to the page.
+
+---
+
+### Respond to JS Dialog
+
+Responds to a JavaScript alert, confirm or prompt window.
+
+- _Input dialog_: the text to enter when a prompt window opens
+- _Button dialog_: the button to click when the window opens: "Yes/Ok" or "No/Cancel"
+
+Click _Mask value_ to hide the text, for example when it is a password.
+
+---
+
+### Populate Field
+
+Fills in a web element with a value. The element is set on the ***Source*** tab and the value on the ***Populate*** tab.
+
+- _Value_: the value to fill in
+- _Mask value_: hide the value, for example when it is a password
+- _Milliseconds per character_: the wait in milliseconds between characters, which simulates typing
+- _Is Enter_: press Enter after filling in the field
+
+For help with finding form fields when a page changes their order, see [Web Input - Element Path](../web-input-element-path).
+
+---
+
+### Print Page
 
 Prints the web page.
 
-| Setting | Description |
-|---|---|
-| Select printer | The printer to use, chosen from the printers installed on the computer. |
-| Printer settings | Page range, number of copies, duplex, and orientation. |
+- _Select printer_: the printer to use, from the printers installed on the computer
+- _Printer settings_: the page range, number of copies, duplex and orientation
 
 ---
 
-### Save page source
+### Save Page Source
 
-Saves the source code of the web page to the specified variable. Select the Job or User variable that receives the page source.
+Saves the source of the web page to a variable. Choose the Job Variable or User Variable that receives the page source.
 
 ---
 
 ### Navigate to URL
 
-Navigates to the specified URL address.
+Goes to a URL.
 
-| Setting | Description |
-|---|---|
-| URL | The URL address to navigate to. |
+- _URL_: the URL to go to
 
 ---
 
-### Create tab
+### Create Tab
 
-Creates a new tab. The settings window contains the **Wait** tab only.
-
----
-
-### Take screenshot
-
-Takes a screenshot of a web page and saves it to a specified file.
-
-| Setting | Description |
-|---|---|
-| Credential | The credential used to access the specified path. |
-| Folder | The folder path the image is saved to. |
-| File name | The file name for the final screenshot image. |
-| Overwrite options | What to do if the specified file already exists. |
-| Screenshot type | **Window** captures the visible part of the window. **Page** captures the entire page. |
+Creates a new tab. The settings window has only the ***Wait*** tab.
 
 ---
 
-### Upload file
+### Take Screenshot
 
-Clicks the specified web element and uploads a file. Fill in the **File filter** fields to select the files to upload.
+Takes a screenshot of the web page and saves it to a file.
 
-The file filter offers tabs for Location, Content, Date, Size, Attributes, Result, and Test, including:
-
-| Setting | Description |
-|---|---|
-| Credentials | The credential used to access the folder. |
-| Folder | The folder to look for files in. |
-| Include sub folders | Search subfolders as well. |
-| Exclude folder(s) | Folders to skip. |
-| Include file mask | The mask matching files to upload, with **Is regex** and **Case sensitive** options. |
-| Use file exclusion | Enable an exclusion mask, with its own **Is regex** option. |
+- _Credential_: the Credential used to reach the folder
+- _Folder_: the folder the image is saved to
+- _File name_: the file name of the image
+- _Overwrite options_: what to do if the file already exists
+- _Screenshot type_: "Window" captures the visible part of the page, and "Page" captures the whole page
 
 ---
 
-### Set proxy settings
+### Upload File
 
-Uses the specified proxy server to access the web page.
+Clicks a web element and uploads a file. Fill in the **File filter** fields to choose the files to upload.
+
+The file filter has the tabs ***Location***, ***Content***, ***Date***, ***Size***, ***Attributes***, ***Result*** and ***Test***. Its settings include:
+
+- _Credentials_: the Credential used to reach the folder
+- _Folder_: the folder to look for files in
+- _Include sub folders_: search the subfolders too
+- _Exclude folder(s)_: folders to skip
+- _Include file mask_: the mask for the files to upload, with the _Is regex_ and _Case sensitive_ options
+- _Use file exclusion_: turn on an exclusion mask, with its own _Is regex_ option
+
+---
+
+### Set Proxy
+
+Uses the proxy server set in the activity to reach the web page.
 
 ---
 
 ### Tips
 
-- Record the sequence in a Web Macro task first, then copy it into the Robot Task. It is much faster than assembling the nesting by hand and guarantees the structure is correct. See [Recording Web Macro for Robot Task](../recording-web-macro-for-robot-task).
-- Replace recorded positional paths with attribute based CSS selectors before putting a task into production. Recorded positions break the first time the page layout changes.
-- Set **Wait element** rather than adding fixed waits between activities. It continues as soon as the element appears.
-- Enable **Allow to ignore the element** on activities where a missing element is an acceptable outcome, such as dismissing a cookie banner that may or may not be shown.
-- Use **Mask value** on any **Populate field** or **Respond to JS dialog** activity that handles a password, so the value does not appear in the task log.
-- Turning off **Load images** in browser settings noticeably speeds up page loads on image heavy sites.
+- Record the sequence in a Web Macro Task first, then copy it into the Robot Task. That is much faster than building the nesting by hand, and the structure is always right. See [Recording Web Macro for Robot Task](../recording-web-macro-for-robot-task)
+- Replace recorded position-based paths with attribute-based CSS selectors before the Task goes into production. Recorded positions stop working the first time the page layout changes
+- Set _Wait element_ rather than adding fixed waits between activities. The activity continues as soon as the element appears
+- Check _Allow to ignore the element_ on activities where a missing element is acceptable, such as closing a cookie banner that may or may not be shown
+- Use _Mask value_ on any _Populate Field_ or _Respond to JS Dialog_ activity that handles a password, so that the value is hidden
+- Clearing _Load images_ in the browser settings makes pages with many images load noticeably faster

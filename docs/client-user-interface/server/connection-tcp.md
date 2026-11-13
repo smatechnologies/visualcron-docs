@@ -5,54 +5,32 @@ hide_title: 'true'
 
 ## Connection - TCP
 
-The TCP Connection stores the IP address, port, and encoding properties used to create TCP listeners or clients and perform simple message-based communication.
- 
-### About TCP
+The TCP Connection stores the address, port and encoding settings that the [Net - TCP](job-tasks/net-tasks/tcp) Task and the [Event Trigger - TCP](event-trigger-tcp) Trigger use for plain TCP messaging. The Task uses it as a client that connects to a server. The Trigger uses it as a listener that waits for clients. TCP Connections have no encryption and no ***Proxy*** tab, so messages are sent unencrypted.
 
-The Transmission Control Protocol (TCP) is one of the main protocols of the Internet protocol suite. TCP provides reliable, ordered, and error-checked delivery of a stream of bytes between applications running on hosts communicating via an IP network. TCP is connection-oriented, and a connection between client and server is established before data can be sent. The server must be listening (passive open) for connection requests from clients before a connection is established.
+### Common settings
 
-The TCP Connection is used in the [Net - TCP](../server/job-tasks/net-tasks/tcp) Task (which acts as a TCP client) and the [Event trigger - TCP](event-trigger-tcp) Trigger (which acts as a TCP server, or listener).
+![TCP Connection, Common settings tab, with the Test button](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/TCP/TCP.png)
 
-**Manage Connections > Add > TCP > Common settings** tab
+The ***Common settings*** tab is the same for every Connection type that has it; see [Common settings](global-connections#common-settings). For TCP Connections:
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/TCP/TCP.png)
+- _Test_: the Server opens a TCP connection to *Address* and *Port*, and reports whether it succeeded. It does not send a message
+- _Timeout_: how long, in seconds, the Task and the Trigger wait for data once they start reading
+- _Code page_: the encoding of the text messages that are sent and received
 
-**Name**
+### Main settings
 
-A descriptive name for the connection to distinguish it from other connections.
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-**Group**
+![TCP Connection, Main settings tab, with the Server, TCP Listener and Log traffic groups](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/TCP/Settings.png)
 
-The group that the connection is a part of.
- 
-**Timeout**
+- _Address_: for the Task, the host name or IPv4 address of the server to connect to. For the Trigger, the local IP address to listen on, for example "0.0.0.0" for all local addresses
+- _Port_: for the Task, the port of the server. For the Trigger, the port to listen on. A new Connection shows "21"; enter the port you need
+- _Maximum number of connected clients_: for the Trigger, how many clients can be connected at the same time. "0" means no limit. *Reset* sets it to "0"
+- _Log sent messages to task output_: writes the messages that VisualCron sends into the Task output
+- _Log received messages to task output_: writes the messages that VisualCron receives into the Task output
 
-The amount of time, in seconds, that a TCP client (both in the [Net - TCP](../server/job-tasks/net-tasks/tcp) Task and the [Event trigger - TCP](event-trigger-tcp) Trigger) will wait to receive data once a read operation is initiated.
- 
-**Code page**
+:::warning
 
-The encoding used for text messages sent by the TCP client to the TCP server and vice versa.
- 
-**Manage Connections > Add > TCP > Connection settings** tab
+Enter only a host name or an IPv4 address in *Address*, without a scheme, a port or a path. When the text contains ":", "/" or "\\", the Client splits it at those characters and saves only the second part. An IPv6 address, an address followed by a colon and a port, or an address followed by a path is saved wrongly, and the Task or Trigger cannot connect.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/TCP/Settings.png)
-
-**Address**
-
-The host address of the TCP server. Can be an IP address in dotted-quad notation (IPv4), colon-hexadecimal notation (IPv6), or a DNS name (TCP Task only).
- 
-**Port**
-
-For the TCP Task: the port number of the remote host to connect to. For the TCP Trigger: the port on which to listen for incoming connection attempts. Default: 9090.
- 
-**Maximum number of connected clients**
-
-The maximum number of simultaneously connected TCP clients allowed when acting as a TCP listener. Set to 0 for an unlimited number of clients. Click **Reset** to restore the default value.
-
-**Log sent messages to task output**
-
-When checked, all messages sent from VisualCron to the remote TCP server are logged and stored in the Task output.
-
-**Log received messages to task output**
-
-When checked, all messages received by VisualCron from the remote TCP server are logged and stored in the Task output.
+:::

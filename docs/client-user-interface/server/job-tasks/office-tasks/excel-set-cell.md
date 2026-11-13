@@ -5,121 +5,142 @@ hide_title: 'true'
 
 ## Task Office - Excel - Set Cell
 
-The Excel - Set cell Task sets one or more values in an Excel sheet starting on a specific position.
- 
-This task is similar to the Excel - Create Task. The difference is that this Task updates an existing document (or multiple documents).
- 
-The update is based on a Variable or direct value and the update starts in the cell position/reference and sheet that the user has specified. From that start point VisualCron will create a "table" based on content. The actual content could be a single cell but it can also be a table.
- 
-For example if the start position is 2,2 and the value is:
+The Excel - Set cell Task writes a value, or a table of values, into existing Excel workbooks, starting at a cell you choose. It is similar to the [Excel - Create](excel-create) Task, but updates workbooks instead of creating new ones.
 
-"col1row1,"col2row1"
+The input is a value or a Variable. Each line of the input becomes a row and each field a cell, starting at the start cell and going right and down. For example, with the start cell at row 2, column 2, a field separator of "Comma" and this input:
 
-"col1row12,"col2row2"
+```text
+col1row1,col2row1
+col1row2,col2row2
+```
 
-The output will be placed in 2,2 to 3,3:
- 
-**Excel - Set cell > Source** sub tab
+the values are written to the cells from row 2, column 2 to row 3, column 3 ("B2" to "C3").
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Set%20Cell.png)
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-**Input value**
+The Task settings are on the ***Excel - Set cell*** tab, which has the sub tabs ***Source***, ***File filter***, ***Column format***, ***Target*** and ***Output***.
 
-The input value can either be hard coded string or Variable. It is important that input value matches format so that lines and columns are split in the right way. Please note that if you need another format than Text format in excel you need to specify column format in "Column format" tab.
- 
+### Source tab
+
+![Source tab of the Excel - Set cell Task, with the Input value box and the Format group](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Set%20Cell.png)
+
+- _Input value_: The value or Variable to write
+
+  Its format must match the settings below so that rows and fields are split correctly. Values are written as text unless the ***Column format*** tab sets another type.
+
 **Format**
 
-**Field separator**
+- _Field separator_: The character between fields, "Tab" by default
+- _Text qualifier_: The character around field values, if any; none by default
 
-Select the character used to separate fields in the input value.
+  A separator inside a qualified value still splits the field.
 
-**Text qualifier**
+- _Line break_: The character between rows, "CrLf" by default
 
-Select the character used to surround field values in the input value.
+  With an Excel 97-2003 workbook and "CrLf", an empty row is written between the rows of the input. Use "Lf" or "Cr" with input that matches, or a ".xlsx" workbook.
 
-**Line break**
+### File filter tab
 
-Select the character used to indicate a new row in the input value.
- 
-**Excel - Set cell > File filter** sub tab
+![File filter tab of the Excel - Set cell Task, with the Location settings for the workbooks to update](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Set%20Cell%20File.png)
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Set%20Cell%20File.png)
+The ***File filter*** tab selects the workbooks to update; see [Task - File filter](../../job-tasks-file-filter). The Credential on its ***Location*** tab is used to read the workbooks.
 
-If you have selected File as source you are able to set the standard VisualCron [File filter](../../../server/job-tasks-file-filter) values.
- 
-**Excel - Set cell > Column format** sub tab
+When no file matches and the _Include file mask_ names one file without wildcards, the Task creates that workbook in the filter folder.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Set%20Cell%20Column.png)
+:::warning
 
-In the columns tab you can override column format. Default format is `@` which is a string. You can see different format options when editing or adding a column.
- 
-**Add->Format**
+When no file matches a file mask with wildcards, the Task writes nothing, and the Task reports success.
 
-[http://www.ozgrid.com/Excel/CustomFormats.htm](http://www.ozgrid.com/Excel/CustomFormats.htm)
- 
-**Excel - Set cell > Target** sub tab
+:::
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Set%20Cell%20Target.png)
+### Column format tab
 
-**Use first worksheet** / **Use specific worksheet**
+![Column format tab of the Excel - Set cell Task, with the Add/Edit column window open](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Set%20Cell%20Column.png)
 
-Select **Use first worksheet** to use the first worksheet in the workbook. Select **Use specific worksheet** to choose a specific worksheet.
+The list sets the format of the written columns, in order: the first entry applies to the first field of each row, and so on. Click _Add_, _Edit_ or _Delete_ to change the list.
+
+The _Add/Edit column_ window has these settings:
+
+- _Type_: How the field is written: "Text", "Number", "Date" or "Formula"
+
+  A "Number" or "Date" field that cannot be converted is written as text. A "Formula" field gets a leading "=" if it has none.
+
+- _Format_: The Excel number format of the cells, "@" (text) by default
+
+  For the format codes, see [http://www.ozgrid.com/Excel/CustomFormats.htm](http://www.ozgrid.com/Excel/CustomFormats.htm).
+
+- _Horizontal alignment_: The alignment of the cells
+- _Width_ and _Auto fit_: The column width
+
+### Target tab
+
+![Target tab of the Excel - Set cell Task, with the Worksheet and Cell coordinates groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Set%20Cell%20Target.png)
 
 **Worksheet**
 
-Select the worksheet to update. Only available when **Use specific worksheet** is selected.
+- _Use first worksheet_: Writes to the first worksheet
+- _Use specific worksheet_: Writes to the worksheet with the name you enter; it can contain Variables
 
-**Clear cells before updating**
+  If a ".xlsx" workbook has no worksheet with that name, the Task adds it.
 
-When checked, clears the target cells before writing the new values.
- 
+- _Clear cells before updating_: Clears the whole worksheet before the values are written, not only the target cells
+
+:::warning
+
+_Clear cells before updating_ removes every value on the worksheet. With a ".xlsx" workbook it also removes the cell formatting.
+
+:::
+
 **Cell coordinates**
 
-**Cell by position**
+- _Cell by position_: The start cell by _Row_ and _Column_, starting at "1"
+- _Cell by reference (i.e. A3)_: The start cell by _Cell reference_, for example "A3"
 
-Identifies the starting cell by its row and column position.
+The coordinates can contain Variables.
 
-* **Row** — The row number of the starting cell.
-* **Column** — The column number of the starting cell.
+### Output tab
 
-**Cell by reference (i.e. A3)**
-
-Identifies the starting cell by its reference.
-
-* **Cell reference** — The cell reference (for example, A3).
- 
-**Excel - Set cell > Output** sub tab
-
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Set%20Cell%20Output.png)
+![Output tab of the Excel - Set cell Task, with the Save to.., Credentials and Password protection groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Office%20Tasks/Excel%20Set%20Cell%20Output.png)
 
 **Save to..**
 
-* **Same file** — Overwrites the original source file.
-* **Same folder but use file mask** — Saves to the same folder with a new file name specified in File mask.
-* **Different folder and use file mask** — Saves to a different folder with a new file name.
+- _Same file_: The default; saves the updated workbook over the original file
+- _Same folder but use file mask_: Saves to the folder of the ***File filter*** tab with the name from _File mask_
+- _Different folder and use file mask_: Saves to _Folder_ with the name from _File mask_
+- _Folder_: The destination folder
+- _File mask_: The name of the saved file, "*.xlsx" by default
 
-**Folder**
+_Folder_ and _File mask_ can contain Variables.
 
-The destination folder path. Only available when **Different folder and use file mask** is selected.
+:::warning
 
-**File mask**
+With _Same file_, the default, each workbook is saved over the original file. An existing file with the destination name is also replaced without warning.
 
-The file name to use for the saved file. Available when **Same folder but use file mask** or **Different folder and use file mask** is selected.
+:::
 
-**Credentials**
+- _Credentials_: The Credential used to save ".xlsx" workbooks; see [Credentials](../../global-credentials)
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
- 
+  An Excel 97-2003 destination file is created with the Credential of the ***File filter*** tab.
+
+  Select a Credential in the combo box, or click the _Settings_ icon to add or edit Credentials.
+
 **Password protection**
 
-**Use password when accessing file**
+- _Use password when accessing file_: Opens protected workbooks with the password you enter, and saves them with the same password
+- _Remove password when saving_: With _Use password when accessing file_, saves the workbooks without a password
 
-Check this option and enter a password if the Excel file is password protected.
+  The Task does not clear _Use password when accessing file_ after it removes the password.
 
-**Remove password when saving**
+- _Only remove password_: Writes no values, so only the password settings apply; the ***Source*** tab is not available
 
-When checked, removes the password from the file after writing. You need to specify the password for accessing the file the first time. After writing, the **Use password when accessing file** option will be unchecked so that the Task does not try to open it with a password anymore.
+  To remove a password, also select _Use password when accessing file_ and _Remove password when saving_.
 
-**Only remove password**
+### Output and errors
 
-When checked, the Task only removes the password from the file without writing any cell values. The Source tab is disabled when this option is selected.
+The output of the Task is the path of each workbook it saved.
+
+:::warning
+
+With an Excel 97-2003 workbook (".xls"), errors while the workbook is opened, updated or saved are not reported: the workbook is left unchanged or, with _Same file_, can be left empty, and the Task reports success. Check the workbook after the Task runs, or use a ".xlsx" workbook, where such errors stop the Task.
+
+:::

@@ -5,15 +5,35 @@ hide_title: 'true'
 
 ## Jobs - Jobs
 
-A defined Job is managed either from the main toolbar or by mouse right-click on a specific Job in the Server/Job/Task grid. To manage a Job you open the _Add Job, Edit Job or Clone Job_ dialogs.
+A defined Job is managed either from the main toolbar or by mouse right-click on a specific Job in the Server/Group/Job/Task grid. To manage a Job you open the _Add Job, Edit Job or Clone Job_ dialogs.
  
-For each Job type, some _Main settings_ must be defined. In order to run something automatically, one or more Triggers and one or more _Tasks_ must be defined for each Job. Finally _Time exceptions, Conditions, Timeout and Flow_ may be defined for each Job.
+Every Job has [Main settings](job-main-settings). To run automatically, it also needs at least one Trigger and one Task. The Job window has these tabs:
+
+* [Main settings](job-main-settings)
+* [Triggers](job-triggers)
+* [Time exceptions](job-time-exceptions)
+* [Conditions](job-conditions)
+* [Tasks](job-tasks)
+* [TimeOut](job-timeout)
+* [Flow](job-flow)
+* [Agent distribution](job-agent-distribution) (Pro Subscription only)
  
-The only mandatory setting in the _Add Job/Edit Job/Clone Job_ windows is the _Name_ information. When also the Task settings has been defined, the Job can be tested by the Test Job button (in the bottom of the _Add Job/Edit Job/Clone Job_ windows).
+The only mandatory setting is *Name*. To try the Job, click *Test job* at the bottom of the window. VisualCron runs a temporary, inactive copy of the Job once, with its Job conditions checked, and removes the copy afterward. You need Execute permission for the Job and permission to add Jobs. If you do not have Delete permission, the copy is not removed.
+
+:::warning
+
+*Test job* runs the Tasks for real: files are copied or deleted and messages are sent.
+
+:::
  
 :::note 
 
 When you _Clone Job_, please make sure that all underlying variables in Tasks or triggers are updated correctly.
-The Job settings are stored by VisualCron in the jobs.xml file, by default stored in the "C:\Program Files (x86)\VisualCron\settings\" folder.
+
+:::
+
+:::note
+
+The Job settings are stored in the jobs.xml file, by default in the "C:\Program Files (x86)\VisualCron\settings\" folder. The folder is set by the "ServerSettingsFolder" registry value (see [Error Loading Server Settings](../../troubleshooting/error-loading-server-settings)).
 
 :::

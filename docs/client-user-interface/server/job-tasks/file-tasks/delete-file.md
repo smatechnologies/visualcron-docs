@@ -13,7 +13,7 @@ The [file filter](../../../server/job-tasks-file-filter) sub tab contains the st
  
 **Delete file > Delete settings** sub tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Delete%20File.png)
+![Add Task dialog for the Delete file Task, file filter Location tab](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Delete%20File.png)
 
 **Delete empty sub folders**
 

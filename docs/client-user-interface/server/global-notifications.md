@@ -5,91 +5,126 @@ hide_title: 'true'
 
 ## Global - Notifications
 
-Notifications are since version 7.0.0 a way to create global, independent Tasks. The Notifications are stored centrally and are called from [Job Flow](../../client-user-interface/server/job-flow) or [Task Flow](../../client-user-interface/server/task-flow). Any Task can be used as a Notification. The purpose of Notifications was originally to create, e.g. an Email Task once and then be able to re-use it in Job and Task Flow whenever you wanted to receive a Job or Task email with output or similar.
- 
-A notification is defined either from the main menu **Server > Global objects > Notification**s dialog or from the [Job Flow](../../client-user-interface/server/job-flow) or [Task Flow](../../client-user-interface/server/task-flow).
+A notification is a Task that is stored once on the Server and run from the Flow of any Job or Task. A typical notification is an Email Task that reports a failure. Use a notification when several Jobs or Tasks should do the same thing on an event: when you change the notification, every Flow that runs it uses the new settings.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Notifications/Notifications.png)
+This page covers the _Manage Notifications_ window, the window where you add and edit a notification, the Variables you can use in a notification, what to check when a notification does not run, and the Notification log.
 
-The Manage Notifications window shows configured notifications in a grid. Each row displays the notification type icon and the **Description** of the notification.
+To open the window, click _Server_ -> _Global objects_ -> _Notifications_. The Settings icon next to the notification list in [Job Flow](job-flow) and [Task Flow](task-flow) opens the same window. [Load Balancing](../servers/load-balancing-flows) actions can also run a notification.
 
-The toolbar above the grid provides the following buttons:
+### Manage Notifications window
 
-* **Add** — opens the Add notification dialog so you can pick a notification (Task) type to create
-* **Edit** — edit the selected notification
-* **Clone** — create a copy of the selected notification
-* **Delete** — delete the selected notification
-* **Audit log** — open the [Audit log](../tools/objects-audit-log) for notifications
+![Manage Notifications window with the Add, Edit, Delete, Clone and Audit log toolbar and one notification, Email - Send, in the Name column](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Notifications/Notifications.png)
 
-Right‑clicking a notification opens a context menu that includes the toolbar commands plus the following additional options:
+The grid lists each notification with the icon of its Task type and its _Name_, sorted by name. Double-click a notification to edit it.
 
-* **Versions** — view the version history for the notification
-* **Object relations** — view other VisualCron objects (Jobs, Tasks, Triggers) that reference this notification
-* **Notification log** — open the [Notification Log](#notification-log) filtered for this notification
-* **Export** — export the selected notification
+The toolbar has these commands:
 
-### Add / Edit notification
+- _Add_: choose the Task type of the new notification
+- _Edit_: edit the selected notification
+- _Delete_: delete the selected notifications
+- _Clone_: copy the selected notification, see [Clone or delete a notification](#clone-or-delete-a-notification)
+- _Audit log_: open the [Audit log](../tools/objects-audit-log) for all notifications
 
-The Add/Edit Notification dialog contains the following shared controls at the top:
+Right-click a notification for these commands:
 
-* **Notification type** — a dropdown that selects which kind of Task is used as the notification (Email, File, Event Log, Syslog, Popup, Sound, Database, Message, etc.). Switching the type changes the configuration tab below
-* **Description** — a free‑text name shown in the notification list and used to reference the notification from Job/Task Flow
-* **Execute credentials** — the [Credential](../server/global-credentials) used to execute the notification. Click the manage button next to it to open Manage Credentials
-* **Notification Id** link (visible when editing only) — left‑click to copy the internal notification ID to the clipboard; right‑click to change the ID
+- _Add_, with the Task types as a submenu
+- _Edit_ and _Delete_
+- _Audit log_: the Audit log for the selected notification
+- _Versions.._: the [version history](../tools/audit-log-versions) of the notification
+- _Object relations_: the Jobs and Tasks whose Flow runs the notification, see [Object relations](../tools/object-relations)
+- _Notification log_: the [Notification log](#notification-log) for the selected notifications
+- _Export ..._: export the selected notifications with [Export settings](../file/export-settings)
+- _Send to connection ..._ and _Send to server connection ..._: send a copy of the notification to another VisualCron Server
 
-The tab below the shared controls displays the configuration specific to the selected notification type. For specific instructions for each notification type, see the help page for the relevant Task.
- 
-Below is a screenshot from Task Flow of a Task which, On error, also sends a Notification 'test'.
+Press Delete to delete the selected notifications, or Ctrl+A to select all of them.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Notifications/Job%20Notification%20Flow.png)
+### Add or edit a notification
 
-:::info Note
+1. In the _Manage Notifications_ window, click _Add_ and choose the Task type.
+2. On the ***Main settings*** tab, change _Name_ to a name that says what the notification does, for example "Email ops on failure". A new notification is named after its Task type, for example "Email - Send", so several notifications can otherwise look the same in the Flow list.
+3. On the tab named after the Task type, fill in the settings of that Task. See the page for that Task.
+4. Click _OK_.
 
-If cloning a notification, object relations are not cloned.
+The _Add/Edit Notification_ window has these tabs:
+
+- ***Main settings***: _Task type_ (choose a Task type from the list, or type in the search box to find one), _Name_ and _Encoding_
+- The Task type tab: the settings of the Task, including any Connection or Credential it uses
+- ***Output***: only for Task types that have output settings, for example SQL or Web Service. See the page for that Task type
+
+Click _Variables_ in the status bar to insert a Variable, see [Variables](#variables).
+
+When you edit a notification, the window shows the link _Copy Notification id_. Click it to copy the notification's Id to the clipboard. Right-click it to change the Id: enter the new Id, which must be a GUID. VisualCron shows how many objects refer to the notification. Click _Yes_ to change the Id and update the Jobs and Tasks that use it, _No_ to see the list of objects first, or _Cancel_. If another notification already uses that Id, VisualCron asks for a different value. The new Id is saved on the Server as soon as you click _Yes_; clicking _Cancel_ in the _Add/Edit Notification_ window does not undo it. Scripts or API calls that use the old Id are not updated.
+
+### Clone or delete a notification
+
+_Clone_ opens a copy of the selected notification, with all its settings, in the _Add/Edit Notification_ window. The copy gets a new Id and is saved when you click _OK_. It has the same name as the original, so change the name to tell them apart. Jobs and Tasks that run the original keep running the original.
+
+When you delete a notification that other objects use, VisualCron tells you how many objects use it. Open _Object relations_ to see them before you delete.
+
+:::warning
+
+A Flow action that runs a deleted notification runs nothing. Change those Flows to run another notification before you delete one.
 
 :::
 
-**Variables**
+### Run a notification from Flow
 
-As usual you can use any Variable in any field within VisualCron.
- 
-View additional [variable](../../client-user-interface/server/global-variables) information.
- 
-:::info Note
+In the Flow of a Job or a Task, choose the event, for example _On error_, and select _Run Notification_ with the notification to run. See [Job Flow](job-flow) and [Task Flow](task-flow). This example shows a Job's Flow that runs the notification "Email - Send" on error:
 
-All variables are not available at all times. The variables are highly dependant on when you choose to notify. For example, specific Task variables are only available when you choose to Notify on start or Notify on complete. Also, if you choose to the variable Output you will get the output of the previous run when using when a Task has completed. The current output is not available until "when a Task has completed".
+![Edit Job window on the Flow tab, and the Job Flow window with the event On error and Run Notification set to Email - Send](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Notifications/Job%20Notification%20Flow.png)
+
+### Variables
+
+You can use [Variables](global-variables) in any field of a notification. The notification runs as its own Task, started by the Flow of a Job or a Task. This decides what the Variables refer to:
+
+- `{JOB(Active|<property>)}`: the Job whose Flow ran the notification, or the Job of the Task whose Flow ran it
+- `{TASK(PrevTask|<property>)}`: the Task whose Flow ran the notification. In a Job's Flow, this is the last Task that ran, or for _On running longer than_ the Task that is still running. In the Variables window, choose _PrevTask (previous or last context sensitive Task)_ to insert it
+- `{TASK(Active|<property>)}`: the notification itself
+
+For example, an Email notification run on _On error_ can use the subject `{JOB(Active|Name)} failed` and the body `{TASK(PrevTask|Name)}: {TASK(PrevTask|StdErr)}`. `StdOut` and `StdErr` have a value only if that Task stores its standard output or standard error, see [Task - Main Settings](job-tasks-task-main-settings).
+
+The values of the Task that ran the notification are current only for events after that Task has run, such as _On success_, _On error_ and _On complete_. For _On start_ and _On running longer than_, they still hold the values of the Task's previous run.
+
+:::note
+
+A notification run by a Job's Flow on _On start_ runs before any Task of the Job. `{TASK(PrevTask|...)}` then returns the values of the notification itself.
 
 :::
 
-### Notification Log
+### When a notification does not run
 
-The Notification Log shows when each notification was fired, what event triggered it, and the resulting output. Use it to audit notifications and to verify that they ran as expected.
+- Check that the Flow of the Job or Task has a _Run Notification_ action for the event that happened, and that the action's condition, for example _Always_ or _If exit code_, matches. See [Run a notification from Flow](#run-a-notification-from-flow)
+- Check in _Object relations_ that the notification is still used by that Flow. A Flow action that runs a deleted notification runs nothing
+- Open the [Notification log](#notification-log). If the run is listed, check _Exit code_ and _Output (error)_
 
-**Filter bar**
+### Notification log
 
-At the top of the log, the filter bar provides the following controls:
+The Notification log shows each run of a notification: when it ran, which Flow event ran it, and its exit code and output. To open it, right-click one or more notifications in the _Manage Notifications_ window and click _Notification log_. The window title is _Notification history_, followed by the notification's name when you open it for one notification. The ***Historic - Notification*** tab of the [Log](information-log) window shows the same log. There you can also limit it to a Job and a Task, and the grid has no _Job name_ and _Task name_ columns.
 
-* **Notification** — a checkbox dropdown of all configured notifications. Tick one or more notifications to limit the log to just those entries
-* **Text filter** — free‑text search across the visible rows
-* **Clear filter** — remove the text filter
-* **From** / **To** date pickers — limit the log entries to the chosen date range (defaults to today)
-* **Get** — fetch log entries from the server using the current filter settings
-* **Filter…** — open the advanced filter dialog for additional criteria
+#### Filter the log
 
-**Log grid**
+- The notification list at the top: a checkbox for each notification. The notifications you selected before opening the log are checked. When you close the list, the dates are reset to the logged runs of the checked notifications and the log reloads. If no notification is checked, the log is cleared
+- The _Filter.._ box at the top of the notification list: type to narrow the list by name or description. The button next to the box clears it
+- The two date boxes: the date range, from the first date to the second. When the window opens, the range covers all logged runs of the checked notifications, and those runs are loaded. Each date covers the whole day. If there are no logged runs, the date boxes and _Get_ are unavailable
+- _Get_: load the runs in the date range from the Server
+- The _Filter..._ button: show or hide the filter row of the log grid, where you can filter on any column
 
-The log grid shows the following columns:
+:::tip
 
-* **Task type** — icon indicating the notification's underlying Task type
-* **Notification name** — the description of the notification that fired
-* **Event date/time** — when the notification was fired
-* **Exit code** — the exit code returned by the notification Task
-* **Execution time** — how long the notification took to execute
-* **Standard output** — the captured standard output from the notification
-* **Standard error** — the captured standard error from the notification
-* **Event type** — icon + text describing which event triggered the notification (for example _Start_, _Complete_, _Error_)
-* **Job name** — the Job that triggered the notification (hidden when filtering by a specific notification)
-* **Task name** — the Task that triggered the notification (hidden when filtering by a specific notification)
-* **Result** — icon indicating the overall outcome (success, failure, pending)
+When every notification shown in the list is checked, closing the list resets the dates but does not reload the log. Click _Get_ to reload it.
 
-Log entries are sorted in descending order by event date/time so the most recent entries appear first.
+:::
+
+#### Log grid
+
+The newest runs are listed first. The grid has these columns (the order on screen can differ):
+
+- The Task type icon of the notification
+- The notification name
+- _Event time_: when the notification started
+- _Exit code_ and _Execution time_
+- _Output (standard)_ and _Output (error)_: double-click a cell to open the output, if the notification stored it
+- _Event type_: the Flow event that ran the notification: _On start_, _On error_, _On success_, _On complete_ or _On running longer than_
+- An icon that shows success, failure or still waiting
+- _Job name_ and _Task name_: the Job and Task whose Flow ran the notification. These columns are shown only when you open the log from the _Manage Notifications_ window
+- _Result_: double-click a cell to open the result, if there is one

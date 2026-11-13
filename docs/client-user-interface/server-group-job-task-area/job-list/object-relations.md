@@ -5,14 +5,15 @@ hide_title: 'true'
 
 ## Object Relations
 
-When a Job is defined, right-click on the Job or Task in the Server/Group/Job/Task grid and select Object relations to open the **Object finder** window.
- 
-This **Object relations** tab uses the same structure as the main menu **Tools > Objects > Object relations** option. See [here](../../tools/object-relations) for more information.
- 
-**Job > Object relations**
+The ***Object relations*** item opens the ***Object finder*** window on the ***Object relations*** tab, with the selected Job or Task already chosen.
 
-![](../../../../static/img/Client%20User%20Interface/Toolbar/Object%20Relations.png)
+1. Right-click the Job or Task in the Server/Group/Job/Task grid.
+2. Click ***Object relations***.
 
-![](../../../../static/img/Client%20User%20Interface/Toolbar/Object%20Relations%202.png)
+The tab is the same as ***Tools*** -> ***Objects*** -> ***Object relations***; see [Objects - Object Relations](../../tools/object-relations).
 
-The **Object finder > Object search** tab, in the above window, opens a window which uses the same structure as the main menu **Tools > Objects > Object search** option. See [here](../../tools/object-search) for more information.
+![Job right-click menu with the Object relations item highlighted](../../../../static/img/Client%20User%20Interface/Toolbar/Object%20Relations.png)
+
+![Object finder window on the Object relations tab with a Job selected](../../../../static/img/Client%20User%20Interface/Toolbar/Object%20Relations%202.png)
+
+The ***Object finder*** window also has the ***Object text search/replace*** tab, see [Objects - Object Search](../../tools/object-search), and the ***Object replace/merge*** tab, see [Objects - Object Replace/Merge](../../tools/object-replace-merge).

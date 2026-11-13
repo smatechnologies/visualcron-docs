@@ -5,70 +5,63 @@ hide_title: 'true'
 
 ## Robot Task Activities - Text
 
-The **Text** category contains a single activity for typing text into an application.
+The Text activity types text into an application, either into the window that has focus or into a window or element it finds first.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Text/Text.png)
+![The Text category in the activity list, with the Send Text activity](../../../../../../../static/img/RPA/Robot%20Tasks/Text/Text.png)
 
 ---
 
 ### Send Text
 
-Finds the specified process, window, or element if one is given, sets focus to it, and simulates typing text. If nothing is specified, the text is typed into the active window.
+Types the text in _InputText_ one character at a time. What the activity does first depends on which search properties are filled in:
 
-If a process name, window, or element is specified and cannot be found, the activity throws an exception.
+- Only _ProcessName_: the activity checks that the process is running, then types into the window that has focus. It does not give the process focus
+- _ProcessName_ and _WindowTitle_ or _WindowHandle_: the activity waits for the window, gives it focus and types into it
+- _ProcessName_, _WindowTitle_ and one of _Name_, _ClassName_ and _AutomationId_: the activity waits for the element, gives it focus and types into it
+- None of these: the activity types into the window that has focus
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Text/Send%20Text.png)
+If the process, window or element is not found, the activity fails.
 
-Use the **Click to select an element** link to pick the target in the UI and fill the search properties automatically.
+![The Send Text activity with the Click to select an element link and the Text field](../../../../../../../static/img/RPA/Robot%20Tasks/Text/Send%20Text.png)
+
+Click _Click to select an element_ to pick the target in the UI and fill in the search properties.
 
 #### Properties
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Text/Settings.png)
+![The Properties pane of the Send Text activity, with the Find Element, Input, Misc and Utils groups](../../../../../../../static/img/RPA/Robot%20Tasks/Text/Settings.png)
 
 **Find Element**
 
-| Property | Description |
-|---|---|
-| AutomationId | The AutomationId property, used to identify elements by id. |
-| ClassName | The ClassName property of the AutomationElement. |
-| Name | The Name property of the AutomationElement. |
-| ProcessName | The owner process name of the element the activity will search in. |
-| Text | The text of the element, compared when searching for the element. Supports wildcard patterns. |
-| WindowHandle | Gets the window directly from a handle. |
-| WindowTitle | The window title to search for. Supports wildcard patterns. |
+- _AutomationId_: the automation ID of the element
+- _ClassName_: the class name of the element
+- _Name_: the name of the element
+- _ProcessName_: the name of the process that owns the window
+- _Text_: the text of the element. Supports the wildcards `*`, `?` and `#`
+- _WindowHandle_: the handle of the window, when it is known. Default: "0"
+- _WindowTitle_: the title of the window. Supports the wildcards `*`, `?` and `#`. Default: `*` (any window)
 
 **Input**
 
-| Property | Description |
-|---|---|
-| Case | The case applied to the text being sent: **LowerCase**, **UpperCase**, or **None**. |
-| InputText | The text that will be entered. |
-| Mode | How existing content in the field is handled. See the table below. |
-| TypingDelay | Delay in milliseconds after each character, simulating typing from a keyboard. |
-
-**Mode options**
-
-| Mode | Behavior |
-|---|---|
-| Overwrite | Clears all existing text before entering the new text. |
-| Append | Moves to the end position before entering text. |
-| InsertInFront | Moves to the start position before entering text. |
-| None | Does nothing first, just enters the text at the current position. |
+- _Case_: changes the case of the text before it is typed: "None", "UpperCase" or "LowerCase". Default: "None"
+- _InputText_: the text to type. The _Text_ field on the activity sets the same value. A line break is typed as Enter
+- _Mode_: what happens before the text is typed. Default: "None"
+  - "Overwrite": presses Ctrl+A and then Delete, which clears the field
+  - "Append": presses Ctrl+End, which moves to the end
+  - "InsertInFront": presses Ctrl+Home, which moves to the start
+  - "None": types at the current position
+- _TypingDelay_: the wait in milliseconds before each character. Default: "100"
 
 **Utils**
 
-| Property | Description |
-|---|---|
-| WaitForElement | Timeout in milliseconds to wait for the element to appear. Throws an exception if the timeout elapses and the element has not appeared. |
-| Wait before | Wait in milliseconds before the activity executes. By default the playback speed from settings is used. Set a value to override it. |
-| Wait after | Wait in milliseconds after the activity executes. By default the playback speed from settings is used. Set a value to override it. |
+- _WaitForElement_: how long to wait for the window or element, in milliseconds. Default: "10000"
+- _Wait before_ and _Wait after_: the wait in milliseconds before and after the activity runs. When empty, the playback speed from the Robot Task settings is used
 
 ---
 
 ### Tips
 
-- Use **Overwrite** mode when populating a field that may already contain a value, such as a form being reused across loop iterations. Leaving it as **None** appends to whatever is already there.
-- Set **TypingDelay** to a non zero value for applications that validate or reformat input as you type. Sending an entire string instantly can cause characters to be dropped.
-- Prefer identifying the target with **AutomationId** where available. It is the most stable identifier and does not change when the window is resized or the layout changes.
-- For text fields on a web page, use the [Web Macro](web-macro) **Populate field** activity instead, which targets elements by CSS selector or XPath. See [Web Input - Element Path](../web-input-element-path).
-- To hide a sensitive value such as a password from the task log, use the [Web Macro](web-macro) **Populate field** activity's **Mask value** option, or store the value in a VisualCron Credential and reference it as a variable.
+- Use "Overwrite" when filling in a field that may already hold a value, such as a form that is reused in each loop iteration. With "None", the text is typed at the current position next to whatever is there
+- Raise _TypingDelay_ for applications that check or reformat input as it is typed. Text sent too fast can lose characters
+- Identify the target by _AutomationId_ where the application has one. It is the most stable identifier and does not change when the window is resized or the layout changes
+- Fill in _WindowTitle_ as well as _ProcessName_ when the text must go to a specific window. With only _ProcessName_, the text goes to whichever window has focus
+- For text fields on a web page, use the [Web Macro](web-macro) _Populate Field_ activity instead, which finds elements by CSS selector or XPath. See [Web Input - Element Path](../web-input-element-path)

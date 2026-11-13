@@ -5,76 +5,34 @@ hide_title: 'true'
 
 ## Connection - XendApp
 
-The XendApp Connection stores connect and logon properties for the device messaging service XendApp.
+The XendApp Connection stores the address, sign-in and security settings that the [Messaging - XendApp](job-tasks/messaging-tasks/xendapp) Task uses to connect to XendApp.
+
+XendApp is a platform for delivering instant messages to any device (phone/tablet). It is a free service which uses notification services to deliver a message. You can create an account on the [XendApp registration page](https://xendapp.com/Register.aspx).
+
+:::warning
+
+The XendApp Connection connects to the XendApp services over HTTP. The user name, the password and the messages are sent without encryption. Use this Connection only on a network that you trust.
+
+:::
  
-XendApp is a platform for delivering instant messages to any device (phone/tablet). It is a free service which uses notification services to deliver a message. Registration is done [here](https://xendapp.com/Register.aspx).
- 
-**Manage Connections > Add > XendApp > Common settings** tab
+### Common settings
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/XendApp/XendApp.png)
+![XendApp Connection, Common settings tab with the Test button](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/XendApp/XendApp.png)
 
-**Test**
+The ***Common settings*** and ***Proxy*** tabs are the same for every Connection type that has them; see [Common settings](global-connections#common-settings) and [Proxy](global-connections#proxy).
 
-It is possible to test the connection once you have set all settings. Click the Test button to start the test.
- 
-**Name**
+For a XendApp Connection, _Timeout_ and _Code page_ are not used. _Test_ runs on the Client computer, not on the Server, through the proxy set on the ***Proxy*** tab. It checks _Username_ and _Password_ with XendApp and shows whether they are correct and whether the account is approved.
 
-The unique name for the Connection.
+### Main settings
 
-**Group**
+![XendApp Connection, Main settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/XendApp/Settings.png)
 
-The group that the connection is a part of.
- 
-**Timeout**
+These fields are on ***Connection settings*** -> ***Main settings***. _Username_ is required.
 
-The connection timeout in seconds. Connection will fail after this time period.
- 
-**Code page**
+- _Username_: the user name of your XendApp account
+- _Password_: the password of your XendApp account
+- _Create an account at xendapp.com_: opens the XendApp registration page in your browser
 
-Code page being used.
+### Proxy
 
-**Manage Connections > Add > XendApp > Connection settings** tab
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/XendApp/Settings.png)
-
-**Username**
-
-The username for the registered XendApp account. Register [here](https://xendapp.com/Register.aspx) for free.
- 
-**Password**
-
-The password for the registered XendApp account. Register [here](https://xendapp.com/Register.aspx) for free.
-
-**Create an account at xendapp.com**
-
-A link that opens the XendApp registration page where you can create a free account.
-
-**Manage Connections > Add > XendApp > Proxy** tab
-
-**Proxy type**
-
-Select the proxy type to be used.
-
-**Address**
-
-The host name or IP address of the proxy server.
-
-**Port**
-
-The port of the proxy server.
-
-**Use credentials**
-
-The credentials that are associated with the account.
-
-**Domain**
-
-The domain of the proxy server.
-
-**Username**
-
-The user name to access the proxy server.
-
-**Password**
-
-The password to access the proxy server.
+The ***Proxy*** tab is on the ***Connection settings*** tab. The XendApp Task on the Server, and _Test_ on the Client computer, both connect through the proxy set here. With any _Proxy type_ other than "No proxy", they use the proxy as an HTTP proxy.

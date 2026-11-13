@@ -5,34 +5,33 @@ hide_title: 'true'
 
 ## Copy Link Address Step
 
-The Copy link address step copies the link URL from a web element.
+The Copy link address action of the [Task Net - Web Macro](web-macro) copies the link URL from a web element and saves it to a Variable. The action window is titled _Action - Copy link_.
 
-**Source tab**
+To add the action while recording, complete the following steps in the _Web recorder_ window:
 
-Defines the web element to copy the link from. Uses the standard element selection interface.
+1. Right-click the element.
+2. Click _Add Copy Link Address action_.
 
-**CopyLink tab**
+### Source tab
 
-**Link**
+Sets the web element to copy the link from; see [Element Path](element-path). _Relative_ and _By search_ are available on this action, and _By position_ is not.
 
-The link URL to copy. You can enter a value manually or click the Variables button to insert a variable.
+### CopyLink tab
 
-**Variable tab**
+- _Link_: the link URL recorded for the element, stored encrypted
 
-Defines where to save the copied link value.
+  You can enter a value. To fill the field with a Variable, click the Variables icon next to the field; the Variable replaces the text in the field. To see the available Variables, click _Variables_. Playback copies the link of the element on the ***Source*** tab, and _Link_ holds the value recorded for it.
 
-**Job Variable**
+### Variable tab
 
-When selected, saves the result to a job variable. Select the target variable from the dropdown. Click the Refresh button to reload the list of available variables.
+Sets where the copied link is saved, in the _Save to_ group. A Variable is required.
 
-**User Variable**
+- _Job Variable_: selected by default; saves the link to the Job Variable selected in the list
+- _User Variable_: saves the link to the User Variable selected in the list
+- _Variable type_: the data type used when the value is saved, "String" (default), "Int32", "Double" or "Boolean"
 
-When selected, saves the result to a user variable. Select the target variable from the dropdown. Click the Refresh button to reload the list of available variables.
+To reload a list of Variables, click the refresh icon next to it.
 
-**Variable type**
+### Wait tab
 
-The data type to use when saving the value. Available options: _String_, _Int32_, _Double_, _Boolean_. Default is _String_.
-
-**Wait tab**
-
-The wait tab controls how long the step should wait before performing the step and after performing the step (in milliseconds).
+Sets how long the action waits before it runs (_Wait before execute_) and after it runs (_Wait after execute_), in milliseconds. Both are "500" by default.

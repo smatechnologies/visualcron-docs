@@ -13,14 +13,14 @@ Twitter integration described on this page is deprecated from **VisualCron v13.2
 
 ## Task Social - Twitter - Follow/Unfollow Tweet
 
-The Social - Twitter Follow/Unfollow user Task follows or unfollows a user in Twitter.
+The Twitter - Follow/Unfollow user Task follows or unfollows a user in Twitter.
 
-![](../../../../../static/img/tasksocialtwitterfollowunfollowuser.png)
+![Twitter - Follow/Unfollow user tab, Follow sub tab with the Connection, the Follow user and Unfollow user options and the User name box](../../../../../static/img/tasksocialtwitterfollowunfollowuser.png)
 
-**Connection**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To use Twitter Tasks you need to create a Connection first. You do that in the [Twitter Connection](../../../server/connection-twitter) dialog.
- 
-**User name**
+### Twitter - Follow/Unfollow user: Follow tab
 
-Twitter user to follow or unfollow.
+- _Connection_: the Twitter Connection to use; see [Twitter Connection](../../../server/connection-twitter)
+- _Follow user_ (default) or _Unfollow user_: whether to follow or unfollow the user
+- _User name_: the Twitter user name, without "@"

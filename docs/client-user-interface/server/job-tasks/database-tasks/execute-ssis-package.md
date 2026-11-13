@@ -5,74 +5,47 @@ hide_title: 'true'
 
 ## Task Database - Execute SSIS Package
 
-This Task lets you execute local SSIS packages. VisualCron must reside on the server machine to be able to execute this Task. To execute remote SSIS packages you can use the **SQL** Task and type Job.
- 
-**Execute SSIS package** tab
+The Execute SSIS package Task runs an SSIS (SQL Server Integration Services) package from a file or from a SQL Server database. SQL Server Integration Services must be installed on the VisualCron Server. To run a package on a remote server, use the ***Job*** sub tab of the [SQL Task](sql) with a SQL Server Agent job for the package, or the [Execute SSISDB Package](execute-ssisdb-package) Task for a package in an SSIS catalog.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/Execute%20SSIS%20Package.png)
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-**MSSQL server version**
+### Execute SSIS package tab
 
-Select the SQL Server version of the MSSQL installation. Supported versions are 2005, 2008, 2012, 2014, 2016, 2017, and 2019.
- 
-**Execute in 32 bit mode**
+![Execute SSIS package tab with the MSSQL server version, Credential for trusted connection and package location settings and the Variables list](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Database%20Tasks/Execute%20SSIS%20Package.png)
 
-Check this if your MSSQL version is running in 32 bit mode.
- 
-**Credential**
+**Main settings**
 
-A set of Credentials that is used to impersonate the whole SSIS call. Click the Settings icon to open the Manage credentials dialog.
+- _MSSQL server version_: The version of SQL Server Integration Services installed on the VisualCron Server: "2005", "2008", "2012", "2014", "2016", "2017", "2019", "2022" or "2025". The default is "2005"
+- _Execute in 32bit mode_: When selected, the package runs in a 32-bit process. Select it when the installed Integration Services, or a driver or component that the package uses, is 32-bit
+- _Trusted connection_: When selected, Windows authentication is used to load the package from the database, instead of the _Database credential_
+- _Credential for trusted connection_: The Windows user that the whole package run uses. With no Credential, the package runs under the account of the VisualCron Server. Click the icon next to the list to open _Manage credentials_; see [Global - Credentials](../../global-credentials)
+- _Package password_: The password of the package, if it has one
+- _Configuration file_: When selected, the XML configuration file in the field next to it is loaded for the package before it runs. When the file does not exist, the Task fails with the error "Config file was not found."
+- _Package located in file_: Select to run a package from a file
+- _Package path_: The full path of the package file
+- _Package located in database_: Select to run a package stored in a SQL Server database
+- _Package name_: The name of the package in the database
+- _Database ip/dns name_: The host name or IP address of the SQL Server where the package is stored
+- _Database credential_: The Credential with the SQL Server logon used to load the package from the database, when _Trusted connection_ is cleared
 
-**Load configuration file**
-
-When checked, an external XML configuration file is loaded for the package before execution.
-
-**Configuration file path**
-
-The full path to the configuration file to load.
- 
-**Package located in file**
-
-Specify the full path to the package file.
-
-**Package password**
-
-The password for the SSIS package file, if it is password protected.
- 
-**Package located in database**
-
-If the package is stored on a SQL Server, specify the server hostname and package name below.
-
-**Database ip/dns name**
-
-The hostname or IP address of the SQL Server where the package is stored.
-
-**Package name**
-
-The name of the SSIS package stored on the SQL Server.
-
-**Database credential**
-
-The credential used to authenticate against the SQL Server when loading the package from a database location.
-
-**Trusted connection**
-
-When checked, Windows integrated authentication is used instead of SQL Server credentials to access the database.
- 
 **Variables**
 
-If the package needs variables you enter them here. Click *Add* to add a new variable, *Edit* to modify a selected variable, or *Delete* to remove one.
- 
+The package variables to set before the package runs. Click _Add_ to add a variable, _Edit_ to change the selected variable, or _Delete_ to remove it. Variables can be used in the names and values.
+
 :::info Note
 
-For this Task to work you need to have installed, at least, SQL Server Integration Services, on the machine that VisualCron is installed on.
+For this Task to work, at least SQL Server Integration Services must be installed on the machine where VisualCron is installed.
 For more information, see [SQL Server Integration Services](https://en.wikipedia.org/wiki/SQL_Server_Integration_Services).
 
 :::
 
+### Output and errors
+
+- The package runs in a separate process. Its output and errors are the output and error output of the Task, and the Task fails when the package fails
+
 ### Troubleshooting
 
-**Could not load file or assembly '```Microsoft.SqlServer.DTSRuntimeWrap```'.**
+**Could not load file or assembly '`Microsoft.SqlServer.DTSRuntimeWrap`'.**
 
 1. Install SQL Server Integration Services.
-2. Make sure you set the Task to run in 32 or 64 bit depending on your SQL Server integration services install.
+2. Set _Execute in 32bit mode_ to match the 32-bit or 64-bit SQL Server Integration Services that is installed.

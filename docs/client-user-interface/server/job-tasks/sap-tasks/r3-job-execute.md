@@ -5,84 +5,70 @@ hide_title: 'true'
 
 ## Task SAP - R/3 Job Execute
 
-The SAP - R/3 Job Execute Task creates and runs a SAP background job consisting of one or more steps (ABAP programs, external commands or external programs).
+The SAP - R/3 Job execute Task creates a SAP background job with one or more steps (ABAP programs, external commands or external programs), runs it, and writes the job log to the output, using a SAP Connection.
 
-**SAP - R/3 Job Execute > Main settings** sub tab
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SAP%20Tasks/R-3%20Job%20Execute.png)
+The ***SAP - R/3 Job execute*** tab has three sub tabs: ***Main settings***, ***Steps*** and ***Log***.
 
-**Connection**
+### SAP - R/3 Job execute: Main settings tab
 
-Select the [SAP Connection](../../connection-sap) used to connect to the SAP system. Click the *Settings* icon to open the *Manage Connections* dialog.
- 
-**Job**
+![Main settings tab of the SAP - R/3 Job execute Task, with the Connection, the job name, the SAP user and the job options](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SAP%20Tasks/R-3%20Job%20Execute.png)
 
-The name of the SAP background job to create or run.
+- **Connection**: the SAP Connection to the SAP system; see [Connection - SAP](../../connection-sap). Click the settings button to manage Connections
+- _Job_: the base name of the SAP background job. Each run creates a new job named after this value, followed by a hyphen and a number for the run, cut to 32 characters
+- _SAP user_: the SAP user the job steps run as, "test" by default. When it is empty, the user of the Connection is used
+- _Delete Job when complete_: checked by default. Deletes the job from the SAP system after it has run, also when it failed
+- _Wait for completion - with interval_: checked by default, with the interval "3". The Task always waits while SAP reports the job as running, and checks its status every 3 seconds, whatever this setting says
 
-**SAP user**
+### Steps tab
 
-The SAP user account under which the job will run.
+![Steps tab of the SAP - R/3 Job execute Task, with a list of job steps and the Add, Edit and Delete buttons](../../../../../static/img/tasksapr3jobexecutesteps.png)
 
-**Delete Job when complete**
+The work unit of the SAP background processing system is the background job, and each job has one or more job steps. Several programs needed to complete one piece of work can run as steps of a single job.
 
-When checked, the job is automatically deleted from the SAP system after it finishes executing.
+![Diagram of a background job with several job steps of different types](../../../../../static/img/sapjobsteps.png)
 
-**Wait for completion - with interval**
+The list shows the columns _Step type_, _Name_, _Parameter_, _Variant_ and _Target server_. Use _Add_, _Edit_ and _Delete_, or double-click a row, to change the steps. The steps run in the order of the list.
 
-When checked, VisualCron waits for the SAP job to finish before continuing, polling for completion at the specified interval (in seconds). The interval field is enabled only when this option is checked. The default interval is 3 seconds.
- 
-**SAP - R/3 Job Execute > Steps** sub tab
+#### Add/Edit SAP step window
 
-![](../../../../../static/img/tasksapr3jobexecutesteps.png)
+- _Step type_:
+  - "ABAP program": runs an ABAP program. _Variant_ is available; _Parameter_ and _Target server_ are not
+  - "External command": runs a predefined command that is protected by authorizations. _Parameter_ and _Target server_ are available; _Variant_ is not
+  - "External program": runs any command or program of the host operating system. _Parameter_ and _Target server_ are available; _Variant_ is not
+- _Name_: the name of the ABAP program, external command or external program. Click the refresh button to fill the list from the SAP system ("ABAP program" and "External command")
+- _Variant_: the variant of the ABAP program. Click the refresh button to load the variants of the selected program
+- _Parameter_: the parameters for the external command or program
+- _Target server_: the host on which the external command or program runs
 
-The work unit of the SAP background processing system is the background job, each of which consists of one or more job steps. Job steps let you treat complex tasks as a single logical unit — several programs needed to complete a task can be scheduled as steps within a single job.
+Name, variant, parameter and target server may contain Variables.
 
-![](../../../../../static/img/sapjobsteps.png)
+#### Step types in detail
 
-The steps grid displays the following columns: **Step type**, **Name**, **Parameter**, **Variant** and **Target server**. Use the *Add*, *Edit* and *Delete* buttons (or double-click a row) to manage steps.
+The SAP background processing system separates external commands, for normal users, from external programs, for system administrators. Transaction SM36 shows the same separation, with separate fields for external commands and external programs. ABAP programs can also be called.
 
-### Add/Edit SAP step dialog
+- ABAP programs: module pools and function groups (collections of ABAP modules) are not allowed. A step needs the ABAP program and a variant
+- External commands: predefined commands for end users, protected by authorizations. They do not depend on the operating system, and end users can schedule only the commands that the system administrator allows
+- External programs: commands that are neither predefined nor restricted by authorizations. A user with administrator authorization can enter any of them in a job step
 
-**Step type**
+![Diagram that compares external programs, run by a system administrator, with external commands, run by a user](../../../../../static/img/sapeternalcommandprogram.png)
 
-The type of step to execute. Available options:
+### Log tab
 
-* _ABAP_ - runs an ABAP program; enables the *Variant* field and disables *Parameter* and *Target server*
-* _External command_ - runs a predefined, authorization-protected command; enables *Parameter* and *Target server* and disables *Variant*
-* _External program_ - runs an unrestricted host operating system command or program; enables *Parameter* and *Target server* and disables *Variant*
+![Log tab of the SAP - R/3 Job execute Task, with the job selection and the log list](../../../../../static/img/tasksapr3jobexecutelog.png)
 
-**Name**
+- _Job_: a job that has run. Click the refresh button to update the list
+- _Show log_: shows the log entries of the selected job, with their date and text
 
-The name of the ABAP program, external command, or external program to run. Click the *Refresh* button to populate the list from the SAP system (available for ABAP and External command step types).
+### Output and errors
 
-**Variant**
+The output is the log of the SAP job. If the job does not finish successfully, the Task fails with the message "SAP job aborted. See output log."
 
-The variant to use when running the ABAP program. Click the *Refresh* button to load the available variants for the selected program. Only enabled when the step type is _ABAP_.
+:::warning
 
-**Parameter**
+The Task waits only while SAP reports the job as running. If the job has not started running at the first status check, the Task reports it as aborted and, with _Delete Job when complete_ checked, deletes it.
 
-Parameters to pass to the external command or external program. Only enabled when the step type is _External command_ or _External program_.
+:::
 
-**Target server**
-
-The target host system on which the external command or external program will run. Only enabled when the step type is _External command_ or _External program_.
-
-**Step types**
-
-### Step types in detail
-
-The SAP background processing system distinguishes between external commands for normal users and external programs for system administrators (you can see the same distinction when scheduling a job from Transaction SM36, with separate fields for external commands and external programs). ABAP programs may also be called.
-
-* _ABAP programs_ - module pools and function groups (collections of ABAP modules) are not allowed. The required specifications are: ABAP program + Variant + Language.
-* _External commands_ - predefined, authorization-protected commands for end users. They are operating-system independent and protected by authorizations, so end users can schedule only the commands the system administrator permits.
-* _External programs_ - unrestricted commands that are neither predefined nor restricted by authorizations. A user with administrator authorization can enter any of these in a job step.
-
-![](../../../../../static/img/sapeternalcommandprogram.png)
- 
-**SAP - R/3 Job Execute > Log** sub tab
-
-![](../../../../../static/img/tasksapr3jobexecutelog.png)
-
-**Job**
-
-Select a previously executed SAP job from the drop-down to view its log. Click the *Refresh* icon to update the list, then click *Show log* to display the event log entries for the selected job, including event dates and messages.
+ If the job log cannot be read, the error output says so and the result of the Task is not changed.

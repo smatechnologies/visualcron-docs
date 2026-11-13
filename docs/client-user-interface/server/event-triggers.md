@@ -5,57 +5,164 @@ hide_title: 'true'
 
 ## Event Triggers
 
-The event trigger is a complex and sensitive but also powerful way to monitor the system. Events in the system can trig your Job to run if that is the intention. An example is if your web server service dies and you want to know and act upon that.
- 
-Most events are based on the **WMI** (Windows Management Instrumentation) interface. **WMI** is a management technology allowing scripts to monitor and control managed resources throughout the network. Resources include hard drives, file systems, operating system settings, processes, services, shares, registry settings, networking components, event logs, users, and groups. **WMI** is built into clients with Windows 2000 or above, and can be installed on any other 32-bit Windows client.
- 
-Using a **WMI** based trigger, requires some common settings to control the behavior. These common settings are located in the **Main Settings** tab of the Event Trigger window.
- 
-**Security:** 
+An Event Trigger starts a Job when something happens, instead of at a set time: for example when a file arrives, a
+service stops, a mail is received or a Variable changes. Each Trigger type watches for one kind of event. The Trigger
+runs on the VisualCron Server while the Job and the Trigger are active and the Server status is On (see *Ignore Server Off
+(always run)* below).
 
-Some Triggers require higher privileges than the default privileges of the LocalSystem account. You need to either change the user that runs the VisualCron service to an administrator or add LocalSystem user to the administrators group (requires a restart of the server). This is especially true when trying to monitor a remote event, like monitoring an event log on another server.
- 
-**Warning:** 
+Some types are told about an event as soon as it happens; others check at an interval (see *Polling interval*
+below). The ***Main settings***, ***Timeout*** and ***Expires*** tabs are shown for every type and are described on
+this page; some types do not support every setting (see *Run delay*, ***Timeout*** and ***Expires***). The tab named
+after the type holds the settings of that type; see the page for the type.
 
-Some event based triggers, like the File event type, can in some cases, trigger several times a second. This will run your Job several times a second.
+:::info
 
-There are several ways to keep this under control:
+An Event Trigger runs as the account the VisualCron service runs under, unless the Trigger uses a Credential. To
+watch another computer, for example its event log or services, select a Credential of a user who has access on that
+computer, or run the VisualCron service as such a user.
 
-* Use _Run delay_ on the **Main settings** tab so the Job only runs after the Trigger has fired a given number of times
-* On the Job's **Main settings** tab, enable _Do not start if Job is already running_ so overlapping fires do not stack up
-* Make the Trigger itself more specific, for example by narrowing a file mask so fewer events match
- 
-In the **Triggers** tab, clicking on _Add > Event trigger_, a selection window for the different event trigger types is opened.
+:::
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Triggers.png)
+:::warning
 
-**Triggers > Add > Event Trigger > Main settings** tab
+Some Event Triggers, such as the File Trigger, can fire several times a second, and each fire starts the Job. Make the
+Trigger as specific as you can, for example with a narrow file mask, and see
+[Triggers that fire once per item](#triggers-that-fire-once-per-item) for the Job settings that handle overlapping runs.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Main%20Settings%20Tab.png)
+:::
 
-It is possible to change the event trigger type using the **Choose Event type** button at the top of the Main settings tab. Clicking the button opens a tree of available event types organized by category; selecting an entry swaps the trigger‑type tab with the controls for the chosen type.
+### Event Trigger types
+
+To add an Event Trigger, open the Job, go to the ***Triggers*** tab and click _Add_ -> _Event Trigger_, then click the
+type. Types that are not available on your Server, and types hidden in the Client settings, are not listed.
+
+![Triggers tab of the Add Job window with Add, Event Trigger open: a submenu of Event Trigger types from VisualCron to WebService](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Triggers.png)
+
+These types are described on their own pages:
+
+* [*VisualCron*](event-trigger-visualcron)
+* [*MFT Server*](event-trigger-mft-server)
+* [*Variable*](event-trigger-variable)
+* [*File*](event-trigger-file)
+* [*Remote file*](event-trigger-remote-file)
+* [*Cloud file*](event-trigger-cloud-file)
+* [*HTTP REST*](event-trigger-http-rest)
+* [*RSS*](event-trigger-rss)
+* [*SQL*](event-trigger-sql)
+* [*Mail*](event-trigger-mail)
+* [*Process*](event-trigger-process)
+* [*PowerShell*](event-trigger-powershell)
+* [*.NET code execute*](event-trigger-net-code-execute)
+* [*Service*](event-trigger-service)
+* [*Registry*](event-trigger-registry)
+* [*Event log*](event-trigger-event-log)
+* [*MSMQ*](event-trigger-msmq)
+* [*Performance counter*](event-trigger-performance-counter)
+* [*System start/shutdown*](event-trigger-system-start-shutdown)
+* [*Session change*](event-trigger-session-change)
+* [*Printer*](event-trigger-printer)
+* [*Network*](event-trigger-network-change)
+* [*AMQP*](event-trigger-amqp)
+* [*Amazon SQS*](event-trigger-sqs)
+* [*Azure Queue Storage*](event-trigger-azure-queue-storage)
+* [*Slack*](event-trigger-slack)
+* [*TCP*](event-trigger-tcp)
+* [*Desktop trigger*](event-trigger-desktop)
+
+Pages for Microsoft Teams, Sharepoint file, PeopleSoft, HTTP, WebService, Webmacro trigger and Folder are not yet
+available.
+
+The [*Custom*](event-trigger-custom) type (a custom WMI query) is not offered in the *Add* menu or in the type list
+on the ***Main settings*** tab. Existing Custom Triggers can still be opened and changed.
+
+### Triggers that fire once per item
+
+Some Triggers fire once for each item they find and change or remove the item when they fire: for example, the
+queue Triggers (MSMQ, AMQP, Azure Queue Storage and Amazon SQS) remove the message, the Mail Trigger can delete the
+email, the Remote file and Cloud file Triggers can download and delete the file, and the HTTP REST Trigger with
+*Immediately* has already answered the caller. The File Trigger fires once for each file, the RSS Trigger once for
+each new feed item, and the TCP Trigger can fire several times in one conversation.
+
+:::warning
+
+If such a fire does not start the Job, its item is lost. *Do not start if job is already running* on the Job's
+***Main settings*** tab is selected by default and skips a run while the Job is running. For these Triggers, also
+select *Put Job in queue (does not skip Job - runs Job when running Job is finished)*. The queue is kept in memory and
+is lost when the Server restarts. Do not use *Run delay* with these Triggers: the items of the fires it holds back do
+not start a run. A Job time exception can also skip the run (see [Time exceptions](#time-exceptions)).
+
+:::
+
+### Result Variables
+
+When a Trigger fires, it sets result Variables that tell the Job what happened, for example the name of the file a
+File Trigger found. They are written `{TRIGGER(<JobId>|<TriggerId>|<Type>.Result.<Key>)}`. In the Job that the
+Trigger starts, use the *Last trigger* form, `{TRIGGER(Active|LastTrigger|<Type>.Result.<Key>)}`, for example
+`{TRIGGER(Active|LastTrigger|File.Result.Name)}`: it reads the result of the firing that started the run, even if
+the Trigger fires again while the Job runs. Pick the Variables in the *Variables* window under the Job's Triggers;
+each Trigger page lists or links its result Variables. See [Variables](global-variables).
+
+If the Job has several Event Triggers of different types and another of them fires while the Job runs, the *Last
+trigger* form returns an error text. Use the `<JobId>|<TriggerId>` form in that case.
+
+A timeout fire (see [Timeout](#timeout)) has no event behind it: the result Variables of the Trigger type return an
+error text in square brackets, for most types beginning `[TranslateVariable`, instead of a value. For the Variable
+Trigger most of them return empty text.
+
+### Time exceptions
+
+While a [time exception](job-time-exceptions) of the Job is active, its Event Triggers do not start it. An event in
+that time is not kept for later: it still counts toward *Run delay* and *Expire after being triggered*, but the run
+it would have started is skipped.
+
+* Types that check at an interval skip the check instead, so they see the event at their first check after the time
+  exception: for example SQL, Remote file, Cloud file, RSS, Mail, PowerShell, .NET code execute, Amazon SQS, Variable,
+  and File with *Use polling (Samba compatible)*
+* Other types keep watching and drop the event: for example Event log, Process, Service, VisualCron, MSMQ, AMQP and
+  Azure Queue Storage. A queue Trigger has then already removed the message
+
+The File, Cloud file and Variable pages describe cases that behave differently.
+
+### Main settings
+
+The settings are on the ***Main settings*** tab.
+
+![Add/Edit event window, Main settings tab of a File Trigger: event type button, Description, Active, Auto description, Auto refresh description, Run delay, an unavailable Polling interval, Credentials, Extended Trigger debug logging and Ignore Server Off](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Main%20Settings%20Tab.png)
+
+The button at the top of the tab shows the type of the Trigger, for example *File*. To change the type, click it and
+select another type in the list. The type tab is replaced with the settings of the new type; when you click *OK*,
+only the settings of the selected type are saved. *MFT Server* is not in this list: to use it, add a new Trigger with
+_Add_ -> _Event Trigger_ -> _MFT Server_.
  
 **Description**
 
-Enter a description which will distinguish several triggers from each other in a trigger list.
- 
-**Auto description**
-
-When checked, the _Description_ field is automatically generated based on the Trigger type and its current settings. This option is enabled by default.
- 
-**Auto refresh description**
-
-When checked, the auto‑generated description is refreshed every time the Trigger settings change, even if the _Description_ field already contains text. The option is only available when _Auto description_ is checked.
+The text shown for the Trigger in the list of Triggers on the ***Triggers*** tab of the Job. Use it to tell the Triggers of a Job apart.
  
 **Active**
 
-Determines if the current event is active from start. If not, it can be reactivated later. Default is active.
+When checked (default), the Trigger is active. Clear it to keep the Trigger inactive; you can activate it later.
+ 
+**Auto description**
+
+When checked (default), VisualCron creates the *Description* from the Trigger type and its settings when you click *OK*, if *Description* is empty or *Auto refresh description* is checked.
+ 
+**Auto refresh description**
+
+When checked (default), the description is created again each time you click *OK*, even if *Description* already contains text. Available only when *Auto description* is checked.
  
 **Run delay**
 
-Configures how many times the Trigger must fire before the Job is actually executed. The field is labelled _Run after the trigger has been triggered_ and is followed by a numeric editor and a `time(s)` suffix. Default is 1 which means that the Job will run on the first trigger event.
+*Run after the trigger has been triggered:* sets how many events it takes before the Trigger starts the Job. The
+minimum and default is 1: every event starts the Job.
 
-For example, setting it to 5 on a File Trigger runs the Job once five matching files have arrived, rather than once per file. This is useful for batching, and for damping down Triggers that fire very frequently.
+With a higher value, the first run comes after that number of events. After each run the count starts again at 1,
+not at 0, so each later run needs one event fewer: with 2, the Job runs on the second event and then on every event;
+with 5, it runs on the fifth event and then on every fourth. To run the Job once for every *K* events after the
+first run, set *K* + 1. A timeout fire counts as a run and sets the count to 1. The count is kept in memory and starts
+from zero when the Trigger restarts, for example when the Server restarts or the Job is saved.
+
+The SQL, Desktop and Webmacro Triggers do not use *Run delay*, and some types count differently; see the page for
+the type.
 
 :::note
 
@@ -65,64 +172,108 @@ _Run delay_ counts fires of this one Trigger. To require several **different** T
  
 **Polling interval**
 
-This value is only used by certain WMI events, otherwise grayed out. The field is labelled _Check every_ and is followed by a numeric editor and a `second(s)` suffix. The polling interval defines how often VisualCron should check for changes in the system. Default is every 60 second. Setting it to a lower value than 10 will increase the load on the server. What's good is that you won't miss any events even though you are not checking it every second. Changes are stored and if something has happened you will be notified at your polling interval. What is important to know is that if you are watching for state "stopped" at a service and the service has started then stopped, any change has not occurred since the service was stopped in the first place. The service has to be started before monitoring a "stopped" change. Also, if the the service has started before monitoring and it turns from started to stopped within the polling interval no change is observed and you won't be notified.
+*Check every:* ... *Second(s)*: for the types that check at an interval, how often they check, from 1 to 9,999,999.
+The default depends on the type: 60 seconds for most, 1 for VisualCron, 5 for Azure Queue Storage, 120 for
+WebService, 300 for RSS and 3600 for HTTP.
+The field is unavailable for types that are told about events as they happen, such as Registry, TCP and File (unless
+*Use polling (Samba compatible)* is checked on the File tab). Some types show the field but use it differently or
+not at all, for example: the HTTP REST Trigger uses it as a wait in milliseconds (default 1000), the Event log Trigger as the time
+between attempts to restart watching, and the Printer Trigger does not use it. Each Trigger page says how its type
+uses the value. A short interval means more checks and more load on the Server and on the system being checked.
  
 **Remote event**
 
-This value is only used by certain WMI events, otherwise grayed out. The field is labelled _Computer name_. Can remotely monitor another computer in the network, specify the name or IP address of the remote computer. The computer has to be in the local network. Default is "." which means that VisualCron is monitoring the the local computer. A network credential must be specified when connecting to a remote computer. Also you must check so that the remote computer let's this computer or user access the WMI on the remote computer.
- 
+*Computer name:* for the types that can watch another computer: Event log, Process, Registry, Service, Performance
+counter and Custom. Enter the name or IP address of the computer; the default "." is the computer the VisualCron
+Server runs on. The account the Trigger runs as (see *Credentials*) must be allowed to read that information on the
+remote computer. The Printer, Desktop and Webmacro Triggers show the field without using it to select a computer.
+
 **Credentials**
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
+Select the Credential the Trigger runs as, for example to connect to a remote computer, or *No Credential* to use the
+account the VisualCron service runs under. Click the *Settings* icon to open *Manage credentials* and add or edit
+one. See [Credentials](global-credentials). The group is shown only for some types; types such as PowerShell have
+their own Credential on the type tab.
 
-**Trigger debugging**
+For the Process, Registry, Service and Custom Triggers, select a Credential only for a remote computer: with the
+default computer ".", a Credential makes the connection fail.
 
-When checked, additional diagnostic information is written to the log every time the Trigger evaluates an event. Use this when troubleshooting a Trigger that is not firing as expected. Leave it unchecked in production to reduce log noise.
+**Extended Trigger debug logging**
+
+When checked, the Trigger writes more detail to the Server log, for example the full text of an error and the value
+it read at each check. Use it while you troubleshoot a Trigger that does not fire as expected, then clear it.
  
 **Ignore Server Off (always run)**
 
-If checked, the Trigger will always run even though the Server status is Off.
+When checked, the Trigger keeps watching while the Server status is Off, and it starts the Job when it fires.
 
-**Triggers > Add > Event Trigger > Timeout** tab
+### Timeout
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Timeout.png)
+The settings are on the ***Timeout*** tab.
 
-The Timeout tab is for acting on the **absence** of an event. Where the Trigger itself fires when something happens, a timeout fires when nothing has happened for too long.
+![Add/Edit event window, Timeout tab: Use timeout with Hour(s), Minute(s) and Second(s), and the Fire trigger timeout action](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Timeout.png)
+
+Use the timeout to act when an expected event does not happen. The Trigger fires when its event happens; the timeout fires when the Trigger has not fired for the time you set.
 
 **Use timeout**
 
-A master checkbox that enables the timeout settings. When unchecked, the timeout fields and the timeout action below are disabled.
+Check this to use the timeout (cleared by default). While it is cleared, the time fields and *Timeout action* are unavailable.
 
 **If trigger has not fired in x time**
 
-Specify the maximum time the Trigger can go without firing using three numeric editors for **Hour(s)**, **Minute(s)** (0–59), and **Second(s)** (0–59).
+The longest time the Trigger can go without firing, in *Hour(s)*, *Minute(s)* (0 to 59) and *Second(s)* (0 to 59).
  
 **Timeout action**
 
-The action that is performed when the timeout elapses without the Trigger having fired:
+*Fire trigger* is the only action: when the time runs out, the Trigger starts the Job as if its event had happened.
 
-* **Fire trigger** — fire the Trigger as if its normal condition had been met
+For example, a File Trigger watching for a nightly file from a supplier can be given a timeout of 8 hours. If the
+file arrives, the Trigger fires normally and the Job processes it. If the file never arrives, the timeout fires the
+Trigger anyway, and the Job can send an alert about the missing file.
 
-For example, a File Trigger watching for a nightly file from a supplier can be given a timeout of 8 hours. If the file arrives, the Trigger fires normally and the Job processes it. If the file never arrives, the timeout fires the Trigger anyway, and the Job can send an alert about the missing file.
+The time is counted from when the Trigger starts, for example when the Server starts or the Job is saved, and again
+from each fire, even if the Job then does not start. Events held back by *Run delay* do not restart it. While
+nothing happens, the timeout fires again after each further period: with a timeout of 1 hour, the Job is started
+every hour until an event arrives. If one alert is enough, add a Job condition, or set an *Expiration date* on the
+***Expires*** tab; *Expire after being triggered* does not count timeout fires.
 
-The timer measures the gap since the Trigger last fired, so a Trigger that fires regularly never reaches its timeout.
+A timeout fire resets the *Run delay* count, and Job time exceptions still apply. Its result Variables return an
+error text (see [Result Variables](#result-variables)). To tell the two cases apart in the Job, add a
+[Variable condition](condition-variable) that checks that a result Variable, for example
+`{TRIGGER(Active|LastTrigger|File.Result.Name)}`, does not contain `[TranslateVariable`. For the Variable Trigger,
+check that `{TRIGGER(Active|LastTrigger|Variable.Result.Variable.EvaluatedExpression)}` is not empty.
+
+The MSMQ, MFT Server, Session change, Printer, AMQP, Slack, Azure Queue Storage, Amazon SQS, Microsoft Teams and
+PeopleSoft Triggers do not support the timeout: it never fires for them.
+
+:::warning
+
+Set a time greater than zero. With 0 hours, 0 minutes and 0 seconds, the timeout fires about every second and starts
+the Job each time.
+
+:::
  
-**Triggers > Add > Event Trigger > Expires** tab
+### Expires
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Expires.png)
+The settings are on the ***Expires*** tab.
+
+![Add/Edit event window, Expires tab: Expiration enabled, Expiration date with date and time, Expire after being triggered with time(s), and the Inactivate trigger and Delete trigger expire actions](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Expires.png)
 
 **Expiration enabled**
 
-Check this option to enable an expiration type. When checked, the expiration mode controls and the _Expire action_ group below become editable. You are able to set if a Trigger should be deleted or deactivated at a certain time or after a certain number of triggered times.
+Check this to make the Trigger expire, then select when it expires and what happens then.
 
-Select one of the two expiration modes using the radio buttons:
+* *Expiration date*: the Trigger expires at the date and time you enter, by the clock of the VisualCron Server
+* *Expire after being triggered* ... *time(s)*: the Trigger expires after this number of events (minimum 1). Every
+  event counts, including events held back by *Run delay*; timeout fires do not count. The event that reaches the
+  number still starts the Job if *Run delay* allows it. The count is kept in memory and starts again at 0 when the
+  Trigger restarts, for example when the Server restarts or the Job is saved
 
-* **Expire date** — expire on a specific date and time. A date picker and a time picker become editable for entering the expiration moment
-* **Expire after being triggered _x_ time(s)** — expire after the Trigger has fired the specified number of times. A numeric editor (minimum `1`) becomes editable for entering the fire count
- 
+The SQL, Remote file, Cloud file, Sharepoint file, Desktop and Webmacro Triggers do not support *Expire after
+being triggered*.
+
 **Expire action**
 
-Select desired activity when a Trigger has expired using the two radio buttons:
-
-* **Deactivate trigger** — keep the Trigger but mark it as inactive
-* **Delete trigger** — remove the Trigger entirely (default)
+* *Inactivate trigger* (default): the Trigger is kept but made inactive. Activate it again to use it
+* *Delete trigger*: the Trigger is removed from the Job. With an *Expiration date*, this also removes a Trigger that
+  is already inactive

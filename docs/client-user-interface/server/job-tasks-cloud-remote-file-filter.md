@@ -10,10 +10,15 @@ In order to simplify and unify common parameters, the standard VisualCron Cloud 
 * [List item(s)](../server/job-tasks/cloud-transfer-tasks/list-item)
 * [Download file(s)](../server/job-tasks/cloud-transfer-tasks/download-file)
 * [Delete item(s)](../server/job-tasks/cloud-transfer-tasks/delete-item)
+* [Copy/move item(s)](../server/job-tasks/cloud-transfer-tasks/copy-move)
+* [Sync files](../server/job-tasks/cloud-transfer-tasks/sync) (depending on the source or target location)
+* List folder(s)
+
+It is also used by the [Cloud file Trigger](event-trigger-cloud-file).
  
 **Location** sub tab
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Cloud%20Remote%20File%20Filter.png)
+![List item(s) Task, Location sub tab of the cloud remote file filter](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Cloud%20Remote%20File%20Filter.png)
 
 **Connection**
 
@@ -27,7 +32,7 @@ The top-level container to look in. The label changes with the cloud provider - 
 
 This is the remote source folder. Click the *Folder* icon to select the folder.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Cloud%20Remote%20File%20Look%20Up.png)
+![Remote container browser opened from the Bucket field of the cloud remote file filter](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Cloud%20Remote%20File%20Look%20Up.png)
 
 **Item mask**
 
@@ -47,9 +52,13 @@ Check if you want to include sub folders and not just the base *Source folder*.
  
 **Date** sub tab
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Date%20Sub%20Tab.png)
+![Date sub tab of the cloud remote file filter, with the older than and newer than checks](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Date%20Sub%20Tab.png)
 
 The Date tab filters items by date. It has two checks, *Newer than* and *Older than*, which can be combined with the *AND/OR* selector.
+
+:::note
+*Created date* currently checks the modified date, so both choices filter on the modified date.
+:::
 
 **Newer than**
 
@@ -61,7 +70,7 @@ Select which date to check (*Don't check*, *Created date* or *Modified date*) an
  
 **Size** sub tab
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Size%20sub%20tab.png)
+![Size sub tab with the smaller than and larger than checks](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Size%20sub%20tab.png)
 
 **Check if file is smaller than x size**
 
@@ -72,10 +81,15 @@ Filter files that are smaller than a value/Variable. Select the unit (*byte(s)*,
 Filter files that are larger than a value/Variable. Select the unit (*byte(s)*, *kilobyte(s)*, *megabyte(s)*, *gigabyte(s)* or *terabyte(s)*).
 
 The two size checks can be combined with the *AND/OR* selector.
+
+:::warning
+With OR and only *Check if file is larger than x size* selected, every item matches. Select both
+checks, or only the smaller-than check.
+:::
  
 **Result** sub tab
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Result%20sub%20tab.png)
+![Result sub tab with the Sort and Limit settings](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Result%20sub%20tab.png)
 
 **Sort**
 
@@ -87,6 +101,8 @@ How many files you want to return. Enter a value or use a Variable.
  
 **Test** sub tab
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/File%20Test%20sub%20tab.png)
+The screenshot shows the equivalent sub tab in the local [file filter](job-tasks-file-filter).
+
+![Test sub tab showing the files the filter found](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/File%20Test%20sub%20tab.png)
 
 The Test tab lets you test the result of your set filters to see what is really returned. Click *Show filtered files* to run the test; the returned items are listed together with the number of files found and the elapsed time.

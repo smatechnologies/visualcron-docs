@@ -5,192 +5,214 @@ hide_title: 'true'
 
 ## Task Net - Web Macro
 
-The Net - Web macro Task is able to record actions in the built in browser and later play it back in the background at any time.
+The Web Macro Task records actions in a built-in browser and plays them back later, in the background, at any time.
 
-Below are some features of the Web Macro Task in VisualCron:
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-* The playback is based on Chrome which gives you speed and compatiblity - also, Chrome plugins are supported (not Extensions but Pepper plugins)
-* The playback of web recordings are done from a Windows service which requires zero interaction from a user – no one is required to be logged on. This means that multiple instance can be running at the same time and you can work on the computer at the same time without disturbing the background playback.
-* Passwords are stored in an encrypted format VisualCron uses file filters, Variables, stored Credentials to dynamically present values (like dates).
-* VisualCron can handle many web instances at the same time and copy/paste data between
-* VisualCron handles popup windows.
-* VisualCron supports uploading and downloading files – dynamically with file filters VisualCron supports proxy and proxy change anytime during the automation which helps if you want to create unique web requests.
-* In VisualCron you can import Client certificates and they will be presented upon request.
-* VisualCron supports multiple tabs and switching between tabs.
-* When creating a tab you can choose to browse with Incognito mode.
-* You are able to Print and take a screen shot (save to file).
-* VisualCron lets you set any User-Agent you like VisualCron lets you inject JS anywhere in a page.
-* VisualCron lets you override HTTP referrer.
-* VisualCron lets you set Accept-Language.
-* VisualCron lets you set GoogleId to support Google Speech and other APIs from Google
-* VisualCron lets you control speed of playback, from typing text to waiting before and after a step.
+Features of the Web Macro Task:
+
+- Playback uses a browser based on the Chromium engine, for speed and compatibility
+- Plugins are supported; see the ***Plugins*** tab below
+- Playback runs in the VisualCron Server service and needs no interaction, so no one has to be logged on
+- Several web macros can run at the same time, and you can keep working on the computer during playback
+- Passwords and keys entered in the Task, such as the Google API key, the Google Client secret and the proxy password, are stored encrypted; cookies kept with _Store cookies_ are not (see _Store cookies_ below)
+- File filters, Variables and stored Credentials can supply values at run time, such as dates
+- The Task can handle several browser tabs at the same time, and copy and paste data between them
+- Popup windows open in a new tab
+- Files can be uploaded and downloaded, and file filters can select the files to upload
+- The proxy can be changed at any point in the macro
+- Client certificates can be imported, and are presented when a server asks for one
+- Tabs can be opened in Incognito mode
+- Pages can be printed and saved as screenshots
+- You can set the User-Agent, the HTTP referer and the Accept-Language that the browser sends
+- JavaScript can be injected into a page
+- Google API keys can be set, for Google features such as speech recognition
+- You control the playback speed, from typing text to the wait before and after each action
  
-**Web macro > Main settings** tab
+### Web macro: Main settings tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Web%20Macro%20settings.png)
+![Web Macro Task Main settings tab with the browser options and the Google API group](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Web%20Macro%20settings.png)
 
-**Load images**
+The Web Macro settings have their own tabs inside the Task window: ***Main settings***, ***Actions***, ***Proxy***, ***Certificates*** and ***Plugins***. This ***Main settings*** tab is not the Task window's shared ***Main settings*** tab.
 
-Controls if the browser should load images or not. If you deselect this loading of page will be faster. Do not deselect this if you are dependent on images.
+The _Browser options_ group holds the following settings:
+
+- _Load images_: selected by default; clearing it makes pages load faster, but keep it selected if the macro depends on images
+- _Block popups_: when cleared, a popup that a page opens in a new window opens in a new tab instead; select it to stop this
+- _Lite mode_: turns off rectangle selection and other JavaScript-intensive actions while recording
+- _Disable WebSecurity_: selected by default; see the warning below
+- _Override User-Agent_: when selected, the browser sends the User-Agent in the text field instead of the one for its own Chromium version
+- _Store cookies_: when selected, the Task keeps the cookies from one recording and uses them in the next; see the warning below
+
+  This helps when a site asks security questions the first time you log on: select _Store cookies_, record once while answering the questions, then record again. The cookies from the first recording are still present. When you clear _Store cookies_ and save the Task, the stored cookies are deleted.
+
+- _Pass cookies between Tasks in Job session_: shares cookies with the other HTTP and Web Macro Tasks of the same Job run, to keep sessions open
+
+  When this Task succeeds, it adds its cookies to the cookie store of the Job run. Later HTTP Tasks in the same run send them, and later Web Macro Tasks use them if they also have this setting selected. With this setting selected, the Task also receives the cookies that earlier HTTP and Web Macro Tasks of the run left in the store. For the HTTP Task, see [Task Net - HTTP](http).
+
+- _Constantly update previews_: selected by default; when selected, the action preview images are updated after a recording or test run
+- _Extended variables_: cleared by default; when selected, the Job Variables and User Variables are loaded into the action designer on the ***Actions*** tab
+- _Maximize window on test/record_: selected by default; when selected, the recorder window opens maximized when you click _Record_ or _Test run_
+- _Override referer_: when selected, the browser sends the referer in the text field instead of the last page visited; the field holds a sample value until you change it
+- _Accept-Language_: the Accept-Language that the browser sends, "en-US" by default
+
+  Some sites return different content for different languages, for example in date and time formats or in the page language.
+
+:::warning
+
+_Disable WebSecurity_ is selected by default. While it is selected, the browser does not enforce the [same-origin policy](https://en.wikipedia.org/wiki/Same-origin_policy), so a page in the Task's browser can read data from other sites that the same session is signed in to. Clear it unless playback fails without it; see [Troubleshooting](#troubleshooting).
+
+:::
+
+:::warning
+
+With _Store cookies_ selected, the site's cookies, including session and logon cookies, are saved with the Task as text. Unlike passwords, they are not encrypted, so anyone who can read or export the Task can reuse the session. Clear _Store cookies_ when the macro no longer needs it.
+
+:::
  
-**Block popups**
+The _Google API_ group holds the Google keys. Some browser features rely on Google APIs. For example, location relies on Google's geolocation API, and speech recognition relies on Google's Speech API. To use these features, get Google API keys and enter them in this group:
 
-When a popup to a new window occurs VisualCron will open that new window in a new tab. If you do not want this behavior you can check Block popups.
- 
-**Lite mode**
+- _GoogleClientID_: your Google Client ID
+- _GoogleAPIKey_: your Google API key, stored encrypted
+- _GoogleClientSecret_: your Google Client secret, stored encrypted
 
-Enabling this disables "rectangle"-selection and other more javascript intensitive actions when recording.
- 
-**Disable WebSecurity**
+To get a Google API key, complete the following steps. Google changes its console often, so the labels can differ.
 
-This is affecting Same-origin policy. Please see more information [here](https://en.m.wikipedia.org/wiki/Same-origin_policy).
- 
-**Override User-Agent**
+1. Go to `https://console.developers.google.com/`.
+2. Sign in with a Google account.
+3. Create a project, or select an existing one.
+4. Enable the API that the feature needs, for example the Speech API.
+5. Open _Credentials_.
+6. Create an API key.
 
-By default, the User-Agent of the current Chrome version is sent. If you want to override this you check this property and enter your User-Agent in text field.
- 
-**Store cookies**
-
-Optionally VisualCron can store the cookies between each call. This is create if you first want to record entering some security questions. First check Store cookies, then record once entering the security questions. Then record again and any cookies from previous record will exist in memory.
- 
-**Pass cookies between Tasks in Job session**
-
-Optionally, when checking this, the cookies will be passed to other Web macro Tasks to keep any session cookies open etc.
- 
-**Constantly update previews**
-
-When checked VisualCron will update the step preview images when running.
- 
-**Extended Variables**
-
-This turns on and off sync of Variables. This property is subject to change.
-
-**Maximize window on test/record**
-
-When checked (default), the recorder window opens maximized when you click Record or Test run. Uncheck to open it in a normal-sized window.
- 
-**Override referer**
-
-By default, the last page visited is sent as referer. If you want to override this you check this property and type in any referer you want to use in the text field.
- 
-**Accept-Language**
-
-By default, English with US location Accept-Language will be sent. This might give you different results back (depending on developers of web page), for example how time and date is presented or which language a page is presented in. If you want a specific Accept-Language to be sent you can alter this here.
- 
-**Google API**
-
-A number of features supported by the Chrome browser engine relies on certain Google API to function. For example, the location service relies on Google Map's GEO location service API, and speech recognition relies on Google's Speech API. In order to use these features, you must acquire and apply your Google API keys first.
- 
-Follow the steps below to acquire your Google API keys. Note that due to Google frequently updates their systems, the exact UI/step may be slightly different.
-
-1. Visit [https://console.developers.google.com/](https://console.developers.google.com/) and login with your Google account;
-2 .If you have not already created a project, you will be prompted to create a project;
-3. After you have created a project, click "Use Google APIs" from the project's Dashboard;
-4. Make sure the corresponding API is enabled. For example, to use speech recognition feature, you must enable "Speech API";
-5. Select "Credentials" from the list on the left side, click "Create Credentials" -> "API Key" -> "Browser Key" to create an API key;
- 
-**GoogleClientID**
-
-Your Google Client ID.
- 
-**GoogleAPIKey**
-
-Your Google API key.
- 
-**GoogleClientSecret**
-
-Your Google Client secret.
+The new key appears in the console. Enter it in _GoogleAPIKey_.
  
 ### Recording a web macro
 
-Click on the Record button to start recording. This open the Web macro recorder window (see screenshots and description later down).
- 
+Click _Record_ to start recording. The _Web recorder_ window opens; see [Web recorder window](#web-recorder-window).
+
 ### Playing back a web macro
 
-A web macro can be played back in both Client and Server. Click **Test run** to start playing back in Client.
+A web macro can be played back in both the Client and the Server. Click _Test run_ to play it back in the Client.
+
+_Test run_ runs the actions on the computer running the Client. Files are then found and saved on that computer, and Credentials are applied there. When the Task runs from a Job, the Server does this instead. A folder, file or Credential that works in a test run can therefore fail when the Task runs on the Server, or the reverse.
  
-**Web macro > Actions** tab
+### Web macro: Actions tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Web%20Macro%20actions.png)
+![Web Macro Task Actions tab with the action designer](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Web%20Macro%20actions.png)
 
-The Actions tab contains all recorded steps. Some of them can be edited/deleted by double clicking on a step or selecting and clicking Edit. Adding a step manually is currently not possible.
+The ***Actions*** tab shows the Task's actions in a workflow designer. Actions are created automatically while you record. You can also add some actions manually in the _Web recorder_ window; see [Web recorder window](#web-recorder-window).
+
+If the workflow has errors, an errors panel opens on the tab. Until the errors are fixed, the Task cannot be saved and _Test run_ is unavailable.
+
+Each action waits before it runs and after it runs, in milliseconds (_Wait before execute_ and _Wait after execute_, "500" each by default). To set both values on every action at once, click _Set wait for all actions_. The button shows only on the ***Actions*** tab.
  
-**Set wait for all actions**
+### Web macro: Proxy tab
 
-Each step has a Before and After wait time in milliseconds. If you want to increase or decrease this on all steps you can click this button and set these values for all steps.
+![Web Macro Task Proxy tab with the proxy settings](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Web%20Macro%20proxy.png)
+
+The ***Proxy*** tab sets the default proxy for all browser tabs. To change the proxy part way through the macro, add a Proxy action; see [Proxy Step](proxy-step). The proxy fields are the same as on the Proxy action, except _Reload the current page after proxy change_, which only the action has.
+
+When _Proxy type_ is not "No proxy", _Address_ and _Port_ are required, and _Port_ must be a whole number. With _Use credentials_ selected, _Username_ and _Password_ are also required. These fields are checked when you save the Task and when you click _Record_ or _Test run_.
  
-**Auto-creation of steps and adding manually**
+### Web macro: Certificates tab
 
-Steps are auto-created during recording but it also possible to manually add some steps by clicking on toolbar or right click on an element in the browser.
+![Web Macro Task Certificates tab with the certificate list](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Web%20Macro%20certificate.png)
+
+The Web Macro Task can present a client certificate to a remote server when the server asks for one. Client certificates are managed globally; see [Global - Certificates](../../global-certificates). To open the global list, click _Manage Certificates_. In the _Certificates_ list, select _Use_ for the certificate to present. One certificate can be used at a time.
+
+If the selected certificate is later removed from the global certificates, the Task fails when it runs.
+
+:::warning
+
+_Auto-accept all server certificates_ has no effect: the Task always runs with server certificates auto-accepted, whether or not the box is selected. Use the Task only with sites you trust, and do not rely on it to detect an invalid or replaced server certificate.
+
+:::
  
-**Web macro > Proxy** tab
+### Web macro: Plugins tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Web%20Macro%20proxy.png)
+![Web Macro Task Plugins tab with the plugin settings](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Web%20Macro%20plugins.png)
 
-The proxy tab lets you set the default proxy to use in all tabs. You can override this by adding the Set proxy step.
+The Web Macro browser does not support NPAPI plugins.
+
+:::note
+
+The Web Macro browser (Chromium based) does not support Flash, which reached end of life in 2020.
+
+:::
+
+- _Allow plugins_: selected by default; when selected, plugins are enabled and the _Plugin settings_ group becomes active, and when cleared, all plugin support is off
+
+The _Plugin settings_ group holds the following settings:
+
+- _Disable built in plugins_: cleared by default; when selected, the built-in PDF plugin is not loaded
+- _Additional plugin folders (separate by semicolon)_: the folders of plugins that are located elsewhere, separated by semicolons
  
-**Web macro > Certificates** tab
+### Output tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Web%20Macro%20certificate.png)
+The Task window adds an ***Output*** tab for this Task type. It is not one of the Web macro tabs above. It controls the recording of the playback that the Task adds to its output, which the Server builds from the screenshots taken during playback. To view the output of a run, see [Task - Output and Result](../../task-output-and-result).
 
-**Certificates**
+The _Output settings_ group holds the following settings:
 
-The web macro Task supports handling of both Client and Server Certificates. The Client certificates are globally managed in [Manage Certificates](../../../server/global-certificates) window. Add a client certificate - the will be presented to remote server when needed. By default all remote server certificates are accepted. We recommend this option checked to prevent playback issues.
- 
-**Web macro > Plugins** tab
+- _Output type_: "None", "Images", "GIF" (default) or "Video"; "None" turns off all other settings on the tab
+- _Frame rate_: frames per second, from "1" to "60", "1" by default; not used with "Images"
+- _Quality_: from "1" to "100", "75" by default; used only with "Images" when _Image format_ is "JPEG"
+- _Image format_: "BMP", "JPEG", "GIF", "PNG" (default) or "TIFF"; used only with "Images"
+- _Open settings_: opens the video compression settings; used only with "Video"
+- _Save output to file_: cleared by default; when selected, the output is also saved to a file, set in the _File output settings_ group, and when cleared, it is kept only in the Task output
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Web%20Macro%20plugins.png)
+:::note
 
-There are two different type of plug-in standard: NPAPI and PPAPI. NPAPI originates from Netscape and were supported by all major browsers until Google developed PPAPI. The Chromium project (upon which both Google Chrome browser is built) has been supporting both for a while until finally it dropped NPAPI support. a result, VisualCron does not support NPAPI either.
- 
-**To install Flash**
+Because "GIF" is the default, each run stores a recording of the browser screens in the Task output. Users who can view the Task output can see what the pages showed. If the pages show data that should not be kept, select "None".
 
-1. Visit [http://get.adobe.com/flashplayer/](http://get.adobe.com/flashplayer/) with Google Chrome browser;
-2. Look for "To download the Adobe® Flash® Player system plug-in, click here" in the page. Follow the link to the download page. If you can not find the link, then Adobe may have moved the page after this documentation was written. In that case please contact us or use this direct link:
-[http://get.adobe.com/flashplayer/?fpchrome](http://get.adobe.com/flashplayer/?fpchrome)
-3. Check "Your System" section, click "Need Flash Player for a different computer?";
-4. Select the correct Windows version, then select the "PPAPI" version from the drop down box. Do NOT select "NPAPI". These are two different type of plug-in interfaces. The current version of VisualCron only supports PPAPI;
-5. Click "Download Now" to download install the Flash Player system plug-in. This will install the plug-in inside sub directory "```Macromed\Flash```" under your Windows system32 or SysWOW64 directory;
-6. VisualCron should auto detect the plug-in next time you record. If not, specify the folling folder in plugin text field: ```C:\Windows\SysWOW64\Macromed\Flash```
- 
-**Allow plugins**
+:::
 
-When checked (default), plugins are enabled and the plugin settings below become active. Uncheck to disable all plugin support entirely.
- 
-**Disable built in plugins**
+The _File output settings_ group holds the following settings. _Output folder_ and _File name_ are required when _Save output to file_ is selected.
 
-Disables the built-in PDF plugin.
- 
-**Additional plugin folders**
+- _Output folder_: the folder on the Server where the output file is saved
+- _File name_: the name of the output file, "output" by default
 
-If you have plugins located elsewhere please add the folder(s) here. If more than one then separate with semicolon.
- 
-**Web macro recorder window**
+  The extension is added: ".gif" for "GIF" and ".avi" for "Video". With "Images", each image is numbered, for example `output1.png` and `output2.png`.
 
-When pressing Record or Play button the Web macro recorder window is opened.
+- _Credentials_: if the folder is on a network resource, the Credential with access to it; see [Global - Credentials](../../global-credentials)
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/web%20macro%20recorder.png)
+:::warning
 
-**Auto-creation and adding steps manually**
+If the output file cannot be written, for example because _Output folder_ does not exist or the Credential has no access, the error is written to the Server log, no recording is added to the Task output, and the Task still succeeds. To make sure the file was written, check for it in a later step, for example with a File Condition; see [Condition - File](../../condition-file).
 
-Steps are auto-created during recording but it also possible to manually add some steps by clicking on toolbar or right click on an element in the browser.
- 
-**Tabs**
+Each run uses the same file names, so a run can replace the output files of an earlier run. To keep the output of each run, add a Variable, such as the date and time, to _File name_.
 
-VisualCron handles multiple tabs. A tab is created automatically when a popup with new target window appears. You can also click on "New tab" and select to create a new tab. You can create a "Normal" tab or "Incognito tab". When using incognito mode no cookies are stored.
- 
-**Right click menu**
+:::
 
-You can right click anywhere within the browser window but some menu items are context sensitive, like Add Download Step and Add Extract data Step.
+### Web recorder window
 
-![](../../../../../static/img/tasknetwebmacro.png)
+When you click _Record_ or _Test run_, the _Web recorder_ window opens.
+
+![Web recorder window with the browser and the recorded actions](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/web%20macro%20recorder.png)
+
+#### Creating actions
+
+Actions are created automatically while you record. You can also add some actions manually, from the toolbar or by right-clicking an element in the browser.
+
+#### Tabs
+
+The Task handles several tabs. A tab opens automatically when a popup opens a new target window. To open a tab yourself, click _New tab_, then _Normal mode_ or _Incognito mode_. In Incognito mode, no cookies are stored.
+
+#### Right-click menu
+
+You can right-click anywhere in the browser. Some items depend on the element you right-click, such as _Add Download action_ and _Add Extract Data action_.
+
+![Web recorder right-click menu with the items that add actions](../../../../../static/img/tasknetwebmacro.png)
 
 ### Troubleshooting
- 
-**Record works but playback gives Javascript errors**
 
-Try checking Web security checkbox in the Task.
- 
-**Channel Disconnected**
+#### Recording works, but playback gives JavaScript errors
 
-If you get this error try running VisualCronClient.exe as Administrator (right click->Run as..).
+Check whether _Disable WebSecurity_ is selected on the Web macro ***Main settings*** tab. It is selected by default. If it was cleared, select it again, but only for macros that visit sites you trust; see the warning in [Web macro: Main settings tab](#web-macro-main-settings-tab).
+
+#### Channel Disconnected
+
+If this error appears, run the Client as administrator:
+
+1. Right-click "VisualCronClient.exe".
+2. Click _Run as administrator_.

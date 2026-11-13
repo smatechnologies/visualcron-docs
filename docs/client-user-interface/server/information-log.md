@@ -5,31 +5,47 @@ hide_title: 'true'
 
 ## Information - Log
 
-In the main menu **Server > Information > Log** you can list events from the client and the server without saving and reading a log text file. By default, the server is sending all log events to the client. All the log window settings are controlled from the main menu **Server > Settings > Log settings** dialog.
+The _Log_ window shows log events from your Client and from the Server as they happen. It also lets you search the log history the Server keeps in its log database. Use it to follow what the Server is doing, or to find past Job, Task, Notification and transfer events.
+
+To open it, click the main menu _Server_ -> _Information_ -> _Log_. You need the "Log" permission with "Read" (see [Main - User Permissions](main-user-permissions)). The window stays open next to the main window until you close it.
+
+The filters in this window change only what you see. What the Server logs, and how long it keeps the log, is set in [Settings - Log Settings](settings-log-settings).
+
+_Server_ -> _Information_ -> _Log_
+
+![Log window opened from the Information group of the Server tab of the main menu, showing the File and Filter menus, the Realtime - general tab and five Historic tabs, a list of debug-level Client events, the Set extra filter lists with Clear filter, and the log count in the status bar](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Information%20-%20Log/Log%20Information.png)
+
+### Tabs
+
+- **_Realtime - general_**: live events; when the window opens, this tab receives the recent events the Server holds in memory (about the latest 1000) and your Client's own events, then adds new events as they occur
+- **_Historic - general_**, **_Historic - Job_**, **_Historic - Task_**, **_Historic - Notification_** and **_Historic - transfers_**: search the Server's log database; choose the date range (on **_Historic - Task_**, **_Historic - Notification_** and **_Historic - transfers_**, also the Job and Task) and click _Get_; _Filter..._ adds filters on the columns, and the **_Historic - Job_** and **_Historic - Task_** tabs also have _Export.._ and a search in the output text
+
+The Historic tabs show data only when _Log to database_ is on in [Settings - Log Settings](settings-log-settings), and only as far back as the log is kept. _Clear memory_ in [Information - Server Info](information-server-info) empties the Server's in-memory events, so a Log window opened after that starts with fewer realtime events.
+
+### Extra filter
+
+On the **_Realtime - general_** tab, _Set extra filter:_ filters the list on one column: "No filter", "Source", "Message", "Event time", "Event type", "Job name", "JobId" or "TaskId". For "Message", "Event time" and "Job name", type the text to look for; for "Source" and "Event type", pick a value from the second list. "JobId" and "TaskId" filter on the Job or Task the Log window was opened for; text typed in the box is not used. _Clear filter_ removes the extra filter.
+
+### File menu
+
+- _Export_: saves the **_Realtime - general_** list as an Excel file (.xls); choose a folder, enter a file name and click _Save_
+- _Close window_: closes the Log window
+
+### Filter menu
+
+The _Filter_ menu shows or hides one type of event in the realtime list: _Debug_, _Information_, _Error_ or _Communication_. Click a type to hide it, and click it again to show it. The icon changes to show which types are hidden. Your choices are saved with your Client settings. They change only what this window shows, not what is logged.
  
-**Server > Information > Log**
+### Columns
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Information%20-%20Log/Log%20Information.png)
+The realtime list has these columns:
 
-The log window is divided into tabs. The **Realtime - general** tab shows live events, while the **Historic** tabs (general, Job, Task, Notification and transfers) let you look up previously stored events. On the realtime tab you can also set an extra filter on a specific column and clear it with the *Clear filter* button.
-
-**Menu File > Export**
-
-The log can be exported in Microsoft Excel format. Choose path, enter log file name and click on save.
+- _Source_: whether the event came from the Server or from your Client
+- _DateEvent_: when the event happened; if you are connected remotely, the Server's time can differ from your computer's time
+- _EventType_: an icon for the type of event, matching one of the types in the _Filter_ menu
+- _Job_: the Job the event belongs to, if any
+- _Task_: the Task the event belongs to, if any
+- _Message_: the description of the event
  
-**Menu Filter**
+### Status bar
 
-Filters are controlling what you see in the log window, not what is logged in the log files. The main filters control the log listing of log event types and are set by clicking on a specific filter in the Filters menu. When the icon is grayed out, the filter is active which means that the corresponding event type is not shown in the log listing.
- 
-In the Log area, the log listing is divided in a set of columns:
-
-* *Source* - The origin of the event, either the server (a computer) or the client (a computer with a screen)
-* *DateEvent* -The time when the event happened. Remember that the server time may differ from the client time if you are remotely connected
-* *Event type* - An icon representing the event type which also corresponds to the one of the icons in the Filters menu
-* *Job* - When a Job is connected to a certain event that Job name will be shown in this column
-* *Task* - When a Task is connected to a certain event that Task name will be shown in this column
-* *Message* - The verbose description of the event
- 
-**The Status bar**
-
-The log window bottom status bar displays the number of shown log events / total log events and the when the last event was added to the log.
+The status bar shows _Log count_ (the number of events shown and the total number of events) and _Last event_ (the time of the most recent event).

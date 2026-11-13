@@ -5,82 +5,62 @@ hide_title: 'true'
 
 ## Connection - Crystal reports
 
-The Crystal reports Connection stores connect and logon properties for database connections used by Crystal reports.
- 
-The Crystal reports Connection is used in Crystal reports Tasks. In the Task, one or more Connections can be selected depending on how many database connections your report uses.
+The Crystal reports Connection stores the address, sign-in and security settings that the [Reporting - Crystal reports](job-tasks/reporting-tasks/crystal-reports) Task uses to connect to the databases of a Crystal report. In the Task, select one Connection for each database connection that the report uses. See [How the Task applies the Connections](#how-the-task-applies-the-connections).
  
 ### Runtime binaries
 
-In order to use the Crystal reports Task, you must download and install the Crystal Reports runtime on the machine where VisualCron is installed. Select the appropriate version for your machine (32-bit or 64-bit):
+The Crystal reports Task needs the SAP Crystal Reports runtime on the computer where the VisualCron Server runs. Install the 32-bit or 64-bit version that matches your machine. For VisualCron 9.9.7 and later, runtime version 30 is required:
 
-[https://wiki.scn.sap.com/wiki/display/BOBJ/Crystal+Reports%2C+Developer+for+Visual+Studio+Downloads](https://wiki.scn.sap.com/wiki/display/BOBJ/Crystal+Reports%2C+Developer+for+Visual+Studio+Downloads)
+- [Crystal Reports runtime version 30, 32-bit](https://origin.softwaredownloads.sap.com/public/file/0020000000195592021)
+- [Crystal Reports runtime version 30, 64-bit](https://origin.softwaredownloads.sap.com/public/file/0020000000195602021)
  
-For VisualCron 8.3.0 and later, runtime version 21 is required:
+### Common settings
 
-[http://downloads.businessobjects.com/akdlm/crnetruntime/clickonce/CRRuntime_32bit_13_0_21.msi](http://downloads.businessobjects.com/akdlm/crnetruntime/clickonce/CRRuntime_32bit_13_0_21.msi)
-[http://downloads.businessobjects.com/akdlm/crnetruntime/clickonce/CRRuntime_64bit_13_0_21.msi](http://downloads.businessobjects.com/akdlm/crnetruntime/clickonce/CRRuntime_64bit_13_0_21.msi)
+![Crystal reports Connection, Common settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Crystal%20Reports/Crystal%20Reports.png)
+
+The ***Common settings*** tab is the same for every Connection type that has it; see [Common settings](global-connections#common-settings).
+
+For a Crystal reports Connection, no _Test_ button is shown, and _Timeout_ and _Code page_ are not used. The Crystal reports Task uses the Task timeout.
  
-For VisualCron 9.9.7 and later, runtime version 30 is required:
+### Main settings
 
-[https://origin.softwaredownloads.sap.com/public/file/0020000000195592021](https://origin.softwaredownloads.sap.com/public/file/0020000000195592021) (x32)
-[https://origin.softwaredownloads.sap.com/public/file/0020000000195602021](https://origin.softwaredownloads.sap.com/public/file/0020000000195602021) (x64)
- 
-**Manage Connections > Add > Crystal reports > Common settings** tab
+![Crystal reports Connection, Main settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Crystal%20Reports/Settings.png)
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Crystal%20Reports/Crystal%20Reports.png)
+These fields are on ***Connection settings*** -> ***Main settings***. _Address_ and _Username_ are required.
 
-**Name**
+- _Address_: the name of the ODBC or OLE DB data source (DSN) that the report uses. It must match the name shown in the ODBC Data Source Administrator exactly. Create the DSN as a System DSN on the Server computer, because User DSN entries are not available across users. If the report uses a User DSN, create a System DSN with the same name. The DSN sets the target database
+- _Username_: the user name of the database credentials that the data source uses. With _Integrated security_, the Windows user name
+- _Password_: the password for that user
+- _Integrated security_: when selected, the Task runs the report as the Windows user given in _Username_ and _Password_, and connects to the database with Windows authentication. This applies only when one Connection is selected in the Task
 
-The name of the Connection to uniquely identify it.
+### How the Task applies the Connections
 
-**Group**
+With one Connection selected, the Task sets the server name of each report table to _Address_. It then uses _Integrated security_, or passes _Username_ and _Password_.
 
-The group that the connection is a part of.
- 
-**Timeout**
+With more than one Connection selected, the Task matches each report table to the Connection whose _Address_ equals the server name stored in the report and whose _Username_ equals the user ID stored in the report. Only the password of the matching Connection is used, and _Integrated security_ is not applied.
 
-The connection timeout in seconds. Connection will fail after this time period.
- 
-**Code page**
-
-Code page being used.
- 
-**Manage Connections > Add > Crystal reports > Connection settings** tab
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Crystal%20Reports/Settings.png)
-
-**Address**
-
-The ODBC or OLEDB DSN (Data Source Name) used by the Crystal report. This must match exactly the name shown in the ODBC Data Source Administrator. The DSN must exist under **System DSN** — User DSN entries are not available across users and will not work. If the report uses a User DSN, copy it to System DSN first. The target database is specified within the DSN itself.
-
-**Username**
-
-The user name that matches the credentials configured in the ODBC/OLEDB data source.
- 
-**Password**
-
-The password for the ODBC/OLEDB data source.
- 
-**Integrated security**
-
-When checked, Windows authentication is used to connect to the database. Use the Windows user name and password in the Username and Password fields.
- 
-**Debugging**
-
-If you encounter issues, enable **Extended debugging** under **Server settings > Log**. After execution, review the log for errors. Common problems include:
-
-1. The **Address** value does not match the DSN name in System DSN
-2. The DSN has only been created under User DSN and not System DSN
-3. The Crystal Reports document has not been updated to reference the System DSN
-4. The username or password do not match the database credentials
-5. One or more Connections are missing in VisualCron (if the report uses more than one database connection)
+When a report table has no stored user ID, the Task leaves its connection details as they are.
  
 ### Troubleshooting
 
-**Could not load file or assembly 'CrystalDecisions.ReportAppServer.ClientDoc, Version=13.0.2000.0'**
+#### Find the cause of a failing report
 
-In IIS Manager on the server, set the application pool for the web application to not allow 32-bit assemblies, or run the following script:
+To find the cause of a failing report, complete the following steps:
 
-```
-C:\inetpub\AdminScripts\adsutil.vbs SET w3svc/AppPools/Enable32bitAppOnWin64 0
-```
+1. In the Crystal reports Task, select _Extended Task debug logging_ on the ***Main settings*** tab. See [Task - Main Settings](job-tasks-task-main-settings).
+2. Run the Task.
+3. Open the log.
+
+The log shows, for each report table, the server name, user name and database name that the Task used, and whether a password was set.
+
+Common causes:
+
+- _Address_ does not match the name of the System DSN
+- The DSN exists only as a User DSN
+- The report does not use the System DSN
+- _Username_ or _Password_ does not match the database credentials
+- A Connection is missing for one of the report's database connections
+
+#### Could not load file or assembly 'CrystalDecisions.ReportAppServer.ClientDoc, Version=13.0.4000.0'
+
+Install the Crystal Reports runtime version that VisualCron requires (see [Runtime binaries](#runtime-binaries)), in the 32-bit or 64-bit version that matches your machine. Then restart the VisualCron Server service.

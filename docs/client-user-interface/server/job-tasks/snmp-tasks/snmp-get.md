@@ -5,86 +5,89 @@ hide_title: 'true'
 
 ## Task SNMP - SNMP Get
 
-Issues a GET message to an SNMP agent in order to inspect the value of a specific variable. SNMP (Simple Network Management Protocol) is a UDP-based protocol used mostly in network management systems to monitor network-attached devices for conditions that warrant administrative attention.
+The SNMP Get Task sends a GET request to an SNMP agent and returns the value of one variable, identified by its OID. SNMP (Simple Network Management Protocol) is a UDP-based protocol used mostly by network management systems to monitor network-attached devices.
 
-**SNMP Get > General** tab
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get.png)
+The Task settings are on the ***SNMP Get*** tab, which has the sub tabs ***General***, ***Advanced***, ***Data*** and ***Security***.
 
-**Agent IP Address**
+### SNMP Get: General tab
 
-The IP address of the SNMP agent (device or host) to query.
+![General tab of the SNMP Get Task, with the Agent IP Address, Variable Name and Community fields](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get.png)
 
-**Variable Name**
+- _Agent IP Address_: The IPv4 address or host name of the SNMP agent; it can contain Variables
 
-The OID of the variable to retrieve. You can enter the OID in numeric format (e.g., `1.3.6.1.2.1.1.1.0`) or string notation (e.g., `system.sysDescr`). Use the Translate button to convert between formats.
+  For a host name, the Task uses its first IPv4 address. A host name that cannot be resolved stops the Task with an error.
 
-**Community**
+- _Variable Name_: The OID of the variable to read, as a number such as `1.3.6.1.2.1.1.1.0` or a name such as `system.sysDescr.0`
 
-The SNMP community string used for authentication. The default value is `public`.
+  Names are case-sensitive. Click _Translate_ to show the other form of the OID you entered.
 
-**SNMP Get > Advanced** tab
+- _Community_: The community string, "public" by default
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get%20Advanced.png)
+  With "SNMPv3" this field is labeled _User_ and holds the SNMPv3 user name.
 
-**Remote Port**
+Variables are resolved only in _Agent IP Address_.
 
-The UDP port number on the remote SNMP agent to send requests to. The default port is 161.
+### SNMP Get: Advanced tab
 
-**Time out after**
+![Advanced tab of the SNMP Get Task, with the Remote Port, Time out after, Broadcast delay and SNMP version settings](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get%20Advanced.png)
 
-The amount of time to wait for a response from the SNMP agent before the request times out. The default is 30 seconds.
+- _Remote Port_: The UDP port of the SNMP agent
 
-**Broadcast delay**
+  A new Task shows "162", the port for SNMP traps. SNMP agents normally listen on port "161", so enter the port of your agent.
 
-The delay to apply when sending broadcast requests, allowing agents time to respond. The default is 3 seconds.
+- _Time out after_: How long to wait for the response, in "milliseconds", "seconds", "minutes" or "hours"
 
-**SNMP version**
+  The default is "30" with the unit "seconds". When no response arrives in time, the Task fails with an error.
 
-The SNMP protocol version to use for the request. The default is SNMPv1.
+- _Broadcast delay_: When _Agent IP Address_ is the broadcast address "255.255.255.255", how long to wait for a response instead of _Time out after_
 
-**SNMP Get > Data** tab
+  The default is "3" with the unit "seconds".
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get%20Data.png)
+- _SNMP version_: "SNMPv1" (the default), "SNMPv2c" or "SNMPv3"
 
-**Use string notation for OIDs**
+  With "SNMPv3", the _Community_ label changes to _User_ and the ***Security*** tab appears.
 
-When checked, OID values in the response are displayed using human-readable string notation instead of numeric dot notation.
+### SNMP Get: Data tab
 
-**Use string notation for timetick values**
+![Data tab of the SNMP Get Task, with the two string notation check boxes](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/SNMP%20Tasks/Get%20Data.png)
 
-When checked, timetick values in the response are displayed as formatted time strings rather than raw numeric values.
+- _Use string notation for OIDs_: Selected by default; writes the OIDs in the output as names instead of numbers
+- _Use string notation for timetick values_: Selected by default; writes TimeTicks values as a duration instead of a number
 
-**SNMP Get > Security** tab
+### SNMP Get: Security tab
 
-**Security Level**
+The ***Security*** tab appears only with "SNMPv3" on the ***Advanced*** tab.
 
-The SNMPv3 security level to use. Select from the dropdown.
+- _Security Level_: "None" (the default), "Authenticate" or "Authenticate and Encrypt"
+- _Authentication Protocol_: "MD5" (the default) or "SHA-1", for "Authenticate" and "Authenticate and Encrypt"
+- _Authentication Passphrase_: The authentication passphrase, at least 8 characters
+- _Encryption Protocol_: "DES", the only choice, for "Authenticate and Encrypt"
+- _Encryption Passphrase_: The encryption passphrase, at least 8 characters
+- _Specify Context_: Enables _Context Name_ and _Context Engine ID_
+- _Context Name_ and _Context Engine ID_: The SNMPv3 context
 
-**Authentication Protocol**
+  This Task does not use these values: it uses the context that the agent reports.
 
-The authentication protocol to use for SNMPv3. Select from the dropdown.
+### Output and errors
 
-**Authentication Passphrase**
+The output of the Task lists the SNMP version, the community or user name, and the error status and error index of the response, then one line for each variable in this form:
 
-The passphrase used for SNMPv3 authentication.
+```text
+<OID> = <type> : <value>
+```
 
-**Encryption Protocol**
+With SNMPv3, the output also lists the security parameters and the context of the response.
 
-The encryption protocol to use for SNMPv3. Select from the dropdown.
+:::warning
 
-**Encryption Passphrase**
+The output of the Task contains the community string (SNMPv1 and SNMPv2c) or the user name (SNMPv3) in plain text, so anyone who can see the Task output can read it. SNMPv1 and SNMPv2c also send the community string over the network unencrypted.
 
-The passphrase used for SNMPv3 encryption.
+:::
 
-**Specify Context**
+:::warning
 
-When checked, allows you to specify an SNMPv3 context name and context engine ID.
+When the agent answers with an error status, for example because the OID does not exist, the error is written to the error output, the output stays empty, and the Task reports success. When _Agent IP Address_ is a host name with no IPv4 address, or a variable binding cannot be converted, nothing is sent, the output stays empty, and the Task reports success. The reason is written to the error output. To catch this, check on the ***On error*** tab whether the output is empty (see [Task - On Error](../../task-on-error)).
 
-**Context Name**
-
-The SNMPv3 context name to use. Available when Specify Context is checked.
-
-**Context Engine ID**
-
-The SNMPv3 context engine ID to use. Available when Specify Context is checked.
+:::

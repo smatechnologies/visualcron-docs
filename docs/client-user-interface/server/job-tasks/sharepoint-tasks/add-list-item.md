@@ -2,27 +2,36 @@
 sidebar_label: 'Task Sharepoint - Add List Item'
 hide_title: 'true'
 ---
+## Task SharePoint - Add List Item
 
-## Task Sharepoint - Add List Item
+The SharePoint - Add list item Task adds one item to an existing list on a SharePoint site, using a SharePoint Connection.
 
-Adds an item to an existing list on a SharePoint Services site. Lists usually appear in a multi-column/mult-row table of information which are basic building blocks of Web pages on a Windows SharePoint Services site. The columns represent lists and the rows represent items in those lists. If the specified list (column) does not exist, it will be created during runtime along with its associated value. If the column already exists, the specified value will be added to the next available row in that column.
- 
-The SharePoint Tasks supports the following versions:
+The SharePoint Tasks work with SharePoint 2010, 2013 and 2016 on premises, and with SharePoint Online.
 
-* SharePoint 2010
-* SharePoint 2013
-* SharePoint Online
+![Add list item tab with the Connection, the Title list and the Field(s) grid](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Add%20List%20item.png)
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Add%20List%20item.png)
+:::warning
 
-**Connection**
+This Task uses a SharePoint Connection; see [Connection - SharePoint](../../connection-sharepoint). When a certificate is selected in the Connection, the Task accepts any server certificate, and each run of a SharePoint Task changes TLS handling for the whole Server process.
 
-To use SharePoint Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
- 
-**Title**
+:::
 
-The title of an existing list to add the item to. Click the *Refresh* icon to list available lists.
- 
-**Field(s)**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-The grid lists the available fields for the selected list. Each row has a **Use** checkbox, a **Name** column showing the field name, and a **Value** column for the value to set. Check **Use** and enter a value for each field to include in the new list item. Click the *Refresh fields* button to populate the grid with fields from the selected list.
+### Add list item tab
+
+- _Connection_: the SharePoint Connection to use. The button next to the list manages Connections
+- _Title_: the title of the list to add the item to. Click the button next to the box to show the lists of the site. Variables are not resolved in _Title_
+- _Field(s)_: one row for each field of the list, with the columns _Use_, _Name_ and _Value_. Check _Use_ and enter a _Value_ for each field to set in the new item. Click _Refresh fields_ to fill the grid with the fields of the list in _Title_. Variables are resolved in _Name_ and _Value_
+
+For a lookup field, enter the value of the looked-up column; the Task finds the matching item in the looked-up list. When no item there has that value, the field is left empty in the new item.
+
+### Output and errors
+
+The Task does not write output.
+
+:::warning
+
+When no list on the site has the title in _Title_, the Task adds nothing, and the Task reports success.
+
+:::
