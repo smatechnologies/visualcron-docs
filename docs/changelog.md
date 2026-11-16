@@ -15,6 +15,10 @@ hide_title: 'true'
 
 :star: Client/Server: Installer Asks for the Admin Password on New Server Installations (VCPCM-3148)
 
+#### Bug Fixes
+
+:white_check_mark: Client/Server: Installer Ends With Error 1603 and Rolls Back When Started From a Non-Elevated Administrator Session (VCPCM-3148)
+
 ### 13.5.1 [2026-11-08]
 
 #### Notes
