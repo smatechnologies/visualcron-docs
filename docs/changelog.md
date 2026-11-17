@@ -5,6 +5,12 @@ hide_title: 'true'
 
 ## Change Log
 
+### Unreleased
+
+#### Bug Fixes
+
+:white_check_mark: Server: Log Settings: MySQL Log Database Loses Log Rows Larger Than 64 KB (VCPCM-4521)
+
 ### 13.5.1 [2026-11-08]
 
 #### Notes
