@@ -5,168 +5,128 @@ hide_title: 'true'
 
 ## Task PDF - Sign
 
-The PDF - Sign Task signs existing PDF files with a Certificate and optionally adds a watermark image with details about the Certificate.
- 
-**Sign > Main settings** sub tab
+The PDF - Sign Task signs PDF files with a Certificate, and can show the signature as a widget on the pages.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Sign%20Settings.png)
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-**Certificate**
+### Sign: Main settings tab
 
-Select an existing Certificate you have created/imported in [Certificates manager](../../global-certificates.md).
- 
-**Show signature widget**
+![Main settings tab of the Sign Task, with the Certificate list, the Show signature widget check box, the Signature type list, the Author, Reason, Contact info and Location boxes, and the Password for file(s) box](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Sign%20Settings.png)
 
-If a watermark should be added or not to the document.
- 
-**Signature type**
+- _Certificate_ (_Sign ..._ group): the Certificate to sign with; required
 
-What type of signature
- 
-**Author**
+  See [Global - Certificates](../../global-certificates).
 
-Author property for the widget.
- 
-**Reason**
+- _Show signature widget_: makes the signature visible on the pages and shows the ***Signature widget*** tab
 
-Reason property for the widget.
- 
-**Contact info**
+  When it is unchecked, the signature is invisible.
 
-Contact info property for the widget.
- 
-**Location**
+- _Signature type_: "Pkcs1" (the default), "Pkcs7" or "Pkcs7_detached"
 
-Location property for the widget.
- 
-**Password for file(s)**
+  :::note
 
-If any of the specified PDF files contains a password it should be entered here
- 
-**Sign > File filter > Location** sub tab
+  The signature uses the SHA-1 digest.
 
-This tab uses the common [file filter](../../job-tasks-file-filter.md) to filter out the files that should be processed in this Task.
- 
-**Sign > Destination** sub tab
+  :::
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Sign%20Destination.png)
+- _Author_, _Reason_, _Contact info_ and _Location_: stored in the signature
 
-**Save to**
+  Variables are supported.
 
-Selects where the signed PDF is written. Available options:
+- _Password for file(s)_: not used by this Task
 
-* _Save to same file_ - overwrite the source PDF in place
-* _Same folder with file mask_ - keep the original folder, but save under a different name (set the *File mask* below)
-* _Different folder with file mask_ - save under a different name in a different folder (set both *Folder* and *File mask* below)
+  The Task cannot sign an encrypted file; see [Output and errors](#output-and-errors).
 
-**Folder**
+### File filter tab
 
-The destination folder. Enabled when *Save to* is set to _Different folder with file mask_. Click the *Folder* icon to browse for the folder.
+The ***File filter*** tab selects the PDF files to sign; see [File Filter](../../job-tasks-file-filter). If the filter has a Credential, the Task uses it while it reads and writes the files. When the logon with the Credential fails, the Task continues as the account that runs the Server and writes the error to the Server log.
 
-**File mask**
+### Destination tab
 
-The file mask used to name the output file. Enabled when *Save to* is set to _Same folder with file mask_ or _Different folder with file mask_.
- 
-**Properties->No rotate**
+![Destination tab of the Sign Task, with the Save to.. group and the Folder and File mask boxes](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Sign%20Destination.png)
 
-If this property value is checked signature widget will not be rotated when document is rotated in browser.
- 
-**Properties->No zoom**
+- _Same file_ (_Save to.._ group): saves the signed file over the source file
+- _Same folder but use file mask_: saves the signed file in the folder set on the ***File filter*** tab, named by _File mask_
+- _Different folder and use file mask_: saves the signed file in _Folder_, named by _File mask_
+- _Folder_: the destination folder for _Different folder and use file mask_; click the folder button to browse
+- _File mask_: builds the new file name from the source file name, by the renaming standard set in [Main - Settings](../../main-settings)
 
-If this property is checked signature widget size will not be changed during zooming.
- 
-**Properties->Print**
+  The default `*` keeps the source file name.
 
-If this property is checked the signature widget will be printed on paper.
- 
-**Properties->Locked**
+:::warning
 
-If this property is checked signature widget can't be moved by the user.
- 
-**Properties->Locked contents**
+_Same file_ replaces the source file. With the default _File mask_ `*`, _Same folder but use file mask_ also replaces a source file that is in the File filter folder. A file that already has the new name is replaced without a prompt.
 
-Set this property to checked if widget's contents should be locked.
- 
-**Properties->ReadOnly**
+:::
 
-If this property is checked the signature widget will not interact with the user (will not react on mouse, etc.)
- 
-**Properties->No view**
+When _Include sub folders_ is checked on the File filter, _Same folder but use file mask_ saves every result in the File filter folder, not in the subfolder the source file came from.
 
-If this property is checked signature widget will not be displayed when document is viewed.
- 
-**Properties->Toggle no view**
+### Signature widget tab
 
-If this property is checked the signature widget will be displayed only when user is moving mouse over it.
- 
-**Properties->Signature widget background image**
+The ***Signature widget*** tab appears when _Show signature widget_ is checked.
 
-This image should be in jpeg format and will be displayed as a background image.
- 
-**Properties->Auto stretch background**
+#### Properties
 
-If this property is checked the background picture will be automatically stretched to fit the signature widget.
- 
-**Properties->Stretch width**
+- _No rotate_: the widget does not rotate when the document is rotated; checked by default
+- _No zoom_: the widget keeps its size when the document is zoomed; checked by default
+- _Print_: the widget is printed; unchecked by default
+- _Locked_: the widget cannot be moved; checked by default
+- _Locked contents_: the content of the widget is locked; unchecked by default
+- _ReadOnly_: the widget does not respond to the user; checked by default
+- _No view_: the widget is not shown when the document is viewed; unchecked by default
+- _Toggle no view_: the widget is shown only when the pointer is over it; unchecked by default
+- _Signature widget background image_: a JPEG file shown as the background of the widget
 
-Specify the horizontal size of the stretched background picture.
- 
-**Properties->Stretch height**
+  When it is empty, a built-in image is used.
 
-Specify the vertical size of the stretched background picture.
- 
-**Signature position and dimensions->AutoPos**
+- _Auto stretch background_: stretches the background image to fit the widget; checked by default
+- _Stretch width_ and _Stretch height_: the size of the background image, used when _Auto stretch background_ is unchecked
 
-If this property is checked signature widget will be placed to the upper right corner. If not checked Left and Top properties will be used as widget coordinates (from bottom left corner).
- 
-**Signature position and dimensions->AutoSize**
+#### Signature position and dimension
 
-The signature will be auto-sized if checked. If not checked please set the Width/Height properties.
- 
-**Show signature in page range->All pages**
+- _AutoPos_: places the widget automatically; checked by default
 
-The signature stamp will be added to all pages.
- 
-**Show signature in page range->Pages**
+  When it is unchecked, _Left_ and _Top_ set the position; the defaults are "10" and "10".
 
-The signature stamp will be added to the specified range of pages. Specify a range like 2-4 or specific pages 1,3,5-6.
- 
-**Default text**
+- _AutoSize_: sizes the widget automatically; checked by default
 
-This tab contains the properties that set the texts inside the widget
- 
-**Default text->Auto text**
+  When it is unchecked, _Width_ and _Height_ set the size; the defaults are "300" and "400".
 
-If this property is checked texts to be displayed on the signature widget will be generated automatically on the grounds of information from the certificate. Otherwise texts will be taken from Algorithm caption, Algorithm Info, Signer caption, Signer Info and Header properties.
- 
-**Default text->Hide default text**
+#### Show signature in page range
 
-Set this property to cheched to hide the default text of the signature widget (signature algorithm, signing time, etc.).
- 
-**Default text->AutoFontSize**
+- _All pages_: shows the widget on every page; this is the default
+- _Pages_: shows the widget on page numbers and ranges separated by commas, for example `2-4` or `1,3,5-6`. An entry that is not a page number or a valid range is ignored
 
-If this property is cheked then the following values will be assigned to different font sizes: Title font size = 8.77, Timestamp font size = 4.89, Section title font size = 7, Section text font size = 5. Otherwise values will be used from defined values.
- 
-**Default text->Font name**
+#### Default text
 
-Add font name to use in widget
- 
-**Custom texts**
+The ***Default text*** tab sets the texts in the widget.
 
-Use this property to specify any custom text to be added to the widget.
- 
-**Custom texts->Text**
+- _AutoText_: builds the widget texts from the Certificate; checked by default
 
-The text to be added.
- 
-**Custom texts->Left**
+  When it is unchecked, the widget uses _Header_, _Algorithm caption_, _Algorithm info_, _Signer caption_ and _Signer info_, and the texts on the ***Custom texts*** tab.
 
-Horizontal offset of the displayed text.
- 
-**Custom texts->Top**
+- _Hide default text_: hides the default texts of the widget, such as the signature algorithm and signing time; unchecked by default
+- _Show timestamp_: shows the signing time; checked by default
+- _AutoFontSize_, _Title font size_, _Timestamp font size_, _Section title font size_ and _Section text font size_: the Task does not currently apply these settings
+- _Font name_: the name of a font to add to the widget
 
-Vertical offset of the displayed text.
- 
-**Custom texts->FontSize**
+#### Custom texts
 
-The font size of the text
+The ***Custom texts*** tab lists more texts for the widget, used when _AutoText_ is unchecked.
+
+- _Text_: the text to add
+
+  Variables are supported.
+
+- _Left_ and _Top_: the position of the text in the widget
+- _FontSize_: the size of the text
+
+### Output and errors
+
+The Task output contains "Success" for each file it signs. An encrypted file raises an error.
+
+:::warning
+
+When the selected Certificate no longer exists, the file is not signed, and the Task reports success. With _Same folder but use file mask_ or _Different folder and use file mask_, the Task copies the source file to the destination before it signs it, so an unsigned copy stays there.
+
+:::

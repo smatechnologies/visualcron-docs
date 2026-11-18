@@ -5,307 +5,215 @@ hide_title: 'true'
 
 ## Connection - SFTP
 
-The SFTP Connection stores connect and logon properties for the SSH File Transfer Protocol (SFTP).
- 
-### About SFTP
+The SFTP Connection stores the address, sign-in and security settings that the [Net - FTP/FTPS/SFTP/SCP](job-tasks/net-tasks/ftp) Task, the [Cloud - Sync file(s)](job-tasks/cloud-transfer-tasks/sync) Task and the [Event Trigger - Remote File](event-trigger-remote-file) Trigger use to connect to an SFTP server. SFTP (SSH File Transfer Protocol) transfers files over an SSH connection. It is a different protocol from FTP and FTPS. You can also browse the server with the [Connection Explorer](../tools/explore-connection-explorer).
 
-SFTP (SSH File Transfer Protocol, often called Secure File Transfer Protocol) is a protocol that lets you transfer files securely over an SSH connection. SFTP is not compatible with FTP (File Transfer Protocol), which has its own security enhancements such as FTPS. SFTP is built on top of SSH and supports password-based and public key authentication. Public key authentication requires a private key which is configured in the Connection settings. The VisualCron implementation supports SFTP protocol versions 3–5. The default port for SFTP is 22.
- 
-**Manage Connections > Add > SFTP > Common settings** tab
+:::warning
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/SFTP%20Settings.png)
+SFTP Connections accept any server host key. The Server does not compare the key with a stored key, so it cannot tell the real server from another server that answers at the same address. Confirm the server's host key with its administrator before you use the Connection. With *Log received messages to task output* selected, the Task output shows the MD5 fingerprint of the key that the server sent, as pairs of hexadecimal digits separated by colons. Ask the administrator for the MD5 fingerprint of the key to compare with it.
 
-**Protocol type**
+:::
 
-VisualCron is able to connect using regular FTP and FTPS (with implicit and explicit encryption). Regular FTP offer no security and information is not encrypted. VisualCron supports both SSL 3.0 and TLS (SSL 3.1). SSL and TLS are protocols layered above connection protocols (such as TCP/IP) but beneath application protocols (such as FTP) that provide encrypted, authenticated communications between a client and a server.
- 
-**Brute force test**
+### Common settings
 
-When using FTP and you are unsure of connection properties you can use the Brute force test tool to test all connection combinations. Note, brute force test option is only available for FTP protocol.
+![SFTP Connection, Common settings tab, with Test and Brute force test](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/SFTP%20Settings.png)
 
-**Name**
+The ***Common settings*** and ***Proxy*** tabs are the same for every Connection type that has them; see [Common settings](global-connections#common-settings) and [Proxy](global-connections#proxy). For SFTP Connections:
 
-The name of the Connection to uniquely identify it.
+- _Test_: the Server connects and logs on with the settings in the window, and lists the root folder of the server
+- _Brute force test_: opens the SFTP tester, which tries combinations of settings from the Client computer
+- _Timeout_: how long, in seconds, the Server waits for the server. With "0", commands have no time limit
 
-**Group**
+### Main settings
 
-The group that the connection is a part of.
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-**Timeout**
+![SFTP Connection, Main settings tab, with the Server and Credentials groups and the Override authentication options](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Connection%20Settings.png)
 
-The connection timeout in seconds. Connection will fail after this time is passed.
+- _Address_: the host name or IP address of the SFTP server
+- _Port_: "22" on a new Connection
+- _Authentication type_: "Password" or "Public key". With "Public key", *SSH key* is shown
+- _Username_: the account on the server. Enter it for both authentication types
+- _Password_: the account's password, for password and keyboard logons. It is not the passphrase of the SSH key
+- _SSH key_: the key to log on with, chosen from the keys stored in [Global - SSH Keys](global-ssh-keys). The key's passphrase is stored with the key
+- _Override authentication_: the logon methods the Server tries:
+  - _Auto authentication_: try password and keyboard-interactive logon. While it is selected, the two options below are unavailable. Cleared on a new Connection
+  - _Password authentication_: selected on a new Connection
+  - _Keyboard authentication_: keyboard-interactive logon. Cleared on a new Connection
 
-**Code page**
+With "Public key", the Server also tries a public key logon with the *SSH key*.
 
-The table of values that describes the desired character set.
+### Encryption
 
-**Manage Connections > Add > SFTP > Connection settings** tab
+![SFTP Connection, Encryption tab, with the Encryption algorithms list and its automatic options](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Encryptions.png)
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Connection%20Settings.png)
+The ***Encryption*** tab has one list each for *Encryption algorithms*, *Key exchange algorithms*, *MAC algorithms* and *Public key algorithms*. Each list has its own option to choose the algorithms automatically: *Auto adjust ciphers*, *Auto adjust key exchange algorithms*, *Auto adjust MAC algorithms* and *Auto adjust Public key algorithms*. They are selected on a new Connection. Clear one to choose the allowed algorithms in its list, with *Select all* and *Deselect all*.
 
-**Address**
+*Auto adjust by component* is available while *Auto adjust ciphers* is selected, and is selected on a new Connection. When you clear it, the Server offers only the encryption algorithms that the server announces.
 
-The host address of the SFTP server. Can be a DNS name or IP address.
- 
-**Port**
+The server must support at least one of the algorithms you allow in each list, or the connection fails. To find the algorithms the server uses, see [Set the encryption settings](#set-the-encryption-settings).
 
-The remote connection port. The default port for SFTP is 22.
+### Extra settings
 
-**Authentication type**
+![SFTP Connection, Extra settings tab, with the shared settings, the SFTP settings, SFTP version support and the log options](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Extra%20Settings.png)
 
-The method used to authenticate with the SFTP server. Available options:
+- _Transfer type_: "Binary", the default, or "ASCII"
+- _KeepAlive_: the Server sends a keepalive message every 90 seconds, whatever number this field contains. "0" on a new Connection. Keep a number in the field, because other text makes the connection fail
+- _Max packet size_: the largest SSH packet in bytes, up to "524288". "262144" on a new Connection
+- _Auto adjust transfer block_: selected on a new Connection, so that the Server sizes the transfer blocks itself. Clear it to set *Pipeline length*, *Download block size* and *Upload block size*
+- _Pipeline length_: how many requests the Server sends before it waits for the replies, from "1" to "32". "32" on a new Connection. Higher values are faster but use more memory
+- _Download block size_: the bytes in each download request, from "1" to "131072". "8192" on a new Connection
+- _Upload block size_: the bytes in each upload request, from "1" to "131072". "32768" on a new Connection
+- _Use compression_: the Server does not currently apply this setting to SFTP connections
+- _SBB debug_: when it is selected, the Server sends its SSH identification string as soon as the connection opens, without waiting for the server's. It does not turn on extra logging. Cleared on a new Connection
+- _SFTP version support_: the SFTP protocol versions the Server may use, "0" to "6". Versions "2" to "6" are selected on a new Connection. If a server has problems agreeing on a version, select fewer versions. For background, see [SSH File Transfer Protocol](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol) on Wikipedia
+- _Log sent messages to task output_: writes the messages that the Server sends to the SFTP server into the Task output
+- _Log received messages to task output_: writes the messages from the SFTP server, including the MD5 fingerprint of the host key, into the Task output
 
-* _Password_ - authenticate using a username and password
-* _Public key_ - authenticate using a private key file; the SSH key fields are shown below the password field when this option is selected
- 
-**Username**
+### Proxy
 
-The user name for the connection.
- 
-**Password**
+![SFTP Connection, Proxy tab, with the proxy type, address, port, test URL, authentication and credential fields and the Test button](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Proxy.png)
 
-The password for the connection. When Authentication type is _Public key_, this field contains the passphrase for the private key (if the key is passphrase-protected).
- 
-**Public key vs password authentication**
+SFTP Connections can use "HTTP Proxy", "SOCKS4" and "SOCKS5" proxies, and use *Authentication*.
 
-Public key authentication means that you specify the private key and any password for that key. Private keys can be loaded in SSH1, OpenSSH, Binary, Putty, IETF (Putty and IETF use different formats here) formats.
- 
-**SSH key** _(Public key authentication only)_
+:::warning
 
-Select the private key to use for authentication. Private keys can be in SSH1, OpenSSH, Binary, PuTTY, or IETF format. Click the file icon to browse for the private key file.
- 
-**Override authentication**
+A new Connection has *Authentication* "Not set" and *Use credentials* selected. With "HTTP Proxy" and those settings, the Server sends the SFTP *Username* and *Password* to the proxy instead of the proxy account. Set *Authentication* to "Basic", "Digest" or "NTLM" to send the proxy *Username* and *Password*.
 
-By default, VisualCron uses auto authentication which tries both password and keyboard-interactive methods. Some servers do not support auto authentication. Uncheck **Auto authentication** and select the specific authentication method(s) to use.
+:::
 
-* _Auto authentication_ - VisualCron automatically negotiates the authentication method; when checked, the individual method checkboxes below are disabled
-* _Password authentication_ - enable password-based authentication; only available when Auto authentication is unchecked
-* _Keyboard authentication_ - enable keyboard-interactive authentication; only available when Auto authentication is unchecked
- 
-**Manage Connections > Add > SFTP > Encryption** tab
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Encryptions.png)
-
-Some SFTP servers require specific encryption settings for communication between client and server. Four types of encryption can be adjusted in VisualCron:
-
-* Encryption algorithm
-* Key exchange algorithm
-* MAC algorithm
-* Public key algorithm
- 
-By default, these are auto-negotiated by VisualCron. When **Auto adjust ciphers** is checked for an algorithm type, VisualCron selects the settings automatically. Uncheck to manually select which algorithms are allowed using the **Select all** and **Deselect all** buttons.
-
-In some cases, not all ciphers presented in VisualCron will be used during negotiation because the remote server must explicitly support them. If the server is not configured to allow certain ciphers, it will not choose them during the handshake even if they are enabled in VisualCron. Ensuring the server is configured with matching cipher support is required for a successful connection.
-
-For troubleshooting encryption issues, refer to the _Set correct Encryption settings_ section below.
-
-**Manage Connections > Add > SFTP > Extra settings** tab
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Extra%20Settings.png)
-
-**Transfer type**
-
-Select whether to transfer files in Binary (default) or ASCII mode.
-
-**KeepAlive**
-
-The interval (in seconds) for sending keepalive signals to maintain the connection.
- 
-**Max packet size**
-
-Use this property to specify the maximal length of packet in bytes. The default value is 262144, i.e., 256 KBytes.
- 
-**Auto adjust transfer block**
-
-When checked, VisualCron automatically adjusts pipeline length and block sizes for optimal transfer performance. When unchecked, the Download block size, Upload block size, and Pipeline length fields are enabled for manual configuration.
-
-**Download block size**
-
-The size in bytes of a single download request. If you have download speed problems, try setting to 0 (automatic) or increase up to 2 MB (2097152) for large files. Default: 8192.
-
-**Upload block size**
-
-The size in bytes of a single upload request. If you have upload speed problems, try setting to 0 (automatic) or increase up to 2 MB (2097152) for large files. Default: 32768.
-
-**Pipeline length**
-
-The number of upload or download requests sent before waiting for all requests to complete. Higher values increase transfer speed but use more memory and discard more data on error. Default: 32.
-
-**Use compression**
-
-When checked, enables compression for the SSH connection.
-
-**SBB debug**
-
-When checked, enables verbose debug logging from the underlying SSH component.
-
-**SFTP version support**
-
-Some SFTP servers do not support all protocol versions. Check the versions that should be attempted (0–6). For more information, see [SSH File Transfer Protocol versions](http://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol).
-
-**Log sent messages to task output**
-
-When checked, all messages sent from VisualCron to the SFTP server are logged in the Task output.
-
-**Log received messages to task output**
-
-When checked, all messages received from the SFTP server are logged in the Task output.
-
-**Manage Connections > Add > SFTP > Proxy** tab
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Proxy.png)
-
-**Proxy type**
-
-Select the proxy type to be used.
-
-**Address**
-
-The host name or IP address of the proxy server.
-
-**Port**
-
-The port of the proxy server.
-
-**Use credentials**
-
-Enable to provide credentials for authenticating with the proxy server.
-
-**Domain**
-
-The domain of the proxy server.
-
-**Username**
-
-The user name to access the proxy server.
-
-**Password**
-
-The password to access the proxy server.
- 
 ### Troubleshooting
 
-Authentication type codes:
-* 2 - public key authentication
-* 4 - password authentication
-* 16 - keyboard-interactive authentication
- 
-**Authentication type 16 failed along with error 114**
+The error messages name the logon methods by number:
 
-Try unchecking **Auto authentication** and unchecking **Keyboard authentication**. The problem could also be that the password or username is wrong.
- 
-**Authentication type 4 failed along with error 114**
+- "2": public key
+- "4": password
+- "16": keyboard-interactive
 
-Try unchecking **Auto authentication** and unchecking **Password authentication**. The problem could also be that the password or username is wrong.
- 
-**Authentication type 2 failed along with error 114**
+#### Authentication type 16 failed along with error 114
 
-Public key authentication is failing — the wrong private key may be in use, or the server requires password authentication.
- 
-**Authentication failed for type 16 and 4 along with error 114**
+On ***Main settings***, clear *Auto authentication* and *Keyboard authentication*. Also check the user name and password.
 
-The connection is attempting password authentication but the server requires public key authentication.
- 
-**SFTP error 6**
+#### Authentication type 4 failed along with error 114
 
-A pseudo-error indicating that the client has no connection to the server.
- 
-**SFTP error 7 in combination with error 10058**
+On ***Main settings***, clear *Auto authentication* and *Password authentication*. Also check the user name and password.
 
-Try unchecking **Auto adjust MAC algorithms** in the **Encryption** tab. See _Set correct Encryption settings_ below.
- 
-**SFTP error 11 in combination with error 10058**
+#### Authentication type 2 failed along with error 114
 
-Try these solutions one at a time:
-1. In the **Connection settings** tab, uncheck **Auto authentication** and uncheck **Keyboard authentication**.
-2. In the **Encryption** tab, uncheck **Auto adjust ciphers**.
- 
-**SFTP error 96273 / Failed to retrieve file list: SFTP component not connected**
+The public key logon failed. The selected *SSH key* may not be the key the server expects, or the server may require a password logon.
+
+#### Authentication failed for type 16 and 4 along with error 114
+
+The Server tried password logons, but the server requires a public key logon. Set *Authentication type* to "Public key" and select an *SSH key*.
+
+#### SFTP error 6
+
+The Server has no connection to the server.
+
+#### SFTP error 7 with error 10058
+
+On ***Encryption***, clear *Auto adjust MAC algorithms* and select the MAC algorithms the server supports. See [Set the encryption settings](#set-the-encryption-settings).
+
+#### SFTP error 11 with error 10058
+
+Try these one at a time:
+
+- On ***Main settings***, clear *Auto authentication* and *Keyboard authentication*
+- On ***Encryption***, clear *Auto adjust ciphers*
+
+#### SFTP error 96273, or "Failed to retrieve file list: SFTP component not connected"
 
 Possible causes:
-* Wrong key exchange algorithm is in use. See _Set correct Encryption settings_ below.
-* Try setting one SFTP version at a time in **Extra settings**, starting from version 2 through 6.
-* Username is empty.
-* If the Connection Explorer works but a Task does not, check the Task settings and ensure the correct directory path is used (use the browse button rather than typing paths manually).
- 
-**SFTP error 96258**
 
-Ensure that a private key is selected if public key authentication is required.
- 
-**SFTP error 102**
+- The key exchange algorithm does not match the server. See [Set the encryption settings](#set-the-encryption-settings)
+- The SFTP version. On ***Extra settings***, select one version at a time in *SFTP version support*, from "2" to "6"
+- *Username* is empty
+- The Connection Explorer works but the Task does not. Check the folder paths in the Task, and pick them with the browse button instead of typing them
 
-In the **Extra settings** tab, set these values:
-* Max packet size: 8096
-* Pipeline length: 16
-* Download block size: 2048
-* Upload block size: 2048
- 
-**SFTP error 103**
+#### SFTP error 96258
 
-Wrong key exchange or MAC algorithm is in use. See _Set correct Encryption settings_ below.
+The server requires a public key logon. Set *Authentication type* to "Public key" and select an *SSH key*.
 
-**SFTP error 10061**
+#### SFTP error 102
 
-Try checking **Use compression** in the **Extra settings** tab. Also see _Set correct Encryption settings_ below.
- 
-**Failed to upload/download full file (only part transferred) / timeout on upload**
+On ***Extra settings***, clear *Auto adjust transfer block* and set these values:
 
-Try unchecking **Auto adjust transfer block** in the **Extra settings** tab. For upload issues, try increasing **Upload block size** to 65536. You can also try setting **Pipeline length** to 1.
+- *Max packet size*: "8096"
+- *Pipeline length*: "16"
+- *Download block size*: "2048"
+- *Upload block size*: "2048"
 
-Other error codes: [https://www.secureblackbox.com/kb/help/ref_err_sftperrorcodes.html](https://www.secureblackbox.com/kb/help/ref_err_sftperrorcodes.html)
- 
-**Public key errors**
+#### SFTP error 103
 
-* 3329 (0x0D01) - Public key is invalid; usually indicates a problem with the file format
-* 3330 (0x0D02) - Private key is invalid; usually indicates a problem with the file format
-* 3331 (0x0D03) - Error reading from file
-* 3332 (0x0D04) - Error writing to file
-* 3333 (0x0D05) - Algorithm is unsupported
-* 3334 (0x0D06) - Internal error
-* 3335 (0x0D07) - Buffer is too small
-* 3336 (0x0D08) - There is no private key
-* 3337 (0x0D09) - Wrong password for private key
-* 3338 (0x0D0A) - PEM algorithm is unsupported
- 
-**Set correct Encryption settings**
+The key exchange or MAC algorithm does not match the server. See [Set the encryption settings](#set-the-encryption-settings).
 
-**OPTION 1**
+#### SFTP error 10061
 
-1. Open the Connection Explorer.
-2. Try to connect to the SFTP connection.
-3. Copy the log by pressing the button below.
+The algorithms may not match the server. See [Set the encryption settings](#set-the-encryption-settings).
 
-![](../../../static/img/clip333444124.png)
+#### Only part of a file is transferred, or an upload times out
 
-4. Paste the content into an email and send it to support@visualcron.com.
-  
-**OPTION 2 (_Legacy_)**
+On ***Extra settings***, clear *Auto adjust transfer block*. For uploads, try *Upload block size* "65536". You can also try *Pipeline length* "1".
 
-1. Try to first make the connection work using the free tool FileZilla.
-2. Enable verbose debugging in FileZilla.
-   
-![](../../../static/img/filezilla_verbose.png)
+#### Public key errors
 
-3. Analyze the verbose output and look for entries similar to:
+- "3329" (0x0D01): the public key is invalid, usually because of the file format
+- "3330" (0x0D02): the private key is invalid, usually because of the file format
+- "3331" (0x0D03): the key file could not be read
+- "3332" (0x0D04): the key file could not be written
+- "3333" (0x0D05): the key algorithm is not supported
+- "3334" (0x0D06): internal error
+- "3335" (0x0D07): the buffer is too small
+- "3336" (0x0D08): there is no private key
+- "3337" (0x0D09): the passphrase of the private key is wrong. Check the passphrase stored with the key in [Global - SSH Keys](global-ssh-keys)
+- "3338" (0x0D0A): the PEM algorithm is not supported
 
-**Key exchange algorithm**
+### Set the encryption settings
 
-_Trace: Doing Diffie-Hellman group exchange_
+When the connection fails because the algorithms do not match, find out which algorithms the server uses, and then allow them on the ***Encryption*** tab.
 
-_Trace: Doing Diffie-Hellman key exchange with hash SHA-256_
+#### Send the log to support
 
-**Encryption algorithm**
+To send the connection log to support, complete the following steps:
 
-_Trace: Initialised AES-256 SDCTR client->server encryption_
+1. Open the [Connection Explorer](../tools/explore-connection-explorer).
+2. Connect with the SFTP Connection.
+3. Click the unlabeled copy button in the log toolbar, below the file list. The arrow in this screenshot points to it.
 
-**MAC algorithm**
+   ![Connection Explorer with an SFTP folder listing and its event log, with an arrow pointing to the button that copies the log](../../../static/img/clip333444124.png)
 
-_Trace: Initialised HMAC-SHA-256 client->server MAC algorithm_
- 
-4. Open the Connection in VisualCron and find the matching settings in the **Encryption** tab.
+4. Paste the log into an email.
+5. Send the email to support@visualcron.com.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Troubleshooting%201.png)
+Support receives the log of the connection, which shows the algorithms that were negotiated.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Troubleshooting%202.png)
+#### Compare with FileZilla (legacy)
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Troubleshooting%203.png)
+To find the server's algorithms with FileZilla, a free FTP and SFTP client, complete the following steps:
+
+1. Connect to the server with FileZilla.
+2. In FileZilla's settings, turn on verbose debug information for the message log.
+
+   ![FileZilla Settings window on the Debug page, with the debug level setting for the message log](../../../static/img/filezilla_verbose.png)
+
+3. Connect again.
+4. In the message log, find the lines that name the algorithms, for example:
+
+   ```text
+   Trace: Doing Diffie-Hellman group exchange
+   Trace: Doing Diffie-Hellman key exchange with hash SHA-256
+   Trace: Initialised AES-256 SDCTR client->server encryption
+   Trace: Initialised HMAC-SHA-256 client->server MAC algorithm
+   ```
+
+   The first two lines show the key exchange algorithm, the third shows the encryption algorithm and the fourth shows the MAC algorithm.
+
+5. Open the Connection in VisualCron.
+6. On the ***Encryption*** tab, allow the matching algorithms, as in these examples.
+
+![SFTP Connection, Encryption tab, with Auto adjust ciphers cleared and one encryption algorithm selected](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Troubleshooting%201.png)
+
+![SFTP Connection, Encryption tab, with the Key exchange algorithms list, automatic selection cleared and one algorithm selected](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Troubleshooting%202.png)
+
+![SFTP Connection, Encryption tab, with the MAC algorithms list, automatic selection cleared and one algorithm selected](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/SFTP/Troubleshooting%203.png)
+
+The Connection now allows the algorithms that the server uses.

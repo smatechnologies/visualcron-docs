@@ -5,155 +5,164 @@ hide_title: 'true'
 
 ## Robot Task Activities - Excel Workbook
 
-The **Excel Workbook** category contains activities that create, open, save, protect, and inspect Excel workbooks.
+The Excel Workbook activities create, open, save, close, protect and inspect Excel workbooks.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Workbook/Workbook.png)
+![The Excel Workbook category in the activity list, from Activate Workbook to Get Info Workbook](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Workbook/Workbook.png)
 
-All activities in this category must be nested inside a **New Excel** or **Attach to Excel** container activity. See [Excel](excel).
+All activities in this category must be inside a _New Excel_ or _Attach to Excel_ container activity. See [Excel](excel). A _Workbook_ field takes the name of an open workbook, such as `Workbook1.xlsx`, matched exactly; an activity fails if that workbook is not open. Variables are resolved in every field.
 
-**Selecting a workbook:** on activities that take a workbook name, click the **Click to select Excel element** link, then select the workbook and press `CTRL` and click with the mouse. The workbook name is filled in automatically. Excel must already be running.
+**Selecting a workbook:** on activities that take a workbook name, click the _Click to select Excel element_ link, then select the workbook, hold `CTRL` and click. The workbook name is filled in automatically. Excel must already be running.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Workbook/Sample.png)
+![The prompt shown in Excel while picking a workbook, asking to select the workbook and press CTRL while clicking](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Workbook/Sample.png)
 
 ---
 
 ### Activate Workbook
 
-Activates the specified workbook.
+Makes the workbook the active workbook.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Workbook/Activate.png)
+![The Activate Workbook activity, with the Click to select Excel element link, a preview of the workbook and the Workbook field](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Workbook/Activate.png)
 
-| Setting | Description |
-|---|---|
-| Workbook | The name of the Excel workbook. |
+- _Workbook_: the name of the open workbook
 
 ---
 
 ### Open Workbook
 
-Opens the specified workbook.
+Opens a workbook file.
 
-| Setting | Description |
-|---|---|
-| File name | The full path to the Excel workbook file. |
+- _File name_: the full path of the workbook file
 
 ---
 
 ### Close Workbook
 
-Closes the specified workbook. Same properties and interface as **Activate Workbook**.
+Closes the workbook. Same field as _Activate Workbook_.
+
+:::warning
+
+Close Workbook does not save the workbook. With _DisplayAlerts_ cleared on the parent container, which is the default, Excel does not ask about unsaved changes, and they are lost. Save the workbook first with _Save Workbook_ or _Save as Workbook_.
+
+:::
 
 ---
 
 ### Close Workbooks
 
-Closes all workbooks in the Excel application.
+Closes all workbooks in the Excel application, without saving them, in the same way as _Close Workbook_.
+
+:::warning
+
+Unsaved changes in every workbook of that Excel application are lost without a prompt. Inside _Attach to Excel_, this includes workbooks that someone else opened in the session.
+
+:::
 
 ---
 
 ### Create Workbook
 
-Creates a new workbook.
+Creates a new, empty workbook, which becomes the active workbook.
 
 ---
 
 ### Save Workbook
 
-Saves the specified workbook. Same properties and interface as **Activate Workbook**.
+Saves the workbook to its current file. Same field as _Activate Workbook_.
 
 ---
 
 ### Save as Workbook
 
-Saves the specified workbook to a new file.
+Saves the workbook to a new file. The workbook then belongs to the new file.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Workbook/Save.png)
+![The Save as Workbook activity, with the Workbook and File name fields](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Workbook/Save.png)
 
-| Setting | Description |
-|---|---|
-| Workbook | The name of the Excel workbook to save. |
-| File name | The full path to save the new Excel workbook file to. |
+- _Workbook_: the name of the open workbook to save
+- _File name_: the full path of the new file
+- _File format_: "Default" (Excel's default save format), "CSV", "XLS" or "XLSX"
+
+:::warning
+
+With _DisplayAlerts_ cleared on the parent container, which is the default, Excel does not ask before it replaces an existing file at _File name_. Use a unique file name for each run, or check first with a [File](file) _File Exists_ activity.
+
+:::
 
 ---
 
 ### Save copy as Workbook
 
-Saves a copy of the specified workbook. Same properties and interface as **Save as Workbook**.
+Saves a copy of the workbook to a file. Same _Workbook_ and _File name_ fields as _Save as Workbook_, without _File format_.
 
-The difference from **Save as Workbook** is that the open workbook remains associated with its original file, so subsequent saves go to the original path rather than the copy.
+The difference from _Save as Workbook_ is that the open workbook stays connected to its original file, so later saves go to the original path rather than to the copy.
 
 ---
 
 ### Protect Workbook
 
-Protects the specified workbook with a password.
+Protects the structure of the workbook, so that sheets cannot be added, deleted, moved or renamed without the password.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Workbook/Protect.png)
+![The Protect Workbook activity, with the Workbook and Password fields](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Workbook/Protect.png)
 
-| Setting | Description |
-|---|---|
-| Workbook | The name of the Excel workbook to protect. |
-| Password | The password the workbook will be protected with. |
+- _Workbook_: the name of the open workbook to protect
+- _Password_: the password needed to remove the protection
+
+Protect Workbook does not encrypt the file or set a password to open it, and it does not protect the cells. Use [Excel Sheet](excel-sheet) _Protect Sheet_ to protect cells.
 
 ---
 
 ### Unprotect Workbook
 
-Removes protection from the specified workbook using its password. Same properties and interface as **Protect Workbook**.
+Removes the protection from the workbook. Same fields as _Protect Workbook_.
 
 ---
 
 ### Print Workbook
 
-Prints the specified workbook. Same properties and interface as **Activate Workbook**.
+Prints the workbook on the default printer of the user the Robot Task runs as. Same field as _Activate Workbook_.
 
 ---
 
 ### Zoom Workbook
 
-Sets the zoom level of the specified workbook.
+Sets the zoom level of the workbook's windows.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Workbook/Zoom.png)
+![The Zoom Workbook activity, with the Workbook and Zoom fields](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Workbook/Zoom.png)
 
-| Setting | Description |
-|---|---|
-| Workbook | The name of the Excel workbook to zoom. |
-| Zoom | The zoom percentage to apply. |
+- _Workbook_: the name of the open workbook
+- _Zoom_: the zoom percentage
 
 ---
 
 ### Freeze Workbook Panes
 
-Freezes panes on the specified workbook. Same properties and interface as **Activate Workbook**.
+Freezes the panes of the workbook's windows. Same field as _Activate Workbook_.
 
 ---
 
 ### Unfreeze Workbook Panes
 
-Unfreezes panes on the specified workbook. Same properties and interface as **Activate Workbook**.
+Unfreezes the panes of the workbook's windows. Same field as _Activate Workbook_.
 
 ---
 
 ### Get Info Workbook
 
-Gets information about the specified workbook and saves it to a User or Job variable.
+Reads one item of information about the workbook and saves it to a Job or User Variable. The workbook is activated first.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Workbook/Get%20Info.png)
+![The Get Info Workbook activity, with the Workbook, Info, Variable type and Variable fields and the Select button](../../../../../../../static/img/RPA/Robot%20Tasks/Excel%20Workbook/Get%20Info.png)
 
-| Setting | Description |
-|---|---|
-| Workbook | The name of the Excel workbook to read from. |
-| Info | The name of the information item to retrieve, for example `Author`. |
-| Variable type | The type of variable to save to: **Job** or **User**. |
-| Variable | The name of the variable that receives the information. |
+- _Workbook_: the name of the open workbook
+- _Info_: the name of the item to read; type it, or click _Select_ to choose from the supported names
+- _Variable type_: "Job" or "User"
+- _Variable_: the name of the Variable that receives the value
 
-Enter a name for the information item directly, or click the **Select** button to open a window listing the information names that are supported.
+The supported names are `WorkbookName`, `Author`, `Title`, `Subject`, `Comments`, `Category`, `Keywords`, `Manager`, `Company`, `HyperlinkBase`, `IsProtected`, `SheetCount`, `ZoomPercentage`, `ActiveSheetName` and `ActiveSheetIndex`, and, for the used range of the active sheet, `RowCount`, `ColumnCount`, `FirstRowNumber`, `LastRowNumber`, `FirstColumnNumber`, `LastColumnNumber`, `FirstColumnLetter` and `LastColumnLetter`. Names must be typed exactly as shown; any other name makes the activity fail. `IsProtected` reports whether the workbook's windows are protected, not its structure.
 
 ---
 
 ### Tips
 
-- Use a variable in the **File name** of a **Save as Workbook** activity so each run produces a distinct file, for example `C:\Logs\{JOB(Active|Name)}_Exceptions_{DATEFORMAT(yyyy-MM-dd)}.xlsx`.
-- Follow **Save as Workbook** with **Close Workbook** and then **Quit Excel** so the file is released and no Excel process is left behind.
-- Disable **DisplayAlerts** on the parent [Excel](excel) container before saving to a path that may already exist, otherwise Excel raises an overwrite confirmation dialog that will hang an unattended job.
-- **Close Workbooks** is useful as a cleanup step at the start of a task, to make sure no workbook left open by a previous failed run interferes with the current one.
+- Use a Variable in the _File name_ of a _Save as Workbook_ activity so that each run produces a separate file, for example `C:\Logs\{JOB(Active|Name)}_Exceptions_{DATEFORMAT(yyyy-MM-dd)}.xlsx`
+- Follow _Save as Workbook_ with _Close Workbook_ and then _Quit Excel_, so that the file is released and no Excel process is left behind
+- Use `LastRowNumber` from _Get Info Workbook_ to find the next free row before you append to a sheet
+- _Close Workbooks_ inside a _New Excel_ container is a safe cleanup step. Do not use it inside _Attach to Excel_ unless every open workbook can be discarded, because it closes them all without saving

@@ -2,13 +2,12 @@
 sidebar_label: 'Disconnect/Connect'
 hide_title: 'true'
 ---
-
 ## Disconnect/Connect
 
-The toolbar *Disconnect/Connect* option, disconnects or connects (depending on the current server connection status) the server name indicated in server selection part of the toolbar and in the main menu `Server [<server name]` tab. The option label and icon change to reflect the current connection status.
+The ***Disconnect*** or ***Connect*** button in the toolbar disconnects from, or connects to, the Server selected in the [Server Selection](server-selection) combo box. While the Client is connected, the button reads ***Disconnect***; while it is not, it reads ***Connect***.
 
-When connecting, if the selected server is set to prompt for login, you are asked for credentials before the connection is established.
+When you connect, and the connection is set to prompt for login, the Client asks for the user name and password first.
 
-![](../../../static/img/Client%20User%20Interface/Toolbar/Disconnect.png)
+![The toolbar while connected, with the Disconnect button](../../../static/img/Client%20User%20Interface/Toolbar/Disconnect.png)
 
-![](../../../static/img/Client%20User%20Interface/Toolbar/Connect.png)
+![The toolbar while disconnected, with the Connect button and the Job buttons unavailable](../../../static/img/Client%20User%20Interface/Toolbar/Connect.png)

@@ -5,40 +5,37 @@ hide_title: 'true'
 
 ## Extract Data Step
 
-The Extract Data step extracts an attribute value from a web page element and optionally saves it to a variable.
+The Extract Data action of the [Task Net - Web Macro](web-macro) reads an attribute value from a web page element and saves it to a Variable. The action window is titled _Action - Extract data_.
 
-**Source tab**
+To add the action while recording, complete the following steps in the _Web recorder_ window:
 
-Defines the web element to extract data from. Uses the standard element selection interface. See [Element Path](element-path.md) for details on how to specify the element.
+1. Right-click the element.
+2. Click _Add Extract Data action_.
 
-**Extract data tab**
+![Web recorder right-click menu with the item that adds an Extract data action](../../../../../static/img/embim2.png)
 
-Displays a tree view of the selected element and its attributes. Select an attribute in the tree to populate the value preview field on the right. Click **Copy to clipboard** to copy the displayed value.
-To extract a certain attribute you right click on it and chose Add Extract data step below:
+### Source tab
 
-![](../../../../../static/img/embim2.png)
+Sets the web element to extract data from; see [Element Path](element-path).
 
-**Destination tab**
+### Extract data tab
 
-Defines where to save the extracted attribute value. Configure the target variable in the fields below.
+Shows a tree of the element recorded for this action and its attributes. Select the attribute to extract; its value appears in the preview field on the right. To copy the value, click _Copy to clipboard_. An attribute must be selected before you can click _OK_.
 
-Select the attribute you want to extract below:
+![Extract data tab with the attribute tree and the value preview](../../../../../static/img/extractdataattribute.png)
 
-![](../../../../../static/img/extractdataattribute.png)
+### Destination tab
 
-**Job Variable**
+Sets the Variable that receives the value, in the _Save to_ group. A Variable is required. The value saved is the attribute selected on the ***Extract data*** tab.
 
-When selected, saves the result to a job variable. Select the target variable from the dropdown. Click the Refresh button to reload the list of available variables.
+![Destination tab with the Save to group](../../../../../static/img/extractdatastepdestination.png)
 
-Set where you want to save the attribute value (in which Variable):
+- _Job Variable_: selected by default; saves the value to the Job Variable selected in the list
+- _User Variable_: saves the value to the User Variable selected in the list
+- _Variable type_: the data type used when the value is saved, "String" (default), "Int32" or "Double"
 
-![](../../../../../static/img/extractdatastepdestination.png)
+To reload a list of Variables, click the refresh icon next to it.
 
-**User Variable**
+### Wait tab
 
-When selected, saves the result to a user variable. Select the target variable from the dropdown. Click the Refresh button to reload the list of available variables.
-
-**Wait tab**
-
-Controls how long the step waits before and after performing the action.
-
+Sets how long the action waits before it runs (_Wait before execute_) and after it runs (_Wait after execute_), in milliseconds. Both are "500" by default.

@@ -5,18 +5,19 @@ hide_title: 'true'
 
 ## Task Net - Ping
 
-The ping Task is used to test whether a particular host is reachable across an IP network. It works by sending ICMP “echo request” packets to the target host and listening for ICMP “echo response” replies. ping estimates the round-trip time in milliseconds.
+The Ping Task checks whether a host can be reached over the network. It sends one ICMP echo request to the host and waits for the echo reply.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Ping.png)
+![Ping Task settings, with the Hostname, Timeout in milliseconds and TTL fields](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Net%20Tasks/Ping.png)
 
-**Hostname**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-The IP address or host name of the server you want to PING.
- 
-**Timeout in milliseconds**
+- _Hostname_: the host name or IP address to ping
 
-Timeout before the reply is considered too long. Produces error if longer than timeout. Default is 2000 ms (maximum 20000 ms).
- 
-**TTL**
+  The list also shows the computers on the network.
 
-Time to live (sometimes abbreviated TTL) is a limit on the period of time or number of iterations or transmissions in computer and computer network technology that a unit of data (e.g. a packet) can experience before it should be discarded. Default is 32. Use a value between 1 and 255.
+- _Timeout in milliseconds_: how long to wait for the reply, "2000" by default and at most "20000"
+- _TTL_: the time to live of the request: how many routers the request can pass before it is discarded
+
+  The default is "32", from "1" to "255".
+
+When the host replies in time, the output shows the reply and its round-trip time ("RoundTripTime"). When there is no reply in time, or the reply reports an error, the Task fails with the error "Ping failed", which you can handle on the ***On error*** tab (see [Task - On Error](../../task-on-error)).

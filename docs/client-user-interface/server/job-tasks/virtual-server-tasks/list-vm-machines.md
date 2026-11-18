@@ -5,36 +5,26 @@ hide_title: 'true'
 
 ## Task Virtual Server - List VM Machines
 
-The Virtual Server - List VM machines Task retrieves a list of all virtual machines on a specific virtual machine.
+The Virtual Server - List VM Machines Task lists the virtual machines on Microsoft Virtual Server, on the VisualCron Server computer or on a remote computer.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/List%20VM%20Machines.png)
+![List VM machines tab of the Virtual Server List VM Machines Task, with the Server location options, Credential and the Options group](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Virtual%20Server%20Tasks/List%20VM%20Machines.png)
 
-**List VM Machines > Connection** tab
+:::warning
 
-**Remote VMWare server / Local VMWare workstation**
+If Virtual Server reports an error, the error is written to standard error, and the Task reports success. To catch it, check the standard error output, for example with the output conditions on the ***On error*** tab (see [Task - On Error](../../task-on-error)).
 
-This task requires a remote VMWare server connection. The _Local VMWare workstation_ option is disabled.
+:::
 
-**Connection**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-Select the VMWare connection to use for the remote server.
+### List VM machines tab
 
-**Server VMX path**
+- _Local server_: control Virtual Server on the VisualCron Server computer. Selected by default
+- _Remote server_: control Virtual Server on another computer
+- _Server name_: the DNS name or IP address of the remote computer. Variables are replaced in this field
+- _Credential_: the [Credential](../../global-credentials) to sign in to the remote computer, with its domain, user name and password. Required with _Remote server_. Click the _Settings_ icon to add or edit Credentials
+- _Running_, _Turned off (guest saved)_, _Turned off (guest unsaved)_, _Paused_, _Other (includes all transient states)_ and _Invalid_: the states to include in the list. None is checked by default
 
-The path to list virtual machines from on the remote server. Click the _Refresh_ button to populate the list from the selected connection.
+### Output and errors
 
-**Timeout in seconds**
-
-The number of seconds to wait before timing out the operation. Minimum is 1, maximum is 36000, default is 180. Note that a Timeout tab setting on the task overrides this value.
-
-**List VM Machines > VM Task settings** tab
-
-**VM listing status filter**
-
-Select which VM power states to include in the results. Check one or more of the following:
-
-* _Powered on_ - includes virtual machines that are running
-* _Powered off_ - includes virtual machines that are powered off
-* _Suspended_ - includes virtual machines that are suspended
-* _Stuck_ - includes virtual machines that are stuck
-* _Unknown_ - includes virtual machines with an unknown status
+The output has the name of each matching virtual machine on its own line. If the Credential is not found, or an unexpected error occurs, the Task fails.

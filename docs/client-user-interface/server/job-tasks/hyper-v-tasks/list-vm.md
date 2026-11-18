@@ -5,18 +5,25 @@ hide_title: 'true'
 
 ## Task Hyper-V - List VM
 
-The Hyper-V - List VM Task allows you to list virtual machines hosted on a specific, local or remote, Hyper-V Management Server.
+The Hyper-V - List VM Task lists the virtual machines on the VisualCron Server computer or on a remote Hyper-V host.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Hyper-V%20Tasks/List%20VM.png)
+![List VM tab of the Hyper-V List VM Task, with the Server location options and the Credential field](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Hyper-V%20Tasks/List%20VM.png)
 
-**Local/Remote server**
+:::warning
 
-Select the *Local server* radio button if you want to control the local computer, select the *Remote server* radio button if you want to control a remote computer.
+With _Remote server_, the Credential's user name and password are written as plain text into the PowerShell script that runs on the VisualCron Server computer; see [Hyper-V Tasks overview](overview). Errors that PowerShell reports while the command runs, such as an unknown virtual machine name or a failed remote sign-in, are not checked, and the Task reports success.
 
-**Server name**
+:::
 
-Host name of the remote server.
- 
-**Credential**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
+### List VM tab
+
+- _Local server_: run the command on the VisualCron Server computer. Selected by default
+- _Remote server_: run the command on another computer through PowerShell remoting
+- _Server name_: the host name of the remote Hyper-V computer. Variables are not replaced in this field
+- _Credential_: the [Credential](../../global-credentials) to sign in to the remote computer. Required with _Remote server_. The Credential's domain is not used, so enter the user name of a domain account as `DOMAIN\user`. Click the _Settings_ icon to add or edit Credentials
+
+### Output and errors
+
+The output has the name of each virtual machine on its own line. An error that stops the PowerShell script makes the Task fail. Other errors are not checked; see [Hyper-V Tasks overview](overview).

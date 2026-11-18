@@ -5,42 +5,50 @@ hide_title: 'true'
 
 ## Task Process - Remote Kill
 
-The Process - Remote Kill Task can terminate a process on another server in the network. If you want to terminate local process then you should use the Kill Task instead.
+The Process - Remote Kill Task can terminate a process on another server in the network. If you want to terminate a local process, use the Kill Task instead. It connects to the remote server through WMI with the selected Credential and stops the process immediately. The remote server needs the same WMI and DCOM access as [Remote Execute](job-tasks-task-process-remote-execute).
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Remote%20Kill.png)
+![Add Task window, Remote Kill tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Remote%20Kill.png)
 
 **Credentials**
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
+Select the Credential to connect to the remote server with.
 
-**Host name**
+:::warning
+
+With *No Credential*, or a process name without its extension (for example `"notepad"` instead of `"notepad.exe"`), no process is stopped, and by default the Task still succeeds.
+
+:::
+
+**Hostname**
 
 The hostname or IP address of the remote server on which the process will be terminated. This is a required field.
  
-**Process name**
+**Kill process with name**
 
-Enter the name of the process, like notepad.exe. If you want to be sure of the name then you can start the process on the server and the click on "Select" to show a list of all running processes.
+Enter the process name, with its extension, on the remote server. *Select* lists the processes on the VisualCron Server, not on the remote server.
  
 **Case sensitive**
 
-If the process name matching should be case sensitive or not.
+Matches the name with exact case when selected.
  
-**If more that one matching process is found**
+**If more than one matching process is found then**
 
-If several process are running that matches the Process name you have several options:
+If several processes match, you have these options:
  
 **Terminate all matching processes**
 
 Kills all matching processes.
  
-**Terminate the newest process**
+**Terminate newest process**
 
 Kills only the process that was last started.
  
-**Terminate the oldest process**
+**Terminate oldest process**
 
-Kills only the process that was started first of all processes.
+Kills only the process that was started first.
  
 **Skip**
 
-Do not kill any process.
+Stops the process only when exactly one matches; with two or more, none is stopped.
+
+If no process matches, the Task succeeds. If WMI reports that a process could not be stopped, the Task fails with exit code 80000 plus the WMI error code; with *Terminate all matching processes*, only the last process's result is reported. Unlike the Kill Task, no match is not an error.

@@ -30,35 +30,40 @@ The Broker can run on any VisualCron Server, including a dedicated Server that i
 
 **Whether the Broker controls the Scheduler role**
 
-If *Control the status of connected Server Agents* is enabled on the Broker, and *Allow the Broker to control this Server status* is enabled on a Server, the Broker decides which Server holds the Scheduler role and moves it automatically. If both are left off, the Scheduler role stays where it is set and is only changed manually from the *Server Agents* form.
+If _Control the status (scheduler role) of connected Server Agents_ is enabled on the Broker, and _Allow the Broker to control this Server status_ is enabled on a Server, the Broker decides which Server holds the Scheduler role and moves it automatically. If both are left off, the Scheduler role stays where it is set and is only changed manually from the _Server Agents_ form.
 
 Enable Broker control when the goal is automatic failover. Leave it off when Triggers must stay on a known Server.
 
 **How Agents are selected for a distributed Job**
 
-Set on the *Distributed execution* tab of the Load balancer settings:
+Set on the _Distributed execution_ tab of the Load balancer settings:
 
-* *Round-robin* — spreads executions evenly. A reasonable default when the Servers are equivalent.
-* *First* — always uses the first connected Agent. Useful when one Server is preferred and the others are fallbacks.
-* *Random* — spreads executions without tracking order.
-* *Best health* — selects on current [Server Health](../server/health-server-health). Useful when the Servers are not equivalent, or when load varies through the day.
+* _Round-robin_: spreads executions evenly. A reasonable default when the Servers are equivalent.
+* _First_: always uses the first connected Agent. Useful when one Server is preferred and the others are fallbacks.
+* _Random_: spreads executions without tracking order.
+* _Best health_: selects on current [Server Health](../server/health-server-health). Useful when the Servers are not equivalent, or when load varies through the day.
 
 **Which Jobs are distributed**
 
-Distribution is set per Job on the *Agent distribution* tab and is *Execute locally only* by default. Enabling the Broker does not change how existing Jobs run. See [Execution Distribution](execution-distribution).
+Distribution is set per Job on the _Agent distribution_ tab and is _Execute locally only_ by default. Enabling the Broker does not change how existing Jobs run. See [Execution Distribution](execution-distribution).
 
 ### Order of configuration
 
 To deploy the Load Balancer, complete the following steps:
 
 1. Configure [Server object synchronization](sync-server-objects) between all participating Servers and confirm the Jobs to be distributed exist on each of them.
-2. On the Server chosen to host the Broker, go to **Servers > Execution distribution > Load balancer** and check *Activate load balancing Broker on this Server*.
-3. On each other Server, configure the connection to the Broker in the *Server Agent* group.
-4. Confirm every Agent appears in the *Agents* tab, or in **Servers > Execution distribution > Server Agents**.
-5. If the Broker is to control the Scheduler role, enable *Control the status of connected Server Agents* on the Broker and *Allow the Broker to control this Server status* on each controlled Server. Confirm that one Server shows status ON and the rest show OFF.
-6. Set the Agent selection mode, and any Agent filter, on the *Distributed execution* tab.
-7. Set the execution mode on each Job that is to be distributed, on the Job's *Agent distribution* tab.
-8. Add any [Load balancing Flows](load-balancing-flows) last, once the Broker and Agents are stable.
+2. On the Server chosen to host the Broker, click ***Servers*** -> ***Load balancer***.
+3. Check _Activate load balancing Broker on this Server_.
+4. On each other Server, click ***Servers*** -> ***Load balancer***.
+5. Check _Connect as Server Agent to the Broker below_ in the ***Server Agent*** group.
+6. Select the VisualCron Connection to the Broker.
+7. Confirm every Agent appears on the ***Agents*** tab, or in ***Servers*** -> ***Agents***.
+8. If the Broker is to control the Scheduler role, check _Control the status (scheduler role) of connected Server Agents_ on the Broker.
+9. On each controlled Server, check _Allow the Broker to control this Server status_.
+10. Confirm that one Server shows status ON and the rest show OFF.
+11. Set the Agent selection mode, and any Agent filter, on the ***Distributed execution*** tab.
+12. Set the execution mode on each Job that is to be distributed, on the Job's ***Agent distribution*** tab.
+13. Add any [Load balancing Flows](load-balancing-flows) last, once the Broker and Agents are stable.
 
 ### Test before deploying to production
 
@@ -70,4 +75,4 @@ There are no fixed sizing figures for a Broker, because the load depends on how 
 
 Each connected Agent sends statistics to the Broker no more often than once every three seconds, and additionally whenever its status or its Server Health changes. Broker load therefore grows with the number of Agents.
 
-Each Agent also runs Jobs, so size each Agent as a normal VisualCron Server. To size from measured values rather than estimates, use the [Server Health](../server/health-server-health) dialog, the CPU charts in [Job result](../server/job-result), and the *Server: Computer report* in [Reports](../reports).
+Each Agent also runs Jobs, so size each Agent as a normal VisualCron Server. To size from measured values rather than estimates, use the [Server Health](../server/health-server-health) dialog, the CPU charts in [Job result](../server/job-result), and the _Server: Computer report_ in [Reports](../reports).

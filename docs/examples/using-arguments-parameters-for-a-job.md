@@ -5,6 +5,16 @@ hide_title: 'true'
 
 ## Using Arguments/Parameters For a Job
 
-As VisualCron separates the executable file and the arguments (e.g. command line parameters for a batch file), all arguments are entered in the argument field. You don't need to start with a space character.
- 
-[Here](https://www.microsoft.com) is one example which shows you how to run .vbs files.
+The Execute Task keeps the program and its command-line arguments in separate fields.
+
+- _Command_: the program or batch file to run, with its full path unless it is on the system path. Use UNC paths, not mapped drive letters, for files on network drives
+- _Arguments_: everything that follows the program on the command line. Do not start the arguments with a space; VisualCron adds the space between the command and the arguments. Put double quotes around paths that contain spaces. Variables in the arguments are replaced when the Task runs
+
+For example, to run a VBScript file, enter `wscript.exe` in _Command_ and the path to the script in _Arguments_:
+
+```text
+Command:   wscript.exe
+Arguments: "C:\Scripts\My script.vbs"
+```
+
+See [Scripts](../commands/scripts) and [Task Process - Execute](../client-user-interface/server/job-tasks-task-process-execute).

@@ -5,26 +5,86 @@ hide_title: 'true'
 
 ## The VisualCron Service Does Not Start Automatically
 
+### Symptom
+
+When Windows starts, the VisualCron service does not start, and Jobs do not run until someone starts the service.
+
 ### Cause
 
-This issue may occur if the VisualCron Server service times out before it starts successfully. This issue is more likely to occur if your computer is heavily loaded.
- 
-### Resolution
+- The startup type of the VisualCron service is not "Automatic"
+- The account that the service logs on as is no longer valid, for example because its password has changed
+- The service takes longer to start than Windows allows, which is more likely when the computer is heavily loaded at startup
+
+### Fix
+
+#### Check the service
 
 :::warning
 
-If you use Registry Editor incorrectly, you may cause serious problems that may require you to reinstall your operating system. Microsoft cannot guarantee that you can solve problems that result from using Registry Editor incorrectly. Use Registry Editor at your own risk.
+On a computer that runs only the Client, the VisualCron service is installed as "Disabled" on purpose. Leave it disabled there. Setting it to "Automatic" starts a Server on that computer, with a default "admin" user that has no password.
+
+On a failover cluster node, the cluster controls the VisualCron service. Do not set the startup type to "Automatic" there; the cluster starts the service on the active node. See [Install and set up VisualCron on a failover cluster](../using-visualcron/install-and-setup-visualcron-on-failover-cluster).
 
 :::
 
-To resolve this issue, increase the time-out value for service startup process. When you increase this value, the VisualCron Server service has more time to load when the computer starts. To increase the service startup time, create the following registry entry: Subkey: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control Name: ServicesPipeTimeout Type: REG_DWORD Data: The number of milliseconds that you want to give the services to start in Typically, a data value of 45,000 is sufficient to keep the service from timing out. However, you can reduce or increase this value according to your specific startup requirements. For example, to use a time-out value of 60 seconds, assign a data value of 60,000 to the ServicesPipeTimeout registry entry. A larger data value does not decrease your computer's performance.
- 
-To create this registry entry, follow these steps:
+To check the VisualCron service, complete the following steps:
 
-1. Click Start, click Run, type regedit, and then click OK
-2. Locate and then click the following registry subkey: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control
-3. Right-click Control, point to New, and then click DWORD Value
-4. In the New Value #1 box, type ServicesPipeTimeout, and then press ENTER
-5. Right-click ServicesPipeTimeout, and then click Modify
-6. Click Decimal, type the number of milliseconds that you want to wait until the service times out, and then click OK. For example, to wait 60 seconds before the service times out, type 60000
-7. Quit Registry Editor, and then restart the computer
+1. Open `services.msc`.
+
+   Services opens.
+
+2. Double-click *VisualCron*.
+
+   The properties window of the service opens.
+
+3. On the ***General*** tab, check *Startup type*.
+4. If it is not "Automatic", select "Automatic", unless the warning above applies.
+5. Click *Apply*.
+6. Click the ***Log On*** tab.
+7. If *This account* is selected, type the current password of that account in *Password*.
+8. If *This account* is selected, type the same password in *Confirm password*.
+9. Click *OK*.
+10. Restart Windows at a time when no Jobs are running.
+
+    The VisualCron service starts with Windows.
+
+If the service still does not start, open Event Viewer (`eventvwr.msc`), go to *Windows Logs* -> *System*, and look for Service Control Manager errors that name VisualCron. A timeout error means the service needs more time to start.
+
+#### Give the service more time to start
+
+The VisualCron setup program sets the Windows service startup timeout, ServicesPipeTimeout, to "120000" milliseconds (120 seconds) when the current value is "60000" or lower. An installation with the MSI package alone does not change it. The value takes effect after Windows restarts. If you have not restarted Windows since you installed VisualCron with the setup program, restart it first.
+
+| Item | Value |
+|------|-------|
+| Key | "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control" |
+| Name | "ServicesPipeTimeout" |
+| Type | "REG_DWORD" |
+| Data | Time in milliseconds, higher than the current value and higher than "120000" |
+
+:::warning
+
+Editing the registry incorrectly can stop Windows from starting. Export the key before you change it. ServicesPipeTimeout applies to every service on the computer, not only to VisualCron. Do not set a value lower than the current value or lower than "120000", because a lower value gives every service less time to start. The change takes effect only after Windows restarts, so plan the restart for a maintenance window.
+
+:::
+
+To give the service more time to start, complete the following steps:
+
+1. Open `regedit` as an administrator.
+
+   Registry Editor opens.
+
+2. Go to "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control".
+3. Click *File* -> *Export*.
+4. Under *Export range*, select *Selected branch*.
+5. Save the file to a safe location.
+6. If *ServicesPipeTimeout* does not exist in *Control*, right-click *Control*, and click *New* -> *DWORD (32-bit) Value*.
+7. If you created the value, name it "ServicesPipeTimeout".
+8. Double-click *ServicesPipeTimeout*.
+9. Select *Decimal*.
+10. In *Value data*, note the current value.
+11. Type a value higher than both the current value and "120000", for example "180000".
+12. Click *OK*.
+13. Close Registry Editor.
+14. Restart Windows at a time when no Jobs are running.
+
+    The VisualCron service has the new time to start.

@@ -13,15 +13,13 @@ Twitter integration described on this page is deprecated from **VisualCron v13.2
 
 ## Task Social - Twitter - Get Tweet
 
-The Twitter - Get tweet Task retrieves the latest or specified tweet in Twitter.
+The Twitter - Get tweet Task retrieves the latest or a specified tweet in Twitter.
 
-![](../../../../../static/img/tasksocialtwittergettweet.png)
+![Twitter - Get tweet tab, Status sub tab with the Connection and the Tweet Id box](../../../../../static/img/tasksocialtwittergettweet.png)
 
-**Connection**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To use Twitter Tasks you need to create a Connection first. You do that in the [Twitter Connection](../../../server/connection-twitter) dialog.
- 
-**Tweet Id**
+### Twitter - Get tweet: Status tab
 
-The tweet id to be retrieved where 0 specifies the latest tweet. The retrieved tweet is presented in output of the task.
-
+- _Connection_: the Twitter Connection to use; see [Twitter Connection](../../../server/connection-twitter)
+- _Tweet Id_: the ID of the tweet to retrieve; "0" (default) specifies the latest tweet

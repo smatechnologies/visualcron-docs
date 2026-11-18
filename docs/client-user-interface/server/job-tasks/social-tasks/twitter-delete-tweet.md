@@ -13,14 +13,13 @@ Twitter integration described on this page is deprecated from **VisualCron v13.2
 
 ## Task Social - Twitter - Delete Tweet
 
-The Social - Twitter delete tweet Task deletes latest or specified tweet in Twitter.
+The Twitter - Delete tweet Task deletes the latest or a specified tweet in Twitter.
 
-![](../../../../../static/img/tasksocialtwitterdeletetweet.png)
+![Twitter - Delete tweet tab, Status sub tab with the Connection and the Tweet Id box](../../../../../static/img/tasksocialtwitterdeletetweet.png)
 
-**Connection**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To use Twitter Tasks you need to create a Connection first. You do that in the [Twitter Connection](../../../server/connection-twitter) dialog.
- 
-**Tweet Id**
+### Twitter - Delete tweet: Status tab
 
-The tweet id to be retrieved where 0 specifies the latest tweet. The retrieved tweet is presented in output of the task.
+- _Connection_: the Twitter Connection to use; see [Twitter Connection](../../../server/connection-twitter)
+- _Tweet Id_: the ID of the tweet to delete; "0" (default) specifies the latest tweet

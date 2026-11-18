@@ -5,162 +5,115 @@ hide_title: 'true'
 
 ## Task Interactivity - Popup
 
-The Popup Task lets you display a message for one or more users. The feedback from the user, button or input, can then be returned back as a result and output for later processing.
- 
-The Popup Task has a number of purposes:
+The Popup Task shows a message in the VisualCron Client of one or more users and returns the user's reply, the button they clicked or the values they entered, as the Task output and result.
 
-* Display a simple message
-* Display a message and return input in form of buttons
-* Display a message and return input in form of text boxes, radio boxes and other controls
- 
-The actual controls can return user defined values and the result of values can control the result of the Task.
- 
-**Sample popup**
+Use it to:
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Example%20Popup.png)
+- show a simple message
+- show a message and return the button the user clicks
+- show a message and return input from text boxes, check boxes, radio buttons or a combo box
 
-**Popup > Main settings** sub tab
+A popup as a user sees it:
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup.png)
+![Example popup with a title, a message, OK and Cancel buttons and an auto close countdown](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Example%20Popup.png)
 
-**Popup position**
+:::warning
 
-Where the popup window is displayed.
- 
-**Icon type**
+_Mask input_ hides typed text in the popup only. When the ***Output*** sub tab is set to "Input values", the Task output contains the text as the user typed it. With Task debugging on, the values are also written to the log. Do not use the Popup Task to collect passwords.
 
-The icon that is displayed next to the message.
+:::
 
-**Popup title**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-Title within the popup.
+### Popup tab
 
-**Popup message**
+The ***Popup*** tab has the sub tabs ***Main settings***, ***Target***, ***Buttons***, ***Input***, ***Result*** and ***Output***.
 
-*(Optional)* - the actual message or description that is shown.
- 
-**Show message**
+#### Popup: Main settings sub tab
 
-If the message should be displayed.
- 
-**Play sound**
+![Popup Main settings sub tab with the position, icon, title, message and display options](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup.png)
 
-When checked, plays a sound when the popup opens. Select a predefined sound from the dropdown. Click the play button to preview the selected sound.
- 
-**Blink in task bar**
+- _Popup position_: Where the popup window opens: "CenterParent" (the default), "CenterScreen", "WindowsDefaultBounds" or "WindowsDefaultLocation"
+- _Icon type_: The icon next to the message: "Information" (the default), "Exclamation", "Question" or "Error"
+- _Popup title_: The title shown in the popup; "Popup title" by default
+- _Popup message_: Optional; the message shown in the popup
+- _Show message_: When selected, the message is shown
+- _Play sound_: When selected, the popup plays the selected sound, "Sound1" or "Sound2", when it opens. Click the button next to the list to hear the sound
+- _Blink in task bar_: When selected, the popup's button in the Windows task bar flashes
+- _Modal window_: When selected, the popup blocks the other windows of the VisualCron Client until it is closed
+- _Bring to front_: When selected, the popup is shown on top of other windows
+- _Auto close after_: When selected, the popup closes after the number of seconds set, "60" by default. A popup that closes this way returns the "Cancel" dialog result
+- _Preview popup.._: Shows the popup in your own Client, to test it
 
-This makes the item in task bar blinking.
- 
-**Modal window**
+All check boxes on this sub tab are selected by default. [Variables](../../global-variables) are resolved in _Popup title_ and _Popup message_.
 
-This controls if the window should block other windows in the same application.
- 
-**Bring to front**
+#### Popup: Target sub tab
 
-Display the Window top most.
- 
-**Auto close after**
+![Popup Target sub tab with the group and user lists](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup%20Target.png)
 
-When checked, automatically closes the popup after the specified number of seconds. When auto closing the dialog result is "Cancel".
- 
-**Preview popup**
+- _Server desktop (specify user/session in Foreground execution)_: Shown, but not available
+- _VisualCron Client_: Sends the popup to VisualCron Clients
+- _Send to specific group(s)_: Sends the popup to every connected Client whose user is a member of a group selected in the list
+- _Send to specific user(s)_: Sends the popup to every connected Client of a user selected in the list
+- _Send to executing user_: Also sends the popup to the Client connection that started the Job
 
-Click this button to test the popup.
- 
-**Popup > Target** sub tab
+Select at least one group or user, or _Send to executing user_. The Client does not save the Task without a target, although the list captions say that the popup goes to all when none is selected.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup%20Target.png)
+The popup reaches only users whose Client is connected to the Server when the Task runs. If none of the targets is connected, the Task fails with "No target Connection found". When the popup goes to several users, the Task uses the first reply it receives and ignores the others.
 
-**VisualCron Client**
+#### Popup: Buttons sub tab
 
-When checked, sends the popup to the VisualCron Client.
+![Popup Buttons sub tab with the button set and the value of each button](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup%20Buttons.png)
 
-**Send to specific group(s)**
+- _Buttons_: The set of buttons in the popup: "Ok", "Ok Cancel" (the default), "Abort Retry Ignore", "Retry Cancel", "Yes No" or "Yes No Cancel"
+- _Edit_: Opens _Edit button value_ for the selected button, where you set the _Value_ the button returns
 
-Select this option to send the popup to specific groups. When selected, a grid lists available groups to choose from. If no groups are specified, the popup is sent to all groups.
+A button's value is its name by default. The ***Result*** sub tab decides whether a button makes the Task succeed or fail. With "Dialog result" on the ***Output*** sub tab, the value of the clicked button is the Task output.
 
-**Send to specific user(s)**
+![Edit button value window for one button](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Pop%20Up%20Button%20Options.png)
 
-Select this option to send the popup to specific users. When selected, a grid lists available users to choose from. If no users are specified, the popup is sent to all users.
+#### Popup: Input sub tab
 
-**Send to executing user**
+![Popup Input sub tab with the input type, the manual source list and the Variable/value list source fields](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup%20Input.png)
 
-When checked, sends the popup to the user that is executing the Task or Job.
- 
-**Popup > Buttons** sub tab
+The ***Input*** sub tab adds optional input controls to the popup. To return what the user enters, set the ***Output*** sub tab to "Input values".
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup%20Buttons.png)
+- _Input type_: The kind of control: "Text", "Check Box", "Combo Box" or "Radio Button" (the default)
+- _Manual source_: Add the items one by one with _Add_, _Edit_ and _Delete_. The list shows each item's Order, Caption, Value, Mask and Selected. In _Add/Edit input_ you set the item's _Caption_, _Value_, _Mask input_ and _Selected_
+- _Variable/value list source_: Build the items from a list of values in a Variable or in text:
+  - _Caption_: The captions, separated by the _Input separator_. Not used when _Use value as caption_ is selected
+  - _Value_: The values, separated by the _Input separator_. The value of an item is what the Task returns when the item is chosen
+  - _Use value as caption_: When selected, each value is also its caption. Selected by default
+  - _Input separator_: The character between the items; ";" by default
+  - _Selected value_: The value that is selected when the popup opens
+  - _Mask input_: For "Text" only; the popup shows each typed character as `*`
+  - _Sort alphabetically_: For check boxes, radio buttons and combo boxes; sorts the items by caption instead of the order supplied
 
-You are able to select among common buttons for the popup. In the Result tab you can control how the press of a specific button affect the result of the Task. In the Output tab you control if the button value should be returned as output or if the Input should be returned.
- 
-You may also set the value that is returned for the specific button.
+#### Popup: Result sub tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Pop%20Up%20Button%20Options.png)
+![Popup Result sub tab with result rows and the Add/Edit popup result window](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup%20Result.png)
 
-**Popup > Input** sub tab
+The ***Result*** sub tab decides whether the Task succeeds or fails, based on how the popup was closed and what the user chose or typed. Each row sets one check; click _Add_ or _Edit_ to open _Add/Edit popup result_:
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup%20Input.png)
+- _Control to validate_: What the row checks: "Message Button", "Input Control", "Close Button", "Auto Close" or "Timeout"
+- _Control name/caption_: For "Input Control", the input item to check
+- _Validation value type_: For a text input, how the values are compared. With "String", larger and smaller compare the length of the text
+- _Condition_: How the value is compared, for example "Equal"
+- _Value_: The value to compare with
+- _Return result_: "Success" or "Failure"
 
-The Input tab controls optional input controls that you can use. For example if you want the user to input text or select a radio button, checkbox or combobox. If you want the output from the input control you need to change behavior in the Output tab.
+When the popup closes and a row that applies returns "Failure", the Task fails.
 
-**Allow multiple input**
+#### Popup: Output sub tab
 
-When enabled in the toolbar, allows the user to select more than one input value.
+![Popup Output sub tab with Dialog result, Input values and Include caption](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup%20Output.png)
 
-**Manual source** / **Variable/value list source**
+- _Dialog result_: The output is the value of the button the user clicked. The default
+- _Input values_: The output is the values the user entered or selected, one per line for check boxes and text boxes; for radio buttons, the selected item only
+- _Include caption_: With "Input values", puts the caption in front of each value, as `caption=value`. Selected by default
 
-Select how input items are provided. With **Manual source**, add items individually using the Add/Edit/Clone/Delete toolbar buttons; rows are managed in a grid showing Caption, Mask, Value, Selected, and Order. With **Variable/value list source**, populate items from a Variable or text value using the fields below.
- 
-**Caption**
+### Output and errors
 
-Use any Variable or text that contains a separation according to *Input separator*. If you want the caption to be based on the value then check *Use value as caption*.
- 
-**Value**
-
-Use any Variable or text that contains a separation according to *Input separator*. The value property is what is returned when selecting an item.
- 
-**Use value as caption**
-
-Value array will be used in caption array. Useful if you cannot or don't want to map caption to array (maybe only once source available).
- 
-**Input separator**
-
-This is the type of character that separates each value.
-
-**Selected value**
-
-The default selected value in the input control.
- 
-**Mask input**
-
-If you want to display a textbox that the user supplies a password to, for example.
- 
-**Sort alphabetically**
-
-If checked, items are sorted alphabetically, otherwise in the order they are supplied.
- 
-You can add input controls by pressing the Add button.
-
-**Popup > Result** sub tab
-
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup%20Result.png)
-
-The Result tab controls the result of the Task (if it should fail or not) depending on what you select, write or click.
- 
-When adding or editing a "Popup Result" you are able to control what happens if, for example, the radio button is checked.
-
-**Popup > Output** sub tab
-
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Popup%20Output.png)
-
-In the output settings you control what is returned from the Task.
-
-**Standard output content**
-
-**Dialog result** / **Input values**
-
-Select what is returned as output. **Dialog result** returns the button value that was clicked. **Input values** returns the value(s) entered or selected by the user. When choosing input option "checkbox" each value will be returned in a new row.
-
-**Include caption**
-
-The Caption property is put in front of the value like "captionvalue=inputvalue" when this option is checked. Only available when **Input values** is selected.
+- The Task waits until a user replies, the popup closes itself (_Auto close after_), or the time on the ***TimeOut*** tab runs out. With _Auto close after_ cleared and no time-out, the Task waits until a user replies
+- If no target Client is connected, the Task fails with "No target Connection found"
+- If a row on the ***Result*** sub tab returns "Failure", the Task fails

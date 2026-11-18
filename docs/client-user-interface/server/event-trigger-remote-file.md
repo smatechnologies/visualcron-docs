@@ -5,142 +5,130 @@ hide_title: 'true'
 
 ## Event Trigger - Remote File
 
-The Remote File event trigger is able to monitor file events on remote computers using the protocols FTP, SFTP and SCP.
+The Remote File Trigger watches files on an FTP, SFTP or SCP server. At every *Polling interval* (default 60 seconds) it lists the files that match its filter and compares them with the previous list. It starts the Job once for each file that was created, modified or deleted, depending on *Watch for changes*. The first list is read when the Trigger starts. *Expire after being triggered* is not supported by this Trigger.
 
-**Triggers > Add > Event Trigger > Remote file > Main settings** tab
+This Trigger fires once per file and can download and delete the file before the Job starts. See [Event Triggers](event-triggers#triggers-that-fire-once-per-item) for how to keep a skipped run from losing a file.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Remote%20File.png)
+The settings are on the ***Remote file*** tab, ***Main settings*** sub tab.
+
+![The Main settings sub tab of the Remote file tab in the Add/Edit event window: the Connection list; Watch for changes with Created files and Wait for file being released checked, Modified files (date or size) and Deleted files cleared; Reset status when updating Trigger (use current files as base) checked; On error reconnect attempts 60; On error reconnect interval (seconds) 10](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Remote%20File.png)
 
 **Connection**
 
-This Trigger uses the centrally stored Connections. Available protocol types are listed here. Click on Manage Connections to add a new one.
- 
-**Changes to watch**
+Select an FTP, SFTP or SCP Connection from the central [Connections](global-connections). Click the icon next to the list to add or edit Connections.
 
-Select which file events the Trigger should fire for:
+**Watch for changes**
 
-* **Created files** — fire when a new file appears on the remote server
-* **Modified files (date or size)** — fire when a file's modified date or size changes
-* **Deleted files** — fire when a file is removed from the remote server
- 
+Select which changes fire the Trigger; at least one is required. *Created files* is checked by default.
+
+*Created files* is currently always included when you save the Trigger, even when you clear it: new files also start the Job, and *Created files* is checked again the next time you open the Trigger. When you watch only for modified or deleted files, make sure the Job can handle new files too. *Wait for file being released* keeps its saved value while it is unavailable.
+
+* *Created files*: fires the Trigger when a new file is found (see the timing below)
+* *Modified files (date or size)*: fires the Trigger when the modified date or the size of a file changes
+* *Deleted files*: fires the Trigger when a file is removed from the remote server
+
 **Wait for file being released**
 
-Located inside the _Changes to watch_ group. The Trigger will monitor a new file for modify date. If modify date has not changed since last check the Trigger will fire 'Created' event.
- 
+Checked by default, and available only while *Created files* is checked. A new file does not fire *Created* when it is first found. At each later check, VisualCron compares the file's modified date with the previous check: while it changes, the file is still being written; when it is the same, *Created* fires. *Created* therefore fires at least one *Polling interval* after the file stops changing. While the file still changes, *Modified files (date or size)*, if checked, fires at each check. When cleared, *Created* fires as soon as a new file is found, even if it is still being written.
+
 **Reset status when updating Trigger (use current files as base)**
 
-This reloads the internal list of files. You should check this if you for some reason change the Connection.
- 
+Checked by default. When the Trigger starts after you save it, the files found at that moment become the starting list, and no event fires for them. Keep it checked whenever you save the Trigger.
+
+:::warning
+
+Saving the Trigger empties the list of files it has seen. If this option is cleared when you save, the first check reports every matching file as created, and the Trigger starts the Job for each of them. If the first check after saving fails, for example because the server cannot be reached, the next check also reports every matching file as created.
+
+:::
+
 **On error reconnect attempts**
 
-Let say the remote server you watch gets disconnected for some reason, perhaps the network or computer is down. The reconnect attempts value controls how many times VisualCron tries to reconnect. Value 1 to 500 is available. Default value is 5 times.
- 
-**On error reconnect interval (_seconds_)**
+How many times VisualCron tries again after failed checks in a row, for example when the network or the server is down (1 to 500; default 60). If the check after the last try also fails, the Trigger is deactivated and the error is written to the log. A successful check resets the count.
 
-Let say the remote server you watch gets disconnected for some reason, perhaps the network or computer is down. The reconnect interval which you can specify is the number of seconds it will wait between each reconnect attempt, in seconds. Value 1 to 500 is available. Default is 5 seconds which may be a long time when the network is down and a short time if the remote computer is down.
+**On error reconnect interval (seconds)**
 
-**Triggers > Add > Event Trigger > Remote file > Location** tab
+How many seconds VisualCron waits after a failed check (1 to 500; default 10). The next try is the next *Polling interval* check after that wait.
 
-This Task is using the standard VisualCron [Folder filter](../server/job-tasks-folder-filter) to find one or more folders.
- 
-**Triggers > Add > Event Trigger > Remote file > Date** tab
+:::warning
 
-This Task is using the standard VisualCron [Folder filter](../server/job-tasks-folder-filter) to filter for created/modified date.
- 
-**Triggers > Add > Event Trigger > Remote file > Size** tab
+A check that finds no files is not an error. If the Connection is deleted, or, for an FTP Connection, the folder no longer exists, the check finds no files: every file the Trigger knew is reported as deleted, and with *Deleted files* checked the Trigger starts the Job for each of them.
 
-This Task is using the standard VisualCron [Folder filter](../server/job-tasks-folder-filter) to filter out files based on size.
- 
-**Triggers > Add > Event Trigger > Remote file > Test** tab
+:::
 
-This Task is using the standard VisualCron [Folder filter](../server/job-tasks-folder-filter) to test your current file filter - if it matches any existing files.
- 
-**Triggers > Add > Event Trigger > Remote file > Download** tab
+The ***Location***, ***Date***, ***Size*** and ***Test*** sub tabs of the ***Remote file*** tab select which files are watched. They work as described in [Remote file filter](job-tasks-remote-file-filter). On ***Location***, the folder and the include file mask are required. ***Test*** lists the files that the filter currently finds.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Remote%20File%20Download.png)
+The download settings are on the ***Remote file*** tab, ***Download*** sub tab.
+
+![The Download sub tab of the Remote file tab with Download file before triggering cleared and the Destination settings unavailable: Credentials, Destination folder, Download file mask, Overwrite options, resume, Keep modified/created date, Replace unsupported characters with character, Delete source file after download, the three save options and Wait before downloading (seconds)](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Remote%20File%20Download.png)
 
 **Download file before triggering**
 
-Optionally, you can set the Remote file Trigger to download the file that was just Triggered. When enabled, the _Destination_ group below becomes editable.
+When checked, VisualCron downloads the file that fired the Trigger before it starts the Job, and the *Destination* settings become available. The download is part of the check, so the next check waits until it is done. If the download fails, the error is written to the log and the Job still runs; the result Variable `RemoteFile.Result.Downloaded` is then `False`. A *Deleted files* event also tries a download, which fails.
 
 **Destination**
 
 **Credentials**
 
-Select a [Credential](../server/global-credentials) if you are going to save to a network drive. Click the Settings icon to populate the drop-down list with available credentials.
- 
+The [Credential](global-credentials) used to write the downloaded file, for example to a network share. Select it in the list, or click the icon next to it to open *Manage credentials*.
+
 **Destination folder**
 
-The local folder where the file should be saved. Click the browse button to pick a folder.
+The folder the file is downloaded to. Accepts Variables. Click the folder icon to browse.
 
 **Download file mask**
 
-A file mask used to limit which files are downloaded. The default is `*`, which downloads any file that triggered the event.
- 
+Meant to set the name of the downloaded file (default `*`, the remote file name), as in the Cloud File Trigger. The Remote File Trigger currently does not use it: the file is always saved under its remote name. It never limits which files are downloaded; to choose which files fire the Trigger, use the include and exclude file masks on the ***Location*** sub tab.
+
 **Overwrite options**
 
-If the file exists you can choose different overwrite options. The first dropdown selects the overwrite mode (such as overwrite, overwrite if newer, append, or skip) and the second dropdown selects which size comparison applies (same / smaller / larger / different).
- 
+What happens when the file already exists in the destination folder:
+
+* *Overwrite - always if existing*: the default
+* *Overwrite - if newer*
+* *Overwrite - if destination size is*: overwrite only if the existing file is *Same*, *Smaller* (default), *Larger*, *Smaller or larger* or *Different* in size, as chosen in the second list. The second list is available only for this option
+* *Append if destination is smaller - otherwise overwrite*
+* *Append if destination is smaller - otherwise overwrite if newer*
+* *Append if destination is smaller - otherwise skip*
+* *Do not overwrite if existing*
+
 **Resume if transfer failed**
 
-If an error occurs while downloading the file you can choose to retry X times and wait Y seconds between each retry.
- 
+*Resume if transfer failed. Try resuming:* when checked, a failed download is resumed up to the number of *times* you enter (1 to 10000; default 3), waiting the *second(s)* you enter between tries (1 to 10000; default 1).
+
 **Keep modified/created date**
 
-This option will set the same modified and creation date as the on the ftp.
- 
-**Keep modified/created date**
+Cleared by default. When checked, the downloaded file gets the modified and created dates of the remote file.
 
-Sets the modified/created date on locally downloaded files to the same dates as the remote files.
- 
-**Create relative folder structure**
-
-Creates relative folders if checked. If not checked all files (in sub folders) will be saved to destination folder.
- 
 **Replace unsupported characters with character**
 
-If checked, VisualCron will replace any character that is not supported in Windows file system with the character entered in the adjacent textbox.
+Checked by default, with `c`. Characters in the remote file name that Windows does not allow in file names are replaced with the character you enter.
+
+**Delete source file after download**
+
+Cleared by default. When checked, the remote file is deleted after it is downloaded. The next check then no longer finds the file: it is reported as deleted, and with *Deleted files* checked the Trigger fires again for it. The file is downloaded and deleted before the Job starts, also when the run is then skipped.
+
+Under *Destination*, select where in the destination folder the file is saved:
+
+* *Save files to destination folder*: directly in the destination folder
+* *Save files to destination relative to source path*: the default. The file's subfolders below the *Location* folder are created in the destination folder
+* *Save files to destination with full relative path*: the file's full remote folder path is created in the destination folder
 
 **Wait before downloading (seconds)**
 
-The number of seconds to wait between detecting a file and starting the download. This can help when the remote file is still being written when the event fires. Click the variables button to insert a VisualCron variable.
- 
-**Delete source file after download**
+How many seconds to wait after the file is found before the download starts. Empty (the default) means no wait. Accepts Variables; a value that is not a whole number is treated as no wait.
 
-Optionally delete the remote file after download.
+### Result Variables
 
-**Save path mode**
+When the Trigger fires, it sets these result Variables for the file that fired it:
 
-Choose how the local folder structure should be built from the remote path:
+* `RemoteFile.Result.Name`: the file name
+* `RemoteFile.Result.Folder`: the remote folder of the file
+* `RemoteFile.Result.Path`: the full remote path
+* `RemoteFile.Result.Size`: the size the server reports
+* `RemoteFile.Result.Created` and `RemoteFile.Result.Modified`: the dates the server reports. For another format, use `RemoteFile.Result.Modified|<date format>`, for example `{TRIGGER(Active|LastTrigger|RemoteFile.Result.Modified|yyyy-MM-dd)}`
+* `RemoteFile.Result.SourceFolder`: the *Location* folder
+* `RemoteFile.Result.DestinationPath`: the path of the downloaded file; without a successful download, the *Destination folder*
+* `RemoteFile.Result.Downloaded`: `True` when the file was downloaded
+* `RemoteFile.Result.IsDirectory`: whether the item is a folder
 
-* **Save to destination folder** — all files are saved directly into the destination folder
-* **Save with relative current folder** — saves files into the destination folder while preserving sub-folder paths relative to the current matched folder
-* **Save with relative full path** — saves files into the destination folder while preserving the full remote folder path
- 
-**Triggers > Add > Event Trigger > Remote file > Variables**
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20Remote%20File%20Variables.png)
-
-**Last run**
-
-When the Trigger was last run.
- 
-**Name**
-
-The name of the file that was created/modified/deleted.
- 
-**Folder**
-
-The folder of the file that was created/modified/deleted.
- 
-**Path**
-
-The full path to the file that was created/modified/deleted.
- 
-**Size**
-
-The size of the file that was created/modified/deleted.
- 
-**Last modified**
-
-The last modified date of the file that was created/modified/deleted.
+For example, `{TRIGGER(Active|LastTrigger|RemoteFile.Result.Path)}` returns the path of the file that fired the Trigger that started the run. *Last run*, `{TRIGGER(Active|LastTrigger|LastRun)}`, returns the time the Trigger fired. See [Variables](global-variables) for how *Last trigger* and the other keys work.

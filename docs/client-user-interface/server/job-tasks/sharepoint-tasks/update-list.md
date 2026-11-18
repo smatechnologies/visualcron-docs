@@ -2,60 +2,35 @@
 sidebar_label: 'Task Sharepoint - Update List'
 hide_title: 'true'
 ---
+## Task SharePoint - Update List
 
-## Task Sharepoint- Update List
+The SharePoint - Update list Task changes the title, description and settings of a list on a SharePoint site, and can add columns to it, using a SharePoint Connection.
 
-The SharePoint - Update List Task updates a List in the SharePoint library.
- 
-The SharePoint Tasks supports the following versions:
+The SharePoint Tasks work with SharePoint 2010, 2013 and 2016 on premises, and with SharePoint Online.
 
-* SharePoint 2010
-* SharePoint 2013
-* SharePoint Online
+![Update list tab with the Connection, list settings and the Columns grid](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Update%20List.png)
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Sharepoint%20Tasks/Update%20List.png)
+:::warning
 
-**Connection**
+This Task uses a SharePoint Connection; see [Connection - SharePoint](../../connection-sharepoint). When a certificate is selected in the Connection, the Task accepts any server certificate, and each run of a SharePoint Task changes TLS handling for the whole Server process.
 
-To use SharePoint Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
- 
-**Title**
+:::
 
-The existing title of a list to update.
- 
-**New title**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-The new title of the list to update.
- 
-**Description**
+### Update list tab
 
-A user defined description of the list to update.
- 
-**Template type**
+- _Connection_: the SharePoint Connection to use. The button next to the list manages Connections
+- _Title_: the current title of the list. Click the button next to the box to show the lists of the site
+- _New title_: the title to give the list. The Task always sets the title to this value, so enter the current title to keep it
+- _Description_: the description to give the list. The Task always sets the description to this value; an empty box clears the description
+- _Template type_: not used by this Task. The template of an existing list cannot be changed
+- _Quick launch_: "On" shows the list in the Quick launch of the site; "Off" and "DefaultValue" remove it
+- _Enable attachments_, _Enable versioning_ and _Enable folder creation_: whether items can have attachments, whether versions are kept, and whether folders can be added. The Task always applies all three, so a cleared check box turns the setting off
+- _Columns_: columns to add to the list, one row each with _SchemaXML_ and _DefaultView_. Click _Add_, _Edit_ or _Remove_ to change the rows. Existing columns are not changed. Read more about the schema here: [http://msdn.microsoft.com/en-us/library/office/ms457586.aspx](http://msdn.microsoft.com/en-us/library/office/ms457586.aspx)
 
-Specifies a list template. Click the drop-down list and select from the list of available templates.
- 
-**Quick launch**
+Variables are resolved in _Title_, _New title_, _Description_ and the column schema.
 
-Specifies whether the list should be a quick launch item. The available options are:
+### Output and errors
 
-* On
-* Off
-* DefaultValue
- 
-**Enable attachments**
-
-If checked, specifies that list item attachments are enabled for the list. This parameter is unchecked by default.
- 
-**Enable versioning**
-
-If checked. specifies that historical versions of list items and documents can be created in the list. This parameter is unchecked by default.
- 
-**Enable folder creation**
-
-If checked, specifies that new list folders can be added to the list. This parameter is unchecked by default.
- 
-**Columns**
-
-Columns are created by clicking the Add button using a Microsoft xml format.
-Read more here: [http://msdn.microsoft.com/en-us/library/office/ms457586.aspx](http://msdn.microsoft.com/en-us/library/office/ms457586.aspx)
+The Task does not write output. When no list has the title in _Title_, the Task fails with the error from SharePoint.

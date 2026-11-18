@@ -11,19 +11,70 @@ hide_title: 'true'
 
 :star: Client/Server: Kerberos-Only Windows Authentication for Active Directory Protected Users Accounts (VCPCM-4084)
 
-:star: Client: Server Connection Dialog Fills In the SPN or UPN Identity From the Connected Server (VCPCM-4084)
+:star: Client: Server Connection Window Fills In the SPN or UPN Identity From the Connected Server (VCPCM-4084)
 
 :star: Client/Server: Force Sealed Connection Setting Encrypts Active Directory LDAP Traffic (Does Not Block NTLM) (VCPCM-4084)
+
+:star: Client: SPN Principal Names Are Checked for service/host Form When a Server Connection Is Saved (VCPCM-4084)
+
+:star: Client/Server: Active Directory Logon Failures Name the Likely Cause and the Setting to Change (VCPCM-4084)
 
 
 #### Bug Fixes
 
-:white_check_mark: Client/Server: Active Directory Binds Now Send DOMAIN\user From the Credential's Domain So Kerberos Can Be Used (VCPCM-4084)
+:white_check_mark: Client/Server: Active Directory Queries Now Send DOMAIN\user From the Credential's Domain So Kerberos Can Be Used (VCPCM-4084)
 
 :white_check_mark: Server: Failed Active Directory Lookup at Logon Was Reported as "User Does Not Exist" (VCPCM-4084)
 
 :white_check_mark: Client: Connection Appeared Connected When the Server Received No Windows Identity (VCPCM-4084)
 
+:white_check_mark: Client: Connection to a Server Without the Requested Windows-Authentication Endpoint Showed Only the Raw Error (VCPCM-4266)
+
+:white_check_mark: Client/Server: Force Sealed Connection Combined With a Secure LDAP Port Is Refused on Save and Test (VCPCM-4289)
+
+:white_check_mark: Client/Server: Active Directory Test Required a Credential and Always Used NTLM (VCPCM-4017)
+
+:white_check_mark: Client: A Failed Save Could Leave the Server Connection List Incomplete (VCPCM-4283)
+
+:white_check_mark: Client/Server: A Client From an Earlier Release Reset Force Sealed Connection When Saving Server Settings (VCPCM-4084)
+
+
+### 13.5.1 [2026-11-08]
+
+#### Notes
+
+:memo: Client/Server: The web client no longer offers the Yahoo, OpenID, and Facebook sign-in options, which no longer worked. Google and Windows Live sign-in are unchanged. (VCPCM-4126)
+
+#### Features
+
+:star: Client/Server: Security Improvements Including Third-Party Dependencies (VCPCM-3247)
+
+:star: Client/Server: PowerShell Task - Added "Treat Warnings as Errors" Setting (VCPCM-4037)
+
+
+#### Bug Fixes
+
+:white_check_mark: Client/Server: SQL Task Date User Variables Fail With FormatException on OLEDB "Date" Parameters (VCPCM-3752)
+
+:white_check_mark: Client/Server: Loop Jobs Abort After One Iteration and Falsely Report Success (VCPCM-3661)
+
+:white_check_mark: Client/Server: Run From This Task Not Honored in Load Balancing Mode (VCPCM-3656)
+
+:white_check_mark: Client/Server: Execute Task Timeout Timer NullReferenceException Crashes Service When Cleanup Releases Process (VCPCM-3824)
+
+:white_check_mark: Client/Server: JSON Browser Takes a Long Time to Pop Up (VCPCM-3857)
+
+:white_check_mark: Client: PGP Key Export Saves to Workstation Instead of Server When Connected Remotely (VCPCM-3818)
+
+:white_check_mark: Client/Server: Queued Synchronous Job Re-Run Stalls Every Queue Jobs Trigger (VCPCM-3100)
+
+:white_check_mark: Client/Server: Flow Chart Tool Job Dropdown Fails to Populate (VCPCM-3887)
+
+:white_check_mark: Client/Server: SFTPAdvanced MFT Endpoint Rejects Wizard-Made Certificates (VCPCM-3876)
+
+:white_check_mark: Client/Server: Extended Task Debug Logging Corrupts Standard Output/Error of Following Task (VCPCM-3937)
+
+:white_check_mark: Client/Server: "On Running Longer Than" Flows Fire Before the Task Has Started (VCPCM-3865)
 
 ### 13.4.2 [2026-09-12]
 

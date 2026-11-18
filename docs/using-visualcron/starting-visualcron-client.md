@@ -5,8 +5,14 @@ hide_title: 'true'
 
 ## Starting VisualCron Client
 
-The client application is started from the Windows desktop icon (VisualCron X) or the Start menu *Program > VisualCron X > VisualCron Client*. You can also double click on or open the [VisualCron Tray Client](visualcron-tray-client) to start the VisualCron Client.
- 
-As the VisualCron server handles the defined Jobs, the VisualCron client can only connect to the VisualCron server when the server is running.
- 
-As the VisualCron server runs as a service, the client application can be closed without affecting the core server activities.
+This page explains how to start the VisualCron Client and what it needs to connect. If VisualCron is not installed yet, see [Download, Install, Upgrade and Uninstall](../get-visualcron/download-install-upgrade-uninstall).
+
+Start the Client in one of these ways:
+
+- Double-click the desktop shortcut "VisualCron `<major version>`"
+- In the Windows Start menu, open the folder "VisualCron `<major version>`" and select "VisualCron Client `<major version>`"
+- Double-click the [Tray Client](visualcron-tray-client) icon, or right-click it and select _Client_ -> _Start_
+
+The Client can connect only while the VisualCron service (named "VisualCron" in Windows Services) is running. It connects whether the Server status is "On" or "Off". See [Login](login) for what happens when the Client connects.
+
+Because the Server runs as a service, you can close the Client without affecting the Jobs the Server runs.

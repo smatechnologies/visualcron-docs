@@ -5,76 +5,64 @@ hide_title: 'true'
 
 ## Task System - Print Document
 
-The Print document Task can print a document in number of formats like pdf, Word, images and text.
- 
-**Print document > File filter** sub tab
+The Print document Task prints files on a printer of the VisualCron Server computer. It prints PDF, Word, Excel, PowerPoint, HTML, image and text files.
 
-In the File filter tab you define which file that should be printed. Read more about file filter [here](../../../server/job-tasks-file-filter).
- 
-**Print document > Print settings** sub tab
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Print%20Document.png)
+### Print document tab
 
-**Select printer**
+The ***Print document*** tab has two sub tabs:
 
-Select your desired printer here.
+- ***File filter***: selects the files to print; see [File filter](../../job-tasks-file-filter). Every file that the filter returns is printed
+- ***Print settings***: the printer and the print options below
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Print%20Document%20Settings.png)
- 
-**Printer settings**
+![Print document tab with the File filter sub tab open](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Print%20Document.png)
 
-**Paper source**
+- _Select printer_: the printer to use. The list shows the printers of the VisualCron Server computer
 
-Select the paper source tray to use when printing. Note: applies to images, PDF, and text files only.
- 
-**Page range**
+![Print settings sub tab, with the Select printer, Printer settings and Document groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Print%20Document%20Settings.png)
 
-**All pages** / **Pages**
+- _Paper source_ (_Printer settings_ group): the paper tray. Used for image, PDF and text files only
+- _All Pages_ (_Page range_ group): prints the whole file. Selected by default
+- _Page Range_: prints only the pages entered in the field below it, as page numbers and ranges separated by commas, for example `1,3,5-12`
 
-Select **All pages** to print the entire document. Select **Pages** to print specific pages and enter the page number or page range (for example, 2-4) in the field. Defaults to **All pages**.
+  For Excel files, enter one range, for example `1-3`. For PowerPoint files, the options are _All Slides_ and _Slides_, and the field takes slide numbers. For text files, only _All Pages_ is available.
 
-**Number of copies**
+- _Number of copies_ (_Pages_ group): the number of copies. The default is "1"
+- _Auto_, _Portrait_ or _Landscape_ (_Orientation_ group): the page orientation. The default is "Portrait". _Auto_ is used for PDF files only, where it follows the shape of the first page; other files print in portrait with _Auto_
+- _Left_, _Right_, _Top_ and _Bottom_ (_Margin_ group): the page margins. The default is "2" for each
+- _Auto detect document type from extension_ (_Document_ group): selected by default. The Task chooses the document type from the file extension:
 
-Set the number of copies to print. Defaults to 1.
- 
-**Orientation**
+  - `.pdf`: PDF
+  - `.doc` and `.docx`: Word
+  - `.xls` and `.xlsx`: Excel
+  - `.ppt` and `.pptx`: PowerPoint
+  - `.htm` and `.html`: HTML
+  - `.jpg`, `.png`, `.gif` and `.bmp`: image
+  - `.txt` and every other extension: text
 
-Select either portrait or landscape.
+  Because any other extension is printed as text, check that the extensions are correct.
 
-**Auto** / **Portrait** / **Landscape**
+- _Specify document type_: prints every file as the type selected in the list: "Word" (default), "Excel", "PowerPoint", "Image", "Text", "HTML", "PDF" or "Other". With "Other", the Task uses the Print command that Windows associates with the file type
+- _Password_: the password of password-protected PDF files
+- _Use fallback method_: for PDF files only, prints with a second PDF print method. Try it when a PDF file does not print correctly, for example in landscape
 
-Select the page orientation. Defaults to **Portrait**.
+:::note
 
-**Margin**
-
-Set the page margins in the **Left**, **Right**, **Top**, and **Bottom** fields.
- 
-**Document**
-
-**Auto detect document type from extension** / **Specify document type**
-
-Select **Auto detect document type from extension** to let VisualCron determine the document type from the file extension. It is important that the extension is correct, otherwise you will get printing problems. Select **Specify document type** to manually choose the document type from the dropdown. Defaults to **Auto detect document type from extension**.
-
-**Password**
-
-Enter the password for the document if it is password-protected.
-
-**Use fallback method**
-
-When checked, uses an alternative printing method. Try this option if landscape mode is not working or if the document fails to print with the default method.
- 
-:::info Note
-
-Printing images requires that you have any version of Microsoft Office installed.
+Word, Excel and PowerPoint files are printed through Microsoft Office, which must be installed on the VisualCron Server computer.
 
 :::
 
+### Output and errors
+
+The output lists the path of each printed file, one per line.
+
 ### Troubleshooting
 
-**I cannot see my printer**
+**The printer is not in the list**
 
-This is probably a permissions problem. Please check the sharing permissions on the printer. By default, the user account that runs the VisualCron service is SYSTEM account and that user needs to have this printer shared to.
- 
+The list shows the printers of the VisualCron Server computer. By default, the VisualCron Server service runs as the SYSTEM account, and that account must have access to the printer. Check the sharing permissions of the printer.
+
 **Landscape mode is not working**
 
-Try checking the option Use fallback method.
+For PDF files, select _Use fallback method_.

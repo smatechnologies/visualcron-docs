@@ -5,10 +5,4 @@ hide_title: 'true'
 
 ## Error 114 in SFTP Task
 
-If you get error 114 in the SFTP Task you have not enabled password authentication at your SFTP server. Edit the configuration file and set:
- 
-passwordauthentication no
- 
-to
- 
-passwordauthentication yes
+This page used to cover SFTP error 114, an authentication failure, which can have several causes depending on the authentication type. For each variant and its fix, see [Connection - SFTP: Troubleshooting](../client-user-interface/server/connection-sftp#troubleshooting). The SFTP server must also allow the authentication type that the Connection uses, for example `PasswordAuthentication yes` in the OpenSSH "sshd_config" file for password authentication.

@@ -5,48 +5,43 @@ hide_title: 'true'
 
 ## Task System - Hibernate
 
-The Hibernate Task can start Hibernation on a local or remote computer. When doing this on a local computer, it is also possible to wake up the computer at a specific time or after a certain time. A computer in hibernation mode uses 1% of normal power consumption and can be waked up at a certain time or through the LAN with the Wake up on LAN Task.
- 
-Hibernate mode writes an image of what you're currently working on to a special file on your hard drive, and then shuts your computer almost completely off. It takes a bit longer than Standby, since the writing process. Hibernate also takes a bit longer to resume, since you must go through essentially the normal boot process, although in Windows XP your computer wakes faster from Hibernate than in previous versions of Windows. The advantage is that you can leave your laptop in Hibernate mode for days without any negative effect. When you restart, you'll see everything exactly as you left it. Hibernate is the perfect mode for shutting down for the night or even the weekend.
+The Hibernate Task puts the VisualCron Server computer or a remote computer into hibernation. On the Server computer, the Task can also set a time for the computer to wake up. A computer in hibernation uses about 1% of normal power consumption, and it can be woken at a set time or through the network with the [Wake up on LAN](wakeup-on-lan) Task.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Hibernate.png)
+Hibernation writes the contents of memory to a file on the hard disk and then turns the computer almost completely off. It takes longer than Standby, both to start and to resume, because resuming goes through much of the normal startup. A computer can stay in hibernation for days, and when it resumes, everything is as it was left.
 
-**Credentials**
+![Hibernate Task settings, with the Credentials, Hibernate and Wake up groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Hibernate.png)
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
- 
-**Hibernate**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-**Local host** / **Remote host**
+### Hibernate tab
 
-Select **Local host** to hibernate the local computer. Select **Remote host** to hibernate a remote computer and enter the hostname in the field alongside the radio button.
+- _Credentials_: not used. With _Remote host_, the Task connects to the remote computer through WMI as the account of the VisualCron Server service, whatever Credential is selected; that account must be allowed to start programs on the remote computer
+- _Local host_ (_Hibernate_ group): hibernates the VisualCron Server computer. Selected by default
+- _Remote host_: hibernates the computer entered in the field next to it
+- _Force_: selected by default. When selected, the computer hibernates at once; when cleared, Windows first sends a request to the running programs. Used only with _Local host_
 
-**Force**
+With _Remote host_, the Task starts the Windows command `rundll32 powrprof.dll, SetSuspendState` on the remote computer. The Standby Task starts the same command, so whether the remote computer hibernates or sleeps depends on its own power settings. The Task reports success once the start request is sent, even when the remote computer does not start the command.
 
-When checked, forces the suspend/hibernate without sending a permission request to running applications.
+#### Wake up group
 
-**Wake up**
+The options in this group are available only with _Local host_.
 
-**Wake up**
+- _Wake up_: when selected, the Task sets a wake-up time before the computer hibernates
+- _At a certain date and time_: wakes the computer at the date and time entered. Selected by default
+- _At a certain time_: wakes the computer at the time entered, on the day the Task runs. A time that has already passed that day does not set a wake-up for the next day
+- _After a certain time (hour,minute,second)_: meant to wake the computer after the hours, minutes and seconds entered
 
-When checked, enables the wake up options below and schedules the computer to wake from hibernation automatically.
+:::warning
 
-**At a certain date and time**
+With _After a certain time (hour,minute,second)_, only the seconds value is used and the hours and minutes are ignored, so the computer is set to wake within a minute, and the Task reports success. To wake the computer after a longer period, use _At a certain date and time_.
 
-Wakes up the computer at the specified date and time. Only available when **Wake up** is checked.
+:::
 
-**At a certain time**
-
-Wakes up the computer at the specified time of day. Only available when **Wake up** is checked.
-
-**After a certain time (hour,minute,second)**
-
-Wakes up the computer after the specified duration. Only available when **Wake up** is checked.
- 
+On success, the output is "Hibernate success".
 
 :::info Note
 
-**Remark on Wake Up** 
+**Remark on Wake Up**
 
 Some computers can wake up from standby and not from hibernation, some work for both, and some for none. It all depends on the BIOS and the APM/ACPI capabilities, your motherboard, and your ATX power supply version.
 

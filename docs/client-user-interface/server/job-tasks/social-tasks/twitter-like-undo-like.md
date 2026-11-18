@@ -13,18 +13,14 @@ Twitter integration described on this page is deprecated from **VisualCron v13.2
 
 ## Task Social - Twitter - Like/Undo Like
 
-The Twitter - Like/Undo like tweet Task performs a like or unlike on a tweet in Twitter.
+The Twitter - Like/Undo like Task likes a tweet, or removes a like, in Twitter.
 
-![](../../../../../static/img/tasksocialtwitterlikeundolike.png)
+![Twitter - Like/Undo like tab, Like tweet sub tab with the Connection, the like options and the Tweet Id box](../../../../../static/img/tasksocialtwitterlikeundolike.png)
 
-**Connection**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To use Twitter Tasks you need to create a Connection first. You do that in the [Twitter Connection](../../../server/connection-twitter) dialog.
- 
-**Unlike Tweet**
+### Twitter - Like/Undo like: Like tweet tab
 
-Removes a previous liked tweet.
- 
-**Tweet ID**
-
-Number part in link to tweet.
+- _Connection_: the Twitter Connection to use; see [Twitter Connection](../../../server/connection-twitter)
+- _Like tweet_ (default) or _Unlike tweet_: whether to like the tweet or remove a previous like
+- _Tweet Id_: the ID of the tweet, the number at the end of the link to the tweet

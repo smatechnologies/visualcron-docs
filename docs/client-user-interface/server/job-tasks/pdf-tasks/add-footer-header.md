@@ -5,129 +5,86 @@ hide_title: 'true'
 
 ## Task PDF - Add Footer/Header
 
-The PDF - Add footer/header Task lets you add an object like image or text in footer or header to a new or existing PDF file.
- 
-**Add footer/header > Main settings** sub tab
+The PDF - Add footer/header Task adds a text or an image to the header, the footer or the center of the pages of existing PDF files, or of a new PDF file that it creates.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Add%20footer-header%20main.png)
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-**Existing/New file**
+### Add footer/header: Main settings tab
 
-Select Existing or New PDF file to operate upon, if new file enter file name. Click the *File* icon to browse location and file name for the PDF file.
- 
-**Password**
+![Main settings tab of the Add footer/header Task, with the PDF location, Vertical alignment, Content type, Page range and Save to.. groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Add%20footer-header%20main.png)
 
-If the file is or will be password protected, enter password.
- 
-**Vertical alignment**
+- _Existing file_ (_PDF location_ group): adds the content to every file that the ***File filter*** tab selects
+- _New file_: creates a new PDF file at the path in the box below the Credential; click the file button to browse
 
-Select Header, Footer or Center vertical alignment of the image or text to be added. The *Is background* puts the image or text in the background of the document.
- 
-**Content type**
+  With _New file_, the ***File filter*** tab is hidden, the _Save to.._ group is not used, and the Credential in this group is used to write the new file.
 
-Select the Text or Image type
- 
-**Page range**
+- _Password_: the password that opens an existing PDF file
 
-Set the operation to be performed on *All pages* or a range of pages.
- 
-**Save to**
+  The password is not applied to a new file: a new file is saved without a password.
 
-The destination folder and file mask which the output file is saved to.
- 
-**Folder**
+- _Vertical alignment_: "Header", "Footer" or "Center"; the default is "Footer"
+- _Is background_: places the content behind the page content
+- _Content type_: "Text", the default, or "Image"; shows the ***Text*** or the ***Image*** tab
+- _Page range_: _All pages_, or _Pages_ with page numbers and ranges separated by commas, for example `2-4` or `1,3,5-6`. An entry that is not a page number or a valid range is ignored
 
-If *Different folder* and *use file mask* is selected, click the *Folder* icon to browse and select folder.
- 
-**File mask**
+  For a new file, the Task creates as many pages as the highest number in the _Pages_ box, at least one, even when _All pages_ is selected. The default is "1".
 
-Save file with different name.
- 
- 
-**Add footer/header > File filter** sub tab
+- _Same file_ (_Save to.._ group): saves the result over the source file
+- _Same folder but use file mask_: saves the result in the folder set on the ***File filter*** tab, named by _File mask_
+- _Different folder and use file mask_: saves the result in _Folder_, named by _File mask_
+- _Folder_: the destination folder for _Different folder and use file mask_; click the folder button to browse
+- _File mask_: builds the new file name from the source file name, by the renaming standard set in [Main - Settings](../../main-settings)
 
-This tab uses the common [file filter](../../job-tasks-file-filter) to filter out the files that should be processed in this Task.
- 
-**Add footer/header > Image** sub tab
+  The default `*` keeps the source file name.
 
-This tab appears after choosing an Image content type in the Main settings tab.
+:::warning
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Add%20footer-header%20image.png)
+_Same file_ replaces the source file. With the default _File mask_ `*`, _Same folder but use file mask_ also replaces a source file that is in the File filter folder. A file that already has the new name is replaced without a prompt.
 
-**Image location**
+:::
 
-Full path to the file containing the image.
- 
-### Image dimension settings
- 
-**Width**
+### File filter tab
 
-Desired width of the image on the page.
- 
-**Height**
+The ***File filter*** tab selects the existing PDF files to change; see [File Filter](../../job-tasks-file-filter). If the filter has a Credential, the Task uses it while it reads and writes the files. When the logon with the Credential fails, the Task continues as the account that runs the Server and writes the error to the Server log.
 
-Desired height of the image on the page.
- 
-### Position settings
- 
-**Bottom/Top (pixel)**
+### Image tab
 
-Customize the bottom/top margin of the image in pixels
- 
-**Horizontal alignment**
+The ***Image*** tab appears when _Content type_ is "Image".
 
-Choose Left, Center or Right horizontal alignment of the image to be added. 
- 
-**Angle of rotation (in degrees)**
+![Text tab of the Add footer/header Task, with the Text content, Font details and Position groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Add%20footer-header%20image.png)
 
-Customize the rotate angle of image in degrees. This property allows to set arbitrary rotate angle.
- 
-**Opacity (0-100)**
+The screenshot shows the ***Text*** tab; the ***Image*** tab has the fields below.
 
-Customize the value to indicate the image opacity. The value is from 0 to 100. By default the value is 100.
-  
-**Add footer/header > Text** sub tab
+- _Image location_: the full path of the image file
+- _Width_ and _Height_ (_Image dimension_ group): the size of the image on the page; the defaults are "200" and "200"
+- _Top (pixel)_ or _Bottom (pixel)_ (_Position_ group): the distance from the top of the page when _Vertical alignment_ is "Header", or from the bottom when it is "Footer"
 
-This tab appears after choosing a Text content type in the Main settings tab.
+  The label follows _Vertical alignment_. The value is not used with "Center". The default is "10".
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Add%20footer-header%20text.png)
+- _Horizontal alignment_: "Left", "Center" or "Right"; the default is "Center"
+- _Angle of rotation (in degrees)_: rotates the image; the default is "0"
+- _Opacity (0-100)_: "100", the default, is fully opaque
 
-**Text content**
+### Text tab
 
-Formatted text that will be added to the PDF file. It is possible to use the macro #PAGE# to add the page number, #NUMPAGES# for the number of all pages.
- 
-### Font details
- 
-**Font**
+The ***Text*** tab appears when _Content type_ is "Text".
 
-Customize the font of the text.
- 
-**Font size**
+![Text tab of the Add footer/header Task, with the Text content, Font details and Position groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Add%20footer-header%20text.png)
 
-Customize the font size of the text.
- 
-**Text color**
+- _Text content_: the text to add
 
-Customize the foreground color of the text.
- 
-**Background color**
+  `#PAGE#` is replaced by the page number and `#NUMPAGES#` by the number of pages. Variables are supported.
 
-Customize the background color of the text.
- 
-### Position settings
- 
-**Bottom/Top (pixel)**
+- _Font_ and _Font size_ (_Font details_ group): the font of the text; the defaults are "Tahoma" and "11"
+- _Text color_ and _Background color_: the defaults are "Black" and "White"
+- _Top (pixel)_ or _Bottom (pixel)_ (_Position_ group): the distance from the top of the page when _Vertical alignment_ is "Header", or from the bottom when it is "Footer"
 
-Customize the bottom/top margin of text.
- 
-**Horizontal alignment**
+  The label follows _Vertical alignment_. The value is not used with "Center". The default is "10".
 
-Choose Left, Center or Right horizontal alignment of the text to be added. 
- 
-**Angle of rotation (in degrees)**
+- _Horizontal alignment_: "Left", "Center" or "Right"; the default is "Center"
+- _Angle of rotation (in degrees)_: rotates the text; the default is "0"
+- _Opacity (0-100)_: "100", the default, is fully opaque
 
-Customize the rotate angle of text in degrees. This property allows to set arbitrary rotate angle.
- 
-**Opacity (0-100)**
+### Output and errors
 
-Customize the value to indicate the text opacity. The value is from 0 to 100. By default the value is 100.
+The Task output lists the path of each file it saves. With _Existing file_, the Task raises the File not found error when the File filter matches no file.

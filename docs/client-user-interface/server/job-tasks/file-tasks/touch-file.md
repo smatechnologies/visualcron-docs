@@ -5,13 +5,9 @@ hide_title: 'true'
 
 ## Task File - Touch File
 
-The Touch file Task set the last write time of one or more file(s). The Touch file Task uses the standard [file filter](../../../server/job-tasks-file-filter) to find files that you want to touch.
+The Touch file Task sets the last write time of the files that the file filter finds to the current date and time of the VisualCron Server. If no file matches and the include file mask names a single file, without wildcards, the Task creates that file, empty. Even then, the Task raises a file-not-found error, which its **_On error_** settings handle. The Touch file Task uses the standard [file filter](../../../server/job-tasks-file-filter) to find files that you want to touch.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Touch%20File.png)
-
-**Credentials**
-
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
+![Add Task dialog for the Touch file Task, file filter Location tab](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Touch%20File.png)
 
 **Touch file > File filter** tab
 

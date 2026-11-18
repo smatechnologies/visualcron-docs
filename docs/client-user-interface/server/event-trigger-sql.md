@@ -5,61 +5,81 @@ hide_title: 'true'
 
 ## Event Trigger - SQL
 
-The SQL event trigger is able to monitor and Trigger upon a result value from a text or stored procedure query. The SQL Trigger supports all kind of database Connections.
- 
-**Triggers > Add > Event Trigger > SQL > Connection** sub tab
+The SQL Trigger runs a query or a stored procedure through a database Connection when it starts and then at every *Polling interval* (default 60 seconds). It starts the Job when the result meets the condition on the ***Condition*** sub tab. This Trigger does not use *Run delay* or *Expire after being triggered*: every match starts the Job.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL.png)
+The result is every value the query returns, in all rows, columns and result sets, joined into one text with nothing between them. For example, two rows with the values 1 and 2 give the result `12`. A *String* condition is checked against that text. For the other data types, the joined text is converted to the chosen *Data type*. Several numeric values therefore become one number (1 and 2 give 12), which is compared without an error. No rows, or a text that cannot be converted, counts as an error (see *On error reconnect attempts*). For *Boolean*, the value must be the text `True` or `False`.
+
+The settings are on the ***SQL*** tab, ***Connection*** sub tab.
+
+![The Connection sub tab of the SQL tab in the Add/Edit event window: Database Connection and Credential for integrated security lists, Command timeout 0 seconds, On error reconnect attempts 60 and On error reconnect interval (seconds) 10](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL.png)
 
 **Database Connection**
 
-Select an existing database [Connection](../server/global-connections), if not existing you need to create one first. Click the Settings icon to open the Manage Connections dialog. Once a connection is added you can select it in the combo box.
- 
+Select an existing SQL [Connection](global-connections). If none exists, click the icon next to the list to add one; it can then be selected in the combo box.
+
 **Credential for integrated security**
 
-If your [Credential](../server/global-credentials) requires integrated security you should select a Windows user that has access to database. Click the Settings icon to populate the drop-down list with available Credentials.
- 
+Use only with a Connection that uses Windows authentication: the query then runs as this Windows user, who needs access to the database. Use a [Credential](global-credentials) with the *Load profile* option. When you save, the Client warns you and asks whether to continue in these cases:
+
+* The Connection uses Windows authentication, the VisualCron service runs as Local System and no Credential is selected
+* A Credential is selected but the Connection does not use Windows authentication
+* The Credential does not have *Load profile*
+
+You can save anyway.
+
 **Command timeout**
 
-How long time before the query times out.
+How many seconds the query may run before it fails (up to 99999). The default, 0, means no limit.
 
 **On error reconnect attempts**
 
-The number of times VisualCron tries to reconnect to the database when a connection error occurs. Value 1 to 500 is available. Default value is 5 times.
+The number of failed queries in a row before the Trigger stops checking (1 to 500; default 60). From the start, that many failures in a row stop it; after a successful query, one fewer does (59 with the default). Each error is written to the log. Any error counts: the database cannot be reached, the query fails, or the result cannot be read as the chosen *Data type*.
+
+When the Trigger stops because the Connection is missing, or because the *String* condition is not supported (see *Condition*), it is deactivated. For any other error, it stops checking but still shows as active. Fix the cause, then deactivate and activate the Trigger, or save the Job.
 
 **On error reconnect interval (seconds)**
 
-The number of seconds to wait between reconnect attempts. Value 1 to 500 is available. Default is 10 seconds.
- 
-**Triggers > Add > Event Trigger > SQL > Trigger > Text** sub tab
+How many seconds to wait before the next try (1 to 500; default 10).
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL%20Trigger.png)
+The query is on the ***SQL*** tab, ***Trigger*** sub tab, ***Text*** tab.
 
-Enter the query in the text field. If you have a stored procedure - select the stored procedure tab.
- 
-**Triggers > Add > Event Trigger > SQL > Trigger > Stored procedure** sub tab
+![The Text tab of the Trigger sub tab with a SELECT query in the Query editor](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL%20Trigger.png)
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL%20Trigger%20Stored.png)
+Enter the query. The Trigger runs the query on the selected tab: ***Text*** or ***Stored Procedure***.
 
-Enter the **Name of Stored Procedure** to execute. The field is an editable dropdown — click the refresh button next to it to populate the dropdown with stored procedures from the selected database Connection, or type a stored procedure name directly.
+:::warning
 
-The **Parameters** grid below shows all parameters for the stored procedure. Use the **Add**, **Edit**, and **Delete** buttons (also available from the grid's context menu) to manage parameters. When clicking on the Add button, a parameter window will open. Enter parameter values for Name, Value, Data type and Parameter direction.
+The SQL Trigger passes the query text to the database as typed: Variables in it are not replaced, although *Extended Trigger debug logging* shows the query with them replaced. The SQL Task does replace them. To pass a value from a Variable, use a stored procedure parameter: parameter values accept Variables.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL%20Trigger%20Stored%20Procedure.png)
+:::
 
-**Validate value**
+A stored procedure is set on the ***SQL*** tab, ***Trigger*** sub tab, ***Stored Procedure*** tab.
 
-If this value is checked VisualCron will validate the value against the value type. Unselect this if you are using a Variable as value and this Variable is not yet set.
- 
-Test your SQL Task before closing the VisualCron client. Errors will be reported in the log window.
- 
-**Triggers > Add > Event Trigger > SQL > Trigger > Condition** sub tab
+![The Stored Procedure tab of the Trigger sub tab: Name of Stored Procedure with a refresh icon, an empty Parameters list with Name, Value and Direction columns, and Add, Edit and Delete buttons](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL%20Trigger%20Stored.png)
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL%20Condition.png)
+Select the *Name of Stored Procedure*: click the refresh icon next to the list to load the stored procedures of the selected Connection, then select one. Selecting a procedure replaces the *Parameters* list with that procedure's parameters. A name you type is saved only when it matches an entry in the list, so load the list and select the procedure.
+
+The *Parameters* grid below shows all parameters for the stored procedure. Use the *Add*, *Edit*, and *Delete* buttons (also available from the grid's context menu) to manage parameters.
+
+Click *Add* to open the parameter window, and set:
+
+* *Name* and *Value*. The value accepts Variables
+* *Use null value*: sends NULL instead of the value
+* *Validate value*: when checked, the value is checked against the *Data type* when you click *OK*. Clear it if the value is a Variable that has no value yet
+* *Data type* and *Parameter direction*
+* *Size*: *Auto*, *Max*, or *Specific* with the size in the box next to it
+
+The values of output parameters are available in the [Result Variables](#result-variables).
+
+![Clicking Add on the Stored Procedure tab opens the Parameter window: Name, Value, Use null value, Validate value, Data type, Parameter direction and Size](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL%20Trigger%20Stored%20Procedure.png)
+
+The condition is on the ***SQL*** tab, ***Condition*** sub tab.
+
+![The Condition sub tab of the SQL tab: Condition Equal (=), Data type String, Value to compare with, and If value is the same as last time with Fire Trigger selected](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/Event%20Trigger%20-%20SQL%20Condition.png)
 
 **Data type**
 
-Select the data type that the SQL query result should be interpreted as. The available comparison methods in the _Condition_ dropdown change depending on the selected data type:
+Select how the result is read. The default is *String*. The conditions offered depend on the data type.
 
 * **String**
 * **Boolean**
@@ -70,20 +90,36 @@ Select the data type that the SQL query result should be interpreted as. The ava
 
 **Condition**
 
-Select the comparison method that should be applied between the result and the _Value to compare with_. The list of available methods depends on the selected _Data type_:
+The comparison between the result and *Value to compare with*. The default is *Equal (=)*.
 
-* **Boolean** — _Equal_, _Not equal_
-* **String** — _Equal_, _Not equal_, _Contains_, _Not contains_, _RegEx match_, _RegEx no match_
-* **Int32 / Int64 / Decimal / Double** — _Equal_, _Not equal_, _Larger_, _Larger or equal_, _Smaller_, _Smaller or equal_, _Contains_
- 
+* *Boolean*: *Equal (=)*, *Not equal (!=)*
+* *String*: *Equal (=)*, *Not equal (!=)*, *Contains (=%)*, *Regex - match*, *Regex - no match*. String comparisons are case-sensitive
+* *Int32*, *Int64*, *Decimal*, *Double*: *Equal (=)*, *Not equal (!=)*, *Larger than (>)*, *Larger than or equal (>=)*, *Smaller than (<)*, *Smaller than or equal (<=)*, and *Contains (=%)*, which checks whether the number, written as text, contains the value
+
+:::warning
+
+*Not contains (!=%)* is offered for *String* but is currently not supported when the Trigger runs: every check is logged as an error and counts as a failed query, until the Trigger is deactivated. Use *Regex - no match* instead, with the text as the pattern (escape characters that have a meaning in regular expressions).
+
+:::
+
 **Value to compare with**
 
-Enter a value/Variable to compare the result with. Click the Variables icon to open the the Variables list.
- 
+The value the result is compared with. Accepts Variables; click the icon to insert one. For the numeric and Boolean types, it must be a valid value of that type.
+
 **If value is the same as last time**
 
-Choose how the Trigger should behave when the new result matches the previous result:
+What to do when the condition matches and the result is the same as the result of the previous query (whether or not that one matched):
 
-* **Fire Trigger** — fire the Trigger every time the Condition is met (default)
-* **Do not fire Trigger** — skip firing when the result is the same as last time
-* **Disable Trigger** — disable the Trigger after a repeated identical match
+* *Fire Trigger*: the default. Start the Job every time the condition matches
+* *Do not fire Trigger*: do not start the Job again until the result changes
+* *Disable Trigger*: deactivate the Trigger instead of starting the Job
+
+### Result Variables
+
+When the Trigger fires, it sets these result Variables:
+
+* `SQL.Result.QueryResult`: the result of the query that fired the Trigger
+* `SQL.QueryResult`: the result of the latest query, whether or not it fired the Trigger. Until the Trigger has fired once, it returns a "[Result not set …]" text
+* `SQL.Result.Parameter.Value|<parameter name>`: the value of an output parameter
+
+For example, `{TRIGGER(Active|LastTrigger|SQL.Result.QueryResult)}` returns the result that fired the Trigger that started the run, and `{TRIGGER(Active|LastTrigger|SQL.Result.Parameter.Value|MyParameter)}` returns the output parameter `MyParameter`. *Last run*, `{TRIGGER(Active|LastTrigger|LastRun)}`, returns the time the Trigger fired. See [Variables](global-variables) for how *Last trigger* and the other keys work.

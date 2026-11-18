@@ -5,37 +5,48 @@ hide_title: 'true'
 
 ## Task Messaging - Telegram - Send Bot Message
 
-The Telegram - Send Bot Message Task sends a message from a Telegram bot to one or more of its subscribers. Read more about Telegram bots [here](https://core.telegram.org/bots).
+The Telegram - Send Bot message Task sends a message from a Telegram bot to users who have started a chat with the bot. The Task does not use a Connection: the bot token is entered in the Task. The Task connects to Telegram without a proxy. To create a bot and get its token from BotFather, see [Bots: An introduction for developers](https://core.telegram.org/bots).
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Telegram%20-%20send%20bot%20message.png)
+![Telegram - Send Bot message tab, Message tab with the Token, Message and Message parse mode fields](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Telegram%20-%20send%20bot%20message.png)
 
-**Token**
+:::warning
 
-The bot token issued by BotFather when you created the bot. See [BotFather](https://core.telegram.org/bots#6-botfather) for how to obtain a token.
+The bot token is stored in the Task settings without encryption and is shown as plain text in the Task window, so anyone who can open the Task can read it.
 
-**Message format**
+:::
 
-How the *Message* text is parsed by Telegram. Available options:
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-* _Default_ - send the message as plain text
-* _Html_ - parse the message as HTML
-* _Markdown_ - parse the message as Markdown
+### Telegram - Send Bot message: Message tab
 
-**Message**
+- _Token_: the token of the bot. Required; Variables are not resolved in it
+- _Message_: the text to send. Required; Variables are resolved
+- _Message parse mode_: how Telegram reads the message: "Default" (plain text), "Html", "Markdown" or "MarkdownV2"
 
-The message text to send.
+The Task cannot be saved while _Token_ or _Message_ is empty.
 
-**Telegram - Send Bot Message > Recipients** sub tab
+### Telegram - Send Bot message: Recipient(s) tab
 
-The Recipients sub tab lets you choose which subscribers receive the message. At least one user must be selected.
+- _Send to all users_: sends to every user in the grid, whether or not _Use_ is selected; the grid is then unavailable
 
-* _Send to all users_ - when checked, the message is sent to every subscriber and the grid is disabled
-* _Refresh_ - queries the Telegram bot using the *Token* and populates the grid with the available subscribers
-* _Select all_ / _Deselect all_ - quickly toggle the *Use* column for every row in the grid
-* The grid - check the *Use* column on the rows to choose individual recipients
+  Only the users in the grid when the Task was last saved receive the message. To include users who started a chat with the bot later, click _Refresh_, then save the Task.
+
+- The grid: select _Use_ on each user to send to
+- _Select all_ and _Deselect all_: select or clear _Use_ on every row
+- _Refresh_: loads the users of the bot into the grid, using _Token_, and clears every _Use_ check box
+
+### Output and errors
+
+The output of the Task is the response from Telegram. If Telegram rejects the token or the message, the Task fails.
+
+:::warning
+
+The Task window does not check that a recipient is selected. If no user is selected and _Send to all users_ is cleared, or the grid is empty, nothing is sent, and the Task reports success.
+
+:::
 
 ### Troubleshooting
 
-**Recipient is not visible**
+#### Recipient is not visible
 
-A user only appears in the *Recipients* tab after they have started a conversation with the bot. Send a message to the bot from each account before refreshing the recipient list.
+A user appears on the ***Recipient(s)*** tab only after they have started a chat with the bot. Have each user send a message to the bot, then click _Refresh_.

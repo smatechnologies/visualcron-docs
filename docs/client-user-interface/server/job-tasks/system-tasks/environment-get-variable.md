@@ -5,20 +5,24 @@ hide_title: 'true'
 
 ## Task System - Environment - Get Variable
 
-System - Environment - Get variable retrieves the value of an environment variable for a process, user or local machine.
+The Environment - Get variable Task writes the value of an environment variable of the VisualCron Server process, of a user or of the VisualCron Server computer to the Task output.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Get%20Variable.png)
+![Get variable Task settings, with the Credentials, Variable name and Variable scope fields](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Get%20Variable.png)
 
-**Credentials**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
+The Task works on the VisualCron Server computer only.
 
-**Environment variable settings:**
+### Environment - Get variable tab
 
-**Variable name**
+- _Credentials_: the Credential the Task runs as. Required for the "User" scope, where the Task reads a variable of that Credential's user. This needs the Credential's default logon settings (local logon, with the profile loaded). Without a Credential, the Task runs as the account of the VisualCron Server service. Select a Credential, or click the _Settings_ icon to open _Manage credentials_; see [Global - Credentials](../../global-credentials)
+- _Variable name_: the name of the variable to read
+- _Variable scope_: "Process" (default), "User" or "Machine"
 
-The name of an existing variable contained in the selected scope.
- 
-**Variable scope**
+  - "Process": the environment of the VisualCron Server process: the values it had when the VisualCron Server started, plus changes made since by Tasks in the "Process" scope
+  - "User": the user variables of the Credential's user, stored in that user's `Environment` registry key (`HKEY_CURRENT_USER\Environment` for a logged-on user)
+  - "Machine": the system variables of the computer, stored in `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment`
 
-Select Process, User or Machine variable scope. These variable scopes refers, more or less, to Windows 10 Process, User and System variables. The Windows process variables consist of Windows User and System variables.
+### Output and errors
+
+The output is the value of the variable. When the variable does not exist, the output is empty, and the Task reports success.

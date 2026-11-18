@@ -2,9 +2,8 @@
 sidebar_label: 'Manage Servers'
 hide_title: 'true'
 ---
-
 ## Manage Servers
 
-The toolbar *Manage servers* icon performs the same function as the main menu **File > Servers > Manage servers** option. Both will open the Manage servers dialog where server connections are managed. See [Manage servers](../file/manage-servers) for more information.
+The ***Manage Servers*** button in the toolbar, next to the Server selection combo box, opens the ***Manage servers*** window, the same as ***File*** -> ***Servers*** -> ***Manage Servers***. See [Servers - Manage Servers](../file/manage-servers).
 
-![](../../../static/img/Client%20User%20Interface/Toolbar/Manage%20Servers.png)
+![The Manage Servers button in the toolbar and on the File tab, and the Manage servers window](../../../static/img/Client%20User%20Interface/Toolbar/Manage%20Servers.png)

@@ -5,8 +5,11 @@ hide_title: 'true'
 
 ## Show Flow Chart
 
-When a Job is defined, right-click on the Job or Task in the Server/Group/Job/Task grid and select *Show flow chart* to open the Flow chart  window.
- 
-The Flow chart is available the main menu **Tools > Flow chart > Flow chart** option. See [here](../../tools/flow-chart-flow-chart) for more information.
+The ***Show flow chart*** item opens the ***Flow chart*** window for the selected Job.
 
-![](../../../../static/img/Client%20User%20Interface/Toolbar/Show%20Flow%20Chart.png)
+1. Right-click the Job or Task in the Server/Group/Job/Task grid.
+2. Click ***Show flow chart***.
+
+The same window opens from ***Tools*** -> ***Flow chart***; see [Flow Chart - Flow Chart](../../tools/flow-chart-flow-chart).
+
+![Job right-click menu with the Show flow chart item highlighted](../../../../static/img/Client%20User%20Interface/Toolbar/Show%20Flow%20Chart.png)

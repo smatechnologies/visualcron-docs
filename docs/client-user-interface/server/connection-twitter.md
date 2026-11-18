@@ -19,7 +19,7 @@ The Twitter Connection is used in the Twitter Tasks.
  
 **Manage Connections > Add > Twitter > Main settings** tab
 
-![](../../../static/img/connectiontwittermain.png)
+![Twitter Connection, Main settings tab with the Name field](../../../static/img/connectiontwittermain.png)
 
 **Name**
 
@@ -27,11 +27,11 @@ This field will be filled by VisualCron once the PIN has been authenticated.
  
 **Manage Connections > Add > Twitter > Authentication** tab
 
-![](../../../static/img/twitterconnectionauthentication2.png)
+![Twitter Connection, Authentication tab with the Credential group](../../../static/img/twitterconnectionauthentication2.png)
 
 **Use VisualCron registered app**
 
-When creating a Twitter Connection you have the option to use the registered VisualCron Twitter app or user your own app. If you have your own app you need to fill Consumer Key and Consumer Secret from Twitter web page - Application settings.
+When creating a Twitter Connection you have the option to use the registered VisualCron Twitter app or use your own app. If you have your own app you need to fill Consumer Key and Consumer Secret from Twitter web page - Application settings.
  
 **Get PIN**
 
@@ -50,7 +50,7 @@ To create a Connection you first need to authorize VisualCron to perform Twitter
 **Use your own app**
 
 If you want to use your own app (e.g. if you/your company already have an app or if you need special permissions) you need to:
-1. Create your on app in Twitter if you have not done that
+1. Create your own app in Twitter if you have not done that
 2. Uncheck Use VisualCron app registered app in Authentication page
 3. Fill in the Consumer key and the Consumer secret from Twitter web page.
 4. Click on Get PIN button in VisualCron.
@@ -59,19 +59,19 @@ If you want to use your own app (e.g. if you/your company already have an app or
  
 **Authorize the VisualCron app in browser**
 
-![](../../../static/img/authorizevisualcrontwitter.png)
+![Twitter page that asks to authorize the app](../../../static/img/authorizevisualcrontwitter.png)
 
 **Authorize the VisualCron app in browser - Access granted - PIN received**
 
-![](../../../static/img/twitterconnectionaccessgranted.png)
+![Twitter Connection, Authentication tab after authorization](../../../static/img/twitterconnectionaccessgranted.png)
 
 **Authorize use your own app in browser - Access granted - PIN received**
 
-![](../../../static/img/authorizevisualcrontwitterpin.png)
+![Twitter Connection, Authentication tab with the Consumer group](../../../static/img/authorizevisualcrontwitterpin.png)
 
 **Use VisualCron registered app**
 
-When creating a Twitter Connection you have the option to use the registered VisualCron Twitter app or user your own app. If you have your own app you need to fill *Consumer Key* and *Consumer Secret* from Twitter web page - Application settings.
+When creating a Twitter Connection you have the option to use the registered VisualCron Twitter app or use your own app. If you have your own app you need to fill *Consumer Key* and *Consumer Secret* from Twitter web page - Application settings.
  
 **Access token**
 

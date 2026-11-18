@@ -5,185 +5,169 @@ hide_title: 'true'
 
 ## Task Messaging - Email - Send
 
-The Messaging Email Task lets you send text and/or HTML emails that can be encrypted/signed through SMIME or PGP to one or more recipients. You may add attachments to the email. You can set priority and get notifications if file has been read or received.
+The Email - Send Task sends a text or HTML message, with optional attachments, to one or more recipients, using an SMTP, Exchange EWS, Exchange WebDAV or Microsoft Graph API Connection. The message can be signed and encrypted with S/MIME or PGP/MIME.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send.png)
+![Email - Send tab, Main settings tab with the Basic settings, Security and Message type groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send.png)
 
-**Connection**
+:::warning
 
-You have to select a SMTP Connection. All connections are "global" and you can add new connections by clicking on Manage connection.
- 
-**Subject**
+This Task uses an SMTP, Exchange EWS, Exchange WebDAV or Microsoft Graph API Connection; see [Connection - SMTP](../../connection-smtp), [Connection - Exchange EWS](../../connection-exchange-ews), [Connection - Exchange WebDAV](../../connection-exchange-webdav) and [Connection - Microsoft Graph API](../../connection-microsoft-graph-api). With an SMTP Connection that uses "Default" authentication, the Task accepts any server certificate. The Task does not use the proxy set on the Connection.
 
-Subject of your message.
- 
-**From name**
+:::
 
-The name that will appear as "from" in the email.
- 
-**From email**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-The email address that will appear as "from" in the email.
- 
-**Reply to email** 
+### Email - Send: Main settings tab
 
-If you want another reply address than the From email you enter it here. Leave blank if you don't want to use it.
- 
-**Priority**
+- _Connection_: the Connection to send through, of one of these types: [Connection - SMTP](../../connection-smtp), [Connection - Exchange EWS](../../connection-exchange-ews), [Connection - Exchange WebDAV](../../connection-exchange-webdav) or [Connection - Microsoft Graph API](../../connection-microsoft-graph-api)
 
-The priority of the email. Available options: _Low_, _Normal_, _High_. Will be marked differently depending on what type of client the recipient has.
- 
-**Security**
+- _Subject_: the subject of the message. Variables are resolved
+- _From name_: the sender name that recipients see. Required
 
-Select the security method for signing and/or encrypting the message. Available options:
+  If the field is empty when the Task window opens, it is filled with _From name_ from [Settings - Email Settings](../../settings-email-settings).
 
-* _Do not use security features for this message_ - sends without signing or encryption (default)
-* _Use S/MIME security features_ - enables the Sign and Encrypt tabs with S/MIME settings
-* _Use PGP/MIME security features_ - enables the Sign and Encrypt tabs with PGP/MIME settings
- 
-**Message type**
+- _From email_: the sender address. Required
 
-Select the format(s) for the message body. The corresponding tabs are enabled based on the selections:
+  If the field is empty when the Task window opens, it is filled with _From email_ from [Settings - Email Settings](../../settings-email-settings).
 
-* _Send Text_ - enables the Text tab for plain text message body (checked by default)
-* _Send HTML_ - enables the HTML and Chrome Preview tabs for HTML message body
-* _Request delivery receipt_ - requests a delivery confirmation from the recipient's mail server
-* _Request read receipt_ - requests a read confirmation when the recipient opens the message
- 
-**Email -> Recipients** sub tab
+- _Reply to email_: the address that replies go to
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Recipients.png)
+  If the field is empty when the Task window opens, it is filled with _From email_ from [Settings - Email Settings](../../settings-email-settings). To send without a separate reply address, clear the field before you save the Task. The field is filled again each time the Task window opens, so clear it each time you edit the Task.
 
-**Recipient separator**
+- _Priority_: "Low", "Normal" (default) or "High". How the priority is shown depends on the recipient's mail program
 
-If you specify multiple addresses manually or in a file, VisualCron needs to know how you separated these. Available options: _Semicolon_, _Comma_, _Newline_.
- 
-**Send separate emails**
+- _Security_: how the message is signed or encrypted
+  - _Do not use security features for this message_ (default): the message is neither signed nor encrypted
+  - _Use S/MIME security features_: enables the ***Sign*** and ***Encrypt*** tabs with S/MIME settings
+  - _Use PGP/MIME security features_: enables the ***Sign*** and ***Encrypt*** tabs with PGP/MIME settings
 
-By default, for privacy, VisualCron sends one email per recipient and does not show other recipients in the To field. Uncheck this to send a single email with all recipients visible.
+:::warning
 
-**To / Cc / Bcc**
+PGP/MIME signing and encryption are applied only with an SMTP Connection that uses "Default" authentication. With an Exchange EWS, Exchange WebDAV or Microsoft Graph API Connection, or an SMTP Connection that uses "Gmail OAuth", a message set to PGP/MIME is sent unsigned and unencrypted. With these Connections, S/MIME ignores _Sign clear format_ and _Sign root header_, and matches encryption certificates to To addresses only.
 
-Each recipient group (To, Cc, Bcc) has its own source dropdown and input controls. Select the source for each group:
+:::
 
-* _Not used_ - the group is not used
-* _Manual_ - enter addresses directly in the text field, separated by the selected recipient separator
-* _File_ - load addresses from a file; enter the file path in the text field and select a Credential if the file is on a restricted network location
-* _List_ - use a predefined list
+- _Message type_: the parts of the message
+  - _Send Text_: sends the plain text body from the ***Text*** tab. Selected by default
+  - _Send HTML_: sends the HTML body from the ***HTML*** tab, and enables the ***HTML*** and ***Chrome preview*** tabs
+  - _Request delivery receipt_: asks for a delivery notification from the mail system
+  - _Request read receipt_: asks the recipient's mail program for a read confirmation when the message is opened
 
-When _File_ is selected, a **Credential** dropdown is enabled to provide access to the file location.
- 
-**Email -> Text** sub tab
+  With both _Send Text_ and _Send HTML_ selected, the message carries both bodies, and the recipient's mail program shows one of them.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Text.png)
+### Email - Send: Recipients tab
 
-Enter the text message here. Will only be enabled if you have selected Text as message type.
- 
-**Email -> HTML** sub tab
+![Email - Send tab, Recipients tab with the To, Cc and Bcc groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Recipients.png)
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20HTML.png)
+- _Recipient separator_: the character between addresses, in the address fields and in recipient files: "Semicolon" (default), "Comma" or "Newline"
+- _Send separate emails_: selected by default
 
-Enter the HTML message here. Will only be enabled if you have selected HTML as message type.
- 
-**Email -> Chrome Preview** sub tab
+  When selected, every To, Cc and Bcc address gets its own copy of the message, with only that address in To; the Cc and Bcc lines are not kept. If sending to one address fails, the error is written to standard error, the other addresses still get the message, and the Task ends with exit code 77777.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Chrome.png)
+  When cleared, one message goes to all addresses. To and Cc addresses are visible to every recipient; Bcc addresses are not. If the send fails, the Task fails.
 
-In the Chrome Preview tab you can see how your HTML text would look.
- 
-**Email -> Attachments** sub tab
+- _To.._, _Cc.._ and _Bcc.._: each group has a source list, an address field and a _Credential_ list. The sources are:
+  - "Not used": the group is not used (default for Cc and Bcc)
+  - "Manual": type the addresses in the field, separated by the _Recipient separator_ (default for To). Variables are resolved
+  - "File": type the path of a text file that holds the addresses, separated by the _Recipient separator_. _Credential_ is enabled, and is used to read the file
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Attachments.png)
+  The Task window requires at least one group that is not "Not used", and an address in at least one field.
 
-You can send any kind of attachment with the Email Messaging Task. If the attachments are located on a restricted area/network drive you must use a Credential to access it. You select the Credential when editing the attachment. The attachment tab shows a list. Click on Add, Edit or Delete to alter which attachments to use.
- 
-If Add is selected, the standard [file filter](../../../server/job-tasks-file-filter) definitions are opened.
- 
-**Email > Sign (PGP/MIME)** sub tab
+  With an SMTP Connection that uses "Default" authentication, spaces are removed from every address, and Variables are resolved in the contents of a recipient file. With the other Connections, spaces are kept, and Variables in a recipient file are not resolved.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Sign.png)
+### Email - Send: Text tab
 
-In order to be able to activate the Sign settings, the *Use PGP/MIME security features* must be selected in the Email > Main settings window.
- 
-**Sign message**
+![Email - Send tab, Text tab](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Text.png)
 
-Click on Sign message to activate signing
- 
-**Use new features**
+Type the plain text body. The tab is enabled when _Send Text_ is selected. Variables are resolved. The message uses the character set of _Encoding_ on the Task window's ***Main settings*** tab.
 
-Use this property for compatibility with old versions of PGP-compatible software. If this property is set to True, then newer and stronger algorithms will be used. If the property is set to False, then the result will be compatible with PGP 2.6.x, while the keys are compatible (i.e. don't use features not supported by PGP 2.6.x).
- 
-**Choose key ring**
+### Email - Send: HTML tab
 
-Select one of existing key rings to match for senders email. When selecting a key ring all existing keys will be listed in the grid.
- 
-**Manage key rings**
+![Email - Send tab, HTML tab](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20HTML.png)
 
-Click on this button to create/import new key rings.
- 
-**Password**
+Type the HTML body. The tab is enabled when _Send HTML_ is selected. Variables are resolved.
 
-If your key requires a password you should enter it here.
- 
-**Email > Sign (S/MIME)** sub tab
+### Email - Send: Chrome preview tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Sign.png)
+![Email - Send tab, Chrome preview tab](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Chrome.png)
 
-In order to be able to activate the Sign settings, the *Use S/MIME security features* must be selected in the Email > Main settings window.
- 
-**Sign message**
+Shows how the HTML from the ***HTML*** tab is displayed. Variables are not resolved in the preview.
 
-Click on Sign message to activate signing
- 
-**Sign clear format**
+### Email - Send: Attachments tab
 
-There are two possible types of message signing. If the first type is used any user will be able to read the message. If program that can't process signatures is used there is no way to check signature but it is still possible to read the message. When this type is used content-type of the message is 'multipart/signed'.
-When second type is used, such program will be only able to show attachment with no meaning. But the second type is more protected against damages during passing the mail servers. When this type is used, content-type of the message is 'application/pksc7-mime; smime-type=signed-data'.     Default value is True which corresponds to the first type.
- 
-**Sign root header**
+![Email - Send tab, Attachments tab with the attachment list](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Attachments.png)
 
-Use this property to specify whether to sign root header of the message.
- 
-**Manage certificates**
+The list shows each attachment with its path and Credential. Click _Add_ to add an attachment, _Edit_ to change the selected one and _Delete_ to remove it. Each attachment is a [File Filter](../../job-tasks-file-filter), so one entry can attach several files. The Credential of the filter is used to read files on a protected location. For what happens when a filter finds no file, or a file cannot be read, see [Output and errors](#output-and-errors).
 
-Click on this button to create/import new certificates.
- 
-**Choose certificate grid**
+### Email - Send: Sign tab (PGP/MIME)
 
-You must select one certificate that matches your from address in order to be able to sign.
- 
-**Email > Encrypt (PGP/MIME)** sub tab
+![Email - Send tab, Sign tab, shown with S/MIME settings](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Sign.png)
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Encrypt.png)
+The tab is enabled when _Use PGP/MIME security features_ is selected in the _Security_ group.
 
-In order to be able to activate the Encrypt settings, the *Use PGP/MIME security features* must be selected in the Email > Main settings window.
- 
-**Encrypt message**
+- _Sign message_: signs the message
+- _Use new features_: selected by default. When selected, newer and stronger algorithms are used. When cleared, the result is compatible with PGP 2.6.x
+- _Choose key ring_: the key ring with the private key to sign with. The whole key ring is used; no key is matched to _From email_. The grid lists the keys of the selected key ring
+- _Manage key rings_: opens the PGP key rings, where you create or import key rings; see [Global - PGP Key Rings](../../global-pgp-key-rings)
+- _Password_: the passphrase of the private key, if it has one
 
-Click on Encrypt message to activate encryption
- 
-**Choose key ring**
+### Email - Send: Sign tab (S/MIME)
 
-Select one of existing key rings to match recipients email. When selecting a key ring all existing keys will be listed in the grid.
- 
-**Manage key rings**
+![Email - Send tab, Sign tab with S/MIME settings](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Sign.png)
 
-Click on this button to create/import new key rings
- 
-**Email > Encrypt (S/MIME)** sub tab
+The tab is enabled when _Use S/MIME security features_ is selected in the _Security_ group.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Encrypt%20with%20Key.png)
+- _Sign message_: signs the message
+- _Sign clear format_: selected by default
 
-In order to be able to activate the Encrypt settings, the *Use S/MIME security features* must be selected in the Email > Main settings window.
- 
-**Encrypt message**
+  When selected, the message is sent as "multipart/signed": every mail program can show it, and programs that support S/MIME can check the signature. When cleared, the message is sent as "application/pkcs7-mime" signed data: it is better protected against changes on its way through mail servers, but only programs that support S/MIME can show it.
 
-Click on Encrypt message to activate encryption
- 
-**Manage certificates**
+- _Sign root header_: when selected, header fields of the message, such as the subject, are signed too; From, To, Sender and Reply-To are not
+- _Choose certificate_: select exactly one certificate in the _Use_ column. Only certificates that can sign are listed
+- _Manage certificates_: opens the certificates, where you create or import certificates; see [Global - Certificates](../../global-certificates)
 
-Click on this button to create/import new certificates.
- 
-**Choose certificate grid**
+_Sign clear format_ and _Sign root header_ apply only with an SMTP Connection that uses "Default" authentication. The signature uses SHA-1 with an SMTP Connection that uses "Default" authentication, and SHA-256 with the other Connections. The algorithm cannot be changed.
 
-You must select a certificate that matches each recipient in order to encrypt.
+### Email - Send: Encrypt tab (PGP/MIME)
+
+![Email - Send tab, Encrypt tab, shown with S/MIME settings](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Encrypt.png)
+
+The tab is enabled when _Use PGP/MIME security features_ is selected in the _Security_ group.
+
+- _Encrypt message_: encrypts the message
+- _Choose key ring_: the key ring with the recipients' public keys. The message is encrypted to every public key in the key ring; no key is matched to a recipient address. Use a key ring that holds only the keys of the intended recipients
+- _Manage key rings_: opens the PGP key rings; see [Global - PGP Key Rings](../../global-pgp-key-rings)
+
+### Email - Send: Encrypt tab (S/MIME)
+
+![Email - Send tab, Encrypt tab with Encrypt message selected and the S/MIME certificate list](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Messaging%20Tasks/Email%20-%20Send%20Encrypt%20with%20Key.png)
+
+The tab is enabled when _Use S/MIME security features_ is selected in the _Security_ group.
+
+- _Encrypt message_: encrypts the message
+- _Choose certificate(s)_: select one or more recipient certificates in the _Use_ column. Only certificates that can encrypt are listed
+- _Manage certificates_: opens the certificates; see [Global - Certificates](../../global-certificates)
+
+With an SMTP Connection that uses "Default" authentication, the message is encrypted for every selected certificate. With the other Connection types, each selected certificate is used only for the first To address that the email address in the certificate is equal to or ends with; the comparison is case-sensitive. Cc and Bcc addresses never get a certificate, also when _Send separate emails_ sends each of them its own copy. Encryption uses 3DES, which cannot be changed.
+
+### Output and errors
+
+Standard output lists each address that the message was sent to. The Task ends with an error in these cases:
+
+- No address in any recipient group: "No recipients were specified." is written to standard error, no message is sent, and the exit code is 77777
+- The recipient file does not exist: "Recipient file did not exist." is written to standard error, no message is sent, and the exit code is 77777
+- A file that an attachment's file filter finds cannot be read: the error is written to standard error, no message is sent, and the exit code is 77777
+- With _Send separate emails_, sending to one address fails: the error is written to standard error, the other addresses still get the message, and the exit code is 77777
+- The Connection is missing: the Task fails with "Connection not found" or "No Connection was selected"
+
+Exit code 77777 is handled by the "Non zero exit code" cause on the ***On error*** tab, unless an _Exit code collection_ other than the default is selected there; see [Task - On Error](../../task-on-error).
+
+:::warning
+
+If _Use PGP/MIME security features_ is selected with a Connection that does not apply PGP/MIME (see _Security_), the message is sent unsigned and unencrypted, and the Task reports success.
+
+With an Exchange EWS, Exchange WebDAV or Microsoft Graph API Connection, or an SMTP Connection that uses "Gmail OAuth", if the S/MIME signing certificate is no longer in [Global - Certificates](../../global-certificates), or cannot sign, the message is sent unsigned, and the Task reports success. With an SMTP Connection that uses "Default" authentication, a missing signing certificate makes the Task fail.
+
+If the file filter of an attachment finds no matching file in a folder that exists, the message is sent without that attachment, and the Task reports success.
+
+:::

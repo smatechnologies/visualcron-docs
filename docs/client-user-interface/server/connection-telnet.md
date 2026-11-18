@@ -5,117 +5,52 @@ hide_title: 'true'
 
 ## Connection - Telnet
 
-This connection is used for Telnet.
+The Telnet Connection stores the address, sign-in and prompt settings that the Net - Telnet Task uses to connect to a Telnet server.
 
-**Manage Connections > Add > Telnet > Common settings** tab
+:::warning
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Telnet/Telnet.png)
+Telnet sends the user name, the password and all data unencrypted. Use an [SSH Connection](connection-ssh) where the server supports SSH.
 
-**Protocol type**
+:::
 
-Text
+### Common settings
 
-**Name**
+![Telnet Connection, Common settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Telnet/Telnet.png)
 
-The name of the Connection to uniquely identifying it.
+The ***Common settings*** and ***Proxy*** tabs are the same for every Connection type that has them; see [Common settings](global-connections#common-settings) and [Proxy](global-connections#proxy). Telnet Connections have no *Test*. *Timeout* is how long, in seconds, the Server waits for each prompt, and *Code page* is the character set of the terminal session.
 
-**Group**
+### Main settings
 
-The group that the connection is a part of.
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-**Timeout**
+![Telnet Connection, Main settings tab, with the Server, Credentials, New line and Emulation groups](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Telnet/Settings.png)
 
-The connection timeout in seconds. Connection will fail after this time period.
- 
-**Code page**
+- _Address_: the host name or IP address of the Telnet server
+- _Port_: "23" on a new Connection
+- _Username_: required. The Server types it at the login prompt
+- _Password_: the Server types it at the password prompt
+- _New line (server system)_: what the Server sends at the end of each line it types. "Cr (\*nix)" sends a carriage return and "CrLf (Windows)" sends a carriage return and a line feed. "Cr (\*nix)" on a new Connection
+- _Emulation_: the terminal type: "ANSI", "TTY", "VT100", "VT220", "VT320" or "VT52". "VT100" on a new Connection
 
-Code page being used.
+### Extra settings
 
-**Manage Connections > Add > Telnet > Main settings** tab
+![Telnet Connection, Extra settings tab, with the prompt pattern fields, Width and Height](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Telnet/Extra%20Settings.png)
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Telnet/Settings.png)
+The Server logs on by waiting for each prompt and then typing the next value. A pattern matches when the server's output contains it.
 
-**Address**
+- _Login prompt pattern_: text in the prompt that asks for the user name. When it is empty, the Server waits for ":"
+- _Password prompt pattern_: text in the prompt that asks for the password. When it is empty, the Server waits for ":"
+- _Command prompt pattern_: text in the prompt that shows the server is ready for a command
+- _Command prompt regex pattern_: a regular expression for a command prompt that changes. Used only when *Command prompt pattern* is empty. When both are empty, the Server waits for ">"
+- _Width_: the terminal width in characters. "80" on a new Connection
+- _Height_: the terminal height in lines. "25" on a new Connection
 
-This is the host address to the server. It could be a DNS name or IP number.
+:::warning
 
-**Port**
+A new Telnet Connection shows values in *Login prompt pattern*, *Password prompt pattern* and *Command prompt pattern* that are not Telnet prompts. Replace them with text from your server's prompts, or clear them to use the defaults above. Otherwise the Server does not recognize the prompts, and the logon fails.
 
-This is the remote connection port. Default is 23.
+:::
 
-**Username**
+### Proxy
 
-The user name for the connection.
- 
-**Password**
-
-The password for the connection.
-
-**Manage Connections > Add > Telnet > Extra settings** tab
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Telnet/Extra%20Settings.png)
-
-**Login prompt pattern**
-
-The text pattern VisualCron looks for to detect when the server is presenting a login prompt.
-
-**Password prompt pattern**
-
-The text pattern VisualCron looks for to detect when the server is presenting a password prompt.
-
-**Command prompt pattern**
-
-The text pattern VisualCron looks for to detect when the server is ready to receive a command after successful login.
-
-**Command prompt regex pattern**
-
-A regular expression pattern used to detect the command prompt. Use this when the command prompt varies and cannot be matched with a simple fixed string.
-
-**Width**
-
-The terminal width in characters. Default is 80.
-
-**Height**
-
-The terminal height in characters. Default is 25.
-
-**Emulation**
-
-The terminal emulation type to use for the Telnet session. Options include ANSI, TTY, VT100, VT220, VT320, and VT52.
-
-**New line (server system)**
-
-The line ending format used by the remote server.
-
-- Cr — use carriage return only, standard for Unix/Linux systems.
-- CrLf — use carriage return and line feed, standard for Windows systems.
-
-**Manage Connections > Add > Telnet > Proxy** tab
-
-**Proxy type**
-
-Select the proxy type to be used.
-
-**Address**
-
-The host name or IP address of the proxy server.
-
-**Port**
-
-The port of the proxy server.
-
-**Use credentials**
-
-The credentials that are associated with the account.
-
-**Domain**
-
-The name of the domain to be created.
-
-**Username**
-
-The user name to access the proxy server.
-
-**Password**
-
-The password to access the proxy server.
+Telnet Connections can use "HTTP Proxy", "SOCKS4" and "SOCKS5" proxies. They send the proxy *Username* and *Password* when *Use credentials* is selected, and do not use *Authentication*.

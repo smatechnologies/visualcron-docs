@@ -52,6 +52,7 @@ module.exports = {
         redirects: [
           { from: '/license', to: '/terms-and-conditions' },
           { from: '/notice-of-updated-terms', to: '/terms-and-conditions' },
+          { from: '/updated-terms-and-conditions', to: '/terms-and-conditions' },
           { from: '/using-visualcron/basic-vs-pro-edition', to: '/using-visualcron/choosing-the-right-license' },
         ],
       },

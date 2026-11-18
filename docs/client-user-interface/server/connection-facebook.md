@@ -5,4 +5,4 @@ hide_title: 'true'
 
 ## Connection - Facebook
 
-This connection is used for Facebook.
+This Connection is used for Facebook.

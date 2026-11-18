@@ -3,15 +3,19 @@ sidebar_label: 'Powershell'
 hide_title: 'true'
 ---
 
-## Powershell
+## PowerShell
 
-Some of our users have started to use PowerShell to interact with VisualCron. Below are some basic code snippets:
- 
-### Snippet #1
+This page shows how to use the VisualCron .NET API from PowerShell: load the API DLLs, connect to a Server and read Variable values. It is for administrators and developers who script VisualCron. To run a PowerShell script as part of a Job instead, use the [PowerShell Task](../client-user-interface/server/job-tasks-task-process-powershell). For an overview of the API, see [VisualCron API](visualcron-api).
+
+The API DLLs are built for .NET Framework 4.8. The installation folder also holds sample scripts in "API\samples\PowerShell". Use the snippets below instead: in the installed samples, the catch block in "VisualCron_API.ps1" does not run in PowerShell, and "VCAPI_Test.ps1" calls a method that the API does not have.
+
+### Connect and read Variables (save as VisualCron_API.ps1)
+
+Save this snippet as "VisualCron_API.ps1". It loads the DLLs, defines the connection settings and adds three functions: `VCAPI-ConnectServer`, `VCAPI-Get-User-Variable` and `VCAPI-Get-Variable`.
 
 ```powershell
 
-# Load the VisualCron API Dlls
+# Load the VisualCron API DLLs
 $VC                = [Reflection.Assembly]::LoadFrom("C:\Program Files (x86)\VisualCron\VisualCron.dll");
 $VCAPI        = [Reflection.Assembly]::LoadFrom("C:\Program Files (x86)\VisualCron\VisualCronAPI.dll");
  
@@ -24,7 +28,6 @@ $Global:Server        = New-Object -TypeName VisualCronAPI.Server
 # VisualCron UserName and Password from your Site
 $Conn_UserName                        =        'username'
 $Conn_PassWord                        =        'password'
-$Conn_Address                        =        'localhost'
  
 # Standard Settings
 $Conn_Port                                =        16444
@@ -49,10 +52,10 @@ try
          $Global:Server = $Client.Connect($conn, $true);
  
  }
-catch [$ClientLoginFailedException ex]
+catch [VisualCronAPI.Client+ClientLoginFailedException]
  {
-  MessageBox.Show(ex.Message);
- 
+  Write-Error ("Logon to VisualCron failed: " + $_.Exception.Message)
+  throw
  }
  
 }
@@ -68,7 +71,7 @@ Return $Variable_Value
 }
  
 # wrapper for the get-variable API call
-# Returns Varian;e Value
+# Returns the Variable value
 function VCAPI-Get-Variable ([string]$Variable_Name) {
  
 $Variable_Name        = "{" + $Variable_Name + "}"
@@ -80,59 +83,55 @@ Return $Variable_Value
 
 ``` 
  
-### Snippet #2
+### Call the functions from a script
+
+Save this script in the same folder as "VisualCron_API.ps1". It loads the functions, shows two calls that run on the computer running the script, connects to a Server, reads Variables and disconnects.
 
 ```powershell
 
-# Determine Script Path
-$Path = Split-Path $MyInvocation.MyCommand.Path
- 
-# Determine Script Drive
-$Drive = (Get-Item $Path).Root.Name
- 
-Remove-Variable -Force HOME
-Set-Variable HOME $Path
- 
-# include the VisualCron API
-. "$HOME\VisualCron_API.ps1"
- 
-# API Information - Example - Direct API Call
-$OSVersion = [VisualCronAPI.ComputerInfoAPI]::GetOSVersion()
+# Load the functions from VisualCron_API.ps1 in the same folder as this script
+. (Join-Path $PSScriptRoot 'VisualCron_API.ps1')
+
+# API Information - Example - Direct API Call (on the computer that runs the script)
+$OSVersion = [VisualCronAPI.ComputerInfoAPI]::GetOSFriendlyName()
 Write-Host '$OSVersion : ' $OSVersion
- 
-# API Information - Example - Direct API Call
+
+# API Information - Example - Direct API Call (on the computer that runs the script)
 $LocalAdmins = [VisualCronAPI.ComputerInfoAPI]::GetLocalAdministrators()
 Write-Host '$LocalAdmins : ' $LocalAdmins
- 
+
 # Set Client Values - Example using $Client Object
 $Client.LogToFile = $False
- 
+
 ################################################################################
 # Server Connection and API Calls
 #
 ################################################################################
- 
+
 # Connect using Server Name (Fully Qualified)
 #VCAPI-ConnectServer('washington.somewhere.com.au')
 # or
 # IP Address
 VCAPI-ConnectServer("123.145.167.89")
- 
+
 # Various Variable Calls - Replace First 2 With UserVariable Names from Your Site
 $VCUserVariable = VCAPI-Get-User-Variable("SERVER01")
 Write-Host '$VCUserVariable : ' $VCUserVariable
- 
+
 $VCServerName = VCAPI-Get-Variable("USERVAR(SERVER02)")
 Write-Host '$VCServerName : ' $VCServerName
- 
+
 $VCServerIP = VCAPI-Get-Variable("SERVER(IP)")
 Write-Host '$VCServerIP : ' $VCServerIP
- 
+
 $VCServerPort = VCAPI-Get-Variable("SERVER(Port)")
 Write-Host '$VCServerPort : ' $VCServerPort
- 
+
+# Disconnect from the Server
+[void]$Global:Server.Disconnect()
+
 ```
 
-### Snippet #3
+### Community scripts
 
-[https://gist.github.com/atifaziz/9400489](https://gist.github.com/atifaziz/9400489)
+A collection of PowerShell scripts for VisualCron is published on GitHub by its author: [PowerShell scripts for VisualCron](https://gist.github.com/atifaziz/9400489). It is not part of VisualCron.

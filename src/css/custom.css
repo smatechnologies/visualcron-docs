@@ -536,3 +536,50 @@
   opacity: 0.7;
   font-family: monospace;
 }
+/* ── Home page menu ───────────────────────────────────────────────────────── */
+
+/* Four columns of link cards on the index page, after the OpCon core home page */
+.vc-home-menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.vc-home-menu__column {
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.vc-home-menu__card {
+  background: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-top: 3px solid var(--ifm-color-primary);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+}
+
+.markdown .vc-home-menu__card h3 {
+  margin-top: 0;
+  font-size: 0.9rem;
+}
+
+.vc-home-menu__card ul {
+  margin-bottom: 0;
+  padding-left: 1.1rem;
+}
+
+.vc-home-menu__card li {
+  font-size: 0.9rem;
+}
+
+/* One column on phones, so card headings do not break mid-word */
+@media (max-width: 600px) {
+  .vc-home-menu__column {
+    flex-basis: 100%;
+  }
+}

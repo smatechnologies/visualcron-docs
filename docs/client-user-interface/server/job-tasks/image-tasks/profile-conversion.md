@@ -5,46 +5,43 @@ hide_title: 'true'
 
 ## Task Image - Profile Conversion
 
-The Image profile conversion Task converts the image from the input color profile to the specified output color profile.
- 
-**Image profile conversion > File filter** sub tab
+The Image profile conversion Task converts images from an input color profile to an output color profile.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20Profile%20Settings.png)
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-In the File filter tab you define the image file to change the profile for. Read more about file filter [here](../../../server/job-tasks-file-filter).
- 
-**Image profile conversion > Destination** sub tab
+:::warning
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20Profile%20Destination.png)
+By default, _Save to.._ is "Same folder but use file mask" and _File mask_ is `*`. The converted image is then saved under the source file name in the source folder, so it replaces the original image. To keep the original, select "Different folder and use file mask" and enter another folder.
 
-**Profile conversion parameters**
+:::
 
-**Input profile file**
+### File filter tab
 
-The file path to the ICC color profile of the input image. Click the File icon to browse for a profile file.
- 
-**Output profile file**
+![Image profile conversion Task, File filter tab, with Credentials, Folder, Include file mask and the exclusion settings](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20Profile%20Settings.png)
 
-The file path to the ICC color profile to apply to the output image. This field is required. Click the File icon to browse for a profile file.
- 
-**Filter string for delete profile(s)**
+The ***File filter*** tab selects the images to convert; see [Job Tasks - File filter](../../job-tasks-file-filter).
 
-A filter string specifying which embedded profiles to remove from the image during conversion.
+### Destination tab
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20Profile%20Settings.png)
- 
-**Save to**
+![Image profile conversion Task, Destination tab, with the profile fields, the Save to options, Folder and File mask](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20Profile%20Destination.png)
 
-Select where to save the converted output file:
+The profile fields are in the _Profile conversation parameters:_ group. They do not accept Variables.
 
-* **Same file** — Overwrites the original source file.
-* **Same folder but use file mask** — Saves to the same folder with a new file name specified in File mask.
-* **Different folder and use file mask** — Saves to a different folder with a new file name.
+- _Input profile file_: the path of the ICC color profile of the input image. Click the file button to browse for a profile file
+- _Output profile file_: the path of the ICC color profile to apply to the output image. The field is required. Click the file button to browse for a profile file
+- _Filter string for delete profile(s)_: a filter string for the embedded profiles to remove from the image during the conversion
 
-**Folder**
+![Image profile conversion Task, File filter tab, the same screenshot as the one shown for the File filter tab](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Image%20Tasks/Image%20Profile%20Settings.png)
 
-The destination folder path. Only available when **Different folder and use file mask** is selected.
+- _Save to.._: where the Task saves the result
+  - "Same file": overwrites the source file
+  - "Same folder but use file mask" (default): saves in the folder set in the File filter, with the name that _File mask_ gives. A file that the filter found in a subfolder is also saved in that folder, not in the subfolder
+  - "Different folder and use file mask": saves in _Folder_, with the name that _File mask_ gives
+- _Folder_: the folder to save to. Available with "Different folder and use file mask"
+- _File mask_: the name of the saved file. The default, `*`, keeps the source file name. Available with both file mask options
 
-**File mask**
+### Output and errors
 
-The file name to use for the saved image. Available when **Same folder but use file mask** or **Different folder and use file mask** is selected.
+The Task processes every file that the File filter finds. For each saved image, the path of the saved file is added to the Task output. When several files are processed, the paths follow one another with no separator.
+
+When the File filter finds no file, the Task fails with a file-not-found error. When an image cannot be processed, the Task fails and does not process the remaining files; images saved before the failure are kept. To change how the Task responds to these errors, see [Task - On error](../../task-on-error).

@@ -5,42 +5,42 @@ hide_title: 'true'
 
 ## Task MSMQ - Delete Message
 
-The MSMQ - Delete message Task deletes messages from a specified queue. Use the filter section to narrow down which messages are deleted.
+The MSMQ - Delete message(s) Task deletes messages from a Microsoft Message Queuing (MSMQ) queue on the Server computer or on a remote computer. Filters select which messages are deleted.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/MSMQ%20Tasks/MSMQ%20-%20delete%20message.png)
+![MSMQ - Delete message(s) tab, with the scope, the queue and the filters](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/MSMQ%20Tasks/MSMQ%20-%20delete%20message.png)
 
-**Local MSMQ**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-Select this radio button if the queue is hosted on the local computer.
+### MSMQ - Delete message(s) tab
 
-**Remote MSMQ**
+**Scope**
 
-Select this radio button if the queue is hosted on a remote computer. The *Credential* and *Host name* fields below are enabled only when this option is selected.
-
-**Credential**
-
-Select a [Credential](../../global-credentials) for connecting to the remote computer. The Credential must match a user name and password that has access to the remote MSMQ host. Click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
- 
-**Host name**
-
-The host name or IP address of the remote computer.
+- _Credential_: the Credential the Task runs as when it connects to the queue. Available with _Remote MSMQ_. A Credential saved earlier is still used after switching to _Local MSMQ_; see [Credentials](../../global-credentials)
+- _Local MSMQ_ (default): the queue is on the Server computer
+- _Remote MSMQ_: the queue is on another computer
+- _Host name_: the host name or IP address of the remote computer. Available with _Remote MSMQ_
 
 **Queue**
 
-The name of the queue to delete messages from. Click the *Refresh* icon to populate the drop-down list of available queues on the selected MSMQ host.
+The queue to delete messages from. The journal queue of a private queue is listed as well. Click the refresh button to fill the list with the queues of the selected computer.
 
-**Label filter**
+**Filters**
 
-When checked, deletes only messages whose label matches the specified condition. Choose the comparison from the drop-down (_equal_, _not equal_, _contains_, _does not contain_) and enter the value to compare against. Click the *Variables* icon to insert a Variable.
+A message is deleted when it matches every checked filter.
 
-**Message filter**
+- _Label filter_: compares the label of the message with the value: `Equal (=)` (default), `Not equal (!=)`, `Contains (=%)` or `Not contains (!=%)`
+- _Message filter_: compares the body of the message with the value, with the same comparisons as _Label filter_
+- _Date filter_: compares the time the message arrived in the queue with the date: `Smaller than (<)` (default) or `Larger than (>)`. The default date, `{DATENOWADD(Days|-7|yyyy-MM-dd)}`, is seven days ago
+- _Limit and sort direction of date_: deletes at most the number of messages entered, "10" by default, taking the oldest first with "Ascending" (default) or the newest first with "Descending"
 
-When checked, deletes only messages whose body matches the specified condition. Uses the same comparison options as the *Label filter*. Click the *Variables* icon to insert a Variable.
+Each value may contain Variables; click the Variable button next to it.
 
-**Date filter**
+:::warning
 
-When checked, deletes only messages whose timestamp matches the specified condition. Choose the comparison from the drop-down (_smaller_, _larger_) and enter the date or Variable to compare against. Click the *Variables* icon to insert a Variable.
+With no filter checked, every message in the queue is deleted.
 
-**Limit filter**
+:::
 
-When checked, limits the number of messages that may be deleted in a single run. Choose a sort direction (Ascending / Descending) for the date order in which messages are considered, then enter the maximum count. Click the *Variables* icon to insert a Variable.
+### Output and errors
+
+The output is the number of messages deleted, for example "Deleted 3 message(s)". If the queue cannot be read, the Task fails.

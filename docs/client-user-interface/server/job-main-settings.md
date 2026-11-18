@@ -5,15 +5,15 @@ hide_title: 'true'
 
 ## Job - Main Settings
 
-In the the _Add Job, Edit Job or Clone Job_ dialogs, the Main settings for a Job is available.
+The **_Main settings_** tab of the _Add Job_, _Edit Job_ and _Clone Job_ windows holds the Job's general settings.
  
-## Add Job
+**Add/Edit Job > Main settings** tab
 
-![](../../../static/img/jobmain.png)
+![Edit Job window, Main settings tab](../../../static/img/jobmain.png)
 
 **Name**
 
-Mandatory parameter, unique name for the Job.
+Mandatory. The name of the Job. When you add or clone a Job and another Job already has the name, the Client asks you to confirm before it saves; renaming a Job is not checked. Use a unique name so that Jobs are easy to tell apart.
  
 **Group**
 
@@ -25,46 +25,63 @@ Add information to see the difference between Jobs.
  
 **Extended Job debug logging**
 
-When checked, VisualCron logs additional information during the execution - for example information about Triggers and all internal operations. This is mainly used for debugging if you experience a problem.
+When selected, the Job writes additional debug entries to the Server log, for example its next execution time and why a run was queued. Support may ask you to select it to investigate a problem; clear it again afterward. To log detail about a Trigger, select *Extended Trigger debug logging* on that Trigger.
  
 **Run once (can be reactivated later)**
+
+When the Job starts, it is deactivated: the run continues, but its Triggers no longer start it. To use the Job again, activate it (see [Activate/Deactivate Job](../server-group-job-task-area/job-list/activate-deactivate-job)). A start that is skipped, by *Use run random value* or *Do not start if job is already running*, does not deactivate it. The Job is deactivated even if its Conditions then stop the run.
  
 **Run missed Job once at start**
 
-This function can be used for a specific Job to let a Job automatically run if it should have been run during a time when the VisualCron service was down/stopped for any reason (typically due to server computer off). For example, a Job is supposed to run once a day at 08:00. Let's say that the server goes down at 07:00 because a power failure. The problem is corrected and the server goes up at 09:00. If the Run missed Jobs once at start box is checked, VisualCron will at startup check if the Job was supposed to run between the last time VisualCron was up and the current time. If so, that Job will be run **once**.
+This function can be used for a specific Job to let a Job automatically run if it should have been run during a time when the VisualCron service was down/stopped for any reason (typically due to server computer off). For example, a Job is supposed to run once a day at 08:00. Suppose the server goes down at 07:00 because of a power failure. The problem is corrected and the server goes up at 09:00. If *Run missed Job once at start* is selected, VisualCron will at startup check if the Job was supposed to run between the last time VisualCron was up and the current time. If so, that Job will be run **once**.
  
 :::note Note 1 
 
-Currently, run missed Jobs doesn't take time exceptions into account. A missed Job will run even if there was a time exception during that time.
+If the time of the missed run falls inside one of the Job's [time exceptions](job-time-exceptions), it is skipped.
 
 ::: 
 
 
 :::note Note 2 
 
-The "run missed events" behavior is not active when the server has been stopped by the user (i.e. server status "Off").
+Missed runs are checked only when the Server starts with its status set to *On*. If the Server was turned *Off* in the Client, missed runs are not run. Only active Jobs are checked.
 
 :::
 
 **Remove Job after execution**
 
-If you check this box the Job will be removed right after running.
+The Job is deleted after it runs, whatever the result. If a user starts the run and does not have Delete permission for the Job, the Job is not deleted and an error is logged; a run not started by a user, for example by a Trigger or as a missed run, always deletes it.
+
+:::warning
+
+The Job and its Tasks are deleted permanently, and the run is not written to the Job log, so it has no [Job result](job-result). Do not use this setting for a Job you need to audit or run again.
+
+:::
  
 **Use run random value**
 
-To be selected if you want to run Jobs at irregular time intervals. Check the box and enter a probability value. For example value 2 means that the Job will run approximately 1 out of 2 times. So if you want your Job to run approximately three times an hour, you should specify value 20 and in the Time settings select to run it every minute. 1 out of 20 times, the Job will run every minute (60/20 = 3 times in one hour). Note that this is a probability value. In this case, the Job may run 2 times one hour and 4 times another hour.
+Select to run the Job on only some of its starts. Each time the Job is started, including a manual run, it runs with a chance of 1 in the value you enter; otherwise the run is skipped and logged. *Test job* is not affected. For example, with the value `20` and a Time Trigger that fires every minute, the Job runs about 3 times an hour (60 / 20); the number varies from hour to hour. Enter a whole number of 1 or more.
  
 **Do not start if job is already running**
 
-When a Job is running it is "flagged" as running. If you don't want to execute your Job while it's running the check this box. This can be useful when using the new events which can trigger your Job very often if you set the watch parameters "loosely". If the Job is triggered when this box is checked, a log entry will inform that the Job wasn't run due to this setting.
+Selected by default. If the Job is started while it is already running, the new run is skipped and the Server log records "Job was not started because it was already running". If *Put Job in queue* is selected, the run is queued instead. When it is cleared, a new run starts even while the Job is running. Keep it selected for Jobs with Event Triggers, which can start a Job very often.
  
-**Put Job in queue**
+**Put Job in queue (does not skip Job - runs Job when running Job is finished)**
 
-When checked: if a Job is already running the actual execution Job is postponed until the current Job has completed. This option should be enabled for any Jobs that is using Event Triggers which allows unique processing of an object, i.e. a newly created file when using File Trigger.
+Available only when *Do not start if job is already running* is selected. Instead of skipping a run that starts while the Job is running, VisualCron queues it. Queued starts run one at a time, in the order they arrived. The queue is kept in memory: it is cleared when you stop the Job and lost when the Server restarts. Each queued start is checked again when it runs, so *Use run random value* can still skip it. Use it with Event Triggers so that every event, for example each new file found by a File Trigger, is processed. If the Job often runs longer than the time between its starts, the queue keeps growing. When you save a Job that has an active Event Trigger and *Do not start if job is already running* selected but this option cleared, the Client offers to select it.
  
 **Run Tasks in order**
 
-One Job can contain many Tasks. If you for some reason want to run your Tasks in a special order, check this checkbox. The specific Task order is set up under the Tasks tab. If you don't want to run the Tasks in order, VisualCron will try to run them at the same time. This can shorten the actual run time for the Job since some Tasks are dependant on external factors like a remote server.
+Selected by default: the Job runs its Tasks one at a time, in the order set on the **_Tasks_** tab. When it is cleared, the Tasks start without waiting for each other, which can shorten the run when Tasks wait on external systems. With it cleared:
+
+* the Job cannot contain [Loops](job-tasks-loop-functionality); the Client does not save it
+* for the *On error*, *On success* and *On complete* events, Task [Flow](task-flow) actions other than *Run Notification* are not carried out
+
+:::warning
+
+With *Run Tasks in order* cleared, retries and other Task flow actions on those events are ignored without a message. Job flows are not affected.
+
+:::
  
 **Activate (when added)**
 
@@ -72,28 +89,48 @@ By default a new Job is activated (will be run if the time is right) when it's a
  
 **ROI**
 
-These settings override the main ROI settings.
+Opens the *Job ROI settings* window. Its settings override the Server's [ROI](roi-return-on-investment) defaults for this Job:
 
-![](../../../static/img/jobroisettigns.png)
+* *Use default Job time* - clear it to set the time this Job saves on each run
+* *Use default Job rate* - clear it to set an hourly rate for this Job
+* *Only store successful executions* - when selected, a failed run is logged with no time or amount saved
 
-**Use default Job time**
+With a *Use default* option selected, the Server's default is copied into the Job when you save this window; a later change to the Server default does not change the Job. To apply new defaults to existing Jobs, use *Update Jobs* in the Server's [ROI](roi-return-on-investment) settings.
 
-When unchecked it will not use the main ROI settings but a specific time for this Job that is saved for each execution.
+![Job ROI settings window](../../../static/img/jobroisettigns.png)
  
-**Use default Job rate**
+**Job Variables..**
 
-When unchecked it will not use main ROI settings rate per hour but a specific one for this Job.
- 
-**Only store succesful executions**
-
-When checked it will only log ROI when the Job has succeeded.
- 
-**Job variables**
-
-See [Job variables](../server/job-variables) for more information.
+See [Job Variables](job-variables) for more information.
  
 **Permissions..**
 
-From VisualCron version 6.1.2, permissions for a specific Job can be set. It is controlled by overriding the current existing groups. When a specific permission is overridden in a positive way (granting access) it becomes green in the grid and it becomes red if overridden in a negative way (denying access).
+Opens the *Override permissions for this object* window. From version 6.1.2, permissions for a specific Job can be set. It is controlled by overriding the current existing groups. When a specific permission is overridden in a positive way (granting access) it becomes green in the grid and it becomes red if overridden in a negative way (denying access).
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Main%20Settings/Job%20Permissions.png)
+:::note
+
+A user group with *Use group permissions only (ignore per-object overrides)* selected ignores its overrides here and uses its general Job permissions (version 13.3.1 and later).
+
+:::
+
+![Override permissions for this object window, opened with Permissions on the Main settings tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Main%20Settings/Job%20Permissions.png)
+
+**Copy Job Id**
+
+Click to copy the Job's id to the clipboard.
+
+Right-click to change the id. Enter a new id, a GUID that no other Job uses. You need Edit permission for the Job, and you cannot change the id of a Job that is running or has not been saved yet. The Client shows how many objects on this Server refer to the Job and are changed with it. Click *No* to see the list (the question is then asked again), *Yes* to change the id, or *Cancel* to keep it.
+
+:::warning
+
+The new id is saved on the Server at once; closing the window without saving does not undo it. Anything outside this Server that names the Job by its id is not updated, for example VCCommand or Web API calls, scripts, and Jobs on other Servers. Update those when you change the id.
+
+:::
+
+**Variables**
+
+Opens the *Variables* window.
+
+**Next run**
+
+Shows when the Job runs next.

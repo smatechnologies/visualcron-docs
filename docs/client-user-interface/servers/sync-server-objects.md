@@ -5,70 +5,54 @@ hide_title: 'true'
 
 ## Servers - Sync Server Objects
 
-Server Sync provides the ability to sync Jobs and global objects between two or ore more VisualCron Servers. It is idea for Master/Slave or Productio/Test relationships between Servers.
- 
- 
-One Server can subscribe to the following events for all objects on another Server:
- 
-* Added (New)
-* Updated
-* Deleted
- 
-You can Sync objects manually or setup a Server to sync automatically.
- 
- 
+The ***Sync Server objects*** window, opened from ***Servers*** -> ***Sync Server objects***, copies Jobs and global objects from another VisualCron Server to this one, for example from a production Server to a test Server.
+
+Each sync setting connects to one remote Server through a [VisualCron Connection](../server/connection-visualcron) and chooses, per object type, which changes on the remote Server are applied on this Server:
+
+* New objects (added on the remote Server)
+* Updated objects
+* Deleted objects
+
+A sync setting can run automatically, applying each change as it happens on the remote Server, or be run by hand with _Sync now_.
+
 This feature was introduced in version 9.2.0 of VisualCron.
- 
-**Main window**
- 
-The main window contains a list of all automated (real time) sync settings. Normally, one row represents a remote Server you want to sync from but it is possible to setup multiple sync settings against one Server.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/Sync%20Server%20Objects/Sync%20Server%20Objects.png)
+:::warning Sync overwrites and deletes objects on this Server
 
-**Add**
+- An updated object replaces the object with the same identity on this Server, so local changes to a synced object are lost.
+- _Sync deleted_ is checked by default. While a sync setting is active, an object deleted on the remote Server is also deleted on this Server.
+- With _Sync the following `objecttype` settings_, _Sync now_ deletes an object on this Server when its _Delete_ column is checked and the object no longer exists on the remote Server.
 
-Opens the window for adding new Sync setting against a Server.
- 
-**Edit**
+Checking _Use_ on a row, or _Select All Use_, also checks _Delete_. Uncheck _Sync deleted_, or clear the _Delete_ column, where objects on this Server must be kept.
 
-Opens the window to edit an existing Sync setting.
- 
-**Delete**
+After _Sync now_ deletes an object, the rest of that run can be skipped. Check the _Server Sync log_ and run _Sync now_ again until nothing is left to delete.
 
-Deletes the selected Sync setting.
- 
-**Clone**
+:::
 
-Opens the window to edit an existing Sync setting as a new Sync setting based on an existing Sync setting.
- 
-**Change state**
+### Main window
 
-Turns on/off automatic Sync against a Server.
- 
-**Sync now**
+The grid lists every sync setting. Usually one row is one remote Server to sync from, but more than one sync setting can use the same Server.
 
-Run a manual sync.
- 
-**Sync settings**
+![Sync Server objects window with the toolbar and the list of sync settings](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/Sync%20Server%20Objects/Sync%20Server%20Objects.png)
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/Sync%20Server%20Objects/Sync%20Server%20Jobs.png)
+- _Add_: opens the window for a new sync setting
+- _Edit_: opens the selected sync setting
+- _Delete_: deletes the selected sync setting after a confirmation. The objects already synced are not removed
+- _Clone_: opens a copy of the selected sync setting as a new sync setting
+- _Change State_: turns automatic sync with the remote Server on or off
+- _Sync now_: runs a manual sync of the selected sync setting. It also runs for a sync setting that is not _Active_
 
-**Active**
+Right-click a row and select _Server Sync log_ to see what the sync setting has done.
 
-This turns on/off all syncing from remote Server.
- 
-**Connection**
+### Add/Edit Sync setting window
 
-This is the remote [VisualCron Connection](../server/connection-visualcron) being used.
- 
-**Objects types to sync**
+![Sync setting window with the Active check box, the Connection list and the Jobs tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Servers/Sync%20Server%20Objects/Sync%20Server%20Jobs.png)
 
-Each object type, Jobs, Settings or other Global objects can be, in detail be synced. This is controlled in respective tab.
- 
-**Sync all `<objecttype>` settings**
+- _Active_: turns all syncing from the remote Server on or off for this sync setting
+- _Connection_: the [VisualCron Connection](../server/connection-visualcron) to the remote Server. Click _Connect_ to load the objects of the remote Server
 
-This syncs all objects of that type. You can control the types of events to subscribe to, i.e. if you want to sync new, updated or deleted objects of that type.
- 
-**Sync the following `<objecttype>` settings**
+Each object type has its own tab: ***Users***, ***User groups***, ***Jobs***, ***Connections***, ***Credentials***, ***Notifications***, ***Certificates***, ***Conditions***, ***PGP Key Rings***, ***Time Exceptions***, ***Task repository***, ***Variables***, ***Network drives*** and ***MFT***. On each tab, select one of the following:
 
-This syncs selected components of that type. You can control in detail if you want to sync all events (new, updated or deleted) or just some events - down to individual object level. You select this in the grid of objects. Pressing Use selects all for that individual object.
+- _Sync None_: objects of this type are not synced
+- _Sync all `objecttype` settings_: the default. All objects of this type are synced. Use _Sync new_, _Sync updated_ and _Sync deleted_, all checked by default, to choose which changes are applied
+- _Sync the following `objecttype` settings_: only the objects checked in the grid are synced. For each object, the _Use_, _New_, _Update_ and _Delete_ columns choose which changes are applied. When this option is selected, every row starts cleared. Right-click the grid to select or clear a whole column at once

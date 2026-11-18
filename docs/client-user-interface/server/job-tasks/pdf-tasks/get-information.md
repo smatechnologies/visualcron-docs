@@ -5,40 +5,36 @@ hide_title: 'true'
 
 ## Task PDF - Get Information
 
-The PDF - Get information Task retrieves PDF information in a specified format.
- 
-**Get information > Main settings** sub tab
+The PDF - Get information Task writes the document properties of PDF files, such as the author, the page count and the signatures, to the Task output.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Get%20Information.png)
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-**Password for file(s)**
+### Get information: Main settings tab
 
-If any of the specified PDF files contains a password it should be entered here
- 
-**Get information > File filter > Location** sub tab
+![Main settings tab of the Get information Task, with the Password for file(s) box](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Get%20Information.png)
 
-This tab uses the common [file filter](../../job-tasks-file-filter) to filter out the files that should be processed in this Task.
- 
-**Output** tab
+- _Password for file(s)_: the password that opens the source PDF files, if they are protected
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Get%20Information%20Output.png)
+### File filter tab
 
-**Include field names**
+The ***File filter*** tab selects the PDF files to read; see [File Filter](../../job-tasks-file-filter). If the filter has a Credential, the Task uses it while it reads and writes the files. When the logon with the Credential fails, the Task continues as the account that runs the Server and writes the error to the Server log.
 
-If the columns should be included in the output or not.
- 
-**Field separator**
+### Get information: Output tab
 
-Here you can control what separates each field.
- 
-**Text qualifier**
+The ***Output*** tab of the Task window sets the format of the output.
 
-The text qualifier is the parts surrounding a field. Normally nothing which is default.
- 
-**Line break**
+![Output tab of the Get information Task, with the Include field names check box, the Field separator, Text qualifier and Line break lists and the Show information list](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Get%20Information%20Output.png)
 
-Controls what type of line break should be used.
- 
-**Show information**
+- _Include field names_ (_Output settings_ group): starts each line with the name of the property and _Field separator_; unchecked by default
+- _Field separator_: the separator; the default is "Tab"
+- _Text qualifier_: the character around each value; none by default
+- _Line break_: the line break; the default is "CrLf"
+- _Show information_: the properties to return: "CreationDate", "ModificationDate", "Producer", "Keywords", "Subject", "Author", "Creator", "Title", "Trapped", "PagesCount", "IsEncrypted", "Version" and "Signatures"
 
-The data from the document you want to include in output of Task.
+  All except "Trapped" and "IsEncrypted" are selected by default.
+
+### Output and errors
+
+The Task output has one line for each selected property. A property that has no value in the document is left out. "IsEncrypted" gives "Encrypted" with details of the encryption, or "Decrypted". "Signatures" gives "Signed" with the details of each signature, or "Not signed".
+
+When the Task cannot read the document properties, for example because the password is wrong, it writes the error to standard error and goes on to the encryption and signature information. Unless that second read also fails, the Task reports success.

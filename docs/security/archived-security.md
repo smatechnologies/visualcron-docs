@@ -5,42 +5,47 @@ hide_title: 'true'
 
 ## Archived Security
 
-This page collects older security-related settings and instructions that are no longer part of the main Security configuration flow. Some of them may still apply to specific environments or legacy setups.
+This page lists two Windows Local Security Policy settings for interactive logon through the VisualCron Credential Provider. VisualCron uses the Credential Provider when a Task logs on a user to run in the foreground. Check these settings on the Server computer if interactive logon does not work.
 
-### Interactive Logon
+### Interactive logon
 
-Windows 2008 and later security settings for Credential Provider
- 
-Two security settings are required for "Foreground execution":
- 
-1. Do not require CTRL+ALT+DEL
-To make interactive logon work in Windows 2008 you must disable SAS (Secure Attention Sequence). You do this by opening Administrative tools->Local Security Policy.
- 
-In the Local policies you need to enable "Interactive logon: Do not require CTRL+ALT+DEL" as in the image below:
+Both settings are in _Local Policies_ -> _Security Options_ of the Local Security Policy console.
 
-![](../../static/img/embim4.png)
+#### Do not require CTRL+ALT+DEL
 
-![](../../static/img/ctrlaltdel.png)
+:::warning
 
-This security setting determines whether pressing CTRL+ALT+DEL is required before a user can log on.
- 
-If this policy is enabled on a computer, a user is not required to press CTRL+ALT+DEL to log on. Not having to press CTRL+ALT+DEL leaves users susceptible to attacks that attempt to intercept the users' passwords. Requiring CTRL+ALT+DEL before users log on ensures that users are communicating by means of a trusted path when entering their passwords.
- 
-If this policy is disabled, any user is required to press CTRL+ALT+DEL before logging on to Windows.
- 
-Default on domain-computers: Enabled: At least Windows  8/Disabled: Windows 7 or earlier.
-Default on stand-alone computers: Enabled.
- 
- 
-2. User Account Control: Admin Approval Mode for the Built-in Administrator account
-To be able to communicate with the Credential Provider you need to disable this setting found in Administrative tools->Local Security Policy->User Account Control: Use Admin Approval Mode for the built-in Administrator account. After applying this setting a reboot of the computer is required.
- 
-This policy setting controls the behavior of Admin Approval Mode for the built-in Administrator account.
- 
-The options are:
- 
-• Enabled: The built-in Administrator account uses Admin Approval Mode. By default, any operation that requires elevation of privilege will prompt the user to approve the operation.
- 
-• Disabled: (Default) The built-in Administrator account runs all applications with full administrative privilege.
+With this policy enabled, users no longer press CTRL+ALT+DEL before they log on, so the logon screen is no longer reached through that trusted key sequence. Enable it only on computers that need interactive logon through VisualCron. The default value depends on the Windows version and on domain membership, so check the current value first.
 
-![](../../static/img/uacadminapprovalmode.png)
+:::
+
+The Credential Provider cannot log on a user when Windows requires CTRL+ALT+DEL before logon. To allow the Credential Provider to log on, complete the following steps:
+
+1. Open _Administrative Tools_ -> _Local Security Policy_.
+2. Go to _Local Policies_ -> _Security Options_.
+3. Set _Interactive logon: Do not require CTRL+ALT+DEL_ to _Enabled_.
+
+![Local Security Policy console, Security Options, with Interactive logon: Do not require CTRL+ALT+DEL set to Enabled](../../static/img/embim4.png)
+
+![Properties window of the Interactive logon: Do not require CTRL+ALT+DEL policy with Enabled selected](../../static/img/ctrlaltdel.png)
+
+The policy now shows _Enabled_ in _Security Options_.
+
+#### User Account Control: Admin Approval Mode for the Built-in Administrator account
+
+:::warning
+
+With this policy disabled, the built-in Administrator account runs every program with full administrative rights, without a prompt. Change it only if interactive logon through VisualCron does not work without it.
+
+:::
+
+This setting may be needed for VisualCron to communicate with the Credential Provider. To disable it, complete the following steps:
+
+1. Open _Administrative Tools_ -> _Local Security Policy_.
+2. Go to _Local Policies_ -> _Security Options_.
+3. Set _User Account Control: Admin Approval Mode for the Built-in Administrator account_ to _Disabled_.
+4. Restart the computer.
+
+![Properties window of the User Account Control: Admin Approval Mode for the Built-in Administrator account policy with Disabled selected](../../static/img/uacadminapprovalmode.png)
+
+After the restart, the built-in Administrator account no longer uses Admin Approval Mode.

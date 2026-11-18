@@ -5,16 +5,30 @@ hide_title: 'true'
 
 ## Task Interactivity - Play Sound
 
-The Play sound Task can play any sound file that the Media player can play. If you can't play a certain codec you need to install it so Media player can run it first.
+The Play sound Task plays a sound file on the computer where the VisualCron Server runs, and normally ends when playback ends. If playback has not started within about half a second, the Task ends without waiting.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Play%20Sound.png)
+The Server plays the file through the Windows multimedia interface. If Windows on the Server computer cannot play the file's format, install the codec for that format on the Server computer.
 
-**Credentials**
+![Play sound tab with the Credentials and Play sound groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Play%20Sound.png)
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the *Settings* icon to open *Manage credentials* in order to add or edit Credentials.
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-**Play sound**
- 
-**File path**
+### Play sound tab
 
-Select the path to the file. Use [variables](../../../server/global-variables) if needed.
+#### Credentials
+
+- _Credentials_: The [Credential](../../global-credentials) the Server uses to read the sound file, for example from a network share. With "No Credential", the Server reads the file as its own service account. Click the _Settings_ icon to open _Manage credentials_ and add or edit Credentials
+
+#### Play sound
+
+- _File path_: The full path of the sound file, as the Server computer sees it. Required. [Variables](../../global-variables) are resolved
+
+### Output and errors
+
+- If the file does not exist, the Task fails with "Could not Start playback of sound. File does not exist."
+
+:::warning
+
+If the file exists but Windows cannot play it, nothing is played, and the Task reports success.
+
+:::

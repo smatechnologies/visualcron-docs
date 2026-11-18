@@ -5,59 +5,42 @@ hide_title: 'true'
 
 ## Task System - Registry
 
-The Registry Task can perform various registry actions like read, rename and write values.
+The Registry Task reads, creates, changes, renames and deletes registry values and keys on the VisualCron Server computer.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Registry.png)
+![Registry Task settings, with the Type of Registry task options and the Registry key, Value Name and Value Data fields](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/System%20Tasks/Registry.png)
 
-**Type of Registry task**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-Select the type of registry operation to perform.
- 
-**Read value data**
+The Task has no Credential: it runs as the account of the VisualCron Server service. So `HKEY_CURRENT_USER` is the registry of that account (SYSTEM by default), not of a logged-on user.
 
-Reads a specific value from the registry. The value is returned as the Task output.
- 
-**Create/Change value data**
+### Registry tab
 
-Creates or changes a registry value. When selected, also specify the data type:
+- _Type of Registry task_: the operation
 
-* **String** — the value data is a string.
-* **DWORD** — the value data is a 32-bit integer.
- 
-**Delete value**
+  - "Read value data" (default): writes the data of the value to the Task output. String and DWORD values are written as text; multi-string and binary values are written as their type name, not their data. The Task fails when the value does not exist
+  - "Create/Change value data": creates the value in an existing key, or changes it when it exists. Select "String" (default) or "DWORD" as the data type; DWORD data must be a whole number
+  - "Delete value": deletes the value
+  - "Rename Value": gives the value a new name. The Task fails when the value does not exist or the new name is already used
+  - "Create key": creates the key. The Task fails when the key already exists
+  - "Delete key": deletes the key with all its subkeys and values
+  - "Rename key": copies the key, with its values and subkeys, to the new name and then deletes the original key. Permissions set on the original key are not copied
 
-Deletes a specified registry value.
+- _Registry key_: the full path of the key, starting with the full name of the root key, for example `HKEY_LOCAL_MACHINE\SOFTWARE\MyCompany`. Short forms such as `HKLM` are not recognized. Click the browse button to select a key in the _Registry Viewer_ window
 
-**Rename Value**
+  ![Registry Viewer window, with the registry keys in the left pane and the values of the selected key in the right pane](../../../../../static/img/tasksystemregistrybrowse.png)
 
-Renames a specified registry value.
+  The _Registry Viewer_ shows the registry of the computer that the Client runs on. When that is not the VisualCron Server computer, check that the key exists on the Server computer.
 
-**Create key**
+- _Value Name_: the name of the value. Used with "Read value data", "Create/Change value data", "Delete value" and "Rename Value"
+- _Value Data_: the data to write. Used with "Create/Change value data"
+- _New Name_: the new name. Shown in place of _Value Data_ with "Rename Value" (renames the value) and "Rename key" (renames the key)
 
-Creates a registry key.
+:::warning
 
-**Delete key**
+"Delete key" deletes the key with all its subkeys and values, and "Rename key" deletes the original key after copying it. There is no confirmation and no undo.
 
-Deletes a registry key.
+:::
 
-**Rename key**
+### Output and errors
 
-Renames a registry key.
-
-**Registry key**
-
-The full path to the registry key. Click the browse button to open the registry browser where you can navigate and select a key.
-
-![](../../../../../static/img/tasksystemregistrybrowse.png)
-
-**Value name**
-
-The name of the registry value to act on. Used when the task type is **Read value data**, **Create/Change value data**, **Delete value**, or **Rename Value**.
-
-**Value data**
-
-The data to write to the registry value. Only available when the task type is **Create/Change value data**.
-
-**New name**
-
-The new name to assign. Available when the task type is **Rename Value** (renames the value) or **Rename key** (renames the key).
+With "Read value data", the output is the value data. The other operations write no output. When an operation fails, the Task fails.

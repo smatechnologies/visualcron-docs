@@ -2,35 +2,44 @@
 sidebar_label: 'Import/Export - Export Settings'
 hide_title: 'true'
 ---
-
 ## Import/Export - Export Settings
 
-The main menu **File > Import/Export > Export** settings option makes a backup of the the currently connected VisualCron server settings. The backup/export may also be used to import these settings to another VisualCron server or to be used as a part of a problem report or a in fault tracing activity. You may Export/Import across the Internet.
- 
-It is recommended to perform regular backups using the Export settings function. If a setting error occurs and a backup file exists in the default backup file path, VisualCron will use the backup file and automatically restore settings. It is a recommendation that you keep a backup file both in the default folder and in another place.
- 
-The exported settings consists of many files, but the Export settings function creates one VC-Settings.zip file.
- 
-**File > Import/Export > Export settings**
+The ***File*** -> ***Import/Export*** -> ***Export settings*** option saves the settings of the connected Server to one zip file. Use the file as a backup, to copy settings to another Server with [Import settings](import-settings), or as part of a problem report. You need the Export settings permission.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/File/Export.png)
+:::tip
 
-**Select settings**
+Export regularly, and keep a copy of the file away from the Server computer.
 
-Select the Server settings in the list which you want to export. If there are no specific reason for the export, it is strongly advised that you export all settings, you may later choose to import just some settings. Note that when importing settings again and using "Clear existing settings" only existing object types will be cleared. For example, if you only export your Jobs the Jobs will only be cleared when importing.
- 
-**Path to default file**
+:::
 
-Select this option to export to the default file, which is `VC-Settings.zip` in the backup folder configured under [Client settings](client-settings) (by default the `backup` folder in the VisualCron installation).
- 
-**Custom file path**
+If a settings file cannot be loaded when the Server starts, the Server tries to restore that setting from `VC-Settings.zip` in the `backup` folder of the Server installation. Recovery reads only that folder, and opens the file without a password.
 
-Select this option if you want to use another destination for the exported file than the default file path, then browse to or enter the file path.
- 
-**Password**
+:::warning
 
-If you want to password protect and encrypt the backup you enter a password here.
- 
-**Start**
+Start-up recovery cannot use an export that has a _Password_, or one written to a backup folder that was changed in [Settings - Folders](../server/settings-folders). To keep recovery working, also keep an export without a password in the `backup` folder of the Server installation, and store it securely.
 
-Click on the Start button to begin the export.
+:::
+
+![The Export settings window with the Select settings list, the File path options and the Password field](../../../static/img/Client%20User%20Interface/Main%20Menu/File/Export.png)
+
+### Export settings window
+
+- _Select settings_: the object types to export: Certificates, Conditions, Connections, Credentials, Exit codes, Jobs, Managed File Transfer servers, Network drives, Notifications, PGP Key rings, Server settings, Server sync settings objects, SSH keys, Task repository objects, Time exceptions, User groups, Users and Variables. Expand a type to select single objects. ***Deselect all*** clears the list, and the fields under the list filter it
+- _Default file path_: the Server writes `VC-Settings.zip` to its backup folder, on the Server computer. The default is the `backup` folder of the Server installation; see [Settings - Folders](../server/settings-folders). The path shown in the window is the backup folder of the Client, not where the file is written
+- _Custom file path_: the Client saves the file to the path you enter or browse to, on the Client computer. An existing file with the same name is replaced
+- _Password_: encrypts the zip file with this password. Enter the same password when you import
+- ***Start***: starts the export. A message tells you when the export is complete
+
+Unless there is a reason not to, export all settings; you can choose what to import later.
+
+:::warning
+
+_Default file path_ replaces any `VC-Settings.zip` that is already in the Server backup folder, without asking, and _Custom file path_ replaces an existing file at the path you enter. The previous export is lost. To keep earlier exports, use _Custom file path_ with a new file name.
+
+:::
+
+:::warning
+
+The file holds the selected Credentials, Connections, Certificates and keys. Set a _Password_ and store the file securely.
+
+:::

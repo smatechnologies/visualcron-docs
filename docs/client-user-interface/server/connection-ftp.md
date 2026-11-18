@@ -5,283 +5,157 @@ hide_title: 'true'
 
 ## Connection - FTP
 
-The FTP Connection stores connect and logon properties for normal and secure FTP server connections.
- 
-### About FTP
+The FTP Connection stores the address, sign-in and security settings that the [Net - FTP/FTPS/SFTP/SCP](job-tasks/net-tasks/ftp) Task, the [Cloud - Sync file(s)](job-tasks/cloud-transfer-tasks/sync) Task and the [Event Trigger - Remote File](event-trigger-remote-file) Trigger use to connect to an FTP or FTPS server. You can also browse the server with the [Connection Explorer](../tools/explore-connection-explorer).
 
-File Transfer Protocol (FTP) is a standard network protocol used to transfer files from one host to another host over a TCP-based network, such as the Internet.
- 
-FTP is built on a client-server architecture and uses separate control and data connections between the client and the server. FTP users may authenticate themselves using a clear-text sign-in protocol, normally in the form of a username and password, but can connect anonymously if the server is configured to allow it. For secure transmission that hides (encrypts) the username and password, and encrypts the content, FTP is often secured with SSL/TLS ("FTPS"). SSH File Transfer Protocol ("SFTP") is sometimes also used instead, but is technologically different.
- 
-The first FTP client applications were command-line applications developed before operating systems had graphical user interfaces, and are still shipped with most Windows, Unix, and Linux operating systems. Dozens of FTP clients and automation utilities have since been developed for desktops, servers, mobile devices, and hardware, and FTP has been incorporated into hundreds of productivity applications, such as Web page editors.
- 
-_"Implicit SSL" versus "explicit SSL" (per RFC 2228)_
- 
-Connecting securely and authenticating are two distinct methods of establishing a secure connection with a FTP server. In the first case, the Secure FTP server may first require a SSL connection to be established, before the initial welcome message is sent. This is called an implicit SSL connection. In the second case, the connection is established in clear text and a special FTP command must be sent to the Secure FTP server to change the connection into a secure connection. This is called an explicit SSL connection.
- 
-In most cases, FTP servers that support SSL authentication will accept a normal connection on port 21. Once the connection is established, it is necessary to authenticate before logging in, using the Authenticate method. When explicitly securing the connection, it is also possible to secure data connections using the overload of the Authenticate method which requires a DataChannelProtection ENUM as a parameter.
- 
-Servers that require an implicit SSL connection usually listen on port 990 rather than 21
- 
-### Protocol variants
+### FTP and FTPS
 
-* FTP
-* FTP SSL Explicit
-* FTP SSL Implicit
-* FTP TLS Explicit
-* FTP TLS Implicit
- 
-The FTP Connection stores connect and logon properties for normal and secure FTP server connections.
- 
-**Manage Connections > Add > FTP > Common settings** tab
+Plain FTP sends the user name, the password, the commands and the files unencrypted. FTPS is FTP protected with SSL or TLS. One Connection type covers both: to use FTPS, choose a _Cryptographic protocol_ on the ***Encryption*** tab. The separate FTP SSL and FTP TLS types of earlier versions are no longer offered.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/FTP/FTP%20Settings.png)
+FTPS has two modes, which you choose in _Security mode_:
 
-**Protocol type**
+- "Explicit": the connection starts unencrypted, usually on port "21", and switches to SSL or TLS before the logon
+- "Implicit": the connection is encrypted from the start, usually on port "990"
 
-VisualCron is able to connect using regular FTP and FTPS (with implicit and explicit encryption). Regular FTP offer no security and information is not encrypted. VisualCron supports both SSL 3.0 and TLS (SSL 3.1). SSL and TLS are protocols layered above connection protocols (such as TCP/IP) but beneath application protocols (such as FTP) that provide encrypted, authenticated communications between a client and a server.
- 
-**Brute force test**
+### Common settings
 
-When using FTP and you are unsure of connection properties you can use the Brute force test tool to test all connection combinations. Note, brute force test option is only available for FTP protocol.
+![FTP Connection, Common settings tab, with Protocol type, Test, Brute force test, Name, Group, Timeout, Code page and Permissions](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/FTP/FTP%20Settings.png)
 
-**Name**
+The ***Common settings*** and ***Proxy*** tabs are the same for every Connection type that has them; see [Common settings](global-connections#common-settings) and [Proxy](global-connections#proxy). For FTP Connections:
 
-This is a descriptive name of the connection to distinguish from other connections.
+- _Test_: the Server connects and logs on with the settings in the window, and lists the root folder of the server
+- _Brute force test_: tries combinations of encryption, port and proxy settings from the Client computer
+- _Timeout_: how long, in seconds, the Server waits for the server while it connects, lists and transfers. "60" on a new Connection
+- _Code page_: the character set of file and folder names on the server
 
-**Group**
+### Main settings
 
-The group that the connection is a part of
- 
-**Timeout**
+These fields are on ***Connection settings*** -> ***Main settings***.
 
-The connection timeout in seconds. Connection will fail after this time is passed.
- 
-**Code page**
+![FTP Connection, Main settings tab, with the Server, Credentials and Multi-Threading groups](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/FTP/Connection%20Settings.png)
 
-The table of values that describes the desired character set.
- 
-**Manage Connections > Add > FTP > Connection Settings** tab
+- _Address_: the host name or IP address of the FTP server. A leading "ftp://" is removed when you save
+- _Port_: "21" on a new Connection. Choosing "Implicit" in _Security mode_ on a new Connection changes it to "990"
+- _Anonymous_: log on as an anonymous user. _Username_, _Password_ and _ACCT_ are then unavailable
+- _Username_ and _Password_: the FTP account. _Username_ is required unless _Anonymous_ is selected
+- _ACCT_: only for servers or proxies that ask for an ACCT value
+- _Maximum number of threads (download)_: from "1" to "8". The Server does not use this value
+- _Maximum number of threads (upload)_: from "1" to "8", "1" on a new Connection. An upload uses the lower of this value and the number of threads set in the Task
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/FTP/Connection%20Settings.png)
+### Encryption
 
-**Address**
+![FTP Connection, Encryption tab, with the SSL/TLS settings, the channel encryption options, the cipher suite list and the allowed SSL/TLS versions](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/FTP/Encryption.png)
 
-This is the host address to the server. It could be a DNS name or IP number.
- 
-**Port**
+- _Cryptographic protocol_: "No encryption" (plain FTP), "SSL" or "TLS". With "No encryption", the other settings on this tab are unavailable and the ***Certificates*** tab is hidden
+- _Security mode_: "Explicit" or "Implicit", as described in [FTP and FTPS](#ftp-and-ftps)
+- _Use data channel encryption (PROT P)_: encrypt file contents and folder listings. Cleared on a new Connection
+- _Use command channel encryption_: keep the commands encrypted after the logon. Selected on a new Connection. When it is cleared, the Server switches the command channel back to unencrypted after the logon
+- _Use SSL session resumption_: lets the data connections reuse the SSL or TLS session of the command connection. Some servers require it
+- _Auto adjust ciphers_: selected on a new Connection, so that the cipher suites are negotiated automatically. Clear it to choose the allowed cipher suites in the list, with _Select all_ and _Deselect all_. The list starts with every suite selected, including the anonymous suites whose names start with "DH_ANON", which do not authenticate the server; clear those
+- _Allowed SSL/TLS versions_: the versions the Server may use. Choosing "SSL" in _Cryptographic protocol_ selects _SSL version 2_ and _SSL version 3_. Choosing "TLS" selects _TLS version 1_ to _TLS version 1.3_. You can then change the selection
 
-This is the remote connection port. Default port for regular FTP is 21. Default port for Implicit FTPS is 990.
- 
-**Anonymous**
+When a Task runs, the Server uses the versions that the chosen protocol selects instead of yours if no version is selected, if exactly five versions are selected, or if none of the selected versions belongs to the chosen protocol.
 
-If your connection does not require a user name and password this box should be checked. When checked, the Username, Password, and ACCT fields are disabled.
- 
-**Username**
+:::warning
 
-The user name for the connection.
- 
-**Password**
-
-The password for the connection.
- 
-**ACCT**
-
-This property is only for some proxies that require ACCT value. FTP protocol only.
-
-**Maximum number of threads (download)**
-
-The maximum number of concurrent download threads. Minimum is 1, maximum is 8, default is 1.
-
-**Maximum number of threads (upload)**
-
-The maximum number of concurrent upload threads. Minimum is 1, maximum is 8, default is 1.
- 
-**Manage Connections > Add > FTP > Encryption** tab
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/FTP/Encryption.png)
-
-**Cryptographic protocol**
-
-Select the encryption protocol. Available options:
-
-* _No encryption_ - standard FTP with no encryption; disables all other Encryption tab settings and hides the Certificates tab
-* _SSL_ - uses SSL encryption; enables security mode, channel encryption options, SSL/TLS version selection, and the Certificates tab
-* _TLS_ - uses TLS encryption; enables security mode, channel encryption options, SSL/TLS version selection, and the Certificates tab
- 
-**Security mode**
-
-Select the connection mode. Only enabled when a cryptographic protocol is selected:
-
-* _Explicit_ - the connection starts in clear text and upgrades to encrypted using AUTH TLS/SSL (default port 21)
-* _Implicit_ - the connection is encrypted from the start (default port 990; port is automatically set to 990 when Implicit is selected on a new connection)
- 
-**Use data channel encryption (PROT P)**
-
-If this property value is True the channel used for data transfer (files, directory listings) will be encrypted, otherwise only command channel will be encrypted.
- 
-**Use command channel encryption**
-
-If this property value is True the command channel will be encrypted.
- 
-**Use SSL session resumption**
-
-Specifices if SSL session resumption should be used.
- 
-**Auto adjust ciphers**
-
-When checked, VisualCron automatically selects the encryption cipher suites. When unchecked, the cipher suite grid is enabled and you can manually select which algorithms to allow using the _Select all_ and _Deselect all_ buttons.
-
-**Allowed SSL/TLS versions**
-
-Select which SSL/TLS protocol versions are permitted for this connection:
-
-* _SSL version 2_
-* _SSL version 3_
-* _TLS version 1_
-* _TLS version 1.1_
-* _TLS version 1.2_
-* _TLS version 1.3_
-
-For the FTP SSL/TLS connection types, an extra **Certificates** tab is provided.
- 
-**Manage Connections > Add > FTP SSL/TLS > Certificates** tab
-
-![](../../../static/img/connectionftpcertificates.png)
-
-**Client certificates**
-
-Client certificates can be sent to the FTP server when connecting (implicit SSL) or when authenticating (explicit SSL). If the client certificate should be rejected by the server, an exception will be issued and the Task can not continue.
- 
-To add a client certificate, you need to click on [Global Certificates](../server/global-certificates). VisualCron is able to store certificates within itself. These certificates can be created by VisualCron or imported from other source. When you have create a Certificate you need to select it in the list of Certificates in the Certificates tab of the Connection properties.
- 
-**Server certificates**
-
-The certificate that is received from the FTP server is verified against the VerificationFlags provided at connection or authentication. By default, if a certificate received from an FTP server contains anomalies, it will be rejected. If no anomalies are detected, it will be accepted. This behavior can be overridden by checking the Auto-accept server certificates checkbox. If not checked and a certificate anomaly is detected, a popup will be shown (if the client is logged in). The popup message will show why the server certificate was initially connected. You can choose to "Accept" or "Deny" the certificate. If accepted, it will be saved and you will not be asked again unless the server certificate has changed.
- 
-**Manage Connections > Add > FTP > Extra settings** tab
-
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/FTP/Extra.png)
-
-**Transfer type**
-
-Select if you want to transfer through binary (default) or ASCII mode.
- 
-**Sync data channel**
-
-This option specifies whether to synchronize data channel. Switch it on if component hangs when trying to establish data connection, i.e., on using commands list, upload, download. Only enabled when a cryptographic protocol is selected.
-
-**KeepAlive**
-
-The interval (in seconds) for sending keepalive signals to maintain the connection.
- 
-**Data connection type**
-
-This value is indicating if the FTP client should initiate the data connection rather than the FTP server.
- 
-If set to PASV, the PASV command will be sent to the FTP server rather than the PORT command. This results in that the FTP server will listen on a data port (other than its default) and wait for a data connection to be established by the FTP client. The reply to the PASV command includes the host and port address the FTP server is listening on.
- 
-If set to PORT, the PORT command will be sent and the FTP client will listen for an incoming data connection.
- 
-The FTP server will establish the data connection upon receipt of a transfer command.
- 
-:::tip Note 
-
-If you are having problems with connecting or sending/receiving files to/from a server, try the PASV setting.
+_Use data channel encryption (PROT P)_ is cleared by default. While it is cleared, the Server encrypts only the logon and the commands, and sends file contents and folder listings unencrypted, even with "SSL" or "TLS" selected. Select it to encrypt the files as well.
 
 :::
 
-**Automatically adjust passive mode addres for NAT'ed servers**
+:::tip
 
-If this property is set to True, in passive mode data transfer, VisualCron will automatically set the address of the remote host to that from the control connection.
- 
-**Override date format**
+SSL version 2 and SSL version 3 are obsolete and not secure. Choose "TLS" and select only _TLS version 1.2_ and _TLS version 1.3_, unless the server cannot use them.
 
-VisualCron is trying to interpret the dateformat of files when listing files. In some situations there is a compatibility or a FTP server not behaving according to standard. In these cases you will see an error in the log file which contains the incoming date format. By overriding and using the same format as in the log you will force VisualCron to use this specific date format. When checked, the date format text field is enabled (default format: `yy-MM-dd HH.mm.ss`).
+:::
 
-**Log sent messages to task output**
+### Certificates
 
-When checked, all messages sent from VisualCron to the FTP server are logged and stored in the Task output.
+The ***Certificates*** tab is shown when _Cryptographic protocol_ is "SSL" or "TLS". The screenshot shows an earlier version of the tab.
 
-**Log received messages to task output**
+![FTP Connection, Certificates tab in an earlier version, with a certificate list, the Manage Certificates button and the auto-accept option](../../../static/img/connectionftpcertificates.png)
 
-When checked, all messages received from the FTP server are logged and stored in the Task output.
- 
-### Proxy tab
+- Certificate list: select a certificate to send when the FTP server asks for a client certificate. To create or import certificates, click _Manage Certificates_ (see [Global - Certificates](global-certificates))
+- _Auto-accept server certificates_: selected on a new Connection
 
-Proxy servers allow a client to make indirect network connections. The client connects to the proxy, makes a request for a connection, file, etc. The proxy server then provides this resource by getting it from the requested address or by retrieving it from its cache. The advantages of using a proxy server can include filtering, connection sharing, increased speed and decreased bandwidth use. HTTP proxy servers are web servers that relay requests from a client to an external FTP server.
+:::warning
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/FTP/Proxy.png)
+_Auto-accept server certificates_ is selected by default. While it is selected, the Server does not check the server certificate and accepts any certificate, so it cannot tell the real server from another server that answers at the same address. Clear it, and approve the server's certificate once as described below.
 
-**Proxy type**
+:::
 
-Select the proxy type to be used.The FTP implementation supports the HTTP proxy type and the SFTP implementation supports the SOCKS4 and SOCKS5 proxy types.
+When _Auto-accept server certificates_ is cleared, the Server accepts a server certificate that has been approved before. Approval is stored per certificate serial number and applies to every FTP Connection on the Server. For a certificate that has not been approved, the Server sends it to the Clients that are connected to the Server, and the Task waits up to 5 minutes for an answer:
 
-**Address**
+- _Accept_ approves and stores the certificate, and the Task continues
+- _Deny_ rejects the certificate, and the connection fails
 
-The host name or IP address of the proxy server.
- 
-**Port**
+If no Client is connected, or nobody answers within 5 minutes, the Server writes an error to the log and does not approve the certificate. Whether the connection then fails depends on whether the certificate passes the Server's standard certificate checks.
 
-The port of the proxy server.
- 
-**Use credentials**
+To approve a server certificate before you schedule the Job, complete the following steps:
 
-The credentials that are associated with the account.
- 
-**Domain**
+1. Connect a Client to the Server.
+2. Run the Task.
+3. In the _Certificate approval_ window, click _Accept_.
 
-The name of the domain to be created.
- 
-**Username**
+The Server stores the certificate as approved and accepts it without asking on later runs.
 
-The user name to access the proxy server.
- 
-**Password**
+### Extra settings
 
-The password to access the proxy server.
- 
-**Use proxy for data channel**
+![FTP Connection, Extra settings tab, with the transfer, data connection, date format and log options](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/FTP/Extra.png)
 
-By default, proxy is used for the data (sending channel). Uncheck this to circumvent proxy.
- 
-**Log** tab
-This tab is not applicable for the email related (SMTP, POP3 and IMAP4) or SQL connection types.
- 
-**Manage Connections > Add > FTP > Log** tab
+- _Transfer type_: "Binary", the default, or "ASCII"
+- _Sync data channel_: select it if the Task stops responding while it opens a data connection, for example when it lists, uploads or downloads. Available with or without encryption
+- _KeepAlive_: not used by FTP Connections
+- _Data connection type_: "PASV", the default, or "PORT". With "PASV", the Server opens each data connection to a port that the FTP server offers. With "PORT", the FTP server opens the data connection to the Server
+- _Automatically adjust passive mode address for NAT'ed servers_: selected on a new Connection. In passive mode, the Server connects data connections to the address of the command connection instead of the address that the FTP server reports. This helps with servers behind NAT that report an internal address
+- _Override date format_: when the Task cannot read the dates in a server's file listing, the log shows the date format the server sent. Select this option and enter that format so that VisualCron reads the dates with it. The default text is `yy-MM-dd HH.mm.ss`
+- _Log sent messages to task output_: writes the commands that the Server sends to the FTP server into the Task output. Passwords are masked
+- _Log received messages to task output_: writes the replies from the FTP server into the Task output
 
-![](../../../static/img/connectionftplog.png)
+:::tip
 
-**Log outgoing messages to Task output**
+If you cannot connect, or cannot send or receive files, try "PASV" in _Data connection type_.
 
-All messages sent from VisualCron to the FTP server is logged and stored in the Task output.
- 
-**Log incoming messages to Task output**
+:::
 
-All messages received from VisualCron to the FTP server is logged and stored in the Task output.
- 
+### Proxy
+
+![FTP Connection, Proxy tab, with the proxy type, address, port, test URL, authentication and credential fields and the Test button](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/FTP/Proxy.png)
+
+FTP Connections can use "HTTP Proxy", "SOCKS4" and "SOCKS5" proxies, use _Authentication_, and are the only type that uses _Use proxy for data channel_.
+
+:::warning
+
+A new Connection has _Authentication_ "Not set" and _Use credentials_ selected. With "HTTP Proxy" and those settings, the Server sends the FTP _Username_ and _Password_ to the proxy instead of the proxy account. Set _Authentication_ to "Basic", "Digest" or "NTLM" to send the proxy _Username_ and _Password_.
+
+:::
+
+### Log options in earlier versions
+
+Earlier versions of the Client had a separate ***Log*** tab for the two log options that are now on ***Extra settings***.
+
+![FTP Connection, Log tab in an earlier version, with the two log options](../../../static/img/connectionftplog.png)
+
 ### Troubleshooting
- 
-**Control channel transfer error (error code is 10053)**
 
-Try checking Auto accept all server certificates in Certificates tab. If you get this error on upload you can alternatively check Use SSL session resumption.
- 
-**Server cannot perform SSL/TLS negotiation**
+#### Control channel transfer error (error code 10053)
 
-FTP server either does not support TLS or SSL. Try switching between those.
- 
-**10035 /  114690 / 425 error. Can connect but not list files. / Connection timeout after MLSD is sent**
+If _Auto-accept server certificates_ is cleared, check that the server's certificate has been approved, as described in [Certificates](#certificates). Selecting _Auto-accept server certificates_ also avoids the error, but the Server then accepts any certificate. If the error happens on upload, try selecting _Use SSL session resumption_.
 
-Try unchecking "Automatically adjust PASV for NATed servers"
- 
-**534 Protection level negotiation failed**
+#### Server cannot perform SSL/TLS negotiation
 
-Check "Use data channel encryption (PROT P).
- 
-**SSL Error: 73732**
+The server may support only TLS or only SSL. Try the other value in _Cryptographic protocol_.
 
-Make sure you checked the correct SSL version. Preferably only TLS 1.2.
- 
-**Error: 75796**
+#### 10035, 114690 or 425 error, the file list is empty, or the connection times out after MLSD is sent
 
-Try manually selecting the encryption algorithm.
+On ***Extra settings***, clear _Automatically adjust passive mode address for NAT'ed servers_.
+
+#### 534 Protection level negotiation failed
+
+On ***Encryption***, select _Use data channel encryption (PROT P)_.
+
+#### SSL Error: 73732
+
+Check _Allowed SSL/TLS versions_. Select the versions the server supports, preferably only _TLS version 1.2_ and _TLS version 1.3_.
+
+#### Error: 75796
+
+Clear _Auto adjust ciphers_ and select the cipher suites the server supports.

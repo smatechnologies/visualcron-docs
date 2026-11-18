@@ -5,71 +5,65 @@ hide_title: 'true'
 
 ## Task Manager
 
-Within the VisualCron client, the Task Manager works similar to how the Windows Task Manager functions. It provides visibility into system processes, running VisualCron jobs, VisualCron internal threads, and Windows services on the connected server.
+The ***Task manager*** window works like the Windows Task Manager for the computer that runs the VisualCron Server. It shows the system processes, the running VisualCron Jobs, the internal VisualCron threads and the Windows services.
 
-![](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Task%20Manager.png)
+To open it, click ***Tools*** -> ***Explore*** -> ***Task manager***.
 
-The Task Manager contains four tabs: **System processes**, **VisualCron Jobs**, **VisualCron Threads**, and **Services**.
+![Task manager window on the System processes tab with the process list and the buttons at the bottom](../../../static/img/Client%20User%20Interface/Main%20Menu/Tools/Task%20Manager.png)
 
-**Search**
+The window has four tabs: ***System processes***, ***VisualCron Jobs***, ***VisualCron Threads*** and ***Services***. The status bar shows the Server, the number of processes and the CPU, memory, handle and thread totals.
 
-A search field at the bottom of the window filters the active tab's grid. Type to filter by name or PID. Click **Clear** to reset the filter.
+:::warning
 
-**System processes tab**
+The actions in the Task manager act on the Server computer. Ending a process or stopping a service there can stop other programs, VisualCron itself or Windows.
 
-Displays all processes currently running on the server. The grid shows the following columns: **Name**, **PID**, **UserName**, **CPU**, **Working set** (memory in KB), **Disk** (KB/s), and **Network** (KB/s). Columns can be toggled on or off by right-clicking the column header area.
+:::
 
-Right-clicking a process in the grid opens a context menu with the following actions:
+### Search
 
-* **End process** — terminates the selected process
-* **End process tree** — terminates the selected process and all its child processes
-* **Set priority** — changes the CPU scheduling priority for the process. Available options: **Realtime**, **High**, **Above normal**, **Normal** (default), **Below normal**, **Low**
-* **Set affinity** — opens the processor affinity dialog to control which CPU cores are allowed to run the process
-* **Open file location** — opens the folder containing the process executable
-* **Properties** — shows the Windows file properties dialog for the process executable
-* **Go to service(s)** — switches to the Services tab and highlights the service associated with the selected process
+The search field at the bottom filters the grid of the active tab. Type to filter by name or PID. Click ***Clear*** to reset the filter.
 
-The context menu is disabled for protected system processes (such as System, csrss, lsass, and similar).
+### System processes tab
 
-Buttons at the bottom of the window:
+Lists the processes running on the Server, with the columns _Name_, _PID_, _User name_, _CPU %_, _Working set_ (memory in KB), _Disk_ (KB/s) and _Network_ (KB/s). Right-click the column header area to show or hide columns.
 
-* **Run new process** — opens a dialog to launch a new process on the server
-* **End process** — terminates the selected process
+Right-click a process for these items:
 
-**VisualCron Jobs tab**
+- ***End process***: ends the selected process
+- ***End process tree***: ends the selected process and its child processes
+- ***Set priority***: changes the CPU priority of the process to "Realtime", "High", "Above normal", "Normal", "Below normal" or "Low"
+- ***Set affinity***: opens the ***Processor affinity*** window to choose which processors may run the process
+- ***Open file location***: opens the folder that holds the program file
+- ***Properties***: shows the Windows file properties of the program file
+- ***Go to service(s)***: switches to the ***Services*** tab and selects the service that uses the process
 
-Displays currently running VisualCron jobs and their associated tasks or triggers, along with real-time CPU usage. The grid is hierarchical; the structure depends on the configured view style. Columns shown at each level include **Name**, **Description**, **CPU time**, and **CPU %**. Process-level rows also show **Started** and **Runtime**.
+The Client asks you to confirm before it ends a process or changes its priority. The right-click menu is not available for protected system processes, such as System, csrss and lsass.
 
-A **filter** dropdown appears at the bottom of the window on this tab, allowing the search to be scoped to **Job**, **Task**, or **Trigger** entries.
+The buttons at the bottom are ***Run new process*** (shown as ***Start new process*** after you switch tabs), which starts a program on the Server, and ***End process***.
 
-Buttons at the bottom of the window:
+### VisualCron Jobs tab
 
-* **Start new job** — opens a dialog to start a job by name on the server
-* **Stop** — stops the selected running job process
+Lists the running VisualCron Jobs with their Tasks or Triggers and their real-time CPU usage. The grid is a tree; its layout depends on the selected view. The columns include _Name_, _Description_, _CPU time_ and _CPU %_; process rows also show _Started_ and _Runtime_.
 
-**VisualCron Threads tab**
+On this tab, a combo box next to the search field limits the search to Job, Task or Trigger entries.
 
-Displays internal VisualCron threads — individual execution units for jobs, tasks, and triggers currently being processed by the VisualCron server. The grid shows the following columns: **Started**, **Id**, **Thread name**, **Job name**, **Task/Trigger Name/Description**, **CPU time**, and **CPU %**.
+The buttons at the bottom are ***Start new job***, which starts a Job by name on the Server, and ***Stop***, which stops the selected running Job process.
 
-The search filters by Thread name, Job name, and Task/Trigger name simultaneously.
+### VisualCron Threads tab
 
-No action buttons are shown at the bottom of the window on this tab.
+Lists the internal VisualCron threads that are processing Jobs, Tasks and Triggers, with the columns _Started_, _Id_, _Thread name_, _Job name_, _Task/Trigger Name/Description_, _CPU time_ and _CPU %_. The search filters on thread name, Job name and Task or Trigger name. This tab has no buttons at the bottom.
 
-**Services tab**
+### Services tab
 
-Displays Windows services running on the server. The grid shows the following columns: **Name**, **PID**, **Description**, **Status**, **Startup Type**, and **Log On As**.
+Lists the Windows services on the Server, with the columns _Name_, _PID_, _Description_, _Status_, _Startup Type_ and _Log On As_.
 
-Right-clicking a service in the grid opens a context menu with the following actions:
+Right-click a service for these items:
 
-* **Start** — starts the selected service (enabled only when the service is stopped)
-* **Stop** — stops the selected service (enabled only when the service is running)
-* **Restart** — restarts the selected service (enabled only when the service is running)
-* **Go to process** — switches to the System processes tab and highlights the process associated with the selected service
+- ***Start***: starts the service, when it is stopped
+- ***Stop***: stops the service, when it is running
+- ***Restart***: restarts the service, when it is running
+- ***Go to process***: switches to the ***System processes*** tab and selects the process of the service
 
-The search filters by service Name, Description, and PID simultaneously.
+The search filters on service name, description and PID.
 
-Buttons at the bottom of the window change based on the selected service state:
-
-* **Start service** — starts the selected service (shown when service is stopped)
-* **Stop service** — stops the selected service (shown when service is running)
-* **Restart service** — restarts the selected service
+The buttons at the bottom are ***Restart service***, available when the service is running, and a button that shows ***Start service*** for a stopped service or ***Stop service*** for a running one.

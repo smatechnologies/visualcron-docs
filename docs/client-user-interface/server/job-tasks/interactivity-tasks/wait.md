@@ -5,28 +5,24 @@ hide_title: 'true'
 
 ## Task Interactivity - Wait
 
-The Wait Task lets you insert a pause of any length.
+The Wait Task pauses the Job for a set time. The next Task starts when the wait ends.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Wait.png)
+![Wait tab with fields for days, hours, minutes, seconds and milliseconds](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Interactivity%20Tasks/Wait.png)
 
-**Wait/Sleep**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-**Days**
+### Wait tab
 
-Number of days to wait before the next Task is run.
+Enter the length of the wait in one or more of the fields in the _Wait/Sleep_ group. The Task adds them up, so values larger than the unit allow, such as "90" minutes, are accepted. Each field is "0" by default and accepts a [Variable](../../global-variables) that resolves to a number.
 
-**Hours**
+- _days_
+- _hours_
+- _minutes_
+- _seconds_
+- _milliseconds_
 
-Number of hours to wait before the next Task is run.
+The wait counts from the start of the Task. If the ***TimeOut*** tab sets a shorter time, the Task times out before the wait ends.
 
-**Minutes**
+### Output and errors
 
-Number of minutes to wait before the next Task is run.
-
-**Seconds**
-
-Number of seconds to wait before the next Task is run.
-
-**Milliseconds**
-
-Number of milliseconds to wait before the next Task is run.
+- If a field is empty, or holds a value that is not a number, the Task fails

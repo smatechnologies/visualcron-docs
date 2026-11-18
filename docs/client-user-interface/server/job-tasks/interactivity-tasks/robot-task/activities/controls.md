@@ -5,96 +5,98 @@ hide_title: 'true'
 
 ## Robot Task Activities - Controls
 
-The **Controls** category contains activities that interact with UI elements through their automation patterns rather than by simulating mouse and keyboard input.
+The Controls activities act on UI elements through their Windows automation patterns, rather than by simulating mouse and keyboard input.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Controls%20Group/Controls.png)
+![The Controls category in the activity list, with the Invoke, Set Value, Get Value, Selection State, Expand/Collapse and Set Focus activities](../../../../../../../static/img/RPA/Robot%20Tasks/Controls%20Group/Controls.png)
 
-Because these activities talk to the control directly, they do not depend on the element being visible at a particular screen position. Each activity requires the target control to support the relevant automation pattern. If the element is not found, or the control does not support the pattern, the activity throws an exception.
+Because these activities talk to the control directly, they do not depend on the element being visible at a particular screen position. Each activity needs the target control to support the matching automation pattern. If the element is not found, or the control does not support the pattern, the activity fails with an error.
 
-On any of these activities, use the **Click to select an element** link to pick the target in the UI and fill the search properties automatically. Move the mouse over the element, hold `CTRL`, and click.
+On these activities, use the _Click to select an element_ link to pick the target in the UI and fill in the search properties automatically. Move the mouse over the element, hold `CTRL`, and click.
 
 ---
 
 ### Invoke
 
-Finds the specified element and executes the **Invoke** action on it. This is the equivalent of activating a control, such as pressing a button or clicking a menu item.
+Finds the element and runs its Invoke action. This is the same as activating a control, such as pressing a button or choosing a menu item.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Controls%20Group/Invoke.png)
+![The Invoke activity, with the Click to select an element link](../../../../../../../static/img/RPA/Robot%20Tasks/Controls%20Group/Invoke.png)
 
-Throws an exception if the element is not found or does not support the Invoke pattern.
+Fails if the element is not found or does not support the Invoke pattern.
 
 ---
 
 ### Set Value
 
-Finds the specified element and sets its value.
+Finds the element and sets its value.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Controls%20Group/Set%20Value.png)
+![The Set Value activity, with the Click to select an element link and the Value field](../../../../../../../static/img/RPA/Robot%20Tasks/Controls%20Group/Set%20Value.png)
 
-| Setting | Description |
-|---|---|
-| Value | The value to write to the element. |
+- _Value_: the value to write to the element; Variables are resolved first
 
-Throws an exception if the element is not found, does not support the Value pattern, or the element's value is read only.
+Fails if the element is not found, does not support the Value pattern, or its value is read-only.
 
 ---
 
 ### Get Value
 
-Finds the specified element, reads its value, and saves it to the specified variable.
+Finds the element, reads its value, and saves it to a Job or User Variable.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Controls%20Group/Get%20Value.png)
+![The Get Value activity, with the Variable type and Variable fields](../../../../../../../static/img/RPA/Robot%20Tasks/Controls%20Group/Get%20Value.png)
 
-| Setting | Description |
-|---|---|
-| Variable type | The type of variable to save to: **Job** or **User**. |
-| Variable | The name of the variable that receives the value. |
+- _Variable type_: "Job" or "User"
+- _Variable_: the name of the Variable that receives the value
 
-Throws an exception if the element is not found or does not support the Value pattern.
+Fails if the element is not found or does not support the Value pattern.
 
 ---
 
 ### Selection State
 
-Finds the specified element and applies a selection change to it.
+Finds the element and changes whether it is selected.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Controls%20Group/Selection%20State.png)
+![The Selection State activity, with the Click to select an element link](../../../../../../../static/img/RPA/Robot%20Tasks/Controls%20Group/Selection%20State.png)
 
-The **SelectionType** property controls the behavior:
+The _SelectionType_ property, in the Properties pane, sets what happens:
 
-| SelectionType | Behavior |
-|---|---|
-| Single | Clears all existing selection and selects only the current element. |
-| Append | Adds the current element to the existing selection. |
-| Deselect | Removes the current element from the existing selection. |
+- "Single" (default): clears the existing selection and selects only this element
+- "Append": adds this element to the existing selection
+- "Deselect": removes this element from the existing selection
 
-Throws an exception if the element is not found or does not support the SelectionItem pattern.
+Fails if the element is not found or does not support the SelectionItem pattern.
 
 ---
 
 ### Expand/Collapse
 
-Finds the specified element and executes an **Expand** or **Collapse** action on it. Combo box controls typically support this pattern, as do tree view nodes.
+Finds the element and expands or collapses it. Combo box controls and tree view nodes typically support this pattern. In the sequence, the activity is shown as _Set Expand or Collapse_.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Controls%20Group/Expand%20Collapse.png)
+![The Set Expand or Collapse activity, with the Click to select an element link](../../../../../../../static/img/RPA/Robot%20Tasks/Controls%20Group/Expand%20Collapse.png)
 
-Throws an exception if the element is not found or does not support the Expand/Collapse pattern.
+The _State_ property, in the Properties pane, is "Expand" or "Collapse". An element that is already in the requested state is left as it is. An element with nothing to expand is also left as it is, and the activity writes a message to the output.
+
+Fails if the element is not found or does not support the ExpandCollapse pattern.
 
 ---
 
 ### Set Focus
 
-Gets the element or window provided by the parent activity and sets focus to it.
+Sets the focus to the element or window provided by the parent activity.
 
-![](../../../../../../../static/img/RPA/Robot%20Tasks/Controls%20Group/Set%20Focus.png)
+![The Set Focus activity](../../../../../../../static/img/RPA/Robot%20Tasks/Controls%20Group/Set%20Focus.png)
 
-Use Set Focus before [Keyboard](keyboard) activities, which send input to whatever window currently has focus.
+Use Set Focus before [Keyboard](keyboard) activities, which send input to whatever window has the focus.
+
+:::warning
+
+If the focus cannot be set, Set Focus only writes a message to the output, and the sequence continues. The same happens without a message when there is no parent element. The keyboard input that follows then goes to whatever window has the focus, and the Task reports success.
+
+:::
 
 ---
 
 ### Tips
 
-- Prefer Controls activities over [Mouse](mouse) activities where the control supports the pattern. Set Value writes to a field in one operation and does not depend on window position, scroll state, or screen resolution.
-- Use **Get Value** to read a value back after writing it, as a verification step in a workflow that must not silently fail.
-- If an activity throws an exception saying the pattern is not supported, the control is not exposing that automation pattern. Fall back to a [Mouse](mouse) or [Keyboard](keyboard) activity, or use [OCR](ocr) if the control does not expose its content at all.
-- Use **Append** and **Deselect** rather than **Single** when building up a multiple selection across several activities, since Single clears everything selected so far.
+- Prefer Controls activities over [Mouse](mouse) activities where the control supports the pattern. Set Value writes to a field in one operation and does not depend on window position, scroll state or screen resolution
+- Use _Get Value_ to read a value back after writing it, as a check in a workflow that must not fail without notice
+- If an activity fails saying that the pattern is not supported, the control does not expose that automation pattern. Use a [Mouse](mouse) or [Keyboard](keyboard) activity instead, or [OCR](ocr) if the control does not expose its content at all
+- Use "Append" and "Deselect" rather than "Single" when you build up a multiple selection across several activities, because "Single" clears everything selected so far

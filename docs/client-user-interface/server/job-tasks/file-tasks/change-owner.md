@@ -7,7 +7,7 @@ hide_title: 'true'
 
 The File - Change owner Task lets you change the owner of one or more files or folders.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Change%20Owner.png)
+![Add Task dialog for the Change owner Task, Main settings sub tab](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Change%20Owner.png)
 
 **Target**
 

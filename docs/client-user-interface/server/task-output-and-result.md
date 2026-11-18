@@ -15,13 +15,12 @@ The output window show information and result from the Task. The following infor
  
 **Task result**
 
-Task result is specific for each Task. Depending on the result type we display it differently. It could be a table, image or video. We continue to add more result based on request but here are some examples of Tasks and their result;
+Task result is specific for each Task. Depending on the result type, it is shown as a table, an image, an animated GIF or a video. Some examples:
  
-* Execute Task - Command line, Arguments, Process Id
+* Execute Task - for example Command, Arguments and Process id
 * SQL Task - Connection string, Connection name, Query type, Query, Rows count
-* Web macro Task - Video or Images of the playback
-* Robot Task - Video of the playback
-* Etc.
+* Web macro Task - video, animated GIF or images of the playback
+* Robot Task - video, animated GIF or images of the playback
  
 You may be able to increase output details by checking Extended Task debug logging in Main settings of the Task.
  
@@ -37,11 +36,11 @@ Depending on where you double click on the Task row the output window is opened 
 
 4. You can also right click on a Task and select Result->Task result
 
-![](../../../static/img/taskresultrow.png)
+![Task row in the main grid with the Output, Output (error) and Result columns numbered](../../../static/img/taskresultrow.png)
 
 **Output and Result window**
 
-![](../../../static/img/taskoutputtext.png)
+![Output window showing standard output as text](../../../static/img/taskoutputtext.png)
 
 **Find**
 
@@ -53,7 +52,7 @@ Scrolls down to a specific line in the output.
  
 **Get full output**
 
-This requests the full output from the server. By default only 2000 characters are loaded by default.
+Requests the full output from the Server. The output shown is cut at the *Limit output size* value on the **_Output settings_** tab of [Log settings](settings-log-settings) (20480 characters by default); the button appears only when the output was cut, and is not available while *Realtime* is on. For earlier runs, the full output is available only if *Store full output* was selected when the Task ran.
  
  
 ### Execution
@@ -74,7 +73,7 @@ This is the total time the Task ran.
 
 Clicking this button show charts and statistics related to execution result.It is possible to control the range of executions. Success is marked in green and Failure in red. It is possible to zoom in and out in chart holding CTRL+Scroll wheel.
 
-![](../../../static/img/executionresultstats.png)
+![Output window showing success and failure statistics](../../../static/img/executionresultstats.png)
 
 **Standard and error output**
  
@@ -86,7 +85,9 @@ There are different types of output representation depending on Task type. You c
 * HTML - this is trying to represent the raw text output in HTML format styling
 * Table - this is converting the result to a table. Might be useful for viewing Tasks like the SQL Task. With the table you you have filters and export functionality. Sometimes, the way this data is parsed depends on the *Table parsing settings* in output window  in combination with the output settings tab in the Task.
 
-![](../../../static/img/sqltableoutput.png)
+Use *Copy* or *Export* to copy or save the text output.
+
+![Output window showing SQL output as a table](../../../static/img/sqltableoutput.png)
 
 **Task results**
  
@@ -94,7 +95,9 @@ This is Task specific and showing a combination of Task specific settings that w
  
 The Task results button is only visible if the Task in question has specific Task result values.
 
-![](../../../static/img/sqltaskresults.png)
+![Output window showing the Task results of a SQL Task](../../../static/img/sqltaskresults.png)
+
+*Image*, *Video* and *Gif* show the images, video or animated GIF of the playback for Web macro and Robot Tasks.
 
 **Performance->CPU**
  
@@ -119,7 +122,7 @@ The CPU time usage is separated into 2 categories:
  
 There is a chart showing the latest value which is based on the selection Date + Time in the top left window. The data range defines the period being used for the line chart and the range values - this is controlled by the date range controls. It is possible to zoom with the mouse wheel and mark certain areas.
 
-![](../../../static/img/taskcpuresult.png)
+![Output window, CPU performance chart](../../../static/img/taskcpuresult.png)
 
 **Performance->Execution time**
  
@@ -127,7 +130,7 @@ The Execution time is how long it takes for a Task to complete. This is affected
  
 The date range controls the line chart and range values. The current value is controlled by the selected Date + Time in the top left window.
 
-![](../../../static/img/performanceexecutiontime.png)
+![Output window, Execution time chart](../../../static/img/performanceexecutiontime.png)
 
 ### Settings
  
@@ -135,27 +138,33 @@ The date range controls the line chart and range values. The current value is co
 
 Sometimes, the way this data is parsed depends on the *Table parsing settings* in output window  in combination with the output settings tab in the Task. For example, in order to view SQL Task in Table mode the output of the SQL Task must match the Table parse settings. The *Table parse settings* can be altered and then a switch to *Output->Table* can be made to be able to create a table out of the data.
 
-![](../../../static/img/tableparsing.png)
+![Table parse settings window](../../../static/img/tableparsing.png)
 
 **Realtime**
 
-By clicking on Realtime output button the output window is updated in realtime instead of when the Task has finished. Before clicking on realtime output the previous output is shown. Realtime button is only enabled for Task that supports realtime.
- 
- 
-The following Task types support real time output:
- 
-* Execute Task
-* PowerShell Task
-* .NET Execute Task
-* SSISDB Task
-* SSIS Tasks
-* DTS Tasks
-* FTP/SFTP/SCP Tasks
-* Copy files / sync files
-* Cloud Tasks
-* HTTP Task
-* Web macro
- 
+Select *Realtime* to update the output window while the Task runs. The button is available in the
+*Text*, *Table*, *XML*, *Json* and *HTML* views, and is selected automatically for a Task that is
+running. The view shows only output produced after *Realtime* is selected; earlier output appears
+when the Task finishes. Output appears while the Task runs only for these Task types:
+
+* Process: Execute, Execute script, PowerShell, .NET code execute, Assembly execute, Unmanaged dll call
+  and AS/400 Command, when the Task runs in the background on *Local VisualCron Server*. In the
+  foreground, or on a remote VisualCron Server, the output appears when the Task finishes.
+* Database: SQL, Sync table(s), Execute SSIS package and Execute SSISDB package
+* Net: FTP/FTPS/SFTP/SCP, SSH (each command's output appears when that command finishes), HTTP and
+  Web macro, and the WebDAV download, upload, copy and delete Tasks
+* Messaging: the seven Email Tasks
+* Cloud transfer: all Tasks
+* Sharepoint: upload, download and delete files
+* File: Copy files, Sync files, Delete file, Rename file, Delete folder, Archive - compress and
+  Archive - extract
+* Encryption: PGP - Encrypt, PGP - Decrypt, and the file encryption and decryption Tasks
+* Office: Office macro, and Excel - List worksheets and Excel - Search worksheets when their output
+  goes to standard output
+* Interactivity: Robot
+
+For other Task types, the output appears when the Task finishes.
+
 **Switch to running**
 
 When opening the output/result window it shows the last execution. If the Task starts after that it is possible to switch to that new execution by clicking Switch to running. This button is a state button which means that it will, once enabled, automatically switch to the latest running Task (that is opened).
@@ -176,7 +185,7 @@ Closes the Task window and open the [Job result](job-result) for the parent Job.
 While downloading data from the VisualCron Server, the current download status is displayed in the status bar below: "Fetching data..."
 
 
-![](../../../static/img/multioutput-fetching.png)
+![Output window status bar showing Fetching data and Error fetching data](../../../static/img/multioutput-fetching.png)
 
 If an error occurs in loading data, or if the Server does not return a response within the timeout configured in the connection to the Server, the status bar will display “Error fetching data”.
 In such a situation, it is recommended to enable extended debug logging in the [Server settings](settings-log-settings), and then check the messages in the [Server and API logs](settings-log-settings).

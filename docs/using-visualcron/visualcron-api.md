@@ -5,35 +5,34 @@ hide_title: 'true'
 
 ## VisualCron API
 
-The VisualCron API is an easy way to control the VisualCron Server. The .NET API is as powerful as the VisualCron Client. The Client itself uses the API to perform all actions.
- 
-You can find the API documentation under the main menu **Help > API** selection, which provides two options: *Show documentation* (the API quick start manual) and *API reference* (the full API reference).
- 
-Basically, you can use these languages:
+The VisualCron API is the .NET library that the VisualCron Client uses for every action it performs on a VisualCron Server. Your own programs and scripts can use the same library to connect to a Server and work with Jobs, Tasks, Credentials, Connections and the other objects, and to run Jobs. This page is for developers who build integrations in .NET or PowerShell. To call VisualCron over HTTP without the library, see [VisualCron Web API](visualcron-web-api). To control a Server from the command line, see [VCCommand](vccommand).
 
-* [.NET - c# or VB.NET](dot-net-csharp-vbnet)
-* [PowerShell](powershell)
- 
-**Visual Basic 6**
+### Languages
 
-We do no longer support Visual Basic 6.
+- [.NET (C# or VB.NET)](dot-net-csharp-vbnet)
+- [PowerShell](powershell)
+
+Visual Basic 6 is not supported.
+
+### API documentation and samples
+
+In the Client, go to _Help_ -> _API_:
+
+- _Show documentation_: opens the API quick start (PDF)
+- _API reference_: opens the full member reference (CHM)
+
+Both files are installed in the "API\doc" folder of the VisualCron installation folder. The "API\samples" folder holds a C# sample project in "TestClient" and sample scripts in "PowerShell".
+
+### Before you start
+
+- **References:** reference "VisualCronAPI.dll" and "VisualCron.dll" in the installation folder, by default "C:\Program Files (x86)\VisualCron". Both are built for .NET Framework 4.8. The "lib" subfolder holds another build of the same two DLLs that you can debug with (see [Troubleshooting](#troubleshooting))
+- **Logon:** your program logs on to the Server as a VisualCron user, with a user name and password or with Active Directory logon, on the Server port (default "16444")
+- **Permissions:** the Server checks that user's permissions for most requests. Give each program its own VisualCron user with only the permissions it needs (see [Main - User Permissions](../client-user-interface/server/main-user-permissions))
+- **Client-only permissions:** a few permissions are applied only in the desktop Client's own windows, for example _Task manager_ and _Delete_ on _PGP key rings_. A program that uses the API can use these functions whatever they are set to, so do not rely on them to restrict a program
+- **Remote logons:** when _Only allow local connections_ is checked on the **_Users/Logon_** tab of the Server settings, the Server refuses API logons from other computers. The logon fails with "Login failed, reason: Only local connections allowed to this Server" (see [Settings - Users/Logon](../client-user-interface/server/settings-users-logon))
 
 ### Troubleshooting
 
-When using the v13 DLLs, referencing the API (for example, VisualCronAPI.dll) can cause application debugging sessions to terminate with a “Debugger Detected” exception. This can make it difficult to debug personal code while referencing the VisualCron libraries. 
+#### A debugging session ends with "Debugger Detected"
 
-Q. Is this behavior expected in v13?
-* Yes, this is expected behavior in v13. The "Debugger Detected" exception is an intentional change introduced in the newer version of the software. We recommend reviewing the v12+ changelog for full details on this change.
-
-Q. How can I debug my code while referencing the v13 libraries?
-* To avoid the debugger detection issue, please use the DLLs located in the following directory on your VisualCron installation:
-
-    C:\Program Files (x86)\VisualCron\lib
-
-The libraries in this folder are self-contained and will not trigger the debugger exception, allowing you to debug your own application as expected.
-
-Q. Are there any additional dependencies required?
-* No additional dependencies are needed. The two libraries in the directory above are self-contained — you only need those two DLLs to work with the API.
-
-Q. Regarding VisualCron_nat.dll - is this required? 
-* No additional dependency file is required. The libraries in the \lib directory are fully self-contained, so you do not need to locate or obtain any additional files to support the API.
+If your program references "VisualCronAPI.dll" from the installation folder and a debugging session ends with a "Debugger Detected" exception, reference the two DLLs in the "lib" subfolder instead: "C:\Program Files (x86)\VisualCron\lib\VisualCron.dll" and "C:\Program Files (x86)\VisualCron\lib\VisualCronAPI.dll" in a default installation.

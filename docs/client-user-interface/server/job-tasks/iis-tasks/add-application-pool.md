@@ -5,47 +5,37 @@ hide_title: 'true'
 
 ## Task IIS - Add Application Pool
 
-The IIS - Add Application Pool Task creates a new application pool in Internet Information Services (IIS). Application pools isolate web applications from one another for improved security, reliability, and performance.
+The IIS - Add Application Pool Task creates an application pool in the IIS of the VisualCron Server computer, using an IIS Connection. Application pools isolate web applications from one another.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/IIS%20Tasks/Add%20a%20new%20application%20pool.png)
+![IIS - Add a new application pool Task settings, with the Connection and Application pool parameters groups](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/IIS%20Tasks/Add%20a%20new%20application%20pool.png)
 
-**Connection**
+:::warning
 
-To use IIS Tasks you need to create a [Connection](../../global-connections) first. Click the *Settings* icon to open the *Manage Connections* dialog.
+This Task uses an IIS Connection; see [Connection - IIS](../../connection-iis). The Task always works on the IIS of the VisualCron Server computer: the Connection's _Address_ is not used, and the changes are made as the account of the VisualCron Server service, which must be allowed to change IIS. The Connection's _Username_ and _Password_ are used only for network access.
 
-**Application pool parameters**
+:::
 
-**Name**
+The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***TimeOut*** tabs are the same for every Task; see [Job - Tasks](../../job-tasks).
 
-The name of the application pool to be created.
+### IIS - Add a new application pool tab
 
-**Start mode**
+- _Connection_: the IIS Connection. Required. Click the _Settings_ icon to open _Manage Connections_
+- _Name_ (_Application pool parameters_ group): the name of the new application pool. Required
+- _Start mode_: "On demand" or "Always running". When empty, the IIS default for new application pools is used
+- _Pipeline mode_: "Integrated" or "Classic". When empty, the IIS default is used
+- _Runtime version_: "Without managed code", "v2.0" or "v4.0". When empty, the IIS default is used
+- _Auto start_: when selected, the application pool starts automatically when IIS starts; when cleared, it does not. When the check box is in its third state, neither selected nor cleared (the default), the IIS default is used
+- _Enable 32 bit app on 64 bit OS_: when selected, the application pool runs 32-bit applications on a 64-bit Windows. The third state, as for _Auto start_, uses the IIS default
+- _Queue length_: the maximum number of requests that IIS queues for the application pool. When empty, or not a whole number, the IIS default is used
 
-Determines how the application pool is activated. Available options are:
-- *OnDemand* – The application pool starts when the first request is received
-- *AlwaysRunning* – The application pool starts immediately when IIS starts, regardless of incoming requests
+:::note
 
-**Pipeline mode**
+With "Without managed code", the Task writes the text "Without managed code" as the .NET CLR version of the pool, instead of leaving the version empty. Check the pool in IIS Manager after the Task runs.
 
-The managed pipeline mode for the application pool. Available options are:
-- *Integrated* – The ASP.NET request-processing pipeline is integrated with the IIS request-processing pipeline (recommended for modern applications)
-- *Classic* – ASP.NET runs as an ISAPI extension alongside IIS (for legacy applications that are not compatible with Integrated mode)
+:::
 
-**Runtime version**
+### Output and errors
 
-The .NET Framework version used by the application pool. Available options are:
-- *No Managed Code* – The application pool does not load a managed runtime (for native code or non-.NET applications)
-- *v2.0* – .NET Framework v2.0
-- *v4.0* – .NET Framework v4.0
+On success, the output is "Success". When an application pool with that name already exists, the Task does not change it and writes no output, and the Task reports success.
 
-**Auto start**
-
-When checked, the application pool starts automatically when IIS starts.
-
-**Enable 32 bit app on 64 bit OS**
-
-When checked, 32-bit applications are permitted to run on a 64-bit operating system.
-
-**Queue length**
-
-The maximum number of requests IIS will queue for this application pool before returning a 503 Service Unavailable response to new requests.
+The ***TimeOut*** tab does not stop this Task.

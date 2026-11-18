@@ -5,65 +5,106 @@ hide_title: 'true'
 
 ## Event Trigger - TCP
 
-The TCP Trigger creates a TCP Listener which then listens persistently for connections from TCP network clients. For each established connection, the server communicates with the client based on the logic configured using some messaging rules.
- 
-**TCP > Connection** group and **Interaction rules** inner tab
+The TCP Trigger opens a TCP listener on the VisualCron Server and talks with each TCP client that connects, following
+the interaction rules you configure. Each rule with *Fire trigger* checked fires the Trigger when it is processed, so
+one conversation can fire the Trigger several times. *Run delay* and *Expire after being triggered* count each fire.
+A fire that does not start the Job is lost; see [Triggers that fire once per item](event-triggers#triggers-that-fire-once-per-item).
 
-![](../../../static/img/triggereventtcpinteractionrules.png)
+**How the listener works**
+
+* The listener uses the *Address* and *Port* of the selected [TCP Connection](connection-tcp). *Address* must be an
+  IPv4 address of the Server, for example 127.0.0.1 for clients on the same computer or 0.0.0.0 for all its network
+  addresses; a host name or an IPv6 address cannot be used
+* Clients are handled at the same time, up to *Maximum number of connected clients* in the Connection's *TCP
+  Listener* settings (default 0: no limit). Further clients wait until a conversation ends
+* Failed listener starts, for example because another program uses the port: the Trigger tries again at once. After
+  the fifth failure since the Trigger started, the Trigger is deactivated and the error is written to the Server log;
+  correct the Connection and activate the Trigger again. If the selected Connection no longer exists, the Trigger is
+  deactivated at once
+* An error in one conversation ends that conversation and is written to the Server log; the Trigger keeps listening.
+  This includes a client that closes its connection while a *Receive* rule waits, and a *Receive* rule that times out
+ 
+***TCP*** tab, ***Interaction rules*** sub tab
+
+![Add/Edit event window, TCP tab: TCP local Connection, and the Interaction rules sub tab with the Demo rules tree: Receive, Check Handshake, Send Heartbeat, Receive and fire trigger, and Check exit:failure](../../../static/img/triggereventtcpinteractionrules.png)
 
 **Connection**
 
-Before configuring any interaction rules you must create a Connection. Click on Manage Connections to add a new Connection. Select [TCP connection](../server/connection-tcp) and alter connection settings.
+Before you configure interaction rules, select a [TCP Connection](connection-tcp) in the *Connection* list. To add one, click the settings icon next to the list to open *Manage Connections*, add a TCP Connection and set its *Address* and *Port*.
  
-**Interaction rules** tab
+***Interaction rules*** tab
 
-The tab is split into two panes: a tree on the left that holds the rule hierarchy, and a properties panel on the right that displays the settings for the rule selected in the tree. A toolbar above the tree provides commands to manage the rules.
+The tab is split into two panes: a tree on the left that holds the rule hierarchy, and a properties panel on the right that displays the settings for the rule selected in the tree.
  
-Available commands:
+A new Trigger starts with one *Receive* rule with an infinite number of iterations and *Fire trigger* checked, so
+every message a client sends fires the Trigger. A *Receive* rule reads whatever the client has sent at that moment as
+one message; there is no message framing.
 
-**Append rule**: a drop‑down with three rule types — _Send_, _Receive_, and _Check_ — for appending the corresponding rule under the current selection.
-**Delete**: delete a rule with all child rules.
-**Demo**: automatically create a set of rules with an example of a simple communication algorithm between a client and a server. The command is only available when the rule tree is empty.
+The toolbar above the tree has these commands:
 
-The properties panel on the right shows a **General** tab for every rule (rule name, result message key, _Use key as format string_, _Fire trigger_, _Force exit_) and one of the following rule‑type tabs depending on the selected rule:
+* *Append rule*: adds a *Send*, *Receive* or *Check* rule as a child of the selected rule
+* *Delete*: deletes the selected rule and all its child rules
+* *Demo*: replaces the rules with an example conversation: receive "Handshake", answer "Heartbeat", then receive one
+  instruction and fire the Trigger. It is available for a new Trigger and after you delete all rules; if there are
+  rules, you are asked to confirm
 
-* **Send** — text body, number of iterations, delay before send (ms), delay after send (ms)
-* **Receive** — number of iterations and receive timeout in seconds (`-1` uses the Connection timeout)
-* **Check** — match condition, match value, and exclusive group index used to combine mutually exclusive conditions
+*Rule properties* shows a ***Base*** tab for every rule (*Custom rule name*, *Result message key*, *Use key as format
+string*, *Fire trigger*, *Force exit*) and the tab of the rule type:
+
+* ***Send***: *Text body*, *Number of iterations*, *Delay before send* and *Delay after send* (in milliseconds)
+* ***Receive***: *Number of iterations* and *Receive timeout* in seconds. -1, shown as "default", uses the timeout of
+  the Connection, or 30 seconds if that is 0; 0, shown as "infinite", waits without a limit
+* ***Check***: *Match condition*, *Match value* and *Exclusive group index*. Check rules under the same rule with the
+  same index other than 0 exclude each other: after one of them matches, the others are skipped
+
+In *Number of iterations*, -1 is shown as "infinite".
  
-See "[TCP messaging rules](../server/job-tasks/net-tasks/tcp#tcp-messaging-rules)" section in the TCP Task topic.
+For the settings of each rule type, see [TCP messaging rules](../server/job-tasks/net-tasks/tcp#tcp-messaging-rules) on the TCP Task page.
  
-**TCP > Test console** inner tab
+***TCP*** tab, ***Test console*** sub tab
 
-![](../../../static/img/triggereventtcptestconsole.png)
+![Add/Edit event window, Test console sub tab: the Log window with the incoming and outgoing messages of a test, and the Control panel with Setup maximum number of iterations at 10 and the Test button](../../../static/img/triggereventtcptestconsole.png)
 
-You are able to test the configured messaging rules without saving the settings.
-As a remote TCP client, a similar test scenario can be launched in the [TCP Task](../server/job-tasks/net-tasks/tcp) UI form, or a test application can be compiled and launched (see sample TCP Client application code below).
- 
+Click *Test* to try the rules without saving the Trigger. The Server opens a listener on the Connection's address and
+port and waits for one client to connect; the rules then run for that client, and the *Log window* shows each
+message. No Job is started. The whole test, including the wait, must finish within the Connection's timeout; with a
+timeout of 0 the test fails at once. Connect a client in that time, for example a [TCP Task](job-tasks/net-tasks/tcp)
+with the same Connection or the sample application below. While this Trigger, or another, is active and listening
+on the same address and port, the test cannot open its listener: deactivate that Trigger while you test.
+
 **Setup maximum number of iterations**
 
-All rules with a large or infinite number of repetitions automatically terminate after the specified maximum number of iterations. The value can be set between `1` and `999`; the default is `10`. Click the **Test** button to execute the configured rules against the Log window without saving the trigger.
+In the test, rules with a large or infinite number of iterations stop after this number, from 1 to 999 (default 10).
  
-**TCP Trigger Result Variables**
- 
-**TextBody**
+### Result Variables
 
-The triggered message content decoded with connection's codepage.
- 
-**ReceivedTime**
+When the Trigger fires, it sets these result Variables. In the Job, write the TCP result Variables in the *Last
+trigger* form, for example `{TRIGGER(Active|LastTrigger|TCP.Result.TCP.TextBody)}`,
+with the last part as listed below. The *Last trigger* form keeps the values of the fire that started the run, even
+when several clients make the Trigger fire at nearly the same time (see
+[Result Variables](event-triggers#result-variables) and [Variables](global-variables)).
 
-The triggered message receipt time.
- 
-**FromAddress**
+**Body (text)** (`TCP.Result.TCP.TextBody`)
 
-The triggered message sender address in the form "host:port".
- 
-**Messages**
+The text of the message processed by the rule that fired the Trigger, decoded with the Connection's *Code page*.
 
-A list of processed messages in the form `{ Key, TextBody }`, so that the text of a particular message is available by specifying Key in a variable template.
+**Received time** (`TCP.Result.TCP.ReceivedTime`)
+
+When that message was processed. To format the date, write `TCP.Result.TCP.ReceivedTime|<date format>`, for example
+`{TRIGGER(Active|LastTrigger|TCP.Result.TCP.ReceivedTime|yyyy-MM-dd HH:mm:ss)}`.
+
+**From address** (`TCP.Result.TCP.FromAddress`)
+
+The address of the client, as "address:port". When the rule that fired is a *Send* rule, it is the Server's own
+address.
+
+**Get text body of a message with the specified key** (`TCP.Result.TCP.Messages|<Key>`)
+
+The text of the message whose *Result message key* is `<Key>`, from the messages of the same conversation since the
+previous fire. The key is case-sensitive. Empty if there is no such message.
  
-**_Attention_:** when using variables with the result of TCP trigger in tasks, for example ```{TRIGGER(...|TCP.Result.TCP.TextBody)}```, it should be mentioned that in case of simultaneous connection of several TCP clients, the content of a variable may change unexpectedly. In practice, a trigger may fire twice when receiving messages from two different clients, but the value of ```{TRIGGER(...|TCP.Result.TCP.TextBody)}``` will contain the message that came last.
- 
+### Sample TCP client
+
 **Sample TCP Client application code** (_C#_)
 
 ```c#

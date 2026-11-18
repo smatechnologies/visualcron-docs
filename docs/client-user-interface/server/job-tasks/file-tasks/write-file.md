@@ -7,11 +7,11 @@ hide_title: 'true'
 
 The Write file Task lets you write any string to a file. The string could be a Variable, for example a result from another Task.
 
-![](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Write%20File.png)
+![Add Task dialog for the Write file Task](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/File%20Tasks/Write%20File.png)
 
 **Credential**
 
-To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open Manage credentials in order to add or edit Credentials.
+To control a remote computer you may need to use a Credential. The Credential must match the user name and password of the user that you want to login for. Select a Credential in the combo box or click the Settings icon to open *Manage Credentials* in order to add or edit Credentials.
  
 **File path**
 
@@ -35,4 +35,4 @@ The character or sequence inserted after the value when writing. Options are: Cr
  
 **Value**
 
-The string/variable that you want to write to the file.
+The string/Variable that you want to write to the file.
