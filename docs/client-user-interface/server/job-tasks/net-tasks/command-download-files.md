@@ -23,7 +23,7 @@ The list of downloaded files and the "No file(s) downloaded" error cover the who
 
 :::warning
 
-The remote file is deleted even when it was not downloaded: when an _Overwrite options_ setting skipped it, and when the download still failed after the last _Resume if transfer failed_ try. To delete only files that were downloaded, use this option only with "Overwrite - always if existing", and with _Resume if transfer failed_ cleared. On SCP Connections, the file is deleted with `rm -rf`, as described on [Command - Delete Files](command-delete-files).
+The remote file is deleted even when it was not downloaded: when an _Overwrite options_ setting skipped it, and, on FTP, FTPS and SCP Connections, when the download still failed after the last _Resume if transfer failed_ try. On SFTP Connections a failed download fails the command and the remote file is kept. To delete only files that were downloaded, use this option only with "Overwrite - always if existing", and with _Resume if transfer failed_ cleared. On SCP Connections, the file is deleted with `rm -rf`, as described on [Command - Delete Files](command-delete-files).
 
 :::
 
@@ -82,12 +82,14 @@ The three "Append if destination is smaller" options add to the local file in di
   How the retry works depends on the protocol:
 
   - FTP and FTPS: the download continues from where it stopped, but only when _Download file mask_ is `*` and the file is in the current folder of the Connection; otherwise the file is not tried again and is skipped
-  - SFTP: the whole remote file is downloaded again and added to the end of what the failed try had written
+  - SFTP: when the download overwrites the local file, it continues from where the local file ends, and a file that is still not complete after the last try fails the command and is removed. A download that appends to an existing file is not tried again: the file is cut back to its earlier length and the command fails
   - SCP: the download is not tried again; VisualCron waits for the set number of tries, then skips the file
+
+  On SFTP Connections, a download also fails when the connection closes before the end of the file, and when the SFTP server sends fewer bytes than the size it reports for the file. The second check follows _Verify downloaded size_ on the Connection; see [Connection - SFTP](../../connection-sftp#extra-settings).
 
 :::warning
 
-With this option selected, a file that still fails after the last try is skipped without an error, and the command continues with the next file. On SCP Connections this happens to every failed file. On SFTP Connections, a file that failed partway holds the part from the failed try followed by the complete file. If _Delete source file after copy_ is also selected, the remote file is deleted. On SFTP and SCP Connections, leave this option cleared, so that a failed download fails the command. On FTP and FTPS Connections, check the Task output, which lists the downloaded files.
+With this option selected, on FTP, FTPS and SCP Connections a file that still fails after the last try is skipped without an error, and the command continues with the next file. On SCP Connections this happens to every failed file. If _Delete source file after copy_ is also selected, the remote file is deleted. On SCP Connections, leave this option cleared, so that a failed download fails the command. On FTP and FTPS Connections, check the Task output, which lists the downloaded files.
 
 :::
 
