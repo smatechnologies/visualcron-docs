@@ -5,6 +5,12 @@ hide_title: 'true'
 
 ## Change Log
 
+### 13.6.1 [TBD]
+
+#### Notes
+
+:memo: Client/Server: The web client now enforces group permissions in more areas, the same as the VisualCron client: Triggers, Certificates, SSH keys, PGP key rings, Conditions, Notifications, Sync settings, ROI (which uses the Log and Jobs permissions), Exit codes, Connections, Credentials, Users, Task manager, Object finder, running a job by name, and the sync actions. If a user's group does not have the Read permission for one of these areas, the page opens empty with no message. If the group does not have the permission for a change, the web client shows a message that the user does not have permission to perform the action. An administrator can change a group's permissions in the VisualCron client. (VCPCM-3101)
+
 ### 13.5.1 [2026-11-08]
 
 #### Notes
