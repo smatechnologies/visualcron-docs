@@ -5,40 +5,6 @@ hide_title: 'true'
 
 ## Change Log
 
-### Unreleased
-
-#### Features
-
-:star: Client/Server: Kerberos-Only Windows Authentication for Active Directory Protected Users Accounts (VCPCM-4084)
-
-:star: Client: Server Connection Window Fills In the SPN or UPN Identity From the Connected Server (VCPCM-4084)
-
-:star: Client/Server: Force Sealed Connection Setting Encrypts Active Directory LDAP Traffic (Does Not Block NTLM) (VCPCM-4084)
-
-:star: Client: SPN Principal Names Are Checked for service/host Form When a Server Connection Is Saved (VCPCM-4084)
-
-:star: Client/Server: Active Directory Logon Failures Name the Likely Cause and the Setting to Change (VCPCM-4084)
-
-
-#### Bug Fixes
-
-:white_check_mark: Client/Server: Active Directory Queries Now Send DOMAIN\user From the Credential's Domain So Kerberos Can Be Used (VCPCM-4084)
-
-:white_check_mark: Server: Failed Active Directory Lookup at Logon Was Reported as "User Does Not Exist" (VCPCM-4084)
-
-:white_check_mark: Client: Connection Appeared Connected When the Server Received No Windows Identity (VCPCM-4084)
-
-:white_check_mark: Client: Connection to a Server Without the Requested Windows-Authentication Endpoint Showed Only the Raw Error (VCPCM-4266)
-
-:white_check_mark: Client/Server: Force Sealed Connection Combined With a Secure LDAP Port Is Refused on Save and Test (VCPCM-4289)
-
-:white_check_mark: Client/Server: Active Directory Test Required a Credential and Always Used NTLM (VCPCM-4017)
-
-:white_check_mark: Client: A Failed Save Could Leave the Server Connection List Incomplete (VCPCM-4283)
-
-:white_check_mark: Client/Server: A Client From an Earlier Release Reset Force Sealed Connection When Saving Server Settings (VCPCM-4084)
-
-
 ### 13.5.1 [2026-11-08]
 
 #### Notes
