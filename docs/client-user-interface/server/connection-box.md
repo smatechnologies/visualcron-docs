@@ -37,7 +37,7 @@ _Client ID_
 
 The client ID of your Box app, from the _Configuration_ page of the app in the Box Developer Console. Required.
 
-![The OAuth 2.0 credentials of a Box app](../../../static/img/boxoacredentials.png)
+![The OAuth 2.0 credentials of a Box app](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Box/box_configuration.png)
 
 _Client Secret_
 
@@ -46,8 +46,6 @@ The client secret of your Box app.
 _Redirect URI_
 
 The address that Box sends the sign-in result to. Default: "http://localhost:5050". Enter the same address as the redirect URI of the Box app.
-
-![The OAuth 2.0 redirect URI of a Box app](../../../static/img/boxredirecturi.png)
 
 _Auto-accept server certificates_
 
