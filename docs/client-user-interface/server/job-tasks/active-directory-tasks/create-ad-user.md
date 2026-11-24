@@ -38,7 +38,7 @@ Check the new user in Active Directory after the Task runs: the first, middle an
 
 #### Login details sub tab
 
-![Create AD User tab, Login details sub tab with the logon names, Password, Email and the four account check boxes](../../../../../static/img/taskactivedirectorycreateaduserlogin.png)
+![Create AD User tab, Login details sub tab with the logon names, Password, Email and the four account check boxes](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Create%20AD%20User%20Login%20Details.png)
 
 - _User logon name (@domain is allowed)_: the user's logon name, for example `<name>@<domain>`. It is required. The Task also uses this value, as typed, as the name (CN) of the new user object
 - _User logon name (pre-windows 2000)_: the pre-Windows 2000 logon name. The Client does not fill it in from _User logon name_, so enter it
