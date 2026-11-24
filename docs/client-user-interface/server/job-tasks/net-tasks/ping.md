@@ -13,7 +13,7 @@ The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***Tim
 
 - _Hostname_: the host name or IP address to ping
 
-  The list also shows the computers on the network.
+  The list also shows the computers on the network. If the Server's domain has more than 5,000 computers, the list doesn't include the domain's computers, so type the host name.
 
 - _Timeout in milliseconds_: how long to wait for the reply, "2000" by default and at most "20000"
 - _TTL_: the time to live of the request: how many routers the request can pass before it is discarded

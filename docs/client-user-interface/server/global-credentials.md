@@ -97,7 +97,7 @@ Clearing the _Password:_ field counts as a change, and saves an empty password. 
 
 #### _Domain:_
 
-The domain, or the name of the computer, that the user belongs to. The list offers the Server's domain, computers on the network, the hosts of your Connections and the domains of existing Credentials, and you can type any other value.
+The domain, or the name of the computer, that the user belongs to. The list offers the Server's domain, computers on the network, the hosts of your Connections and the domains of existing Credentials, and you can type any other value. If the Server's domain has more than 5,000 computers, the list doesn't include the domain's computers.
 
 The field accepts VisualCron variables. Click _Variables_ at the bottom left of the window to look one up. Variables are resolved when you click _OK_, and the resolved value is stored.
 

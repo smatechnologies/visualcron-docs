@@ -13,7 +13,7 @@ The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***Tim
 
 - _Hostname_: the host name or IP address to check
 
-  The list also shows the computers on the network.
+  The list also shows the computers on the network. If the Server's domain has more than 5,000 computers, the list doesn't include the domain's computers, so type the host name.
 
 - _Port_: the port to check
 
