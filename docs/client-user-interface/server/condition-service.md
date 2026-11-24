@@ -28,7 +28,7 @@ Select where the service runs:
 
 #### Hostname
 
-Enabled when _Remote_ is selected. Type the name of the computer, or select it from the list. The window lets you save _Remote_ without a hostname, and the check then returns a Match Error.
+Enabled when _Remote_ is selected. Type the name of the computer, or select it from the list. If the Server's domain has more than 5,000 computers, the list doesn't include the domain's computers, so type the name. The window lets you save _Remote_ without a hostname, and the check then returns a Match Error.
 
 #### Service name
 

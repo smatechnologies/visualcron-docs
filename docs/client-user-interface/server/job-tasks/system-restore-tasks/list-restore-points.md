@@ -21,7 +21,7 @@ The Credential used to connect to the remote computer. Use it only with _Remote_
 
 - _Local_ (default): lists the restore points on the Server computer
 - _Remote_: lists the restore points on another computer
-- _Hostname_: the name of the remote computer. Type it or select it from the list of network computers. Available with _Remote_
+- _Hostname_: the name of the remote computer. Type it or select it from the list of network computers. If the Server's domain has more than 5,000 computers, the list doesn't include the domain's computers, so type the name. Available with _Remote_
 
 ### Output and errors
 

@@ -16,7 +16,7 @@ The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***Tim
 **Scope**
 
 - _Local_ (default): reads the event log of the Server computer
-- _Remote_: reads the event log of another computer. Enter its host name or IP address in the box next to it, or select it from the list of network computers
+- _Remote_: reads the event log of another computer. Enter its host name or IP address in the box next to it, or select it from the list of network computers. If the Server's domain has more than 5,000 computers, the list doesn't include the domain's computers, so enter the host name
 - The Credential: the Credential used to read a remote event log. It is used only with _Remote_. Click the settings button to open _Manage credentials_; see [Credentials](../../global-credentials)
 
 **Event log entry filter**
