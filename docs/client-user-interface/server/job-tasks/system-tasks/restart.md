@@ -16,7 +16,7 @@ The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***Tim
 - _Credentials_: used only with _Remote_, to connect to the remote computer through WMI. Optional: without a Credential, the Task connects as the account of the VisualCron Server service. Select a Credential, or click the _Settings_ icon to open _Manage credentials_; see [Global - Credentials](../../global-credentials)
 - _Local_ (_Shutdown settings_ group): restarts the VisualCron Server computer. Selected by default
 - _Remote_: restarts the computer in _Hostname_
-- _Hostname_: the host name of the remote computer. Select a computer on the network or type a host name. Available only with _Remote_
+- _Hostname_: the host name of the remote computer. Select a computer on the network or type a host name. If the Server's domain has more than 5,000 computers, the list doesn't include the domain's computers, so type the host name. Available only with _Remote_
 
 :::warning
 

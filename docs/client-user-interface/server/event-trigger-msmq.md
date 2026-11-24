@@ -44,7 +44,7 @@ Choose whether the queue is on the VisualCron Server computer or on another comp
 
 **Host name**
 
-The host name or IP address of the computer that hosts the queue. Select a computer from the list or type the name. You can use Variables. The field is available only when *Remote MSMQ* is selected.
+The host name or IP address of the computer that hosts the queue. Select a computer from the list or type the name. If the Server's domain has more than 5,000 computers, the list doesn't include the domain's computers, so type the name. You can use Variables. The field is available only when *Remote MSMQ* is selected.
 
 **Queue**
 

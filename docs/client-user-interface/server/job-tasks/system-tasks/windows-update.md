@@ -16,7 +16,7 @@ The ***Main settings***, ***Flow***, ***On error***, ***Conditions*** and ***Tim
 - _Credentials_: the Credential the Task runs as. With _Remote_, it must be allowed to use Windows Update on the remote computer. Select a Credential, or click the _Settings_ icon to open _Manage credentials_; see [Global - Credentials](../../global-credentials)
 - _Local_ (_Shutdown settings_ group): updates the VisualCron Server computer. Selected by default
 - _Remote_: updates the computer in _Hostname_
-- _Hostname_: the host name of the remote computer. Select a computer on the network or type a host name. Available only with _Remote_
+- _Hostname_: the host name of the remote computer. Select a computer on the network or type a host name. If the Server's domain has more than 5,000 computers, the list doesn't include the domain's computers, so type the host name. Available only with _Remote_
 - _Download updates_ (_Settings_ group): downloads the updates that are not downloaded yet. Selected by default
 - _Install updates_: installs the updates that are not installed. Selected by default
 - _Install hidden updates_: also includes updates that are hidden in Windows Update, for both downloading and installing
