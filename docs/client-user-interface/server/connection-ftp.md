@@ -132,7 +132,7 @@ A new Connection has _Authentication_ "Not set" and _Use credentials_ selected. 
 
 Earlier versions of the Client had a separate ***Log*** tab for the two log options that are now on ***Extra settings***.
 
-![FTP Connection, Log tab in an earlier version, with the two log options](../../../static/img/connectionftplog.png)
+![FTP Connection, Log tab in an earlier version, with the two log options](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/FTP/log_options.png)
 
 ### Troubleshooting
 
