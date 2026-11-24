@@ -123,9 +123,7 @@ Most headings below are Windows messages that follow "Could not map drive" in th
 
 On the VisualCron Server computer, open the Local Group Policy Editor and go to _Computer Configuration_ -> _Windows Settings_ -> _Security Settings_ -> _Local Policies_ -> _Security Options_. Set _Network access: Do not allow storage of passwords and credentials for network authentication_ to _Disabled_. Then map the drive again.
 
-![Local Group Policy Editor with Security Options selected and the policy Network access: Do not allow storage of passwords and credentials for network authentication highlighted](../../../static/img/clipsdfgdfsggfd0069.png)
-
-![Properties of the policy Network access: Do not allow storage of passwords and credentials for network authentication, set to Disabled](../../../static/img/clip00dfgdfg69.png)
+![Properties of the policy Network access: Do not allow storage of passwords and credentials for network authentication, set to Disabled](../../../static/img/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Network%20Drives/local_group_policy_editor.png)
 
 #### The specified network password is not correct
 
