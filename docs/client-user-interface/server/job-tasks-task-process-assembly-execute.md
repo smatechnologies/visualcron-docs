@@ -74,4 +74,4 @@ Controls how many levels deep VisualCron reflects into complex types when loadin
 
 Double click on parameter rows to set values. Depending on the value type different input forms will be used.
 
-![Edit Array of System.String window for a parameter value](../../../static/img/clip0009.png)
+![Edit Array of System.String window for a parameter value](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/Assembly%20Execute_value.png)
