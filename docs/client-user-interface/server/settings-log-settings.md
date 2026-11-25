@@ -195,17 +195,24 @@ When the Server connects to a MySQL log database, it checks the following column
 | ConnectionLogs | ConnectionError |
 | TransferLogs | ErrorMessage, TransferText, FolderName, FileName, OriginalFolderName, OriginalFileName |
 
-The Server log file shows a line before and after each table is changed, with the time it took. If the upgrade of a table fails, the error is written to the Server log file and logging continues. The Server tries the upgrade up to three times, one minute apart. After the third failure, it writes an error to the Server log file and tries again the next time it connects to the log database. The database user of the log Connection needs the `ALTER` permission on these tables.
+The Server log file shows a line before and after each table is changed, with the time it took. If the upgrade of a table fails, the error is written to the Server log file and logging continues. The Server tries the upgrade up to three times, one minute apart. After the third failure, it writes an error to the Server log file and does not try again until the VisualCron service is restarted. If the change of a single table takes longer than four hours, it counts as a failure. If you stop the VisualCron service during the upgrade, the table being changed is finished first, and the remaining tables are changed the next time the service starts. The database user of the log Connection needs the `ALTER` permission on these tables.
 
-When several VisualCron Servers use the same log database, only one Server changes a table at a time. The other Servers skip that table and check it again one minute later. To keep the upgrade short, upgrade one Server first, and start the other Servers after the Server log file shows that every table is upgraded.
+When several VisualCron Servers use the same log database, only one Server changes a table at a time. The other Servers skip that table and check it again one minute later. While a table is being changed, the other Servers cannot write to it, and their log entries for that table are lost. Stop the other Servers, upgrade one Server, and start the other Servers after the Server log file of the first Server shows that every table is upgraded.
 
-When you use _Copy database_ to copy log data to an existing MySQL log database (see [Move logging to an external database](#move-logging-to-an-external-database)), the Server upgrades the destination database in the same way before it copies the log data. If the upgrade of the destination does not complete, the copy stops.
+When you use _Copy database_ to copy log data to an existing MySQL log database (see [Move logging to an external database](#move-logging-to-an-external-database)), the Server upgrades the destination database in the same way before it copies the log data. While the destination is upgraded, the Server does not write to its own log database. If the upgrade of the destination does not complete, the copy stops. To avoid the pause, upgrade the destination database manually first.
 
-The upgrade cannot be reversed automatically. If you change a column back to `TEXT`, values larger than 64 KB are cut off or rejected.
+The upgrade cannot be reversed automatically. If you change a column back to `TEXT`, values larger than 64 KB are cut off or rejected. Values that were already cut off at 64 KB before the upgrade stay cut off.
 
 :::warning
 
-MySQL rebuilds each table during the change, and the table is locked until the rebuild finishes. On a large log database, such as one with many Task log rows, this can take several minutes. While the upgrade runs, the Server does not write to the log database. On a busy Server, log entries that arrive during that time can be lost if more than 1000 are waiting. To avoid this, upgrade the log database yourself in a maintenance window before you upgrade VisualCron (see [Upgrade the log database manually](#upgrade-the-log-database-manually)).
+MySQL rebuilds each table during the change, and the table is locked until the rebuild finishes. On a large log database, such as one with many Task log rows, this can take several minutes. While the upgrade runs:
+
+- The Server does not write to the log database, and holds new log entries in memory, so memory use grows for as long as the upgrade runs
+- On a busy Server, log entries that were already waiting can be lost if more than 1000 are waiting, and General log entries can be lost if more than 100 are waiting
+- The log views in the VisualCron Client wait until the table is rebuilt
+- The first start of the Server after you upgrade VisualCron can take longer
+
+To avoid this, upgrade the log database yourself in a maintenance window before you upgrade VisualCron (see [Upgrade the log database manually](#upgrade-the-log-database-manually)).
 
 :::
 
