@@ -195,9 +195,9 @@ When the Server connects to a MySQL log database, it checks the following column
 | ConnectionLogs | ConnectionError |
 | TransferLogs | ErrorMessage, TransferText, FolderName, FileName, OriginalFolderName, OriginalFileName |
 
-The Server log file shows a line before and after each table is changed, with the time it took. If the upgrade of a table fails, the error is written to the Server log file and logging continues. The Server tries the upgrade up to three times. After the third failure, it writes an error to the Server log file and tries again the next time it connects to the log database. The database user of the log Connection needs the `ALTER` permission on these tables.
+The Server log file shows a line before and after each table is changed, with the time it took. If the upgrade of a table fails, the error is written to the Server log file and logging continues. The Server tries the upgrade up to three times, one minute apart. After the third failure, it writes an error to the Server log file and tries again the next time it connects to the log database. The database user of the log Connection needs the `ALTER` permission on these tables.
 
-When several VisualCron Servers use the same log database, only one Server changes a table at a time. The other Servers skip that table and check it again later. To keep the upgrade short, upgrade one Server first, and start the other Servers after the Server log file shows that every table is upgraded.
+When several VisualCron Servers use the same log database, only one Server changes a table at a time. The other Servers skip that table and check it again one minute later. To keep the upgrade short, upgrade one Server first, and start the other Servers after the Server log file shows that every table is upgraded.
 
 When you use _Copy database_ to copy log data to an existing MySQL log database (see [Move logging to an external database](#move-logging-to-an-external-database)), the Server upgrades the destination database in the same way before it copies the log data. If the upgrade of the destination does not complete, the copy stops.
 
@@ -223,7 +223,7 @@ WHERE table_schema = DATABASE()
 
 If the query returns no rows, the log database is already upgraded.
 
-If you changed any of these columns yourself, for example to add a comment, upgrade them manually. The automatic upgrade keeps only the character set, the collation and the NULL setting of each column, and removes other column settings such as comments.
+If you changed any of these columns yourself, for example to add a comment, upgrade them manually. The automatic upgrade keeps only the character set, the collation and the NULL setting of each column, and removes other column settings such as comments. For a column you changed, replace `CHARACTER SET UTF8` in the script below with the column's own character set and collation, for example `CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci`, and keep its other settings, such as `NOT NULL` or a comment.
 
 #### Upgrade the log database manually
 
