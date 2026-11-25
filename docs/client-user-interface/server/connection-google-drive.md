@@ -78,18 +78,13 @@ To create a Google Drive Connection, complete the following steps:
 9. Copy the client secret into _App Secret_.
 10. Click _Authenticate_.
 11. Sign in with the Google account.
-
-    ![The Google sign-in page](../../../static/img/connectiongoogledrivegogglesignin.png)
-
 12. Allow VisualCron to access the Google Drive of the account.
 13. Click _OK_ to save the Connection.
 14. Click _Test_ on the ***Common settings*** tab.
 
 The test reports that it was successful. You can also browse the files of the Connection in the Connection Explorer.
 
-![The Manage Connections window with a Google Drive Connection](../../../static/img/connectiongoogledriveexplorer.png)
-
-![The Connection Explorer with a Google Drive Connection open](../../../static/img/connectiongoogledriveconnectionexplorer.png)
+![The Manage Connections window with a Google Drive Connection](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Google%20Drive/googledriveCE.png)
 
 ### Authentication and token expiry
 
