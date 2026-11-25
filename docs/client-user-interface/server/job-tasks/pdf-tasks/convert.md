@@ -84,8 +84,6 @@ With _From PDF to_ "TXT" and _Pages_, the Task adds the text to the end of an ex
 
 When _To PDF from_ is set to "TXT", three more groups appear on the ***Destination*** tab: _Page margins (points)_, _Font details_, and _Page orientation and Line fit_.
 
-![Destination tab of the Convert Task for a TXT to PDF conversion, with the Page margins, Font details and Page orientation and Line fit groups](pathname:///img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/PDF%20Tasks/Convert%20Destination%20TXT.png)
-
 - _Left_, _Right_, _Top_ and _Bottom_ (_Page margins (points)_ group): the margins around the page content, in points
 
   A blank value, or one that is not a number, gives "50" for a TXT or XML source. The group also appears for "IMAGE", where a blank value gives "5".
