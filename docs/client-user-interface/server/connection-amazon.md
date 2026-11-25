@@ -17,7 +17,7 @@ The Amazon Connection stores the address, sign-in and security settings that the
 - [Cloud - Sync file(s)](job-tasks/cloud-transfer-tasks/sync)
 - [Amazon SNS - Publish message](job-tasks/messaging-tasks/sns-publish-message)
 - [The Amazon EC2 Tasks](job-tasks/amazon-ec2-tasks/overview)
-- The Amazon DynamoDB Tasks
+- [Amazon DynamoDB - Put item](job-tasks/amazon-dynamodb-tasks/put-item)
 - The Amazon SimpleDB Tasks
 - [The Cloud file Trigger](event-trigger-cloud-file)
 - [The Amazon SQS Trigger](event-trigger-sqs)

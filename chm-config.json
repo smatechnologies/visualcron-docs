@@ -3037,6 +3037,11 @@
         "Definitions/Tasks/clsTask.vb"
       ]
     },
+    "client-user-interface/server/job-tasks/amazon-dynamodb-tasks/put-item": {
+      "chmFile": "task-amazon-dynamodb---put-item.htm",
+      "mdFile": "docs/client-user-interface/server/job-tasks/amazon-dynamodb-tasks/put-item.md",
+      "label": "Task Amazon DynamoDB - Put Item"
+    },
     "client-user-interface/server/job-tasks/azure-tasks/overview": {
       "chmFile": "azure-tasks.htm",
       "mdFile": "docs/client-user-interface/server/job-tasks/azure-tasks/overview.md",

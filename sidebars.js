@@ -831,6 +831,14 @@ module.exports = {
                   },
                   {
                     type: 'category',
+                    label: 'Amazon DynamoDB Tasks',
+                    collapsed: true,
+                    items: [
+                      'client-user-interface/server/job-tasks/amazon-dynamodb-tasks/put-item',
+                    ],
+                  },
+                  {
+                    type: 'category',
                     label: 'Azure Tasks',
                     collapsed: true,
                     items: [
