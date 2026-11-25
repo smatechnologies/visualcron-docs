@@ -11,7 +11,7 @@ To watch a counter on another computer, enter the computer in *Computer name* un
 
 The settings are on the ***Performance counter*** tab.
 
-![The Performance counter tab of the Add/Edit event window: the Process category is expanded in the Categories tree, an instance is selected under Instances of selected object, and the Condition group shows Greater than (>), Value 10, the three Duration boxes and Average](../../../static/img/triggereventperformancecounter.png)
+![The Performance counter tab of the Add/Edit event window: the Process category is expanded in the Categories tree, an instance is selected under Instances of selected object, and the Condition group shows Greater than (>), Value 10, the three Duration boxes and Average](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Triggers/Event%20Triggers/ET_Performance_Counter.png)
 
 Select a category, a counter and an instance, then set the condition. For example, to start the Job when one process uses more than 10% CPU for 10 seconds, select the *Process* category and the *% Processor Time* counter, select the process under *Instances of selected object*, and set *Condition* to *Greater than (>)*, *Value* to "10" and *Duration* to 10 seconds.
 
