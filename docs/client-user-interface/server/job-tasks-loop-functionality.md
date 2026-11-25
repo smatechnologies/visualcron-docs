@@ -50,7 +50,7 @@ If one or more Tasks belong to a loop you can see that in the loop column. You w
 In the *Loop* column, every loop type is shown with the same blue connector. The screenshot below is
 from an earlier version, which showed each loop type in a different color.
 
-![Loop column in a Job's Task list, showing loop connectors next to the Tasks each loop covers](../../../static/img/image00.png)
+![Loop column in a Job's Task list, showing loop connectors next to the Tasks each loop covers](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Task%20Main%20Settings/Loop%20Settings/three_loop.png)
 
 **Add/Edit loop**
 

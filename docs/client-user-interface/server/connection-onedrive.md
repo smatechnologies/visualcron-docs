@@ -77,9 +77,6 @@ To create a OneDrive Connection, complete the following steps:
 8. Under _Authentication_, add the value of _Redirect Url_, by default "http://localhost:9999", as a redirect URI.
 9. Click _Authenticate_.
 10. Sign in with the Microsoft account.
-
-    ![The Microsoft sign-in page](../../../static/img/connectiononedrivelogin.png)
-
 11. Accept the permissions that VisualCron requests.
 12. Click _OK_ to save the Connection.
 13. Click _Test_ on the ***Common settings*** tab.

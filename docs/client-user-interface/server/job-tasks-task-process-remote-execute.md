@@ -92,7 +92,7 @@ These are the settings needed for a user account in Computer Management->WMI Con
 
 :::
 
-![Permission Entry for Root window in WMI Control security](../../../static/img/remoteexecute.png)
+![Permission Entry for Root window in WMI Control security](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Process%20Tasks/remote_execute_security.png)
 
 **Firewall settings on remote host**
 

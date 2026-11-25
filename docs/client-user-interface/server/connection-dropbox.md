@@ -75,14 +75,14 @@ To create a Dropbox Connection, complete the following steps:
 4. Submit the permission change.
 5. On the _Settings_ tab of the app, add the value of _Redirect Url_, by default "http://localhost:9999", as a redirect URI.
 
-   ![The redirect URIs of a Dropbox app](../../../static/img/dropboxredirect.png)
+   ![The redirect URIs of a Dropbox app](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dropbox/configuration.png)
 
 6. Copy the app key into _App Key_.
 7. Copy the app secret into _App Secret_.
 8. Click _Authenticate_.
 9. Sign in to Dropbox.
 
-   ![The Dropbox sign-in page](../../../static/img/connectiondropboxdropboxsignin.png)
+   ![The Dropbox sign-in page](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Dropbox/dropbox_login.png)
 
 10. Allow the app to access the Dropbox account.
 11. Click _OK_ to save the Connection.

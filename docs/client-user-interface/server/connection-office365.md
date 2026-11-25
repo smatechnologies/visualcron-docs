@@ -36,19 +36,19 @@ _Client ID_
 
 The _Application (client) ID_ of the application, from its _Overview_ page in the Azure portal.
 
-![The Overview page of an app registration](../../../static/img/clip00ddd85.png)
+![The Overview page of an app registration](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Office365/officeconfig.png)
 
 _Client Secret_
 
 A client secret of the application.
 
-![The Certificates & secrets page of an app registration](../../../static/img/azureclientsecret.png)
+![The Certificates & secrets page of an app registration](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Office365/officesecret.png)
 
 _Redirect URI_
 
 The address that Microsoft sends the sign-in result to. It is the same setting as _Redirect Url_ under _App settings_; see _Redirect Url_. Add the address as a redirect URI of the application.
 
-![The redirect URI of an app registration](../../../static/img/azureredirecturi.png)
+![The redirect URI of an app registration](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Office365/officeuri.png)
 
 _Auto-accept server certificates_
 
@@ -60,15 +60,13 @@ Opens the App registrations page of the Azure portal.
 
 The sign-in asks for these delegated Microsoft Graph permissions: _Calendars.ReadWrite_, _Group.ReadWrite.All_ and _User.ReadWrite.All_. Add them to the application under _API permissions_. _Group.ReadWrite.All_ and _User.ReadWrite.All_ need admin consent and apply to the whole tenant.
 
-![The API permissions page of an app registration](../../../static/img/apipermissions.png)
+![The API permissions page of an app registration](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Office365/officeapi.png)
 
 _Authenticate_
 
 Starts the Microsoft sign-in. The browser opens on the computer where the Client runs, and the Client listens for the result on the port of the redirect address. After the sign-in, the Connection stores the sign-in, and the Tasks refresh it at run time.
 
 #### App settings
-
-![Office365 Connection, Main settings tab, App settings group](../../../static/img/connectionoffice365extrasettings.png)
 
 _Redirect Url_
 
@@ -92,7 +90,7 @@ The Office365 Tasks, the Microsoft Teams Task and the MSTeams Trigger do not use
 
 ### Proxy
 
-![Office365 Connection, Proxy tab](../../../static/img/connectionoffice365proxy.png)
+![Office365 Connection, Proxy tab](../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Global%20Objects/Global%20-%20Connections/Office365/proxy.png)
 
 :::warning
 

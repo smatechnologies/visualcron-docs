@@ -30,7 +30,7 @@ The window has the tabs ***Main settings***, ***Log***, ***Language***, ***Proxy
 
 ### Language tab
 
-![The Language tab of the Client settings window with the Choose client language list](../../../static/img/filesettingsclientlanguage.png)
+![The Language tab of the Client settings window with the Choose client language list](../../../static/img/Client%20User%20Interface/Main%20Menu/File/language.png)
 
 - _Choose client language_: the language of the Client. Restart the Client for the change to take effect
 
@@ -46,7 +46,7 @@ This tab sets the proxy that the Client uses for its own web requests, such as [
 
 ### Grid tab
 
-![The Grid tab of the Client settings window with the search and main grid update options](../../../static/img/filesettingsclientgrid.png)
+![The Grid tab of the Client settings window with the search and main grid update options](../../../static/img/Client%20User%20Interface/Main%20Menu/File/grid.png)
 
 - _Show Job folders_: shows the Job folders pane next to the main grid; see [Job Folders](../job-folders)
 - _Group Connections_: groups the rows in the Connections grid
