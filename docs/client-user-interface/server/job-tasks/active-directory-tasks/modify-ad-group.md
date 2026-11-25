@@ -36,7 +36,7 @@ With "Delete", the Task deletes the group at _Path_. VisualCron cannot undo the 
 
 #### Users sub tab
 
-![Modify AD Group tab, Users sub tab with the list of user LDAP paths, the text box and the Add User(s), Add, Modify and Remove buttons](../../../../../static/img/taskactivedirectorymodifyadgroupusers.png)
+![Modify AD Group tab, Users sub tab with the list of user LDAP paths, the text box and the Add User(s), Add, Modify and Remove buttons](../../../../../static/img/Client%20User%20Interface/Main%20Menu/Server/Jobs/Job%20Tasks/Tasks/Active%20Directory%20Tasks/Modify%20AD%20Group%20Users.png)
 
 The list has the users to add or remove. Enter each user's distinguished name (DN), for example `CN=<name>,OU=<unit>,DC=<domain>,DC=<suffix>`; an `LDAP://` prefix is removed before use.
 
