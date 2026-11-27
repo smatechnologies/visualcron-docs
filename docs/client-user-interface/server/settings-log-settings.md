@@ -176,6 +176,90 @@ On the **_Destination_** tab, _Clear all_ and _Recreate table_ delete the rows o
 
 :::
 
+### Upgrade a MySQL log database
+
+When you use a MySQL or MariaDB external log database, VisualCron stores large values, such as Task output, Audit log changes and transfer details, in `LONGTEXT` columns. Log databases created by earlier versions use `TEXT` columns, which hold at most 64 KB, so larger values were not stored.
+
+#### Automatic upgrade
+
+When the Server connects to a MySQL log database, it checks the following columns and changes any that are still `TEXT` to `LONGTEXT`. Existing data is kept. Each column keeps its character set and collation, and a column that does not allow NULL values keeps that setting.
+
+| Table | Columns |
+|---|---|
+| AuditLogs | Diff |
+| TaskLogs | StandardOutput, StandardError, Result |
+| JobLogs | Result |
+| NotificationLogs | StandardOutput, StandardError, Result |
+| HealthLogs | Conditions |
+| EventLogs | Message |
+| ConnectionLogs | ConnectionError |
+| TransferLogs | ErrorMessage, TransferText, FolderName, FileName, OriginalFolderName, OriginalFileName |
+
+The Server log file shows a line before and after each table is changed, with the time it took. If the upgrade of a table fails, the error is written to the Server log file and logging continues. The Server tries the upgrade up to three times, one minute apart. After the third failure, it writes an error to the Server log file and does not try again until the VisualCron service is restarted. If you then change the log database to another existing MySQL log database that still has `TEXT` columns, restart the VisualCron service so that the Server upgrades it. If the change of a single table does not complete within four hours, the Server stops the upgrade at once, writes an error to the Server log file, and does not try again until the service is restarted. Upgrade the remaining tables manually in a maintenance window (see [Upgrade the log database manually](#upgrade-the-log-database-manually)). Until MySQL finishes or cancels that change, the Server's own log entries for that table can also be lost. If you stop the VisualCron service during the upgrade, the table being changed is finished first, and the remaining tables are changed the next time the service starts. The database user of the log Connection needs the `ALTER` permission on these tables.
+
+When several VisualCron Servers use the same log database, only one Server changes a table at a time. The other Servers skip that table and check it again one minute later. While a table is being changed, the other Servers cannot write to it, and their log entries for that table are lost. Stop the other Servers, upgrade one Server, and start the other Servers after the Server log file of the first Server shows that every table is upgraded. Upgrade every Server that uses the log database to this version: a Server on an earlier version can create a missing log table with `TEXT` columns. On a Galera Cluster or MySQL Group Replication setup, a Server connected to one node cannot tell that a Server connected to another node is changing a table, so upgrade from one Server only, or use the manual script.
+
+When you use _Copy database_ to copy log data to an existing MySQL log database (see [Move logging to an external database](#move-logging-to-an-external-database)), the Server upgrades the destination database in the same way before it copies the log data. While the destination is upgraded, the Server does not write to its own log database. If the upgrade of the destination does not complete, the copy stops. To avoid the pause, upgrade the destination database manually first.
+
+The upgrade cannot be reversed automatically. If you change a column back to `TEXT`, values larger than 64 KB are cut off or rejected. Values that were already cut off at 64 KB before the upgrade stay cut off.
+
+:::warning
+
+MySQL rebuilds each table during the change, and the table is locked until the rebuild finishes. On a large log database, such as one with many Task log rows, this can take several minutes. While the upgrade runs:
+
+- The Server does not write to the log database, and holds new log entries in memory, so memory use grows for as long as the upgrade runs
+- On a busy Server, log entries that were already waiting can be lost if more than 1000 are waiting, and General log entries can be lost if more than 100 are waiting
+- The log views in the VisualCron Client, Web API log calls and reports wait until the table is rebuilt
+- The first start of the Server after you upgrade VisualCron can take longer
+
+To avoid this, upgrade the log database yourself in a maintenance window before you upgrade VisualCron (see [Upgrade the log database manually](#upgrade-the-log-database-manually)).
+
+:::
+
+#### Check the column types
+
+To see which columns still need the upgrade, run the following query against the log database:
+
+```sql
+SELECT table_name, column_name, data_type
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE table_schema = DATABASE()
+  AND data_type = 'text'
+  AND table_name IN ('AuditLogs','TaskLogs','JobLogs','NotificationLogs','HealthLogs','EventLogs','ConnectionLogs','TransferLogs');
+```
+
+If the query returns no rows, the log database is already upgraded.
+
+If you changed any of these columns yourself, for example to add a comment, upgrade them manually. The automatic upgrade keeps only the character set, the collation and the NULL setting of each column, and removes other column settings such as comments. For a column you changed, replace `CHARACTER SET UTF8` in the script below with the column's own character set and collation, for example `CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci`, and keep its other settings, such as `NOT NULL` or a comment.
+
+#### Upgrade the log database manually
+
+To upgrade the log database in a maintenance window, complete the following steps:
+
+1. Stop the VisualCron service.
+2. Back up the log database.
+3. Run the following script against the log database. Skip the statement for any table that does not exist.
+
+   ```sql
+   ALTER TABLE AuditLogs MODIFY Diff LONGTEXT CHARACTER SET UTF8;
+   ALTER TABLE TaskLogs MODIFY StandardOutput LONGTEXT CHARACTER SET UTF8, MODIFY StandardError LONGTEXT CHARACTER SET UTF8, MODIFY Result LONGTEXT CHARACTER SET UTF8;
+   ALTER TABLE JobLogs MODIFY Result LONGTEXT CHARACTER SET UTF8;
+   ALTER TABLE NotificationLogs MODIFY StandardOutput LONGTEXT CHARACTER SET UTF8, MODIFY StandardError LONGTEXT CHARACTER SET UTF8, MODIFY Result LONGTEXT CHARACTER SET UTF8;
+   ALTER TABLE HealthLogs MODIFY Conditions LONGTEXT CHARACTER SET UTF8;
+   ALTER TABLE EventLogs MODIFY Message LONGTEXT CHARACTER SET UTF8;
+   ALTER TABLE ConnectionLogs MODIFY ConnectionError LONGTEXT CHARACTER SET UTF8;
+   ALTER TABLE TransferLogs MODIFY ErrorMessage LONGTEXT CHARACTER SET UTF8, MODIFY TransferText LONGTEXT CHARACTER SET UTF8, MODIFY FolderName LONGTEXT CHARACTER SET UTF8, MODIFY FileName LONGTEXT CHARACTER SET UTF8, MODIFY OriginalFolderName LONGTEXT CHARACTER SET UTF8, MODIFY OriginalFileName LONGTEXT CHARACTER SET UTF8;
+   ```
+
+4. Run the query in [Check the column types](#check-the-column-types) and confirm that it returns no rows.
+5. Start the VisualCron service.
+
+The columns are now `LONGTEXT`, and the automatic upgrade finds nothing to change.
+
+#### Very large values
+
+MySQL also limits the size of a single statement with the `max_allowed_packet` server setting. If Task output larger than that setting is still not stored, increase `max_allowed_packet` on the MySQL server.
+
 ### Internal database size and cleanup
 
 The internal database is a SQL Server Compact database. Its file can grow to about 4 GB. Not all of that space can be used for data, because the database needs room to work.
