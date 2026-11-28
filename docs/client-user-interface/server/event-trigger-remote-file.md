@@ -95,6 +95,8 @@ What happens when the file already exists in the destination folder:
 
 *Resume if transfer failed. Try resuming:* when checked, a failed download is resumed up to the number of *times* you enter (1 to 10000; default 3), waiting the *second(s)* you enter between tries (1 to 10000; default 1).
 
+For SFTP Connections, a download that ends before the whole file arrives is treated as failed and resumed. Each try continues from where the local file ends, and only when the download overwrites the local file. When the tries run out, or this option is cleared, the error is written to the log and the partial download is removed. A download ends early when the connection closes before the end of the file, or when the SFTP server sends fewer bytes than the size it reports. The second check follows *Verify downloaded size* on the Connection; see [Connection - SFTP](connection-sftp#extra-settings).
+
 **Keep modified/created date**
 
 Cleared by default. When checked, the downloaded file gets the modified and created dates of the remote file.
