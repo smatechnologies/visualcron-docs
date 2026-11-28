@@ -289,6 +289,11 @@
       "mdFile": "docs/using-visualcron/enable-windows-authentication.md",
       "label": "Enable Windows Authentication / Active Directory Logon"
     },
+    "using-visualcron/kerberos-protected-users": {
+      "chmFile": "kerberos-protected-users.htm",
+      "mdFile": "docs/using-visualcron/kerberos-protected-users.md",
+      "label": "Kerberos-Only Authentication and AD Protected Users"
+    },
     "using-visualcron/visualcron-api": {
       "chmFile": "visualcron_api.htm",
       "mdFile": "docs/using-visualcron/visualcron-api.md",

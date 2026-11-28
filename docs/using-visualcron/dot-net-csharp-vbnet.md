@@ -52,7 +52,7 @@ else
 
     if (conn.ConnectionType == Connection.ConnectionT.Remote)
     {
-        // for a remote connection with AD credentials you can optionally specify the Server identity: either UPN or SPN
+        // for a remote connection with AD credentials, specify the Server identity: either UPN or SPN
         if (specifyUpnIdentity)
         {
             conn.EndpointIdentityType = EndpointIdentityT.UpnIdentity;
@@ -90,3 +90,18 @@ foreach (JobClass j in s.Jobs.GetAll())
 // finally disconnect
 s.Disconnect();
 ```
+
+### Active Directory logon and Kerberos
+
+These rules apply to programs that connect with `UseADLogon = true`, and to programs that call the Active Directory methods of the API:
+
+- **Server identity:** a remote connection with `UseADLogon = true` needs `EndpointIdentityType` set to `EndpointIdentityT.SpnIdentity` or `EndpointIdentityT.UpnIdentity`, with a `PrincipalName`. Use `HOST/<server FQDN>` when the VisualCron Server service runs as Local System, or the service account's UPN when it runs as a domain user account. A connected `Server` reports both values as `PossibleSPN` and `PossibleUPN`, and `ActiveDirectoryAPI.SuggestConnectionIdentity` picks the one that applies
+- **No Windows identity:** `Connect` throws `Client.ClientLoginFailedException` with the login result `ADSecurityContextFailure` when the Server received no Windows identity for an Active Directory logon, for example on a "DNS Identity" connection to a remote Server. Earlier releases returned a `Server` marked connected although no logon had taken place
+- **Force sealed connection:** `ServerSettingsClass.ADForceSealedConnection` is the _Force sealed connection (encrypted LDAP)_ setting. When you send settings with `UpdateServerSettings`, also set `ADForceSealedConnectionSent = true`. Otherwise the Server keeps its current value
+- **Active Directory methods:** `ActiveDirectoryAPI.GetUser`, `GetUsers`, `GetGroups`, `GetUserGroupMembership`, `CheckADCredential` and `CheckADCredentialDirectLDAP` keep their previous signatures. New overloads take a `forceSealedConnection` argument, which requests an encrypted (sealed) LDAP session. It does not block NTLM
+- **Name sent to Active Directory:** these methods send `DOMAIN\user` when the Credential has a bare user name and a Domain. A UPN or an already qualified user name is sent unchanged. A Credential with no Domain, "." or the local computer name as its Domain is sent as the bare user name. See **Credential** in [Settings - Users/Logon](../client-user-interface/server/settings-users-logon)
+
+### Related topics
+
+- [VisualCron API](visualcron-api)
+- [Kerberos-Only Authentication and AD Protected Users](kerberos-protected-users)

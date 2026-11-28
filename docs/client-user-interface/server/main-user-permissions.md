@@ -81,6 +81,8 @@ _Add_, _Edit_ and _Clone_ open the _Add/Edit user_ window. It has two tabs, **_C
 
 Checked when the user is an AD user. You cannot check it yourself. Click the Search button next to _Name:_ and select the user in Active Directory, and the box is checked for you. For an AD user, _Name:_, _Username:_ and _Password:_ cannot be edited.
 
+The search connects to the AD server shown in the search window, with the Credential you select there. The Credential's user name is sent the same way as for an AD logon; see **Credential** in [Settings - Users/Logon](../server/settings-users-logon). When _Allow Active Directory Logon_ and _Force sealed connection (encrypted LDAP)_ are both checked on the **_Users/Logon_** tab, the search requests an encrypted (sealed) LDAP session, and a secure LDAP port (636 or 3269) in the AD server is refused, both in the search and when you save the user. The port is checked on save because a logon for an AD user connects to that user's own AD server.
+
 **Use permissions from AD groups**
 
 Available for AD users only. When checked, the user gets the groups of the AD groups they belong to (see [How AD users get their permissions](#how-ad-users-get-their-permissions)), and the **_Groups_** tab is unavailable. When cleared, the groups checked on the user's own **_Groups_** tab apply.
@@ -132,6 +134,8 @@ The **_AD group_** tab has these fields:
 **Group name:**
 
 The AD group. You cannot type it. Click the Search button and select the group in Active Directory.
+
+The search connects to the AD server shown in the search window, with the Credential you select there. The Credential's user name is sent the same way as for an AD logon; see **Credential** in [Settings - Users/Logon](../server/settings-users-logon). When _Allow Active Directory Logon_ and _Force sealed connection (encrypted LDAP)_ are both checked on the **_Users/Logon_** tab, the search requests an encrypted (sealed) LDAP session, and a secure LDAP port (636 or 3269) in the AD server is refused, both in the search and when you save the AD group.
 
 **Active**
 

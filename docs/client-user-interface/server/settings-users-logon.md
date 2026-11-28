@@ -36,13 +36,21 @@ _Test_ and _Force Windows Authentication_ (on the **_Web API_** tab) are availab
 
 :::warning
 
-Without a secure port, the connection to the AD server is not encrypted. Add ":636" for secure LDAP, or ":3269" for the Global Catalog, for example `<host name>:636`.
+Without a secure port, the connection to the AD server is not encrypted. Add ":636" for secure LDAP, or ":3269" for the Global Catalog, for example `<host name>:636`. Alternatively, keep port 389 or 3268 and check _Force sealed connection (encrypted LDAP)_, which encrypts the LDAP traffic itself.
 
 :::
 
 The Active Directory server to query, as a host name or IP address. It is used for AD logons, and when you search for AD users and groups (see [Main - User Permissions](../server/main-user-permissions)). If the field is empty when you open the tab, it is filled in with the domain or workgroup name of the computer the Client runs on.
 
 You can also use the format `<host name>:<port>/<distinguished name>`, for example `<host name>:636/DC=<domain>,DC=<suffix>`.
+
+When Kerberos is required, enter the domain controller's fully qualified domain name rather than a NetBIOS name or an IP address. No Kerberos ticket can be issued for a name that has no service principal.
+
+:::caution
+
+Do not combine a secure LDAP port (636 or 3269) with _Force sealed connection (encrypted LDAP)_. A domain controller refuses to seal a connection that TLS already protects, so every logon would fail. While _Allow Active Directory Logon_ and _Force sealed connection (encrypted LDAP)_ are both checked, saving the settings and _Test_ refuse a secure LDAP port in _AD Server:_. Saving is also refused when an AD user or AD group in [Main - User Permissions](../server/main-user-permissions) has a secure LDAP port in its own AD server.
+
+:::
 
 **Credential**
 
@@ -53,11 +61,40 @@ The Credentials VisualCron uses to query Active Directory. Check one or more Cre
 
 If your users come from more than one domain, check one Credential per domain. VisualCron uses the Credential whose _Domain_ matches the domain it queries. If none matches, it uses the first Credential. See [Global - Credentials](../server/global-credentials).
 
+If no Credential is checked, the Server queries Active Directory as the account the VisualCron service runs under. For Local System, that is the computer account.
+
+The Server sends the Credential's user name to Active Directory as follows:
+
+| Credential user name | Credential _Domain_ | Name sent to Active Directory |
+|---|---|---|
+| A UPN, for example `svc-vc@contoso.com` | Any | The UPN, unchanged |
+| Already qualified, for example `CONTOSO\svc-vc` | Any | The name, unchanged |
+| A bare name, for example `svc-vc` | The AD domain, for example "CONTOSO" | `CONTOSO\svc-vc` |
+| A bare name | Empty, ".", or the Server computer's own name | `svc-vc`, unchanged |
+
+A bare user name can only authenticate over NTLM. Active Directory refuses NTLM for members of the _Protected Users_ group, so for such an account set the Credential's _Domain_ to the AD domain, or enter its user name as a UPN.
+
+:::note
+
+Earlier releases ignored the Credential's _Domain_. A Credential whose _Domain_ names a computer that is not part of Active Directory is now sent as `<computer>\<user name>`, and Active Directory may refuse it. When a refused query sent the _Domain_, the Server log and the _Test_ result name it, for example "The credential's Domain ('CONTOSO-PC') was sent with the user name. If it is not an Active Directory domain, clear it or correct it." Correct the _Domain_, or clear it.
+
+:::
+
+**Force sealed connection (encrypted LDAP)**
+
+When checked, every query the Server makes to Active Directory with these settings requests sealing, which encrypts the LDAP traffic. A query that cannot be sealed fails instead of running unencrypted, and the reason is written to the Server log. Cleared by default.
+
+Kerberos and NTLM can both seal, so this setting does not block NTLM and does not make a query use Kerberos. Whether a Credential can use Kerberos depends on the name sent, as described under **Credential**.
+
+The setting applies to AD logons, _Test_, the scheduled check of AD groups, and the AD user and AD group searches in [Main - User Permissions](../server/main-user-permissions). Those searches run on the Client computer and connect to the AD server from there. The setting is available, and takes effect, only while _Allow Active Directory Logon_ is checked. A Client from an earlier release that saves these settings leaves the setting unchanged on the Server.
+
 ### Test
 
-Checks that the Server can reach Active Directory with the _AD Server:_ and Credential you entered. The Server needs this access to confirm that an AD user exists and to read the user's AD groups, which decide the user's permissions (see [Main - User Permissions](../server/main-user-permissions)).
+Checks that the Server can reach Active Directory with the _AD Server:_, Credential and _Force sealed connection (encrypted LDAP)_ values on the tab, saved or not. The Server needs this access to confirm that an AD user exists and to read the user's AD groups, which decide the user's permissions (see [Main - User Permissions](../server/main-user-permissions)).
 
-_Test_ is available only while _Allow Active Directory Logon_ is checked, and it needs both an AD server and a Credential. The result is "Test successful", or "Test unsuccessful", sometimes followed by an error message.
+_Test_ is available only while _Allow Active Directory Logon_ is checked, and it needs an AD server. A Credential is not required. With no Credential checked, _Test_ connects as the account the VisualCron service runs under, as a logon does. Running _Test_ requires permission to edit Server Settings.
+
+The result is "Test successful", or "Test unsuccessful", sometimes followed by an error message. When the query fails, the error message includes the same explanation of the likely cause that the Server writes to its log for a failed logon.
 
 #### When Test fails over secure LDAP
 
@@ -67,7 +104,7 @@ The secure LDAP retry described here does not check the AD server's certificate.
 
 :::
 
-If the first check stops with an error and _AD Server:_ uses the format `<host name>:636/<distinguished name>` (or port 3269), the Server retries over a direct secure LDAP connection. When the retry gives a result, _Test_ shows that result without an error message. The results mean:
+If the first check stops with an error and _AD Server:_ uses the format `<host name>:636/<distinguished name>` (or port 3269), the Server retries over a direct secure LDAP connection. The retry is not made while _Force sealed connection (encrypted LDAP)_ is in effect, because a logon has no such retry. When the retry gives a result, _Test_ shows that result without an error message. The results mean:
 
 - "Test successful": the first check, or the retry, succeeded
 - "Test unsuccessful" with no error message: the first check, or the retry, ran without an error but did not succeed
@@ -84,12 +121,18 @@ The log then shows whether the retry ran and what it returned.
 
 ### SPN and UPN
 
-On a computer joined to a domain, the Server also accepts Client connections that identify the Server by a Windows principal name. The tab shows the values a Client can use. Enter the one that applies in the _Add/Update server_ window (see [Servers - Manage Servers](../file/manage-servers)).
+On a computer joined to a domain, the Server also accepts Client connections that identify the Server by a Windows principal name. The tab shows the values a Client can use. Only one of the two applies, depending on the account the VisualCron service runs under. Enter the one that applies in the _Add/Update server_ window (see [Servers - Manage Servers](../file/manage-servers)). When the Client is connected to this Server, the window can fill in the value for you.
 
 **SPN:**
 
-The Service Principal Name: "HOST/" followed by the Server computer's DNS name, in the form `HOST/<server FQDN>`. Use it when the VisualCron service runs as Local System. To list the SPNs registered for the computer, run `setspn -l <server DNS name>` in a Windows command prompt.
+The Service Principal Name: "HOST/" followed by the Server computer's DNS name, in the form `HOST/<server FQDN>`. Use it when the VisualCron service runs as Local System. A bare host name without "HOST/" is not an SPN, and no Kerberos ticket can be issued for it. To list the SPNs registered for the computer, run `setspn -l <server DNS name>` in a Windows command prompt.
 
 **UPN:**
 
 The User Principal Name of the account the VisualCron service runs under, in the form `<user name>@<domain>`. Use it when the service runs as a domain user account. When the service runs as Local System, it shows "NA".
+
+### Related topics
+
+- [Kerberos-Only Authentication and AD Protected Users](../../using-visualcron/kerberos-protected-users)
+- [Main - User Permissions](../server/main-user-permissions)
+- [Servers - Manage Servers](../file/manage-servers)
